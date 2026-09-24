@@ -193,6 +193,7 @@ export type NutCSSVariables =
   | 'nutuiCellBorderRadius'
   | 'nutuiCellPadding'
   | 'nutuiCellIconMargin'
+  | 'nutuiCellIconAlignSelf'
   | 'nutuiCellExtraMargin'
   | 'nutuiCellDescriptionMargin'
   | 'nutuiCellContentMargin'

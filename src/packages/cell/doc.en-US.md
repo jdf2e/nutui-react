@@ -18,7 +18,9 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### Customize Content
+### Vertical Center
+
+You can align the left and right contents of the cell vertically through the 'center' attribute.
 
 :::demo
 
@@ -26,7 +28,7 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### Customize the title area
+### Customize the info area and right area
 
 :::demo
 
@@ -34,7 +36,7 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### Customize the right area
+### Fully Custom
 
 :::demo
 
@@ -42,31 +44,13 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### Vertical Center
+### Grouping Usage
 
-You can align the left and right contents of the cell vertically through the 'center' attribute.
+Use `nut-cell-group` to support `title` and `description`.
 
 :::demo
 
 <CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### Link | Cell.Group Usage
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
-### Grouping usage
-
-The 'divider' property allows you to keep the lower edge from being displayed between cells.
-
-:::demo
-
-<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -113,6 +97,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-border-radius | The rounded corner size of the cell | `6px` |
 | \--nutui-cell-padding | Inside margins of cells | `16px` |
 | \--nutui-cell-icon-margin | Gap between the leading area and the main area | `12px` |
+| \--nutui-cell-icon-align-self | Vertical alignment of the leading-area icon; set to `flex-start` to align it with the first title line | `auto` |
 | \--nutui-cell-extra-margin | Minimum gap between the main area and the right area | `24px` |
 | \--nutui-cell-description-margin | Gap between the title and the description | `2px` |
 | \--nutui-cell-content-margin | Gap between the description and the content area | `8px` |

@@ -1,12 +1,14 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react-taro'
-import { View } from '@tarojs/components'
 
 const Demo2 = () => {
   return (
-    <Cell>
-      <View>自定义内容</View>
-    </Cell>
+    <Cell
+      align="center"
+      title="我是标题"
+      description="我是描述"
+      extra="描述文字"
+    />
   )
 }
 export default Demo2

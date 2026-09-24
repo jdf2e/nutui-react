@@ -18,7 +18,9 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### 自定义内容
+### 垂直居中
+
+通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
 
 :::demo
 
@@ -26,7 +28,7 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### 自定义标题区域
+### 自定义信息区+右侧区
 
 :::demo
 
@@ -34,7 +36,7 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### 自定义右侧区域
+### 完全自定义
 
 :::demo
 
@@ -42,33 +44,13 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### 垂直居中
-
-通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### 链接 | 分组用法
+### 分组用法
 
 使用 `nut-cell-group` 支持 `title` 和 `description`
 
 :::demo
 
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
-### 分组用法
-
-通过 `divider` 属性可以让单元格之间不显示下边线。
-
-:::demo
-
-<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -115,6 +97,7 @@ import { Cell } from '@nutui/nutui-react'
 | \--nutui-cell-border-radius | 单元格圆角大小 | `6px` |
 | \--nutui-cell-padding | 单元格内边距 | `16px` |
 | \--nutui-cell-icon-margin | 识别区与主信息区之间的间距 | `12px` |
+| \--nutui-cell-icon-align-self | 识别区图标的纵向对齐方式，设为 `flex-start` 可贴第一行标题 | `auto` |
 | \--nutui-cell-extra-margin | 主信息区与右侧区域之间的最小间距 | `24px` |
 | \--nutui-cell-description-margin | 标题与说明文案之间的间距 | `2px` |
 | \--nutui-cell-content-margin | 说明文案与内容区域之间的间距 | `8px` |

@@ -545,6 +545,7 @@ $cell-extra-color: var(--nutui-cell-extra-color, $color-text) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, scale-px(6px)) !default;
 $cell-padding: var(--nutui-cell-padding, $spacing-xxl) !default;
 $cell-icon-margin: var(--nutui-cell-icon-margin, $spacing-xl) !default;
+$cell-icon-align-self: var(--nutui-cell-icon-align-self, auto) !default;
 $cell-extra-margin: var(
   --nutui-cell-extra-margin,
   scale-px(24px)
