@@ -110,11 +110,13 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-background-color | badge background color | `$color-primary` |
 | \--nutui-badge-background-disabled-color | badge disables background color | `$color-text-disabled` |
 | \--nutui-badge-color | badge content color value | `$color-primary-text)` |
-| \--nutui-badge-font-size | badge content font size | `$font-size-xxs` |
-| \--nutui-badge-border | badge border | `1px solid $color-primary-text` |
+| \--nutui-badge-font-size | badge content font size | `$font-size-xxs` (`10px`; mini program `$font-size-xxxs` / `9px`) |
+| \--nutui-badge-border | badge outer border (shorthand) | `0.67px solid $color-background-overlay` |
+| \--nutui-badge-border-width | badge outer border width | `0.67px` (falls back to `1px` on 1x/2x) |
+| \--nutui-badge-border-color | badge outer border color | `$color-background-overlay` (light `#FFFFFF` / dark `#1F2226`) |
 | \--nutui-badge-border-radius | badge border rounded corners | `14px` |
-| \--nutui-badge-min-width | badge minimum width | `6px` |
-| \--nutui-badge-padding | badge’s padding value | `1px 4px` |
+| \--nutui-badge-min-width | badge minimum content width (content-box, excludes horizontal padding) | `8px` |
+| \--nutui-badge-padding | badge’s padding value | `0 4px` |
 | \--nutui-badge-icon-padding | The padding value when badge is a custom icon | `2px` |
 | \--nutui-badge-icon-size | The size of badge when it is a custom icon | `10px` |
 | \--nutui-badge-content-transform | badge content position | `translate(50%, -50%)` |
@@ -122,8 +124,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-dot-width | When the badge is a dot, the size is equal to the width and height of normal | `6px` |
 | \--nutui-badge-dot-small-width | When badge is a dot, size is equal to the width and height of small | `4px` |
 | \--nutui-badge-dot-large-width | When the badge is a dot, size is equal to the width and height of large | `8px` |
-| \--nutui-badge-dot-border | The border when the badge is a dot | `1px solid $color-primary-text` |
+| \--nutui-badge-dot-border | The outer border when the badge is a dot | `0.67px solid $color-background-overlay` (light `#FFFFFF` / dark `#1F2226`) |
 | \--nutui-badge-outline-color | The border when badge is outline text color value | `$color-primary` |
-| \--nutui-badge-outline-border | The border when badge is outline fill mode | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-border | The border when badge is outline fill mode | `0.67px solid $color-primary` |
 
 <Contribution name="Badge" />
