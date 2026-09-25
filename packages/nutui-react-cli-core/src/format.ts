@@ -33,11 +33,30 @@ function pad(s: string, width: number): string {
 }
 
 // 统一的「按格式输出」入口：json 走 printJson，text 走回调产出的文本。
+// 可选 versionCtx：json 时在顶层并入 `_meta`，text 时在正文前加一行版本信息头，
+// 让用户/Agent 明确当前查询命中的是哪个大版本、来源为何。
 export function output(
   format: OutputFormat,
   jsonData: unknown,
-  toText: () => string
+  toText: () => string,
+  versionCtx?: { header: string; meta: Record<string, unknown> }
 ): void {
-  if (format === 'json') printJson(jsonData)
-  else printText(toText())
+  if (format === 'json') {
+    if (
+      versionCtx &&
+      jsonData &&
+      typeof jsonData === 'object' &&
+      !Array.isArray(jsonData)
+    ) {
+      printJson({ _meta: versionCtx.meta, ...(jsonData as object) })
+    } else if (versionCtx) {
+      printJson({ _meta: versionCtx.meta, data: jsonData })
+    } else {
+      printJson(jsonData)
+    }
+  } else {
+    printText(
+      versionCtx && versionCtx.header ? `${versionCtx.header}\n\n${toText()}` : toText()
+    )
+  }
 }

@@ -123,9 +123,10 @@ This provides 5 tools (`nutui_list`, `nutui_info`, `nutui_doc`, `nutui_demo`, `n
 | Flag | Purpose |
 | --- | --- |
 | `--format, -f <text\|json>` | Output format; agents should prefer `json` (default: `text`) |
+| `--nutui-version, --nv <version>` | Target NutUI version (e.g. `3`, `3.1.0`, `4.0.0-beta.7`); auto-detected when omitted |
 | `--lang, -l <zh\|en>` | Doc language for `doc` / `mcp` (default: `zh`) |
 | `--help, -h` | Show help |
-| `--version, -v` | Print CLI version |
+| `--version, -v` | Print the CLI's own version (not the NutUI version) |
 
 ## Key Rules
 
@@ -133,3 +134,4 @@ This provides 5 tools (`nutui_list`, `nutui_info`, `nutui_doc`, `nutui_demo`, `n
 2. **Use `--format json`** — Every command supports it. Parse the JSON output rather than regex-matching the human-readable text.
 3. **Confirm the component exists** — If unsure of the exact name, run `nutui-react list` or rely on the CLI's "did you mean" suggestion instead of importing a guessed name.
 4. **Use Design Tokens for styling** — NutUI uses `nut-` flat BEM class names and the `var(--nutui-*)` token system. When customizing appearance, query `nutui-react token` and use tokens rather than hardcoding colors or spacing.
+5. **Prefer auto-detected versions** — The CLI bundles v3 / v4 multi-version snapshots. When working inside a project that depends on NutUI, prefer **not** passing `--nutui-version` — let the CLI infer it from the project's `node_modules` / `package.json`. Only pass `--nv <version>` when the user explicitly asks about a specific version or you are outside a project context. The `_meta.version` / `_meta.source` in the output tells you which version was actually resolved.

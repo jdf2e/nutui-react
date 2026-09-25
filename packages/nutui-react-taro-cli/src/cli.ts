@@ -12,6 +12,7 @@ const dataDir = fileURLToPath(new URL('../data/', import.meta.url))
 const config: CliConfig = {
   binName: 'nutui-react-taro',
   cliPkgName: '@nutui/nutui-react-taro-cli',
+  npmPackageName: '@nutui/nutui-react-taro',
   platform: 'taro',
   libLabel: 'NutUI React（Taro 多端）',
   demoLabel: 'Taro',

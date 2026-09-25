@@ -6,6 +6,9 @@ export interface CliConfig {
   binName: string
   // npm 包名，用于 MCP TTY 提示与文档链接。'@nutui/nutui-react-cli' | '@nutui/nutui-react-taro-cli'
   cliPkgName: string
+  // 被查询的 NutUI 运行时 npm 包名，用于版本自动检测（读项目 node_modules / package.json 依赖）。
+  // '@nutui/nutui-react' | '@nutui/nutui-react-taro'
+  npmPackageName: string
   platform: 'h5' | 'taro'
   // list 命令头部标签。'NutUI React（H5）' | 'NutUI React（Taro 多端）'
   libLabel: string
