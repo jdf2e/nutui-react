@@ -145,7 +145,7 @@
     "@rollup/plugin-commonjs": "^26.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@shikijs/markdown-it": "^3.23.0",
+    "@shikijs/markdown-it": "^4.4.3",
     "@swc/core": "^1.16.1",
     "@tarojs/components": "4.2.0",
     "@tarojs/plugin-platform-alipay": "4.2.0",
