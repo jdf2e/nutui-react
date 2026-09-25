@@ -98,7 +98,7 @@
     "@babel/core": "^7.29.7",
     "@babel/preset-react": "^7.29.7",
     "@rollup/plugin-babel": "^6.1.0",
-    "@sxzz/eslint-config": "^4.6.0",
+    "@sxzz/eslint-config": "^8.6.0",
     "@sxzz/prettier-config": "^2.3.2",
     "@sxzz/test-utils": "^0.5.18",
     "@types/node": "^22.20.1",
