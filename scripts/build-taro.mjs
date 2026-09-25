@@ -253,14 +253,14 @@ async function buildAllCSS(themeName = '') {
   const themeStylePath = themeName ? `style-${themeName}` : 'style'
   async function generateAllStyles() {
     const content = [
-      `@import './styles/variables${themeName ? `-${themeName}` : ''}.scss';`,
-      `@import './styles/mixins/index.scss';`,
-      `@import './styles/animation/index.scss';`,
+      `@use './styles/variables${themeName ? `-${themeName}` : ''}.scss' as *;`,
+      `@use './styles/mixins/index.scss' as *;`,
+      `@use './styles/animation/index.scss' as *;`,
     ]
     const scssFiles = await glob([`${dist}/es/packages/**/${themeStylePath}/*.scss`])
     scssFiles.forEach((file) => {
       content.push(
-        `@import '${relativePath('/' + file, `/${dist}/${themeStylePath}.scss`)}';`,
+        `@use '${relativePath('/' + file, `/${dist}/${themeStylePath}.scss`)}';`,
       )
     })
     await dest(`${dist}/${themeStylePath}.scss`, content.join('\n'))
@@ -371,21 +371,24 @@ async function buildCSS(themeName = '') {
       base.replace('.scss', ''),
     )
     const cssPath = relative('src', loadPath)
-    // 删除 import
+    // 删除 import/use
     // 写入 style.scss
     const atRules = []
     const postcssRes = await postcss([
       {
         postcssPlugin: 'remove-atrule',
         AtRule(root) {
-          if (root.name === 'import') {
-            if (root.params.indexOf('\'../../styles') > -1) {
-              atRules.push(root.params)
-              root.params = root.params.replace('../../', '../../../../')
+          if (root.name === 'import' || root.name === 'use') {
+            const rawParams = root.params
+            const params = rawParams.replace(/\s+as\s+\*$/, '')
+            if (params.indexOf('\'../../styles') > -1) {
+              atRules.push(params)
+              root.params = params.replace('../../', '../../../../') + ' as *'
+              root.name = 'use'
               return
             }
-            if (root.params.indexOf('styles') === -1) {
-              atRules.push(root.params)
+            if (params.indexOf('styles') === -1) {
+              atRules.push(params)
               root.remove()
             }
           }
@@ -400,7 +403,18 @@ async function buildCSS(themeName = '') {
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/${base}`), postcssRes.css)
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/${base}`), postcssRes.css)
 
-    const code = sass.compileString(variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
+    const compileCss = postcssRes.css.replaceAll('../../../../', '../../')
+    const useStatements = []
+    const restLines = []
+    compileCss.split('\n').forEach((line) => {
+      if (line.startsWith('@use ')) {
+        useStatements.push(line)
+      } else {
+        restLines.push(line)
+      }
+    })
+    const sassInput = [...useStatements, variables, ...restLines].join('\n')
+    const code = sass.compileString(sassInput, {
       loadPaths: [loadPath],
     })
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.css`), code.css)
@@ -467,17 +481,20 @@ async function buildHarmonyCSS(themeName = '') {
       base.replace('.scss', ''),
     )
     const cssPath = relative('src', loadPath)
-    // 删除 import
+    // 删除 import/use
     // 写入 style.scss
     const atRules = []
     const postcssRes = await postcss([
       {
         postcssPlugin: 'remove-atrule',
         AtRule(root) {
-          if (root.name === 'import') {
-            if (root.params.indexOf('\'../../styles') > -1) {
-              atRules.push(root.params)
-              root.params = root.params.replace('../../', '../../../../')
+          if (root.name === 'import' || root.name === 'use') {
+            const rawParams = root.params
+            const params = rawParams.replace(/\s+as\s+\*$/, '')
+            if (params.indexOf('\'../../styles') > -1) {
+              atRules.push(params)
+              root.params = params.replace('../../', '../../../../') + ' as *'
+              root.name = 'use'
               return
             }
           }
@@ -489,12 +506,20 @@ async function buildHarmonyCSS(themeName = '') {
         return result
       })
     const themeDir = themeName ? `style-${themeName}` : 'style'
-    const code = sass.compileString(
-      variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'),
-      {
-        loadPaths: [loadPath],
-      },
-    )
+    const compileCss = postcssRes.css.replaceAll('../../../../', '../../')
+    const useStatements = []
+    const restLines = []
+    compileCss.split('\n').forEach((line) => {
+      if (line.startsWith('@use ')) {
+        useStatements.push(line)
+      } else {
+        restLines.push(line)
+      }
+    })
+    const sassInput = [...useStatements, variables, ...restLines].join('\n')
+    const code = sass.compileString(sassInput, {
+      loadPaths: [loadPath],
+    })
     if (file.indexOf('countup') === -1) {
       await dest(
         join(`${dist}/es`, cssPath, `${themeDir}/style.harmony.css`),
