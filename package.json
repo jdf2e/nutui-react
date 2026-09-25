@@ -153,7 +153,7 @@
     "@tarojs/plugin-platform-weapp": "4.2.0",
     "@tarojs/react": "4.2.0",
     "@tarojs/taro": "4.2.0",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.2",
     "@types/fs-extra": "^11.0.4",
     "@types/loadable__component": "^5.13.10",
