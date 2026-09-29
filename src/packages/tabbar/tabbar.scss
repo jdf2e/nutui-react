@@ -2,23 +2,21 @@
 
 .nut-tabbar {
   border: 0px;
-  box-shadow: $tabbar-box-shadow;
   border-bottom: $tabbar-border-bottom;
   border-top: $tabbar-border-top;
   width: 100%;
-  background: $color-background-overlay;
+  background: transparent;
 
   &-wrap {
     height: $tabbar-height;
+    box-sizing: border-box;
     display: flex;
-
-    &-3 {
-      padding: 0 16px;
-    }
-
-    &-2 {
-      padding: 0 32px;
-    }
+    margin-left: $tabbar-horizontal-padding;
+    margin-right: $tabbar-horizontal-padding;
+    padding: $tabbar-content-padding;
+    background: $tabbar-background;
+    border-radius: $tabbar-border-radius;
+    box-shadow: $tabbar-box-shadow;
 
     &-horizontal {
       align-items: center;

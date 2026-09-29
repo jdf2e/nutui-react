@@ -1,6 +1,6 @@
 # Tabbar 標簽欄
 
-底部導航常用場景
+底部導航常用場景。導航背板左右各留 12px、內部四周留 4px，以 16px 圓角矩形和懸浮陰影承載內容；組件外層保持透明。
 
 ## 引入
 
@@ -76,6 +76,8 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 固定底部
 
+`fixed` 或 `safeArea` 開啟時，底部安全區使用系統 `env(safe-area-inset-bottom)`。元件總高為 52px 加裝置實際安全區，不固定為 69px 或 74px。
+
 :::demo
 
 <CodeBlock src='h5/demo9.tsx'></CodeBlock>
@@ -119,12 +121,19 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 高度 | `46px` |
+| \--nutui-tabbar-height | 導航層高度 | `52px` |
+| \--nutui-tabbar-content-height | 內容層高度 | `44px` |
+| \--nutui-tabbar-horizontal-padding | 導航層左右間距 | `12px` |
+| \--nutui-tabbar-content-padding | 導航背板內邊距 | `4px` |
+| \--nutui-tabbar-background | 導航背景 | `$color-background-overlay` |
+| \--nutui-tabbar-border-radius | 導航背板圓角 | `16px` |
+| \--nutui-tabbar-active-background | 選中項背景 | `#F0F2F7` |
+| \--nutui-tabbar-active-border-radius | 選中項圓角 | `12px` |
 | \--nutui-tabbar-active-color | 選中顏色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未選中顏色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上邊框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下邊框 | `1px solid #eee` |
-| \--nutui-tabbar-box-shadow | 陰影 | `none` |
+| \--nutui-tabbar-box-shadow | 導航背板陰影 | `0 0 6px 0 rgba(0, 0, 0, 0.1)` |
 | \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 無圖標時標題字體粗細 | `$font-weight` |

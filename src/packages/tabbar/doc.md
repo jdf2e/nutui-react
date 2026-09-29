@@ -1,6 +1,6 @@
 # Tabbar 标签栏
 
-底部导航常用场景
+底部导航常用场景。导航背板左右各留 12px、内部四周留 4px，以 16px 圆角矩形和悬浮阴影承载内容；组件外层保持透明。
 
 ## 引入
 
@@ -76,6 +76,8 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 固定底部
 
+`fixed` 或 `safeArea` 开启时，底部安全区使用系统 `env(safe-area-inset-bottom)`。组件总高为 52px 加设备实际安全区，不固定为 69px 或 74px。
+
 :::demo
 
 <CodeBlock src='h5/demo9.tsx'></CodeBlock>
@@ -119,12 +121,19 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 高度 | `46px` |
+| \--nutui-tabbar-height | 导航层高度 | `52px` |
+| \--nutui-tabbar-content-height | 内容层高度 | `44px` |
+| \--nutui-tabbar-horizontal-padding | 导航层左右间距 | `12px` |
+| \--nutui-tabbar-content-padding | 导航背板内边距 | `4px` |
+| \--nutui-tabbar-background | 导航背景 | `$color-background-overlay` |
+| \--nutui-tabbar-border-radius | 导航背板圆角 | `16px` |
+| \--nutui-tabbar-active-background | 选中项背景 | `#F0F2F7` |
+| \--nutui-tabbar-active-border-radius | 选中项圆角 | `12px` |
 | \--nutui-tabbar-active-color | 选中颜色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未选中颜色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
-| \--nutui-tabbar-box-shadow | 阴影 | `none` |
+| \--nutui-tabbar-box-shadow | 导航背板阴影 | `0 0 6px 0 rgba(0, 0, 0, 0.1)` |
 | \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 无图标时标题字体粗细 | `$font-weight` |

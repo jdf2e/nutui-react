@@ -1,6 +1,6 @@
 # Tabbar
 
-Bottom Navigation Common Scenarios
+Common bottom-navigation scenarios. The navigation board keeps a 12px inset on both sides and 4px of inner padding on every edge. It uses a floating rounded rectangle with a 16px radius, while the component shell remains transparent.
 
 ## Import
 
@@ -76,6 +76,8 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### Fixed Bottom
 
+When `fixed` or `safeArea` is enabled, the bottom inset uses the system `env(safe-area-inset-bottom)` value. The total height is 52px plus the device inset; it is not hard-coded to 69px or 74px.
+
 :::demo
 
 <CodeBlock src='h5/demo9.tsx'></CodeBlock>
@@ -119,12 +121,19 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-tabbar-height | tabbar height | `46px` |
+| \--nutui-tabbar-height | navigation layer height | `52px` |
+| \--nutui-tabbar-content-height | content layer height | `44px` |
+| \--nutui-tabbar-horizontal-padding | horizontal inset | `12px` |
+| \--nutui-tabbar-content-padding | navigation board inner padding | `4px` |
+| \--nutui-tabbar-background | navigation background | `$color-background-overlay` |
+| \--nutui-tabbar-border-radius | navigation board radius | `16px` |
+| \--nutui-tabbar-active-background | selected item background | `#F0F2F7` |
+| \--nutui-tabbar-active-border-radius | selected item radius | `12px` |
 | \--nutui-tabbar-active-color | active color | `$color-primary` |
 | \--nutui-tabbar-inactive-color | default color | `$color-title` |
 | \--nutui-tabbar-border-top | borderTop | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
-| \--nutui-tabbar-box-shadow | boxShadow | `none` |
+| \--nutui-tabbar-box-shadow | navigation board shadow | `0 0 6px 0 rgba(0, 0, 0, 0.1)` |
 | \--nutui-tabbar-text-font-size | title fontSize | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | title fontWeight when icon is null | `$font-weight` |
