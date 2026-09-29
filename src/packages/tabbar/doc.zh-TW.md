@@ -90,7 +90,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::demo
 
-<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -100,7 +100,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::demo
 
-<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 

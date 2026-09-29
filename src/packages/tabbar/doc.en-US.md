@@ -90,7 +90,7 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 
 :::demo
 
-<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -100,7 +100,7 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 
 :::demo
 
-<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 

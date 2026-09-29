@@ -90,7 +90,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo11.tsx'></CodeBlock>
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -100,7 +100,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo12.tsx'></CodeBlock>
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
 
 :::
 

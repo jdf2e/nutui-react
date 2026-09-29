@@ -9,8 +9,8 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
 import Demo11 from './demos/h5/demo11'
-import Demo12 from './demos/h5/demo12'
 
 const TabbarDemo = () => {
   const [translated] = useTranslate({
@@ -75,9 +75,9 @@ const TabbarDemo = () => {
         <h2>{translated.c9e6df48}</h2>
         <Demo8 />
         <h2>{translated.agent}</h2>
-        <Demo11 />
+        <Demo10 />
         <h2>{translated.island}</h2>
-        <Demo12 />
+        <Demo11 />
         <h2 style={{ marginBottom: 100 }}>{translated.cfbdc781}</h2>
         <Demo9 />
       </div>

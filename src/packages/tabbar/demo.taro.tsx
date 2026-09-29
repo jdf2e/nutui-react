@@ -12,8 +12,8 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
-import Demo12 from './demos/taro/demo12'
 
 const TabbarDemo = () => {
   const [translated] = useTranslate({
@@ -80,9 +80,9 @@ const TabbarDemo = () => {
         <View className="h2">{translated.c9e6df48}</View>
         <Demo8 />
         <View className="h2">{translated.agent}</View>
-        <Demo11 />
+        <Demo10 />
         <View className="h2">{translated.island}</View>
-        <Demo12 />
+        <Demo11 />
         <View className="h2" style={{ marginBottom: 100 }}>
           {translated.cfbdc781}
         </View>
