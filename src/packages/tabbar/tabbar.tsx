@@ -6,6 +6,7 @@ import TabbarItem from '../tabbaritem'
 import TabbarContext from './context'
 import { WebTabbarProps } from '@/types'
 import SafeArea from '@/packages/safearea/index'
+import { normalizeTabbarItems } from './utils'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -30,12 +31,19 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     inactiveColor,
     direction,
     safeArea,
+    agent,
     className,
     style,
     onSwitch,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-tabbar'
+  const items = useMemo(
+    () => normalizeTabbarItems(children, TabbarItem),
+    [children]
+  )
+  const hasAgent =
+    agent !== null && agent !== undefined && typeof agent !== 'boolean'
 
   const [selectIndex, setSelectIndex] = usePropsValue<number>({
     value,
@@ -45,7 +53,7 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
   })
 
   const sizeCls = useMemo(() => {
-    const size = React.Children.count(children)
+    const size = items.length
     return size > 3
       ? ''
       : classNames({
@@ -54,42 +62,55 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
           [`${classPrefix}-wrap-${direction}`]:
             size === 2 && direction !== 'vertical',
         })
-  }, [children, direction])
+  }, [items, direction])
 
   const itemDirection = useMemo(() => {
-    const size = React.Children.count(children)
+    const size = items.length
     return size === 2 && direction !== 'vertical' && direction
-  }, [direction, children])
+  }, [direction, items])
+
+  const navigation = (
+    <div className={`${classPrefix}-wrap ${sizeCls}`}>
+      <TabbarContext.Provider
+        value={{
+          selectIndex,
+          activeColor,
+          inactiveColor,
+          handleClick: setSelectIndex,
+        }}
+      >
+        {items.map((child, index) =>
+          React.cloneElement(child, {
+            ...child.props,
+            key: child.key ?? index,
+            index,
+            direction: itemDirection,
+          })
+        )}
+      </TabbarContext.Provider>
+    </div>
+  )
 
   return (
     <div
       className={classNames(
         classPrefix,
-        { [`${classPrefix}-fixed`]: fixed },
+        {
+          [`${classPrefix}-fixed`]: fixed,
+          [`${classPrefix}-has-agent`]: hasAgent,
+        },
         className
       )}
       style={style}
     >
-      <div className={`${classPrefix}-wrap ${sizeCls}`}>
-        <TabbarContext.Provider
-          value={{
-            selectIndex,
-            activeColor,
-            inactiveColor,
-            handleClick: setSelectIndex,
-          }}
-        >
-          {React.Children.map(children, (child, index) =>
-            React.isValidElement(child)
-              ? React.cloneElement(child, {
-                  ...child.props,
-                  index,
-                  direction: itemDirection,
-                })
-              : null
-          )}
-        </TabbarContext.Provider>
-      </div>
+      {hasAgent ? (
+        <div className={`${classPrefix}-main`}>
+          <div className={`${classPrefix}-agent`}>{agent}</div>
+          {navigation}
+        </div>
+      ) : (
+        navigation
+      )}
       {(fixed || safeArea) && <SafeArea position="bottom" />}
     </div>
   )

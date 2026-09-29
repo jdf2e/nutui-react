@@ -7,6 +7,29 @@
   width: 100%;
   background: transparent;
 
+  &-main {
+    position: relative;
+    height: $tabbar-height;
+  }
+
+  &-agent {
+    position: absolute;
+    bottom: 0;
+    left: calc(#{$tabbar-agent-source-size} - #{$tabbar-agent-outset});
+    transform: translateX(-100%);
+    width: $tabbar-agent-source-size;
+    height: $tabbar-agent-source-size;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  &-has-agent &-wrap {
+    margin-left: calc(
+      #{$tabbar-agent-source-size} - #{$tabbar-agent-outset} +
+        #{$tabbar-agent-gap}
+    );
+  }
+
   &-wrap {
     height: $tabbar-height;
     box-sizing: border-box;

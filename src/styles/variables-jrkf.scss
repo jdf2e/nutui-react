@@ -1503,6 +1503,9 @@ $rate-icon-inactive-color: var(
 
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, 52px) !default;
+$tabbar-agent-source-size: var(--nutui-tabbar-agent-source-size, 52px) !default;
+$tabbar-agent-gap: var(--nutui-tabbar-agent-gap, 8px) !default;
+$tabbar-agent-outset: var(--nutui-tabbar-agent-outset, 16px) !default;
 $tabbar-content-height: var(--nutui-tabbar-content-height, 44px) !default;
 $tabbar-horizontal-padding: var(
   --nutui-tabbar-horizontal-padding,

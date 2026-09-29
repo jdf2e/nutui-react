@@ -14,6 +14,7 @@ import {
   User,
 } from '@nutui/icons-react'
 import { Tabbar } from '../tabbar'
+import { normalizeTabbarItems } from '../utils'
 
 const renderTabbarItems = (count: number, props = {}) => {
   const onSwitch = vi.fn()
@@ -99,6 +100,144 @@ test('should keep controlled value while reporting a requested switch', () => {
   expect(items[3]).not.toHaveClass('nut-tabbar-item-active')
 })
 
+test('renders one caller-owned Agent entry without changing ordinary tab selection', () => {
+  const onAgentClick = vi.fn()
+  const onSwitch = vi.fn()
+  const onActiveClick = vi.fn()
+  const { container } = render(
+    <Tabbar
+      value={0}
+      onSwitch={onSwitch}
+      agent={
+        <button type="button" onClick={onAgentClick}>
+          Agent entry
+        </button>
+      }
+    >
+      <Tabbar.Item title="首页" icon={<Home />} onActiveClick={onActiveClick} />
+      <Tabbar.Item title="我的" icon={<User />} />
+    </Tabbar>
+  )
+
+  expect(container.querySelectorAll('.nut-tabbar-agent')).toHaveLength(1)
+  expect(container.querySelectorAll('.nut-tabbar-item')).toHaveLength(2)
+  fireEvent.click(container.querySelector('.nut-tabbar-agent button')!)
+  expect(onAgentClick).toHaveBeenCalledTimes(1)
+  expect(onSwitch).not.toHaveBeenCalled()
+  expect(onActiveClick).not.toHaveBeenCalled()
+
+  fireEvent.click(container.querySelectorAll('.nut-tabbar-item')[1])
+  expect(onSwitch).toHaveBeenCalledWith(1)
+  expect(container.querySelectorAll('.nut-tabbar-item')[0]).toHaveClass(
+    'nut-tabbar-item-active'
+  )
+})
+
+test('omits the Agent layout when the supplied slot is empty', () => {
+  const { container, rerender } = render(
+    <Tabbar agent={false}>
+      <Tabbar.Item title="首页" />
+      <Tabbar.Item title="我的" />
+    </Tabbar>
+  )
+
+  expect(container.querySelector('.nut-tabbar-agent')).toBeNull()
+  expect(container.querySelector('.nut-tabbar-has-agent')).toBeNull()
+
+  rerender(
+    <Tabbar agent={<span>Custom Agent</span>}>
+      <Tabbar.Item title="首页" />
+      <Tabbar.Item title="我的" />
+    </Tabbar>
+  )
+  expect(container.querySelector('.nut-tabbar-agent')).toHaveTextContent(
+    'Custom Agent'
+  )
+  expect(container.querySelector('.nut-tabbar-has-agent')).toBeInTheDocument()
+})
+
+test('indexes only rendered Tabbar Items across conditional and Fragment children', () => {
+  const onSwitch = vi.fn()
+  const { container } = render(
+    <Tabbar onSwitch={onSwitch}>
+      <Tabbar.Item title="首页" />
+      {null}
+      {false}
+      <>
+        <Tabbar.Item title="分类" />
+        {undefined}
+        <Tabbar.Item title="我的" />
+      </>
+      <span>not a tab</span>
+    </Tabbar>
+  )
+
+  const items = container.querySelectorAll('.nut-tabbar-item')
+  expect(items).toHaveLength(3)
+  expect(container.querySelector('.nut-tabbar-wrap > span')).toBeNull()
+  fireEvent.click(items[2])
+  expect(onSwitch).toHaveBeenCalledWith(2)
+})
+
+test('keeps keyed Fragment groups distinct when a preceding group is removed', () => {
+  const groups = (includeFirst: boolean) => (
+    <>
+      {includeFirst &&
+        React.createElement(
+          React.Fragment,
+          { key: 'first' },
+          <Tabbar.Item key="shared" title="First" />
+        )}
+      {React.createElement(
+        React.Fragment,
+        { key: 'second' },
+        <Tabbar.Item key="shared" title="Second" />
+      )}
+    </>
+  )
+
+  const before = normalizeTabbarItems(groups(true), Tabbar.Item)
+  const after = normalizeTabbarItems(groups(false), Tabbar.Item)
+  expect(before[0].key).not.toBe(before[1].key)
+  expect(before[1].key).toBe(after[0].key)
+})
+
+test.each([2, 3, 4, 5])(
+  'keeps %i ordinary items outside the Agent slot',
+  (count) => {
+    const { container, onSwitch } = renderTabbarItems(count, {
+      agent: <span>Agent</span>,
+    })
+    const items = container.querySelectorAll('.nut-tabbar-item')
+    expect(items).toHaveLength(count)
+    expect(container.querySelector('.nut-tabbar-agent')).toHaveTextContent(
+      'Agent'
+    )
+    fireEvent.click(items[count - 1])
+    expect(onSwitch).toHaveBeenCalledWith(count - 1)
+  }
+)
+
+test.each([
+  { fixed: false, safeArea: false, expectedSafeArea: 0 },
+  { fixed: true, safeArea: false, expectedSafeArea: 1 },
+  { fixed: false, safeArea: true, expectedSafeArea: 1 },
+  { fixed: true, safeArea: true, expectedSafeArea: 1 },
+])(
+  'keeps one Agent and $expectedSafeArea safe area for fixed=$fixed, safeArea=$safeArea',
+  ({ fixed, safeArea, expectedSafeArea }) => {
+    const { container } = renderTabbarItems(3, {
+      agent: <span>Agent</span>,
+      fixed,
+      safeArea,
+    })
+    expect(container.querySelectorAll('.nut-tabbar-agent')).toHaveLength(1)
+    expect(container.querySelectorAll('.nut-safe-area')).toHaveLength(
+      expectedSafeArea
+    )
+  }
+)
+
 test.each([
   { fixed: false, safeArea: false, expectedSafeArea: 0 },
   { fixed: true, safeArea: false, expectedSafeArea: 1 },
@@ -152,6 +291,29 @@ test.each([
   expect(active['border-radius']).toContain(
     '--nutui-tabbar-active-border-radius'
   )
+})
+
+test.each([
+  'src/styles/variables.scss',
+  'src/styles/variables-daojia.scss',
+  'src/styles/variables-jmapp.scss',
+  'src/styles/variables-jrkf.scss',
+])('should compile responsive Agent geometry with %s', (variables) => {
+  const css = compileTabbarStyles(variables)
+  const main = getDeclarations(css, '.nut-tabbar-main')
+  const agent = getDeclarations(css, '.nut-tabbar-agent')
+  const wrap = getDeclarations(css, '.nut-tabbar-has-agent .nut-tabbar-wrap')
+
+  expect(main.position).toBe('relative')
+  expect(main.height).toContain('52px')
+  expect(agent.width).toContain('--nutui-tabbar-agent-source-size')
+  expect(agent.height).toBe(agent.width)
+  expect(agent.left).toContain('--nutui-tabbar-agent-source-size')
+  expect(agent.left).toContain('--nutui-tabbar-agent-outset')
+  expect(agent.transform).toBe('translateX(-100%)')
+  expect(wrap['margin-left']).toContain('--nutui-tabbar-agent-source-size')
+  expect(wrap['margin-left']).toContain('--nutui-tabbar-agent-gap')
+  expect(wrap['margin-left']).toContain('--nutui-tabbar-agent-outset')
 })
 
 test('should expose readable Tabbar colors in light and dark themes', () => {

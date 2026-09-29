@@ -84,6 +84,16 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
+### Agent 组合入口
+
+通过 `agent` 传入图片或自定义节点。组件只提供 52×52px 的定位容器，图片、外观和点击行为由调用方负责；Agent 不参与普通标签的索引，也不触发 `onSwitch`。示例使用设计稿 `1545:72` 导出的 132×132px 透明 PNG，图片居中覆盖源盒，包含阴影，点击只打印控制台日志。
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
 ## Tabbar
 
 ### Props
@@ -96,6 +106,7 @@ import { Tabbar } from '@nutui/nutui-react'
 | activeColor | icon激活的颜色 | `string` | `#0073ff` |
 | inactiveColor | icon未激活的颜色 | `string` | `#7d7e80` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
+| agent | 独立 Agent 入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
 | onSwitch | 切换页签时触发事件 | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -122,6 +133,9 @@ import { Tabbar } from '@nutui/nutui-react'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-tabbar-height | 导航层高度 | `52px` |
+| \--nutui-tabbar-agent-source-size | Agent 定位容器尺寸 | `52px` |
+| \--nutui-tabbar-agent-gap | Agent 与导航背板间距 | `8px` |
+| \--nutui-tabbar-agent-outset | Agent 向外侧抽缩距离 | `16px` |
 | \--nutui-tabbar-content-height | 内容层高度 | `44px` |
 | \--nutui-tabbar-horizontal-padding | 导航层左右间距 | `12px` |
 | \--nutui-tabbar-content-padding | 导航背板内边距 | `4px` |

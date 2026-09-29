@@ -9,6 +9,7 @@ export interface BaseTabbar extends BaseProps {
   activeColor: string
   direction: Direction
   safeArea: boolean
+  agent?: ReactNode
   onSwitch: (value: number) => void
 }
 

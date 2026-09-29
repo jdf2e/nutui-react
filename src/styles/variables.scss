@@ -1312,6 +1312,9 @@ $rate-label-color: var(--nutui-rate-label-color, $color-text-disabled) !default;
 
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, scale-px(52px)) !default;
+$tabbar-agent-source-size: var(--nutui-tabbar-agent-source-size, scale-px(52px)) !default;
+$tabbar-agent-gap: var(--nutui-tabbar-agent-gap, scale-px(8px)) !default;
+$tabbar-agent-outset: var(--nutui-tabbar-agent-outset, scale-px(16px)) !default;
 $tabbar-content-height: var(
   --nutui-tabbar-content-height,
   scale-px(44px)

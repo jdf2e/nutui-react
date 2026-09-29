@@ -84,6 +84,16 @@ When `fixed` or `safeArea` is enabled, the bottom inset uses the system `env(saf
 
 :::
 
+### Agent Entry
+
+Pass an image or custom node through `agent`. The component supplies only the 52×52px positioning box; the caller supplies the image, appearance, and click behavior. The Agent does not take a tab index or trigger `onSwitch`. This demo uses the 132×132px transparent PNG exported from design node `1545:72`, centered over the source box with its shadow. Clicking logs to the console only.
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
 ## Tabbar
 
 ### Props
@@ -96,6 +106,7 @@ When `fixed` or `safeArea` is enabled, the bottom inset uses the system `env(saf
 | activeColor | icon active color | `string` | `#0073ff` |
 | inactiveColor | Icon inactive color | `string` | `#7d7e80` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
+| agent | Separate Agent entry content; the caller provides its image and click behavior | `ReactNode` | `-` |
 | onSwitch | Trigger an event when switching tabs | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -122,6 +133,9 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-tabbar-height | navigation layer height | `52px` |
+| \--nutui-tabbar-agent-source-size | Agent positioning box size | `52px` |
+| \--nutui-tabbar-agent-gap | Gap between Agent and navigation board | `8px` |
+| \--nutui-tabbar-agent-outset | Agent outward offset | `16px` |
 | \--nutui-tabbar-content-height | content layer height | `44px` |
 | \--nutui-tabbar-horizontal-padding | horizontal inset | `12px` |
 | \--nutui-tabbar-content-padding | navigation board inner padding | `4px` |
