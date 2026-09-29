@@ -1,0 +1,38 @@
+src/packages/tabbar/doc.zh-TW.md
+  s_027797075a561f::t_b65fc39e22159f 93,103
+src/packages/tabbar/demos/taro/demo11.tsx
+  s_027797075a561f::t_b65fc39e22159f 1,5,10-48,51-53,57-81,83-159
+  s_027797075a561f::t_fa416b5f52199d 54
+src/packages/tabbar/demos/taro/demo10.tsx
+  s_027797075a561f::t_b65fc39e22159f 1,6,10-22,24-42,44
+src/packages/tabbar/demo.taro.tsx
+  s_027797075a561f::t_b65fc39e22159f 15,83,85
+src/packages/tabbar/doc.md
+  s_027797075a561f::t_b65fc39e22159f 93,103
+src/packages/tabbar/doc.en-US.md
+  s_027797075a561f::t_b65fc39e22159f 93,103
+src/packages/tabbar/doc.taro.md
+  s_027797075a561f::t_b65fc39e22159f 93,103
+src/packages/tabbar/demos/h5/demo11.tsx
+  s_027797075a561f::t_b65fc39e22159f 1,4,9-48,50-53,56-175
+src/packages/tabbar/demo.tsx
+  s_027797075a561f::t_b65fc39e22159f 12,78,80
+src/packages/tabbar/demos/h5/demo10.tsx
+  s_027797075a561f::t_b65fc39e22159f 1,8-24,26-44,46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ff044d6a1042e7fc82cb30ada2b08c40593c9a2e",
+  "prompts": {},
+  "sessions": {
+    "s_027797075a561f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0ec35-ecc7-74e3-9acd-87d23710d456",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
