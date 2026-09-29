@@ -1,0 +1,85 @@
+src/packages/tabbar/tabbar.tsx
+  s_1bfcb4d44ab45f::t_b60f7ae4914918 41-46
+  s_1bfcb4d44ab45f::t_14af7dea9365eb 9
+  s_1bfcb4d44ab45f::t_700db057f4a38f 34,56,65,68,70-84,86-92,98-101,106-113
+  s_1bfcb4d44ab45f::t_54a9a402b1419b 85
+src/packages/tabbar/doc.taro.md
+  s_1bfcb4d44ab45f::t_b80fd013db0a83 87-88,90-96,109,136-138
+  s_1bfcb4d44ab45f::t_afecc0ba2b8d02 89
+src/packages/tabbar/tabbar.taro.tsx
+  s_1bfcb4d44ab45f::t_14af7dea9365eb 10
+  s_1bfcb4d44ab45f::t_700db057f4a38f 35,56,65,68,70-84,86-92,100,106-113
+  s_1bfcb4d44ab45f::t_b60f7ae4914918 41-46
+  s_1bfcb4d44ab45f::t_54a9a402b1419b 85
+src/styles/variables.scss
+  s_1bfcb4d44ab45f::t_0203409af10ba9 1315-1317
+src/types/spec/tabbar/base.ts
+  s_1bfcb4d44ab45f::t_700db057f4a38f 12
+src/styles/variables-jrkf.scss
+  s_1bfcb4d44ab45f::t_0203409af10ba9 1506-1508
+src/packages/configprovider/types.ts
+  s_1bfcb4d44ab45f::t_8cb5ff69399c0b 461-463
+src/packages/tabbar/doc.md
+  s_1bfcb4d44ab45f::t_b80fd013db0a83 87-88,90-96,109,136-138
+  s_1bfcb4d44ab45f::t_afecc0ba2b8d02 89
+src/packages/tabbar/tabbar.scss
+  s_1bfcb4d44ab45f::t_cbc745a6702ea9 28-29
+  s_1bfcb4d44ab45f::t_54a9a402b1419b 10-17,20-27,30-32
+  s_1bfcb4d44ab45f::t_1c8dc7260a6f89 18-19
+src/packages/tabbar/demo.taro.tsx
+  s_1bfcb4d44ab45f::t_987960111d06bb 15,29,41,53,78-79
+src/styles/variables-jmapp.scss
+  s_1bfcb4d44ab45f::t_0203409af10ba9 1401-1403
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_1bfcb4d44ab45f::t_1c8dc7260a6f89 311,313
+  s_1bfcb4d44ab45f::t_2901f4127f55a1 103-165,167-169,171-179,203-204,317
+  s_1bfcb4d44ab45f::t_b60f7ae4914918 226-239
+  s_1bfcb4d44ab45f::t_6c995e32961414 205-225,240,296-310,312,314-316
+  s_1bfcb4d44ab45f::t_3f51e99c9c2d77 166,170
+  s_1bfcb4d44ab45f::t_b6e56980423aa5 17,180-202
+  s_1bfcb4d44ab45f::t_a212ea5d605131 318
+src/packages/tabbar/demos/taro/demo11.tsx
+  h_47d82e98ad3863 8,28-31
+  s_1bfcb4d44ab45f::t_5de8b78af9b258 1,10-12,35-42
+  s_1bfcb4d44ab45f::t_987960111d06bb 2-5,43-44
+  s_1bfcb4d44ab45f::t_3e27bd1b30d376 6-7,9,13-27,32-34
+src/packages/tabbar/demos/h5/demo11.tsx
+  h_47d82e98ad3863 6,29-34
+  s_1bfcb4d44ab45f::t_3e27bd1b30d376 5,7,11-28,35-36
+  s_1bfcb4d44ab45f::t_5de8b78af9b258 1,8-10,37-44
+  s_1bfcb4d44ab45f::t_987960111d06bb 2-4,45-46
+src/packages/tabbar/demo.tsx
+  s_1bfcb4d44ab45f::t_987960111d06bb 12,26,38,50,73-74
+src/packages/tabbar/doc.zh-TW.md
+  s_1bfcb4d44ab45f::t_b80fd013db0a83 87-88,90-96,109,136-138
+  s_1bfcb4d44ab45f::t_afecc0ba2b8d02 89
+src/packages/tabbar/doc.en-US.md
+  s_1bfcb4d44ab45f::t_afecc0ba2b8d02 89
+  s_1bfcb4d44ab45f::t_b80fd013db0a83 87-88,90-96,109,136-138
+src/styles/variables-daojia.scss
+  s_1bfcb4d44ab45f::t_0203409af10ba9 842-844
+src/packages/tabbar/utils.ts
+  h_47d82e98ad3863 3,14
+  s_1bfcb4d44ab45f::t_7d07458e3c8cf0 1-2,4-13,15-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "268aa0bcf4d018b7ca199c745b78d97fd1190711",
+  "prompts": {},
+  "humans": {
+    "h_47d82e98ad3863": {
+      "author": "huanghao128 <huanghao128@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_1bfcb4d44ab45f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0ebb8-5815-7171-a2e4-0703e14e71d5",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
