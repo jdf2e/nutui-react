@@ -106,6 +106,16 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 
 :::
 
+### Light and Dark Backing Material
+
+On H5 and Taro H5, browsers with `backdrop-filter` blur only the 52px navigation board by 3px and apply an 80% light or dark tint. Unsupported browsers use the solid `--nutui-tabbar-background`. The outer layer and SafeArea stay transparent; extend the page background under the safe area. Toggle the theme, scroll the colored content, and preview the solid state in the demo. This repository has no native material bridge for iOS, Android, or Harmony yet; native targets only have a CSS solid baseline, with actual fallback and native blur pending bridge integration and device verification.
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
 ## Tabbar
 
 ### Props
@@ -159,7 +169,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-content-height | content layer height | `44px` |
 | \--nutui-tabbar-horizontal-padding | horizontal inset | `12px` |
 | \--nutui-tabbar-content-padding | navigation board inner padding | `4px` |
-| \--nutui-tabbar-background | navigation background | `$color-background-overlay` |
+| \--nutui-tabbar-background | solid navigation background without blur | Light `#FFFFFF`; dark `#14171A` |
+| \--nutui-tabbar-material-tint | backing tint when blur is supported | Light `rgba(255, 255, 255, 0.8)`; dark `rgba(20, 23, 26, 0.8)` |
+| \--nutui-tabbar-material-blur | H5/Taro H5 backing blur radius | `3PX` |
 | \--nutui-tabbar-border-radius | navigation board radius | `16px` |
 | \--nutui-tabbar-active-background | selected item background | `#F0F2F7` |
 | \--nutui-tabbar-active-border-radius | selected item radius | `12px` |

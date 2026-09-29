@@ -42,7 +42,7 @@ const compileTabbarStyles = (variables: string) =>
 const getDeclarations = (css: string, selector: string) => {
   const declarations: Record<string, string> = {}
   parse(css).walkRules(selector, (rule) => {
-    if (rule.selector === selector) {
+    if (rule.selector === selector && rule.parent?.type === 'root') {
       rule.walkDecls((declaration) => {
         declarations[declaration.prop] = declaration.value
       })
@@ -419,6 +419,55 @@ test.each([
   'src/styles/variables-daojia.scss',
   'src/styles/variables-jmapp.scss',
   'src/styles/variables-jrkf.scss',
+])(
+  'keeps a solid Tabbar backing when blur is unavailable with %s',
+  (variables) => {
+    const css = compileTabbarStyles(variables)
+    const wrap = getDeclarations(css, '.nut-tabbar-wrap')
+    expect(wrap.background).toContain('--nutui-tabbar-background')
+    expect(wrap['backdrop-filter']).toBeUndefined()
+    expect(wrap['-webkit-backdrop-filter']).toBeUndefined()
+
+    const materialRules: Array<Record<string, string>> = []
+    parse(css).walkAtRules('supports', (rule) => {
+      rule.walkRules('.nut-tabbar-wrap', (nestedRule) => {
+        if (nestedRule.selector === '.nut-tabbar-wrap') {
+          const declarations: Record<string, string> = {}
+          nestedRule.walkDecls((declaration) => {
+            declarations[declaration.prop] = declaration.value
+          })
+          materialRules.push(declarations)
+        }
+      })
+    })
+    expect(materialRules).toHaveLength(1)
+    expect(materialRules[0].background).toContain(
+      '--nutui-tabbar-material-tint'
+    )
+    expect(materialRules[0]['backdrop-filter']).toContain(
+      '--nutui-tabbar-material-blur'
+    )
+    expect(materialRules[0]['backdrop-filter']).toContain('3PX')
+    expect(materialRules[0]['-webkit-backdrop-filter']).toBe(
+      materialRules[0]['backdrop-filter']
+    )
+  }
+)
+
+test('light and dark themes provide readable solid and translucent Tabbar backgrounds', () => {
+  const light = getRootCustomProperties('src/styles/theme-default.scss')
+  const dark = getRootCustomProperties('src/styles/theme-dark.scss')
+  expect(light['--nutui-tabbar-material-tint']).toBe('rgba(255, 255, 255, 0.8)')
+  expect(dark['--nutui-tabbar-material-tint']).toBe('rgba(20, 23, 26, 0.8)')
+  expect(light['--nutui-tabbar-background']).toBe('#ffffff')
+  expect(dark['--nutui-tabbar-background']).toBe('#14171a')
+})
+
+test.each([
+  'src/styles/variables.scss',
+  'src/styles/variables-daojia.scss',
+  'src/styles/variables-jmapp.scss',
+  'src/styles/variables-jrkf.scss',
 ])('should compile responsive Agent geometry with %s', (variables) => {
   const css = compileTabbarStyles(variables)
   const main = getDeclarations(css, '.nut-tabbar-main')
@@ -475,13 +524,13 @@ test('should expose readable Tabbar colors in light and dark themes', () => {
   const dark = getRootCustomProperties('src/styles/theme-dark.scss')
 
   expect(light).toMatchObject({
-    '--nutui-tabbar-background': 'var(--nutui-color-background-overlay)',
+    '--nutui-tabbar-background': '#ffffff',
     '--nutui-tabbar-active-background': '#f0f2f7',
     '--nutui-tabbar-active-color': 'var(--nutui-color-primary)',
     '--nutui-tabbar-inactive-color': 'var(--nutui-color-title)',
   })
   expect(dark).toMatchObject({
-    '--nutui-tabbar-background': 'var(--nutui-color-background-overlay)',
+    '--nutui-tabbar-background': '#14171a',
     '--nutui-tabbar-active-background': 'var(--nutui-color-background-sunken)',
     '--nutui-tabbar-active-color': 'var(--nutui-color-primary)',
     '--nutui-tabbar-inactive-color': 'var(--nutui-color-title)',

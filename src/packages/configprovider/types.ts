@@ -470,6 +470,8 @@ export type NutCSSVariables =
   | 'nutuiTabbarHorizontalPadding'
   | 'nutuiTabbarContentPadding'
   | 'nutuiTabbarBackground'
+  | 'nutuiTabbarMaterialTint'
+  | 'nutuiTabbarMaterialBlur'
   | 'nutuiTabbarBorderRadius'
   | 'nutuiTabbarActiveBackground'
   | 'nutuiTabbarActiveBorderRadius'

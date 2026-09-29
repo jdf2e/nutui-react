@@ -14,6 +14,7 @@ import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
+import Demo15 from './demos/taro/demo15'
 
 const TabbarDemo = () => {
   const [scrollTop, setScrollTop] = useState(0)
@@ -32,6 +33,7 @@ const TabbarDemo = () => {
       c9e6df48: '再次点击当前项',
       agent: 'Agent 组合入口',
       island: '灵动岛与 Agent 联动',
+      material: '普通与暗色背板材质',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -45,6 +47,7 @@ const TabbarDemo = () => {
       c9e6df48: '再次點擊目前項目',
       agent: 'Agent 組合入口',
       island: '靈動島與 Agent 聯動',
+      material: '一般與暗色背板材質',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -58,6 +61,7 @@ const TabbarDemo = () => {
       c9e6df48: 'Click Active Item Again',
       agent: 'Agent Entry',
       island: 'Dynamic Island and Agent',
+      material: 'Light and Dark Backing Material',
     },
   })
   return (
@@ -99,6 +103,8 @@ const TabbarDemo = () => {
         <Demo10 />
         <View className="h2">{translated.island}</View>
         <Demo11 />
+        <View className="h2">{translated.material}</View>
+        <Demo15 />
         <View className="h2" style={{ marginBottom: 100 }}>
           {translated.cfbdc781}
         </View>

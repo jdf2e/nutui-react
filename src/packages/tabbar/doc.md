@@ -106,6 +106,16 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
+### 普通与暗色背板材质
+
+H5 和 Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导航背板使用 3px 模糊和 80% 明暗叠加色；不支持时使用 `--nutui-tabbar-background` 的实色。外层和 SafeArea 保持透明，页面背景应延伸到安全区。示例可切换明暗、滚动彩色内容，并模拟无模糊时的实色效果。iOS/Android/Harmony 原生材质桥接尚未接入本仓库；原生目标端仅保留 CSS 实色基线，实际降级与原生模糊待桥接和真机验收。
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
 ## Tabbar
 
 ### Props
@@ -159,7 +169,9 @@ import { Tabbar } from '@nutui/nutui-react'
 | \--nutui-tabbar-content-height | 内容层高度 | `44px` |
 | \--nutui-tabbar-horizontal-padding | 导航层左右间距 | `12px` |
 | \--nutui-tabbar-content-padding | 导航背板内边距 | `4px` |
-| \--nutui-tabbar-background | 导航背景 | `$color-background-overlay` |
+| \--nutui-tabbar-background | 无模糊时的导航实色背景 | 浅色 `#FFFFFF`；暗色 `#14171A` |
+| \--nutui-tabbar-material-tint | 模糊可用时的背板叠加色 | 浅色 `rgba(255, 255, 255, 0.8)`；暗色 `rgba(20, 23, 26, 0.8)` |
+| \--nutui-tabbar-material-blur | H5/Taro H5 背板模糊半径 | `3PX` |
 | \--nutui-tabbar-border-radius | 导航背板圆角 | `16px` |
 | \--nutui-tabbar-active-background | 选中项背景 | `#F0F2F7` |
 | \--nutui-tabbar-active-border-radius | 选中项圆角 | `12px` |

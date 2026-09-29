@@ -1416,6 +1416,11 @@ $tabbar-background: var(
   --nutui-tabbar-background,
   $color-background-overlay
 ) !default;
+$tabbar-material-tint: var(
+  --nutui-tabbar-material-tint,
+  rgba(255, 255, 255, 0.8)
+) !default;
+$tabbar-material-blur: var(--nutui-tabbar-material-blur, 3PX) !default;
 $tabbar-border-radius: var(--nutui-tabbar-border-radius, 16px) !default;
 $tabbar-active-background: var(
   --nutui-tabbar-active-background,

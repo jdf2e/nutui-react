@@ -76,6 +76,13 @@
     border-radius: $tabbar-border-radius;
     box-shadow: $tabbar-box-shadow;
 
+    /* prettier-ignore */
+    @supports ((backdrop-filter: blur(3PX)) or (-webkit-backdrop-filter: blur(3PX))) {
+      background: $tabbar-material-tint;
+      -webkit-backdrop-filter: blur(#{$tabbar-material-blur});
+      backdrop-filter: blur(#{$tabbar-material-blur});
+    }
+
     &-horizontal {
       align-items: center;
       .nut-tabbar-item {
