@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### onActiveClick Event
+### Click the Active Item Again
 
 :::demo
 
@@ -74,9 +74,11 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### Fixed Bottom
+### Fixed Bottom and Back to Top
 
 When `fixed` or `safeArea` is enabled, the bottom inset uses the system `env(safe-area-inset-bottom)` value. The total height is 52px plus the device inset; it is not hard-coded to 69px or 74px.
+
+This extends the fixed bottom demo. The demo page passes its scroll position to `demo9`; after 160px (an example threshold), the selected Home item shows a back-to-top icon. Clicking Home from another item selects it without scrolling. Clicking the already selected Home item scrolls the same page container smoothly to the top. The caller combines `icon(active)`, `onActiveClick`, and page scroll state; no new Tabbar prop is needed. “Home” is the demo label.
 
 :::demo
 

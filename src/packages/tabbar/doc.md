@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 焦点时点击（模拟双击）支持回调
+### 再次点击当前项支持回调
 
 :::demo
 
@@ -74,9 +74,11 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 固定底部
+### 固定底部与返顶
 
 `fixed` 或 `safeArea` 开启时，底部安全区使用系统 `env(safe-area-inset-bottom)`。组件总高为 52px 加设备实际安全区，不固定为 69px 或 74px。
+
+该示例沿用固定底部导航。示例页向 `demo9` 传入当前页面滚动位置；页面滚动超过 160px（仅为演示阈值）且首页已选中时，首页图标切换为返顶图标。点击其他项后首次点击首页只切换选中；再次点击已选中的首页才将同一页面滚动容器平滑滚回顶部。返顶由调用方组合 `icon(active)`、`onActiveClick` 和页面滚动状态实现，不需要新的 Tabbar 属性。标题“首页”是示例用语。
 
 :::demo
 

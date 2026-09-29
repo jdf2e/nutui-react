@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 焦点时点击（模拟双击）支持回调
+### 再次点击当前项支持回调
 
 :::demo
 
@@ -74,9 +74,11 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 固定底部
+### 固定底部与返顶
 
 `fixed` 或 `safeArea` 开启时，底部安全区使用系统 `env(safe-area-inset-bottom)`。组件总高为 52px 加设备实际安全区，不固定为 69px 或 74px。
+
+该示例沿用固定底部导航。示例页从外层 `ScrollView` 的 `onScroll` 读取 `event.detail.scrollTop` 并传入 `demo9`；滚动超过 160px（仅为演示阈值）且首页已选中时，首页图标切换为返顶图标。首次从其他项点击首页只切换选中，再次点击当前首页才通过同一 `ScrollView` 的 `scrollTop` 和 `scrollWithAnimation` 返顶，不使用页面级滚动 API。返顶由调用方组合 `icon(active)`、`onActiveClick` 和滚动状态实现，无新增 Tabbar 属性。标题“首页”是示例用语。
 
 :::demo
 

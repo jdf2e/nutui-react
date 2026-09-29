@@ -15,6 +15,7 @@ import {
 } from '@nutui/icons-react'
 import { Tabbar } from '../tabbar'
 import { normalizeTabbarItems } from '../utils'
+import FixedBottomDemo from '../demos/h5/demo9'
 
 const renderTabbarItems = (count: number, props = {}) => {
   const onSwitch = vi.fn()
@@ -556,7 +557,7 @@ test('should match active tabbar by click', async () => {
   })
 })
 
-test('double click', async () => {
+test('clicking the current item again calls onActiveClick without arguments', () => {
   const onActiveClick = vi.fn()
   const { container } = render(
     <>
@@ -575,8 +576,39 @@ test('double click', async () => {
   const tabbarItem: NodeListOf<HTMLElement> =
     container.querySelectorAll('.nut-tabbar-item')
   fireEvent.click(tabbarItem[1])
+  expect(onActiveClick).not.toHaveBeenCalled()
   fireEvent.click(tabbarItem[1])
-  expect(onActiveClick).toBeCalled()
+  expect(onActiveClick).toHaveBeenCalledTimes(1)
+  expect(onActiveClick).toHaveBeenCalledWith()
+})
+
+test('fixed bottom demo shows back-to-top only on the active home item after scrolling', () => {
+  const onBackToTop = vi.fn()
+  const { container, rerender } = render(
+    <FixedBottomDemo scrollTop={0} onBackToTop={onBackToTop} />
+  )
+  const items = container.querySelectorAll<HTMLElement>('.nut-tabbar-item')
+
+  fireEvent.click(items[0])
+  expect(onBackToTop).not.toHaveBeenCalled()
+  expect(container.querySelector('[aria-label="返回顶部"]')).toBeNull()
+
+  rerender(<FixedBottomDemo scrollTop={160} onBackToTop={onBackToTop} />)
+  expect(items[0].querySelector('[aria-label="返回顶部"]')).not.toBeNull()
+  fireEvent.click(items[0])
+  expect(onBackToTop).toHaveBeenCalledTimes(1)
+
+  fireEvent.click(items[1])
+  expect(container.querySelector('[aria-label="返回顶部"]')).toBeNull()
+  fireEvent.click(items[0])
+  expect(onBackToTop).toHaveBeenCalledTimes(1)
+  fireEvent.click(items[0])
+  expect(onBackToTop).toHaveBeenCalledTimes(2)
+
+  rerender(<FixedBottomDemo scrollTop={0} onBackToTop={onBackToTop} />)
+  expect(container.querySelector('[aria-label="返回顶部"]')).toBeNull()
+  fireEvent.click(items[0])
+  expect(onBackToTop).toHaveBeenCalledTimes(2)
 })
 
 test('should show sure emitted when click', async () => {
