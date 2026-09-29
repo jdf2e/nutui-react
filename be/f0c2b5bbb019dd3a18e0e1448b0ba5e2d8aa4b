@@ -1,0 +1,84 @@
+src/styles/variables.scss
+  s_2a04baf9f0896b::t_2ceab7ad49486a 1339-1342
+  s_2a04baf9f0896b::t_9ac71d5c4db654 1343
+src/styles/variables-jrkf.scss
+  s_2a04baf9f0896b::t_9ac71d5c4db654 1528
+  s_2a04baf9f0896b::t_2ceab7ad49486a 1524-1527
+src/packages/tabbar/doc.md
+  s_2a04baf9f0896b::t_fffbca693c55d1 174
+  s_2a04baf9f0896b::t_c8a9da6f47170c 109-110,112-118,173
+  s_2a04baf9f0896b::t_eb6a59e8e35ed8 111
+  s_2a04baf9f0896b::t_c869831b2a6c0a 172
+src/packages/tabbar/doc.en-US.md
+  s_2a04baf9f0896b::t_c8a9da6f47170c 109-110,112-118,173
+  s_2a04baf9f0896b::t_eb6a59e8e35ed8 111
+  s_2a04baf9f0896b::t_fffbca693c55d1 174
+  s_2a04baf9f0896b::t_c869831b2a6c0a 172
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_2a04baf9f0896b::t_1057cda926581f 527,533
+  s_2a04baf9f0896b::t_1c1d4a917e2633 462-463
+  s_2a04baf9f0896b::t_c8bbcd09bbcdfc 45
+  s_2a04baf9f0896b::t_ccb72d08ef7de3 430,442,456-461,464-465
+  s_2a04baf9f0896b::t_23d24fa106ac1f 447-453
+  s_2a04baf9f0896b::t_93dfac48d774c2 422-429,431-441,443-446,454-455
+  s_2a04baf9f0896b::t_9d018d0af43542 417-421
+src/packages/configprovider/types.ts
+  s_2a04baf9f0896b::t_c11845fa37347b 473
+  s_2a04baf9f0896b::t_80567343dbac22 474
+src/styles/variables-daojia.scss
+  s_2a04baf9f0896b::t_9ac71d5c4db654 857
+  s_2a04baf9f0896b::t_2ceab7ad49486a 855-856
+src/packages/tabbar/demo.tsx
+  s_2a04baf9f0896b::t_4c765364d65019 14,32,46,60,92-93
+src/packages/tabbar/doc.taro.md
+  s_2a04baf9f0896b::t_c869831b2a6c0a 172
+  s_2a04baf9f0896b::t_c8a9da6f47170c 109-110,112-118,173
+  s_2a04baf9f0896b::t_fffbca693c55d1 174
+  s_2a04baf9f0896b::t_eb6a59e8e35ed8 111
+src/packages/tabbar/tabbar.scss
+  s_2a04baf9f0896b::t_9732cb5e9a10b0 79-80
+  s_2a04baf9f0896b::t_2ceab7ad49486a 81,84-85
+  s_2a04baf9f0896b::t_9ac71d5c4db654 82-83
+src/packages/tabbar/demos/taro/demo15.tsx
+  s_2a04baf9f0896b::t_f63c08bdae4938 10-11,13-14
+  s_2a04baf9f0896b::t_47568648bc53d3 1-7,9,12,16-24,32-77
+  s_2a04baf9f0896b::t_b5011f72ff811e 8,15,25-31
+src/packages/tabbar/doc.zh-TW.md
+  s_2a04baf9f0896b::t_eb6a59e8e35ed8 111
+  s_2a04baf9f0896b::t_c869831b2a6c0a 172
+  s_2a04baf9f0896b::t_c8a9da6f47170c 109-110,112-118,173
+  s_2a04baf9f0896b::t_fffbca693c55d1 174
+src/styles/theme-default.scss
+  s_2a04baf9f0896b::t_2ceab7ad49486a 213
+  s_2a04baf9f0896b::t_9ac71d5c4db654 214
+  s_2a04baf9f0896b::t_8eeb180b9bbe21 212
+src/styles/theme-dark.scss
+  s_2a04baf9f0896b::t_2ceab7ad49486a 214
+  s_2a04baf9f0896b::t_8eeb180b9bbe21 213
+  s_2a04baf9f0896b::t_9ac71d5c4db654 215
+src/packages/tabbar/demos/h5/demo15.tsx
+  s_2a04baf9f0896b::t_47568648bc53d3 1-6,8,11,15-23,31-76
+  s_2a04baf9f0896b::t_f63c08bdae4938 9-10,12-13
+  s_2a04baf9f0896b::t_b5011f72ff811e 7,14,24-30
+src/packages/tabbar/demo.taro.tsx
+  s_2a04baf9f0896b::t_4c765364d65019 17,36,50,64,106-107
+src/styles/variables-jmapp.scss
+  s_2a04baf9f0896b::t_2ceab7ad49486a 1419-1422
+  s_2a04baf9f0896b::t_9ac71d5c4db654 1423
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bef0c2b5bbb019dd3a18e0e1448b0ba5e2d8aa4b",
+  "prompts": {},
+  "sessions": {
+    "s_2a04baf9f0896b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0ed58-5caa-7f62-8109-a44a9d284a09",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
