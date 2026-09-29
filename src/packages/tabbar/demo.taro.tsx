@@ -13,6 +13,7 @@ import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo11 from './demos/taro/demo11'
+import Demo12 from './demos/taro/demo12'
 
 const TabbarDemo = () => {
   const [translated] = useTranslate({
@@ -27,6 +28,7 @@ const TabbarDemo = () => {
       c9e6df49: '受控',
       c9e6df48: '模拟双击支持回调',
       agent: 'Agent 组合入口',
+      island: '灵动岛与 Agent 联动',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -39,6 +41,7 @@ const TabbarDemo = () => {
       c9e6df49: '受控',
       c9e6df48: '模擬雙擊支持回調',
       agent: 'Agent 組合入口',
+      island: '靈動島與 Agent 聯動',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -51,6 +54,7 @@ const TabbarDemo = () => {
       c9e6df49: 'With Controled',
       c9e6df48: 'Mock Double Click',
       agent: 'Agent Entry',
+      island: 'Dynamic Island and Agent',
     },
   })
   return (
@@ -77,6 +81,8 @@ const TabbarDemo = () => {
         <Demo8 />
         <View className="h2">{translated.agent}</View>
         <Demo11 />
+        <View className="h2">{translated.island}</View>
+        <Demo12 />
         <View className="h2" style={{ marginBottom: 100 }}>
           {translated.cfbdc781}
         </View>

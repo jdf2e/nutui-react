@@ -10,6 +10,9 @@ export interface BaseTabbar extends BaseProps {
   direction: Direction
   safeArea: boolean
   agent?: ReactNode
+  island?: ReactNode
+  islandVariant?: 'regular' | 'promotion'
+  islandExpanded?: boolean
   onSwitch: (value: number) => void
 }
 

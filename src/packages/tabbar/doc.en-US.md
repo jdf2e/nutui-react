@@ -94,6 +94,16 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 
 :::
 
+### Dynamic Island and Agent
+
+`island` is a separate content slot and does not take a tab index. The regular and promotion boxes measure 131×44px and 144×52px. Callers provide the content, click behavior, and `islandExpanded` state. Expansion hides the ordinary active background. With an Agent, its outward offset changes from 16px to 28px and the navigation board moves with it. The demo has five slots: a centered island with two ordinary tabs on each side. Check text readability on narrow screens. The promotion envelope image comes from the design; the regular product and operation icons are illustrative, and callers provide their business images or GIFs. The promotion gap with a nonzero safe area, red content exclusion zone, and target-device visuals still need design measurements.
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
 ## Tabbar
 
 ### Props
@@ -107,6 +117,9 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 | inactiveColor | Icon inactive color | `string` | `#7d7e80` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
 | agent | Separate Agent entry content; the caller provides its image and click behavior | `ReactNode` | `-` |
+| island | Separate island content; caller supplies content and click behavior | `ReactNode` | `-` |
+| islandVariant | Island size: regular 131×44px, promotion 144×52px | `regular` \| `promotion` | `regular` |
+| islandExpanded | Hide ordinary active background and link Agent position | `boolean` | `false` |
 | onSwitch | Trigger an event when switching tabs | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -136,6 +149,11 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-agent-source-size | Agent positioning box size | `52px` |
 | \--nutui-tabbar-agent-gap | Gap between Agent and navigation board | `8px` |
 | \--nutui-tabbar-agent-outset | Agent outward offset | `16px` |
+| \--nutui-tabbar-agent-expanded-outset | Agent outward offset while expanded | `28px` |
+| \--nutui-tabbar-island-regular-width | Regular island width | `131px` |
+| \--nutui-tabbar-island-regular-height | Regular island height | `44px` |
+| \--nutui-tabbar-island-promotion-width | Promotion island width | `144px` |
+| \--nutui-tabbar-island-promotion-height | Promotion island height | `52px` |
 | \--nutui-tabbar-content-height | content layer height | `44px` |
 | \--nutui-tabbar-horizontal-padding | horizontal inset | `12px` |
 | \--nutui-tabbar-content-padding | navigation board inner padding | `4px` |

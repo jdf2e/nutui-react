@@ -1506,6 +1506,11 @@ $tabbar-height: var(--nutui-tabbar-height, 52px) !default;
 $tabbar-agent-source-size: var(--nutui-tabbar-agent-source-size, 52px) !default;
 $tabbar-agent-gap: var(--nutui-tabbar-agent-gap, 8px) !default;
 $tabbar-agent-outset: var(--nutui-tabbar-agent-outset, 16px) !default;
+$tabbar-agent-expanded-outset: var(--nutui-tabbar-agent-expanded-outset, 28px) !default;
+$tabbar-island-regular-width: var(--nutui-tabbar-island-regular-width, 131px) !default;
+$tabbar-island-regular-height: var(--nutui-tabbar-island-regular-height, 44px) !default;
+$tabbar-island-promotion-width: var(--nutui-tabbar-island-promotion-width, 144px) !default;
+$tabbar-island-promotion-height: var(--nutui-tabbar-island-promotion-height, 52px) !default;
 $tabbar-content-height: var(--nutui-tabbar-content-height, 44px) !default;
 $tabbar-horizontal-padding: var(
   --nutui-tabbar-horizontal-padding,

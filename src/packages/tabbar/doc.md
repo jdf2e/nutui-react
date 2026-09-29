@@ -94,6 +94,16 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
+### 灵动岛与 Agent 联动
+
+`island` 是独立内容插槽，不占普通标签索引。`islandVariant` 的常规和大促外框分别为 131×44px、144×52px；示例内的图文、点击和展开状态由调用方提供。`islandExpanded` 隐藏普通标签选中托底；同时传入 Agent 时，Agent 外抽距离由 16px 变为 28px，导航背板同步移动。示例共 5 个坑位：灵动岛居中，左右各 2 个普通标签。窄屏仍需检查图文可读性。大促红包图取自设计稿；常规商品和运营活动图标仅为示意，正式业务图片或 GIF 由调用方提供。非零安全区下的大促底距、红色禁放区与目标端视觉仍待设计量尺确认。
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
 ## Tabbar
 
 ### Props
@@ -107,6 +117,9 @@ import { Tabbar } from '@nutui/nutui-react'
 | inactiveColor | icon未激活的颜色 | `string` | `#7d7e80` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
 | agent | 独立 Agent 入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
+| island | 独立灵动岛内容，图文及点击由调用方提供 | `ReactNode` | `-` |
+| islandVariant | 岛尺寸：常规 131×44px，大促 144×52px | `regular` \| `promotion` | `regular` |
+| islandExpanded | 隐藏普通项选中托底并联动 Agent 位置 | `boolean` | `false` |
 | onSwitch | 切换页签时触发事件 | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -136,6 +149,11 @@ import { Tabbar } from '@nutui/nutui-react'
 | \--nutui-tabbar-agent-source-size | Agent 定位容器尺寸 | `52px` |
 | \--nutui-tabbar-agent-gap | Agent 与导航背板间距 | `8px` |
 | \--nutui-tabbar-agent-outset | Agent 向外侧抽缩距离 | `16px` |
+| \--nutui-tabbar-agent-expanded-outset | 展开期间 Agent 外抽距离 | `28px` |
+| \--nutui-tabbar-island-regular-width | 常规岛宽度 | `131px` |
+| \--nutui-tabbar-island-regular-height | 常规岛高度 | `44px` |
+| \--nutui-tabbar-island-promotion-width | 大促岛宽度 | `144px` |
+| \--nutui-tabbar-island-promotion-height | 大促岛高度 | `52px` |
 | \--nutui-tabbar-content-height | 内容层高度 | `44px` |
 | \--nutui-tabbar-horizontal-padding | 导航层左右间距 | `12px` |
 | \--nutui-tabbar-content-padding | 导航背板内边距 | `4px` |

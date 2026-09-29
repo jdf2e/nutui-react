@@ -218,6 +218,126 @@ test.each([2, 3, 4, 5])(
   }
 )
 
+test('renders the island outside ordinary item selection and links its expanded state to Agent', () => {
+  const onIslandClick = vi.fn()
+  const onSwitch = vi.fn()
+  const onActiveClick = vi.fn()
+  const items = (
+    <>
+      <Tabbar.Item title="首页" icon={<Home />} onActiveClick={onActiveClick} />
+      <Tabbar.Item title="我的" icon={<User />} />
+    </>
+  )
+  const { container, rerender } = render(
+    <Tabbar
+      value={0}
+      onSwitch={onSwitch}
+      agent={<button type="button">Agent</button>}
+      island={
+        <button type="button" onClick={onIslandClick}>
+          Island
+        </button>
+      }
+    >
+      {items}
+    </Tabbar>
+  )
+
+  const root = container.querySelector('.nut-tabbar')!
+  expect(root).toHaveClass('nut-tabbar-has-agent')
+  expect(root).toHaveClass('nut-tabbar-has-island')
+  expect(root).not.toHaveClass('nut-tabbar-island-expanded')
+  expect(container.querySelector('.nut-tabbar-island')).toHaveClass(
+    'nut-tabbar-island-regular'
+  )
+  expect(container.querySelectorAll('.nut-tabbar-item')).toHaveLength(2)
+  expect(
+    container.querySelector('.nut-tabbar-wrap > .nut-tabbar-island')
+  ).toBeInTheDocument()
+  expect(
+    Array.from(container.querySelector('.nut-tabbar-wrap')!.children).map(
+      (node) =>
+        node.classList.contains('nut-tabbar-island') ? 'island' : 'item'
+    )
+  ).toEqual(['item', 'island', 'item'])
+
+  fireEvent.click(container.querySelector('.nut-tabbar-island button')!)
+  expect(onIslandClick).toHaveBeenCalledTimes(1)
+  expect(onSwitch).not.toHaveBeenCalled()
+  expect(onActiveClick).not.toHaveBeenCalled()
+
+  rerender(
+    <Tabbar
+      value={0}
+      onSwitch={onSwitch}
+      agent={<button type="button">Agent</button>}
+      islandVariant="promotion"
+      islandExpanded
+      island={<button type="button">Island</button>}
+    >
+      {items}
+    </Tabbar>
+  )
+
+  expect(root).toHaveClass('nut-tabbar-island-expanded')
+  expect(container.querySelector('.nut-tabbar-island')).toHaveClass(
+    'nut-tabbar-island-promotion'
+  )
+  expect(container.querySelector('.nut-tabbar-item-active')).toBe(
+    container.querySelectorAll('.nut-tabbar-item')[0]
+  )
+  expect(onSwitch).not.toHaveBeenCalled()
+  expect(onActiveClick).not.toHaveBeenCalled()
+})
+
+test('keeps four ordinary indexes around a centered promotion island', () => {
+  const onSwitch = vi.fn()
+  const { container } = render(
+    <Tabbar
+      island={<button type="button">活动</button>}
+      islandVariant="promotion"
+      onSwitch={onSwitch}
+    >
+      <Tabbar.Item title="首页" />
+      <Tabbar.Item title="消息" />
+      <Tabbar.Item title="购物车" />
+      <Tabbar.Item title="我的" />
+    </Tabbar>
+  )
+  expect(
+    Array.from(container.querySelector('.nut-tabbar-wrap')!.children).map(
+      (node) =>
+        node.classList.contains('nut-tabbar-island') ? 'island' : 'item'
+    )
+  ).toEqual(['item', 'item', 'island', 'item', 'item'])
+  fireEvent.click(container.querySelectorAll('.nut-tabbar-item')[3])
+  expect(onSwitch).toHaveBeenCalledWith(3)
+})
+
+test.each([undefined, null, false])(
+  'does not expose island state classes without an island (%s)',
+  (island) => {
+    const { container } = render(
+      <Tabbar
+        island={island as React.ReactNode}
+        islandExpanded
+        islandVariant="promotion"
+      >
+        <Tabbar.Item title="首页" />
+        <Tabbar.Item title="我的" />
+      </Tabbar>
+    )
+
+    expect(container.querySelector('.nut-tabbar-island')).toBeNull()
+    expect(container.querySelector('.nut-tabbar')).not.toHaveClass(
+      'nut-tabbar-has-island'
+    )
+    expect(container.querySelector('.nut-tabbar')).not.toHaveClass(
+      'nut-tabbar-island-expanded'
+    )
+  }
+)
+
 test.each([
   { fixed: false, safeArea: false, expectedSafeArea: 0 },
   { fixed: true, safeArea: false, expectedSafeArea: 1 },
@@ -315,6 +435,39 @@ test.each([
   expect(wrap['margin-left']).toContain('--nutui-tabbar-agent-gap')
   expect(wrap['margin-left']).toContain('--nutui-tabbar-agent-outset')
 })
+
+test.each([
+  'src/styles/variables.scss',
+  'src/styles/variables-daojia.scss',
+  'src/styles/variables-jmapp.scss',
+  'src/styles/variables-jrkf.scss',
+])(
+  'should compile dynamic island and expanded Agent geometry with %s',
+  (variables) => {
+    const css = compileTabbarStyles(variables)
+    const island = getDeclarations(css, '.nut-tabbar-island')
+    const regular = getDeclarations(css, '.nut-tabbar-island-regular')
+    const promotion = getDeclarations(css, '.nut-tabbar-island-promotion')
+    const expandedAgent = getDeclarations(
+      css,
+      '.nut-tabbar-island-expanded.nut-tabbar-has-agent .nut-tabbar-agent'
+    )
+    const expandedWrap = getDeclarations(
+      css,
+      '.nut-tabbar-island-expanded.nut-tabbar-has-agent .nut-tabbar-wrap'
+    )
+
+    expect(island.flex).toBe('0 0 auto')
+    expect(regular.width).toContain('--nutui-tabbar-island-regular-width')
+    expect(regular.height).toContain('--nutui-tabbar-island-regular-height')
+    expect(promotion.width).toContain('--nutui-tabbar-island-promotion-width')
+    expect(promotion.height).toContain('--nutui-tabbar-island-promotion-height')
+    expect(expandedAgent.left).toContain('--nutui-tabbar-agent-expanded-outset')
+    expect(expandedWrap['margin-left']).toContain(
+      '--nutui-tabbar-agent-expanded-outset'
+    )
+  }
+)
 
 test('should expose readable Tabbar colors in light and dark themes', () => {
   const light = getRootCustomProperties('src/styles/theme-default.scss')
