@@ -122,7 +122,7 @@ Passing `skinBackground` uses the caller's solid, gradient, or subtle-texture bo
 
 For each image tab, use `icon(active)` to choose between transparent `normal/pressed` PNGs and set `className="nut-tabbar-skin-icon"` on the image or its wrapper. Source images measure 192×195PX and scale proportionally to 48px high, with a 7px gap from the board bottom. The transparent canvas can cross the board top by 3px; visible artwork must not exceed that amount. Keep the label in `title`. The caller supplies five image pairs per skin, each within the design's 50K limit, plus the specific colors and board asset. The two skin icon variables control positioning; the existing board radius remains 16px.
 
-The demo places a separate 120×120px gradient image behind the active icon at 40×40px and makes the default active backing transparent. “文案” remains a separate label and is not part of the gradient image. The demo uses the supplied HTTPS image URLs; these assets are not built into the component.
+The demo places a separate 120×120px gradient image behind the active figure at 29.4×29.4px, scaled with the 192×195px icon canvas and positioned 5.8px below its top. The default active backing is transparent. “文案” remains a separate label outside the gradient image. The demo uses the supplied HTTPS image URLs; these assets are not built into the component.
 
 :::demo
 

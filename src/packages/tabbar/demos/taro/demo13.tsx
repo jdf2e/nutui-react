@@ -40,10 +40,10 @@ const Demo13 = () => {
                   mode="aspectFit"
                   style={{
                     position: 'absolute',
-                    bottom: 0,
+                    top: '5.8px',
                     left: '50%',
-                    width: '40px',
-                    height: '40px',
+                    width: '29.4px',
+                    height: '29.4px',
                     transform: 'translateX(-50%)',
                   }}
                 />

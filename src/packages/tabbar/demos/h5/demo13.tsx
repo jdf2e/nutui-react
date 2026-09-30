@@ -39,10 +39,10 @@ const Demo13 = () => {
                   alt=""
                   style={{
                     position: 'absolute',
-                    bottom: 0,
+                    top: 5.8,
                     left: '50%',
-                    width: 40,
-                    height: 40,
+                    width: 29.4,
+                    height: 29.4,
                     transform: 'translateX(-50%)',
                   }}
                 />
