@@ -100,6 +100,13 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 
 `island` is a separate content slot and does not take a tab index. The regular and promotion boxes measure 131×44px and 144×52px. Callers provide the content, click behavior, and `islandExpanded` state. Expansion hides the ordinary active background. With an Agent, its outward offset changes from 16px to 28px and the navigation board moves with it. The demo has five slots: a centered island with two ordinary tabs on each side. Check text readability on narrow screens. The promotion envelope image comes from the design; the regular product and operation icons are illustrative, and callers provide their business images or GIFs. The promotion gap with a nonzero safe area, red content exclusion zone, and target-device visuals still need design measurements.
 
+For H5, keep each ordinary tab's hit box at least 44px wide. The table gives the maximum number of ordinary tabs calculated from the current dimensions (regular/promotion island; with Agent, collapsed/expanded). The 44px threshold is an acceptance rule for this implementation, not a minimum specified by the design. For combinations outside this matrix, callers should use fewer tabs or omit the Agent/island; the component does not reduce the layout automatically.
+
+| Viewport width | No Agent: regular/promotion | Agent: regular collapsed/expanded | Agent: promotion collapsed/expanded |
+| --- | --- | --- | --- |
+| 375px | 4/4 | 4/4 | 3/4 |
+| 320px | 3/3 | 2/3 | 2/2 |
+
 :::demo
 
 <CodeBlock src='h5/demo11.tsx'></CodeBlock>
