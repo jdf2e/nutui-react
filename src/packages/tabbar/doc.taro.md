@@ -108,7 +108,9 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### 普通与暗色背板材质
 
-Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导航背板使用 3px 模糊和 80% 明暗叠加色；不支持时使用 `--nutui-tabbar-background` 的实色。外层和 SafeArea 保持透明，页面背景应延伸到安全区。示例可切换明暗、滚动彩色内容，并模拟无模糊时的实色效果。iOS/Android/Harmony 原生材质桥接尚未接入本仓库；原生目标端仅保留 CSS 实色基线，实际降级与原生模糊待桥接和真机验收。
+Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导航背板使用 3px 模糊和 80% 明暗叠加色；不支持时使用 `--nutui-tabbar-background` 的实色。原生端将材质参数透传给对应 Taro `View`：iOS 使用 `gradientBlur`（0.5～0.8、90% 叠色），Android 使用 50px `backdropFilter` 和 `overlayColor`，Harmony 使用 `blurScale: 0.2`、系统明暗模式与渐变蒙层。原生明暗色跟随系统主题。外层和 SafeArea 保持透明，页面背景应延伸到安全区；原生视觉效果仍需在具备相应 View 能力的目标运行时验收。
+
+Android 模糊需要配对采样源：将页面内容放入带 `blurId="page-content"` 的原生 `View`，并向 Tabbar 传入相同值的 `materialTargetId="page-content"`。未传 `materialTargetId` 时背板使用明暗实色；H5 和其它端忽略该属性。下方示例在 Android 原生端提供此配对，H5 可切换明暗、滚动彩色内容并预览实色降级。
 
 :::demo
 
@@ -128,6 +130,7 @@ Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导航背�
 | activeColor | icon激活的颜色 | `string` | `#0073ff` |
 | inactiveColor | icon未激活的颜色 | `string` | `#7d7e80` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
+| materialTargetId | Android 原生背板采样目标，须与背景 View 的 `blurId` 相同 | `string` | `-` |
 | agent | 独立 Agent 入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
 | island | 独立灵动岛内容，图文及点击由调用方提供 | `ReactNode` | `-` |
 | islandVariant | 岛尺寸：常规 131×44px，大促 144×52px | `regular` \| `promotion` | `regular` |

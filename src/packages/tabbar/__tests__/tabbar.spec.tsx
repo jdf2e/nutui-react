@@ -430,8 +430,10 @@ test.each([
 
     const materialRules: Array<Record<string, string>> = []
     parse(css).walkAtRules('supports', (rule) => {
-      rule.walkRules('.nut-tabbar-wrap', (nestedRule) => {
-        if (nestedRule.selector === '.nut-tabbar-wrap') {
+      rule.walkRules((nestedRule) => {
+        if (
+          nestedRule.selector === '.nut-tabbar-wrap:not(.nut-tabbar-native)'
+        ) {
           const declarations: Record<string, string> = {}
           nestedRule.walkDecls((declaration) => {
             declarations[declaration.prop] = declaration.value

@@ -1,6 +1,7 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import { View, ViewProps } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import TabbarItem from '../tabbaritem/index.taro'
@@ -8,6 +9,31 @@ import TabbarContext from './context'
 import { TaroTabbarProps } from '@/types'
 import SafeArea from '@/packages/safearea/index.taro'
 import { normalizeTabbarItems } from './utils'
+import {
+  getTabbarNativeMaterial,
+  getTabbarNativePlatform,
+  getTabbarNativeViewProps,
+  TabbarNativeViewProps,
+} from './material.taro'
+
+const MaterialView = View as React.ComponentType<
+  ViewProps & TabbarNativeViewProps
+>
+
+const getNativeInfo = () => {
+  try {
+    const info = Taro.getSystemInfoSync()
+    return {
+      platform: getTabbarNativePlatform(
+        String(Taro.getEnv()),
+        String(info.platform || '')
+      ),
+      dark: String(info.theme || '').toLowerCase() === 'dark',
+    }
+  } catch {
+    return { platform: getTabbarNativePlatform('', ''), dark: false }
+  }
+}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -39,11 +65,34 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     island,
     islandVariant,
     islandExpanded,
+    materialTargetId,
     className,
     style,
     onSwitch,
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-tabbar'
+  const [nativeInfo] = useState(getNativeInfo)
+  const [dark, setDark] = useState(nativeInfo.dark)
+
+  useEffect(() => {
+    if (nativeInfo.platform === 'none') return
+    const handleThemeChange = (result: string | { theme?: string }) => {
+      const theme = typeof result === 'string' ? result : result.theme
+      setDark(String(theme || '').toLowerCase() === 'dark')
+    }
+    try {
+      Taro.onThemeChange?.(handleThemeChange)
+      return () => Taro.offThemeChange?.(handleThemeChange)
+    } catch {
+      return undefined
+    }
+  }, [nativeInfo.platform])
+
+  const nativeMaterial = getTabbarNativeMaterial(nativeInfo.platform, dark)
+  const nativeViewProps = getTabbarNativeViewProps(
+    nativeMaterial,
+    materialTargetId
+  )
   const items = useMemo(
     () => normalizeTabbarItems(children, TabbarItem),
     [children]
@@ -94,7 +143,12 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
   const islandIndex = Math.ceil(items.length / 2)
 
   const navigation = (
-    <View className={`${classPrefix}-wrap ${sizeCls}`}>
+    <MaterialView
+      className={classNames(`${classPrefix}-wrap`, sizeCls, {
+        [`${classPrefix}-native`]: nativeInfo.platform !== 'none',
+      })}
+      {...nativeViewProps}
+    >
       {hasIsland ? (
         <>
           <TabbarContext.Provider value={contextValue}>
@@ -114,7 +168,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
           {renderedItems}
         </TabbarContext.Provider>
       )}
-    </View>
+    </MaterialView>
   )
 
   return (

@@ -78,9 +78,11 @@
 
     /* prettier-ignore */
     @supports ((backdrop-filter: blur(3PX)) or (-webkit-backdrop-filter: blur(3PX))) {
-      background: $tabbar-material-tint;
-      -webkit-backdrop-filter: blur(#{$tabbar-material-blur});
-      backdrop-filter: blur(#{$tabbar-material-blur});
+      &:not(.nut-tabbar-native) {
+        background: $tabbar-material-tint;
+        -webkit-backdrop-filter: blur(#{$tabbar-material-blur});
+        backdrop-filter: blur(#{$tabbar-material-blur});
+      }
     }
 
     &-horizontal {
