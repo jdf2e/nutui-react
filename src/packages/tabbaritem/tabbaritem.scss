@@ -65,6 +65,32 @@
       /* #endif*/
     }
   }
+
+  &-skin {
+    position: relative;
+
+    .nut-badge {
+      position: absolute;
+      left: 50%;
+      bottom: calc(#{$tabbar-skin-icon-bottom} - #{$tabbar-content-padding});
+      width: $tabbar-skin-icon-height;
+      height: $tabbar-skin-icon-height;
+      transform: translateX(-50%);
+    }
+
+    .nut-tabbar-skin-icon {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nut-tabbar-item-text {
+      position: absolute;
+      bottom: 0;
+      margin-top: 0;
+    }
+  }
 }
 
 .nut-tabbar-wrap:not(.nut-tabbar-wrap-horizontal) .nut-tabbar-item-active {

@@ -116,6 +116,12 @@ H5 和 Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导�
 
 :::
 
+### 换肤背景与双状态图标
+
+传入 `skinBackground` 后，背板改用业务提供的实色、渐变或弱底纹背景，H5/Taro H5 不再使用整板 `backdrop-filter`；Taro 原生端也不再传 iOS 液态/渐变模糊、Android 采样模糊或 Harmony 模糊参数。未传入时继续使用上面的材质规则。背景节点只覆盖 52px 背板，不参与标签索引和点击；业务需为背景资源失败提供替代图。四类正式皮肤素材尚未接入示例。
+
+每个图片标签可用 `icon(active)` 在 `normal/pressed` 两张透明 PNG 间切换，并给图片添加 `nut-tabbar-skin-icon` 类。切图原稿为 192×195PX，等比缩至 48px 高，底边距背板底部 7px；透明画布可越过背板顶边 3px，可见装饰越界不得超过 3px。标题仍通过 `title` 单独渲染。五项皮肤须由业务提供五对图，单图按设计交付要求控制在 50K 以内；具体颜色与图片由业务决定。`--nutui-tabbar-skin-icon-height` 和 `--nutui-tabbar-skin-icon-bottom` 可调整图片定位，背板继续使用既有 16px 圆角。
+
 ## Tabbar
 
 ### Props
@@ -128,6 +134,7 @@ H5 和 Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导�
 | activeColor | icon激活的颜色 | `string` | `#0073ff` |
 | inactiveColor | icon未激活的颜色 | `string` | `#7d7e80` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
+| skinBackground | 换肤背板节点；传入后关闭默认整板模糊材质 | `ReactNode` | `-` |
 | agent | 独立 Agent 入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
 | island | 独立灵动岛内容，图文及点击由调用方提供 | `ReactNode` | `-` |
 | islandVariant | 岛尺寸：常规 131×44px，大促 144×52px | `regular` \| `promotion` | `regular` |
@@ -172,6 +179,8 @@ H5 和 Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导�
 | \--nutui-tabbar-background | 无模糊时的导航实色背景 | 浅色 `#FFFFFF`；暗色 `#14171A` |
 | \--nutui-tabbar-material-tint | 模糊可用时的背板叠加色 | 浅色 `rgba(255, 255, 255, 0.8)`；暗色 `rgba(20, 23, 26, 0.8)` |
 | \--nutui-tabbar-material-blur | H5/Taro H5 背板模糊半径 | `3PX` |
+| \--nutui-tabbar-skin-icon-height | 换肤切图盒高度 | `48px` |
+| \--nutui-tabbar-skin-icon-bottom | 切图盒距背板底边 | `7px` |
 | \--nutui-tabbar-border-radius | 导航背板圆角 | `16px` |
 | \--nutui-tabbar-active-background | 选中项背景 | `#F0F2F7` |
 | \--nutui-tabbar-active-border-radius | 选中项圆角 | `12px` |

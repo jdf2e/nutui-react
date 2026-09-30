@@ -42,21 +42,29 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     ...props,
   }
   const active = index === ctx?.selectIndex
+  const renderNodeWithActive = (
+    node: ReactNode | ((active: boolean) => ReactNode)
+  ) => {
+    return node && typeof node === 'function' ? node(active) : node
+  }
+  const renderedIcon = renderNodeWithActive(icon)
+  const hasSkinIcon =
+    ctx?.skin &&
+    React.isValidElement(renderedIcon) &&
+    String(renderedIcon.props.className || '')
+      .split(/\s+/)
+      .includes('nut-tabbar-skin-icon')
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
       [`${classPrefix}-large`]: !icon || !title,
+      [`${classPrefix}-skin`]: hasSkinIcon,
     },
     className
   )
 
-  const renderNodeWithActive = (
-    node: ReactNode | ((active: boolean) => ReactNode)
-  ) => {
-    return node && typeof node === 'function' ? node(active) : node
-  }
   const badgeProps = {
     value: renderNodeWithActive(value),
     dot,
@@ -90,14 +98,14 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
   }
 
   const renderIcon = () => {
-    const distIcon = renderNodeWithActive(icon)
+    const distIcon = renderedIcon
     // 鸿蒙差异处理，需要手动给icon一个color
-    return React.isValidElement(distIcon)
-      ? React.cloneElement(distIcon, {
-          ...distIcon.props,
-          color: active ? ctx?.activeColor : ctx?.inactiveColor,
-        })
-      : null
+    if (!React.isValidElement(distIcon)) return null
+    if (hasSkinIcon) return distIcon
+    return React.cloneElement(distIcon, {
+      ...distIcon.props,
+      color: active ? ctx?.activeColor : ctx?.inactiveColor,
+    })
   }
 
   const renderIconAndTitle = () => {

@@ -16,6 +16,7 @@ const defaultProps = {
   activeColor: '',
   direction: 'vertical',
   safeArea: false,
+  skinBackground: null,
   island: null,
   islandVariant: 'regular',
   islandExpanded: false,
@@ -34,6 +35,7 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     inactiveColor,
     direction,
     safeArea,
+    skinBackground,
     agent,
     island,
     islandVariant,
@@ -52,6 +54,10 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     agent !== null && agent !== undefined && typeof agent !== 'boolean'
   const hasIsland =
     island !== null && island !== undefined && typeof island !== 'boolean'
+  const hasSkin =
+    skinBackground !== null &&
+    skinBackground !== undefined &&
+    typeof skinBackground !== 'boolean'
 
   const [selectIndex, setSelectIndex] = usePropsValue<number>({
     value,
@@ -81,6 +87,7 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     selectIndex,
     activeColor,
     inactiveColor,
+    skin: hasSkin,
     handleClick: setSelectIndex,
   }
   const renderedItems = items.map((child, index) =>
@@ -94,7 +101,16 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
   const islandIndex = Math.ceil(items.length / 2)
 
   const navigation = (
-    <div className={`${classPrefix}-wrap ${sizeCls}`}>
+    <div
+      className={classNames(`${classPrefix}-wrap`, sizeCls, {
+        [`${classPrefix}-wrap-skin`]: hasSkin,
+      })}
+    >
+      {hasSkin && (
+        <div className={`${classPrefix}-skin-background`} aria-hidden="true">
+          {skinBackground}
+        </div>
+      )}
       {hasIsland ? (
         <>
           <TabbarContext.Provider value={contextValue}>

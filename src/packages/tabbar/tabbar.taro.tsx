@@ -51,6 +51,7 @@ const defaultProps = {
   activeColor: '',
   direction: 'vertical',
   safeArea: false,
+  skinBackground: null,
   island: null,
   islandVariant: 'regular',
   islandExpanded: false,
@@ -70,6 +71,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     inactiveColor,
     direction,
     safeArea,
+    skinBackground,
     agent,
     island,
     islandVariant,
@@ -98,6 +100,10 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     }
   }, [nativeInfo.platform])
 
+  const hasSkin =
+    skinBackground !== null &&
+    skinBackground !== undefined &&
+    typeof skinBackground !== 'boolean'
   const nativeMaterial = getTabbarNativeMaterial(
     nativeInfo.platform,
     dark,
@@ -106,7 +112,8 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
   )
   const nativeViewProps = getTabbarNativeViewProps(
     nativeMaterial,
-    materialTargetId
+    materialTargetId,
+    hasSkin
   )
   const items = useMemo(
     () => normalizeTabbarItems(children, TabbarItem),
@@ -116,7 +123,6 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     agent !== null && agent !== undefined && typeof agent !== 'boolean'
   const hasIsland =
     island !== null && island !== undefined && typeof island !== 'boolean'
-
   const [selectIndex, setSelectIndex] = usePropsValue<number>({
     value,
     defaultValue,
@@ -145,6 +151,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     selectIndex,
     activeColor,
     inactiveColor,
+    skin: hasSkin,
     handleClick: setSelectIndex,
   }
   const renderedItems = items.map((child, index) =>
@@ -161,9 +168,15 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     <MaterialView
       className={classNames(`${classPrefix}-wrap`, sizeCls, {
         [`${classPrefix}-native`]: nativeInfo.platform !== 'none',
+        [`${classPrefix}-wrap-skin`]: hasSkin,
       })}
       {...nativeViewProps}
     >
+      {hasSkin && (
+        <View className={`${classPrefix}-skin-background`}>
+          {skinBackground}
+        </View>
+      )}
       {hasIsland ? (
         <>
           <TabbarContext.Provider value={contextValue}>

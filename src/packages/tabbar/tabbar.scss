@@ -66,6 +66,7 @@
   }
 
   &-wrap {
+    position: relative;
     height: $tabbar-height;
     box-sizing: border-box;
     display: flex;
@@ -82,6 +83,19 @@
         background: $tabbar-material-tint;
         -webkit-backdrop-filter: blur(#{$tabbar-material-blur});
         backdrop-filter: blur(#{$tabbar-material-blur});
+      }
+
+      &.nut-tabbar-wrap-skin {
+        background: $tabbar-background;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+    }
+
+    &-skin {
+      .nut-tabbar-item {
+        position: relative;
+        z-index: 1;
       }
     }
 
@@ -104,6 +118,23 @@
           }
         }
       }
+    }
+  }
+
+  &-skin-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+
+    > * {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
   }
 

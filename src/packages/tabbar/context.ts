@@ -4,6 +4,7 @@ export interface TabbarContext {
   selectIndex: number
   inactiveColor: string
   activeColor: string
+  skin: boolean
   handleClick: (value: number) => void
 }
 

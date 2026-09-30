@@ -1526,6 +1526,8 @@ $tabbar-material-tint: var(
   rgba(255, 255, 255, 0.8)
 ) !default;
 $tabbar-material-blur: var(--nutui-tabbar-material-blur, 3PX) !default;
+$tabbar-skin-icon-height: var(--nutui-tabbar-skin-icon-height, 48px) !default;
+$tabbar-skin-icon-bottom: var(--nutui-tabbar-skin-icon-bottom, 7px) !default;
 $tabbar-border-radius: var(--nutui-tabbar-border-radius, 16px) !default;
 $tabbar-active-background: var(
   --nutui-tabbar-active-background,

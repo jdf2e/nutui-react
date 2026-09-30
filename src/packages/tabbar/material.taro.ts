@@ -112,9 +112,13 @@ export interface TabbarNativeViewProps {
 
 export function getTabbarNativeViewProps(
   material: TabbarNativeMaterial,
-  targetId?: string
+  targetId?: string,
+  skin = false
 ): TabbarNativeViewProps {
   const borderRadius = material.borderRadius
+  if (skin && material.kind !== 'none') {
+    return { style: { backgroundColor: material.solidColor, borderRadius } }
+  }
   switch (material.kind) {
     case 'ios':
       return {

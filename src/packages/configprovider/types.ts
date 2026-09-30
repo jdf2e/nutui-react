@@ -472,6 +472,8 @@ export type NutCSSVariables =
   | 'nutuiTabbarBackground'
   | 'nutuiTabbarMaterialTint'
   | 'nutuiTabbarMaterialBlur'
+  | 'nutuiTabbarSkinIconHeight'
+  | 'nutuiTabbarSkinIconBottom'
   | 'nutuiTabbarBorderRadius'
   | 'nutuiTabbarActiveBackground'
   | 'nutuiTabbarActiveBorderRadius'

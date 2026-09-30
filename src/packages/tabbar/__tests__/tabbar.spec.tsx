@@ -720,3 +720,45 @@ test('render item size 2 and direction is horizontal', async () => {
   )
   expect(container.innerHTML).toMatchSnapshot()
 })
+
+test('skin background is isolated from item indexing and active icon selection', () => {
+  const onSwitch = vi.fn()
+  const icon = (active: boolean) => (
+    <img
+      className="nut-tabbar-skin-icon"
+      src={active ? '/pressed.png' : '/normal.png'}
+      alt=""
+    />
+  )
+  const { container } = render(
+    <Tabbar
+      defaultValue={0}
+      onSwitch={onSwitch}
+      skinBackground={<img src="/board.png" alt="" />}
+    >
+      <Tabbar.Item title="首页" icon={icon} />
+      <Tabbar.Item title="我的" icon={icon} />
+    </Tabbar>
+  )
+  const wrap = container.querySelector('.nut-tabbar-wrap')!
+  const items = container.querySelectorAll('.nut-tabbar-item')
+  expect(wrap).toHaveClass('nut-tabbar-wrap-skin')
+  expect(wrap.firstElementChild).toHaveClass('nut-tabbar-skin-background')
+  expect(items).toHaveLength(2)
+  expect(items[0]).toHaveClass('nut-tabbar-item-skin')
+  expect(items[0].querySelector('img')).toHaveAttribute('src', '/pressed.png')
+  expect(items[1].querySelector('img')).toHaveAttribute('src', '/normal.png')
+
+  fireEvent.click(items[1])
+  expect(onSwitch).toHaveBeenCalledWith(1)
+  expect(items[1].querySelector('img')).toHaveAttribute('src', '/pressed.png')
+})
+
+test('skin styles preserve board geometry and position the full image canvas', () => {
+  const css = compileTabbarStyles('src/styles/variables.scss')
+  expect(css).toContain('--nutui-tabbar-skin-icon-height')
+  expect(css).toContain('--nutui-tabbar-skin-icon-bottom')
+  expect(css).toContain('.nut-tabbar-wrap-skin')
+  expect(css).toContain('.nut-tabbar-skin-background')
+  expect(css).toContain('.nut-tabbar-skin-icon')
+})

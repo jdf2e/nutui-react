@@ -150,3 +150,19 @@ test('native View props preserve the 16px shape and keep unsupported targets sol
     },
   })
 })
+
+test.each(['ios', 'android', 'harmony'] as const)(
+  '%s skin uses the solid fallback without native material props',
+  (platform) => {
+    const material = getTabbarNativeMaterial(
+      platform,
+      false,
+      26,
+      'liquid-glass'
+    )
+    const props = getTabbarNativeViewProps(material, 'home-content', true)
+    expect(props).toEqual({
+      style: { backgroundColor: '#ffffff', borderRadius: 16 },
+    })
+  }
+)

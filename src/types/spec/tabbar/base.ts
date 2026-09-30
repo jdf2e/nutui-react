@@ -9,6 +9,8 @@ export interface BaseTabbar extends BaseProps {
   activeColor: string
   direction: Direction
   safeArea: boolean
+  /** 换肤背景内容；传入时导航背板使用实色材质 */
+  skinBackground?: ReactNode
   agent?: ReactNode
   island?: ReactNode
   islandVariant?: 'regular' | 'promotion'

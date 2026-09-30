@@ -118,6 +118,12 @@ Android 模糊需要配对采样源：将页面内容放入带 `blurId="page-con
 
 :::
 
+### 换肤背景与双状态图标
+
+传入 `skinBackground`（Taro `View`/`Image`）后，背板使用业务实色、渐变或弱底纹资源，Taro H5 关闭整板 `backdrop-filter`，原生端不再传 iOS `gradientBlur`/`liquidGlass`、Android `targetId`/`overlayColor`/模糊或 Harmony `blurScale`/渐变材质参数。未传入时继续使用上述平台材质。背景节点不参与标签索引和点击，资源加载失败由业务准备替代资源。四类正式皮肤素材尚未接入示例。
+
+每项通过 `icon(active)` 返回带 `nut-tabbar-skin-icon` 类的 Taro `Image`（`mode="aspectFit"`），从 `normal/pressed` 两张透明 PNG 中选择；标题仍由 `title` 渲染。192×195PX 原稿按高度 48px 等比缩放，切图盒距背板底部 7px，可见装饰上溢不得超过 3px。每套五项需五对图片，单图按设计要求控制在 50K 以内；平台资源路径和正式色值由业务提供。新图标高度/底距变量可覆盖，背板沿用 16px 圆角。
+
 ## Tabbar
 
 ### Props
@@ -130,6 +136,7 @@ Android 模糊需要配对采样源：将页面内容放入带 `blurId="page-con
 | activeColor | icon激活的颜色 | `string` | `#0073ff` |
 | inactiveColor | icon未激活的颜色 | `string` | `#7d7e80` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
+| skinBackground | 换肤背板节点；传入后关闭默认整板模糊材质 | `ReactNode` | `-` |
 | materialTargetId | Android 原生背板采样目标，须与背景 View 的 `blurId` 相同 | `string` | `-` |
 | iosMaterial | iOS 背板材质；`liquid-glass` 仅 iOS 26+ 生效，旧版回退渐变模糊 | `gradient-blur` \| `liquid-glass` | `gradient-blur` |
 | agent | 独立 Agent 入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
@@ -176,6 +183,8 @@ Android 模糊需要配对采样源：将页面内容放入带 `blurId="page-con
 | \--nutui-tabbar-background | 无模糊时的导航实色背景 | 浅色 `#FFFFFF`；暗色 `#14171A` |
 | \--nutui-tabbar-material-tint | 模糊可用时的背板叠加色 | 浅色 `rgba(255, 255, 255, 0.8)`；暗色 `rgba(20, 23, 26, 0.8)` |
 | \--nutui-tabbar-material-blur | H5/Taro H5 背板模糊半径 | `3PX` |
+| \--nutui-tabbar-skin-icon-height | 换肤切图盒高度 | `48px` |
+| \--nutui-tabbar-skin-icon-bottom | 切图盒距背板底边 | `7px` |
 | \--nutui-tabbar-border-radius | 导航背板圆角 | `16px` |
 | \--nutui-tabbar-active-background | 选中项背景 | `#F0F2F7` |
 | \--nutui-tabbar-active-border-radius | 选中项圆角 | `12px` |

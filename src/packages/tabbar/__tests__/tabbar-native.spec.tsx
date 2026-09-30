@@ -131,3 +131,41 @@ test('web and mini program keep the existing View and CSS material path', () => 
   expect(backing()?.blurScale).toBeUndefined()
   expect(backing()?.style).toBeUndefined()
 })
+
+test.each([
+  ['RN', 'ios'],
+  ['RN', 'android'],
+  ['JDHARMONY', 'harmony'],
+])(
+  'skin background disables %s %s native material and restores it when removed',
+  (env, platform) => {
+    native.env = env
+    native.platform = platform
+    const { container, rerender } = render(
+      <Tabbar
+        iosMaterial="liquid-glass"
+        materialTargetId="home-content"
+        skinBackground={<div className="business-skin" />}
+      />
+    )
+    expect(backing()?.className).toContain('nut-tabbar-wrap-skin')
+    expect(
+      container.querySelector('.nut-tabbar-skin-background')
+    ).not.toBeNull()
+    expect(backing()?.gradientBlur).toBeUndefined()
+    expect(backing()?.liquidGlass).toBeUndefined()
+    expect(backing()?.targetId).toBeUndefined()
+    expect(backing()?.overlayColor).toBeUndefined()
+    expect(backing()?.blurScale).toBeUndefined()
+    expect(backing()?.style?.backgroundColor).toBe('#ffffff')
+
+    native.views = []
+    rerender(
+      <Tabbar iosMaterial="liquid-glass" materialTargetId="home-content" />
+    )
+    expect(backing()?.className).not.toContain('nut-tabbar-wrap-skin')
+    if (platform === 'ios') expect(backing()?.liquidGlass).toBeDefined()
+    if (platform === 'android') expect(backing()?.targetId).toBe('home-content')
+    if (platform === 'harmony') expect(backing()?.blurScale).toBe(0.2)
+  }
+)

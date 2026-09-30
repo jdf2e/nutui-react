@@ -116,6 +116,12 @@ On H5 and Taro H5, browsers with `backdrop-filter` blur only the 52px navigation
 
 :::
 
+### Skin Background and Two-State Icons
+
+Passing `skinBackground` uses the caller's solid, gradient, or subtle-texture board. H5/Taro H5 disables the board `backdrop-filter`; Taro native also omits iOS glass/gradient blur, Android sampling blur, and Harmony blur parameters. Without this prop the material behavior above remains. The background fills only the 52px board and does not take a tab index or click. Provide a fallback for a failed business image. Official assets for the four skin families are not yet included in the demo.
+
+For each image tab, use `icon(active)` to choose between transparent `normal/pressed` PNGs and set `className="nut-tabbar-skin-icon"` on the image. Source images measure 192×195PX and scale proportionally to 48px high, with a 7px gap from the board bottom. The transparent canvas can cross the board top by 3px; visible artwork must not exceed that amount. Keep the label in `title`. The caller supplies five image pairs per skin, each within the design's 50K limit, plus the specific colors and board asset. The two skin icon variables control positioning; the existing board radius remains 16px.
+
 ## Tabbar
 
 ### Props
@@ -128,6 +134,7 @@ On H5 and Taro H5, browsers with `backdrop-filter` blur only the 52px navigation
 | activeColor | icon active color | `string` | `#0073ff` |
 | inactiveColor | Icon inactive color | `string` | `#7d7e80` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
+| skinBackground | Caller-provided skin board; disables the default board blur material | `ReactNode` | `-` |
 | agent | Separate Agent entry content; the caller provides its image and click behavior | `ReactNode` | `-` |
 | island | Separate island content; caller supplies content and click behavior | `ReactNode` | `-` |
 | islandVariant | Island size: regular 131×44px, promotion 144×52px | `regular` \| `promotion` | `regular` |
@@ -172,6 +179,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-background | solid navigation background without blur | Light `#FFFFFF`; dark `#14171A` |
 | \--nutui-tabbar-material-tint | backing tint when blur is supported | Light `rgba(255, 255, 255, 0.8)`; dark `rgba(20, 23, 26, 0.8)` |
 | \--nutui-tabbar-material-blur | H5/Taro H5 backing blur radius | `3PX` |
+| \--nutui-tabbar-skin-icon-height | Skin image box height | `48px` |
+| \--nutui-tabbar-skin-icon-bottom | Image box gap from board bottom | `7px` |
 | \--nutui-tabbar-border-radius | navigation board radius | `16px` |
 | \--nutui-tabbar-active-background | selected item background | `#F0F2F7` |
 | \--nutui-tabbar-active-border-radius | selected item radius | `12px` |
