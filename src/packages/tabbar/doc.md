@@ -118,9 +118,17 @@ H5 和 Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导�
 
 ### 换肤背景与双状态图标
 
-传入 `skinBackground` 后，背板改用业务提供的实色、渐变或弱底纹背景，H5/Taro H5 不再使用整板 `backdrop-filter`；Taro 原生端也不再传 iOS 液态/渐变模糊、Android 采样模糊或 Harmony 模糊参数。未传入时继续使用上面的材质规则。背景节点只覆盖 52px 背板，不参与标签索引和点击；业务需为背景资源失败提供替代图。四类正式皮肤素材尚未接入示例。
+传入 `skinBackground` 后，背板改用业务提供的实色、渐变或弱底纹背景，H5/Taro H5 不再使用整板 `backdrop-filter`；Taro 原生端也不再传 iOS 液态/渐变模糊、Android 采样模糊或 Harmony 模糊参数。未传入时继续使用上面的材质规则。背景节点只覆盖 52px 背板，不参与标签索引和点击；业务需为背景资源失败提供替代图。下方示例接入一套明星换肤素材：240×52px 背板图铺满 375px 画布下的 351×52px 背板，五项始终显示“文案”，第一、第五项默认态共用一张图片。
 
-每个图片标签可用 `icon(active)` 在 `normal/pressed` 两张透明 PNG 间切换，并给图片添加 `nut-tabbar-skin-icon` 类。切图原稿为 192×195PX，等比缩至 48px 高，底边距背板底部 7px；透明画布可越过背板顶边 3px，可见装饰越界不得超过 3px。标题仍通过 `title` 单独渲染。五项皮肤须由业务提供五对图，单图按设计交付要求控制在 50K 以内；具体颜色与图片由业务决定。`--nutui-tabbar-skin-icon-height` 和 `--nutui-tabbar-skin-icon-bottom` 可调整图片定位，背板继续使用既有 16px 圆角。
+每个图片标签可用 `icon(active)` 在 `normal/pressed` 两张透明 PNG 间切换，并给图片或其包装节点添加 `nut-tabbar-skin-icon` 类。切图原稿为 192×195PX，等比缩至 48px 高，底边距背板底部 7px；透明画布可越过背板顶边 3px，可见装饰越界不得超过 3px。标题仍通过 `title` 单独渲染。五项皮肤须由业务提供五对图，单图按设计交付要求控制在 50K 以内；具体颜色与图片由业务决定。`--nutui-tabbar-skin-icon-height` 和 `--nutui-tabbar-skin-icon-bottom` 可调整图片定位，背板继续使用既有 16px 圆角。
+
+示例为选中项在图标下方单独叠放 120×120px 原稿的渐变底图（显示为 40×40px），并将默认选中托底设为透明；“文案”仍由独立标题节点渲染，不进入渐变图。图片使用业务提供的 HTTPS 链接，不内置于组件。
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
 
 ## Tabbar
 

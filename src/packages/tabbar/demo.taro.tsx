@@ -15,6 +15,7 @@ import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
+import Demo13 from './demos/taro/demo13'
 
 const TabbarDemo = () => {
   const [scrollTop, setScrollTop] = useState(0)
@@ -34,6 +35,7 @@ const TabbarDemo = () => {
       agent: 'Agent 组合入口',
       island: '灵动岛与 Agent 联动',
       material: '毛玻璃材质',
+      skin: '明星换肤',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -48,6 +50,7 @@ const TabbarDemo = () => {
       agent: 'Agent 組合入口',
       island: '靈動島與 Agent 聯動',
       material: '毛玻璃材質',
+      skin: '明星換膚',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -62,6 +65,7 @@ const TabbarDemo = () => {
       agent: 'Agent Entry',
       island: 'Dynamic Island and Agent',
       material: 'Frosted Glass Material',
+      skin: 'Star Skin',
     },
   })
   return (
@@ -105,6 +109,8 @@ const TabbarDemo = () => {
         <Demo11 />
         <View className="h2">{translated.material}</View>
         <Demo12 />
+        <View className="h2">{translated.skin}</View>
+        <Demo13 />
         <View className="h2" style={{ marginBottom: 100 }}>
           {translated.cfbdc781}
         </View>

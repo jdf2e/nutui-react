@@ -118,9 +118,17 @@ On H5 and Taro H5, browsers with `backdrop-filter` blur only the 52px navigation
 
 ### Skin Background and Two-State Icons
 
-Passing `skinBackground` uses the caller's solid, gradient, or subtle-texture board. H5/Taro H5 disables the board `backdrop-filter`; Taro native also omits iOS glass/gradient blur, Android sampling blur, and Harmony blur parameters. Without this prop the material behavior above remains. The background fills only the 52px board and does not take a tab index or click. Provide a fallback for a failed business image. Official assets for the four skin families are not yet included in the demo.
+Passing `skinBackground` uses the caller's solid, gradient, or subtle-texture board. H5/Taro H5 disables the board `backdrop-filter`; Taro native also omits iOS glass/gradient blur, Android sampling blur, and Harmony blur parameters. Without this prop the material behavior above remains. The background fills only the 52px board and does not take a tab index or click. Provide a fallback for a failed business image. The demo uses one star skin: a 240×52px image fills the 351×52px board at a 375px viewport, all five items show “文案” in both states, and the first and fifth normal states share one image.
 
-For each image tab, use `icon(active)` to choose between transparent `normal/pressed` PNGs and set `className="nut-tabbar-skin-icon"` on the image. Source images measure 192×195PX and scale proportionally to 48px high, with a 7px gap from the board bottom. The transparent canvas can cross the board top by 3px; visible artwork must not exceed that amount. Keep the label in `title`. The caller supplies five image pairs per skin, each within the design's 50K limit, plus the specific colors and board asset. The two skin icon variables control positioning; the existing board radius remains 16px.
+For each image tab, use `icon(active)` to choose between transparent `normal/pressed` PNGs and set `className="nut-tabbar-skin-icon"` on the image or its wrapper. Source images measure 192×195PX and scale proportionally to 48px high, with a 7px gap from the board bottom. The transparent canvas can cross the board top by 3px; visible artwork must not exceed that amount. Keep the label in `title`. The caller supplies five image pairs per skin, each within the design's 50K limit, plus the specific colors and board asset. The two skin icon variables control positioning; the existing board radius remains 16px.
+
+The demo places a separate 120×120px gradient image behind the active icon at 40×40px and makes the default active backing transparent. “文案” remains a separate label and is not part of the gradient image. The demo uses the supplied HTTPS image URLs; these assets are not built into the component.
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
 
 ## Tabbar
 

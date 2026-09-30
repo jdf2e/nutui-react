@@ -12,6 +12,7 @@ import Demo9 from './demos/h5/demo9'
 import Demo10 from './demos/h5/demo10'
 import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
+import Demo13 from './demos/h5/demo13'
 
 const TabbarDemo = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -30,6 +31,7 @@ const TabbarDemo = () => {
       agent: 'Agent 组合入口',
       island: '灵动岛与 Agent 联动',
       material: '毛玻璃材质',
+      skin: '明星换肤',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -44,6 +46,7 @@ const TabbarDemo = () => {
       agent: 'Agent 組合入口',
       island: '靈動島與 Agent 聯動',
       material: '毛玻璃材質',
+      skin: '明星換膚',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -58,6 +61,7 @@ const TabbarDemo = () => {
       agent: 'Agent Entry',
       island: 'Dynamic Island and Agent',
       material: 'Frosted Glass Material',
+      skin: 'Star Skin',
     },
   })
 
@@ -91,6 +95,8 @@ const TabbarDemo = () => {
         <Demo11 />
         <h2>{translated.material}</h2>
         <Demo12 />
+        <h2>{translated.skin}</h2>
+        <Demo13 />
         <h2 style={{ marginBottom: 100 }}>{translated.cfbdc781}</h2>
         <Demo9
           scrollTop={scrollTop}
