@@ -120,7 +120,7 @@ Android 模糊需要配对采样源：将页面内容放入带 `blurId="page-con
 
 ### 换肤背景与双状态图标
 
-传入 `skinBackground`（Taro `View`/`Image`）后，背板使用业务实色、渐变或弱底纹资源，Taro H5 关闭整板 `backdrop-filter`，原生端不再传 iOS `gradientBlur`/`liquidGlass`、Android `targetId`/`overlayColor`/模糊或 Harmony `blurScale`/渐变材质参数。未传入时继续使用上述平台材质。背景节点不参与标签索引和点击，资源加载失败由业务准备替代资源。下方示例接入一套明星换肤素材：240×52px 背板图铺满 375px 画布下的 351×52px 背板，五项始终显示“文案”，第一、第五项默认态共用一张图片。
+传入 `skinBackground`（Taro `View`/`Image`）后，背板使用业务实色、渐变或弱底纹资源，Taro H5 关闭整板 `backdrop-filter`，原生端不再传 iOS `gradientBlur`/`liquidGlass`、Android `targetId`/`overlayColor`/模糊或 Harmony `blurScale`/渐变材质参数。未传入时继续使用上述平台材质。背景节点不参与标签索引和点击，资源加载失败由业务准备替代资源。下方示例接入一套换肤素材：240×52px 背板图铺满 375px 画布下的 351×52px 背板，五项始终显示“文案”，第一、第五项默认态共用一张图片。
 
 每项通过 `icon(active)` 返回带 `nut-tabbar-skin-icon` 类的 Taro `Image` 或包装 `View`，从 `normal/pressed` 两张透明 PNG 中选择；图片使用 `mode="aspectFit"`，标题仍由 `title` 渲染。192×195PX 原稿按高度 48px 等比缩放，切图盒距背板底部 7px，可见装饰上溢不得超过 3px。每套五项需五对图片，单图按设计要求控制在 50K 以内；平台资源路径和正式色值由业务提供。新图标高度/底距变量可覆盖，背板沿用 16px 圆角。
 

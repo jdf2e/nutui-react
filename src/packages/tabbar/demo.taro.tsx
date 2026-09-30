@@ -35,7 +35,7 @@ const TabbarDemo = () => {
       agent: 'Agent 组合入口',
       island: '灵动岛与 Agent 联动',
       material: '毛玻璃材质',
-      skin: '明星换肤',
+      skin: '换肤',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -50,7 +50,7 @@ const TabbarDemo = () => {
       agent: 'Agent 組合入口',
       island: '靈動島與 Agent 聯動',
       material: '毛玻璃材質',
-      skin: '明星換膚',
+      skin: '換膚',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -65,7 +65,7 @@ const TabbarDemo = () => {
       agent: 'Agent Entry',
       island: 'Dynamic Island and Agent',
       material: 'Frosted Glass Material',
-      skin: 'Star Skin',
+      skin: 'Skin Customization',
     },
   })
   return (

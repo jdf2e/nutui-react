@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import Demo13 from '../demos/h5/demo13'
 import { skinActiveOverlay, skinBoard, skinIcons } from '../demos/skin-assets'
 
-test('star skin demo keeps labels separate while switching the selected images', () => {
+test('skin demo keeps labels separate while switching the selected images', () => {
   const { container } = render(<Demo13 />)
   const board = container.querySelector('.nut-tabbar-wrap-skin')
   const items = Array.from(container.querySelectorAll('.nut-tabbar-item'))
