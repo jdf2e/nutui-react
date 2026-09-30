@@ -114,7 +114,7 @@ Android 模糊需要配对采样源：将页面内容放入带 `blurId="page-con
 
 :::demo
 
-<CodeBlock src='taro/demo15.tsx'></CodeBlock>
+<CodeBlock src='taro/demo12.tsx'></CodeBlock>
 
 :::
 

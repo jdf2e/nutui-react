@@ -112,7 +112,7 @@ H5 和 Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导�
 
 :::demo
 
-<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 

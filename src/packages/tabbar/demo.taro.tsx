@@ -14,7 +14,7 @@ import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
-import Demo15 from './demos/taro/demo15'
+import Demo12 from './demos/taro/demo12'
 
 const TabbarDemo = () => {
   const [scrollTop, setScrollTop] = useState(0)
@@ -104,7 +104,7 @@ const TabbarDemo = () => {
         <View className="h2">{translated.island}</View>
         <Demo11 />
         <View className="h2">{translated.material}</View>
-        <Demo15 />
+        <Demo12 />
         <View className="h2" style={{ marginBottom: 100 }}>
           {translated.cfbdc781}
         </View>

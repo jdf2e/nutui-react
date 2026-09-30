@@ -112,7 +112,7 @@ On H5 and Taro H5, browsers with `backdrop-filter` blur only the 52px navigation
 
 :::demo
 
-<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 

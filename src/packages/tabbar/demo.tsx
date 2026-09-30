@@ -11,7 +11,7 @@ import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
 import Demo10 from './demos/h5/demo10'
 import Demo11 from './demos/h5/demo11'
-import Demo15 from './demos/h5/demo15'
+import Demo12 from './demos/h5/demo12'
 
 const TabbarDemo = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -90,7 +90,7 @@ const TabbarDemo = () => {
         <h2>{translated.island}</h2>
         <Demo11 />
         <h2>{translated.material}</h2>
-        <Demo15 />
+        <Demo12 />
         <h2 style={{ marginBottom: 100 }}>{translated.cfbdc781}</h2>
         <Demo9
           scrollTop={scrollTop}

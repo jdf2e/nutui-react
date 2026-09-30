@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Cart, Home, Message, User } from '@nutui/icons-react'
 import { ConfigProvider, Tabbar } from '@nutui/nutui-react'
 
-const Demo15 = () => {
+const Demo12 = () => {
   const [dark, setDark] = useState(false)
   const [solidPreview, setSolidPreview] = useState(false)
   const [value, setValue] = useState(0)
@@ -73,4 +73,4 @@ const Demo15 = () => {
   )
 }
 
-export default Demo15
+export default Demo12

@@ -43,7 +43,7 @@ const BlurSource = ({ children }: { children: React.ReactNode }) =>
     <>{children}</>
   )
 
-const Demo15 = () => {
+const Demo12 = () => {
   const native = isNative()
   const [dark, setDark] = useState(() => native && readSystemDark())
   const [solidPreview, setSolidPreview] = useState(false)
@@ -138,4 +138,4 @@ const Demo15 = () => {
   )
 }
 
-export default Demo15
+export default Demo12
