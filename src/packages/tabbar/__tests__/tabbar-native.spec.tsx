@@ -6,6 +6,7 @@ const native = vi.hoisted(() => ({
   env: 'RN',
   platform: 'ios',
   theme: 'light',
+  system: 'iOS 26.0',
   views: [] as Array<Record<string, any>>,
   themeChange: undefined as undefined | ((theme: { theme: string }) => void),
 }))
@@ -16,6 +17,7 @@ vi.mock('@tarojs/taro', () => ({
     getSystemInfoSync: () => ({
       platform: native.platform,
       theme: native.theme,
+      system: native.system,
     }),
     onThemeChange: (callback: (theme: { theme: string }) => void) => {
       native.themeChange = callback
@@ -49,6 +51,7 @@ beforeEach(() => {
   native.env = 'RN'
   native.platform = 'ios'
   native.theme = 'light'
+  native.system = 'iOS 26.0'
   native.views = []
   native.themeChange = undefined
 })
@@ -66,6 +69,33 @@ test('iOS sends bottom-bar gradient blur to the native View and follows theme ch
   native.views = []
   rerender(<Tabbar />)
   expect(backing()?.gradientBlur?.overlayColor).toBe('rgba(0, 0, 0, 1)')
+})
+
+test('iOS 26 opt-in sends liquid glass with gradient fallback and updates dark mode', () => {
+  const { rerender } = render(<Tabbar iosMaterial="liquid-glass" />)
+  expect(backing()?.liquidGlass).toEqual({
+    style: 'regular',
+    interactive: true,
+    darkMode: false,
+    tintColor: 'rgba(255, 255, 255, 0.45)',
+  })
+  expect(backing()?.gradientBlur).toBeDefined()
+
+  act(() => native.themeChange?.({ theme: 'dark' }))
+  native.views = []
+  rerender(<Tabbar iosMaterial="liquid-glass" />)
+  expect(backing()?.liquidGlass).toEqual({
+    style: 'regular',
+    interactive: true,
+    darkMode: true,
+  })
+})
+
+test('iOS 25 opt-in falls back to gradient blur', () => {
+  native.system = 'iOS 25.4'
+  render(<Tabbar iosMaterial="liquid-glass" />)
+  expect(backing()?.liquidGlass).toBeUndefined()
+  expect(backing()?.gradientBlur).toBeDefined()
 })
 
 test('Harmony sends blurScale and gradient overlay to the native View', () => {

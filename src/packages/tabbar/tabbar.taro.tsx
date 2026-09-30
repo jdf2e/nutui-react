@@ -29,9 +29,17 @@ const getNativeInfo = () => {
         String(info.platform || '')
       ),
       dark: String(info.theme || '').toLowerCase() === 'dark',
+      iosMajor: parseInt(
+        String(info.system || '').match(/\d+/)?.[0] || '0',
+        10
+      ),
     }
   } catch {
-    return { platform: getTabbarNativePlatform('', ''), dark: false }
+    return {
+      platform: getTabbarNativePlatform('', ''),
+      dark: false,
+      iosMajor: 0,
+    }
   }
 }
 
@@ -46,6 +54,7 @@ const defaultProps = {
   island: null,
   islandVariant: 'regular',
   islandExpanded: false,
+  iosMaterial: 'gradient-blur',
   onSwitch: () => {},
 } as TaroTabbarProps
 
@@ -66,6 +75,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     islandVariant,
     islandExpanded,
     materialTargetId,
+    iosMaterial,
     className,
     style,
     onSwitch,
@@ -88,7 +98,12 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     }
   }, [nativeInfo.platform])
 
-  const nativeMaterial = getTabbarNativeMaterial(nativeInfo.platform, dark)
+  const nativeMaterial = getTabbarNativeMaterial(
+    nativeInfo.platform,
+    dark,
+    nativeInfo.iosMajor,
+    iosMaterial
+  )
   const nativeViewProps = getTabbarNativeViewProps(
     nativeMaterial,
     materialTargetId

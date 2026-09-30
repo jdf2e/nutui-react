@@ -26,6 +26,23 @@ function isNativeAndroid() {
   }
 }
 
+function getNativeIOSMajor() {
+  try {
+    if (
+      !['RN', 'JDHYBRID'].includes(String(Taro.getEnv()).toUpperCase()) ||
+      String(Taro.getSystemInfoSync().platform).toLowerCase() !== 'ios'
+    ) {
+      return -1
+    }
+    return parseInt(
+      String(Taro.getSystemInfoSync().system || '').match(/\d+/)?.[0] || '0',
+      10
+    )
+  } catch {
+    return -1
+  }
+}
+
 function readSystemDark() {
   try {
     return String(Taro.getSystemInfoSync().theme).toLowerCase() === 'dark'
@@ -45,7 +62,11 @@ const BlurSource = ({ children }: { children: React.ReactNode }) =>
 
 const Demo12 = () => {
   const native = isNative()
+  const iosMajor = getNativeIOSMajor()
   const [dark, setDark] = useState(() => native && readSystemDark())
+  const [iosMaterial, setIosMaterial] = useState<
+    'gradient-blur' | 'liquid-glass'
+  >('gradient-blur')
   const [solidPreview, setSolidPreview] = useState(false)
   const [value, setValue] = useState(0)
   const solidColor = dark ? '#14171a' : '#ffffff'
@@ -75,7 +96,30 @@ const Demo12 = () => {
   return (
     <View>
       {native ? (
-        <View>原生背板跟随系统明暗模式，可切换系统主题观察。</View>
+        <>
+          <View>原生背板跟随系统明暗模式，可切换系统主题观察。</View>
+          {iosMajor >= 0 && (
+            <>
+              <View
+                role="button"
+                onClick={() =>
+                  setIosMaterial((current) =>
+                    current === 'gradient-blur'
+                      ? 'liquid-glass'
+                      : 'gradient-blur'
+                  )
+                }
+              >
+                {iosMaterial === 'gradient-blur'
+                  ? '切换液态玻璃背板'
+                  : '切换渐变模糊背板'}
+              </View>
+              {iosMajor < 26 && iosMaterial === 'liquid-glass' && (
+                <View>当前 iOS 版本使用渐变模糊回退。</View>
+              )}
+            </>
+          )}
+        </>
       ) : (
         <>
           <View role="button" onClick={() => setDark((current) => !current)}>
@@ -124,6 +168,7 @@ const Demo12 = () => {
         <Tabbar
           fixed
           materialTargetId={materialTargetId}
+          iosMaterial={iosMaterial}
           value={value}
           onSwitch={setValue}
           style={{ position: 'absolute' }}

@@ -41,6 +41,35 @@ test('iOS bottom-bar uses gradient blur for both themes and every iOS version', 
   )
 })
 
+test('opt-in liquid glass uses the biz regular preset only on iOS 26+', () => {
+  const light = getTabbarNativeMaterial('ios', false, 26, 'liquid-glass')
+  expect(light.liquidGlass).toEqual({
+    style: 'regular',
+    interactive: true,
+    darkMode: false,
+    tintColor: 'rgba(255, 255, 255, 0.45)',
+  })
+  expect(light.gradientBlur).toBeDefined()
+  expect(getTabbarNativeViewProps(light)).toMatchObject({
+    liquidGlass: light.liquidGlass,
+    gradientBlur: light.gradientBlur,
+    style: { borderRadius: 16 },
+  })
+
+  expect(
+    getTabbarNativeMaterial('ios', true, 26, 'liquid-glass').liquidGlass
+  ).toEqual({ style: 'regular', interactive: true, darkMode: true })
+  expect(
+    getTabbarNativeMaterial('ios', false, 25, 'liquid-glass')
+  ).not.toHaveProperty('liquidGlass')
+  expect(
+    getTabbarNativeMaterial('ios', false, 0, 'liquid-glass')
+  ).not.toHaveProperty('liquidGlass')
+  expect(
+    getTabbarNativeMaterial('android', false, 26, 'liquid-glass')
+  ).not.toHaveProperty('liquidGlass')
+})
+
 test('Android bottom-bar uses the source blur and overlay colors', () => {
   expect(getTabbarNativeMaterial('android', false)).toMatchObject({
     kind: 'android',

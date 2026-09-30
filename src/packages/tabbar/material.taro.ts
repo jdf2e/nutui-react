@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import type { TaroTabbarProps } from '@/types'
 
 export type TabbarNativePlatform = 'ios' | 'android' | 'harmony' | 'none'
 
@@ -11,6 +12,12 @@ export interface TabbarNativeMaterial {
     maxBlur: number
     overlayAlpha: number
     overlayColor: string
+  }
+  liquidGlass?: {
+    style: 'regular'
+    interactive: boolean
+    darkMode: boolean
+    tintColor?: string
   }
   backdropFilter?: string
   overlayColor?: string
@@ -44,7 +51,9 @@ function getHarmonyGradient(dark: boolean) {
 
 export function getTabbarNativeMaterial(
   platform: TabbarNativePlatform,
-  dark: boolean
+  dark: boolean,
+  iosMajor = 0,
+  iosMaterial: TaroTabbarProps['iosMaterial'] = 'gradient-blur'
 ): TabbarNativeMaterial {
   const solidColor = dark ? '#14171a' : '#ffffff'
   const base = { kind: platform, solidColor, borderRadius: 16 }
@@ -52,6 +61,16 @@ export function getTabbarNativeMaterial(
     case 'ios':
       return {
         ...base,
+        ...(iosMaterial === 'liquid-glass' && iosMajor >= 26
+          ? {
+              liquidGlass: {
+                style: 'regular' as const,
+                interactive: true,
+                darkMode: dark,
+                ...(dark ? {} : { tintColor: 'rgba(255, 255, 255, 0.45)' }),
+              },
+            }
+          : {}),
         gradientBlur: {
           minBlur: 0.5,
           maxBlur: 0.8,
@@ -83,6 +102,7 @@ export function getTabbarNativeMaterial(
 export interface TabbarNativeViewProps {
   style?: CSSProperties
   gradientBlur?: TabbarNativeMaterial['gradientBlur']
+  liquidGlass?: TabbarNativeMaterial['liquidGlass']
   targetId?: string
   overlayColor?: string
   blurScale?: number
@@ -98,6 +118,7 @@ export function getTabbarNativeViewProps(
   switch (material.kind) {
     case 'ios':
       return {
+        liquidGlass: material.liquidGlass,
         gradientBlur: material.gradientBlur,
         style: { backgroundColor: 'transparent', borderRadius },
       }

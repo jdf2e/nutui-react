@@ -108,7 +108,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 一般與暗色背板材質
 
-H5 與 Taro H5 在瀏覽器支援 `backdrop-filter` 時，僅對 52px 高的導航背板套用 3px 模糊及 80% 明暗疊色；不支援時使用 `--nutui-tabbar-background` 實色。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例可切換明暗、捲動彩色內容，並模擬無模糊時的實色效果。Taro iOS/Android/Harmony 的原生背板設定與 Android 取樣來源配對見 [Taro 文件](./doc.taro.md)；原生視覺效果仍需在目標環境驗收。
+H5 與 Taro H5 在瀏覽器支援 `backdrop-filter` 時，僅對 52px 高的導航背板套用 3px 模糊及 80% 明暗疊色；不支援時使用 `--nutui-tabbar-background` 實色。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例可切換明暗、捲動彩色內容，並模擬無模糊時的實色效果。Taro iOS 可選 iOS 26+ 液態玻璃；設定、舊版降級與 Android 取樣來源配對見 [Taro 文件](./doc.taro.md)。原生視覺效果仍需在目標環境驗收。
 
 :::demo
 
