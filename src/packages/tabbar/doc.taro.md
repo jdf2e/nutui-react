@@ -106,11 +106,11 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 普通与暗色背板材质
+### 毛玻璃材质
 
 Taro H5 在浏览器支持 `backdrop-filter` 时，仅对 52px 高的导航背板使用 3px 模糊和 80% 明暗叠加色；不支持时使用 `--nutui-tabbar-background` 的实色。原生端将材质参数透传给对应 Taro `View`：iOS 默认使用 `gradientBlur`（0.5～0.8、90% 叠色）；设置 `iosMaterial="liquid-glass"` 后，iOS 26+ 使用参考 biz 悬浮容器的 `regular` 液态玻璃（浅色白色 45% 染色、明暗跟随系统），并保留渐变模糊参数作运行时降级；iOS 26 以下直接使用渐变模糊。Android 使用 50px `backdropFilter` 和 `overlayColor`，Harmony 使用 `blurScale: 0.2`、系统明暗模式与渐变蒙层。原生明暗色跟随系统主题。外层和 SafeArea 保持透明，页面背景应延伸到安全区；原生视觉效果仍需在具备相应 View 能力的目标运行时验收。
 
-Android 模糊需要配对采样源：将页面内容放入带 `blurId="page-content"` 的原生 `View`，并向 Tabbar 传入相同值的 `materialTargetId="page-content"`。未传 `materialTargetId` 时背板使用明暗实色；H5 和其它端忽略该属性。下方示例在 Android 原生端提供此配对，H5 可切换明暗、滚动彩色内容并预览实色降级。
+Android 模糊需要配对采样源：将页面内容放入带 `blurId="page-content"` 的原生 `View`，并向 Tabbar 传入相同值的 `materialTargetId="page-content"`。未传 `materialTargetId` 时背板使用明暗实色；H5 和其它端忽略该属性。下方示例在竖向彩色背景图上展示 Agent 与 Tabbar，随页面主题切换明暗；Android 原生端配对背景采样源，iOS 保持默认渐变模糊。液态玻璃仍可通过 `iosMaterial="liquid-glass"` 单独启用。
 
 :::demo
 

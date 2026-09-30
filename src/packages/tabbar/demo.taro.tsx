@@ -33,7 +33,7 @@ const TabbarDemo = () => {
       c9e6df48: '再次点击当前项',
       agent: 'Agent 组合入口',
       island: '灵动岛与 Agent 联动',
-      material: '普通与暗色背板材质',
+      material: '毛玻璃材质',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -47,7 +47,7 @@ const TabbarDemo = () => {
       c9e6df48: '再次點擊目前項目',
       agent: 'Agent 組合入口',
       island: '靈動島與 Agent 聯動',
-      material: '一般與暗色背板材質',
+      material: '毛玻璃材質',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -61,7 +61,7 @@ const TabbarDemo = () => {
       c9e6df48: 'Click Active Item Again',
       agent: 'Agent Entry',
       island: 'Dynamic Island and Agent',
-      material: 'Light and Dark Backing Material',
+      material: 'Frosted Glass Material',
     },
   })
   return (

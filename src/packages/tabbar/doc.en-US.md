@@ -106,9 +106,9 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 
 :::
 
-### Light and Dark Backing Material
+### Frosted Glass Material
 
-On H5 and Taro H5, browsers with `backdrop-filter` blur only the 52px navigation board by 3px and apply an 80% light or dark tint. Unsupported browsers use the solid `--nutui-tabbar-background`. The outer layer and SafeArea stay transparent; extend the page background under the safe area. Toggle the theme, scroll the colored content, and preview the solid state in the demo. Taro iOS can opt into liquid glass on iOS 26+; see the [Taro documentation](./doc.taro.md) for its fallback and the other native material settings. Native appearance still requires verification on each target runtime.
+On H5 and Taro H5, browsers with `backdrop-filter` blur only the 52px navigation board by 3px and apply an 80% light or dark tint. Unsupported browsers use the solid `--nutui-tabbar-background`. The outer layer and SafeArea stay transparent; extend the page background under the safe area. The demo shows Agent and the translucent board over the supplied vertical color image and follows the page theme switch. Taro iOS can opt into liquid glass on iOS 26+; see the [Taro documentation](./doc.taro.md) for its fallback and the other native material settings. Native appearance still requires verification on each target runtime.
 
 :::demo
 
