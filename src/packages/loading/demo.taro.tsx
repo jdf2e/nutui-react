@@ -10,6 +10,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
 
 const LoadingDemo = () => {
   const [translated] = useTranslate({
@@ -65,6 +66,7 @@ const LoadingDemo = () => {
         <Demo7 />
         <View className="h2">{translated.title8}</View>
         <Demo8 />
+        <Demo9 />
       </ScrollView>
     </>
   )

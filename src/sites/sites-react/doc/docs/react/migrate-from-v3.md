@@ -132,3 +132,20 @@ npm install @nutui/nutui-react-taro
 - **左右范围文字与刻度调整（兼容升级）**：
   - 左右范围文字字号由 `12px` 调整为 `16px`（`$font-size-md`），行高 `24px`。
   - 刻度点尺寸由 `11px` 调整为 `8px`，刻度文字字号由 `12px` 调整为 `14px`、行高 `24px`，并以刻度点中线对齐分布。
+
+### ActionSheet (反馈类)
+
+- **`position` 属性现已生效（行为变更）**：
+  - 此前组件内部将弹出位置写死为 `bottom` 并忽略外部传入的 `position`，现已支持 `top` / `bottom`，默认仍为 `bottom`。若此前误传过 `position` 且依赖其被忽略，请移除该属性。
+- **底部列表项默认样式调整（行为变更）**：
+  - 列表项之间新增默认分隔线：`--nutui-actionsheet-item-border-bottom` 默认值由 `none` 调整为 `$color-border`（最后一项不显示分隔线）；列表项行高由 `24px` 调整为 `22px`、上下内边距由 `10px` 调整为 `13px`，列表容器新增左右 `16px` 内边距；取消按钮移除与列表之间的顶部分隔线及间距，行高调整为 `40px`、字号调整为 `$font-size-md`。若需保留旧的无分隔线外观，可将 `--nutui-actionsheet-item-border-bottom` 设为 `none`。
+- **`optionKey` 默认新增 `icon` 字段（行为变更）**：
+  - `optionKey` 默认值新增 `icon: 'icon'`。当底部列表的 `options` 中存在 `icon` 字段时，列表会自动切换为左对齐的图标列表布局。若你的数据中已有名为 `icon` 的字段但不希望将其渲染为图标，请通过 `optionKey` 指定其它图标字段名或移除该字段。
+- **头部结构由 Popup 渲染改为组件自绘（兼容升级）**：
+  - 标题、描述改由 ActionSheet 自身渲染，DOM 结构由 `.nut-popup-title*` 变为 `.nut-actionsheet-header*`。若此前通过 `.nut-popup-title` 相关类名覆盖过动作面板头部样式，请迁移至 `.nut-actionsheet-header`、`.nut-actionsheet-header-title`、`.nut-actionsheet-header-description`。
+- **移除 CSS 变量 `--nutui-actionsheet-border-color`（不兼容变更）**：
+  - 该变量此前用于标题底部与取消按钮顶部的分隔线颜色。头部改为组件自绘、取消按钮移除顶部分隔线后，该变量已不再被使用，故予以移除。若此前通过 `--nutui-actionsheet-border-color` 自定义分隔线颜色，请改用 `--nutui-actionsheet-item-border-bottom`。
+- **顶部弹出与网格布局（新增）**：
+  - 通过 `position="top"` 从顶部弹出，内容以网格形式展示，`options` 支持 `icon` 字段（字符串使用 `img` 渲染，也可传入自定义节点），可通过 `columns` 设置列数（仅支持 `4` / `5`，默认 `5`）；`cancelText` 在顶部模式下渲染为「点击收起」按钮。网格布局也可通过 `layout="grid"` 用于底部弹出。
+- **头部样式与关闭能力（新增）**：
+  - 新增 `titleAlign`（`left` / `center`，默认 `center`，仅 `center` 时 `description` 生效）、`headerLeft`、`headerRight` 自定义头部左右内容，以及 `closeable` / `closeIconPosition` 控制关闭按钮的显示与位置。以上均为纯新增能力，不影响原有用法。
