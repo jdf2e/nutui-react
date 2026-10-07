@@ -74,7 +74,7 @@
     border-radius: $radio-button-border-radius;
     color: $radio-label-color;
     box-sizing: border-box;
-    border: 1px solid $radio-button-background;
+    border: scale-px(1px) solid $radio-button-background;
 
     &-active {
       background: $color-primary-light-pressed;
@@ -84,14 +84,14 @@
 
     &-disabled {
       color: $color-text-disabled;
-      border: 1px solid $radio-button-background;
+      border: scale-px(1px) solid $radio-button-background;
     }
   }
 
   .nut-radio-button-active.nut-radio-button-disabled {
     background: $color-text-disabled;
     color: $white;
-    border: 1px solid $color-text-disabled;
+    border: scale-px(1px) solid $color-text-disabled;
   }
 }
 

@@ -33,7 +33,7 @@
   position: relative;
   display: inline-block;
   /* #ifdef harmony dynamic*/
-  width: 80px;
+  width: scale-px(80px);
   /* #endif */
   /* #ifndef harmony dynamic*/
   width: auto;

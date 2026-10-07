@@ -4,7 +4,7 @@
   --nut-switch-border-width: #{$switch-border-width};
   --nut-switch-label-margin-offset: calc(
     var(--nut-switch-inside-width) + var(--nut-switch-border-width) +
-      scale-px(3px)
+      #{scale-px(3px)}
   );
 
   cursor: pointer;

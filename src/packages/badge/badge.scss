@@ -55,7 +55,7 @@
     box-sizing: border-box;
     color: $badge-color;
     font-size: $badge-font-size;
-    line-height: 12px;
+    line-height: scale-px(12px);
     white-space: nowrap;
     font-weight: normal;
     vertical-align: middle;
