@@ -747,6 +747,19 @@ $tour-content-bottom-btn-font-size: var(--nutui-tour-content-bottom-btn-font-siz
 $tour-content-bottom-btn-border-radius: var(--nutui-tour-content-bottom-btn-border-radius,
     4px) !default;
 
+//backtop（✅）
+$backtop-border-color: var(
+  --nutui-backtop-border-color,
+  $color-border
+) !default;
+$backtop-background-color: var(
+  --nutui-backtop-background-color,
+  $color-background-overlay
+) !default;
+$backtop-size: var(--nutui-backtop-size, 40px) !default;
+$backtop-right: var(--nutui-backtop-right, 8px) !default;
+$backtop-bottom: var(--nutui-backtop-bottom, 60px) !default;
+
 // calendar（✅）
 $calendar-active-background-color: var(--nutui-calendar-active-background-color,
     $color-primary) !default;

@@ -1,21 +1,45 @@
-@import '../hoverbutton/hoverbutton.scss';
-@import '../hoverbuttonitem/hoverbuttonitem.scss';
-
 .nut-backtop {
   display: none;
+  position: fixed;
+  right: $backtop-right;
+  bottom: calc(#{$backtop-bottom} + constant(safe-area-inset-bottom));
+  bottom: calc(#{$backtop-bottom} + env(safe-area-inset-bottom));
+  z-index: 900;
+  width: $backtop-size;
+  height: $backtop-size;
+  border-radius: 50%;
+  border: 1px solid $backtop-border-color;
+  background-color: $backtop-background-color;
+  color: $color-title;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &-rn {
+    position: absolute;
+  }
 
   &-show {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: $hoverbutton-item-size;
-    height: $hoverbutton-item-size;
     transition: all 0.2s ease-in-out;
-    .nut-hoverbutton-item-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
   }
+
+  &:active,
+  &-active {
+    background-color: $color-background;
+  }
+
+  &-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+[dir='rtl'] .nut-backtop,
+.nut-backtop-rtl {
+  right: auto;
+  left: $backtop-right;
 }

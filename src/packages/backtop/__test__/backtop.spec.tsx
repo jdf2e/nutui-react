@@ -19,9 +19,9 @@ test('backtop props test', () => {
       />
     </div>
   )
-  const chooseTagEle = container.querySelectorAll('.backtop-button')[0]
+  const chooseTagEle = container.querySelector('.nut-backtop') as Element
   fireEvent.click(chooseTagEle)
-  expect(handleClick).toBeCalled
+  expect(handleClick).toHaveBeenCalled()
 })
 
 test('backtop custom test', () => {
@@ -45,8 +45,9 @@ test('backtop custom test', () => {
     'style',
     'z-index: 900; bottom: 110px; right: 10px;'
   )
-  fireEvent.click(container)
-  expect(handleClick).toBeCalled
+  const btn = container.querySelector('.nut-backtop') as Element
+  fireEvent.click(btn)
+  expect(handleClick).toHaveBeenCalled()
   expect(container).toMatchSnapshot()
 })
 
@@ -64,10 +65,7 @@ test('scroll', async () => {
     </div>
   )
   const track = container.querySelector('.backtop-wrapper')
-  const element18 = container.querySelectorAll(
-    '.nut-hoverbutton-item-container'
-  )[0]
-  const element19 = container.querySelectorAll('.nut-hoverbutton-container')[0]
+  const backtopEl = container.querySelector('.nut-backtop') as Element
   if (track) {
     track.scrollTo = vi.fn()
     track.scrollTop = 200
@@ -75,8 +73,19 @@ test('scroll', async () => {
       track.dispatchEvent(new Event('scroll'))
     })
     await waitFor(() => {
-      expect(element19).toHaveClass('nut-backtop-show')
+      expect(backtopEl).toHaveClass('nut-backtop-show')
     })
-    fireEvent.click(element18 as Element)
+    fireEvent.click(backtopEl)
   }
+})
+
+test('tabbar height', () => {
+  const { container } = render(
+    <BackTop tabbarHeight={48} className="backtop-button" />
+  )
+
+  expect(container.querySelector('.nut-backtop')).toHaveAttribute(
+    'style',
+    'z-index: 900; bottom: 108px;'
+  )
 })
