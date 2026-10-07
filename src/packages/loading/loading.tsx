@@ -19,14 +19,16 @@ const defaultProps = {
   type: 'circular',
   direction: 'horizontal',
   lottieProps: {},
+  textStyle: {},
 } as WebLoadingProps
 
 export const Loading = React.forwardRef<LoadingRef, Partial<WebLoadingProps>>(
   (props, ref) => {
-    const { className, style, children, direction, icon, ...rest } = {
-      ...defaultProps,
-      ...props,
-    }
+    const { className, style, children, direction, icon, textStyle, ...rest } =
+      {
+        ...defaultProps,
+        ...props,
+      }
 
     const classPrefix = 'nut-loading'
     const getLoadingIcon = () => {
@@ -47,7 +49,9 @@ export const Loading = React.forwardRef<LoadingRef, Partial<WebLoadingProps>>(
       >
         <div className={iconboxClassName()}>{icon || getLoadingIcon()}</div>
         {children ? (
-          <div className={`${classPrefix}-text`}>{children}</div>
+          <div className={`${classPrefix}-text`} style={textStyle}>
+            {children}
+          </div>
         ) : null}
       </div>
     )
