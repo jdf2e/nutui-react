@@ -21,8 +21,8 @@ importers:
         specifier: ^7.29.7
         version: 7.29.7
       '@nutui/icons-react':
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: 4.1.0-beta.2
+        version: 4.1.0-beta.2
       '@nutui/icons-react-taro':
         specifier: 4.1.0-beta.1
         version: 4.1.0-beta.1
@@ -429,7 +429,7 @@ importers:
         version: 2.3.2(prettier@3.9.6)
       '@sxzz/test-utils':
         specifier: ^0.5.18
-        version: 0.5.18(@volar/typescript@2.4.28)(esbuild@0.28.0)(rollup@4.63.1)(typescript@5.9.3)(vitest@2.1.9)
+        version: 0.5.18(@volar/typescript@2.4.28)(esbuild@0.27.7)(rollup@4.63.1)(typescript@5.9.3)(vitest@2.1.9)
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -2683,8 +2683,8 @@ packages:
   '@nutui/icons-react@1.0.5':
     resolution: {integrity: sha512-0TYl3Fk+sVz95DKqn/7isYAvaK5YGnaBwMMib4rqYLoqi9GGFwgU9rp2hYXu/X5IYdWgshj0xiuGMK75/vUYbQ==}
 
-  '@nutui/icons-react@3.0.2':
-    resolution: {integrity: sha512-GxN/MIHUpPoxA5X82doXUIYQxf4kDXFEo9/J9gTuC2ZoUzb2CwewTRhDU1oA9XXeP75jM4G+uIdo5JcPifQnaA==}
+  '@nutui/icons-react@4.1.0-beta.2':
+    resolution: {integrity: sha512-kG7ic15T+2me/9wT+dp7GdC2wmI5nB99S9eTDIxQylMqoRsaaLY7FH9lEAXrHWziNcPUfWSsos02gOBGltB1fg==}
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2':
     resolution: {integrity: sha512-2Scz5c9o14gA7Mw5JdiEkc/KEbNlNWMcJMuqVyFVipYeeYN/118N/fvHVpocmJviN0Gc4P+u3ZB3dIQSA2j4Fw==}
@@ -15933,7 +15933,7 @@ snapshots:
 
   '@nutui/icons-react@1.0.5': {}
 
-  '@nutui/icons-react@3.0.2': {}
+  '@nutui/icons-react@4.1.0-beta.2': {}
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2': {}
 
@@ -16775,14 +16775,14 @@ snapshots:
       '@prettier/plugin-oxc': 0.2.2
       prettier: 3.9.6
 
-  '@sxzz/test-utils@0.5.18(@volar/typescript@2.4.28)(esbuild@0.28.0)(rollup@4.63.1)(typescript@5.9.3)(vitest@2.1.9)':
+  '@sxzz/test-utils@0.5.18(@volar/typescript@2.4.28)(esbuild@0.27.7)(rollup@4.63.1)(typescript@5.9.3)(vitest@2.1.9)':
     dependencies:
       tinyglobby: 0.2.17
       unplugin-utils: 0.3.2
       vitest: 2.1.9(@types/node@22.20.1)(@vitest/ui@2.1.9)(happy-dom@14.12.3)(jsdom@24.1.3)(less@3.13.1)(lightningcss@1.32.0)(sass@1.103.1)(stylus@0.64.0)(terser@5.48.0)
     optionalDependencies:
       '@volar/typescript': 2.4.28
-      esbuild: 0.28.0
+      esbuild: 0.27.7
       rollup: 4.63.1
       typescript: 5.9.3
 
