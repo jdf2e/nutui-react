@@ -72,6 +72,18 @@ export const HoverButtonItem = (props: Partial<TaroHoverButtonItemProps>) => {
         </>
       )
     }
+    if (!icon && children) {
+      return (
+        <View
+          className={classNames({
+            [`${classPrefix}-text`]: true,
+          })}
+        >
+          {children}
+        </View>
+      )
+    }
+    return null
   }
 
   return (
