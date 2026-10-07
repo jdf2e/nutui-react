@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import React from 'react'
+import { act, fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Check } from '@nutui/icons-react'
 import { Checkbox } from '../checkbox'
@@ -114,30 +114,92 @@ test('should fireEvent correctly', () => {
 })
 
 test('Render checkboxs by configuring options', () => {
-  const CheckboxGroupOptions = () => {
-    const [defaultValue] = useState(['1'])
-    const [optionsDemo1] = useState([
-      {
-        label: '选项一',
-        value: '1',
-      },
-      {
-        label: '选项二',
-        value: '2',
-        disabled: true,
-      },
-      {
-        label: '选项三',
-        value: '3',
-      },
-    ])
-    return (
-      <>
-        <CheckboxGroup defaultValue={defaultValue} options={optionsDemo1} />
-      </>
-    )
-  }
-  render(<CheckboxGroupOptions />)
+  const handleChange = vi.fn()
+  const options = [
+    {
+      label: '选项一',
+      value: '1',
+    },
+    {
+      label: '选项二',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: '选项三',
+      value: '3',
+    },
+  ]
+  const { container, getByText } = render(
+    <CheckboxGroup
+      defaultValue={['1']}
+      options={options}
+      onChange={handleChange}
+    />
+  )
+
+  expect(getByText('选项一')).toBeInTheDocument()
+  expect(getByText('选项二')).toBeInTheDocument()
+  expect(getByText('选项三')).toBeInTheDocument()
+
+  const checkedIcons = container.querySelectorAll('.nut-checkbox-icon-checked')
+  expect(checkedIcons.length).toBe(1)
+
+  const disabledLabels = container.querySelectorAll(
+    '.nut-checkbox-label-disabled'
+  )
+  expect(disabledLabels.length).toBe(1)
+  expect(disabledLabels[0]).toHaveTextContent('选项二')
+
+  // Click disabled option 2
+  fireEvent.click(getByText('选项二'))
+  expect(handleChange).not.toBeCalled()
+
+  // Click enabled option 3
+  fireEvent.click(getByText('选项三'))
+  expect(handleChange).toBeCalledWith(['1', '3'])
+})
+
+test('individual disabled takes precedence when group disabled is false', () => {
+  const handleChange = vi.fn()
+  const { getByTestId } = render(
+    <CheckboxGroup disabled={false} onChange={handleChange}>
+      <Checkbox data-testid="c1" value="1">
+        Option 1
+      </Checkbox>
+      <Checkbox data-testid="c2" value="2" disabled>
+        Option 2
+      </Checkbox>
+    </CheckboxGroup>
+  )
+
+  fireEvent.click(getByTestId('c2'))
+  expect(handleChange).not.toBeCalled()
+
+  fireEvent.click(getByTestId('c1'))
+  expect(handleChange).toBeCalledWith(['1'])
+})
+
+test('toggle and reverse imperative methods work with options', () => {
+  const ref = React.createRef<any>()
+  const options = [
+    { label: 'A', value: 'a' },
+    { label: 'B', value: 'b' },
+  ]
+  render(<CheckboxGroup ref={ref} defaultValue={['a']} options={options} />)
+
+  // Toggle all off
+  act(() => {
+    ref.current?.toggle(false)
+  })
+  // Toggle all on
+  act(() => {
+    ref.current?.toggle(true)
+  })
+  // Reverse
+  act(() => {
+    ref.current?.reverse()
+  })
 })
 
 test('Render checkboxs by configure indeterminate', () => {

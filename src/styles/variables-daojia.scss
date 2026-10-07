@@ -492,6 +492,7 @@ $input-color: var(--nutui-input-color, $color-title) !default;
 $input-background-color: var(--nutui-input-background-color,
     $color-background-overlay) !default;
 $input-padding: var(--nutui-input-padding, 12px) !default;
+$input-container-height: var(--nutui-input-container-height, 38px) !default;
 
 // textarea（✅）
 $textarea-padding: var(--nutui-textarea-padding, 12px) !default;
@@ -1076,8 +1077,8 @@ $checkbox-icon-font-size: var(--nutui-checkbox-icon-font-size,
     $font-size-icon) !default;
 $checkbox-button-font-size: var(--nutui-checkbox-button-font-size,
     $font-size-s) !default;
-$checkbox-button-color: $color-text;
-$checkbox-button-background: $color-background;
+$checkbox-button-color: var(--nutui-checkbox-button-color, $color-text) !default;
+$checkbox-button-background: var(--nutui-checkbox-button-background, $color-background) !default;
 $checkbox-button-padding: var(--nutui-checkbox-button-padding,
     5px 18px) !default;
 $checkbox-button-border-radius: var(--nutui-checkbox-button-border-radius,
@@ -1093,6 +1094,9 @@ $checkbox-list-item-border: var(--nutui-checkbox-list-item-border,
 $checkbox-list-padding: var(--nutui-checkbox-list-padding, 0 0 0 12px) !default;
 $checkbox-list-item-padding: var(--nutui-checkbox-list-item-padding,
     12px 12px 12px 0) !default;
+$checkboxgroup-checkbox-margin: var(--nutui-checkboxgroup-checkbox-margin, 20px) !default;
+$checkboxgroup-checkbox-margin-bottom: var(--nutui-checkboxgroup-checkbox-margin-bottom, 5px) !default;
+$checkboxgroup-checkbox-label-margin: var(--nutui-checkboxgroup-checkbox-label-margin, 0 5px) !default;
 
 //radio（✅）
 $radio-icon-font-size: var(--nutui-radio-icon-font-size,
@@ -1105,7 +1109,7 @@ $radio-label-font-size: var(--nutui-radio-label-font-size,
 $radio-label-margin-left: var(--nutui-radio-label-margin-left, 4px) !default;
 $radio-button-font-size: var(--nutui-radio-button-font-size,
     $font-size-s) !default;
-$radio-button-color: $color-text;
+$radio-button-color: var(--nutui-radio-button-color, $color-text) !default;
 $radio-button-padding: var(--nutui-radio-button-padding, 5px 18px) !default;
 $radio-button-border-radius: var(--nutui-radio-button-border-radius,
     15px) !default;
