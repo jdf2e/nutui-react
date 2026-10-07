@@ -77,6 +77,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
         await onChange(!value)
       } catch (e) {
         setLoading(false)
+        return
       }
     }
     setValue(!value)

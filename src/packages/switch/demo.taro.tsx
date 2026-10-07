@@ -12,6 +12,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
@@ -20,6 +21,7 @@ const SwitchDemo = () => {
       disabled: '禁用状态',
       asyncControl: '受控',
       loadingControl: 'loading 态受控',
+      asyncError: '异步操作失败（异常中断）',
       customColor: '自定义颜色',
       supportText: '支持文字',
       supportIcon: '支持Icon',
@@ -30,7 +32,8 @@ const SwitchDemo = () => {
       basic: '非受控',
       disabled: '禁用狀態',
       asyncControl: '受控',
-      loadingControl: 'loading 態受控',
+      loadingControl: 'loading 态受控',
+      asyncError: '異步操作失敗（異常中斷）',
       customColor: '自定義顏色',
       supportText: '支持文字',
       supportIcon: '支持Icon',
@@ -42,6 +45,7 @@ const SwitchDemo = () => {
       disabled: 'Disabled',
       asyncControl: 'controlled',
       loadingControl: 'Controlled with loading',
+      asyncError: 'Async Error Interruption',
       customColor: 'Custom Color',
       supportText: 'Support Text',
       supportIcon: 'Support Icon',
@@ -59,6 +63,8 @@ const SwitchDemo = () => {
         <Demo2 />
         <View className="h2">{translated.loadingControl}</View>
         <Demo8 />
+        <View className="h2">{translated.asyncError}</View>
+        <Demo10 />
         <View className="h2">{translated.disabled}</View>
         <Demo3 />
         <View className="h2">{translated.supportText}</View>
