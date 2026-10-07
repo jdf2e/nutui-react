@@ -113,7 +113,7 @@
     "verify-scale:mirror": "node .cursor/skills/nutui-build-local-verify/scripts/verify-scale-generation.mjs --mirror"
   },
   "dependencies": {
-    "@babel/runtime": "^7.29.7",
+    "@babel/runtime": "^8.0.7",
     "@nutui/icons-react": "4.1.0-beta.2",
     "@nutui/icons-react-taro": "4.1.0-beta.1",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
