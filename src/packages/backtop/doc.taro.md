@@ -85,7 +85,8 @@ import { BackTop } from '@nutui/nutui-react-taro'
 | \--nutui-backtop-border-color | 边框颜色 | `$color-border` |
 | \--nutui-backtop-background-color | 背景颜色 | `$color-background-overlay` |
 | \--nutui-backtop-size | 按钮尺寸 | `40px` |
-| \--nutui-backtop-right | 距离右侧距离 | `10px` |
-| \--nutui-backtop-bottom | 距离底部距离 | `20px` |
+| \--nutui-backtop-right | 距离右侧距离 | `8px` |
+| \--nutui-backtop-bottom | 距离底部距离 | `60px` |
+| \--nutui-backtop-icon-size | 图标尺寸 | `20px` |
 
 <Contribution name="BackTop" />

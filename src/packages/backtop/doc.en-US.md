@@ -94,7 +94,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-backtop-border-color | border color | `$color-border` |
 | \--nutui-backtop-background-color | background color | `$color-background-overlay` |
 | \--nutui-backtop-size | button size | `40px` |
-| \--nutui-backtop-right | distance to right edge | `10px` |
-| \--nutui-backtop-bottom | distance to bottom edge | `20px` |
+| \--nutui-backtop-right | distance to right edge | `8px` |
+| \--nutui-backtop-bottom | distance to bottom edge | `60px` |
+| \--nutui-backtop-icon-size | icon size | `20px` |
 
 <Contribution name="BackTop" />

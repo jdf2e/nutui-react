@@ -1173,9 +1173,10 @@ $backtop-background-color: var(
   --nutui-backtop-background-color,
   $color-background-overlay
 ) !default;
-$backtop-size: var(--nutui-backtop-size, 40px) !default;
-$backtop-right: var(--nutui-backtop-right, 8px) !default;
-$backtop-bottom: var(--nutui-backtop-bottom, 60px) !default;
+$backtop-size: var(--nutui-backtop-size, scale-px(40px)) !default;
+$backtop-right: var(--nutui-backtop-right, scale-px(8px)) !default;
+$backtop-bottom: var(--nutui-backtop-bottom, scale-px(60px)) !default;
+$backtop-icon-size: var(--nutui-backtop-icon-size, scale-icon-px(20px)) !default;
 
 // calendar（✅）
 $calendar-active-background-color: var(

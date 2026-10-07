@@ -1,5 +1,7 @@
 // import * as renderer from 'react-test-renderer'
 import * as React from 'react'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import '@testing-library/jest-dom'
 import { Top } from '@nutui/icons-react'
 import { act, fireEvent, render, waitFor } from '@testing-library/react'
@@ -88,4 +90,47 @@ test('tabbar height', () => {
     'style',
     'z-index: 900; bottom: 108px;'
   )
+})
+
+test('backtop theme variables responsive scale test', () => {
+  const baseVariables = readFileSync(
+    resolve(process.cwd(), 'src/styles/variables.scss'),
+    'utf-8'
+  )
+  expect(baseVariables).toContain(
+    '$backtop-size: var(--nutui-backtop-size, scale-px(40px)) !default;'
+  )
+  expect(baseVariables).toContain(
+    '$backtop-right: var(--nutui-backtop-right, scale-px(8px)) !default;'
+  )
+  expect(baseVariables).toContain(
+    '$backtop-bottom: var(--nutui-backtop-bottom, scale-px(60px)) !default;'
+  )
+  expect(baseVariables).toContain(
+    '$backtop-icon-size: var(--nutui-backtop-icon-size, scale-icon-px(20px)) !default;'
+  )
+
+  const themeFiles = [
+    'variables-daojia.scss',
+    'variables-jmapp.scss',
+    'variables-jrkf.scss',
+  ]
+  themeFiles.forEach((file) => {
+    const content = readFileSync(
+      resolve(process.cwd(), `src/styles/${file}`),
+      'utf-8'
+    )
+    expect(content).toContain(
+      '$backtop-icon-size: var(--nutui-backtop-icon-size, 20px) !default;'
+    )
+  })
+
+  const scssContent = readFileSync(
+    resolve(process.cwd(), 'src/packages/backtop/backtop.scss'),
+    'utf-8'
+  )
+  expect(scssContent).toContain('font-size: $backtop-icon-size;')
+  expect(scssContent).toContain('width: $backtop-icon-size;')
+  expect(scssContent).toContain('height: $backtop-icon-size;')
+  expect(scssContent).not.toMatch(/&-icon\s*\{\s*font-size:\s*20px;/)
 })

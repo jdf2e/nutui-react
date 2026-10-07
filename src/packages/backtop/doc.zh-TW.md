@@ -94,7 +94,8 @@ import { BackTop } from '@nutui/nutui-react'
 | \--nutui-backtop-border-color | 邊框顏色 | `$color-border` |
 | \--nutui-backtop-background-color | 背景顏色 | `$color-background-overlay` |
 | \--nutui-backtop-size | 按鈕尺寸 | `40px` |
-| \--nutui-backtop-right | 距離右側距離 | `10px` |
-| \--nutui-backtop-bottom | 距離底部距離 | `20px` |
+| \--nutui-backtop-right | 距離右側距離 | `8px` |
+| \--nutui-backtop-bottom | 距離底部距離 | `60px` |
+| \--nutui-backtop-icon-size | 圖標尺寸 | `20px` |
 
 <Contribution name="BackTop" />
