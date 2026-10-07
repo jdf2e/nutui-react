@@ -67,7 +67,7 @@
     display: inline-flex;
     /* #endif */
     align-items: center;
-    min-height: 30px;
+    min-height: scale-px(30px);
     padding: $radio-button-padding;
     font-size: $radio-button-font-size;
     background: $radio-button-background;
