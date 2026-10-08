@@ -6,6 +6,8 @@ import { TaroContentProps } from '@/types'
 export const defaultContentProps = {
   visible: false,
   title: '',
+  subtitle: '',
+  titleIcon: '',
   header: '',
   footer: '',
   close: '',
@@ -20,6 +22,8 @@ export const Content: FunctionComponent<
   const {
     visible,
     title,
+    subtitle,
+    titleIcon,
     header,
     footer,
     close,
@@ -33,7 +37,22 @@ export const Content: FunctionComponent<
   const classPrefix = 'nut-dialog'
 
   const renderHeader = () => {
-    return title && <View className={`${classPrefix}-header`}>{title}</View>
+    return (
+      title && (
+        <View className={`${classPrefix}-header`}>
+          {titleIcon && (
+            <View className={`${classPrefix}-header-icon`}>{titleIcon}</View>
+          )}
+          {title}
+        </View>
+      )
+    )
+  }
+
+  const renderSubtitle = () => {
+    return (
+      subtitle && <View className={`${classPrefix}-subtitle`}>{subtitle}</View>
+    )
   }
 
   const renderFooter = () => {
@@ -67,6 +86,7 @@ export const Content: FunctionComponent<
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {renderHeader()}
+        {renderSubtitle()}
         <View className={`${classPrefix}-content`}>{children}</View>
         {renderFooter()}
       </View>

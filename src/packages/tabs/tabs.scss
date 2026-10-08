@@ -34,14 +34,14 @@
   &-left {
     justify-content: flex-start;
     .nut-tabs-titles-item {
-      padding: 0 8px;
+      padding: 0 scale-px(8px);
     }
   }
 
   &-right {
     justify-content: flex-end;
     .nut-tabs-titles-item {
-      padding: 0 8px;
+      padding: 0 scale-px(8px);
     }
 
     .nut-tabs-list {
@@ -106,8 +106,8 @@
     }
 
     &-smile-icon {
-      width: 40px;
-      height: 20px;
+      width: scale-px(40px);
+      height: scale-px(20px);
     }
 
     &-active {
@@ -136,8 +136,8 @@
         /* #ifndef dynamic*/
         overflow: unset;
         /* #endif */
-        width: 40px;
-        height: 20px;
+        width: scale-px(40px);
+        height: scale-px(20px);
 
         .nut-icon {
           color: $tabs-titles-item-active-color;
@@ -249,14 +249,14 @@
 
   &-button {
     .nut-tabs-titles-item {
-      padding: 0 4px;
+      padding: 0 scale-px(4px);
       .nut-tabs-titles-item-text {
         flex: 1;
-        height: 28px;
+        height: scale-px(28px);
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0 8px;
+        padding: 0 scale-px(8px);
         background: $tabs-tab-button-background-color;
         border-radius: $tabs-tab-button-border-radius;
         font-size: $tabs-tab-button-font-size;
@@ -276,7 +276,7 @@
   }
 
   &-divider {
-    border-bottom: 1px solid $color-border;
+    border-bottom: scale-px(1px) solid $color-border;
 
     .nut-tabs-titles-item {
       position: relative;
@@ -287,7 +287,7 @@
         right: 0;
         top: 50%;
         height: 50%;
-        width: 1px;
+        width: scale-px(1px);
         background: $color-border;
         transform: translateY(-50%);
       }
@@ -340,12 +340,12 @@
   .nut-tabs-ellipsis {
     white-space: break-spaces;
     /* #ifdef harmony dynamic*/
-    padding-left: 12px;
+    padding-left: scale-px(12px);
     /* #endif */
     /* #ifndef harmony dynamic*/
-    padding-left: 6px;
+    padding-left: scale-px(6px);
     /* #endif */
-    width: 90px;
+    width: scale-px(90px);
     line-height: $font-size-base;
   }
 
@@ -381,14 +381,14 @@
     &-active {
       background-color: $tabs-titles-item-active-background-color;
       .nut-tabs-titles-item-line {
-        left: 8px;
+        left: scale-px(8px);
         width: $tabs-vertical-tab-line-width;
         height: $tabs-vertical-tab-line-height;
         background: $tabs-vertical-tab-line-color;
       }
 
       .nut-tabs-titles-item-smile {
-        right: -12px;
+        right: scale-px(-12px);
         bottom: -2%;
         left: auto;
         transform: rotate(320deg);
@@ -427,7 +427,7 @@
       .nut-tabs-titles-item-smile {
         left: 50%;
         right: auto;
-        bottom: -3px;
+        bottom: scale-px(-3px);
         transform: translate(-50%, 0) rotate(0deg);
       }
     }
@@ -546,7 +546,7 @@
     &-line {
       .nut-tabs-titles-item {
         padding-left: 0;
-        padding-right: 14px;
+        padding-right: scale-px(14px);
       }
     }
   }
@@ -555,11 +555,11 @@
     &-active {
       .nut-tabs-titles-item-line {
         left: auto;
-        right: 10px;
+        right: scale-px(10px);
       }
 
       .nut-tabs-titles-item-smile {
-        left: -12px;
+        left: scale-px(-12px);
         right: auto;
         transform: rotate(-320deg);
       }

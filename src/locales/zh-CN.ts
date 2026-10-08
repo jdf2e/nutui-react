@@ -170,5 +170,8 @@ const zhCN: BaseLang = {
   quickenter: {
     title: '快捷入口',
   },
+  dialog: {
+    autoCloseText: '{second}秒后自动关闭',
+  },
 }
 export default zhCN

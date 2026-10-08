@@ -13,14 +13,15 @@ export type DialogFooterDirection = 'horizontal' | 'vertical'
 export interface BaseContentProps extends BasicComponent {
   visible: boolean
   title: ReactNode
+  subtitle: ReactNode
+  titleIcon: ReactNode
   header: ReactNode
   footer: ReactNode
   close: ReactNode
   footerDirection: DialogFooterDirection
 }
 export interface DialogWrapProps
-  extends WebOverlayProps,
-    Omit<BaseContentProps, 'onClick'> {
+  extends WebOverlayProps, Omit<BaseContentProps, 'onClick'> {
   visible: boolean
   overlay: boolean
   overlayStyle: CSSProperties
@@ -36,6 +37,9 @@ export interface BaseDialog extends DialogWrapProps {
   cancelText: ReactNode
   confirmBadge: ReactNode
   cancelBadge: ReactNode
+  subtitle: ReactNode
+  titleIcon: ReactNode
+  autoClose: number
   hideConfirmButton: boolean
   hideCancelButton: boolean
   disableConfirmButton: boolean
@@ -51,8 +55,9 @@ export type DialogReturnProps = {
   close: () => void
 }
 
-export interface DialogComponent
-  extends ForwardRefExoticComponent<PropsWithChildren<Partial<BaseDialog>>> {
+export interface DialogComponent extends ForwardRefExoticComponent<
+  PropsWithChildren<Partial<BaseDialog>>
+> {
   confirm: (props: Partial<BaseDialog>) => DialogReturnProps
   alert: (props: Partial<BaseDialog>) => DialogReturnProps
   config: (config: DialogConfigType) => void

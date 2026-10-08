@@ -4,7 +4,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
 import HoverButtonItem from '@/packages/hoverbuttonitem/index'
 import SafeArea from '@/packages/safearea/index'
-import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
+import { UI_BOTTOM_DISTANCE } from '@/utils/constants'
 import { WebHoverButtonProps } from '@/types'
 
 const defaultProps = {

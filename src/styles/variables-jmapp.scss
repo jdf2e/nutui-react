@@ -302,10 +302,6 @@ $button-default-font-size: var(
   --nutui-button-default-font-size,
   $font-size-base
 ) !default;
-$button-default-font-weight: var(
-  --nutui-button-default-font-weight,
-  $font-weight
-) !default;
 
 $button-xlarge-height: var(--nutui-button-xlarge-height, 48px) !default;
 $button-xlarge-padding: var(--nutui-button-xlarge-padding, 0px 32px) !default;
@@ -334,7 +330,6 @@ $button-44-border-radius: var(
 ) !default;
 
 
-$button-large-width: var(--nutui-button-large-width, auto) !default;
 $button-large-height: var(--nutui-button-large-height, 44px) !default;
 $button-large-padding: var(
   --nutui-button-large-padding,
@@ -343,10 +338,6 @@ $button-large-padding: var(
 $button-large-font-size: var(
   --nutui-button-large-font-size,
   $font-size-l
-) !default;
-$button-large-font-weight: var(
-  --nutui-button-large-font-weight,
-  $font-weight-bold
 ) !default;
 $button-large-border-radius: var(
   --nutui-button-large-border-radius,
@@ -753,6 +744,7 @@ $input-border-radius: var(--nutui-input-border-radius, $radius-xs) !default;
 $input-color: var(--nutui-input-color, $color-title) !default;
 $input-background-color: var(--nutui-input-background-color, $white) !default;
 $input-padding: var(--nutui-input-padding, 8px 12px) !default;
+$input-container-height: var(--nutui-input-container-height, 38px) !default;
 
 // textarea（✅）
 
@@ -1218,6 +1210,14 @@ $backtop-border-color: var(
   --nutui-backtop-border-color,
   $color-border
 ) !default;
+$backtop-background-color: var(
+  --nutui-backtop-background-color,
+  $color-background-overlay
+) !default;
+$backtop-size: var(--nutui-backtop-size, 40px) !default;
+$backtop-right: var(--nutui-backtop-right, 8px) !default;
+$backtop-bottom: var(--nutui-backtop-bottom, 60px) !default;
+$backtop-icon-size: var(--nutui-backtop-icon-size, 20px) !default;
 
 // calendar（✅）
 $calendar-active-background-color: var(
@@ -1799,8 +1799,14 @@ $checkbox-button-font-size: var(
   --nutui-checkbox-button-font-size,
   $font-size-base
 ) !default;
-$checkbox-button-color: $color-text;
-$checkbox-button-background: $color-background;
+$checkbox-button-color: var(
+  --nutui-checkbox-button-color,
+  $color-text
+) !default;
+$checkbox-button-background: var(
+  --nutui-checkbox-button-background,
+  $color-background
+) !default;
 $checkbox-button-padding: var(
   --nutui-checkbox-button-padding,
   5px 18px
@@ -1830,6 +1836,18 @@ $checkbox-list-item-padding: var(
   --nutui-checkbox-list-item-padding,
   12px 12px 12px 0
 ) !default;
+$checkboxgroup-checkbox-margin: var(
+  --nutui-checkboxgroup-checkbox-margin,
+  20px
+) !default;
+$checkboxgroup-checkbox-margin-bottom: var(
+  --nutui-checkboxgroup-checkbox-margin-bottom,
+  5px
+) !default;
+$checkboxgroup-checkbox-label-margin: var(
+  --nutui-checkboxgroup-checkbox-label-margin,
+  0 5px
+) !default;
 
 //radio（✅）
 $radio-icon-font-size: var(--nutui-radio-icon-font-size, $font-size-l) !default;
@@ -1847,7 +1865,7 @@ $radio-button-font-size: var(
   --nutui-radio-button-font-size,
   $font-size-base
 ) !default;
-$radio-button-color: $color-text;
+$radio-button-color: var(--nutui-radio-button-color, $color-text) !default;
 $radio-button-padding: var(--nutui-radio-button-padding, 5px 18px) !default;
 $radio-button-border-radius: var(
   --nutui-radio-button-border-radius,

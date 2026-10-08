@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     transition: all 0.4s;
-    margin-left: 12px;
+    margin-left: scale-px(12px);
     color: $color-text-help;
     font-family: PingFang SC;
     font-size: $progress-text-font-size;
