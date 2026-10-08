@@ -6,7 +6,7 @@ import { useRtl } from '@/packages/configprovider/index.taro'
 import HoverButtonItem from '@/packages/hoverbuttonitem/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
 import { pxTransform } from '@/utils/taro/px-transform'
-import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
+import { UI_BOTTOM_DISTANCE } from '@/utils/constants'
 import { TaroHoverButtonProps } from '@/types'
 
 const defaultProps = {

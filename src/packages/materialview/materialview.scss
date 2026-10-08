@@ -1,0 +1,59 @@
+.nut-materialview {
+  position: relative;
+  overflow: hidden;
+}
+
+// 基于 375px 基准，PX 大写防止 postcss px→vw 转换
+.FG-Light-PX {
+  border: none !important;
+  backdrop-filter: blur(3px) !important;
+  -webkit-backdrop-filter: blur(3px) !important;
+  background:
+    linear-gradient(135deg, rgb(248, 248, 248) 0%, rgba(248, 248, 248, 0) 100%),
+    rgba(255, 255, 255, 0.65) !important;
+  box-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.06),
+    inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.4),
+    inset 0.5px 0.5px 0.5px #fff,
+    inset 1px 1px 5px rgba(45, 45, 45, 0.04) !important;
+}
+
+.FG-Clear-PX {
+  border: none !important;
+  backdrop-filter: blur(3px) !important;
+  -webkit-backdrop-filter: blur(3px) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  box-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.06),
+    inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.4),
+    inset 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.6),
+    inset 1px 1px 5px rgba(45, 45, 45, 0.08) !important;
+}
+
+.FG-Dark-PX {
+  border: none !important;
+  backdrop-filter: blur(3px) !important;
+  -webkit-backdrop-filter: blur(3px) !important;
+  background: rgba(20, 23, 26, 0.5) !important;
+  box-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.06),
+    inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.1),
+    inset 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.4),
+    inset 1px 1px 5px rgba(45, 45, 45, 0.08) !important;
+}
+
+.FG-Skin-D-PX {
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: blur(3px) !important;
+  -webkit-backdrop-filter: blur(3px) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.FG-Skin-L-PX {
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: blur(3px) !important;
+  -webkit-backdrop-filter: blur(3px) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+}

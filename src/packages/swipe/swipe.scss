@@ -27,14 +27,14 @@
 
   &-left {
     left: 0;
-    transform: translate(-100%, 0px);
+    transform: translate(-100%, 0);
   }
 
   &-right {
     display: flex;
     //left: 100%;
     height: 100%;
-    right: 0px;
-    transform: translate(100%, 0px);
+    right: 0;
+    transform: translate(100%, 0);
   }
 }

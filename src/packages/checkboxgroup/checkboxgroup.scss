@@ -1,7 +1,7 @@
 .nut-checkboxgroup {
   .nut-checkbox {
     &-button {
-      background-color: $color-background;
+      background-color: $checkbox-button-background;
     }
   }
 
@@ -10,7 +10,7 @@
     flex-direction: column;
 
     .nut-checkbox {
-      margin-bottom: 5px;
+      margin-bottom: $checkboxgroup-checkbox-margin-bottom;
 
       &.nut-checkbox-reverse {
         width: 100%;
@@ -18,7 +18,7 @@
       }
 
       &-button-active {
-        border: $radio-button-active-border;
+        border: $checkbox-button-active-border;
         background-color: $color-primary-light-pressed;
       }
     }
@@ -37,10 +37,10 @@
       display: inline-flex;
       /* #endif */
       flex: 1;
-      margin-right: 20px;
+      margin-right: $checkboxgroup-checkbox-margin;
 
       &-button-active {
-        border: $radio-button-active-border;
+        border: $checkbox-button-active-border;
         background-color: $color-primary-light-pressed;
       }
     }
@@ -55,7 +55,7 @@
     box-sizing: border-box;
 
     .nut-checkbox {
-      margin-bottom: 5px;
+      margin-bottom: $checkboxgroup-checkbox-margin-bottom;
 
       &.nut-checkbox-reverse {
         width: auto;
@@ -75,14 +75,14 @@
 .nut-rtl .nut-checkboxgroup {
   .nut-checkbox {
     &-label {
-      margin-right: 5px;
+      margin-right: scale-px(5px);
     }
   }
 
   &-vertical {
     .nut-checkbox {
       &-label {
-        margin-right: 5px;
+        margin-right: scale-px(5px);
       }
     }
   }
@@ -90,7 +90,7 @@
   &-horizontal {
     .nut-checkbox {
       margin-right: 0;
-      margin-left: 20px;
+      margin-left: $checkboxgroup-checkbox-margin;
     }
   }
 }
