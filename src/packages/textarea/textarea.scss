@@ -13,7 +13,7 @@
   }
 
   &-error {
-    border: 0.5px solid $color-danger;
+    border: scale-px(0.5px) solid $color-danger;
     background-color: $color-danger-light;
   }
 
@@ -34,7 +34,7 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    height: 40px;
+    height: scale-px(40px);
     min-width: 0;
     margin: 0;
     padding: 0;
@@ -87,7 +87,7 @@
   &.nut-textarea-rtl {
     &-limit {
       right: auto;
-      left: 15px;
+      left: scale-px(15px);
     }
   }
 }

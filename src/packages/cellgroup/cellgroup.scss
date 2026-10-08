@@ -9,8 +9,8 @@
     color: $cell-group-title-color;
     font-size: $cell-group-title-font-size;
     line-height: $cell-group-title-line-height;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-top: scale-px(30px);
+    margin-bottom: scale-px(10px);
   }
 
   &-description {
@@ -21,8 +21,8 @@
     color: $cell-group-description-color;
     font-size: $cell-group-description-font-size;
     line-height: $cell-group-description-line-height;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: scale-px(10px);
+    margin-bottom: scale-px(10px);
   }
 
   &-wrap {

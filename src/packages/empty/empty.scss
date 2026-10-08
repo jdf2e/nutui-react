@@ -36,8 +36,8 @@
   }
 
   &-action {
-    margin-right: 6px;
-    margin-left: 6px;
+    margin-right: scale-px(6px);
+    margin-left: scale-px(6px);
   }
 
   &-partial-body {

@@ -47,15 +47,15 @@ export const Radio: FunctionComponent<
     onChange,
   })
   const context = useContext(RadioContext)
+  const finalDisabled = Boolean(disabled || context?.disabled)
+
   if (context) {
     checkedStatement = context.value === value
     if (context.labelPosition !== undefined) {
       labelPosition = context.labelPosition
     }
-    if (context.disabled !== undefined) {
-      disabled = context.disabled
-    }
     setCheckedStatement = (value: boolean) => {
+      if (finalDisabled) return
       if (value) {
         context.check(props.value === undefined ? '' : props.value)
       } else {
@@ -65,14 +65,14 @@ export const Radio: FunctionComponent<
   }
   const color = () => {
     return {
-      [`${classPrefix}-icon-disabled`]: disabled,
+      [`${classPrefix}-icon-disabled`]: finalDisabled,
       [`${classPrefix}-icon`]: !checkedStatement,
       [`${classPrefix}-icon-checked`]: checkedStatement,
     }
   }
   const renderIcon = () => {
     const { icon, activeIcon } = props
-    if (disabled && !checkedStatement) {
+    if (finalDisabled && !checkedStatement) {
       return <CheckDisabled className={classNames(color())} />
     }
     if (checkedStatement) {
@@ -96,7 +96,7 @@ export const Radio: FunctionComponent<
   }
   const renderLabel = () => {
     const labelcls = classNames(`${classPrefix}-label`, {
-      [`${classPrefix}-label-disabled`]: disabled,
+      [`${classPrefix}-label-disabled`]: finalDisabled,
     })
     return (
       <>
@@ -108,7 +108,7 @@ export const Radio: FunctionComponent<
   const renderButton = () => {
     const buttoncls = classNames(`${classPrefix}-button`, {
       [`${classPrefix}-button-active`]: checkedStatement,
-      [`${classPrefix}-button-disabled`]: disabled,
+      [`${classPrefix}-button-disabled`]: finalDisabled,
     })
     return <div className={buttoncls}>{children}</div>
   }
@@ -119,7 +119,7 @@ export const Radio: FunctionComponent<
     return renderByShape(context && context.shape ? context.shape : shape)
   }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    if (disabled || checkedStatement) return
+    if (finalDisabled || checkedStatement) return
     setCheckedStatement(!checkedStatement)
   }
   const cls = classNames(
