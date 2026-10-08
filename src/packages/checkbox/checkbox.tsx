@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
@@ -56,28 +51,18 @@ export const Checkbox: FunctionComponent<
     finalValue: defaultChecked,
     onChange,
   })
-  // eslint-disable-next-line prefer-const
-  let [innerDisabled, setDisabled] = useState(disabled)
-  const [innerIndeterminate, setIndeterminate] = useState(indeterminate)
-
-  useEffect(() => {
-    setDisabled(disabled)
-  }, [disabled])
-
-  useEffect(() => {
-    setIndeterminate(indeterminate)
-  }, [indeterminate])
+  const innerDisabled = Boolean(disabled || ctx?.disabled)
+  const innerIndeterminate = indeterminate
 
   if (ctx) {
     if (ctx.labelPosition !== undefined) {
       labelPosition = ctx.labelPosition
     }
-    innerDisabled = ctx.disabled !== undefined ? ctx.disabled : innerDisabled
     innerChecked = ctx.value.includes(value)
-    setChecked = (checked: boolean) => {
-      if (ctx.disabled) return
-      if (checked) ctx.check(value)
-      if (!checked) ctx.uncheck(value)
+    setChecked = (nextChecked: boolean) => {
+      if (innerDisabled) return
+      if (nextChecked) ctx.check(value)
+      if (!nextChecked) ctx.uncheck(value)
     }
   }
 
@@ -147,7 +132,7 @@ export const Checkbox: FunctionComponent<
 
   const handleClick = () => {
     // 禁用的时候直接返回
-    if (disabled) return
+    if (innerDisabled) return
     // 先转换状态
     const latestChecked = !innerChecked
 
@@ -159,7 +144,7 @@ export const Checkbox: FunctionComponent<
       <div
         className={classNames(`${classPrefix}-button`, {
           [`${classPrefix}-button-active`]: innerChecked,
-          [`${classPrefix}-button-disabled`]: disabled,
+          [`${classPrefix}-button-disabled`]: innerDisabled,
         })}
       >
         {children || label}

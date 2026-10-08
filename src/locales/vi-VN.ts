@@ -168,5 +168,8 @@ const viVN: BaseLang = {
   quickenter: {
     title: 'Truy cập nhanh',
   },
+  dialog: {
+    autoCloseText: '{second}s sau tự động đóng',
+  },
 }
 export default viVN
