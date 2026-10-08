@@ -4,82 +4,84 @@ import '@testing-library/jest-dom'
 import { Loading1 } from '@nutui/icons-react'
 import { Switch } from '../switch'
 
-test('activeText && checked && onChange && inactiveText && className && style test', async () => {
-  const state: any = {
-    activeText: '开',
-    inactiveText: '关',
-    checked: false,
-    className: 'switch-test',
-    style: {
+describe('Switch', () => {
+  test('renders with className, style, activeText, inactiveText and handles toggle', async () => {
+    const testFn = vi.fn()
+    const { container } = render(
+      <Switch
+        className="switch-test"
+        style={{
+          fontSize: '12px',
+          '--nutui-switch-active-background-color': 'blue',
+        }}
+        activeText="开"
+        inactiveText="关"
+        defaultChecked={false}
+        onChange={testFn}
+      />
+    )
+    const el = container.querySelector('.nut-switch')
+    expect(el).not.toBeNull()
+    expect(el).toHaveClass('nut-switch', 'switch-test', 'nut-switch-close')
+    expect(el).toHaveStyle({
       fontSize: '12px',
-      '--nutui-switch-active-background-color': 'blue',
-    },
-  }
-  const { activeText, inactiveText, className, style } = state
-  const testFn = vi.fn()
-  const { container } = render(
-    <Switch
-      className={className}
-      style={style}
-      defaultChecked
-      activeText={activeText}
-      checked={false}
-      onChange={testFn}
-      inactiveText={inactiveText}
-    />
-  )
-  const el: Element | null = container.querySelector('.nut-switch-base')
-  if (el) {
-    expect(el).toHaveAttribute(
-      'class',
-      `nut-switch nut-switch-inactive  nut-switch-base switch-test`
-    )
-    expect(el).toHaveAttribute(
-      'style',
-      `font-size: 12px; --nutui-switch-active-background-color: blue;`
-    )
-    expect(el).toHaveTextContent(inactiveText)
-    await act(() => {
-      fireEvent.click(el)
     })
-    waitFor(() => {
-      // 异步
-      expect(el).toHaveTextContent(activeText)
-      expect(testFn).toBeCalled()
-    })
-  }
-})
+    expect(el).toHaveTextContent('关')
 
-test('disabled test', async () => {
-  const { container } = render(<Switch disabled />)
-  const el = document.getElementsByClassName('nut-switch-disabled')
-  expect(el.length > 0).toBe(true)
-  const buttonEl: Element | null = container.querySelector('.nut-switch-button')
-  if (buttonEl) {
-    await act(() => {
-      fireEvent.click(buttonEl)
+    await act(async () => {
+      fireEvent.click(el!)
     })
-  }
-})
 
-test('loadingIcon test', async () => {
-  const { container } = render(
-    <Switch
-      loadingIcon={<Loading1 />}
-      onChange={() => {
-        throw new Error('Function not implemented.')
-      }}
-    />
-  )
-  const el: Element | null = container.querySelector('.nut-switch-button')
-  if (el) {
-    await act(() => {
-      fireEvent.click(el)
+    expect(testFn).toHaveBeenCalledWith(true)
+    expect(el).toHaveClass('nut-switch')
+    expect(el).not.toHaveClass('nut-switch-close')
+    expect(el).toHaveTextContent('开')
+  })
+
+  test('disabled switch cannot be clicked', async () => {
+    const testFn = vi.fn()
+    const { container } = render(<Switch disabled onChange={testFn} />)
+    const el = container.querySelector('.nut-switch')
+    expect(el).toHaveClass('nut-switch-disabled', 'nut-switch-disabled-close')
+
+    await act(async () => {
+      fireEvent.click(el!)
     })
-    waitFor(() => {
-      // 异步
-      const el = document.getElementsByClassName('.nut-icon')
-      expect(el.length > 0).toBe(true)
+
+    expect(testFn).not.toHaveBeenCalled()
+  })
+
+  test('loadingIcon renders while loading', async () => {
+    const { container } = render(
+      <Switch loading loadingIcon={<Loading1 data-testid="loading-icon" />} />
+    )
+    expect(
+      container.querySelector('.nut-switch-button svg')
+    ).toBeInTheDocument()
+  })
+
+  test('async onChange error interrupts toggle', async () => {
+    const errorFn = vi.fn().mockRejectedValue(new Error('Async error'))
+    const { container } = render(
+      <Switch
+        defaultChecked={false}
+        activeText="开"
+        inactiveText="关"
+        onChange={errorFn}
+      />
+    )
+    const el = container.querySelector('.nut-switch')
+    expect(el).toHaveClass('nut-switch-close')
+
+    await act(async () => {
+      fireEvent.click(el!)
     })
-  }
+
+    expect(errorFn).toHaveBeenCalledWith(true)
+    // After async rejection, switch should remain closed (not toggled)
+    await waitFor(() => {
+      expect(el).toHaveClass('nut-switch-close')
+      expect(el).toHaveTextContent('关')
+    })
+  })
 })

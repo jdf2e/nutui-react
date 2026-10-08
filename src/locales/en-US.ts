@@ -168,5 +168,8 @@ const enUS: BaseLang = {
   quickenter: {
     title: 'Quick Enter',
   },
+  dialog: {
+    autoCloseText: 'Auto close in {second}s',
+  },
 }
 export default enUS

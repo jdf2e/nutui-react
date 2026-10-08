@@ -78,6 +78,7 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
         await onChange(!value)
       } catch (e) {
         setLoading(false)
+        return
       }
     }
     setValue(!value)

@@ -153,4 +153,7 @@ export interface BaseLang {
   quickenter: {
     title: string
   }
+  dialog: {
+    autoCloseText: string
+  }
 }

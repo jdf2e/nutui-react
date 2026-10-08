@@ -177,5 +177,8 @@ const trTR: BaseLang = {
   quickenter: {
     title: 'Hızlı Giriş',
   },
+  dialog: {
+    autoCloseText: '{second} saniye içinde otomatik kapanır',
+  },
 }
 export default trTR

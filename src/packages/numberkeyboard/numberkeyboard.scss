@@ -7,8 +7,8 @@
   }
 
   &-delete-icon {
-    width: 28px;
-    height: 28px;
+    width: scale-px(28px);
+    height: scale-px(28px);
   }
 
   width: 100%;
@@ -51,7 +51,7 @@
 
   &-body {
     display: flex;
-    padding: 6px 0 0 6px;
+    padding: scale-px(6px) 0 0 scale-px(6px);
 
     &-keys {
       display: flex;
@@ -69,7 +69,7 @@
       flex-basis: 33%;
       /* #endif */
       box-sizing: border-box;
-      padding: 0 6px 6px 0;
+      padding: 0 scale-px(6px) scale-px(6px) 0;
       background-color: $numberkeyboard-wrapper-background-color;
 
       .key {
@@ -103,8 +103,8 @@
       .key {
         position: absolute;
         top: 0;
-        right: 6px;
-        bottom: 6px;
+        right: scale-px(6px);
+        bottom: scale-px(6px);
         left: 0;
         height: auto;
       }
@@ -133,9 +133,9 @@
     }
 
     &-body {
-      padding: 6px 6px 0 0;
+      padding: scale-px(6px) scale-px(6px) 0 0;
       &-wrapper {
-        padding: 0 0 6px 6px;
+        padding: 0 0 scale-px(6px) scale-px(6px);
         .delete {
           transform: rotate(-180deg);
         }
@@ -145,7 +145,7 @@
     &-sidebar {
       .nut-numberkeyboard-body-wrapper {
         .key {
-          left: 6px;
+          left: scale-px(6px);
           right: 0;
           &.delete {
             transform: rotate(-180deg);

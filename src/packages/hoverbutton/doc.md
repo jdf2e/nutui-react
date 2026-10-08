@@ -69,7 +69,7 @@ import { HoverButton } from '@nutui/nutui-react'
 | zIndex | 设置组件页面层级 | `number` | `10` |
 | tabbarHeight | 底部导航栏高度（不包含安全区高度） | `number` | `-` |
 | icon | 设置按钮图标 | `ReactNode` | `-` |
-| onClick | 按钮点击时触发事件 | `Function` | `-` |
+| onClick | 按钮点击时触发事件 | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## HoverButton.Item
 
@@ -78,7 +78,7 @@ import { HoverButton } from '@nutui/nutui-react'
 | 属性 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | icon | 设置按钮图标 | `ReactNode` | `-` |
-| onClick | 按钮点击时触发事件 | `Function` | `-` |
+| onClick | 按钮点击时触发事件 | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## 主题定制
 
@@ -91,6 +91,7 @@ import { HoverButton } from '@nutui/nutui-react'
 | \--nutui-hoverbutton-spacing | 按钮垂直间距 | `16px` |
 | \--nutui-hoverbutton-position-bottom | 按钮区域距离屏幕底部距离 | `48px` |
 | \--nutui-hoverbutton-position-right | 按钮区域距离屏幕右侧距离 | `16px` |
+| \--nutui-hoverbutton-item-size | 按钮尺寸大小 | `44px` |
 | \--nutui-hoverbutton-item-border-color | 按钮边框色 | `rgba(0, 0, 0, 0.06)` |
 | \--nutui-hoverbutton-item-background | 按钮背景色-正常态 | `#FFFFFF` |
 | \--nutui-hoverbutton-item-background-active | 按钮背景色-点击态 | `#F6F6F6` |

@@ -9,6 +9,7 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
@@ -17,6 +18,7 @@ const SwitchDemo = () => {
       disabled: '禁用状态',
       asyncControl: '受控',
       loadingControl: 'loading 态受控',
+      asyncError: '异步操作失败（异常中断）',
       customColor: '自定义颜色',
       supportText: '支持文字',
       supportIcon: '支持Icon',
@@ -28,6 +30,7 @@ const SwitchDemo = () => {
       disabled: '禁用狀態',
       asyncControl: '受控',
       loadingControl: 'loading 態受控',
+      asyncError: '異步操作失敗（異常中斷）',
       customColor: '自定義顏色',
       supportText: '支持文字',
       supportIcon: '支持Icon',
@@ -39,6 +42,7 @@ const SwitchDemo = () => {
       disabled: 'Disabled',
       asyncControl: 'controlled',
       loadingControl: 'Controlled with loading',
+      asyncError: 'Async Error Interruption',
       customColor: 'Custom Color',
       supportText: 'Support Text',
       supportIcon: 'Support Icon',
@@ -55,6 +59,8 @@ const SwitchDemo = () => {
         <Demo2 />
         <h2>{translated.loadingControl}</h2>
         <Demo8 />
+        <h2>{translated.asyncError}</h2>
+        <Demo10 />
         <h2>{translated.disabled}</h2>
         <Demo3 />
         <h2>{translated.supportText}</h2>

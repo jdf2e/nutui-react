@@ -9,9 +9,11 @@ test('emit click event', () => {
   const { container } = render(
     <HoverButton data-testid="position" icon={<Cart />} onClick={handleClick} />
   )
-  expect(container.querySelector('.nut-hoverbutton')?.childElementCount).toBe(1)
-  fireEvent.click(container)
-  expect(handleClick).toBeCalled
+  const item = container.querySelector(
+    '.nut-hoverbutton-item-container'
+  ) as Element
+  fireEvent.click(item)
+  expect(handleClick).toHaveBeenCalled()
   expect(container).toMatchSnapshot()
 })
 
@@ -38,4 +40,15 @@ test('tabbar height', () => {
     'bottom: 108px;'
   )
   expect(container).toMatchSnapshot()
+})
+
+test('text only item', () => {
+  const { container } = render(
+    <HoverButton>
+      <HoverButton.Item>置顶</HoverButton.Item>
+    </HoverButton>
+  )
+  expect(
+    container.querySelector('.nut-hoverbutton-item-text')
+  ).toHaveTextContent('置顶')
 })
