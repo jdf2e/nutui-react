@@ -1,4 +1,6 @@
+import type { MouseEvent } from 'react'
 import { BaseBackTop } from './base'
-import { WebHoverButtonProps } from '../hoverbutton/h5'
 
-export interface WebBackTopProps extends WebHoverButtonProps, BaseBackTop {}
+export interface WebBackTopProps extends Omit<BaseBackTop, 'onClick'> {
+  onClick?: (event: MouseEvent<HTMLDivElement>) => void
+}

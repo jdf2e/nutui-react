@@ -10,8 +10,8 @@ import classNames from 'classnames'
 import { Top } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
 import requestAniFrame, { cancelRaf } from '@/utils/raf'
-import HoverButton from '@/packages/hoverbutton/index'
 import { WebBackTopProps } from '@/types'
+import { UI_BOTTOM_DISTANCE } from '@/utils/constants'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -21,7 +21,10 @@ const defaultProps = {
   duration: 1000,
 } as WebBackTopProps
 
-export const BackTop: FunctionComponent<Partial<WebBackTopProps>> = (props) => {
+export const BackTop: FunctionComponent<
+  Partial<WebBackTopProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+> = (props) => {
   const {
     children,
     target,
@@ -31,7 +34,9 @@ export const BackTop: FunctionComponent<Partial<WebBackTopProps>> = (props) => {
     duration,
     icon,
     style,
+    tabbarHeight,
     onClick,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -41,6 +46,7 @@ export const BackTop: FunctionComponent<Partial<WebBackTopProps>> = (props) => {
   const [backTop, setBackTop] = useState(false)
   const [scrollTop, setScrollTop] = useState(0)
   const startTime = useRef<number>(0)
+  const rafId = useRef<number | null>(null)
   const cls = classNames(
     classPrefix,
     {
@@ -48,13 +54,13 @@ export const BackTop: FunctionComponent<Partial<WebBackTopProps>> = (props) => {
     },
     className
   )
-  const scrollEl: any = useRef<any>(null)
+  const scrollEl = useRef<HTMLElement | Window | null>(null)
 
   const scrollListener = useCallback(() => {
-    let top: any = null
+    let top = 0
     if (scrollEl.current instanceof Window) {
       top = scrollEl.current.scrollY
-    } else {
+    } else if (scrollEl.current) {
       top = scrollEl.current.scrollTop
     }
     setScrollTop(top)
@@ -63,7 +69,7 @@ export const BackTop: FunctionComponent<Partial<WebBackTopProps>> = (props) => {
 
   const init = useCallback(() => {
     if (target && document.getElementById(target)) {
-      scrollEl.current = document.getElementById(target) as HTMLElement | Window
+      scrollEl.current = document.getElementById(target)
     } else {
       scrollEl.current = window
     }
@@ -76,30 +82,46 @@ export const BackTop: FunctionComponent<Partial<WebBackTopProps>> = (props) => {
     return () => {
       scrollEl.current?.removeEventListener('scroll', scrollListener, false)
       scrollEl.current?.removeEventListener('resize', scrollListener, false)
+      if (rafId.current) {
+        cancelRaf(rafId.current)
+        rafId.current = null
+      }
     }
   }, [init, scrollListener])
 
   const scroll = useCallback((y = 0) => {
     if (scrollEl.current instanceof Window) {
       window.scrollTo(0, y)
-    } else {
+    } else if (scrollEl.current) {
       scrollEl.current.scrollTop = y
       window.scrollTo(0, y)
     }
   }, [])
 
   const scrollAnimation = useCallback(() => {
-    let cid = requestAniFrame(function fn() {
-      const t =
-        duration - Math.max(0, startTime.current - +new Date() + duration / 2)
-      const y = (t * -scrollTop) / duration + scrollTop
+    if (rafId.current) {
+      cancelRaf(rafId.current)
+      rafId.current = null
+    }
+    const initialScrollTop = scrollTop
+    const fn = () => {
+      const elapsed = +new Date() - startTime.current
+      const progress = Math.min(elapsed / duration, 1)
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : -1 + (4 - 2 * progress) * progress
+      const y = initialScrollTop * (1 - ease)
       scroll(y)
-      cid = requestAniFrame(fn)
-      if (t === duration || y === 0) {
-        cancelRaf(cid)
+      if (progress < 1 && y > 0) {
+        rafId.current = requestAniFrame(fn)
+      } else {
+        scroll(0)
+        rafId.current = null
       }
-    })
-  }, [duration, scroll, scrollTop, startTime])
+    }
+    rafId.current = requestAniFrame(fn)
+  }, [duration, scroll, scrollTop])
 
   const goTop = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
@@ -111,26 +133,23 @@ export const BackTop: FunctionComponent<Partial<WebBackTopProps>> = (props) => {
     [duration, onClick, scroll, scrollAnimation]
   )
 
+  const content =
+    children || (icon ?? <Top className={`${classPrefix}-icon`} />)
+
+  const baseStyle: React.CSSProperties = {
+    zIndex,
+    ...style,
+  }
+
+  if (tabbarHeight) {
+    const bottom = tabbarHeight + UI_BOTTOM_DISTANCE
+    baseStyle.bottom = `${bottom}px`
+  }
+
   return (
-    <HoverButton
-      className={cls}
-      style={{ zIndex, ...style }}
-      icon={!children && (icon || <Top />)}
-      onClick={(e) => {
-        goTop(e)
-      }}
-    >
-      {children && (
-        <div
-          className="nut-hoverbutton-item-container"
-          onClick={(e) => {
-            goTop(e)
-          }}
-        >
-          {children}
-        </div>
-      )}
-    </HoverButton>
+    <div className={cls} style={baseStyle} onClick={goTop} {...rest}>
+      {content}
+    </div>
   )
 }
 

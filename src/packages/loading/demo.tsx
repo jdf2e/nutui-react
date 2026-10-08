@@ -8,6 +8,7 @@ import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
 
 const LoadingDemo = () => {
   const [translated] = useTranslate({
@@ -61,6 +62,7 @@ const LoadingDemo = () => {
         <Demo7 />
         <h2>{translated.title8}</h2>
         <Demo8 />
+        <Demo9 />
       </div>
     </>
   )

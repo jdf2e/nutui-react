@@ -13,6 +13,8 @@ export type DialogFooterDirection = 'horizontal' | 'vertical'
 export interface BaseContentProps extends BasicComponent {
   visible: boolean
   title: ReactNode
+  subtitle: ReactNode
+  titleIcon: ReactNode
   header: ReactNode
   footer: ReactNode
   close: ReactNode
@@ -36,6 +38,9 @@ export interface BaseDialog extends DialogWrapProps {
   cancelText: ReactNode
   confirmBadge: ReactNode
   cancelBadge: ReactNode
+  subtitle: ReactNode
+  titleIcon: ReactNode
+  autoClose: number
   hideConfirmButton: boolean
   hideCancelButton: boolean
   disableConfirmButton: boolean

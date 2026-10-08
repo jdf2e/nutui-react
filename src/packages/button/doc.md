@@ -120,7 +120,8 @@ import { Button } from '@nutui/nutui-react'
 | size | 按钮的尺寸 | `normal` \| `xlarge` \| `large` \| `small` \| `mini` \| `48` \| `44` \| `40` \| `36` \| `32` \| `28` \| `24` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色, outline 和 dashed 模式下设置的是 color，其他情况设置的是background，建议使用CSS变量实现的颜色配置 | `string` | `-` |
-| fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` | `solid` |
+| fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` \| `light` | `solid` |
+| description | 按钮辅助描述文本 | `ReactNode` | `-` |
 | disabled | 是否禁用按钮 | `boolean` | `false` |
 | block | 是否为块级元素 | `boolean` | `false` |
 | icon | 按钮图标 | `ReactNode` | `-` |

@@ -23,10 +23,11 @@ const defaultProps = {
 
 export const Loading = React.forwardRef<LoadingRef, Partial<TaroLoadingProps>>(
   (props, ref) => {
-    const { className, style, children, direction, icon, ...rest } = {
-      ...defaultProps,
-      ...props,
-    }
+    const { className, style, children, direction, icon, textStyle, ...rest } =
+      {
+        ...defaultProps,
+        ...props,
+      }
 
     const classPrefix = 'nut-loading'
     const getLoadingIcon = () => {
@@ -47,7 +48,9 @@ export const Loading = React.forwardRef<LoadingRef, Partial<TaroLoadingProps>>(
       >
         <View className={iconboxClassName()}>{icon || getLoadingIcon()}</View>
         {children ? (
-          <View className={`${classPrefix}-text`}>{children}</View>
+          <View className={`${classPrefix}-text`} style={textStyle}>
+            {children}
+          </View>
         ) : null}
       </View>
     )

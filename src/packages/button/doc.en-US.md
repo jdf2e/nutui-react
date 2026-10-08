@@ -117,11 +117,12 @@ The color property allows you to customize the color of the button.
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
+| type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` \| `service` | `default` |
 | size | button size | `normal` \| `xlarge` \| `large` \| `small` \| `mini` \| `48` \| `44` \| `40` \| `36` \| `32` \| `28` \| `24` | `normal` |
 | shape | button shape | `square` \| `round` | `round` |
 | color | Button color, supports linear-gradient gradient color. In outline and dashed modes, color is set. In other cases, background is set. It is recommended to use color configuration implemented by CSS variables. | `string` | `-` |
-| fill | fill pattern | `solid` \| `outline` \| `dashed` \| `none` | `solid` |
+| fill | fill pattern | `solid` \| `outline` \| `dashed` \| `none` \| `light` | `solid` |
+| description | Description text | `ReactNode` | `-` |
 | disabled | disable the button | `boolean` | `false` |
 | block | block element | `boolean` | `false` |
 | icon | icon | `ReactNode` | `-` |

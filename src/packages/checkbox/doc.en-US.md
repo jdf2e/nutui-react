@@ -134,20 +134,21 @@ When the value changes, the change event will be fired
 
 ## Checkbox
 
-### props
+### Props
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| checked | whether checked | `boolean` | `false` |
+| checked | Whether checked | `boolean` | `false` |
 | defaultChecked | Initially checked or not | `boolean` | `false` |
 | disabled | Whether to disable selection | `boolean` | `false` |
+| indeterminate | Half-selected state | `boolean` | `false` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
-| icon | before selection | `ReactNode` | `'CheckNormal'` |
-| activeIcon | after selection | `ReactNode` | `'Checked'` |
-| indeterminateIcon | half-selected state | `ReactNode` | `'CheckDisabled'` |
-| label | text content of the checkbox | `ReactNode` | `-` |
-| value | identification value, used in Group mode | `string` \| `number` | `-` |
-| shape | shape | `button` \| `round` | `round` |
+| icon | Icon before selection | `ReactNode` | `'CheckNormal'` |
+| activeIcon | Icon after selection | `ReactNode` | `'Checked'` |
+| indeterminateIcon | Half-selected state icon | `ReactNode` | `'CheckDisabled'` |
+| label | Text content of the checkbox | `ReactNode` | `-` |
+| value | Identification value, used in Group mode | `string` \| `number` | `-` |
+| shape | Shape | `button` \| `round` | `round` |
 | onChange | Triggered when the value changes | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group
@@ -156,23 +157,33 @@ When the value changes, the change event will be fired
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | identifier of the currently selected item | `string` \| `number` | `-` |
-| defaultValue | Identifier of the initially selected item | `string` \| `number` | `-` |
-| disabled | Whether to disable selection, will be used for all checkboxes under it | `boolean` | `false` |
-| max | limit the maximum number of options | `number` | `-` |
-| min | Limit the number of choices to at least | `number` | `-` |
+| value | Identifier array of the currently selected items | `string[]` | `-` |
+| defaultValue | Identifier array of the initially selected items | `string[]` | `-` |
+| disabled | Whether to disable selection, applies to all checkboxes within it | `boolean` | `false` |
+| max | Limit the maximum number of choices | `number` | `-` |
+| min | Limit the minimum number of choices | `number` | `-` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
-| direction | Use horizontal and vertical directions Optional values horizontal、vertical | `string` | `vertical` |
-| options | Configure options to render check buttons | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
-| list | List model | `boolean` | `false` |
+| direction | Layout direction, optional values: `horizontal`, `vertical` | `horizontal` \| `vertical` | `vertical` |
+| options | Configure options to render check buttons | `CheckboxGroupOption[]` | `[]` |
+| list | List layout mode | `boolean` | `false` |
 | onChange | Triggered when the value changes | `(value: string[]) => void` | `-` |
+| onLimit | Triggered when reaching max/min selection limits | `(type: 'max' \| 'min') => void` | `-` |
+
+### CheckboxGroupOption
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| label | Text content of checkbox | `string` | `-` |
+| value | Identification value of checkbox | `string` | `-` |
+| disabled | Whether to disable | `boolean` | `false` |
+| onChange | Triggered when option state changes | `(state: boolean, label: string) => void` | `-` |
 
 ### Ref
 
 | Property | Description | Parameters |
 | --- | --- | --- |
-| toggle | Select All/Cancel | Pass `true` to select all, pass `false` to cancel all selection |
-| reverse | reverse election | `-` |
+| toggle | Select all / deselect all (supports both options and children) | Pass `true` to select all, pass `false` to deselect all |
+| reverse | Invert selection (supports both options and children) | `-` |
 
 ## Theming
 
@@ -182,19 +193,25 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-checkbox-label-color | text color of label | `$color-title` |
-| \--nutui-checkbox-label-margin-left | left margin of label | `15px` |
-| \--nutui-checkbox-label-font-size | font size of label | `14px` |
-| \--nutui-checkbox-button-font-size | shape is the font size of the button | `12px` |
-| \--nutui-checkbox-button-color | button font color | `$color-text` |
-| \--nutui-checkbox-button-background | shape is the background color of the button | `$color-background` |
-| \--nutui-checkbox-label-button-border-color | shape is the border color of the button | `$color-primary` |
-| \--nutui-checkbox-button-active-border | The shape is the border of the active button | `1px solid $color-primary` |
-| \--nutui-checkbox-button-padding | The shape is the padding of the button | `5px 18px` |
-| \--nutui-checkbox-button-border-radius | The shape is the rounded corner of the button | `15px` |
-| \--nutui-checkbox-list-background-colors | List background color | `15px` |
-| \--nutui-checkbox-list-item-border | List item border | `15px` |
-| \--nutui-checkbox-list-padding | list padding | `15px` |
-| \--nutui-checkbox-list-item-padding | padding of list items | `15px` |
+| \--nutui-checkbox-label-color | Text color of label | `$color-title` |
+| \--nutui-checkbox-label-disable-color | Disabled text color of label | `#999` |
+| \--nutui-checkbox-icon-disable-color | Disabled color of icon | `#d6d6d6` |
+| \--nutui-checkbox-label-margin-left | Left margin of label | `$spacing-xxs` |
+| \--nutui-checkbox-label-font-size | Font size of label | `14px` |
+| \--nutui-checkbox-icon-font-size | Font size of icon | `18px` |
+| \--nutui-checkbox-button-font-size | Font size when shape is button | `12px` |
+| \--nutui-checkbox-button-color | Font color when shape is button | `$color-text` |
+| \--nutui-checkbox-button-background | Background color when shape is button | `$color-background` |
+| \--nutui-checkbox-button-active-border | Border when shape is button and active | `1px solid $color-primary` |
+| \--nutui-checkbox-button-padding | Padding when shape is button | `5px 18px` |
+| \--nutui-checkbox-button-border-radius | Rounded corner when shape is button | `15px` |
+| \--nutui-checkbox-button-disabled-active-color | Font color when shape is button and active disabled | `$white` |
+| \--nutui-checkbox-list-background-color | List background color | `$white` |
+| \--nutui-checkbox-list-item-border | List item border | `1px solid $color-border` |
+| \--nutui-checkbox-list-padding | List padding | `0 0 0 12px` |
+| \--nutui-checkbox-list-item-padding | Padding of list item | `12px 12px 12px 0` |
+| \--nutui-checkboxgroup-checkbox-margin | Right margin of checkbox in horizontal group | `20px` |
+| \--nutui-checkboxgroup-checkbox-margin-bottom | Bottom margin of checkbox in vertical group | `5px` |
+| \--nutui-checkboxgroup-checkbox-label-margin | RTL margin of label in checkbox group | `0 5px` |
 
 <Contribution name="Checkbox" />

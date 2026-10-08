@@ -11,7 +11,7 @@
   box-shadow: $cell-box-shadow;
   font-size: $cell-title-font-size;
   color: $cell-title-color;
-  margin-bottom: 10px;
+  margin-bottom: scale-px(10px);
   box-sizing: border-box;
 
   &-group-item {
@@ -73,12 +73,12 @@
 
   &-divider {
     display: flex;
-    min-height: 1px;
+    min-height: scale-px(1px);
     padding-left: $cell-divider-left;
     padding-right: $cell-divider-right;
     &-inner {
       display: flex;
-      height: 1px;
+      height: scale-px(1px);
       width: 100%;
       border-top: $cell-divider-border-bottom;
     }

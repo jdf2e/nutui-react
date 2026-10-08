@@ -65,6 +65,7 @@ pnpm-lock.*.yaml
 .cursor/skills/nutui-component-v4-upgrade/
 .claude/commands/nutui-v4-upgrade.md
 .claude/nutui-*.json
+.claude
 
 # Harmony CSS files
 src/packages/**/*.harmony.css

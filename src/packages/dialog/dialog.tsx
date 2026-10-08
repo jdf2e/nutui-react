@@ -2,6 +2,8 @@ import React, {
   ForwardRefRenderFunction,
   forwardRef,
   useState,
+  useEffect,
+  useRef,
   MouseEvent,
 } from 'react'
 import classNames from 'classnames'
@@ -13,7 +15,13 @@ import Overlay from '@/packages/overlay'
 import { Content, defaultContentProps } from './content'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import { useConfig } from '@/packages/configprovider'
-import { WebDialogProps, DialogReturnProps, DialogComponent } from '@/types'
+import {
+  WebDialogProps,
+  DialogReturnProps,
+  DialogComponent,
+  DialogConfigType,
+  destroyList,
+} from '@/types'
 import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {
@@ -23,6 +31,8 @@ const defaultProps = {
   content: '',
   header: '',
   footer: '',
+  subtitle: '',
+  titleIcon: '',
   cancelBadge: '',
   confirmBadge: '',
   confirmText: '',
@@ -39,6 +49,7 @@ const defaultProps = {
   overlayStyle: {},
   overlayClassName: 'nut-dialog-overlay',
   zIndex: 1200,
+  autoClose: 0,
   beforeCancel: () => true,
   beforeClose: () => true,
   onCancel: () => {},
@@ -63,6 +74,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     footer,
     footerDirection,
     header,
+    subtitle,
+    titleIcon,
     cancelBadge,
     confirmBadge,
     hideConfirmButton,
@@ -75,6 +88,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     title,
     visible,
     zIndex,
+    autoClose,
     beforeCancel,
     beforeClose,
     onClose,
@@ -85,6 +99,35 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const [countdown, setCountdown] = useState(0)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+
+  useEffect(() => {
+    if (visible && autoClose > 0) {
+      setCountdown(autoClose)
+      timerRef.current = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            if (timerRef.current) {
+              clearInterval(timerRef.current)
+              timerRef.current = null
+            }
+            onCloseRef.current()
+            return 0
+          }
+          return prev - 1
+        })
+      }, 1000)
+    }
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+        timerRef.current = null
+      }
+    }
+  }, [visible, autoClose])
 
   const renderFooter = () => {
     if (footer === null) return ''
@@ -226,7 +269,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
   }
 
   const renderCloseIcon = () => {
-    if (!closeIcon) return null
+    if (!closeIcon && autoClose <= 0) return null
     const handleClose = () => {
       if (!beforeClose?.()) return
       onClose()
@@ -237,15 +280,29 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     })
     const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
-      <div
-        className={closeClasses}
-        onClick={handleClose}
-        role="button"
-        aria-label={locale.close}
-        tabIndex={0}
-      >
-        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
-      </div>
+      <>
+        {closeIcon && (
+          <div
+            className={closeClasses}
+            onClick={handleClose}
+            role="button"
+            tabIndex={0}
+            aria-label={locale.close}
+          >
+            {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
+          </div>
+        )}
+        {autoClose > 0 && countdown > 0 && (
+          <div className={`${classPrefix}-close-auto`}>
+            {locale.dialog
+              ? locale.dialog.autoCloseText.replace(
+                  '{second}',
+                  String(countdown)
+                )
+              : `${countdown}秒后自动关闭`}
+          </div>
+        )}
+      </>
     )
   }
 
@@ -269,6 +326,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           className={className}
           style={{ zIndex, ...style }}
           title={title}
+          subtitle={subtitle}
+          titleIcon={titleIcon}
           header={header}
           close={renderCloseIcon()}
           footer={renderFooter()}
@@ -311,5 +370,18 @@ Dialog.confirm = (props: Partial<WebDialogProps>): DialogReturnProps => {
     })
   }
 })
+
+let globalConfig: DialogConfigType = {}
+
+Dialog.config = (config: DialogConfigType) => {
+  globalConfig = { ...globalConfig, ...config }
+}
+
+Dialog.destroyAll = () => {
+  while (destroyList.length) {
+    const close = destroyList.pop()
+    close?.()
+  }
+}
 
 Dialog.displayName = 'NutDialog'
