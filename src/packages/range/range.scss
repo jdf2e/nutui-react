@@ -19,13 +19,13 @@
   height: $range-height;
   margin: 0 $range-margin;
   background-color: $range-inactive-color;
-  border-radius: scale-px(2px);
+  border-radius: 2px;
   flex: 1;
   cursor: pointer;
 
   &::before {
     position: absolute;
-    inset-block: scale-px(-8px);
+    inset-block: -8px;
     inset-inline: 0;
     content: '';
   }
@@ -46,7 +46,7 @@
     max-width: 100%;
     max-height: 100%;
     background: $range-active-color;
-    border-radius: scale-px(2px);
+    border-radius: 2px;
 
     &-animate {
       transition: all 0.2s;
@@ -61,9 +61,9 @@
     background: $range-button-background;
     border-radius: 50%;
     box-shadow:
-      0 scale-px(1px) scale-px(10px) 0 rgba(0, 0, 0, 0.05),
-      0 scale-px(4px) scale-px(5px) 0 rgba(0, 0, 0, 0.08),
-      0 scale-px(2px) scale-px(4px) scale-px(-1px) rgba(0, 0, 0, 0.12);
+      0 1px 10px 0 rgba(0, 0, 0, 0.05),
+      0 4px 5px 0 rgba(0, 0, 0, 0.08),
+      0 2px 4px -1px rgba(0, 0, 0, 0.12);
     border: $range-button-border;
     outline: none;
     align-items: center;
@@ -109,17 +109,17 @@
       align-items: center;
       user-select: none;
       // 角标底部距游标 2px
-      margin-bottom: scale-px(2px);
+      margin-bottom: 2px;
 
       &-body {
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: scale-px(30px);
-        height: scale-px(30px);
-        padding: 0 scale-px(8px);
+        min-width: 30px;
+        height: 30px;
+        padding: 0 8px;
         box-sizing: border-box;
-        border-radius: scale-px(6px);
+        border-radius: 6px;
         background: $color-mask;
         color: $color-primary-text;
         font-size: $font-size-s;
@@ -131,9 +131,9 @@
         width: 0;
         height: 0;
         // 纯 CSS 三角(尖角朝下),尖角色取气泡主体同一变量,随主题/暗黑联动
-        border-left: scale-px(4px) solid transparent;
-        border-right: scale-px(4px) solid transparent;
-        border-top: scale-px(4px) solid $color-mask;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid $color-mask;
       }
     }
   }
@@ -170,7 +170,7 @@
 
   &-mark-text {
     position: absolute;
-    top: scale-px(16px);
+    top: 16px;
     left: 0;
     transform: translateX(-50%);
     line-height: $line-height-md;
@@ -201,13 +201,13 @@
 .nut-range-vertical-container {
   height: 100%;
   flex-direction: column;
-  padding: 0 scale-px(15px);
+  padding: 0 15px;
 }
 
 .nut-range-vertical {
   width: $range-height;
   // 纵向左右范围文字距进度条 8px（横向为 16px，见 $range-margin）
-  margin: scale-px(8px) 0;
+  margin: 8px 0;
 
   &-button {
     &-wrapper,
@@ -240,23 +240,23 @@
       transform: translateY(-50%);
       margin-bottom: 0;
       // 角标在气泡左侧，距游标 2px
-      margin-left: scale-px(2px);
+      margin-left: 2px;
 
       // arrow 元素类名固定为 .nut-range-button-number-arrow(无 vertical 变体),
       // 需用后代选择器命中;纵向气泡在游标右侧,尖角直接用 border 画成朝左,
       // 不再依赖 rotate + 负 margin 补偿,规避低端引擎 1px 缝隙/模糊
       .nut-range-button-number-arrow {
-        border-top: scale-px(4px) solid transparent;
-        border-bottom: scale-px(4px) solid transparent;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
         border-left: none;
-        border-right: scale-px(4px) solid $color-mask;
+        border-right: 4px solid $color-mask;
       }
     }
   }
 
   &-mark {
     position: absolute;
-    width: scale-px(36px);
+    width: 36px;
     height: 100%;
     top: 0;
     right: 50%;
@@ -266,7 +266,7 @@
   }
 
   &-mark-hm {
-    left: scale-px(-34px);
+    left: -34px;
   }
 
   &-mark-text-wrapper {
@@ -283,7 +283,7 @@
   &-mark-text {
     position: absolute;
     left: auto;
-    right: scale-px(12px);
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     line-height: $line-height-md;
@@ -378,7 +378,7 @@
 
     &-mark-text {
       right: auto;
-      left: scale-px(16px);
+      left: 16px;
       text-align: left;
     }
 

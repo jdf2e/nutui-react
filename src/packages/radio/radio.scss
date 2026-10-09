@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  min-height: scale-px(32px);
+  min-height: 32px;
 
   &.nut-radio-reverse {
     flex-direction: row-reverse;
@@ -16,7 +16,7 @@
   }
 
   &.nut-radio-nolabel {
-    min-width: scale-px(32px);
+    min-width: 32px;
     justify-content: center;
   }
 
@@ -67,14 +67,14 @@
     display: inline-flex;
     /* #endif */
     align-items: center;
-    min-height: scale-px(30px);
+    min-height: 30px;
     padding: $radio-button-padding;
     font-size: $radio-button-font-size;
     background: $radio-button-background;
     border-radius: $radio-button-border-radius;
     color: $radio-label-color;
     box-sizing: border-box;
-    border: scale-px(1px) solid $radio-button-background;
+    border: 1px solid $radio-button-background;
 
     &-active {
       background: $color-primary-light-pressed;
@@ -84,14 +84,14 @@
 
     &-disabled {
       color: $color-text-disabled;
-      border: scale-px(1px) solid $radio-button-background;
+      border: 1px solid $radio-button-background;
     }
   }
 
   .nut-radio-button-active.nut-radio-button-disabled {
     background: $color-text-disabled;
     color: $white;
-    border: scale-px(1px) solid $color-text-disabled;
+    border: 1px solid $color-text-disabled;
   }
 }
 

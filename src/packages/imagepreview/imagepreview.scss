@@ -16,7 +16,7 @@
   &-index {
     position: fixed;
     z-index: 2002;
-    top: scale-px(50px);
+    top: 50px;
     text-align: center;
     left: 0;
     right: 0;
@@ -25,7 +25,7 @@
 
     .arrow {
       position: absolute;
-      left: scale-px(15px);
+      left: 15px;
       transform: rotateZ(180deg);
     }
   }
@@ -44,17 +44,17 @@
     }
 
     &.top-right {
-      top: scale-px(50px);
-      right: scale-px(20px);
+      top: 50px;
+      right: 20px;
     }
 
     &.top-left {
-      top: scale-px(50px);
-      left: scale-px(20px);
+      top: 50px;
+      left: 20px;
     }
 
     &.bottom {
-      bottom: scale-px(50px);
+      bottom: 50px;
       left: 0;
       right: 0;
       text-align: center;
@@ -103,19 +103,19 @@
   &-index {
     .arrow {
       left: auto;
-      right: scale-px(15px);
+      right: 15px;
       transform: rotateZ(-180deg);
     }
   }
   &-close {
     &.top-right {
       right: auto;
-      left: scale-px(20px);
+      left: 20px;
     }
 
     &.top-left {
       left: auto;
-      right: scale-px(20px);
+      right: 20px;
     }
   }
 }

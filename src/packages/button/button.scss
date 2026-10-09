@@ -33,7 +33,7 @@
   position: relative;
   display: inline-block;
   /* #ifdef harmony dynamic*/
-  width: scale-px(80px);
+  width: 80px;
   /* #endif */
   /* #ifndef harmony dynamic*/
   width: auto;
@@ -184,7 +184,7 @@
 
   &-normal {
     padding: $button-normal-padding;
-    min-width: scale-px(60px);
+    min-width: 60px;
   }
 
   &-has-desc {
@@ -204,7 +204,7 @@
       font-size: scale-font-px(12px);
       font-weight: $font-weight;
       opacity: 0.8;
-      margin-top: scale-px(2px);
+      margin-top: 2px;
     }
   }
 
@@ -238,7 +238,7 @@
       $button-large-border-radius,
       $button-xlarge-text-icon-margin
     );
-    min-width: scale-px(84px);
+    min-width: 84px;
   }
 
   &-36 {
@@ -249,7 +249,7 @@
       $button-36-border-radius,
       $button-xlarge-text-icon-margin
     );
-    min-width: scale-px(66px);
+    min-width: 66px;
   }
 
   &-small {
@@ -259,7 +259,7 @@
       $button-small-font-size,
       $button-small-border-radius
     );
-    min-width: scale-px(52px);
+    min-width: 52px;
     font-weight: $font-weight;
   }
 
@@ -270,7 +270,7 @@
       $button-mini-font-size,
       $button-mini-border-radius
     );
-    min-width: scale-px(48px);
+    min-width: 48px;
     font-weight: $font-weight;
   }
 

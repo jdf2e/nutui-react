@@ -4,7 +4,7 @@
   flex: 1;
   min-width: 0;
   flex-wrap: wrap;
-  padding: 0 0 scale-px(50px) scale-px(12px);
+  padding: 0 0 50px 12px;
 
   &-item {
     width: $timeselect-time-width;
@@ -13,13 +13,13 @@
     text-align: center;
     margin: $timeselect-time-margin;
     background: $timeselect-time-background;
-    border-radius: scale-px(5px);
+    border-radius: 5px;
     font-size: $font-size-base;
-    border: scale-px(1px) solid transparent;
+    border: 1px solid transparent;
 
     &.active {
       background-color: $color-primary-light-pressed;
-      border: scale-px(1px) solid $color-primary;
+      border: 1px solid $color-primary;
       color: $color-primary;
       font-weight: $font-weight-bold;
     }
@@ -28,5 +28,5 @@
 
 [dir='rtl'] .nut-timedetail,
 .nut-rtl .nut-timedetail {
-  padding: 0 scale-px(12px) scale-px(50px) 0;
+  padding: 0 12px 50px 0;
 }
