@@ -55,9 +55,9 @@ const Demo3 = () => {
       align="center"
       style={{
         '--nutui-cell-description-margin': '0px',
-        '--nutui-cell-icon-align-self': 'flex-start',
+        '--nutui-cell-leading-align-self': 'flex-start',
       }}
-      icon={
+      leading={
         <Image
           src={iconLarge}
           style={{ width: pxTransform(20), height: pxTransform(20) }}

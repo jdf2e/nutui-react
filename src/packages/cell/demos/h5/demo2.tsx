@@ -3,12 +3,9 @@ import { Cell } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   return (
-    <Cell
-      align="center"
-      title="我是标题"
-      description="我是描述"
-      extra="描述文字"
-    />
+    <Cell>
+      <div>自定义内容</div>
+    </Cell>
   )
 }
 export default Demo2

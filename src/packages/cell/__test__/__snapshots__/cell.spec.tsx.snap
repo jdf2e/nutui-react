@@ -43,14 +43,14 @@ exports[`block layout when content provided 1`] = `
 </div>
 `;
 
-exports[`icon renders before body 1`] = `
+exports[`leading renders before body 1`] = `
 <div>
   <div
     class="nut-cell"
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell-icon"
+      class="nut-cell-leading"
     >
       <div
         class="custom-icon"

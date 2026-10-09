@@ -36,11 +36,11 @@ const CellDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Demo1 />
-        <h2>{translated.verticalCenter}</h2>
+        <h2>{translated.fullyCustom}</h2>
         <Demo2 />
         <h2>{translated.customInfo}</h2>
         <Demo3 />
-        <h2>{translated.fullyCustom}</h2>
+        <h2>{translated.verticalCenter}</h2>
         <Demo4 />
         <h2>{translated.group}</h2>
         <Demo5 />

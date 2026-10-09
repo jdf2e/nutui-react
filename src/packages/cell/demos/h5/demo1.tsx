@@ -15,17 +15,21 @@ const Demo1 = () => {
   return (
     <>
       <Cell
-        icon={<img src={iconSmall} style={{ width: 15, height: 15 }} alt="" />}
+        leading={
+          <img src={iconSmall} style={{ width: 15, height: 15 }} alt="" />
+        }
         title="我是标题"
         extra="描述文字"
         align="center"
         style={{
-          '--nutui-cell-icon-margin': 'calc(8px * var(--nut-scale-f, 1))',
+          '--nutui-cell-leading-margin': 'calc(8px * var(--nut-scale-f, 1))',
         }}
       />
       <Cell title="我是标题" description="我是描述" extra="描述文字" />
       <Cell
-        icon={<img src={iconLarge} style={{ width: 20, height: 20 }} alt="" />}
+        leading={
+          <img src={iconLarge} style={{ width: 20, height: 20 }} alt="" />
+        }
         title="我是标题"
         description="我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述"
         extra="描述文字"

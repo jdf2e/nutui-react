@@ -6,7 +6,7 @@ export interface BaseCell extends BaseProps {
   title: ReactNode
   description: ReactNode
   extra: ReactNode
-  icon: ReactNode
+  leading: ReactNode
   content: ReactNode
   radius: string | number
   align: FlexAlign

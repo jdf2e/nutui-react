@@ -153,7 +153,7 @@ npm install @nutui/nutui-react-taro
 ### Cell (展示类)
 
 - **左侧区域类名由 `.nut-cell-left` 改为 `.nut-cell-body`（不兼容变更）**：
-  - 为承载新增的识别区（`icon`），原左侧内容区更名为主信息区。若此前通过 `.nut-cell-left` 覆盖过单元格样式，请改用 `.nut-cell-body`。
+  - 为承载新增的识别区（`leading`），原左侧内容区更名为主信息区。若此前通过 `.nut-cell-left` 覆盖过单元格样式，请改用 `.nut-cell-body`。
 - **单元格内边距调整为 `16px`（行为变更）**：
   - `--nutui-cell-padding` 默认值由 `13px 16px` 调整为 `16px`，单元格整体高度会增加。若需维持原有间距，可显式设置 `--nutui-cell-padding: 13px 16px`。
 - **标题改为单行打点（行为变更）**：
@@ -161,4 +161,4 @@ npm install @nutui/nutui-react-taro
 - **右侧区域不再参与拉伸（行为变更）**：
   - `.nut-cell-extra` 由 `flex: 1` 改为按内容宽度自适应，并与主信息区保持 `24px` 最小间距（可通过 `--nutui-cell-extra-margin` 调整）。此前右侧内容较长时会与主信息区平分剩余空间，现在改为右侧优先占位、主信息区相应收窄，可能出现主标题被截断而右侧内容完整的观感变化。
 - **新增识别区与下挂插槽（新增）**：
-  - 新增 `icon` 属性用于渲染左侧识别区（图标或头像），组件只负责 `12px` 间距（`--nutui-cell-icon-margin`）与对齐，尺寸由使用方决定；新增 `content` 属性作为下挂通栏业务插槽，宽度撑满内容区并与主信息左边界对齐。传入 `content` 后，`description` 会由标题下方改为通栏展示。两项均为纯新增能力，不传时不影响原有用法。
+  - 新增 `leading` 属性用于渲染左侧识别区（图标或头像），组件只负责 `12px` 间距（`--nutui-cell-leading-margin`）与对齐，尺寸由使用方决定；新增 `content` 属性作为下挂通栏业务插槽，宽度撑满内容区并与主信息左边界对齐。传入 `content` 后，`description` 会由标题下方改为通栏展示。两项均为纯新增能力，不传时不影响原有用法。

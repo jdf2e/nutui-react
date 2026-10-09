@@ -11,7 +11,7 @@ const defaultProps = {
   title: null,
   description: null,
   extra: null,
-  icon: null,
+  leading: null,
   content: null,
   radius: '6px',
   align: 'flex-start',
@@ -33,7 +33,7 @@ export const Cell: FunctionComponent<
     title,
     description,
     extra,
-    icon,
+    leading,
     content,
     radius,
     align,
@@ -118,7 +118,9 @@ export const Cell: FunctionComponent<
       >
         {children || (
           <>
-            {icon ? <div className={`${classPrefix}-icon`}>{icon}</div> : null}
+            {leading ? (
+              <div className={`${classPrefix}-leading`}>{leading}</div>
+            ) : null}
             {renderInner()}
           </>
         )}

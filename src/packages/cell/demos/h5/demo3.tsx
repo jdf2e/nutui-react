@@ -44,9 +44,9 @@ const Demo3 = () => {
       align="center"
       style={{
         '--nutui-cell-description-margin': '0px',
-        '--nutui-cell-icon-align-self': 'flex-start',
+        '--nutui-cell-leading-align-self': 'flex-start',
       }}
-      icon={<img src={iconLarge} style={{ width: 20, height: 20 }} alt="" />}
+      leading={<img src={iconLarge} style={{ width: 20, height: 20 }} alt="" />}
       title={titleNode}
       description={descriptionNode}
       extra={

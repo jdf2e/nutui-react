@@ -56,13 +56,13 @@ test('slot extra', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('icon renders before body', () => {
+test('leading renders before body', () => {
   const { container } = render(
-    <Cell icon={<div className="custom-icon" />} title="我是标题" />
+    <Cell leading={<div className="custom-icon" />} title="我是标题" />
   )
   const cell = container.querySelector('.nut-cell') as HTMLElement
   expect(container.querySelector('.custom-icon')).toBeInTheDocument()
-  expect(cell.children[0].className).toContain('nut-cell-icon')
+  expect(cell.children[0].className).toContain('nut-cell-leading')
   expect(cell.children[1].className).toContain('nut-cell-body')
   expect(container).toMatchSnapshot()
 })
@@ -109,7 +109,7 @@ test('align applies to header in block layout', () => {
 test('children takes over rendering', () => {
   const { container } = render(
     <Cell
-      icon={<div className="custom-icon" />}
+      leading={<div className="custom-icon" />}
       title="我是标题"
       content={<div />}
     >
@@ -117,7 +117,7 @@ test('children takes over rendering', () => {
     </Cell>
   )
   expect(container.querySelector('.custom-icon')).not.toBeInTheDocument()
-  expect(container.querySelector('.nut-cell-icon')).not.toBeInTheDocument()
+  expect(container.querySelector('.nut-cell-leading')).not.toBeInTheDocument()
   expect(container.querySelector('.nut-cell-title')).not.toBeInTheDocument()
   expect(container.querySelector('.nut-cell-content')).not.toBeInTheDocument()
   expect(container).toContainHTML('<div>自定义内容</div>')

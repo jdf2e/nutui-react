@@ -20,10 +20,10 @@
     margin: 0;
   }
 
-  &-icon {
+  &-leading {
     flex: none;
-    margin-right: $cell-icon-margin;
-    align-self: $cell-icon-align-self;
+    margin-right: $cell-leading-margin;
+    align-self: $cell-leading-align-self;
     display: flex;
   }
 
@@ -144,9 +144,9 @@
 
 [dir='rtl'] .nut-cell,
 .nut-rtl .nut-cell {
-  .nut-cell-icon {
+  .nut-cell-leading {
     margin-right: 0;
-    margin-left: $cell-icon-margin;
+    margin-left: $cell-leading-margin;
   }
   .nut-cell-body + .nut-cell-extra,
   .nut-cell-header > .nut-cell-title + .nut-cell-extra {

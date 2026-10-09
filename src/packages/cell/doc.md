@@ -18,9 +18,7 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### 垂直居中
-
-通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
+### 完全自定义
 
 :::demo
 
@@ -36,7 +34,9 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### 完全自定义
+### 垂直居中
+
+通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
 
 :::demo
 
@@ -70,7 +70,7 @@ import { Cell } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| icon | 左侧识别区，常用于图标或头像。尺寸由使用方决定，组件只负责间距与对齐 | `ReactNode` | `-` |
+| leading | 左侧识别区，常用于图标或头像。尺寸由使用方决定，组件只负责间距与对齐 | `ReactNode` | `-` |
 | title | 标题，超出容器宽度时单行打点 | `ReactNode` | `-` |
 | description | 描述。未传入 `content` 时位于标题下方；传入 `content` 时通栏展示，不限行数 | `ReactNode` | `-` |
 | extra | 右侧描述，按内容宽度自适应，与主信息区保持最小间距 | `ReactNode` | `-` |
@@ -96,8 +96,8 @@ import { Cell } from '@nutui/nutui-react'
 | \--nutui-cell-extra-font-size | 单元格右侧描述字体大小 | `$font-size-base` |
 | \--nutui-cell-border-radius | 单元格圆角大小 | `6px` |
 | \--nutui-cell-padding | 单元格内边距 | `16px` |
-| \--nutui-cell-icon-margin | 识别区与主信息区之间的间距 | `12px` |
-| \--nutui-cell-icon-align-self | 识别区图标的纵向对齐方式，设为 `flex-start` 可贴第一行标题 | `auto` |
+| \--nutui-cell-leading-margin | 识别区与主信息区之间的间距 | `12px` |
+| \--nutui-cell-leading-align-self | 识别区的纵向对齐方式，设为 `flex-start` 可贴第一行标题 | `auto` |
 | \--nutui-cell-extra-margin | 主信息区与右侧区域之间的最小间距 | `24px` |
 | \--nutui-cell-description-margin | 标题与说明文案之间的间距 | `2px` |
 | \--nutui-cell-content-margin | 说明文案与内容区域之间的间距 | `8px` |

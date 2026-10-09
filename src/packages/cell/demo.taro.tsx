@@ -40,11 +40,11 @@ const CellDemo = () => {
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <View className="h2">{translated.verticalCenter}</View>
+        <View className="h2">{translated.fullyCustom}</View>
         <Demo2 />
         <View className="h2">{translated.customInfo}</View>
         <Demo3 />
-        <View className="h2">{translated.fullyCustom}</View>
+        <View className="h2">{translated.verticalCenter}</View>
         <Demo4 />
         <View className="h2">{translated.group}</View>
         <Demo5 />

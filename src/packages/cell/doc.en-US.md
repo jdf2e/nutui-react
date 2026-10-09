@@ -18,9 +18,7 @@ import { Cell } from '@nutui/nutui-react'
 
 :::
 
-### Vertical Center
-
-You can align the left and right contents of the cell vertically through the 'center' attribute.
+### Fully Custom
 
 :::demo
 
@@ -36,7 +34,9 @@ You can align the left and right contents of the cell vertically through the 'ce
 
 :::
 
-### Fully Custom
+### Vertical Center
+
+You can align the left and right contents of the cell vertically through the 'center' attribute.
 
 :::demo
 
@@ -70,7 +70,7 @@ Use `nut-cell-group` to support `title` and `description`.
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| icon | Leading area, usually an icon or an avatar. Its size is up to you; the component only handles spacing and alignment | `ReactNode` | `-` |
+| leading | Leading area, usually an icon or an avatar. Its size is up to you; the component only handles spacing and alignment | `ReactNode` | `-` |
 | title | Title, truncated with an ellipsis on a single line when it overflows | `ReactNode` | `-` |
 | description | Description. Sits below the title, or becomes full-width when `content` is passed. Line count is not limited | `ReactNode` | `-` |
 | extra | Right side content, sized to its content and keeping a minimum gap from the main area | `ReactNode` | `-` |
@@ -96,8 +96,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-size-base` |
 | \--nutui-cell-border-radius | The rounded corner size of the cell | `6px` |
 | \--nutui-cell-padding | Inside margins of cells | `16px` |
-| \--nutui-cell-icon-margin | Gap between the leading area and the main area | `12px` |
-| \--nutui-cell-icon-align-self | Vertical alignment of the leading-area icon; set to `flex-start` to align it with the first title line | `auto` |
+| \--nutui-cell-leading-margin | Gap between the leading area and the main area | `12px` |
+| \--nutui-cell-leading-align-self | Vertical alignment of the leading area; set to `flex-start` to align it with the first title line | `auto` |
 | \--nutui-cell-extra-margin | Minimum gap between the main area and the right area | `24px` |
 | \--nutui-cell-description-margin | Gap between the title and the description | `2px` |
 | \--nutui-cell-content-margin | Gap between the description and the content area | `8px` |

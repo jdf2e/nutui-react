@@ -153,7 +153,7 @@ npm install @nutui/nutui-react-taro
 ### Cell (Display)
 
 - **Left area class renamed from `.nut-cell-left` to `.nut-cell-body` (breaking change)**:
-  - To make room for the new leading area (`icon`), the former left content area is now the main area. If you overrode cell styles via `.nut-cell-left`, migrate to `.nut-cell-body`.
+  - To make room for the new leading area (`leading`), the former left content area is now the main area. If you overrode cell styles via `.nut-cell-left`, migrate to `.nut-cell-body`.
 - **Cell padding changed to `16px` (behavior change)**:
   - The default of `--nutui-cell-padding` changed from `13px 16px` to `16px`, so cells become slightly taller. To keep the previous spacing, set `--nutui-cell-padding: 13px 16px` explicitly.
 - **Title is now truncated on a single line (behavior change)**:
@@ -161,4 +161,4 @@ npm install @nutui/nutui-react-taro
 - **Right area no longer stretches (behavior change)**:
   - `.nut-cell-extra` changed from `flex: 1` to sizing to its content, keeping a `24px` minimum gap from the main area (tunable via `--nutui-cell-extra-margin`). Previously a long right area split the remaining space evenly with the main area; now the right area takes its space first and the main area shrinks accordingly, so you may see the title truncate while the right content stays complete.
 - **New leading area and full-width slot (new)**:
-  - Added the `icon` prop for the leading area (an icon or an avatar). The component only handles the `12px` gap (`--nutui-cell-icon-margin`) and alignment; sizing is up to you. Added the `content` prop as a full-width slot below the row, aligned with the main area's left edge. Once `content` is passed, `description` moves from below the title to a full-width row. Both are purely additive; omitting them does not affect existing usage.
+  - Added the `leading` prop for the leading area (an icon or an avatar). The component only handles the `12px` gap (`--nutui-cell-leading-margin`) and alignment; sizing is up to you. Added the `content` prop as a full-width slot below the row, aligned with the main area's left edge. Once `content` is passed, `description` moves from below the title to a full-width row. Both are purely additive; omitting them does not affect existing usage.
