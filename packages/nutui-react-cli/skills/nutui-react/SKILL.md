@@ -119,9 +119,10 @@ nutui-react token Button --format json
 | 参数 | 用途 |
 | --- | --- |
 | `--format, -f <text\|json>` | 输出格式；agent 应优先使用 `json`（默认：`text`） |
+| `--nutui-version, --nv <version>` | 目标 NutUI 版本（如 `3`、`3.1.0`、`4.0.0-beta.7`）；省略则自动检测 |
 | `--lang, -l <zh\|en>` | `doc` / `mcp` 的文档语言（默认：`zh`） |
 | `--help, -h` | 显示帮助 |
-| `--version, -v` | 打印 CLI 版本 |
+| `--version, -v` | 打印 CLI 自身版本（不是 NutUI 版本） |
 
 ## 核心规则
 
@@ -129,3 +130,4 @@ nutui-react token Button --format json
 2. **使用 `--format json`** —— 每个命令都支持它。解析 JSON 输出，而不是用正则匹配人类可读的文本。
 3. **确认组件存在** —— 如果不确定确切名称，运行 `nutui-react list`，或借助 CLI 的「你是不是想找」建议，而不是导入一个猜测的名称。
 4. **使用 Design Token 做样式** —— NutUI 采用 `nut-` 扁平 BEM 类名和 `var(--nutui-*)` 变量体系。定制外观时，查询 `nutui-react token` 并使用 Token，而不是硬编码颜色或间距。
+5. **版本优先自动检测** —— CLI 内置 v3 / v4 多版本快照。在有 NutUI 依赖的项目里工作时，优先**不传** `--nutui-version`，让 CLI 从项目 `node_modules` / `package.json` 自动推断；只有当用户明确要查某个特定版本、或不在项目上下文中时，才显式传 `--nv <version>`。输出里的 `_meta.version` / `_meta.source` 会告诉你实际命中的版本。
