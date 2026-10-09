@@ -167,5 +167,8 @@ const idID: BaseLang = {
   quickenter: {
     title: 'Masuk Cepat',
   },
+  dialog: {
+    autoCloseText: 'Tutup otomatis dalam {second}s',
+  },
 }
 export default idID

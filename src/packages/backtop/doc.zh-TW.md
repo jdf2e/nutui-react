@@ -60,6 +60,14 @@ import { BackTop } from '@nutui/nutui-react'
 
 :::
 
+### 有底部導航欄的情況
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
 ## BackTop
 
 ### Props
@@ -69,8 +77,10 @@ import { BackTop } from '@nutui/nutui-react'
 | target | 獲取監聽的目標元素 | `string` | `-` |
 | threshold | 頁面垂直滾動多高後出現 | `number` | `200` |
 | zIndex | 設置組件頁面層級 | `number` | `900` |
-| duration | 設置動畫持續時間，為 0 時表示無動畫 | `number` | `1000` |
-| scrollRes | 被監聽容器滾動時的回調參數，主要用於 RN、鴻蒙端 | `PageScrollObejct` | `-` |
+| duration | 設置動畫持續时间，為 0 時表示無動畫 | `number` | `1000` |
+| tabbarHeight | 底部導航條高度，用於適配底部導航欄遮擋場景 | `number` | `-` |
+| icon | 自定義圖標 | `ReactNode` | `-` |
+| scrollRes | 被監聽容器滾動時的回調參數，主要用於 RN、鴻蒙端 | `PageScrollObject` | `-` |
 | onClick | 按鈕點擊時觸發事件 | `(event: MouseEvent) => void` | `-` |
 
 ## 主題定制
@@ -81,6 +91,11 @@ import { BackTop } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-backtop-border-color | 邊框顏色 | `#e0e0e0` |
+| \--nutui-backtop-border-color | 邊框顏色 | `$color-border` |
+| \--nutui-backtop-background-color | 背景顏色 | `$color-background-overlay` |
+| \--nutui-backtop-size | 按鈕尺寸 | `40px` |
+| \--nutui-backtop-right | 距離右側距離 | `8px` |
+| \--nutui-backtop-bottom | 距離底部距離 | `60px` |
+| \--nutui-backtop-icon-size | 圖標尺寸 | `20px` |
 
 <Contribution name="BackTop" />

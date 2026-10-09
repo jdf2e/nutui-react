@@ -12,7 +12,7 @@
   height: $avatar-normal-height;
 
   &-round {
-    border-radius: 999px;
+    border-radius: scale-px(999px);
     overflow: hidden;
   }
 

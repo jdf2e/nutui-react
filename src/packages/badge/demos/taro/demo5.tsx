@@ -9,7 +9,7 @@ import {
 } from '@nutui/nutui-react-taro'
 
 const customTheme = {
-  nutuiBadgeBorderRadius: `${pxTransform(12)} ${pxTransform(12)} ${pxTransform(12)} 0`,
+  nutuiBadgeBorderRadius: `${pxTransform(4)} ${pxTransform(4)} ${pxTransform(4)} ${pxTransform(1)}`,
 }
 
 const Demo5 = () => {

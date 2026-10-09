@@ -170,5 +170,8 @@ const jaJP: BaseLang = {
   quickenter: {
     title: 'クイックアクセス',
   },
+  dialog: {
+    autoCloseText: '{second}秒後に自動的に閉じます',
+  },
 }
 export default jaJP

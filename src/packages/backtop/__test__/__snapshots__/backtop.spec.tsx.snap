@@ -3,35 +3,24 @@
 exports[`backtop custom test 1`] = `
 <div>
   <div
-    class="nut-hoverbutton-container nut-backtop custom-class"
+    class="nut-backtop custom-class"
     style="z-index: 900; bottom: 110px; right: 10px;"
   >
-    <div
-      class="nut-hoverbutton"
+    <svg
+      class="nut-icon nut-icon-Top "
+      viewBox="0 0 48 48"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <div
-        class="nut-hoverbutton-item-container"
-      >
-        <svg
-          class="nut-icon nut-icon-Top "
-          viewBox="0 0 1024 1024"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M111.79 471.68a21.31 21.31 0 0 1-30.08-2.35l-14.08-16.21a21.31 21.31 0 0 1 2.34-30.08L498.13 54.61a21.33 21.33 0 0 1 27.74 0l428.16 368.43c8.96 7.68 10.03 21.12 2.34 30.08l-14.08 16.21c-7.68 8.96-21.12 10.03-30.08 2.35L544 154.67V960c0 11.73-9.6 21.33-21.33 21.33h-21.34c-11.73 0-21.33-9.6-21.33-21.33V154.67zM510.93 128h2.14l-1.07-.85z"
-            fill="currentColor"
-          />
-        </svg>
-        <div
-          style="font-size: 12px;"
-        >
-          顶部
-        </div>
-      </div>
-    </div>
+      <path
+        d="M23.09 9.74 11.35 21.47a.996.996 0 0 1-1.41 0l-.71-.7c-.39-.39-.39-1.02 0-1.42L23.88 4.71a.996.996 0 0 1 1.41 0l14.65 14.64c.39.39.39 1.02 0 1.42l-.71.7a.996.996 0 0 1-1.41 0L26.09 9.74v33.81c0 .64-.45 1.15-1 1.16h-1c-.55 0-1-.52-1-1.16z"
+        fill="currentColor"
+      />
+    </svg>
     <div
-      class="nut-safe-area nut-safe-area-position-bottom"
-    />
+      style="font-size: 12px;"
+    >
+      顶部
+    </div>
   </div>
 </div>
 `;
