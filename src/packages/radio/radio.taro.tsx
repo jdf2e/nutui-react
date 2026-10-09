@@ -53,15 +53,15 @@ export const Radio: FC<
     onChange,
   })
   const context = useContext(RadioContext)
+  const finalDisabled = Boolean(disabled || context?.disabled)
+
   if (context) {
     checkedStatement = context.value === value
     if (context.labelPosition !== undefined) {
       labelPosition = context.labelPosition
     }
-    if (context.disabled !== undefined) {
-      disabled = context.disabled
-    }
     setCheckedStatement = (value: boolean) => {
+      if (finalDisabled) return
       if (value) {
         context.check(props.value === undefined ? '' : props.value)
       } else {
@@ -71,14 +71,14 @@ export const Radio: FC<
   }
   const color = (): Mapping => {
     return {
-      [`${classPrefix}-icon-disabled`]: disabled,
+      [`${classPrefix}-icon-disabled`]: finalDisabled,
       [`${classPrefix}-icon`]: !checkedStatement,
       [`${classPrefix}-icon-checked`]: checkedStatement,
     }
   }
   const renderIcon = () => {
     const { icon, activeIcon } = props
-    if (disabled && !checkedStatement) {
+    if (finalDisabled && !checkedStatement) {
       // @ts-ignore
       return <CheckDisabled className={classNames(color())} ariaHidden />
     }
@@ -105,7 +105,7 @@ export const Radio: FC<
   }
   const renderLabel = () => {
     const labelcls = classNames(`${classPrefix}-label`, {
-      [`${classPrefix}-label-disabled`]: disabled,
+      [`${classPrefix}-label-disabled`]: finalDisabled,
     })
     return (
       <>
@@ -117,7 +117,7 @@ export const Radio: FC<
   const renderButton = () => {
     const buttoncls = classNames(`${classPrefix}-button`, {
       [`${classPrefix}-button-active`]: checkedStatement,
-      [`${classPrefix}-button-disabled`]: disabled,
+      [`${classPrefix}-button-disabled`]: finalDisabled,
     })
     return <View className={buttoncls}>{children}</View>
   }
@@ -130,7 +130,7 @@ export const Radio: FC<
   const handleClick = (
     e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
   ) => {
-    if (disabled || checkedStatement) return
+    if (finalDisabled || checkedStatement) return
     setCheckedStatement(!checkedStatement)
   }
   const cls = classNames(
@@ -150,7 +150,7 @@ export const Radio: FC<
       ariaLabel={ariaLabel}
       // @ts-ignore
       ariaChecked={checkedStatement}
-      ariaDisabled={disabled}
+      ariaDisabled={finalDisabled}
     >
       {renderRadioItem()}
     </View>

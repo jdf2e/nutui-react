@@ -79,30 +79,66 @@ describe('radio', () => {
   })
 
   test('Render radios by configuring options', () => {
-    const RadioGroupOptions = () => {
-      const [radioVal] = useState('1')
-      const [optionsDemo1] = useState([
-        {
-          label: '选项一',
-          value: '1',
-        },
-        {
-          label: '选项二',
-          value: '2',
-          disabled: true,
-        },
-        {
-          label: '选项三',
-          value: '3',
-        },
-      ])
-      return (
-        <>
-          <RadioGroup value={radioVal} options={optionsDemo1} />
-        </>
-      )
-    }
-    const { container } = render(<RadioGroupOptions />)
+    const handleChange = vi.fn()
+    const optionsDemo1 = [
+      {
+        label: '选项一',
+        value: '1',
+      },
+      {
+        label: '选项二',
+        value: '2',
+        disabled: true,
+      },
+      {
+        label: '选项三',
+        value: '3',
+      },
+    ]
+    const { container, getByText } = render(
+      <RadioGroup
+        defaultValue="1"
+        options={optionsDemo1}
+        onChange={handleChange}
+      />
+    )
+
+    expect(getByText('选项一')).toBeInTheDocument()
+    expect(getByText('选项二')).toBeInTheDocument()
+    expect(getByText('选项三')).toBeInTheDocument()
+
+    expect(container.querySelectorAll('.nut-icon-CheckChecked').length).toBe(1)
+    expect(container.querySelectorAll('.nut-radio-icon-disabled').length).toBe(
+      1
+    )
+
+    // Click disabled option 2
+    fireEvent.click(getByText('选项二'))
+    expect(handleChange).not.toBeCalled()
+
+    // Click option 3
+    fireEvent.click(getByText('选项三'))
+    expect(handleChange).toBeCalledWith('3')
+  })
+
+  test('individual disabled takes precedence when group disabled is false', () => {
+    const handleChange = vi.fn()
+    const { getByTestId } = render(
+      <RadioGroup disabled={false} onChange={handleChange}>
+        <Radio data-testid="r1" value="1">
+          选项1
+        </Radio>
+        <Radio data-testid="r2" value="2" disabled>
+          选项2
+        </Radio>
+      </RadioGroup>
+    )
+
+    fireEvent.click(getByTestId('r2'))
+    expect(handleChange).not.toBeCalled()
+
+    fireEvent.click(getByTestId('r1'))
+    expect(handleChange).toBeCalledWith('1')
   })
 
   test('Render radios by shape', () => {

@@ -34,6 +34,14 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
+### Async Error Interruption
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ### disabled status
 
 :::demo

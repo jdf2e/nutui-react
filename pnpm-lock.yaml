@@ -21,11 +21,11 @@ importers:
         specifier: ^7.29.7
         version: 7.29.7
       '@nutui/icons-react':
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: 4.1.0-beta.2
+        version: 4.1.0-beta.2
       '@nutui/icons-react-taro':
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 4.1.0-beta.1
+        version: 4.1.0-beta.1
       '@nutui/jdesign-icons-react-taro':
         specifier: 1.0.6-beta.2
         version: 1.0.6-beta.2
@@ -2689,14 +2689,14 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@nutui/icons-react-taro@3.0.2':
-    resolution: {integrity: sha512-yQgN1eOXVDQuJ9RLmQelo01LoDvRn81UsDdQf2Yct35qDeqEcc7yuBhnwCRrj6mc2Z8KFvzbGysbazmvP4g2VA==}
+  '@nutui/icons-react-taro@4.1.0-beta.1':
+    resolution: {integrity: sha512-uBXl9s7qQME9LiN/0z2OyzmsgF5rrnBHJn+prmzgD1psv8Jow2Pv8a9wlFVVHbi64ybDbMnZ8mztwiFBhaUnCA==}
 
   '@nutui/icons-react@1.0.5':
     resolution: {integrity: sha512-0TYl3Fk+sVz95DKqn/7isYAvaK5YGnaBwMMib4rqYLoqi9GGFwgU9rp2hYXu/X5IYdWgshj0xiuGMK75/vUYbQ==}
 
-  '@nutui/icons-react@3.0.2':
-    resolution: {integrity: sha512-GxN/MIHUpPoxA5X82doXUIYQxf4kDXFEo9/J9gTuC2ZoUzb2CwewTRhDU1oA9XXeP75jM4G+uIdo5JcPifQnaA==}
+  '@nutui/icons-react@4.1.0-beta.2':
+    resolution: {integrity: sha512-kG7ic15T+2me/9wT+dp7GdC2wmI5nB99S9eTDIxQylMqoRsaaLY7FH9lEAXrHWziNcPUfWSsos02gOBGltB1fg==}
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2':
     resolution: {integrity: sha512-2Scz5c9o14gA7Mw5JdiEkc/KEbNlNWMcJMuqVyFVipYeeYN/118N/fvHVpocmJviN0Gc4P+u3ZB3dIQSA2j4Fw==}
@@ -15944,11 +15944,11 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
 
-  '@nutui/icons-react-taro@3.0.2': {}
+  '@nutui/icons-react-taro@4.1.0-beta.1': {}
 
   '@nutui/icons-react@1.0.5': {}
 
-  '@nutui/icons-react@3.0.2': {}
+  '@nutui/icons-react@4.1.0-beta.2': {}
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2': {}
 

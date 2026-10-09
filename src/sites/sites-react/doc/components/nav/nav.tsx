@@ -145,7 +145,7 @@ const Nav = () => {
                         >
                           {cp.name}&nbsp;
                           <b>{lang === 'zh-CN' && cp.cName}</b>
-                          {cp.v16 && <span className="nav-new-tag">new</span>}
+                          {cp.v16 && <span className="nav-new-tag">v16</span>}
                         </NavLink>
                       </li>
                     )

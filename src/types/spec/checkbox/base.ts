@@ -9,8 +9,8 @@ export type CheckboxShape = 'button' | 'round'
 export interface CheckboxGroupOption {
   label: string
   value: string
-  disabled: boolean
-  onChange: (state: boolean, label: string) => void
+  disabled?: boolean
+  onChange?: (state: boolean, label: string) => void
 }
 
 export interface BaseCheckbox extends BaseProps {

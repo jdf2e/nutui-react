@@ -46,19 +46,31 @@ export const CheckboxGroup = React.forwardRef(
           setValue([])
         } else {
           const childrenLabel: string[] = []
-          React.Children.map(children, (child) => {
-            const childProps = (child as any).props
-            childrenLabel.push(childProps.value)
-          })
+          if (options?.length) {
+            options.forEach((option) => {
+              childrenLabel.push(option.value)
+            })
+          } else {
+            React.Children.map(children, (child) => {
+              const childProps = (child as any).props
+              childrenLabel.push(childProps.value)
+            })
+          }
           setValue(childrenLabel)
         }
       },
       reverse() {
         const childrenLabel: string[] = []
-        React.Children.map(children, (child) => {
-          const childProps = (child as any).props
-          childrenLabel.push(childProps.value)
-        })
+        if (options?.length) {
+          options.forEach((option) => {
+            childrenLabel.push(option.value)
+          })
+        } else {
+          React.Children.map(children, (child) => {
+            const childProps = (child as any).props
+            childrenLabel.push(childProps.value)
+          })
+        }
         const reverse: string[] = childrenLabel.filter(
           (c) => _value?.findIndex((v) => v === c) === -1
         )
@@ -85,7 +97,7 @@ export const CheckboxGroup = React.forwardRef(
           />
         )
       })
-    }, [options, max, min])
+    }, [options])
 
     return (
       <Context.Provider

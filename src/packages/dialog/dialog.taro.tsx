@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useState, MouseEvent } from 'react'
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  useRef,
+  MouseEvent,
+} from 'react'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
@@ -26,6 +32,8 @@ const defaultProps = {
   content: '',
   header: '',
   footer: '',
+  subtitle: '',
+  titleIcon: '',
   cancelBadge: '',
   confirmBadge: '',
   confirmText: '',
@@ -40,6 +48,7 @@ const defaultProps = {
   overlayStyle: {},
   overlayClassName: 'nut-dialog-overlay',
   zIndex: 1200,
+  autoClose: 0,
   beforeCancel: () => true,
   beforeClose: () => true,
   onCancel: () => {},
@@ -67,6 +76,8 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       footer,
       footerDirection,
       header,
+      subtitle,
+      titleIcon,
       cancelBadge,
       confirmBadge,
       hideConfirmButton,
@@ -79,6 +90,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       title,
       visible,
       zIndex,
+      autoClose,
       beforeCancel,
       beforeClose,
       onClose,
@@ -91,6 +103,35 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const [countdown, setCountdown] = useState(0)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+
+  useEffect(() => {
+    if (visible && autoClose > 0) {
+      setCountdown(autoClose)
+      timerRef.current = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            if (timerRef.current) {
+              clearInterval(timerRef.current)
+              timerRef.current = null
+            }
+            onCloseRef.current()
+            return 0
+          }
+          return prev - 1
+        })
+      }, 1000)
+    }
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+        timerRef.current = null
+      }
+    }
+  }, [visible, autoClose])
 
   useCustomEvent(
     id as string,
@@ -237,7 +278,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   }
 
   const renderCloseIcon = () => {
-    if (!closeIcon) return null
+    if (!closeIcon && autoClose <= 0) return null
     const handleClose = () => {
       if (!beforeClose?.()) return
       onClose()
@@ -248,16 +289,30 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     })
     const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
-      <View
-        className={closeClasses}
-        onClick={handleClose}
-        ariaRole="button"
-        ariaLabel={locale.close}
-        // @ts-ignore
-        tabIndex={0}
-      >
-        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
-      </View>
+      <>
+        {closeIcon && (
+          <View
+            className={closeClasses}
+            onClick={handleClose}
+            ariaRole="button"
+            ariaLabel={locale.close}
+            // @ts-ignore
+            tabIndex={0}
+          >
+            {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
+          </View>
+        )}
+        {autoClose > 0 && countdown > 0 && (
+          <View className={`${classPrefix}-close-auto`}>
+            {locale.dialog
+              ? locale.dialog.autoCloseText.replace(
+                  '{second}',
+                  String(countdown)
+                )
+              : `${countdown}秒后自动关闭`}
+          </View>
+        )}
+      </>
     )
   }
 
@@ -286,6 +341,8 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
             // display: visible ? 'block' : 'none',
           }}
           title={title}
+          subtitle={subtitle}
+          titleIcon={titleIcon}
           header={header}
           close={renderCloseIcon()}
           footer={renderFooter()}
