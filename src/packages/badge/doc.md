@@ -109,11 +109,13 @@ import { Badge } from '@nutui/nutui-react'
 | \--nutui-badge-background-color | badge 背景色 | `$color-primary` |
 | \--nutui-badge-background-disabled-color | badge 禁用背景色 | `$color-text-disabled` |
 | \--nutui-badge-color | badge 内容色值 | `$color-primary-text` |
-| \--nutui-badge-font-size | badge 内容字号 | `$font-size-xxs` |
-| \--nutui-badge-border | badge 边框 | `1px solid $color-primary-text` |
+| \--nutui-badge-font-size | badge 内容字号 | `$font-size-xxs`（`10px`；小程序为 `$font-size-xxxs` / `9px`） |
+| \--nutui-badge-border | badge 外包边（简写） | `0.67px solid $color-background-overlay` |
+| \--nutui-badge-border-width | badge 外包边宽度 | `0.67px`（1x/2x 回落 `1px`） |
+| \--nutui-badge-border-color | badge 外包边颜色 | `$color-background-overlay`（亮色 `#FFFFFF` / 暗黑 `#1F2226`） |
 | \--nutui-badge-border-radius | badge 边框圆角 | `14px` |
-| \--nutui-badge-min-width | badge 最小宽度 | `6px` |
-| \--nutui-badge-padding | badge 的padding值 | `1px 4px` |
+| \--nutui-badge-min-width | badge 最小宽度（content-box，不含左右 padding） | `8px` |
+| \--nutui-badge-padding | badge 的padding值 | `0 4px` |
 | \--nutui-badge-icon-padding | badge 为自定义icon时 的 padding值 | `2px` |
 | \--nutui-badge-icon-size | badge 为自定义icon时 的 size | `10px` |
 | \--nutui-badge-content-transform | badge 内容位置 | `translate(50%, -50%)` |
@@ -121,8 +123,8 @@ import { Badge } from '@nutui/nutui-react'
 | \--nutui-badge-dot-width | badge 为圆点时，size 等于 normal 的宽高 | `6px` |
 | \--nutui-badge-dot-small-width | badge 为圆点时，size 等于 small 的宽高 | `4px` |
 | \--nutui-badge-dot-large-width | badge 为圆点时，size 等于 large 的宽高 | `8px` |
-| \--nutui-badge-dot-border | badge 为圆点时的边框 | `1px solid $color-primary-text` |
+| \--nutui-badge-dot-border | badge 为圆点时的外包边 | `0.67px solid $color-background-overlay`（亮色 `#FFFFFF` / 暗黑 `#1F2226`） |
 | \--nutui-badge-outline-color | badge 为 outline 文字色值 | `$color-primary` |
-| \--nutui-badge-outline-border | badge 为 outline 填充模式时的边框 | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-border | badge 为 outline 填充模式时的边框 | `0.67px solid $color-primary` |
 
 <Contribution name="Badge" />

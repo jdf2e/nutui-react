@@ -50,6 +50,14 @@ import { BackTop } from '@nutui/nutui-react'
 
 :::
 
+### With Bottom Navigation Bar
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
 ### HarmonyOS version usage
 
 Due to the lack of support for fixed positioning, it needs to be used in conjunction with ScrollView.
@@ -70,7 +78,9 @@ Due to the lack of support for fixed positioning, it needs to be used in conjunc
 | threshold | How high to scroll the page vertically | `number` | `200` |
 | zIndex | Set the component z-index | `number` | `900` |
 | duration | Set animation duration | `number` | `1000` |
-| scrollRes | Callback parameters of a ScrollView listener, mainly used for HarmonyOS | `PageScrollObejct` | `-` |
+| tabbarHeight | Height of the bottom navigation bar, used to avoid occlusion by the tab bar | `number` | `-` |
+| icon | Custom icon | `ReactNode` | `-` |
+| scrollRes | Callback parameters of a ScrollView listener, mainly used for HarmonyOS | `PageScrollObject` | `-` |
 | onClick | Emitted when component is clicked | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## Theming
@@ -81,6 +91,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-backtop-border-color | border color | `#e0e0e0` |
+| \--nutui-backtop-border-color | border color | `$color-border` |
+| \--nutui-backtop-background-color | background color | `$color-background-overlay` |
+| \--nutui-backtop-size | button size | `40px` |
+| \--nutui-backtop-right | distance to right edge | `8px` |
+| \--nutui-backtop-bottom | distance to bottom edge | `60px` |
+| \--nutui-backtop-icon-size | icon size | `20px` |
 
 <Contribution name="BackTop" />

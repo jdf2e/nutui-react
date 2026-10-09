@@ -34,6 +34,14 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
+### 异步操作失败（异常中断）
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ### 禁用状态
 
 :::demo

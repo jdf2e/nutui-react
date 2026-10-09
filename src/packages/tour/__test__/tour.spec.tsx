@@ -103,7 +103,7 @@ test('custom offset', () => {
     />
   )
   const tourArrow = document.querySelectorAll('.nut-popover-arrow')[0]
-  expect(tourArrow).toHaveStyle({ right: '52px' })
+  expect(tourArrow).toHaveStyle({ right: '-36px' })
 })
 
 test('slot render', () => {

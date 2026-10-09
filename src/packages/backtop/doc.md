@@ -50,6 +50,14 @@ import { BackTop } from '@nutui/nutui-react'
 
 :::
 
+### 有底部导航栏的情况
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
 ## BackTop
 
 ### Props
@@ -60,6 +68,8 @@ import { BackTop } from '@nutui/nutui-react'
 | threshold | 页面垂直滚动多高后出现 | `number` | `200` |
 | zIndex | 设置组件页面层级 | `number` | `900` |
 | duration | 设置动画持续时间，为 0 时表示无动画 | `number` | `1000` |
+| tabbarHeight | 底部导航条高度，用于适配底部导航栏遮挡场景 | `number` | `-` |
+| icon | 自定义图标 | `ReactNode` | `-` |
 | onClick | 按钮点击时触发事件 | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## 主题定制
@@ -70,6 +80,11 @@ import { BackTop } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-backtop-border-color | 边框颜色 | `#e0e0e0` |
+| \--nutui-backtop-border-color | 边框颜色 | `$color-border` |
+| \--nutui-backtop-background-color | 背景颜色 | `$color-background-overlay` |
+| \--nutui-backtop-size | 按钮尺寸 | `40px` |
+| \--nutui-backtop-right | 距离右侧距离 | `8px` |
+| \--nutui-backtop-bottom | 距离底部距离 | `60px` |
+| \--nutui-backtop-icon-size | 图标尺寸 | `20px` |
 
 <Contribution name="BackTop" />

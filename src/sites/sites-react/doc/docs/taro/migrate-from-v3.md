@@ -118,3 +118,48 @@ npm install @nutui/nutui-react-taro
 - **主题变量调整**：
   - 新增 `--nutui-resultpage-title-line-height`。
   - `--nutui-resultpage-icon-margin-bottom` 默认 `12px` → `4px`；`--nutui-resultpage-title-margin-bottom` `12px` → `4px`；`--nutui-resultpage-title-font-size` `$font-size-xl` → `$font-size-md`；`--nutui-resultpage-description-line-height` `20px` → `22px`；`--nutui-resultpage-actions-margin-top` `16px` → `12px`。
+
+### Skeleton (反馈类)
+
+- **`size` 视觉规格对齐设计稿（兼容升级）**：
+  - `large`（标题）高度由 `32px` 调整为 `28px`；`normal`（价格）高度由 `24px` 调整为 `20px`；`small`（正文）保持 `16px`；圆角保持 `4px`。
+  - 尺寸语义映射：`small` 对应正文、`normal` 对应价格、`large` 对应标题。
+- **`duration` 默认值变更（不兼容默认值行为）**：
+  - 光晕移动时长默认值由 `0.6`（600ms）调整为 `0.4`（400ms）。如需维持原有节奏，请显式传入 `duration={0.6}`。
+- **背景色令牌调整**：
+  - `--nutui-skeleton-background` 默认回退值由 `$color-background-sunken` 改为 `$color-background`，暗黑模式下自动跟随 `color-background` 令牌。
+- **光晕视觉重做**：
+  - 加载光晕由横向平移的深色叠加改为白色 30° 斜向光带（宽 80px，渐变透明度 0% → 50% → 0%），由左至右移动 400ms、停顿约 1s 后循环。
+
+### Range (数据录入)
+
+- **游标视觉规格调整（兼容升级）**：
+  - 游标尺寸由 `24px` 调整为 `20px`（`--nutui-range-button-width`、`--nutui-range-button-height`）。
+  - 游标边框颜色由 `$color-primary` 调整为 `$color-border`（`--nutui-range-button-border`）。
+  - 游标投影由单层 `0 1px 2px rgba(0,0,0,0.15)` 调整为三层柔和投影。
+- **进度条颜色令牌调整（兼容升级）**：
+  - `--nutui-range-inactive-color`（未激活背景）默认回退值由 `$color-primary-light-pressed` 改为 `$color-background-component`，暗黑模式下自动跟随组件背景令牌。
+- **禁用态实现变更（兼容升级）**：
+  - 禁用态由整体 `opacity: 0.54` 改为使用新增令牌 `--nutui-range-disabled-color`（默认 `$color-primary-light-pressed`）为已选区间着色，规避鸿蒙端透明度分发到子图层的问题。
+- **气泡展示（新增）**：
+  - `currentDescription` 当前值由裸文字改为深色气泡展示（背景 `$color-mask`、文字 `$color-primary-text`、圆角 `6px`、带指向游标的角标），横向气泡在游标上方、纵向气泡在游标右侧。若通过 `.nut-range-button-number` 自定义过样式，请注意其内部新增了 `.nut-range-button-number-body`（气泡主体）与 `.nut-range-button-number-arrow`（角标）两层结构。
+- **左右范围文字与刻度调整（兼容升级）**：
+  - 左右范围文字字号由 `12px` 调整为 `16px`（`$font-size-md`），行高 `24px`。
+  - 刻度点尺寸由 `11px` 调整为 `8px`，刻度文字字号由 `12px` 调整为 `14px`、行高 `24px`，并以刻度点中线对齐分布。
+
+### ActionSheet (反馈类)
+
+- **`position` 属性现已生效（行为变更）**：
+  - 此前组件内部将弹出位置写死为 `bottom` 并忽略外部传入的 `position`，现已支持 `top` / `bottom`，默认仍为 `bottom`。若此前误传过 `position` 且依赖其被忽略，请移除该属性。
+- **底部列表项默认样式调整（行为变更）**：
+  - 列表项之间新增默认分隔线：`--nutui-actionsheet-item-border-bottom` 默认值由 `none` 调整为 `$color-border`（最后一项不显示分隔线）；列表项行高由 `24px` 调整为 `22px`、上下内边距由 `10px` 调整为 `13px`，列表容器新增左右 `16px` 内边距；取消按钮移除与列表之间的顶部分隔线及间距，行高调整为 `40px`、字号调整为 `$font-size-md`。若需保留旧的无分隔线外观，可将 `--nutui-actionsheet-item-border-bottom` 设为 `none`。
+- **`optionKey` 默认新增 `icon` 字段（行为变更）**：
+  - `optionKey` 默认值新增 `icon: 'icon'`。当底部列表的 `options` 中存在 `icon` 字段时，列表会自动切换为左对齐的图标列表布局。若你的数据中已有名为 `icon` 的字段但不希望将其渲染为图标，请通过 `optionKey` 指定其它图标字段名或移除该字段。
+- **头部结构由 Popup 渲染改为组件自绘（兼容升级）**：
+  - 标题、描述改由 ActionSheet 自身渲染，DOM 结构由 `.nut-popup-title*` 变为 `.nut-actionsheet-header*`。若此前通过 `.nut-popup-title` 相关类名覆盖过动作面板头部样式，请迁移至 `.nut-actionsheet-header`、`.nut-actionsheet-header-title`、`.nut-actionsheet-header-description`。
+- **移除 CSS 变量 `--nutui-actionsheet-border-color`（不兼容变更）**：
+  - 该变量此前用于标题底部与取消按钮顶部的分隔线颜色。头部改为组件自绘、取消按钮移除顶部分隔线后，该变量已不再被使用，故予以移除。若此前通过 `--nutui-actionsheet-border-color` 自定义分隔线颜色，请改用 `--nutui-actionsheet-item-border-bottom`。
+- **顶部弹出与网格布局（新增）**：
+  - 通过 `position="top"` 从顶部弹出，内容以网格形式展示，`options` 支持 `icon` 字段（字符串使用 `Image` 渲染，也可传入自定义节点），可通过 `columns` 设置列数（仅支持 `4` / `5`，默认 `5`）；`cancelText` 在顶部模式下渲染为「点击收起」按钮。网格布局也可通过 `layout="grid"` 用于底部弹出。
+- **头部样式与关闭能力（新增）**：
+  - 新增 `titleAlign`（`left` / `center`，默认 `center`，仅 `center` 时 `description` 生效）、`headerLeft`、`headerRight` 自定义头部左右内容，以及 `closeable` / `closeIconPosition` 控制关闭按钮的显示与位置。以上均为纯新增能力，不影响原有用法。

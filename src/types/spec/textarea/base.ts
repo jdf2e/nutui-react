@@ -1,4 +1,8 @@
+import { ReactNode } from 'react'
 import { BaseProps } from '../../base/props'
+
+export type TextAreaContainerType = 'gray' | 'white'
+export type TextAreaStatus = 'default' | 'error'
 
 export interface BaseTextArea<EVENT = any> extends BaseProps {
   viewId: string
@@ -12,7 +16,9 @@ export interface BaseTextArea<EVENT = any> extends BaseProps {
   disabled: boolean
   autoSize: boolean
   plain: boolean
-  status: 'error' | 'default'
+  containerType: TextAreaContainerType
+  status: TextAreaStatus
+  description?: ReactNode
   onChange: (value: string) => void
   onBlur: (event: EVENT) => void
   onFocus: (event: EVENT) => void

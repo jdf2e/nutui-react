@@ -40,6 +40,46 @@ Pagination can be switched to lite mode with lite mode attribute, and you can us
 
 :::
 
+### Capsule Number
+
+Set mode to "lite" and indicatorType to "capsule" (default) to render a capsule with white text on a semi-transparent mask, commonly used in immersive image browsing. The page number stays in sync with the swipe state in real time.
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
+### Plain Text
+
+Set indicatorType to "text" to render a plain-text page number (18px bold), commonly centered inside an immersive top navigation bar.
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
+### Progress Bar
+
+Set indicatorType to "progress" to render equal-width progress segments indicating the current frame, with the active frame highlighted. Combine with Swiper's loop for seamless carousel looping.
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
+### Capsule & Progress
+
+In some scenarios, the capsule number and progress bar indicators can coexist.
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ### Show ellipses
 
 The ellipses button will display after with force-ellipses attribute, click it can jump quickly
@@ -77,6 +117,8 @@ Pass in a custom method through itemRender, parameters: `{ number: "page number"
 | value | current page number, controlled value | `number` | `-` |
 | defaultValue | default page number, uncontrolled value | `number` | `1` |
 | mode | Display mode | `multi` \| `simple` \| `lite` | `multi` |
+| indicatorType | Indicator type in lite mode | `capsule` \| `text` \| `progress` | `capsule` |
+| loop | Whether to loop seamlessly (carousel scenario) | `boolean` | `false` |
 | prev | Customize previous page button content | `ReactNode` | `Previous` |
 | next | Customize next page button content | `ReactNode` | `Next` |
 | total | total | `number` | `50` |
@@ -108,5 +150,17 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-pagination-lite-radius | lite mode radius | `12px` |
 | \--nutui-pagination-lite-background-color | lite mode background color | `var(--nutui-black-7)` |
 | \--nutui-pagination-lite-active-background-color | lite mode background color of current page | `var(--nutui-black-5)` |
+| \--nutui-pagination-capsule-background-color | capsule background color | `$color-mask-part` |
+| \--nutui-pagination-capsule-color | capsule text color | `$color-primary-text` |
+| \--nutui-pagination-capsule-radius | capsule radius | `$radius-xs` |
+| \--nutui-pagination-capsule-padding | capsule padding | `4px 6px` |
+| \--nutui-pagination-capsule-font-size | capsule font size | `$font-size-xs` |
+| \--nutui-pagination-text-color | plain text color | `$color-title` |
+| \--nutui-pagination-text-font-size | plain text font size | `$font-size-xl` |
+| \--nutui-pagination-text-font-weight | plain text font weight | `600` |
+| \--nutui-pagination-progress-height | progress bar height | `2px` |
+| \--nutui-pagination-progress-gap | progress bar gap | `$spacing-xxs` |
+| \--nutui-pagination-progress-active-color | progress active frame color | `$color-primary-text` |
+| \--nutui-pagination-progress-inactive-color | progress inactive frame color | `var(--nutui-white-3)` |
 
 <Contribution name="Pagination" />

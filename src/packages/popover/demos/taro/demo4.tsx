@@ -35,6 +35,10 @@ const Demo4 = () => {
       key: 'key1',
       name: '主要文案内容',
     },
+    {
+      key: 'key2',
+      name: '主要文案内容',
+    },
   ]
 
   const handlePicker = () => {
@@ -78,8 +82,8 @@ const Demo4 = () => {
       </Picker>
       <Popover
         visible={customPositon}
-        theme="dark"
         targetId="pickerTarget"
+        type="description"
         list={positionList}
         location={curPostion}
       />

@@ -625,7 +625,7 @@
           "jdtaro": 2,
           "author": "hanyuxinting",
           "dd": false,
-          "v16": false
+          "v16": true
         },
         {
           "version": "2.0.0",
@@ -655,7 +655,7 @@
           "jdtaro": 2,
           "author": "VickyYe",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -787,7 +787,7 @@
           "v15": -1,
           "author": "vickyYe",
           "dd": false,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -907,7 +907,7 @@
           "v15": 2,
           "author": "dsj",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -921,7 +921,7 @@
           "v15": 1,
           "author": "lzz",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -991,7 +991,7 @@
           "v15": 1,
           "author": "mike8625",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "2.0.0",
@@ -1005,7 +1005,7 @@
           "v15": 2,
           "author": "vickyYe",
           "dd": false,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -1033,7 +1033,7 @@
           "v15": 1,
           "author": "lzz",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -1090,7 +1090,7 @@
           "v15": 1,
           "author": "swag~jun",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -1318,7 +1318,7 @@
           "v15": 1,
           "author": "lkjh3214",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",

@@ -11,14 +11,11 @@ test('range props test', () => {
   expect(container.querySelector('.nut-range-container')).toHaveClass(
     'test-range'
   )
-  expect(container.querySelector('.nut-range-bar')).toHaveStyle({
-    background:
-      'linear-gradient(315deg, rgb(73, 143, 242) 0%, rgb(73, 101, 242) 100%)',
-  })
+  expect(container.querySelector('.nut-range-bar')).toBeTruthy()
 
-  expect(container.querySelector('.nut-range-button-number')?.innerHTML).toBe(
-    '40'
-  )
+  expect(
+    container.querySelector('.nut-range-button-number-body')?.innerHTML
+  ).toBe('40')
 
   expect(container).toMatchSnapshot()
 })
@@ -164,9 +161,9 @@ test('desc test', () => {
   expect(container.querySelector('.nut-range-max')?.innerHTML).toBe(
     state.maxDescription
   )
-  expect(container.querySelector('.nut-range-button-number')?.innerHTML).toBe(
-    '40%'
-  )
+  expect(
+    container.querySelector('.nut-range-button-number-body')?.innerHTML
+  ).toBe('40%')
 })
 
 test('range click test', () => {
@@ -213,7 +210,6 @@ test('range touch test', () => {
   const { container } = render(<Range defaultValue={40} />)
 
   const track = container.querySelector('.nut-range-button')
-  const button = container.querySelector('.nut-range-button-number')
 
   if (track) {
     fireEvent.touchStart(track, {
@@ -223,6 +219,8 @@ test('range touch test', () => {
       touches: [{ clientX: 10 }],
     })
     fireEvent.touchEnd(track)
-    expect(button?.innerHTML).toBe('100')
+    expect(
+      container.querySelector('.nut-range-button-number-body')?.innerHTML
+    ).toBe('100')
   }
 })

@@ -67,12 +67,12 @@ test('render popover content', async () => {
 
 test('render popover content dark', async () => {
   const { container } = render(
-    <Popover visible list={itemListOne} theme="dark" location="right">
+    <Popover visible list={itemListOne} location="right">
       <Button type="primary">基础用法</Button>
     </Popover>
   )
   const content = document.querySelectorAll('.nut-popover')[0]
-  expect(content.className).toContain('nut-popover-dark')
+  expect(content.className).toContain('nut-popover--status')
   expect(container).toMatchSnapshot()
 })
 
@@ -95,30 +95,37 @@ test('render popover position with arrowOffset', async () => {
     </Popover>
   )
 
-  const checkArrowStyles = (location: FullPosition, expectedStyles: string) => {
+  const checkArrowStyles = (
+    location: FullPosition,
+    expectedStyles: string | null
+  ) => {
     rerender(
       <Popover visible list={itemList} location={location} arrowOffset={20}>
         <Button type="primary">基础用法</Button>
       </Popover>
     )
     content = document.querySelectorAll('.nut-popover-arrow')[0]
-    expect(content).toHaveAttribute('style', expectedStyles)
+    if (expectedStyles === null) {
+      expect(content.getAttribute('style')).toBeNull()
+    } else {
+      expect(content).toHaveAttribute('style', expectedStyles)
+    }
   }
 
   let content = document.querySelectorAll('.nut-popover-arrow')[0]
-  expect(content).toHaveAttribute('style', 'left: 36px;')
+  expect(content).toHaveAttribute('style', 'left: 20px;')
 
-  checkArrowStyles('bottom', 'left: calc(50% + 20px);')
-  checkArrowStyles('bottom-right', 'right: -4px;')
-  checkArrowStyles('left', 'top: calc(50% - 20px);')
-  checkArrowStyles('left-bottom', 'bottom: 36px;')
-  checkArrowStyles('left-top', 'top: -4px;')
-  checkArrowStyles('right', 'top: calc(50% - 20px);')
-  checkArrowStyles('right-bottom', 'bottom: 36px;')
-  checkArrowStyles('right-top', 'top: -4px;')
-  checkArrowStyles('top-right', 'right: -4px;')
-  checkArrowStyles('top-left', 'left: 36px;')
-  checkArrowStyles('top', 'left: calc(50% + 20px);')
+  checkArrowStyles('bottom', null)
+  checkArrowStyles('bottom-right', 'right: 20px;')
+  checkArrowStyles('left', null)
+  checkArrowStyles('left-bottom', null)
+  checkArrowStyles('left-top', null)
+  checkArrowStyles('right', null)
+  checkArrowStyles('right-bottom', null)
+  checkArrowStyles('right-top', null)
+  checkArrowStyles('top-right', 'right: 20px;')
+  checkArrowStyles('top-left', 'left: 20px;')
+  checkArrowStyles('top', null)
 })
 
 test('render position fixed ', async () => {
@@ -185,6 +192,37 @@ test('should not emit select event when the action is disabled', async () => {
   const contentItem = document.querySelectorAll('.nut-popover-item')[0]
   fireEvent.click(contentItem)
   await waitFor(() => expect(choose).not.toBeCalled())
+})
+
+test('should auto show on mount when autoShow is true', () => {
+  const open = vi.fn()
+  render(
+    <Popover autoShow visible={false} list={itemList} onOpen={open}>
+      <Button type="primary">自动弹出</Button>
+    </Popover>
+  )
+  expect(open).toBeCalled()
+})
+
+test('should auto close after duration', () => {
+  vi.useFakeTimers()
+  const close = vi.fn()
+  const click = vi.fn()
+  render(
+    <Popover
+      visible
+      duration={5000}
+      list={itemList}
+      onClose={close}
+      onClick={click}
+    >
+      <Button type="primary">自动关闭</Button>
+    </Popover>
+  )
+  vi.advanceTimersByTime(5000)
+  expect(close).toBeCalled()
+  expect(click).toBeCalled()
+  vi.useRealTimers()
 })
 
 test('click event', async () => {

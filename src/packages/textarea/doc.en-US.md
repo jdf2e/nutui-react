@@ -1,6 +1,6 @@
 # TextArea
 
-Enter or edit text in the text box, and limit the number of entries is supported.
+Enter or edit multiline text with character counting and over-limit feedback.
 
 ## Import
 
@@ -74,6 +74,14 @@ import { TextArea } from '@nutui/nutui-react'
 
 :::
 
+### Error status
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
 ## TextArea
 
 ### Props
@@ -83,14 +91,16 @@ import { TextArea } from '@nutui/nutui-react'
 | value | input value, controlled | `string` | `-` |
 | defaultValue | input default value, uncontrolled | `string` | `-` |
 | placeholder | set placeholder prompt text | `string` | `please enter content` |
-| maxLength | limit the maximum input characters, no limit with `-1` | `number` | `140` |
+| maxLength | character validation threshold; input remains editable after exceeding it, no limit with `-1` | `number` | `140` |
 | rows | height of textarea, with priority higher than autoSize attribute | `number` | `2` |
 | showCount | whether textarea displays the input characters. Use | `boolean` | `false` |
 | autoSize | whether to adapt the content height. | `boolean` | `false` |
-| readOnly | read only attribute | `boolean` | `false` |
+| readOnly | Read-only; prevents editing and focus | `boolean` | `false` |
 | disabled | disable attribute | `boolean` | `false` |
-| plain | mark textarea's container type, false is for `container`, true is for `纯文本型` | `boolean` | `false` |
+| plain | whether to use the plain type; ignores `containerType` when `true` | `boolean` | `false` |
+| containerType | container background type | `gray / white` | `gray` |
 | status | textarea status, with default and error | `default /\ error` | `default` |
+| description | error message shown only when `status="error"`, below the textarea | `ReactNode` | `-` |
 | onChange | Triggered when the value of the input box changes | `(value) => void` | `-` |
 | onFocus | Triggered when focusing | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 | onBlur | Triggered when out of focus | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
@@ -114,8 +124,15 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-textarea-padding | padding | `10px 25px` |
+| \--nutui-textarea-plain-min-height | plain type minimum height | `44px` |
+| \--nutui-textarea-container-min-height | container type minimum height | `60px` |
+| \--nutui-textarea-padding | container padding | `8px 12px` |
+| \--nutui-textarea-container-gray-background-color | gray container background | `color-background-component` |
+| \--nutui-textarea-container-white-background-color | white container background | `$color-background-overlay` |
+| \--nutui-textarea-limit-error-color | over-limit count color | `$color-error` |
+| \--nutui-textarea-error-color | error description color | `$color-error` |
 | \--nutui-textarea-text-color | text color | `$color-title` |
+| \--nutui-textarea-text-line-height | Input line height | `20px` |
 | \--nutui-textarea-text-curror-color | caret color | `$color-title` |
 
 <Contribution name="TextArea" />

@@ -15,12 +15,16 @@ export interface BaseNoticeBar extends BaseProps {
   leftIcon: ReactNode
   rightIcon: ReactNode
   right: ReactNode
+  description: ReactNode
+  tag: ReactNode
+  action: ReactNode
+  autoClose: number
   delay: string | number
   scrollable: boolean | null
   speed: number
   close?: (event: any) => void
   click?: (event: any) => void
-  onClose?: (event: any) => void
+  onClose?: (event?: any) => void
   onClick?: (event: any) => void
   onItemClick?: (event: any, value: any) => void
 }

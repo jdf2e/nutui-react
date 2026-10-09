@@ -28,17 +28,15 @@
 
   &-sup,
   &-icon {
+    position: relative;
     border-radius: $badge-border-radius;
-    &::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      bottom: -50%;
-      left: -50%;
-      right: -50%;
-      transform: scale(0.5);
-      border: $badge-border;
-      border-radius: $badge-border-radius;
+    border-style: solid;
+    border-color: #{$badge-border-color};
+    border-width: 1px;
+    box-sizing: content-box;
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+      border-width: #{$badge-border-width};
     }
   }
 
@@ -49,13 +47,18 @@
     /* #ifndef dynamic*/
     display: inline-flex;
     /* #endif */
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    height: $badge-height;
     min-width: $badge-min-width;
     padding: $badge-padding;
-    box-sizing: border-box;
     color: $badge-color;
     font-size: $badge-font-size;
-    line-height: 12px;
+    /* #ifdef weapp jd */
+    font-size: $font-size-xxxs;
+    /* #endif */
+    line-height: $badge-height;
     white-space: nowrap;
     font-weight: normal;
     vertical-align: middle;
@@ -71,11 +74,6 @@
     font-family: 'JDZH-Regular';
   }
 
-  &-one {
-    height: $badge-height;
-    width: $badge-height;
-  }
-
   &-content {
     position: absolute;
     transform: $badge-content-transform;
@@ -84,10 +82,6 @@
   &-dot {
     padding: 0;
     border-radius: 50%;
-    &::after {
-      border: $badge-dot-border;
-      border-radius: 50%;
-    }
     &-normal {
       min-width: $badge-dot-width;
       width: $badge-dot-width;
@@ -108,8 +102,6 @@
   &-outline {
     background: $color-primary-text;
     color: $badge-outline-color;
-    &::after {
-      border: $badge-outline-border;
-    }
+    border-color: $badge-outline-color;
   }
 }
