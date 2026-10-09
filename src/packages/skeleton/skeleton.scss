@@ -1,5 +1,5 @@
 .nut-skeleton {
-  line-height: 0px;
+  line-height: 0;
   font-size: 0px;
 
   &-content {
@@ -25,7 +25,7 @@
 
     &-small {
       height: $skeleton-line-small-height;
-      margin-top: 8px;
+      margin-top: scale-px(8px);
     }
     &-small-0 {
       margin-top: 0;
@@ -48,8 +48,8 @@
       rgba(255, 255, 255, 0) 100%
     );
     background-repeat: no-repeat;
-    background-size: 80px 100%;
-    transform: translateX(-80px) skewX(-30deg);
+    background-size: scale-px(80px) 100%;
+    transform: translateX(scale-px(-80px)) skewX(-30deg);
     animation-name: nut-skeleton;
     animation-delay: 0s;
     animation-duration: 1.4s;
@@ -64,7 +64,7 @@
   // 时间轴:0~28.5% 扫光(≈0.4s),28.5%~100% 停顿(≈1s),transform 走合成层不触发回流
   @keyframes nut-skeleton {
     0% {
-      transform: translateX(-80px) skewX(-30deg);
+      transform: translateX(scale-px(-80px)) skewX(-30deg);
       opacity: 0;
     }
 
@@ -94,13 +94,13 @@
     left: 0;
     right: auto;
     background-position: right center;
-    transform: translateX(80px) skewX(30deg);
+    transform: translateX(scale-px(80px)) skewX(30deg);
     animation-name: nut-skeleton-rtl;
   }
 
   @keyframes nut-skeleton-rtl {
     0% {
-      transform: translateX(80px) skewX(30deg);
+      transform: translateX(scale-px(80px)) skewX(30deg);
       opacity: 0;
     }
 

@@ -10,6 +10,8 @@ const defaultProps = {
   ...ComponentDefaults,
   defaultValue: 1,
   mode: 'multi',
+  indicatorType: 'capsule',
+  loop: false,
   prev: null,
   next: null,
   total: 50,
@@ -25,6 +27,8 @@ export const Pagination: FunctionComponent<
   const {
     value,
     mode,
+    indicatorType,
+    loop,
     prev,
     next,
     total,
@@ -70,6 +74,41 @@ export const Pagination: FunctionComponent<
   const nextPage = () => {
     const next = current + 1
     next <= pageCount && setCurrent(next)
+  }
+
+  // lite 模式下的指示符渲染：胶囊数字型 / 纯文本型 / 进度条指示型
+  const renderIndicator = () => {
+    if (indicatorType === 'progress') {
+      return (
+        <div className={`${classPrefix}-progress`}>
+          {Array.from({ length: pageCount }).map((_, index) => (
+            <div
+              key={`${index}progress`}
+              className={classNames({
+                [`${classPrefix}-progress-item`]: true,
+                [`${classPrefix}-progress-item-active`]: index + 1 === current,
+              })}
+            />
+          ))}
+        </div>
+      )
+    }
+    if (indicatorType === 'text') {
+      return (
+        <div className={`${classPrefix}-text`}>
+          <span className={`${classPrefix}-text-active`}>{current}</span>
+          <span className={`${classPrefix}-text-spliterator`}>/</span>
+          <span className={`${classPrefix}-text-default`}>{pageCount}</span>
+        </div>
+      )
+    }
+    return (
+      <div className={`${classPrefix}-capsule`}>
+        <span className={`${classPrefix}-capsule-active`}>{current}</span>
+        <span className={`${classPrefix}-capsule-spliterator`}>/</span>
+        <span className={`${classPrefix}-capsule-default`}>{pageCount}</span>
+      </div>
+    )
   }
 
   return (
@@ -125,10 +164,14 @@ export const Pagination: FunctionComponent<
         </>
       )}
       {mode === 'lite' && (
-        <div className={`${classPrefix}-lite`}>
-          <div className={`${classPrefix}-lite-active`}>{current}</div>
-          <div className={`${classPrefix}-lite-spliterator`}>/</div>
-          <div className={`${classPrefix}-lite-default`}>{pageCount}</div>
+        <div
+          className={classNames({
+            [`${classPrefix}-lite`]: true,
+            [`${classPrefix}-lite-${indicatorType}`]: true,
+            [`${classPrefix}-lite-loop`]: loop,
+          })}
+        >
+          {renderIndicator()}
         </div>
       )}
     </div>

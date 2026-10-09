@@ -61,7 +61,7 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 | zIndex | Set component page level | `number` | `10` |
 | tabbarHeight | Bottom navigation bar height (excluding safe area height) | `number` | `-` |
 | icon | Set button icon | `ReactNode` | `-` |
-| onClick | Button click event trigger | `Function` | `-` |
+| onClick | Button click event trigger | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## HoverButton.Item
 
@@ -70,7 +70,7 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 | Property | Description | Type | Default Value |
 | --- | --- | --- | --- |
 | icon | Set button icon | `ReactNode` | `-` |
-| onClick | Button click event trigger | `Function` | `-` |
+| onClick | Button click event trigger | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## Theme Customization
 
@@ -83,6 +83,7 @@ The component provides the following CSS variables that can be used for custom s
 | \--nutui-hoverbutton-spacing | Button vertical spacing | `16px` |
 | \--nutui-hoverbutton-position-bottom | Button area distance from the bottom of the screen | `48px` |
 | \--nutui-hoverbutton-position-right | Button area distance from the right side of the screen | `16px` |
+| \--nutui-hoverbutton-item-size | Button size | `44px` |
 | \--nutui-hoverbutton-item-border-color | Button border color | `rgba(0, 0, 0, 0.06)` |
 | \--nutui-hoverbutton-item-background | Button normal background color | `#FFFFFF` |
 | \--nutui-hoverbutton-item-background-active | Button active background color | `#F6F6F6` |

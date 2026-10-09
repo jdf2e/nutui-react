@@ -23,7 +23,7 @@
 
   &-icon-wrap {
     font-size: 0px;
-    line-height: 0px;
+    line-height: 0;
     border-radius: 50%;
     box-shadow: none;
   }
@@ -92,14 +92,14 @@
     display: inline-flex;
     /* #endif */
     align-items: center;
-    min-height: 32px;
+    min-height: scale-px(32px);
     padding: $checkbox-button-padding;
     font-size: $checkbox-button-font-size;
     background: $checkbox-button-background;
     border-radius: $checkbox-button-border-radius;
     color: $checkbox-label-color;
     box-sizing: border-box;
-    border: 1px solid $checkbox-button-background;
+    border: scale-px(1px) solid $checkbox-button-background;
     overflow: hidden;
 
     &-active {
@@ -110,7 +110,7 @@
 
     &-disabled {
       color: $color-text-disabled;
-      border: 1px solid $checkbox-button-background;
+      border: scale-px(1px) solid $checkbox-button-background;
     }
 
     &-icon {
@@ -129,25 +129,25 @@
     }
 
     .nut-checkbox-button-icon-checked {
-      width: 12px;
-      height: 12px;
+      width: scale-icon-px(12px);
+      height: scale-icon-px(12px);
       position: absolute;
       color: $white;
       right: 0;
       bottom: 0;
-      transform: translate(-1px, -2px);
+      transform: translate(scale-px(-1px), scale-px(-2px));
     }
 
     .nut-icon {
       position: absolute;
       font-size: $font-size-s;
-      width: 12px;
-      height: 12px;
+      width: scale-icon-px(12px);
+      height: scale-icon-px(12px);
 
       &:before {
         top: auto;
-        bottom: -22px;
-        margin-left: 6px;
+        bottom: scale-px(-22px);
+        margin-left: scale-px(6px);
       }
     }
   }
@@ -155,7 +155,7 @@
   .nut-checkbox-button-active.nut-checkbox-button-disabled {
     background: $color-text-disabled;
     color: $white;
-    border: 1px solid $color-text-disabled;
+    border: scale-px(1px) solid $color-text-disabled;
   }
 
   &-list-item {
@@ -192,19 +192,19 @@
     &-icon {
       right: auto;
       left: 0;
-      border-right: 10px solid transparent;
-      border-left: 10px solid $color-primary;
+      border-right: $icon-size-10 solid transparent;
+      border-left: $icon-size-10 solid $color-primary;
 
       &-checked {
         left: auto;
         right: 50%;
-        transform: translate(3px, -3px);
+        transform: translate(scale-px(3px), scale-px(-3px));
       }
 
       .nut-icon {
         &:before {
           margin-left: 0;
-          margin-right: 6px;
+          margin-right: scale-px(6px);
         }
       }
     }

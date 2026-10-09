@@ -13,8 +13,8 @@
     display: block;
     position: absolute;
     right: 0;
-    padding: 4px 16px;
-    border-radius: 16px;
+    padding: scale-px(4px) scale-px(16px);
+    border-radius: scale-px(16px);
     font-size: $font-size-s;
     text-align: center;
     white-space: pre;

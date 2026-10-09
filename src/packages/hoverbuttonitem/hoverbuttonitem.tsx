@@ -46,6 +46,18 @@ export const HoverButtonItem = (props: Partial<WebHoverButtonItemProps>) => {
         </>
       )
     }
+    if (!icon && children) {
+      return (
+        <div
+          className={classNames({
+            [`${classPrefix}-text`]: true,
+          })}
+        >
+          {children}
+        </div>
+      )
+    }
+    return null
   }
 
   return (

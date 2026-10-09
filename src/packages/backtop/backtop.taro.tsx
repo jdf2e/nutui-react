@@ -2,21 +2,16 @@ import React, {
   FunctionComponent,
   useCallback,
   useEffect,
-  useRef,
   useState,
 } from 'react'
-import {
-  getSystemInfo,
-  PageScrollObject,
-  pageScrollTo,
-  usePageScroll,
-} from '@tarojs/taro'
+import { PageScrollObject, pageScrollTo, usePageScroll } from '@tarojs/taro'
 import { ITouchEvent, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { Top } from '@nutui/icons-react-taro'
 import { ComponentDefaults } from '@/utils/typings'
-import HoverButton from '@/packages/hoverbutton/index.taro'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroBackTopProps } from '@/types'
+import { UI_BOTTOM_DISTANCE } from '@/utils/constants'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -25,10 +20,9 @@ const defaultProps = {
   duration: 1000,
 } as TaroBackTopProps
 
-export const BackTop: FunctionComponent<
-  Partial<TaroBackTopProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
+export const BackTop: FunctionComponent<Partial<TaroBackTopProps>> = (
+  props
+) => {
   const {
     children,
     threshold,
@@ -37,8 +31,10 @@ export const BackTop: FunctionComponent<
     duration,
     icon,
     style,
+    tabbarHeight,
     scrollRes,
     onClick,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -52,13 +48,6 @@ export const BackTop: FunctionComponent<
     },
     className
   )
-  const systemInfo = useRef({})
-  useEffect(() => {
-    getSystemInfo().then((res) => {
-      systemInfo.current = res
-    })
-  }, [])
-
   const onScroll = useCallback(
     (res: PageScrollObject) => {
       const { scrollTop } = res
@@ -87,26 +76,22 @@ export const BackTop: FunctionComponent<
     [duration, onClick]
   )
 
+  const content =
+    children || (icon ?? <Top className={`${classPrefix}-icon`} />)
+
+  const baseStyle: React.CSSProperties = {
+    zIndex,
+    ...style,
+  }
+
+  if (tabbarHeight) {
+    baseStyle.bottom = pxTransform(tabbarHeight + UI_BOTTOM_DISTANCE)
+  }
+
   return (
-    <HoverButton
-      className={cls}
-      style={{ zIndex, ...style }}
-      icon={!children && (icon || <Top />)}
-      onClick={(e) => {
-        goTop(e)
-      }}
-    >
-      {children && (
-        <View
-          className="nut-hoverbutton-item-container"
-          onClick={(e) => {
-            goTop(e)
-          }}
-        >
-          {children}
-        </View>
-      )}
-    </HoverButton>
+    <View className={cls} style={baseStyle} onClick={goTop} {...rest}>
+      {content}
+    </View>
   )
 }
 
