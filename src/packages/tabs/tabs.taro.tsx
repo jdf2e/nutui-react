@@ -16,6 +16,7 @@ import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
 import { useUuid } from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
+import { CardShoulderLeft, CardShoulderRight } from './icon.taro'
 import { TabsTitle, TaroTabsProps } from '@/types'
 import { td } from '@/utils/taro/platform'
 
@@ -294,6 +295,8 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {
+                const isActive =
+                  !item.disabled && String(item.value) === String(value)
                 return (
                   <View
                     key={item.value}
@@ -303,12 +306,21 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                     id={`scrollIntoView${index}`}
                     onClick={() => tabChange(item)}
                     className={classNames(`${classPrefix}-titles-item`, {
-                      [`nut-tabs-titles-item-active`]:
-                        !item.disabled && String(item.value) === String(value),
+                      [`nut-tabs-titles-item-active`]: isActive,
                       [`nut-tabs-titles-item-disabled`]: item.disabled,
                       [`nut-tabs-titles-item-${align}`]: align,
                     })}
                   >
+                    {activeType === 'card' && isActive && (
+                      <>
+                        <CardShoulderLeft
+                          className={`${classPrefix}-titles-item-shoulder-left`}
+                        />
+                        <CardShoulderRight
+                          className={`${classPrefix}-titles-item-shoulder-right`}
+                        />
+                      </>
+                    )}
                     {activeType === 'line' && (
                       <View
                         className={classNames(

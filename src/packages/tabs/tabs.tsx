@@ -14,6 +14,7 @@ import raf from '@/utils/raf'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import { useRtl } from '../configprovider'
+import { CardShoulderLeft, CardShoulderRight } from './icon'
 import { TabsTitle, WebTabsProps } from '@/types'
 
 const defaultProps = {
@@ -199,17 +200,28 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
         {!!title && typeof title === 'function'
           ? title()
           : titles.current.map((item) => {
+              const isActive =
+                !item.disabled && String(item.value) === String(value)
               return (
                 <div
                   key={item.value}
                   onClick={() => tabChange(item)}
                   className={classNames(`${classPrefix}-titles-item`, {
-                    [`nut-tabs-titles-item-active`]:
-                      !item.disabled && String(item.value) === String(value),
+                    [`nut-tabs-titles-item-active`]: isActive,
                     [`nut-tabs-titles-item-disabled`]: item.disabled,
                     [`nut-tabs-titles-item-${align}`]: align,
                   })}
                 >
+                  {activeType === 'card' && isActive && (
+                    <>
+                      <CardShoulderLeft
+                        className={`${classPrefix}-titles-item-shoulder-left`}
+                      />
+                      <CardShoulderRight
+                        className={`${classPrefix}-titles-item-shoulder-right`}
+                      />
+                    </>
+                  )}
                   {activeType === 'line' && (
                     <div
                       className={classNames(
