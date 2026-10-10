@@ -1,0 +1,71 @@
+src/packages/tabbar/doc.en-US.md
+  s_29d1cb1d15a351::t_565e8b293c21e5 119-124,137,182-183
+src/styles/variables-jmapp.scss
+  s_29d1cb1d15a351::t_f0fd0df4e1b341 1424-1425
+src/styles/variables-jrkf.scss
+  s_29d1cb1d15a351::t_f0fd0df4e1b341 1529-1530
+src/packages/tabbar/doc.taro.md
+  s_29d1cb1d15a351::t_565e8b293c21e5 121-126,139,186-187
+src/types/spec/tabbar/base.ts
+  s_29d1cb1d15a351::t_e0dac423162dd6 12-13
+src/packages/tabbar/doc.zh-TW.md
+  s_29d1cb1d15a351::t_565e8b293c21e5 119-124,137,182-183
+src/packages/tabbar/tabbar.tsx
+  s_29d1cb1d15a351::t_e0dac423162dd6 19,38,57-60,90,104-113
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_29d1cb1d15a351::t_50ca8862aaeb71 723-764
+src/packages/tabbaritem/tabbaritem.scss
+  s_29d1cb1d15a351::t_2cd06de55d2aeb 68-93
+src/packages/tabbar/tabbar.scss
+  s_29d1cb1d15a351::t_c6ab0df77e512f 126-129
+  s_29d1cb1d15a351::t_2cd06de55d2aeb 69,92,95-99,124-125,130-137
+  s_29d1cb1d15a351::t_239aab407c737d 87-91
+  s_29d1cb1d15a351::t_e3bd90529af6b5 93-94
+  s_29d1cb1d15a351::t_9ff399ae54bbd5 138-140
+src/packages/tabbar/doc.md
+  s_29d1cb1d15a351::t_565e8b293c21e5 119-124,137,182-183
+src/packages/tabbar/context.ts
+  s_29d1cb1d15a351::t_e0dac423162dd6 7
+src/packages/tabbaritem/tabbaritem.taro.tsx
+  s_29d1cb1d15a351::t_68b5596edf814f 45-49
+  s_29d1cb1d15a351::t_70168e97d0079a 103-108
+  s_29d1cb1d15a351::t_c22e368d70cbb7 63
+  s_29d1cb1d15a351::t_6dd2f8cc05efce 50-56,101
+src/styles/variables-daojia.scss
+  s_29d1cb1d15a351::t_f0fd0df4e1b341 858-859
+src/packages/tabbar/__tests__/material.taro.spec.ts
+  s_29d1cb1d15a351::t_50ca8862aaeb71 153-156,163-168
+  s_29d1cb1d15a351::t_a7f1923df37094 157-162
+src/packages/tabbar/tabbar.taro.tsx
+  s_29d1cb1d15a351::t_e0dac423162dd6 54,74,115,154,171,175-179
+  s_29d1cb1d15a351::t_0b66d87c456f42 103-106,116
+src/packages/tabbaritem/tabbaritem.tsx
+  s_29d1cb1d15a351::t_68b5596edf814f 44-48
+  s_29d1cb1d15a351::t_6dd2f8cc05efce 49-55,94
+  s_29d1cb1d15a351::t_c22e368d70cbb7 62
+src/packages/tabbar/material.taro.ts
+  s_29d1cb1d15a351::t_e0dac423162dd6 115-116,119-121
+src/styles/variables.scss
+  s_29d1cb1d15a351::t_f0fd0df4e1b341 1344-1345
+src/packages/configprovider/types.ts
+  s_29d1cb1d15a351::t_49512aa0af360a 475-476
+src/packages/tabbar/__tests__/tabbar-native.spec.tsx
+  s_29d1cb1d15a351::t_50ca8862aaeb71 134-138,161
+  s_29d1cb1d15a351::t_a7f1923df37094 139-160,162-171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9b16b6672abf6605a595d9acce7b6464639a3ae4",
+  "prompts": {},
+  "sessions": {
+    "s_29d1cb1d15a351": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f05e-ea0d-7fe2-b768-28f4ece6a079",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

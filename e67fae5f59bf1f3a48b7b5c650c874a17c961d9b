@@ -1,0 +1,41 @@
+src/packages/tabbar/doc.zh-TW.md
+  s_2a04baf9f0896b::t_dd841a9bd0a74b 111
+src/packages/tabbar/doc.taro.md
+  s_2a04baf9f0896b::t_dd841a9bd0a74b 111,134
+src/packages/tabbar/material.taro.ts
+  s_2a04baf9f0896b::t_db6fdab76d8e86 70
+  s_2a04baf9f0896b::t_38b6664f93ff0e 2,16-21,54-56,64-69,71-73,105,121
+src/packages/tabbar/doc.md
+  s_2a04baf9f0896b::t_dd841a9bd0a74b 111
+src/packages/tabbar/doc.en-US.md
+  s_2a04baf9f0896b::t_dd841a9bd0a74b 111
+src/packages/tabbar/demos/taro/demo12.tsx
+  s_2a04baf9f0896b::t_dd841a9bd0a74b 29-45,65,67-69,99-122,171
+src/packages/tabbar/__tests__/tabbar-native.spec.tsx
+  s_2a04baf9f0896b::t_6d83147dd30f3b 9,20,54,74-99
+  s_2a04baf9f0896b::t_155978aa4f3d1c 100
+src/packages/tabbar/__tests__/material.taro.spec.ts
+  s_2a04baf9f0896b::t_6d83147dd30f3b 44-58,71-72
+  s_2a04baf9f0896b::t_db6fdab76d8e86 59-70
+src/types/spec/tabbar/taro.ts
+  s_2a04baf9f0896b::t_38b6664f93ff0e 6-7
+src/packages/tabbar/tabbar.taro.tsx
+  s_2a04baf9f0896b::t_db6fdab76d8e86 32-35,38-42
+  s_2a04baf9f0896b::t_38b6664f93ff0e 57,78,101-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e67fae5f59bf1f3a48b7b5c650c874a17c961d9b",
+  "prompts": {},
+  "sessions": {
+    "s_2a04baf9f0896b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0ed58-5caa-7f62-8109-a44a9d284a09",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

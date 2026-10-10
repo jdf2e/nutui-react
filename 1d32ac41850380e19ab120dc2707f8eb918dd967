@@ -1,0 +1,31 @@
+src/packages/tabbar/demo.taro.tsx
+  s_29d1cb1d15a351::t_5987dc6740d462 38,53,68
+src/packages/tabbar/doc.md
+  s_29d1cb1d15a351::t_5987dc6740d462 121
+src/packages/tabbar/doc.en-US.md
+  s_29d1cb1d15a351::t_5987dc6740d462 121
+src/packages/tabbar/doc.zh-TW.md
+  s_29d1cb1d15a351::t_5987dc6740d462 121
+src/packages/tabbar/__tests__/demo13.spec.tsx
+  s_29d1cb1d15a351::t_5987dc6740d462 7
+src/packages/tabbar/demo.tsx
+  s_29d1cb1d15a351::t_5987dc6740d462 34,49,64
+src/packages/tabbar/doc.taro.md
+  s_29d1cb1d15a351::t_5987dc6740d462 123
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1d32ac41850380e19ab120dc2707f8eb918dd967",
+  "prompts": {},
+  "sessions": {
+    "s_29d1cb1d15a351": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f05e-ea0d-7fe2-b768-28f4ece6a079",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

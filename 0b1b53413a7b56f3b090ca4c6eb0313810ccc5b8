@@ -1,0 +1,86 @@
+src/styles/variables.scss
+  s_1f4de7322ecc49::t_cd007fee6399c7 1314-1338
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_1f4de7322ecc49::t_d35e54f3490d93 52-58,62-70,160-173,175-178,317
+  s_1f4de7322ecc49::t_b9d7d1b0141271 91-93,95-97,99
+  s_1f4de7322ecc49::t_c1d1604555a50f 235-236,242-243
+  s_1f4de7322ecc49::t_5435964287a332 59-61,174
+  s_1f4de7322ecc49::t_a14de1d660f92b 98,304-316
+  s_1f4de7322ecc49::t_1abbb0835c98a4 4-5,18-51,94,100-159,239
+  s_1f4de7322ecc49::t_e9454036473529 179
+  s_1f4de7322ecc49::t_ac3dba74dd299a 318
+src/packages/tabbar/doc.en-US.md
+  s_1f4de7322ecc49::t_181ae0ee76fb39 5-6,79-86,89-90,134-140
+src/packages/configprovider/types.ts
+  s_1f4de7322ecc49::t_68c0dcd949a361 461-466
+src/styles/theme-default.scss
+  s_1f4de7322ecc49::t_bbaa904161079d 211-216
+src/packages/tabbar/doc.zh-TW.md
+  s_1f4de7322ecc49::t_181ae0ee76fb39 5-6,79-86,89-90,134-140
+src/styles/variables-daojia.scss
+  s_1f4de7322ecc49::t_cd007fee6399c7 841-850
+docs/superpowers/plans/2026-09-28-tabbar-v16-researched-implementation.md
+  s_1f4de7322ecc49::t_5e032d3c5024d0 245-258
+  s_332ce3e4d7b3d5::t_0a2512ebabc218 114,117-118,120,122-123,127-133,259-260,262,264-268,270-275,277,280,282,285,291-293,296-297,299-302
+  s_332ce3e4d7b3d5::t_46222b3102d3d6 3,47,49-50,60,62,85,112,116,124-126
+  s_332ce3e4d7b3d5::t_01f0f3740d0cf7 11-18,27-28
+  s_332ce3e4d7b3d5::t_dde6bc766a7032 24-26
+  s_332ce3e4d7b3d5::t_3793c8b69b65be 19-20,22-23
+  s_332ce3e4d7b3d5::t_9c01c916766489 46,66,78-79,81
+  s_332ce3e4d7b3d5::t_09dc6b7bb70420 88
+  s_332ce3e4d7b3d5::t_1b3fde706885ce 276,278-279,281,283-284,286-290,294-295,298
+  s_332ce3e4d7b3d5::t_f5a1b6f8df6e05 1-2,4-6,8-10,29-32,34-35,37,40-45,51-59,61,63-65,67-68,70-77,80,82-84,86,90-92,94-97,99-101,105-109,111,113,115,119
+  s_332ce3e4d7b3d5::t_102f26585cc427 33,36,39,87,93
+  s_332ce3e4d7b3d5::t_6fbda20ddcf645 69
+  s_332ce3e4d7b3d5::t_a457176be8b93c 121,261,263,269
+  s_1f4de7322ecc49::t_b3c67a01aae1b5 134-244
+  s_332ce3e4d7b3d5::t_e685a5166b6a2e 7,21,38,48,89,98,103,110
+  s_332ce3e4d7b3d5::t_eea7313e1d4458 102,104
+src/styles/variables-jrkf.scss
+  s_1f4de7322ecc49::t_cd007fee6399c7 1505-1523
+src/styles/variables-jmapp.scss
+  s_1f4de7322ecc49::t_cd007fee6399c7 1400-1418
+src/packages/tabbar/demos/taro/demo10.tsx
+  s_1f4de7322ecc49::t_18ea6df38ab106 1-29
+src/packages/tabbar/doc.md
+  s_1f4de7322ecc49::t_181ae0ee76fb39 5-6,79-86,89-90,134-140
+src/packages/tabbar/demo.taro.tsx
+  s_1f4de7322ecc49::t_18ea6df38ab106 15,29,41,53,78-79
+src/packages/tabbaritem/tabbaritem.scss
+  s_1f4de7322ecc49::t_bbaa904161079d 7-11,13,29,69-72
+  s_1f4de7322ecc49::t_f47d28343361c9 73
+src/packages/tabbar/demos/h5/demo10.tsx
+  s_1f4de7322ecc49::t_18ea6df38ab106 1-28
+src/packages/tabbar/doc.taro.md
+  s_1f4de7322ecc49::t_181ae0ee76fb39 5-6,79-86,89-90,134-140
+src/packages/tabbar/demo.tsx
+  s_1f4de7322ecc49::t_18ea6df38ab106 12,26,38,50,73-74
+src/packages/tabbar/tabbar.scss
+  s_1f4de7322ecc49::t_bbaa904161079d 9,13,15-19
+src/styles/theme-dark.scss
+  s_1f4de7322ecc49::t_bbaa904161079d 212-217
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0b1b53413a7b56f3b090ca4c6eb0313810ccc5b8",
+  "prompts": {},
+  "sessions": {
+    "s_1f4de7322ecc49": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0e743-cb3d-7872-a7a2-7d11eb143e27",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "huanghao128 <huanghao128@users.noreply.github.com>"
+    },
+    "s_332ce3e4d7b3d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0e6ec-1c1a-7162-b9e6-0053c7136d70",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "huanghao128 <huanghao128@users.noreply.github.com>"
+    }
+  }
+}

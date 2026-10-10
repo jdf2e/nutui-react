@@ -1,0 +1,22 @@
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_21d9fed6f22aba::t_dc8037222fcbc7 99-110
+src/packages/tabbar/tabbar.scss
+  s_21d9fed6f22aba::t_f2d3335bb0e3f7 5-6
+  s_21d9fed6f22aba::t_27069ab020f30f 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bdfbac1dd5b66e65b89fb4783fa8ba26b76dcbea",
+  "prompts": {},
+  "sessions": {
+    "s_21d9fed6f22aba": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a12459-84fe-7ac2-acd0-c2757b223416",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

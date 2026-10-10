@@ -1,0 +1,53 @@
+src/packages/tabbar/tabbar.scss
+  s_21d9fed6f22aba::t_f6abf55e54589c 80-83
+  s_21d9fed6f22aba::t_30f288d4c7fbb4 78-79,84-92
+src/packages/tabbar/doc.zh-TW.md
+  s_21d9fed6f22aba::t_5810693375bd0b 3,118
+scripts/build.mjs
+  s_21d9fed6f22aba::t_7e9130ed47e67c 459
+  s_21d9fed6f22aba::t_1ca3450d9f4a14 445-458
+src/packages/tabbar/tabbar.taro.tsx
+  s_21d9fed6f22aba::t_0da8e5f5000b08 1,3,11,97-103,123
+src/types/spec/tabbar/taro.ts
+  s_21d9fed6f22aba::t_98d449a9495b5c 3
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_21d9fed6f22aba::t_f6abf55e54589c 466-469
+  s_21d9fed6f22aba::t_eb1dc19947ee38 73-98,435-436,451,455-462,465,470-475
+  s_21d9fed6f22aba::t_90cd0162b6d60f 285-287,289,336-338,340
+src/packages/tabbar/demos/taro/demo12.tsx
+  s_21d9fed6f22aba::t_0b2a9e787c8690 2,25,40
+src/packages/tabbar/doc.taro.md
+  s_21d9fed6f22aba::t_5810693375bd0b 3,118
+src/packages/tabbar/__tests__/tabbar-native.spec.tsx
+  s_21d9fed6f22aba::t_e1c57d92f096f3 69,72
+  s_21d9fed6f22aba::t_a8fa5d3a41b221 47,49,60-68,73,75-76,78-80,83-85,87
+  s_21d9fed6f22aba::t_154a566b20680c 36-40,70-71,89-91
+  s_21d9fed6f22aba::t_b0ccd02a094d26 88
+src/packages/tabbar/doc.md
+  s_21d9fed6f22aba::t_5810693375bd0b 3,118
+scripts/build-taro.mjs
+  s_21d9fed6f22aba::t_62f92ab9ef062d 89
+src/packages/tabbar/doc.en-US.md
+  s_21d9fed6f22aba::t_b0ccd02a094d26 3
+  s_21d9fed6f22aba::t_5810693375bd0b 118
+src/packages/tabbar/tabbar.tsx
+  s_21d9fed6f22aba::t_35befdb0739eef 10,99-104
+src/packages/tabbar/__tests__/__snapshots__/tabbar.spec.tsx.snap
+  s_21d9fed6f22aba::t_d65ede5805cb37 3,5,7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ec9a197f48c7b9318dbc488da644423a77519b46",
+  "prompts": {},
+  "sessions": {
+    "s_21d9fed6f22aba": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a12459-84fe-7ac2-acd0-c2757b223416",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
