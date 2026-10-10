@@ -1,13 +1,9 @@
 import React from 'react'
-import { Cell, pxTransform } from '@nutui/nutui-react-taro'
-import { Image, ITouchEvent, View } from '@tarojs/components'
+import { Cell } from '@nutui/nutui-react-taro'
+import { ITouchEvent } from '@tarojs/components'
+import { ConfigI } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
-  const iconSmall =
-    'https://img14.360buyimg.com/img/jfs/t1/532580/36/3419/521/6ab2770dF01b62b30/027601e01e45fd82.png'
-  const iconLarge =
-    'https://img30.360buyimg.com/img/jfs/t1/526019/31/8316/531/6ab2789eF8aa57258/0276028028153f64.png'
-
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => {
@@ -15,13 +11,9 @@ const Demo1 = () => {
   }
   return (
     <>
+      <Cell title="我是标题" extra="描述文字" />
       <Cell
-        leading={
-          <Image
-            src={iconSmall}
-            style={{ width: pxTransform(15), height: pxTransform(15) }}
-          />
-        }
+        leading={<ConfigI />}
         title="我是标题"
         extra="描述文字"
         align="center"
@@ -31,24 +23,13 @@ const Demo1 = () => {
       />
       <Cell title="我是标题" description="我是描述" extra="描述文字" />
       <Cell
-        leading={
-          <Image
-            src={iconLarge}
-            style={{ width: pxTransform(20), height: pxTransform(20) }}
-          />
-        }
+        leading={<ConfigI />}
         title="我是标题"
         description="我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述"
         extra="描述文字"
-        content={<View>可替换内容区域</View>}
+        content={<div>可替换内容区域</div>}
       />
-      <Cell
-        title="点击测试"
-        clickable
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => testClick(event)}
-      />
+      <Cell clickable title="点击测试" onClick={(event) => testClick(event)} />
       <Cell title="圆角设置0" radius={0} />
     </>
   )

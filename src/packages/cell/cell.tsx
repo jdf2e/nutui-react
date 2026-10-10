@@ -23,7 +23,8 @@ const defaultProps = {
 const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
-  Partial<WebCellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<WebCellProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'content'>
 > & { Group: typeof CellGroup } = (props) => {
   const ctx = useContext(CellGroupContext)
   const {

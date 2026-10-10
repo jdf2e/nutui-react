@@ -33,7 +33,8 @@ const defaultProps = {
 const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
-  Partial<CellTaroProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<CellTaroProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'content' | 'onClick'>
 > & { Group: typeof CellGroup } = (props) => {
   const ctx = useContext(CellGroupContext)
   const {
