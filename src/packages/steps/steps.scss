@@ -70,6 +70,7 @@
           width: $steps-horizontal-item-padding-right;
           padding: $steps-horizontal-item-line-padding;
           box-sizing: border-box;
+          min-width: $steps-horizontal-single-line-min-length;
         }
 
         &-title,
@@ -115,6 +116,7 @@
           right: -50%;
           height: $steps-base-head-height;
           width: 100%;
+          min-width: $steps-horizontal-double-line-min-length;
 
           &-inner {
             /* #ifdef dynamic*/
@@ -333,7 +335,9 @@
       .nut-step-head-icon,
       .nut-step-head-text {
         background-color: $steps-enhanced-finish-head-background-color;
+      }
 
+      .nut-step-head-icon {
         .nut-icon {
           color: $steps-enhanced-finish-head-icon-color;
         }
@@ -345,6 +349,11 @@
 
       .nut-step-head-dot {
         background-color: $steps-enhanced-finish-head-dot-background-color;
+      }
+
+      .nut-step-title,
+      .nut-step-description {
+        color: $steps-base-description-color;
       }
     }
   }

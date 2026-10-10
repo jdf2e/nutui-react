@@ -158,6 +158,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-horizontal-item-line-padding | Horizontal item divider padding | `0 8px` |
 | \--nutui-steps-horizontal-item-special-padding-right | Special horizontal item right padding | `22px` |
 | \--nutui-steps-horizontal-item-special-3-padding-right | 3 items special horizontal item right padding | `9px` |
+| \--nutui-steps-horizontal-single-line-min-length | Minimum divider length for horizontal single layout | `12px` |
+| \--nutui-steps-horizontal-double-line-min-length | Minimum divider length for horizontal double layout | `40px` |
 | \--nutui-steps-vertical-item-padding-bottom | Vertical item bottom padding | `13px` |
 | \--nutui-steps-vertical-title-font-size | Vertical title font size | `$font-size-l` |
 | \--nutui-steps-vertical-title-margin-bottom | Vertical title bottom margin | `4px` |

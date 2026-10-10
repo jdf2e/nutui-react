@@ -113,6 +113,12 @@
     .nut-step-head-text {
       color: $steps-process-color;
     }
+
+    .nut-step-head-icon {
+      .nut-icon {
+        color: $steps-process-color;
+      }
+    }
   }
 
   // 流程状态-等待
