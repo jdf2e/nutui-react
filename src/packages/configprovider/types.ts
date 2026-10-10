@@ -681,6 +681,8 @@ export type NutCSSVariables =
   | 'nutuiBadgeColor'
   | 'nutuiBadgeFontSize'
   | 'nutuiBadgeBorder'
+  | 'nutuiBadgeBorderWidth'
+  | 'nutuiBadgeBorderColor'
   | 'nutuiBadgeBorderRadius'
   | 'nutuiBadgeMinWidth'
   | 'nutuiBadgePadding'

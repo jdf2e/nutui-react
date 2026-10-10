@@ -21,7 +21,9 @@ const defaultProps = {
   disabled: false,
   autoSize: false,
   plain: false,
+  containerType: 'gray',
   status: 'default',
+  description: null,
 } as WebTextAreaProps
 
 export const TextArea = forwardRef(
@@ -47,7 +49,9 @@ export const TextArea = forwardRef(
       autoSize,
       style,
       plain,
+      containerType,
       status,
+      description,
       onChange,
       onBlur,
       onFocus,
@@ -56,22 +60,15 @@ export const TextArea = forwardRef(
 
     const classPrefix = 'nut-textarea'
     const textareaRef = useRef<any>(null)
-    const compositionRef = useRef(false)
     const rtl = useRtl()
-
-    const format = (value: string) => {
-      if (maxLength !== -1 && value.length > maxLength) {
-        return value.substring(0, maxLength)
-      }
-      return value
-    }
 
     const [innerValue, setInnerValue] = usePropsValue<string>({
       value,
       defaultValue,
-      finalValue: format(defaultValue),
+      finalValue: defaultValue,
       onChange,
     })
+    const isOverLimit = maxLength >= 0 && innerValue.length > maxLength
 
     useEffect(() => {
       if (autoSize) setContentHeight()
@@ -89,15 +86,16 @@ export const TextArea = forwardRef(
     }
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-      const text = event.target
-      const value = compositionRef.current ? text.value : format(text.value)
-      setInnerValue(value)
+      setInnerValue(event.target.value)
     }
 
     const isDisabled = () => disabled || readOnly
 
     const handleFocus = (event: FocusEvent<HTMLTextAreaElement>) => {
-      if (isDisabled()) return
+      if (isDisabled()) {
+        event.currentTarget.blur()
+        return
+      }
       onFocus?.(event)
     }
 
@@ -108,7 +106,9 @@ export const TextArea = forwardRef(
 
     useImperativeHandle(ref, () => ({
       clear: () => setInnerValue(''),
-      focus: () => textareaRef.current?.focus(),
+      focus: () => {
+        if (!disabled && !readOnly) textareaRef.current?.focus()
+      },
       blur: () => textareaRef.current?.blur(),
       get nativeElement() {
         return textareaRef.current
@@ -126,44 +126,45 @@ export const TextArea = forwardRef(
               [`${classPrefix}-rtl`]: rtl,
               [`${classPrefix}-plain`]: plain,
               [`${classPrefix}-container`]: !plain,
+              [`${classPrefix}-container-${containerType}`]: !plain,
               [`${classPrefix}-${status}`]: status,
             },
             className
           )}
         >
-          <textarea
-            {...rest}
-            ref={textareaRef}
-            className={classNames(`${classPrefix}-textarea`, {
-              [`${classPrefix}-textarea-disabled`]: disabled,
-            })}
-            style={style}
-            disabled={disabled}
-            readOnly={readOnly}
-            value={innerValue}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            onFocus={handleFocus}
-            onCompositionEnd={() => {
-              compositionRef.current = false
-            }}
-            onCompositionStart={() => {
-              compositionRef.current = true
-            }}
-            rows={rows}
-            maxLength={maxLength === -1 ? undefined : maxLength}
-            placeholder={
-              placeholder !== undefined ? placeholder : locale.placeholder
-            }
-          />
-          {showCount && (
-            <div
-              className={classNames(`${classPrefix}-limit`, {
-                [`${classPrefix}-limit-disabled`]: disabled,
+          <div className={`${classPrefix}-main`}>
+            <textarea
+              {...rest}
+              ref={textareaRef}
+              className={classNames(`${classPrefix}-textarea`, {
+                [`${classPrefix}-textarea-disabled`]: disabled,
               })}
-            >
-              {innerValue.length}/{maxLength < 0 ? 0 : maxLength}
-            </div>
+              style={style}
+              disabled={disabled}
+              readOnly={readOnly}
+              tabIndex={readOnly ? -1 : rest.tabIndex}
+              value={innerValue}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              onFocus={handleFocus}
+              rows={rows}
+              placeholder={
+                placeholder !== undefined ? placeholder : locale.placeholder
+              }
+            />
+            {showCount && (
+              <div
+                className={classNames(`${classPrefix}-limit`, {
+                  [`${classPrefix}-limit-error`]: isOverLimit,
+                  [`${classPrefix}-limit-disabled`]: disabled,
+                })}
+              >
+                {innerValue.length}/{maxLength < 0 ? 0 : maxLength}
+              </div>
+            )}
+          </div>
+          {status === 'error' && description != null && (
+            <div className={`${classPrefix}-description`}>{description}</div>
           )}
         </div>
       </>

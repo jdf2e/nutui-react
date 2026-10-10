@@ -760,9 +760,40 @@ $input-background-color: var(
   var(--nutui-color-background-component)
 ) !default;
 $input-padding: var(--nutui-input-padding, scale-px(12px)) !default;
+$input-container-height: var(
+  --nutui-input-container-height,
+  scale-px(38px)
+) !default;
 
 // textarea（✅）
-$textarea-padding: var(--nutui-textarea-padding, scale-px(12px)) !default;
+$textarea-plain-min-height: var(
+  --nutui-textarea-plain-min-height,
+  scale-px(44px)
+) !default;
+$textarea-container-min-height: var(
+  --nutui-textarea-container-min-height,
+  scale-px(60px)
+) !default;
+$textarea-padding: var(
+  --nutui-textarea-padding,
+  scale-px(8px) scale-px(12px)
+) !default;
+$textarea-container-gray-background-color: var(
+  --nutui-textarea-container-gray-background-color,
+  var(--nutui-color-background-component, $color-background-sunken)
+) !default;
+$textarea-container-white-background-color: var(
+  --nutui-textarea-container-white-background-color,
+  $color-background-overlay
+) !default;
+$textarea-limit-error-color: var(
+  --nutui-textarea-limit-error-color,
+  $color-error
+) !default;
+$textarea-error-color: var(
+  --nutui-textarea-error-color,
+  $color-error
+) !default;
 $textarea-text-color: var(--nutui-textarea-text-color, $color-title) !default;
 $textarea-text-curror-color: var(
   --nutui-textarea-text-curror-color,
@@ -1163,6 +1194,20 @@ $tour-content-bottom-btn-border-radius: var(
   --nutui-tour-content-bottom-btn-border-radius,
   scale-px(4px)
 ) !default;
+
+//backtop（✅）
+$backtop-border-color: var(
+  --nutui-backtop-border-color,
+  $color-border
+) !default;
+$backtop-background-color: var(
+  --nutui-backtop-background-color,
+  $color-background-overlay
+) !default;
+$backtop-size: var(--nutui-backtop-size, scale-px(40px)) !default;
+$backtop-right: var(--nutui-backtop-right, scale-px(8px)) !default;
+$backtop-bottom: var(--nutui-backtop-bottom, scale-px(60px)) !default;
+$backtop-icon-size: var(--nutui-backtop-icon-size, scale-icon-px(20px)) !default;
 
 // calendar（✅）
 $calendar-active-background-color: var(
@@ -1725,6 +1770,31 @@ $dialog-bottom-close-icon-size: var(
 $dialog-close-top: var(--nutui-dialog-close-top, scale-px(16px)) !default;
 $dialog-close-left: var(--nutui-dialog-close-left, scale-px(16px)) !default;
 $dialog-close-right: var(--nutui-dialog-close-right, scale-px(16px)) !default;
+$dialog-subtitle-font-size: var(
+  --nutui-dialog-subtitle-font-size,
+  $font-size-s
+) !default;
+$dialog-subtitle-color: var(
+  --nutui-dialog-subtitle-color,
+  $color-text-help
+) !default;
+$dialog-subtitle-margin-top: var(
+  --nutui-dialog-subtitle-margin-top,
+  4px
+) !default;
+$dialog-header-icon-size: var(--nutui-dialog-header-icon-size, 20px) !default;
+$dialog-auto-close-font-size: var(
+  --nutui-dialog-auto-close-font-size,
+  $font-size-s
+) !default;
+$dialog-auto-close-color: var(
+  --nutui-dialog-auto-close-color,
+  $color-text-help
+) !default;
+$dialog-auto-close-margin-top: var(
+  --nutui-dialog-auto-close-margin-top,
+  8px
+) !default;
 
 // checkbox（✅）
 $checkbox-label-disable-color: var(
@@ -1752,8 +1822,14 @@ $checkbox-button-font-size: var(
   --nutui-checkbox-button-font-size,
   $font-size-s
 ) !default;
-$checkbox-button-color: $color-text;
-$checkbox-button-background: $color-background;
+$checkbox-button-color: var(
+  --nutui-checkbox-button-color,
+  $color-text
+) !default;
+$checkbox-button-background: var(
+  --nutui-checkbox-button-background,
+  $color-background
+) !default;
 $checkbox-button-padding: var(
   --nutui-checkbox-button-padding,
   scale-px(5px) scale-px(18px)
@@ -1783,6 +1859,18 @@ $checkbox-list-item-padding: var(
   --nutui-checkbox-list-item-padding,
   scale-px(12px) scale-px(12px) scale-px(12px) 0
 ) !default;
+$checkboxgroup-checkbox-margin: var(
+  --nutui-checkboxgroup-checkbox-margin,
+  scale-px(20px)
+) !default;
+$checkboxgroup-checkbox-margin-bottom: var(
+  --nutui-checkboxgroup-checkbox-margin-bottom,
+  scale-px(5px)
+) !default;
+$checkboxgroup-checkbox-label-margin: var(
+  --nutui-checkboxgroup-checkbox-label-margin,
+  0 scale-px(5px)
+) !default;
 
 //radio（✅）
 $radio-icon-font-size: var(
@@ -1803,7 +1891,7 @@ $radio-button-font-size: var(
   --nutui-radio-button-font-size,
   $font-size-s
 ) !default;
-$radio-button-color: $color-text;
+$radio-button-color: var(--nutui-radio-button-color, $color-text) !default;
 $radio-button-padding: var(--nutui-radio-button-padding, scale-px(5px) scale-px(18px)) !default;
 $radio-button-border-radius: var(
   --nutui-radio-button-border-radius,
@@ -2011,14 +2099,19 @@ $badge-background-disabled-color: var(
   $color-text-disabled
 ) !default;
 $badge-color: var(--nutui-badge-color, $color-primary-text) !default;
-$badge-font-size: var(--nutui-badge-font-size, $font-size-xxxs) !default;
+$badge-font-size: var(--nutui-badge-font-size, $font-size-xxs) !default;
+$badge-border-width: var(--nutui-badge-border-width, scale-px(0.67px)) !default;
+$badge-border-color: var(
+  --nutui-badge-border-color,
+  $color-background-overlay
+) !default;
 $badge-border: var(
   --nutui-badge-border,
-  scale-px(1px) solid $color-primary-text
+  #{$badge-border-width} solid #{$badge-border-color}
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, $badge-height) !default;
-$badge-min-width: var(--nutui-badge-min-width, scale-px(6px)) !default;
-$badge-padding: var(--nutui-badge-padding, scale-px(1px) scale-px(4px)) !default;
+$badge-min-width: var(--nutui-badge-min-width, scale-px(8px)) !default;
+$badge-padding: var(--nutui-badge-padding, 0 scale-px(4px)) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, scale-px(2px)) !default;
 $badge-icon-size: var(--nutui-badge-icon-size, $font-size-xxs) !default;
 $badge-content-transform: var(
@@ -2029,11 +2122,14 @@ $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, scale-px(6px)) !default;
 $badge-dot-small-width: var(--nutui-badge-dot-small-width, scale-px(4px)) !default;
 $badge-dot-large-width: var(--nutui-badge-dot-large-width, scale-px(8px)) !default;
-$badge-dot-border: var(--nutui-badge-dot-border, scale-px(1px) solid $color-primary-text);
+$badge-dot-border: var(
+  --nutui-badge-dot-border,
+  #{$badge-border-width} solid #{$badge-border-color}
+);
 $badge-outline-color: var(--nutui-badge-outline-color, $color-primary) !default;
 $badge-outline-border: var(
   --nutui-badge-outline-border,
-  scale-px(1px) solid $color-primary
+  #{$badge-border-width} solid $color-primary
 );
 
 //popover（✅）

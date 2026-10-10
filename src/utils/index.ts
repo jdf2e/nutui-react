@@ -1,6 +1,7 @@
 export * from './bound'
 export * from './can-use-dom'
 export * from './clamp'
+export * from './constants'
 export * from './date'
 export * from './get-rect'
 export * from './get-scroll-parent'
