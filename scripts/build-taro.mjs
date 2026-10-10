@@ -86,7 +86,6 @@ async function buildES(p) {
       'src/packages/**/types.ts',
       'src/packages/**/context.ts',
       'src/packages/**/utils.ts',
-      'src/packages/materialview/scene-presets.ts',
       'src/utils/**/*.{ts,tsx}',
       'src/hooks/**/*.{ts,tsx}',
       'src/types/**/*.{ts,tsx}',

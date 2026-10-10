@@ -3,7 +3,6 @@ import { Image, View } from '@tarojs/components'
 import { Cart, Home, Message, User } from '@nutui/icons-react-taro'
 import { Tabbar } from '@nutui/nutui-react-taro'
 
-// Relay 1545:72 export: 132px canvas around the 52px Agent and its shadow.
 const joyImage =
   'https://img11.360buyimg.com/img/jfs/t1/535270/25/4911/39037/6abb699eF4fefba06/02760f00f05076ee.png'
 

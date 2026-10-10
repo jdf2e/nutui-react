@@ -7,9 +7,4 @@ export type {
   GradientBlurConfig,
   FrostedPreset,
 } from './types'
-export {
-  getCornerRadius,
-  getFrostedPreset,
-  getMaterialClassName,
-} from './scene-presets'
 export default MaterialView

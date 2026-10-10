@@ -76,11 +76,3 @@ import { MaterialView } from '@nutui/nutui-react-taro'
 | maxBlur | 顶端模糊强度比例 [0,1] | `number` | `0` |
 | overlayAlpha | 颜色遮罩透明度 [0,1] | `number` | `0` |
 | overlayColor | 颜色遮罩色值 | `string` | — |
-
-## 辅助函数
-
-| 函数 | 说明 |
-| --- | --- |
-| `getFrostedPreset(scene, dark)` | 获取场景的毛玻璃预设（blurRadius / borderRadius / tintColor / boxShadow） |
-| `getCornerRadius(scene)` | 获取场景默认圆角值 |
-| `getMaterialClassName(scene, dark)` | 获取场景对应的规范类名 |
