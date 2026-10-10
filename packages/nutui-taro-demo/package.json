@@ -55,7 +55,7 @@
   ],
   "author": "",
   "dependencies": {
-    "@babel/runtime": "^7.29.7",
+    "@babel/runtime": "^8.0.7",
     "@dongdesign/inject-jd-platform-styles": "1.0.4",
     "@jdtaro/plugin-platform-jdhybrid": "0.2.1",
     "@jdtaro/taro-platform-jdharmony": "2.0.70",
@@ -91,7 +91,7 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
+    "@babel/core": "^8.0.7",
     "@tarojs/cli": "4.1.3",
     "@tarojs/plugin-platform-harmony-ets": "4.1.3",
     "@tarojs/vite-runner": "4.1.3",
