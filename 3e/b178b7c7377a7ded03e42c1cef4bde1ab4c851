@@ -1,0 +1,114 @@
+scripts/build.mjs
+  s_21d9fed6f22aba::t_7e9130ed47e67c 459
+  s_21d9fed6f22aba::t_1ca3450d9f4a14 445-458
+src/types/spec/tabbar/taro.ts
+  s_21d9fed6f22aba::t_98d449a9495b5c 3
+src/packages/tabbar/__tests__/demo12.spec.tsx
+  s_ab9d7deea5553e::t_31e59422d83744 1-50
+src/config.json
+  s_be7a884114f31d::t_ef1ada400c455c 442
+src/packages/tabbar/doc.md
+  s_ab9d7deea5553e::t_98b3d36ba1c708 99,101,109,111,131
+  s_21d9fed6f22aba::t_5810693375bd0b 3
+scripts/build-taro.mjs
+  s_21d9fed6f22aba::t_62f92ab9ef062d 89
+src/packages/tabbar/__tests__/__snapshots__/tabbar.spec.tsx.snap
+  s_21d9fed6f22aba::t_d65ede5805cb37 3,5,7
+src/packages/tabbar/doc.en-US.md
+  s_21d9fed6f22aba::t_b0ccd02a094d26 3
+  s_ab9d7deea5553e::t_98b3d36ba1c708 99,101,109,111,131
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_21d9fed6f22aba::t_eb1dc19947ee38 73-98,413-414,429,433-440,443,448-453
+  s_21d9fed6f22aba::t_f6abf55e54589c 444-447
+  s_ab9d7deea5553e::t_98b3d36ba1c708 99-130
+  s_21d9fed6f22aba::t_ee4df7804eadda 678,681,684,695
+  s_21d9fed6f22aba::t_dc8037222fcbc7 187-198
+  s_21d9fed6f22aba::t_62ee56021fd1c0 150,169-186
+  s_21d9fed6f22aba::t_c71ca986a1adc0 2,131-133,137-149
+  s_21d9fed6f22aba::t_edafa482bc21ca 151
+  s_21d9fed6f22aba::t_6ea18c932705dd 134-136,159-161
+  s_21d9fed6f22aba::t_4f168aba520761 152-158,162-168
+src/packages/tabbar/tabbar.tsx
+  s_ab9d7deea5553e::t_98b3d36ba1c708 122,127-133,135-137
+  s_21d9fed6f22aba::t_e42ef2b3771adf 1-7,53-54,56-63,143
+  s_21d9fed6f22aba::t_0b95ae4e089bfa 18-20,55,64-65
+  s_21d9fed6f22aba::t_35befdb0739eef 16
+  s_ab9d7deea5553e::t_feb9f007d77a96 17
+src/packages/tabbar/doc.taro.md
+  s_ab9d7deea5553e::t_98b3d36ba1c708 99,101,109,111,131
+  s_21d9fed6f22aba::t_5810693375bd0b 3
+src/packages/configprovider/types.ts
+  s_ab9d7deea5553e::t_662e244c71d529 273-275,277-280,413-418,593-599,607-608,617-619,626,700
+src/packages/tabbar/tabbar.scss
+  s_21d9fed6f22aba::t_f2d3335bb0e3f7 5-6
+  s_21d9fed6f22aba::t_30f288d4c7fbb4 46-47,52-55,76-78
+  s_21d9fed6f22aba::t_27069ab020f30f 4
+  s_21d9fed6f22aba::t_f6abf55e54589c 48-51
+  s_ab9d7deea5553e::t_98b3d36ba1c708 56,58-72
+src/packages/tabbar/tabbar.taro.tsx
+  s_21d9fed6f22aba::t_0da8e5f5000b08 1,3,11,113
+  s_ab9d7deea5553e::t_98b3d36ba1c708 49-52,93,98-99,103-108,110-112
+src/packages/tabbar/demo.tsx
+  s_ab9d7deea5553e::t_31e59422d83744 91,93
+  s_ab9d7deea5553e::t_98b3d36ba1c708 32,46,60
+src/packages/tabbar/demos/taro/demo12.tsx
+  s_ab9d7deea5553e::t_31e59422d83744 4-5,11-17,19,21-57,59-60
+  s_21d9fed6f22aba::t_0b2a9e787c8690 2
+src/sites/mobile/App.tsx
+  s_21d9fed6f22aba::t_fef1a16e0a32a4 177,182
+  s_21d9fed6f22aba::t_be59d95b22c6fe 28-36
+src/packages/tabbar/doc.zh-TW.md
+  s_ab9d7deea5553e::t_98b3d36ba1c708 99,101,109,111,131
+  s_21d9fed6f22aba::t_5810693375bd0b 3
+src/packages/tabbar/demos/taro/demo11.tsx
+  s_ab9d7deea5553e::t_31e59422d83744 3,8-9,12,15-24,27-32,35-39,44,48-49,62
+src/packages/tabbar/__tests__/tabbar-native.spec.tsx
+  s_21d9fed6f22aba::t_e1c57d92f096f3 69,72
+  s_21d9fed6f22aba::t_b0ccd02a094d26 88
+  s_21d9fed6f22aba::t_154a566b20680c 36-40,70-71,89-91
+  s_21d9fed6f22aba::t_a8fa5d3a41b221 47,49,60-68,73,75-76,78-80,83-85,87
+  s_21d9fed6f22aba::t_bb9be71d2c38e3 94-97,99-104
+src/packages/tabbar/demo.taro.tsx
+  s_ab9d7deea5553e::t_98b3d36ba1c708 36,50,64
+  s_ab9d7deea5553e::t_31e59422d83744 105,107
+src/packages/tabbar/demos/h5/demo11.tsx
+  s_ab9d7deea5553e::t_31e59422d83744 2,7-8,11,14-26,33-34,50
+src/packages/tabbar/demos/h5/demo12.tsx
+  s_ab9d7deea5553e::t_31e59422d83744 3-4,10-22,24-60
+src/types/spec/tabbar/base.ts
+  s_ab9d7deea5553e::t_98b3d36ba1c708 12
+src/packages/tabbar/demos/skin-demo.scss
+  s_21d9fed6f22aba::t_9923af26d81f69 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3eb178b7c7377a7ded03e42c1cef4bde1ab4c851",
+  "prompts": {},
+  "sessions": {
+    "s_21d9fed6f22aba": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a12459-84fe-7ac2-acd0-c2757b223416",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    },
+    "s_ab9d7deea5553e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a124f1-b2b6-7ca3-a52d-f87f2177ef57",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    },
+    "s_be7a884114f31d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a124f9-5ae4-7a91-9fdf-fc083fdeb072",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
