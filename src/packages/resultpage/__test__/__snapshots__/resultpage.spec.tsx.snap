@@ -28,7 +28,7 @@ exports[`should render description correctly 1`] = `
     <div
       class="nut-resultpage-description"
     >
-      内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行
+      内容描述可折行，建议最多不超过两行建议最多不超过两行内容描述可折行，建议最多不超过两行建议最多不超过两行
     </div>
   </div>
 </div>

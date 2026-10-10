@@ -121,9 +121,9 @@ nutui-react-taro doc Signature --format json
 | H5 | Taro | 备注 |
 | --- | --- | --- |
 | `<div>` | `<View>` | 块级容器 |
-| `<p>` | `<View>` | |
+| `<p>` | `<View>` |  |
 | `<span>` | `<Text>` 或 `<View>` | **`<Text>` 仅用于纯行内文本；若含子元素则用 `<View>`** |
-| `<img>` | `<Image>` | |
+| `<img>` | `<Image>` |  |
 
 ```diff
 + import { View } from '@tarojs/components'

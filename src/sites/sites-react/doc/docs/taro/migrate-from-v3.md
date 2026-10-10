@@ -105,6 +105,20 @@ npm install @nutui/nutui-react-taro
   - `--nutui-popover-content-background-color` 默认值由 `#ffffff` 改为 `$color-mask`；`--nutui-popover-text-color` 由 `$color-mask` 改为 `$color-primary-text`。
   - `--nutui-popover-item-width` 默认值由 `160px` 改为 `240px`（等同状态型最大宽度）。
 
+### ResultPage (反馈类)
+
+> **v4 不提供 v3 兼容**：无 Props 别名。请按下表手动迁移。
+
+- **类型入口调整**：
+  - 移除 `src/packages/resultpage/types.ts`，统一从 `@/types` 引入 `ResultPageStatus`、`ResultPageAction`、`ResultPageProps`。
+- **视觉规格对齐 JD APP 16.0**：
+  - 描述文案默认居中；失败状态图标色值 H5 端对齐 `$color-primary`（`#ff2159`）。
+  - 图标与内容间距 4px；标题与描述间距 4px；描述与操作区间距 12px；操作按钮横向间距 12px（`margin: 0 6px`）。
+  - 标题：`$font-size-md` / 行高 24px；描述行高 22px。
+- **主题变量调整**：
+  - 新增 `--nutui-resultpage-title-line-height`。
+  - `--nutui-resultpage-icon-margin-bottom` 默认 `12px` → `4px`；`--nutui-resultpage-title-margin-bottom` `12px` → `4px`；`--nutui-resultpage-title-font-size` `$font-size-xl` → `$font-size-md`；`--nutui-resultpage-description-line-height` `20px` → `22px`；`--nutui-resultpage-actions-margin-top` `16px` → `12px`。
+
 ### Skeleton (反馈类)
 
 - **`size` 视觉规格对齐设计稿（兼容升级）**：

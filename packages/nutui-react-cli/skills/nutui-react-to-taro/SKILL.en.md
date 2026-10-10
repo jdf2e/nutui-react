@@ -144,9 +144,9 @@ Taro has no DOM. Replace native tags and add the corresponding import from `@tar
 | H5 | Taro | Notes |
 | --- | --- | --- |
 | `<div>` | `<View>` | block-level container |
-| `<p>` | `<View>` | |
+| `<p>` | `<View>` |  |
 | `<span>` | `<Text>` or `<View>` | **`<Text>` is for pure inline text only; use `<View>` if it contains child elements** |
-| `<img>` | `<Image>` | |
+| `<img>` | `<Image>` |  |
 
 ```diff
 + import { View } from '@tarojs/components'
@@ -226,7 +226,7 @@ versions drift):
    end often has hand-written DOM manipulation (`document.createElement('img')`,
    appending to a node). On the Taro end, delete that DOM logic and use the
    component's `canvasId` prop + ref methods. Read `nutui-react-taro doc
-   Signature` first.
+Signature` first.
 4. **`<span>` → `<Text>` or `<View>`.** `<Text>` is inline and for pure text
    only; wrapping child elements in `<Text>` breaks the layout. Use `<View>`
    when there are nested elements.
@@ -234,12 +234,12 @@ versions drift):
 ## Core rules
 
 1. **Before rewriting each component, cross-check its props with `nutui-react
-   info <C>` and `nutui-react-taro info <C>`.** This is the heart of the whole
+info <C>` and `nutui-react-taro info <C>`.** This is the heart of the whole
    migration — see rule ⑥.
 2. **Always use `--format json`** — parse the structured output, do not regex
    the text.
 3. **Confirm the component exists on the Taro end** with `nutui-react-taro
-   list`; watch for the `Audio` gap.
+list`; watch for the `Audio` gap.
 4. **Rules ①–④ are mechanical; ⑤–⑥ and the pitfalls need judgment** — handle
    the latter case by case, and flag anything that cannot be safely
    auto-migrated for user review. Do not claim a file is fully migrated until

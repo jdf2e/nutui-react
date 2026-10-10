@@ -105,6 +105,20 @@ npm install @nutui/nutui-react-taro
   - `--nutui-popover-content-background-color` default changed from `#ffffff` to `$color-mask`; `--nutui-popover-text-color` from `$color-mask` to `$color-primary-text`.
   - `--nutui-popover-item-width` default changed from `160px` to `240px` (same as status max width).
 
+### ResultPage
+
+> **No v3 compatibility in v4**: no prop aliases. Migrate manually using the table below.
+
+- **Type entry change**:
+  - Removed `src/packages/resultpage/types.ts`; import `ResultPageStatus`, `ResultPageAction`, and `ResultPageProps` from `@/types`.
+- **Visual spec aligned with JD APP 16.0**:
+  - Description text is centered by default; H5 error icon color aligns with `$color-primary` (`#ff2159`).
+  - 4px below icon; 4px between title and description; 12px above actions; 12px between buttons (`margin: 0 6px`).
+  - Title: `$font-size-md` / line height 24px; description line height 22px.
+- **Theme variable updates**:
+  - Added `--nutui-resultpage-title-line-height`.
+  - `--nutui-resultpage-icon-margin-bottom` default `12px` → `4px`; `--nutui-resultpage-title-margin-bottom` `12px` → `4px`; `--nutui-resultpage-title-font-size` `$font-size-xl` → `$font-size-md`; `--nutui-resultpage-description-line-height` `20px` → `22px`; `--nutui-resultpage-actions-margin-top` `16px` → `12px`.
+
 ### Skeleton
 
 - **`size` visual spec updates (compatible)**:
