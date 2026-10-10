@@ -29,13 +29,7 @@ const Demo1 = () => {
         extra="描述文字"
         content={<div>可替换内容区域</div>}
       />
-      <Cell
-        clickable
-        title="点击测试"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => testClick(event)}
-      />
+      <Cell clickable title="点击测试" onClick={(event) => testClick(event)} />
       <Cell title="圆角设置0" radius={0} />
     </>
   )
