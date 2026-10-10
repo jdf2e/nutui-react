@@ -1,16 +1,18 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, View } from '@tarojs/components'
-import { Loading, More } from '@nutui/icons-react-taro'
+import { Image, ITouchEvent, View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/hooks/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
-import { sleep } from '@/utils/sleep'
 import { ComponentDefaults, Timeout } from '@/utils/typings'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { getDeviceInfo } from '@/utils/taro/get-system-info'
 import { PullStatus, TaroPullToRefreshProps } from '@/types'
+import {
+  PULL_TO_REFRESH_DEFAULT_ICON,
+  PULL_TO_REFRESH_PRIMARY_ICON,
+} from './images'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -18,8 +20,6 @@ const defaultProps = {
   pullingText: '',
   canReleaseText: '',
   refreshingText: '',
-  completeText: '',
-  completeDelay: 500,
   disabled: false,
   headHeight: 80,
   threshold: 60,
@@ -40,7 +40,6 @@ export const PullToRefresh: FunctionComponent<
       pullingText: p.pullingText || locale.pullToRefresh.pullingText,
       canReleaseText: p.canReleaseText || locale.pullToRefresh.canReleaseText,
       refreshingText: p.refreshingText || locale.pullToRefresh.refreshingText,
-      completeText: p.completeText || locale.pullToRefresh.completeText,
     },
   }
 
@@ -56,19 +55,21 @@ export const PullToRefresh: FunctionComponent<
   const [height, setHeight] = useState(0)
   const timer = useRef<Timeout>()
 
-  const renderIcons = (status: string) => {
-    return (
-      <>
-        {(status === 'pulling' || status === 'complete') && <Loading />}
-        {(status === 'canRelease' || status === 'refreshing') && <More />}
-      </>
-    )
-  }
+  // 内置图标：默认态与反白态各一套，使用方可通过 renderIcon 完全接管。
+  // 两条分支都直接落在 .nut-pulltorefresh-status-icon 内，尺寸由该容器的样式统一约束。
   const renderStatusIcon = () => {
     if (props.renderIcon) {
       return props.renderIcon?.(status)
     }
-    return renderIcons(status)
+    const icon =
+      props.type === 'primary'
+        ? PULL_TO_REFRESH_PRIMARY_ICON
+        : PULL_TO_REFRESH_DEFAULT_ICON
+    return (
+      <View className={`${classPrefix}-head-content-icons`}>
+        <Image src={icon} />
+      </View>
+    )
   }
   const renderStatusText = () => {
     if (props.renderText) {
@@ -77,7 +78,6 @@ export const PullToRefresh: FunctionComponent<
     if (status === 'pulling') return props.pullingText
     if (status === 'canRelease') return props.canReleaseText
     if (status === 'refreshing') return props.refreshingText
-    if (status === 'complete') return props.completeText
     return ''
   }
   const handleTouchStart: any = (e: ITouchEvent) => {
@@ -88,7 +88,7 @@ export const PullToRefresh: FunctionComponent<
     if (props.scrollTop > 0 || props.disabled) {
       return
     }
-    if (status === 'refreshing' || status === 'complete') return
+    if (status === 'refreshing') return
     // touch 的封装不好，比如在使用高度控制的时候，就很迷
     touch.move(e as any)
     if (touch.isVertical()) {
@@ -115,15 +115,12 @@ export const PullToRefresh: FunctionComponent<
     setStatus('refreshing')
     try {
       await props.onRefresh()
-      setStatus('complete')
     } catch (e) {
       setHeight(0)
       setStatus('pulling')
       throw e
     }
-    if (props.completeDelay > 0) {
-      await sleep(props.completeDelay)
-    }
+    // 加载完成后无需展示完成态，直接收起
     setHeight(0)
     setStatus('pulling')
   }

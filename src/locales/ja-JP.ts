@@ -157,7 +157,6 @@ const jaJP: BaseLang = {
     pullingText: '下に引いて更新',
     canReleaseText: '指を離して更新',
     refreshingText: '更新中',
-    completeText: '更新成功',
   },
   tour: {
     prevStepText: '前へ',

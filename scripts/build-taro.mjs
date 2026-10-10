@@ -86,6 +86,9 @@ async function buildES(p) {
       'src/packages/**/types.ts',
       'src/packages/**/context.ts',
       'src/packages/**/utils.ts',
+      // H5 与 Taro 共用的图标资源和场景预设也必须进入发布产物。
+      'src/packages/pulltorefresh/images.ts',
+      'src/packages/materialview/scene-presets.ts',
       'src/utils/**/*.{ts,tsx}',
       'src/hooks/**/*.{ts,tsx}',
       'src/types/**/*.{ts,tsx}',

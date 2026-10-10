@@ -154,7 +154,6 @@ const viVN: BaseLang = {
     pullingText: 'Kéo xuống để làm mới',
     canReleaseText: 'Thả để làm mới',
     refreshingText: 'Đang tải...',
-    completeText: 'Làm mới thành công',
   },
   tour: {
     prevStepText: 'Bước trước',

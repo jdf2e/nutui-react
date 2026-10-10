@@ -3,7 +3,7 @@ import { BaseProps } from '../../base/props'
 import { UIType } from '../../base/atoms'
 
 export type PullToRefreshType = Extract<UIType, 'default' | 'primary'>
-export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
+export type PullStatus = 'pulling' | 'canRelease' | 'refreshing'
 
 export interface BasePullToRefresh extends BaseProps {
   onRefresh: () => Promise<any>
@@ -11,8 +11,6 @@ export interface BasePullToRefresh extends BaseProps {
   pullingText: ReactNode
   canReleaseText: ReactNode
   refreshingText: ReactNode
-  completeText: ReactNode
-  completeDelay: number
   headHeight: number
   threshold: number
   disabled: boolean
