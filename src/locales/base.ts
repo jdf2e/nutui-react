@@ -24,6 +24,7 @@ export interface BaseLang {
   }
   infiniteloading: {
     pullRefreshText: string
+    pullUpText: string
     loadText: string
     loadMoreText: string
   }

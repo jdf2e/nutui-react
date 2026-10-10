@@ -81,17 +81,6 @@ const Demo2 = () => {
                 下拉刷新
               </>
             }
-            loadingText={
-              <>
-                <img
-                  alt=""
-                  style={{ height: pxTransform(24), width: pxTransform(24) }}
-                  src="https://img11.360buyimg.com/imagetools/jfs/t1/180248/35/42577/173/65fab7e9Fa868ae37/41e33477f960b5b2.png"
-                  className="nut-infinite-bottom-tips-icons"
-                />
-                加载中
-              </>
-            }
             target="refreshScroll"
             pullRefresh
             hasMore={refreshHasMore}

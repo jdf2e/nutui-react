@@ -20,19 +20,19 @@ const InfiniteLoadingDemo = () => {
     'zh-CN': {
       '84aa6bce': '基础用法',
       eb4236fe: '下拉刷新',
-      '9ed40460': '自定义加载文案',
+      '9ed40460': '自定义文案与图标',
       '1254a90d': 'primary主题',
     },
     'zh-TW': {
       '84aa6bce': '基礎用法',
       eb4236fe: '下拉刷新',
-      '9ed40460': '自定義加載文案',
+      '9ed40460': '自定義文案與圖標',
       '1254a90d': 'primary主題',
     },
     'en-US': {
       '84aa6bce': 'Basic usage',
       eb4236fe: 'Pull down to refresh',
-      '9ed40460': 'Custom loading text',
+      '9ed40460': 'Custom text and icon',
       '1254a90d': 'Primary theme',
     },
   })

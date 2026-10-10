@@ -48,17 +48,6 @@ const Demo1 = () => {
     setDefaultList([...defaultList])
   }
 
-  const renderJoyImg = (() => {
-    return (
-      <img
-        alt=""
-        style={{ height: pxTransform(24), width: pxTransform(24) }}
-        src="https://img10.360buyimg.com/imagetools/jfs/t1/157510/3/39873/353/65fa8bfeF2627cb86/bd9e734d9fda59f2.png"
-        className="nut-infinite-bottom-tips-icons"
-      />
-    )
-  })()
-
   return (
     <>
       <Cell>
@@ -73,18 +62,6 @@ const Demo1 = () => {
             onScrollToUpper={() => {
               console.log('onScrollToUpper')
             }}
-            loadingText={
-              <>
-                {renderJoyImg}
-                加载中
-              </>
-            }
-            loadMoreText={
-              <>
-                {renderJoyImg}
-                没有更多了
-              </>
-            }
           >
             {defaultList.map((item, index) => {
               return (

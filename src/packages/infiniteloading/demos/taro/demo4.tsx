@@ -49,17 +49,6 @@ const Demo4 = () => {
     }
   }
 
-  const renderJoyImg = (() => {
-    return (
-      <img
-        alt=""
-        style={{ height: pxTransform(24), width: pxTransform(24) }}
-        src="https://img13.360buyimg.com/imagetools/jfs/t1/235005/5/15288/348/65fabd46F80f7367e/09fb5d99d07bee66.png"
-        className="nut-infinite-bottom-tips-icons"
-      />
-    )
-  })()
-
   return (
     <>
       <Cell>
@@ -67,13 +56,6 @@ const Demo4 = () => {
           <InfiniteLoading
             target="primaryScroll"
             type="primary"
-            loadingText={<>{renderJoyImg}加载中</>}
-            loadMoreText={
-              <>
-                {renderJoyImg}
-                没有更多了
-              </>
-            }
             hasMore={customHasMore}
             onLoadMore={customLoadMore}
           >

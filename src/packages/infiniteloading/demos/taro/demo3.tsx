@@ -1,5 +1,10 @@
 import React, { useState, useEffect, CSSProperties } from 'react'
-import { Cell, InfiniteLoading, pxTransform } from '@nutui/nutui-react-taro'
+import {
+  Cell,
+  InfiniteLoading,
+  InfiniteLoadingStatus,
+  pxTransform,
+} from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 
 const sleep = (time: number): Promise<unknown> =>
@@ -20,6 +25,21 @@ const InfiniteLiStyle: CSSProperties = {
   color: 'rgba(100, 100, 100, 1)',
   textAlign: 'center',
 }
+
+const renderCustomIcon = (status: InfiniteLoadingStatus) => (
+  <View
+    style={{
+      width: '100%',
+      height: '100%',
+      boxSizing: 'border-box',
+      border: `${pxTransform(2)} solid currentColor`,
+      borderRadius: '50%',
+      backgroundColor: status === 'complete' ? 'currentColor' : 'transparent',
+      opacity: status === 'loading' ? 0.68 : 1,
+    }}
+  />
+)
+
 const Demo3 = () => {
   const [customList, setCustomList] = useState<string[]>([])
   const [customHasMore, setCustomHasMore] = useState(true)
@@ -56,6 +76,8 @@ const Demo3 = () => {
             target="customScroll"
             loadingText="loading"
             loadMoreText="没有啦～"
+            iconStyle={{ color: '#2db7f5', width: 24, height: 24 }}
+            renderIcon={renderCustomIcon}
             hasMore={customHasMore}
             onLoadMore={customLoadMore}
           >
