@@ -104,7 +104,6 @@ import { Steps } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | title | 流程步驟的標題 | `ReactNode` | `-` |
 | description | 流程步驟的描述性文字 | `ReactNode` | `-` |
-| auxiliary | 節點輔助信息 | `ReactNode` | `-` |
 | icon | 圖標 | `ReactNode` | `-` |
 | value | 流程步驟的索引 | `number` | `0` |
 | type | 步驟類型 | `text` \| `dot` \| `icon` | `text` |
@@ -167,6 +166,5 @@ import { Steps } from '@nutui/nutui-react'
 | \--nutui-steps-vertical-line-height | 垂直行高 | `18px` |
 | \--nutui-steps-vertical-description-font-size | 垂直描述字號 | `$font-size-base` |
 | \--nutui-steps-vertical-description-margin | 垂直描述邊距 | `0 0 1px` |
-| \--nutui-steps-vertical-auxiliary-font-size | 垂直輔助信息字號 | `$font-size-s` |
 
 <Contribution name="Steps" />

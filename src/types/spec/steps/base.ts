@@ -9,7 +9,6 @@ export type StepsStatus = 'default' | 'business' | 'dynamic' | 'enhanced'
 export interface BaseStep extends BaseProps {
   title: ReactNode
   description: ReactNode
-  auxiliary: ReactNode
   value: number
   icon: ReactNode
   type: StepType

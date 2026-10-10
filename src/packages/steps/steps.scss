@@ -49,6 +49,10 @@
           color: $steps-wait-description-color;
         }
       }
+
+      // 流程状态-完成
+      &.nut-step-finish {
+      }
     }
 
     &-single {
@@ -70,8 +74,7 @@
         }
 
         &-title,
-        &-description,
-        &-auxiliary {
+        &-description {
           padding-left: 4px;
         }
 
@@ -262,13 +265,6 @@
         box-sizing: border-box;
       }
 
-      &-auxiliary {
-        margin: 0;
-        line-height: $steps-vertical-line-height;
-        color: $steps-base-description-color;
-        font-size: $steps-vertical-auxiliary-font-size;
-      }
-
       &-head-dot-wrap,
       &-head-icon-wrap,
       &-head-text-wrap {
@@ -356,8 +352,7 @@
       }
 
       .nut-step-title,
-      .nut-step-description,
-      .nut-step-auxiliary {
+      .nut-step-description {
         color: $steps-base-description-color;
       }
     }

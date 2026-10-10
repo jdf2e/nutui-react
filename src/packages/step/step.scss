@@ -102,13 +102,6 @@
     overflow: hidden;
   }
 
-  &-auxiliary {
-    margin-top: $steps-base-description-margin-top;
-    font-size: $steps-base-description-font-size;
-    color: $steps-base-description-color;
-    line-height: 16px;
-  }
-
   // 流程状态-当前
   &.nut-step-process {
     .nut-step-head-icon,

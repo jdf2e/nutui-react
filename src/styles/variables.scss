@@ -1583,10 +1583,6 @@ $steps-vertical-description-margin: var(
   --nutui-steps-vertical-description-margin,
   0 0 scale-px(1px)
 ) !default;
-$steps-vertical-auxiliary-font-size: var(
-  --nutui-steps-vertical-auxiliary-font-size,
-  $font-size-s
-) !default;
 
 // dialog（✅）
 $dialog-min-width: var(--nutui-dialog-min-width, scale-px(240px)) !default;
