@@ -1416,9 +1416,9 @@
           "taro": true,
           "jdtaro": 2,
           "exportEmpty": true,
-          "author": "liukun",
+          "author": "hanyuxinting",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "2.0.0",

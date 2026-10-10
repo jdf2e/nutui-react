@@ -42,71 +42,9 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Swipe, Cell, Button } from '@nutui/nutui-react-taro'
-import { Del } from '@nutui/icons-react-taro'
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
-const divNode = (text: string, style: any) => {
-  return (
-    <div
-      style={{
-        width: '60px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        ...style,
-      }}
-    >
-      <Del style={{ marginBottom: '8px' }} />
-      <>{text}</>
-    </div>
-  )
-}
-
-const App = () => {
-  return (
-    <>
-      <Swipe
-        style={{ height: '104px' }}
-        rightAction={
-          <div
-            style={{
-              height: 'inherit',
-              width: '240px',
-              display: 'flex',
-              fontSize: '12px',
-            }}
-          >
-            <>
-              {divNode('设置常买', {
-                background: '#F7F8FC',
-                color: '#1A1A1A',
-              })}
-              {divNode('移入收藏', {
-                background: '#ffcc00',
-                color: '#FFF',
-              })}
-              {divNode('看相似', {
-                background: '#FF860D',
-                color: '#FFF',
-              })}
-              {divNode('删除', {
-                background: '#FF0F23',
-                color: '#FFF',
-              })}
-            </>
-          </div>
-        }
-      >
-        <Cell title={`${translated.leftDel}+Icon`} radius={0} />
-      </Swipe>
-    </>
-  )
-}
-export default App
-```
+:::
 
 ### 阻止父元素滚动
 
