@@ -1,12 +1,8 @@
 import React from 'react'
 import { Cell, Toast } from '@nutui/nutui-react'
+import { ConfigI } from '@nutui/icons-react'
 
 const Demo1 = () => {
-  const iconSmall =
-    'https://img14.360buyimg.com/img/jfs/t1/532580/36/3419/521/6ab2770dF01b62b30/027601e01e45fd82.png'
-  const iconLarge =
-    'https://img30.360buyimg.com/img/jfs/t1/526019/31/8316/531/6ab2789eF8aa57258/0276028028153f64.png'
-
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
@@ -14,10 +10,9 @@ const Demo1 = () => {
   }
   return (
     <>
+      <Cell title="我是标题" extra="描述文字" />
       <Cell
-        leading={
-          <img src={iconSmall} style={{ width: 15, height: 15 }} alt="" />
-        }
+        leading={<ConfigI />}
         title="我是标题"
         extra="描述文字"
         align="center"
@@ -27,9 +22,7 @@ const Demo1 = () => {
       />
       <Cell title="我是标题" description="我是描述" extra="描述文字" />
       <Cell
-        leading={
-          <img src={iconLarge} style={{ width: 20, height: 20 }} alt="" />
-        }
+        leading={<ConfigI />}
         title="我是标题"
         description="我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述"
         extra="描述文字"
