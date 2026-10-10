@@ -47,19 +47,12 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     return node && typeof node === 'function' ? node(active) : node
   }
   const renderedIcon = renderNodeWithActive(icon)
-  const hasSkinIcon =
-    ctx?.skin &&
-    React.isValidElement(renderedIcon) &&
-    String(renderedIcon.props.className || '')
-      .split(/\s+/)
-      .includes('nut-tabbar-skin-icon')
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
       [`${classPrefix}-large`]: !icon || !title,
-      [`${classPrefix}-skin`]: hasSkinIcon,
     },
     className
   )

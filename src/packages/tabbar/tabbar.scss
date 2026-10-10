@@ -1,6 +1,9 @@
 @import '../tabbaritem/tabbaritem.scss';
 
 .nut-tabbar {
+  // Keep item and Agent layers inside this Tabbar when another one is fixed.
+  position: relative;
+  z-index: 0;
   border: 0;
   border-bottom: $tabbar-border-bottom;
   border-top: $tabbar-border-top;
@@ -30,41 +33,6 @@
     );
   }
 
-  &-island-expanded.nut-tabbar-has-agent &-agent {
-    left: calc(#{$tabbar-agent-source-size} - #{$tabbar-agent-expanded-outset});
-  }
-
-  &-island-expanded.nut-tabbar-has-agent &-wrap {
-    margin-left: calc(
-      #{$tabbar-agent-source-size} - #{$tabbar-agent-expanded-outset} +
-        #{$tabbar-agent-gap}
-    );
-  }
-
-  &-island {
-    box-sizing: border-box;
-    flex: 0 0 auto;
-    position: relative;
-    z-index: 1;
-
-    &-regular {
-      width: $tabbar-island-regular-width;
-      height: $tabbar-island-regular-height;
-    }
-
-    &-promotion {
-      width: $tabbar-island-promotion-width;
-      height: $tabbar-island-promotion-height;
-      transform: translateY(calc(-1 * #{$tabbar-content-padding}));
-    }
-  }
-
-  &-island-expanded
-    .nut-tabbar-wrap:not(.nut-tabbar-wrap-horizontal)
-    .nut-tabbar-item-active {
-    background: transparent;
-  }
-
   &-wrap {
     position: relative;
     height: $tabbar-height;
@@ -73,30 +41,41 @@
     margin-left: $tabbar-horizontal-padding;
     margin-right: $tabbar-horizontal-padding;
     padding: $tabbar-content-padding;
-    background: $tabbar-background;
     border-radius: $tabbar-border-radius;
-    box-shadow: $tabbar-box-shadow;
 
-    /* prettier-ignore */
-    @supports ((backdrop-filter: blur(3PX)) or (-webkit-backdrop-filter: blur(3PX))) {
-      &:not(.nut-tabbar-native) {
-        background: $tabbar-material-tint;
-        -webkit-backdrop-filter: blur(#{$tabbar-material-blur});
-        backdrop-filter: blur(#{$tabbar-material-blur});
-      }
+    > .nut-tabbar-backdrop {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: $tabbar-border-radius !important;
+    }
 
-      &.nut-tabbar-wrap-skin {
-        background: $tabbar-background;
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
+    > .nut-tabbar-skin-background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      border-radius: $tabbar-border-radius;
+
+      > * {
+        display: block;
+        width: 100%;
+        height: 100%;
       }
     }
 
-    &-skin {
-      .nut-tabbar-item {
-        position: relative;
-        z-index: 1;
-      }
+    > .nut-tabbar-item {
+      position: relative;
+      z-index: 1;
     }
 
     &-horizontal {
@@ -118,23 +97,6 @@
           }
         }
       }
-    }
-  }
-
-  &-skin-background {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    border-radius: inherit;
-    pointer-events: none;
-
-    > * {
-      display: block;
-      width: 100%;
-      height: 100%;
     }
   }
 

@@ -25,6 +25,15 @@ const languages: Languages = {
 }
 
 const defaultTheme = {}
+const setDarkStylesEnabled = (enabled: boolean) => {
+  document
+    .querySelectorAll<HTMLStyleElement | HTMLLinkElement>(
+      'style[data-vite-dev-id*="theme-dark.scss"], link[rel="stylesheet"][href*="theme-dark.css"]'
+    )
+    .forEach((stylesheet) => {
+      stylesheet.disabled = !enabled
+    })
+}
 const darkTheme = {
   nutuiColorPrimary: '#ff0f23',
   nutuiColorPrimaryStop1: '#ff475d',
@@ -165,24 +174,12 @@ const AppSwitch = () => {
       import('../../styles/theme-dark.scss').then(() => {
         setTheme(darkTheme)
         document.documentElement.classList.add('nut-theme-dark')
-        // Enable the dark theme stylesheet
-        const styles = document.querySelectorAll('style')
-        styles.forEach((style) => {
-          if (style.textContent && style.textContent.includes('--nutui-brand-1')) {
-            style.disabled = false
-          }
-        })
+        setDarkStylesEnabled(true)
       })
     } else {
       setTheme(defaultTheme)
       document.documentElement.classList.remove('nut-theme-dark')
-      // Disable the dark theme stylesheet
-      const styles = document.querySelectorAll('style')
-      styles.forEach((style) => {
-        if (style.textContent && style.textContent.includes('--nutui-brand-1')) {
-          style.disabled = true
-        }
-      })
+      setDarkStylesEnabled(false)
     }
   }, [theme])
   return (

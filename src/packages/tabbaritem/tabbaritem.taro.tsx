@@ -48,19 +48,12 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     return node && typeof node === 'function' ? node(active) : node
   }
   const renderedIcon = renderNodeWithActive(icon)
-  const hasSkinIcon =
-    ctx?.skin &&
-    React.isValidElement(renderedIcon) &&
-    String(renderedIcon.props.className || '')
-      .split(/\s+/)
-      .includes('nut-tabbar-skin-icon')
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
       [`${classPrefix}-large`]: !icon || !title,
-      [`${classPrefix}-skin`]: hasSkinIcon,
     },
     className
   )
@@ -101,7 +94,6 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     const distIcon = renderedIcon
     // 鸿蒙差异处理，需要手动给icon一个color
     if (!React.isValidElement(distIcon)) return null
-    if (hasSkinIcon) return distIcon
     return React.cloneElement(distIcon, {
       ...distIcon.props,
       color: active ? ctx?.activeColor : ctx?.inactiveColor,

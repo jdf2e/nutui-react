@@ -1,57 +1,63 @@
 import React, { useState } from 'react'
-import { Cart, Home, Message, Search, User } from '@nutui/icons-react'
 import { Tabbar } from '@nutui/nutui-react'
-
-const joyImage =
-  'https://img11.360buyimg.com/img/jfs/t1/535270/25/4911/39037/6abb699eF4fefba06/02760f00f05076ee.png'
-const backgroundImage =
-  'https://img12.360buyimg.com/img/jfs/t1/527314/4/14719/1262/6abc7fc4F8586369f/02761771402b1daa.png'
+import { skinActiveOverlay, skinBoard, skinIcons } from '../skin-assets'
+import '../skin-demo.scss'
 
 const Demo12 = () => {
   const [value, setValue] = useState(1)
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        width: '100%',
-        height: 104,
-        overflow: 'hidden',
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundPosition: 'center top',
-        backgroundSize: '100% auto',
-        backgroundRepeat: 'no-repeat',
-      }}
+    <Tabbar
+      className="tabbar-skin-demo"
+      value={value}
+      onSwitch={setValue}
+      activeColor="#171A26"
+      inactiveColor="#171A26"
+      skinBackground={
+        <img
+          src={skinBoard}
+          alt=""
+          style={{ width: '100%', height: '100%', objectFit: 'fill' }}
+        />
+      }
     >
-      <Tabbar
-        value={value}
-        onSwitch={setValue}
-        agent={
-          <button
-            type="button"
-            aria-label="打开 Agent"
-            onClick={() => console.log('Agent 已点击')}
-            style={{
-              width: 52,
-              height: 52,
-              padding: 0,
-              border: 0,
-              background: 'transparent',
-              cursor: 'pointer',
-            }}
-          >
-            <img src={joyImage} alt="" style={{ width: 52, height: 52 }} />
-          </button>
-        }
-      >
-        <Tabbar.Item title="首页" icon={<Home />} />
-        <Tabbar.Item title="消息" icon={<Message />} />
-        <Tabbar.Item title="发现" icon={<Search />} />
-        <Tabbar.Item title="购物车" icon={<Cart />} />
-        <Tabbar.Item title="我的" icon={<User />} />
-      </Tabbar>
-    </div>
+      {skinIcons.map(({ normal, pressed }, index) => (
+        <Tabbar.Item
+          key={index}
+          className="tabbar-skin-demo-item"
+          title="文案"
+          icon={(active) => (
+            <span className="tabbar-skin-demo-icon">
+              {active && (
+                <img
+                  src={skinActiveOverlay}
+                  alt=""
+                  style={{
+                    position: 'absolute',
+                    top: 5.8,
+                    left: '50%',
+                    width: 29.4,
+                    height: 29.4,
+                    transform: 'translateX(-50%)',
+                  }}
+                />
+              )}
+              <img
+                src={active ? pressed : normal}
+                alt=""
+                style={{
+                  position: 'relative',
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                }}
+              />
+            </span>
+          )}
+        />
+      ))}
+    </Tabbar>
   )
 }
 

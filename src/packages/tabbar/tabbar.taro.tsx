@@ -1,7 +1,6 @@
-import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
-import Taro from '@tarojs/taro'
-import { View, ViewProps } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import TabbarItem from '../tabbaritem/index.taro'
@@ -9,39 +8,7 @@ import TabbarContext from './context'
 import { TaroTabbarProps } from '@/types'
 import SafeArea from '@/packages/safearea/index.taro'
 import { normalizeTabbarItems } from './utils'
-import {
-  getTabbarNativeMaterial,
-  getTabbarNativePlatform,
-  getTabbarNativeViewProps,
-  TabbarNativeViewProps,
-} from './material.taro'
-
-const MaterialView = View as React.ComponentType<
-  ViewProps & TabbarNativeViewProps
->
-
-const getNativeInfo = () => {
-  try {
-    const info = Taro.getSystemInfoSync()
-    return {
-      platform: getTabbarNativePlatform(
-        String(Taro.getEnv()),
-        String(info.platform || '')
-      ),
-      dark: String(info.theme || '').toLowerCase() === 'dark',
-      iosMajor: parseInt(
-        String(info.system || '').match(/\d+/)?.[0] || '0',
-        10
-      ),
-    }
-  } catch {
-    return {
-      platform: getTabbarNativePlatform('', ''),
-      dark: false,
-      iosMajor: 0,
-    }
-  }
-}
+import MaterialView from '../materialview/index.taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -51,11 +18,6 @@ const defaultProps = {
   activeColor: '',
   direction: 'vertical',
   safeArea: false,
-  skinBackground: null,
-  island: null,
-  islandVariant: 'regular',
-  islandExpanded: false,
-  iosMaterial: 'gradient-blur',
   onSwitch: () => {},
 } as TaroTabbarProps
 
@@ -73,56 +35,21 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     safeArea,
     skinBackground,
     agent,
-    island,
-    islandVariant,
-    islandExpanded,
-    materialTargetId,
-    iosMaterial,
     className,
     style,
     onSwitch,
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-tabbar'
-  const [nativeInfo] = useState(getNativeInfo)
-  const [dark, setDark] = useState(nativeInfo.dark)
-
-  useEffect(() => {
-    if (nativeInfo.platform === 'none') return
-    const handleThemeChange = (result: string | { theme?: string }) => {
-      const theme = typeof result === 'string' ? result : result.theme
-      setDark(String(theme || '').toLowerCase() === 'dark')
-    }
-    try {
-      Taro.onThemeChange?.(handleThemeChange)
-      return () => Taro.offThemeChange?.(handleThemeChange)
-    } catch {
-      return undefined
-    }
-  }, [nativeInfo.platform])
-
-  const hasSkin =
-    skinBackground !== null &&
-    skinBackground !== undefined &&
-    typeof skinBackground !== 'boolean'
-  const nativeMaterial = getTabbarNativeMaterial(
-    nativeInfo.platform,
-    dark,
-    nativeInfo.iosMajor,
-    iosMaterial
-  )
-  const nativeViewProps = getTabbarNativeViewProps(
-    nativeMaterial,
-    materialTargetId,
-    hasSkin
-  )
   const items = useMemo(
     () => normalizeTabbarItems(children, TabbarItem),
     [children]
   )
   const hasAgent =
     agent !== null && agent !== undefined && typeof agent !== 'boolean'
-  const hasIsland =
-    island !== null && island !== undefined && typeof island !== 'boolean'
+  const hasSkin =
+    skinBackground !== null &&
+    skinBackground !== undefined &&
+    typeof skinBackground !== 'boolean'
   const [selectIndex, setSelectIndex] = usePropsValue<number>({
     value,
     defaultValue,
@@ -151,7 +78,6 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     selectIndex,
     activeColor,
     inactiveColor,
-    skin: hasSkin,
     handleClick: setSelectIndex,
   }
   const renderedItems = items.map((child, index) =>
@@ -162,41 +88,29 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
       direction: itemDirection,
     })
   )
-  const islandIndex = Math.ceil(items.length / 2)
 
   const navigation = (
-    <MaterialView
+    <View
       className={classNames(`${classPrefix}-wrap`, sizeCls, {
-        [`${classPrefix}-native`]: nativeInfo.platform !== 'none',
         [`${classPrefix}-wrap-skin`]: hasSkin,
       })}
-      {...nativeViewProps}
     >
-      {hasSkin && (
-        <View className={`${classPrefix}-skin-background`}>
+      {hasSkin ? (
+        <View className={`${classPrefix}-skin-background`} aria-hidden="true">
           {skinBackground}
         </View>
-      )}
-      {hasIsland ? (
-        <>
-          <TabbarContext.Provider value={contextValue}>
-            {renderedItems.slice(0, islandIndex)}
-          </TabbarContext.Provider>
-          <View
-            className={`${classPrefix}-island ${classPrefix}-island-${islandVariant}`}
-          >
-            {island}
-          </View>
-          <TabbarContext.Provider value={contextValue}>
-            {renderedItems.slice(islandIndex)}
-          </TabbarContext.Provider>
-        </>
       ) : (
-        <TabbarContext.Provider value={contextValue}>
-          {renderedItems}
-        </TabbarContext.Provider>
+        <MaterialView
+          scene="bottom-bar"
+          className={`${classPrefix}-backdrop`}
+          style={{ borderRadius: 16 }}
+          aria-hidden="true"
+        />
       )}
-    </MaterialView>
+      <TabbarContext.Provider value={contextValue}>
+        {renderedItems}
+      </TabbarContext.Provider>
+    </View>
   )
 
   return (
@@ -206,8 +120,6 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
         {
           [`${classPrefix}-fixed`]: fixed,
           [`${classPrefix}-has-agent`]: hasAgent,
-          [`${classPrefix}-has-island`]: hasIsland,
-          [`${classPrefix}-island-expanded`]: hasIsland && islandExpanded,
         },
         className
       )}

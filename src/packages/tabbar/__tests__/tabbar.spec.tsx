@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { act, render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { parse } from 'postcss'
 import * as sass from 'sass'
@@ -69,6 +69,132 @@ const getRootCustomProperties = (file: string) => {
 
   return declarations
 }
+
+test('uses a rounded bottom-bar material behind interactive navigation', () => {
+  const onSwitch = vi.fn()
+  const { container } = render(
+    <Tabbar onSwitch={onSwitch} agent={<button type="button">Agent</button>}>
+      <Tabbar.Item title="首页" icon={<Home />} />
+      <Tabbar.Item title="我的" icon={<User />} />
+    </Tabbar>
+  )
+  const wrap = container.querySelector('.nut-tabbar-wrap')!
+  const backdrop = wrap.querySelector('.nut-tabbar-backdrop') as HTMLElement
+
+  expect(backdrop).toHaveClass('nut-materialview')
+  expect(backdrop).toHaveAttribute('aria-hidden', 'true')
+  expect(wrap.firstElementChild).toBe(backdrop)
+  expect(backdrop.style.borderRadius).toBe('16px')
+  expect(backdrop.style.backdropFilter).toBe('blur(3PX)')
+  expect(backdrop.style.backgroundColor).toBe('rgba(255, 255, 255, 0.8)')
+  expect(wrap.querySelectorAll('.nut-tabbar-item')).toHaveLength(2)
+  expect(container.querySelector('.nut-tabbar-agent')).toContainElement(
+    container.querySelector('.nut-tabbar-agent button')
+  )
+
+  fireEvent.click(wrap.querySelectorAll('.nut-tabbar-item')[1])
+  expect(onSwitch).toHaveBeenCalledWith(1)
+})
+
+test('uses a supplied skin instead of the material while keeping items interactive', () => {
+  const onSwitch = vi.fn()
+  const { container } = render(
+    <Tabbar
+      skinBackground={<img src="/skin-board.png" alt="" />}
+      onSwitch={onSwitch}
+    >
+      <Tabbar.Item title="首页" icon={<Home />} />
+      <Tabbar.Item title="我的" icon={<User />} />
+    </Tabbar>
+  )
+  const wrap = container.querySelector('.nut-tabbar-wrap')!
+  const skin = wrap.querySelector('.nut-tabbar-skin-background')!
+  const items = wrap.querySelectorAll('.nut-tabbar-item')
+
+  expect(wrap.querySelector('.nut-materialview')).toBeNull()
+  expect(skin).toHaveAttribute('aria-hidden', 'true')
+  expect(skin).toContainElement(wrap.querySelector('img'))
+  expect(items).toHaveLength(2)
+  fireEvent.click(items[1])
+  expect(onSwitch).toHaveBeenCalledWith(1)
+
+  const css = compileTabbarStyles('src/styles/variables.scss')
+  const backdrop = getDeclarations(
+    css,
+    '.nut-tabbar-wrap > .nut-tabbar-skin-background'
+  )
+  expect(backdrop.position).toBe('absolute')
+  expect(backdrop.overflow).toBe('hidden')
+  expect(backdrop['border-radius']).toContain('--nutui-tabbar-border-radius')
+})
+
+test('uses the dark bottom-bar material when the site theme changes', async () => {
+  document.documentElement.classList.remove('nut-theme-dark')
+  const { container, unmount } = render(<Tabbar />)
+  const backdrop = container.querySelector(
+    '.nut-tabbar-backdrop'
+  ) as HTMLElement
+
+  expect(backdrop.style.backgroundColor).toBe('rgba(255, 255, 255, 0.8)')
+
+  await act(async () => {
+    document.documentElement.classList.add('nut-theme-dark')
+  })
+  expect(backdrop.style.backgroundColor).toBe('rgba(20, 23, 26, 0.8)')
+
+  await act(async () => {
+    document.documentElement.classList.remove('nut-theme-dark')
+  })
+  expect(backdrop.style.backgroundColor).toBe('rgba(255, 255, 255, 0.8)')
+  unmount()
+})
+
+test('uses the dark material inside a themed application container', async () => {
+  const { container } = render(
+    <div className="app-theme">
+      <Tabbar />
+    </div>
+  )
+  const theme = container.querySelector('.app-theme') as HTMLElement
+  const backdrop = container.querySelector(
+    '.nut-tabbar-backdrop'
+  ) as HTMLElement
+
+  await act(async () => {
+    theme.classList.add('nut-theme-dark')
+  })
+  expect(backdrop.style.backgroundColor).toBe('rgba(20, 23, 26, 0.8)')
+})
+
+test('keeps the light material when the page theme is light and the system is dark', () => {
+  document.documentElement.classList.remove('nut-theme-dark')
+  vi.stubGlobal('matchMedia', () => ({
+    matches: true,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+  }))
+  try {
+    const { container } = render(<Tabbar />)
+    const backdrop = container.querySelector(
+      '.nut-tabbar-backdrop'
+    ) as HTMLElement
+    expect(backdrop.style.backgroundColor).toBe('rgba(255, 255, 255, 0.8)')
+  } finally {
+    vi.unstubAllGlobals()
+  }
+})
+
+test('keeps item z-index inside its own Tabbar when a fixed Tabbar overlaps it', () => {
+  const css = compileTabbarStyles('src/styles/variables.scss')
+  const tabbar = getDeclarations(css, '.nut-tabbar')
+  const fixed = getDeclarations(css, '.nut-tabbar-fixed')
+  const item = getDeclarations(css, '.nut-tabbar-wrap > .nut-tabbar-item')
+
+  expect(tabbar.position).toBe('relative')
+  expect(tabbar['z-index']).toBe('0')
+  expect(fixed.position).toBe('fixed')
+  expect(item['z-index']).toBe('1')
+})
 
 test('should render tabbar when default', () => {
   const { container } = render(
@@ -219,126 +345,6 @@ test.each([2, 3, 4, 5])(
   }
 )
 
-test('renders the island outside ordinary item selection and links its expanded state to Agent', () => {
-  const onIslandClick = vi.fn()
-  const onSwitch = vi.fn()
-  const onActiveClick = vi.fn()
-  const items = (
-    <>
-      <Tabbar.Item title="首页" icon={<Home />} onActiveClick={onActiveClick} />
-      <Tabbar.Item title="我的" icon={<User />} />
-    </>
-  )
-  const { container, rerender } = render(
-    <Tabbar
-      value={0}
-      onSwitch={onSwitch}
-      agent={<button type="button">Agent</button>}
-      island={
-        <button type="button" onClick={onIslandClick}>
-          Island
-        </button>
-      }
-    >
-      {items}
-    </Tabbar>
-  )
-
-  const root = container.querySelector('.nut-tabbar')!
-  expect(root).toHaveClass('nut-tabbar-has-agent')
-  expect(root).toHaveClass('nut-tabbar-has-island')
-  expect(root).not.toHaveClass('nut-tabbar-island-expanded')
-  expect(container.querySelector('.nut-tabbar-island')).toHaveClass(
-    'nut-tabbar-island-regular'
-  )
-  expect(container.querySelectorAll('.nut-tabbar-item')).toHaveLength(2)
-  expect(
-    container.querySelector('.nut-tabbar-wrap > .nut-tabbar-island')
-  ).toBeInTheDocument()
-  expect(
-    Array.from(container.querySelector('.nut-tabbar-wrap')!.children).map(
-      (node) =>
-        node.classList.contains('nut-tabbar-island') ? 'island' : 'item'
-    )
-  ).toEqual(['item', 'island', 'item'])
-
-  fireEvent.click(container.querySelector('.nut-tabbar-island button')!)
-  expect(onIslandClick).toHaveBeenCalledTimes(1)
-  expect(onSwitch).not.toHaveBeenCalled()
-  expect(onActiveClick).not.toHaveBeenCalled()
-
-  rerender(
-    <Tabbar
-      value={0}
-      onSwitch={onSwitch}
-      agent={<button type="button">Agent</button>}
-      islandVariant="promotion"
-      islandExpanded
-      island={<button type="button">Island</button>}
-    >
-      {items}
-    </Tabbar>
-  )
-
-  expect(root).toHaveClass('nut-tabbar-island-expanded')
-  expect(container.querySelector('.nut-tabbar-island')).toHaveClass(
-    'nut-tabbar-island-promotion'
-  )
-  expect(container.querySelector('.nut-tabbar-item-active')).toBe(
-    container.querySelectorAll('.nut-tabbar-item')[0]
-  )
-  expect(onSwitch).not.toHaveBeenCalled()
-  expect(onActiveClick).not.toHaveBeenCalled()
-})
-
-test('keeps four ordinary indexes around a centered promotion island', () => {
-  const onSwitch = vi.fn()
-  const { container } = render(
-    <Tabbar
-      island={<button type="button">活动</button>}
-      islandVariant="promotion"
-      onSwitch={onSwitch}
-    >
-      <Tabbar.Item title="首页" />
-      <Tabbar.Item title="消息" />
-      <Tabbar.Item title="购物车" />
-      <Tabbar.Item title="我的" />
-    </Tabbar>
-  )
-  expect(
-    Array.from(container.querySelector('.nut-tabbar-wrap')!.children).map(
-      (node) =>
-        node.classList.contains('nut-tabbar-island') ? 'island' : 'item'
-    )
-  ).toEqual(['item', 'item', 'island', 'item', 'item'])
-  fireEvent.click(container.querySelectorAll('.nut-tabbar-item')[3])
-  expect(onSwitch).toHaveBeenCalledWith(3)
-})
-
-test.each([undefined, null, false])(
-  'does not expose island state classes without an island (%s)',
-  (island) => {
-    const { container } = render(
-      <Tabbar
-        island={island as React.ReactNode}
-        islandExpanded
-        islandVariant="promotion"
-      >
-        <Tabbar.Item title="首页" />
-        <Tabbar.Item title="我的" />
-      </Tabbar>
-    )
-
-    expect(container.querySelector('.nut-tabbar-island')).toBeNull()
-    expect(container.querySelector('.nut-tabbar')).not.toHaveClass(
-      'nut-tabbar-has-island'
-    )
-    expect(container.querySelector('.nut-tabbar')).not.toHaveClass(
-      'nut-tabbar-island-expanded'
-    )
-  }
-)
-
 test.each([
   { fixed: false, safeArea: false, expectedSafeArea: 0 },
   { fixed: true, safeArea: false, expectedSafeArea: 1 },
@@ -404,8 +410,8 @@ test.each([
   expect(wrap.padding).toContain('--nutui-tabbar-content-padding')
   expect(wrap['border-radius']).toContain('--nutui-tabbar-border-radius')
   expect(wrap['border-radius']).toContain('16px')
-  expect(wrap['box-shadow']).toContain('--nutui-tabbar-box-shadow')
-  expect(wrap['box-shadow']).toContain('6px')
+  expect(wrap['box-shadow']).toBeUndefined()
+  expect(wrap.background).toBeUndefined()
   expect(item.height).toContain('--nutui-tabbar-content-height')
   expect(item['min-width']).toBe('0')
   expect(active.background).toContain('--nutui-tabbar-active-background')
@@ -420,50 +426,33 @@ test.each([
   'src/styles/variables-jmapp.scss',
   'src/styles/variables-jrkf.scss',
 ])(
-  'keeps a solid Tabbar backing when blur is unavailable with %s',
+  'positions only the MaterialView layer under navigation with %s',
   (variables) => {
     const css = compileTabbarStyles(variables)
     const wrap = getDeclarations(css, '.nut-tabbar-wrap')
-    expect(wrap.background).toContain('--nutui-tabbar-background')
+    const backdrop = getDeclarations(
+      css,
+      '.nut-tabbar-wrap > .nut-tabbar-backdrop'
+    )
+    const item = getDeclarations(css, '.nut-tabbar-wrap > .nut-tabbar-item')
+    expect(wrap.overflow).toBeUndefined()
+    expect(wrap.background).toBeUndefined()
+    expect(wrap['box-shadow']).toBeUndefined()
     expect(wrap['backdrop-filter']).toBeUndefined()
     expect(wrap['-webkit-backdrop-filter']).toBeUndefined()
-
-    const materialRules: Array<Record<string, string>> = []
-    parse(css).walkAtRules('supports', (rule) => {
-      rule.walkRules((nestedRule) => {
-        if (
-          nestedRule.selector === '.nut-tabbar-wrap:not(.nut-tabbar-native)'
-        ) {
-          const declarations: Record<string, string> = {}
-          nestedRule.walkDecls((declaration) => {
-            declarations[declaration.prop] = declaration.value
-          })
-          materialRules.push(declarations)
-        }
-      })
-    })
-    expect(materialRules).toHaveLength(1)
-    expect(materialRules[0].background).toContain(
-      '--nutui-tabbar-material-tint'
-    )
-    expect(materialRules[0]['backdrop-filter']).toContain(
-      '--nutui-tabbar-material-blur'
-    )
-    expect(materialRules[0]['backdrop-filter']).toContain('3PX')
-    expect(materialRules[0]['-webkit-backdrop-filter']).toBe(
-      materialRules[0]['backdrop-filter']
-    )
+    expect(backdrop.position).toBe('absolute')
+    expect(backdrop.top).toBe('0')
+    expect(backdrop.right).toBe('0')
+    expect(backdrop.bottom).toBe('0')
+    expect(backdrop.left).toBe('0')
+    expect(backdrop['pointer-events']).toBe('none')
+    expect(backdrop.overflow).toBe('hidden')
+    expect(backdrop['border-radius']).toContain('--nutui-tabbar-border-radius')
+    expect(backdrop['border-radius']).toContain('16px')
+    expect(item.position).toBe('relative')
+    expect(item['z-index']).toBe('1')
   }
 )
-
-test('light and dark themes provide readable solid and translucent Tabbar backgrounds', () => {
-  const light = getRootCustomProperties('src/styles/theme-default.scss')
-  const dark = getRootCustomProperties('src/styles/theme-dark.scss')
-  expect(light['--nutui-tabbar-material-tint']).toBe('rgba(255, 255, 255, 0.8)')
-  expect(dark['--nutui-tabbar-material-tint']).toBe('rgba(20, 23, 26, 0.8)')
-  expect(light['--nutui-tabbar-background']).toBe('#ffffff')
-  expect(dark['--nutui-tabbar-background']).toBe('#14171a')
-})
 
 test.each([
   'src/styles/variables.scss',
@@ -488,51 +477,16 @@ test.each([
   expect(wrap['margin-left']).toContain('--nutui-tabbar-agent-outset')
 })
 
-test.each([
-  'src/styles/variables.scss',
-  'src/styles/variables-daojia.scss',
-  'src/styles/variables-jmapp.scss',
-  'src/styles/variables-jrkf.scss',
-])(
-  'should compile dynamic island and expanded Agent geometry with %s',
-  (variables) => {
-    const css = compileTabbarStyles(variables)
-    const island = getDeclarations(css, '.nut-tabbar-island')
-    const regular = getDeclarations(css, '.nut-tabbar-island-regular')
-    const promotion = getDeclarations(css, '.nut-tabbar-island-promotion')
-    const expandedAgent = getDeclarations(
-      css,
-      '.nut-tabbar-island-expanded.nut-tabbar-has-agent .nut-tabbar-agent'
-    )
-    const expandedWrap = getDeclarations(
-      css,
-      '.nut-tabbar-island-expanded.nut-tabbar-has-agent .nut-tabbar-wrap'
-    )
-
-    expect(island.flex).toBe('0 0 auto')
-    expect(regular.width).toContain('--nutui-tabbar-island-regular-width')
-    expect(regular.height).toContain('--nutui-tabbar-island-regular-height')
-    expect(promotion.width).toContain('--nutui-tabbar-island-promotion-width')
-    expect(promotion.height).toContain('--nutui-tabbar-island-promotion-height')
-    expect(expandedAgent.left).toContain('--nutui-tabbar-agent-expanded-outset')
-    expect(expandedWrap['margin-left']).toContain(
-      '--nutui-tabbar-agent-expanded-outset'
-    )
-  }
-)
-
 test('should expose readable Tabbar colors in light and dark themes', () => {
   const light = getRootCustomProperties('src/styles/theme-default.scss')
   const dark = getRootCustomProperties('src/styles/theme-dark.scss')
 
   expect(light).toMatchObject({
-    '--nutui-tabbar-background': '#ffffff',
     '--nutui-tabbar-active-background': '#f0f2f7',
     '--nutui-tabbar-active-color': 'var(--nutui-color-primary)',
     '--nutui-tabbar-inactive-color': 'var(--nutui-color-title)',
   })
   expect(dark).toMatchObject({
-    '--nutui-tabbar-background': '#14171a',
     '--nutui-tabbar-active-background': 'var(--nutui-color-background-sunken)',
     '--nutui-tabbar-active-color': 'var(--nutui-color-primary)',
     '--nutui-tabbar-inactive-color': 'var(--nutui-color-title)',
@@ -721,44 +675,24 @@ test('render item size 2 and direction is horizontal', async () => {
   expect(container.innerHTML).toMatchSnapshot()
 })
 
-test('skin background is isolated from item indexing and active icon selection', () => {
+test('icon(active) follows ordinary item selection', () => {
   const onSwitch = vi.fn()
   const icon = (active: boolean) => (
-    <img
-      className="nut-tabbar-skin-icon"
-      src={active ? '/pressed.png' : '/normal.png'}
-      alt=""
-    />
+    <img src={active ? '/pressed.png' : '/normal.png'} alt="" />
   )
   const { container } = render(
-    <Tabbar
-      defaultValue={0}
-      onSwitch={onSwitch}
-      skinBackground={<img src="/board.png" alt="" />}
-    >
+    <Tabbar defaultValue={0} onSwitch={onSwitch}>
       <Tabbar.Item title="首页" icon={icon} />
       <Tabbar.Item title="我的" icon={icon} />
     </Tabbar>
   )
-  const wrap = container.querySelector('.nut-tabbar-wrap')!
   const items = container.querySelectorAll('.nut-tabbar-item')
-  expect(wrap).toHaveClass('nut-tabbar-wrap-skin')
-  expect(wrap.firstElementChild).toHaveClass('nut-tabbar-skin-background')
   expect(items).toHaveLength(2)
-  expect(items[0]).toHaveClass('nut-tabbar-item-skin')
   expect(items[0].querySelector('img')).toHaveAttribute('src', '/pressed.png')
   expect(items[1].querySelector('img')).toHaveAttribute('src', '/normal.png')
 
   fireEvent.click(items[1])
+  expect(onSwitch).toHaveBeenCalledTimes(1)
   expect(onSwitch).toHaveBeenCalledWith(1)
   expect(items[1].querySelector('img')).toHaveAttribute('src', '/pressed.png')
-})
-
-test('skin styles preserve board geometry and position the full image canvas', () => {
-  const css = compileTabbarStyles('src/styles/variables.scss')
-  expect(css).toContain('--nutui-tabbar-skin-icon-height')
-  expect(css).toContain('--nutui-tabbar-skin-icon-bottom')
-  expect(css).toContain('.nut-tabbar-wrap-skin')
-  expect(css).toContain('.nut-tabbar-skin-background')
-  expect(css).toContain('.nut-tabbar-skin-icon')
 })

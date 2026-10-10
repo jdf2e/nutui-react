@@ -1,6 +1,6 @@
 # Tabbar 標簽欄
 
-底部導航常用場景。導航背板左右各留 12px、內部四周留 4px，以 16px 圓角矩形和懸浮陰影承載內容；組件外層保持透明。
+底部導航常用場景。導航背板左右各留 12px、內部四周留 4px，使用 16px 圓角；元件外層保持透明。
 
 ## 引入
 
@@ -96,16 +96,9 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 靈動島與 Agent 聯動
+### 毛玻璃材質
 
-`island` 是獨立內容插槽，不佔一般標籤索引。`islandVariant` 的一般與大促外框分別為 131×44px、144×52px；示例內圖文、點擊及展開狀態由呼叫方提供。`islandExpanded` 隱藏一般標籤選中底色；同時傳入 Agent 時，Agent 外移由 16px 變為 28px，導航背板同步移動。示例共 5 個坑位：中央是靈動島，左右各有 2 個一般標籤。窄螢幕仍需檢查圖文可讀性。大促紅包圖取自設計稿；一般商品及營運活動圖示僅為示意，正式業務圖片或 GIF 由呼叫方提供。非零安全區下的大促底距、紅色禁放區與目標端視覺仍待設計量測確認。
-
-H5 組合須讓每個一般標籤的點擊區至少寬 44px。下表依目前尺寸計算一般標籤的最多項數（一般／大促島；有 Agent 時分別列收合／展開）。44px 是本次驗收門檻，並非設計稿標示的最小寬度。超出時由呼叫方減少一般項或不顯示 Agent／島；元件不會自動降級。
-
-| 視口寬度 | 無 Agent：一般／大促 | 有 Agent：一般收合／展開 | 有 Agent：大促收合／展開 |
-| --- | --- | --- | --- |
-| 375px | 4/4 | 4/4 | 3/4 |
-| 320px | 3/3 | 2/3 | 2/2 |
+Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背板：3px 模糊、80% 明暗疊色，並將可見背板圓角設為 16px。明暗跟隨 `MaterialView` 的系統主題處理。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例在直向彩色背景圖上展示 Agent 與半透明背板。各端實際視覺效果以 `MaterialView` 的目標執行環境能力為準。
 
 :::demo
 
@@ -113,27 +106,13 @@ H5 組合須讓每個一般標籤的點擊區至少寬 44px。下表依目前尺
 
 :::
 
-### 毛玻璃材質
+### 換膚背板
 
-H5 與 Taro H5 在瀏覽器支援 `backdrop-filter` 時，僅對 52px 高的導航背板套用 3px 模糊及 80% 明暗疊色；不支援時使用 `--nutui-tabbar-background` 實色。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例在直向彩色背景圖上展示 Agent 與半透明背板，並跟隨頁面頂部的暗黑模式切換。Taro iOS 可選 iOS 26+ 液態玻璃；設定、舊版降級與 Android 取樣來源配對見 [Taro 文件](./doc.taro.md)。原生視覺效果仍需在目標環境驗收。
+傳入 `skinBackground` 後，背板內容取代預設的 `MaterialView` 材質。元件負責背板裁切、16px 圓角與導航項層級；示例圖片、圖示選中態和專屬定位均在 demo 中實作。`icon(active)` 可依選中狀態切換圖片。
 
 :::demo
 
 <CodeBlock src='h5/demo12.tsx'></CodeBlock>
-
-:::
-
-### 換膚背景與雙狀態圖示
-
-傳入 `skinBackground` 後，背板使用業務提供的實色、漸層或弱紋理背景，H5/Taro H5 關閉整板 `backdrop-filter`；Taro 原生端不再傳 iOS 玻璃/漸層模糊、Android 取樣模糊或 Harmony 模糊參數。未傳入時維持上述材質規則。背景節點僅覆蓋 52px 背板，不參與標籤索引及點擊；業務須提供資源失敗時的替代圖。下方示例接入一套換膚素材：240×52px 背板圖鋪滿 375px 畫布下的 351×52px 背板，五項在兩種狀態都顯示「文案」，第一與第五項預設態共用一張圖片。
-
-每個圖片標籤可用 `icon(active)` 在 `normal/pressed` 兩張透明 PNG 間切換，並在圖片或包裝節點上設定 `nut-tabbar-skin-icon` 類別。192×195PX 原稿等比縮至 48px 高，切圖盒距背板底部 7px；透明畫布可越過背板頂部 3px，可見裝飾越界不得超過 3px。標題仍由 `title` 獨立呈現。每套五項由業務提供五對圖片，單圖符合設計「50K 以內」要求；正式配色及背板圖片由業務提供。新增的高度與底距變數可覆寫，背板沿用 16px 圓角。
-
-示例在選中人物圖示下方單獨疊放 120×120px 原稿的漸層底圖，與 192×195px 圖示畫布同比例顯示為 29.4×29.4px，距圖示盒頂部 5.8px；預設選中托底設為透明，「文案」由獨立標題節點呈現，不包含在漸層圖中。圖片直接使用業務提供的 HTTPS 連結，不內建於元件。
-
-:::demo
-
-<CodeBlock src='h5/demo13.tsx'></CodeBlock>
 
 :::
 
@@ -149,11 +128,8 @@ H5 與 Taro H5 在瀏覽器支援 `backdrop-filter` 時，僅對 52px 高的導�
 | activeColor | icon激活的顏色 | `string` | `#0073ff` |
 | inactiveColor | icon未激活的顏色 | `string` | `#7d7e80` |
 | safeArea | 是否開啟iphone繫列全面屏底部安全區適配 | `boolean` | `false` |
-| skinBackground | 換膚背板節點；傳入後關閉預設整板模糊材質 | `ReactNode` | `-` |
+| skinBackground | 自訂換膚背板內容，傳入時取代預設材質 | `ReactNode` | `-` |
 | agent | 獨立 Agent 入口內容，圖片與點擊由呼叫方提供 | `ReactNode` | `-` |
-| island | 獨立靈動島內容，圖文及點擊由呼叫方提供 | `ReactNode` | `-` |
-| islandVariant | 島尺寸：一般 131×44px，大促 144×52px | `regular` \| `promotion` | `regular` |
-| islandExpanded | 隱藏一般標籤選中底色並連動 Agent 位置 | `boolean` | `false` |
 | onSwitch | 切換頁簽時觸發事件 | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -183,19 +159,9 @@ H5 與 Taro H5 在瀏覽器支援 `backdrop-filter` 時，僅對 52px 高的導�
 | \--nutui-tabbar-agent-source-size | Agent 定位容器尺寸 | `52px` |
 | \--nutui-tabbar-agent-gap | Agent 與導航背板間距 | `8px` |
 | \--nutui-tabbar-agent-outset | Agent 向外側抽縮距離 | `16px` |
-| \--nutui-tabbar-agent-expanded-outset | 展開期間 Agent 外移距離 | `28px` |
-| \--nutui-tabbar-island-regular-width | 一般島寬度 | `131px` |
-| \--nutui-tabbar-island-regular-height | 一般島高度 | `44px` |
-| \--nutui-tabbar-island-promotion-width | 大促島寬度 | `144px` |
-| \--nutui-tabbar-island-promotion-height | 大促島高度 | `52px` |
 | \--nutui-tabbar-content-height | 內容層高度 | `44px` |
 | \--nutui-tabbar-horizontal-padding | 導航層左右間距 | `12px` |
 | \--nutui-tabbar-content-padding | 導航背板內邊距 | `4px` |
-| \--nutui-tabbar-background | 無模糊時的導航實色背景 | 淺色 `#FFFFFF`；暗色 `#14171A` |
-| \--nutui-tabbar-material-tint | 模糊可用時的背板疊色 | 淺色 `rgba(255, 255, 255, 0.8)`；暗色 `rgba(20, 23, 26, 0.8)` |
-| \--nutui-tabbar-material-blur | H5/Taro H5 背板模糊半徑 | `3PX` |
-| \--nutui-tabbar-skin-icon-height | 換膚切圖盒高度 | `48px` |
-| \--nutui-tabbar-skin-icon-bottom | 切圖盒距背板底邊 | `7px` |
 | \--nutui-tabbar-border-radius | 導航背板圓角 | `16px` |
 | \--nutui-tabbar-active-background | 選中項背景 | `#F0F2F7` |
 | \--nutui-tabbar-active-border-radius | 選中項圓角 | `12px` |
@@ -203,7 +169,6 @@ H5 與 Taro H5 在瀏覽器支援 `backdrop-filter` 時，僅對 52px 高的導�
 | \--nutui-tabbar-inactive-color | 未選中顏色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上邊框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下邊框 | `1px solid #eee` |
-| \--nutui-tabbar-box-shadow | 導航背板陰影 | `0 0 6px 0 rgba(0, 0, 0, 0.1)` |
 | \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 無圖標時標題字體粗細 | `$font-weight` |

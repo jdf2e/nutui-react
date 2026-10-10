@@ -442,6 +442,21 @@ console.time('build CommonJS')
 await buildCJS()
 console.timeEnd('build CommonJS')
 
+// Component styles are published through their style entry points. Remove
+// MaterialView's source-level SCSS import from JS bundles so Tabbar can be
+// imported in Node and the UMD build can resolve the component without SCSS.
+await Promise.all(['es', 'cjs'].map(async (format) => {
+  const file = join(__dirname, `../${dist}/${format}/packages/materialview/materialview.js`)
+  const content = await readFile(file, 'utf8')
+  const styleImport = format === 'es'
+    ? /^import ["']\.\/materialview\.scss["'];?\r?\n/m
+    : /^require\(["']\.\/materialview\.scss["']\);?\r?\n/m
+  if (!styleImport.test(content)) {
+    throw new Error(`Missing MaterialView SCSS import in ${file}`)
+  }
+  await writeFile(file, content.replace(styleImport, ''))
+}))
+
 console.time('build UMD')
 await buildUMD()
 console.timeEnd('build UMD')

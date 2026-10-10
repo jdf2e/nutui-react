@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -7,6 +13,11 @@ import TabbarContext from './context'
 import { WebTabbarProps } from '@/types'
 import SafeArea from '@/packages/safearea/index'
 import { normalizeTabbarItems } from './utils'
+import MaterialView from '../materialview'
+
+const isDocumentDark = () =>
+  typeof document !== 'undefined' &&
+  document.documentElement.classList.contains('nut-theme-dark')
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -16,10 +27,6 @@ const defaultProps = {
   activeColor: '',
   direction: 'vertical',
   safeArea: false,
-  skinBackground: null,
-  island: null,
-  islandVariant: 'regular',
-  islandExpanded: false,
   onSwitch: () => {},
 } as WebTabbarProps
 
@@ -37,23 +44,31 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     safeArea,
     skinBackground,
     agent,
-    island,
-    islandVariant,
-    islandExpanded,
     className,
     style,
     onSwitch,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-tabbar'
+  const rootRef = useRef<HTMLDivElement>(null)
+  const [themeDark, setThemeDark] = useState(isDocumentDark)
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root) return
+    const update = () => setThemeDark(Boolean(root.closest('.nut-theme-dark')))
+    const observer = new MutationObserver(update)
+    for (let node: HTMLElement | null = root; node; node = node.parentElement) {
+      observer.observe(node, { attributes: true, attributeFilter: ['class'] })
+    }
+    update()
+    return () => observer.disconnect()
+  }, [])
   const items = useMemo(
     () => normalizeTabbarItems(children, TabbarItem),
     [children]
   )
   const hasAgent =
     agent !== null && agent !== undefined && typeof agent !== 'boolean'
-  const hasIsland =
-    island !== null && island !== undefined && typeof island !== 'boolean'
   const hasSkin =
     skinBackground !== null &&
     skinBackground !== undefined &&
@@ -87,7 +102,6 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     selectIndex,
     activeColor,
     inactiveColor,
-    skin: hasSkin,
     handleClick: setSelectIndex,
   }
   const renderedItems = items.map((child, index) =>
@@ -98,7 +112,6 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
       direction: itemDirection,
     })
   )
-  const islandIndex = Math.ceil(items.length / 2)
 
   const navigation = (
     <div
@@ -106,42 +119,33 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
         [`${classPrefix}-wrap-skin`]: hasSkin,
       })}
     >
-      {hasSkin && (
+      {hasSkin ? (
         <div className={`${classPrefix}-skin-background`} aria-hidden="true">
           {skinBackground}
         </div>
-      )}
-      {hasIsland ? (
-        <>
-          <TabbarContext.Provider value={contextValue}>
-            {renderedItems.slice(0, islandIndex)}
-          </TabbarContext.Provider>
-          <div
-            className={`${classPrefix}-island ${classPrefix}-island-${islandVariant}`}
-          >
-            {island}
-          </div>
-          <TabbarContext.Provider value={contextValue}>
-            {renderedItems.slice(islandIndex)}
-          </TabbarContext.Provider>
-        </>
       ) : (
-        <TabbarContext.Provider value={contextValue}>
-          {renderedItems}
-        </TabbarContext.Provider>
+        <MaterialView
+          scene="bottom-bar"
+          darkMode={themeDark}
+          className={`${classPrefix}-backdrop`}
+          style={{ borderRadius: 16 }}
+          aria-hidden="true"
+        />
       )}
+      <TabbarContext.Provider value={contextValue}>
+        {renderedItems}
+      </TabbarContext.Provider>
     </div>
   )
 
   return (
     <div
+      ref={rootRef}
       className={classNames(
         classPrefix,
         {
           [`${classPrefix}-fixed`]: fixed,
           [`${classPrefix}-has-agent`]: hasAgent,
-          [`${classPrefix}-has-island`]: hasIsland,
-          [`${classPrefix}-island-expanded`]: hasIsland && islandExpanded,
         },
         className
       )}

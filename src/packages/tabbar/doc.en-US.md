@@ -1,6 +1,6 @@
 # Tabbar
 
-Common bottom-navigation scenarios. The navigation board keeps a 12px inset on both sides and 4px of inner padding on every edge. It uses a floating rounded rectangle with a 16px radius, while the component shell remains transparent.
+Common bottom-navigation scenarios. The navigation board keeps a 12px inset on both sides, 4px inner padding, and a 16px radius. The component shell remains transparent.
 
 ## Import
 
@@ -96,16 +96,9 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 
 :::
 
-### Dynamic Island and Agent
+### Frosted Glass Material
 
-`island` is a separate content slot and does not take a tab index. The regular and promotion boxes measure 131×44px and 144×52px. Callers provide the content, click behavior, and `islandExpanded` state. Expansion hides the ordinary active background. With an Agent, its outward offset changes from 16px to 28px and the navigation board moves with it. The demo has five slots: a centered island with two ordinary tabs on each side. Check text readability on narrow screens. The promotion envelope image comes from the design; the regular product and operation icons are illustrative, and callers provide their business images or GIFs. The promotion gap with a nonzero safe area, red content exclusion zone, and target-device visuals still need design measurements.
-
-For H5, keep each ordinary tab's hit box at least 44px wide. The table gives the maximum number of ordinary tabs calculated from the current dimensions (regular/promotion island; with Agent, collapsed/expanded). The 44px threshold is an acceptance rule for this implementation, not a minimum specified by the design. For combinations outside this matrix, callers should use fewer tabs or omit the Agent/island; the component does not reduce the layout automatically.
-
-| Viewport width | No Agent: regular/promotion | Agent: regular collapsed/expanded | Agent: promotion collapsed/expanded |
-| --- | --- | --- | --- |
-| 375px | 4/4 | 4/4 | 3/4 |
-| 320px | 3/3 | 2/3 | 2/2 |
+By default, Tabbar uses the `MaterialView` `bottom-bar` preset for its 52px navigation board: 3px blur and an 80% light or dark tint. The visible board has a 16px radius. `MaterialView` follows the system theme. The outer layer and SafeArea remain transparent; extend the page background under the safe area. The demo shows an Agent and a translucent board over a color image. Check the actual appearance in each target runtime supported by `MaterialView`.
 
 :::demo
 
@@ -113,27 +106,13 @@ For H5, keep each ordinary tab's hit box at least 44px wide. The table gives the
 
 :::
 
-### Frosted Glass Material
+### Custom Skin Background
 
-On H5 and Taro H5, browsers with `backdrop-filter` blur only the 52px navigation board by 3px and apply an 80% light or dark tint. Unsupported browsers use the solid `--nutui-tabbar-background`. The outer layer and SafeArea stay transparent; extend the page background under the safe area. The demo shows Agent and the translucent board over the supplied vertical color image and follows the page theme switch. Taro iOS can opt into liquid glass on iOS 26+; see the [Taro documentation](./doc.taro.md) for its fallback and the other native material settings. Native appearance still requires verification on each target runtime.
+When `skinBackground` is provided, its content replaces the default `MaterialView` board. Tabbar handles clipping, the 16px radius, and item stacking. The artwork, selected icons, and their positioning belong to the demo. `icon(active)` switches images with the selection state.
 
 :::demo
 
 <CodeBlock src='h5/demo12.tsx'></CodeBlock>
-
-:::
-
-### Skin Background and Two-State Icons
-
-Passing `skinBackground` uses the caller's solid, gradient, or subtle-texture board. H5/Taro H5 disables the board `backdrop-filter`; Taro native also omits iOS glass/gradient blur, Android sampling blur, and Harmony blur parameters. Without this prop the material behavior above remains. The background fills only the 52px board and does not take a tab index or click. Provide a fallback for a failed business image. The demo uses one skin asset set: a 240×52px image fills the 351×52px board at a 375px viewport, all five items show “文案” in both states, and the first and fifth normal states share one image.
-
-For each image tab, use `icon(active)` to choose between transparent `normal/pressed` PNGs and set `className="nut-tabbar-skin-icon"` on the image or its wrapper. Source images measure 192×195PX and scale proportionally to 48px high, with a 7px gap from the board bottom. The transparent canvas can cross the board top by 3px; visible artwork must not exceed that amount. Keep the label in `title`. The caller supplies five image pairs per skin, each within the design's 50K limit, plus the specific colors and board asset. The two skin icon variables control positioning; the existing board radius remains 16px.
-
-The demo places a separate 120×120px gradient image behind the active figure at 29.4×29.4px, scaled with the 192×195px icon canvas and positioned 5.8px below its top. The default active backing is transparent. “文案” remains a separate label outside the gradient image. The demo uses the supplied HTTPS image URLs; these assets are not built into the component.
-
-:::demo
-
-<CodeBlock src='h5/demo13.tsx'></CodeBlock>
 
 :::
 
@@ -149,11 +128,8 @@ The demo places a separate 120×120px gradient image behind the active figure at
 | activeColor | icon active color | `string` | `#0073ff` |
 | inactiveColor | Icon inactive color | `string` | `#7d7e80` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
-| skinBackground | Caller-provided skin board; disables the default board blur material | `ReactNode` | `-` |
+| skinBackground | Custom skin board content; replaces the default material | `ReactNode` | `-` |
 | agent | Separate Agent entry content; the caller provides its image and click behavior | `ReactNode` | `-` |
-| island | Separate island content; caller supplies content and click behavior | `ReactNode` | `-` |
-| islandVariant | Island size: regular 131×44px, promotion 144×52px | `regular` \| `promotion` | `regular` |
-| islandExpanded | Hide ordinary active background and link Agent position | `boolean` | `false` |
 | onSwitch | Trigger an event when switching tabs | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -183,19 +159,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-agent-source-size | Agent positioning box size | `52px` |
 | \--nutui-tabbar-agent-gap | Gap between Agent and navigation board | `8px` |
 | \--nutui-tabbar-agent-outset | Agent outward offset | `16px` |
-| \--nutui-tabbar-agent-expanded-outset | Agent outward offset while expanded | `28px` |
-| \--nutui-tabbar-island-regular-width | Regular island width | `131px` |
-| \--nutui-tabbar-island-regular-height | Regular island height | `44px` |
-| \--nutui-tabbar-island-promotion-width | Promotion island width | `144px` |
-| \--nutui-tabbar-island-promotion-height | Promotion island height | `52px` |
 | \--nutui-tabbar-content-height | content layer height | `44px` |
 | \--nutui-tabbar-horizontal-padding | horizontal inset | `12px` |
 | \--nutui-tabbar-content-padding | navigation board inner padding | `4px` |
-| \--nutui-tabbar-background | solid navigation background without blur | Light `#FFFFFF`; dark `#14171A` |
-| \--nutui-tabbar-material-tint | backing tint when blur is supported | Light `rgba(255, 255, 255, 0.8)`; dark `rgba(20, 23, 26, 0.8)` |
-| \--nutui-tabbar-material-blur | H5/Taro H5 backing blur radius | `3PX` |
-| \--nutui-tabbar-skin-icon-height | Skin image box height | `48px` |
-| \--nutui-tabbar-skin-icon-bottom | Image box gap from board bottom | `7px` |
 | \--nutui-tabbar-border-radius | navigation board radius | `16px` |
 | \--nutui-tabbar-active-background | selected item background | `#F0F2F7` |
 | \--nutui-tabbar-active-border-radius | selected item radius | `12px` |
@@ -203,7 +169,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-inactive-color | default color | `$color-title` |
 | \--nutui-tabbar-border-top | borderTop | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
-| \--nutui-tabbar-box-shadow | navigation board shadow | `0 0 6px 0 rgba(0, 0, 0, 0.1)` |
 | \--nutui-tabbar-text-font-size | title fontSize | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | title fontWeight when icon is null | `$font-weight` |
