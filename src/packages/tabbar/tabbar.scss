@@ -1,23 +1,81 @@
 @import '../tabbaritem/tabbaritem.scss';
 
 .nut-tabbar {
+  // Keep item and Agent layers inside this Tabbar when another one is fixed.
+  position: relative;
+  z-index: 0;
   border: 0;
-  box-shadow: $tabbar-box-shadow;
   border-bottom: $tabbar-border-bottom;
   border-top: $tabbar-border-top;
   width: 100%;
-  background: $color-background-overlay;
+  background: transparent;
+
+  &-main {
+    position: relative;
+    height: $tabbar-height;
+  }
+
+  &-agent {
+    position: absolute;
+    bottom: 0;
+    left: calc(#{$tabbar-agent-source-size} - #{$tabbar-agent-outset});
+    transform: translateX(-100%);
+    width: $tabbar-agent-source-size;
+    height: $tabbar-agent-source-size;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  &-has-agent &-wrap {
+    margin-left: calc(
+      #{$tabbar-agent-source-size} - #{$tabbar-agent-outset} +
+        #{$tabbar-agent-gap}
+    );
+  }
 
   &-wrap {
+    position: relative;
     height: $tabbar-height;
+    box-sizing: border-box;
     display: flex;
+    margin-left: $tabbar-horizontal-padding;
+    margin-right: $tabbar-horizontal-padding;
+    padding: $tabbar-content-padding;
+    border-radius: $tabbar-border-radius;
 
-    &-3 {
-      padding: 0 scale-px(16px);
+    > .nut-tabbar-backdrop {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: $tabbar-border-radius !important;
     }
 
-    &-2 {
-      padding: 0 scale-px(32px);
+    > .nut-tabbar-skin-background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      border-radius: $tabbar-border-radius;
+
+      > * {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    > .nut-tabbar-item {
+      position: relative;
+      z-index: 1;
     }
 
     &-horizontal {

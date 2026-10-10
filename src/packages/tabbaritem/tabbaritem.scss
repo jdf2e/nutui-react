@@ -4,10 +4,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
-  padding: scale-px(6px) 0 scale-px(2px);
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0;
   color: $tabbar-inactive-color;
-  height: 100%;
+  height: $tabbar-content-height;
 
   .nut-icon {
     width: scale-px(24px);
@@ -23,7 +26,7 @@
 
   &-text {
     display: block;
-    color: $color-text;
+    color: inherit;
     font-size: $tabbar-text-font-size;
     line-height: $tabbar-text-font-size;
     margin-top: $tabbar-text-margin-top;
@@ -62,4 +65,9 @@
       /* #endif*/
     }
   }
+}
+
+.nut-tabbar-wrap:not(.nut-tabbar-wrap-horizontal) .nut-tabbar-item-active {
+  background: $tabbar-active-background;
+  border-radius: $tabbar-active-border-radius;
 }

@@ -1,6 +1,6 @@
 # Tabbar 标签栏
 
-底部导航常用场景
+底部导航常用场景。导航背板左右各留 12px、内部四周留 4px，使用 16px 圆角；组件外层保持透明。
 
 ## 引入
 
@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 焦点时点击（模拟双击）支持回调
+### 再次点击当前项支持回调
 
 :::demo
 
@@ -74,11 +74,45 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 固定底部
+### 固定底部与返顶
+
+`fixed` 或 `safeArea` 开启时，底部安全区使用系统 `env(safe-area-inset-bottom)`。组件总高为 52px 加设备实际安全区，不固定为 69px 或 74px。
+
+该示例沿用固定底部导航。示例页向 `demo9` 传入当前页面滚动位置；页面滚动超过 160px（仅为演示阈值）且首页已选中时，首页图标切换为返顶图标。点击其他项后首次点击首页只切换选中；再次点击已选中的首页才将同一页面滚动容器平滑滚回顶部。返顶由调用方组合 `icon(active)`、`onActiveClick` 和页面滚动状态实现，不需要新的 Tabbar 属性。标题“首页”是示例用语。
 
 :::demo
 
 <CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
+### Agent 组合入口
+
+通过 `agent` 传入图片或自定义节点。组件只提供 52×52px 的定位容器，图片、外观和点击行为由调用方负责；Agent 不参与普通标签的索引，也不触发 `onSwitch`。示例使用设计稿 `1545:72` 导出的 132×132px 透明 PNG，图片居中覆盖源盒，包含阴影，点击只打印控制台日志。
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### 毛玻璃材质
+
+Tabbar 默认使用 `MaterialView` 的 `bottom-bar` 材质作为 52px 导航背板：3px 模糊、80% 明暗叠加色，并将可见背板圆角设为 16px。明暗跟随 `MaterialView` 的系统主题处理。外层和 SafeArea 保持透明，页面背景应延伸到安全区。示例在竖向彩色背景图上展示 Agent 与半透明背板。各端实际视觉效果以 `MaterialView` 的目标运行时能力为准。
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
+### 换肤背板
+
+传入 `skinBackground` 后，背板内容替代默认的 `MaterialView` 材质。组件负责背板裁剪、16px 圆角与导航项层级；示例图片、图标选中态和专属定位均在 demo 中实现。`icon(active)` 可根据选中状态切换图片。
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -94,6 +128,8 @@ import { Tabbar } from '@nutui/nutui-react'
 | activeColor | icon激活的颜色 | `string` | `#0073ff` |
 | inactiveColor | icon未激活的颜色 | `string` | `#7d7e80` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
+| skinBackground | 自定义换肤背板内容，传入时替代默认材质 | `ReactNode` | `-` |
+| agent | 独立 Agent 入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
 | onSwitch | 切换页签时触发事件 | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -119,12 +155,20 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 高度 | `46px` |
+| \--nutui-tabbar-height | 导航层高度 | `52px` |
+| \--nutui-tabbar-agent-source-size | Agent 定位容器尺寸 | `52px` |
+| \--nutui-tabbar-agent-gap | Agent 与导航背板间距 | `8px` |
+| \--nutui-tabbar-agent-outset | Agent 向外侧抽缩距离 | `16px` |
+| \--nutui-tabbar-content-height | 内容层高度 | `44px` |
+| \--nutui-tabbar-horizontal-padding | 导航层左右间距 | `12px` |
+| \--nutui-tabbar-content-padding | 导航背板内边距 | `4px` |
+| \--nutui-tabbar-border-radius | 导航背板圆角 | `16px` |
+| \--nutui-tabbar-active-background | 选中项背景 | `#F0F2F7` |
+| \--nutui-tabbar-active-border-radius | 选中项圆角 | `12px` |
 | \--nutui-tabbar-active-color | 选中颜色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未选中颜色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
-| \--nutui-tabbar-box-shadow | 阴影 | `none` |
 | \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 无图标时标题字体粗细 | `$font-weight` |

@@ -41,6 +41,12 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     ...props,
   }
   const active = index === ctx?.selectIndex
+  const renderNodeWithActive = (
+    node: ReactNode | ((active: boolean) => ReactNode)
+  ) => {
+    return node && typeof node === 'function' ? node(active) : node
+  }
+  const renderedIcon = renderNodeWithActive(icon)
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(
     classPrefix,
@@ -50,12 +56,6 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     },
     className
   )
-
-  const renderNodeWithActive = (
-    node: ReactNode | ((active: boolean) => ReactNode)
-  ) => {
-    return node && typeof node === 'function' ? node(active) : node
-  }
 
   const badgeProps = {
     value: renderNodeWithActive(value),
@@ -84,9 +84,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     )
   }
 
-  const renderIcon = () => {
-    return renderNodeWithActive(icon)
-  }
+  const renderIcon = () => renderedIcon
 
   const renderIconAndTitle = () => {
     return (

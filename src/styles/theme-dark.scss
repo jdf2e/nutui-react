@@ -209,6 +209,11 @@ page,
   // 组件背景，2025年新增
   --nutui-color-background-component: var(--nutui-gray-2);
 
+  // Tabbar
+  --nutui-tabbar-active-background: var(--nutui-color-background-sunken);
+  --nutui-tabbar-active-color: var(--nutui-color-primary);
+  --nutui-tabbar-inactive-color: var(--nutui-color-title);
+
   // 蒙层颜色值 语义化
   // 全部蒙层
   --nutui-color-mask: var(--nutui-mask-4);

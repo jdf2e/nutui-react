@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -12,8 +12,14 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
+import Demo11 from './demos/taro/demo11'
+import Demo12 from './demos/taro/demo12'
 
 const TabbarDemo = () => {
+  const [scrollTop, setScrollTop] = useState(0)
+  const [scrollTarget, setScrollTarget] = useState(0)
+  const returningToTop = useRef(false)
   const [translated] = useTranslate({
     'zh-CN': {
       ce5c5446: '基础用法',
@@ -22,9 +28,12 @@ const TabbarDemo = () => {
       ce5c5440: '只配文字',
       b840c88f: '徽标提示',
       customColor: '自定义颜色+数量',
-      cfbdc781: '固定底部',
+      cfbdc781: '固定底部与返顶',
       c9e6df49: '受控',
-      c9e6df48: '模拟双击支持回调',
+      c9e6df48: '再次点击当前项',
+      agent: 'Agent 组合入口',
+      material: '毛玻璃材质',
+      skin: '换肤背板',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -33,9 +42,12 @@ const TabbarDemo = () => {
       ce5c5440: '只配文字',
       b840c88f: '徽標提示',
       customColor: '自定義顏色+數量',
-      cfbdc781: '固定底部',
+      cfbdc781: '固定底部與返頂',
       c9e6df49: '受控',
-      c9e6df48: '模擬雙擊支持回調',
+      c9e6df48: '再次點擊目前項目',
+      agent: 'Agent 組合入口',
+      material: '毛玻璃材質',
+      skin: '換膚背板',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -44,9 +56,12 @@ const TabbarDemo = () => {
       ce5c5440: 'Only Text',
       b840c88f: 'Logo Tips',
       customColor: 'Custom Color and Size',
-      cfbdc781: 'Fixed Bottom',
+      cfbdc781: 'Fixed Bottom and Back to Top',
       c9e6df49: 'With Controled',
-      c9e6df48: 'Mock Double Click',
+      c9e6df48: 'Click Active Item Again',
+      agent: 'Agent Entry',
+      material: 'Frosted Glass Material',
+      skin: 'Custom Skin Background',
     },
   })
   return (
@@ -54,6 +69,19 @@ const TabbarDemo = () => {
       <Header />
       <ScrollView
         className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+        style={{ height: '100vh' }}
+        scrollY
+        scrollTop={scrollTarget}
+        scrollWithAnimation
+        onScroll={(event) => {
+          const nextScrollTop = event.detail.scrollTop
+          setScrollTop(nextScrollTop)
+          // Keep the commanded destination at 0 until the animation finishes.
+          if (!returningToTop.current || nextScrollTop <= 1) {
+            returningToTop.current = false
+            setScrollTarget(nextScrollTop)
+          }
+        }}
       >
         <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
@@ -71,10 +99,22 @@ const TabbarDemo = () => {
         <Demo7 />
         <View className="h2">{translated.c9e6df48}</View>
         <Demo8 />
+        <View className="h2">{translated.agent}</View>
+        <Demo10 />
+        <View className="h2">{translated.material}</View>
+        <Demo11 />
+        <View className="h2">{translated.skin}</View>
+        <Demo12 />
         <View className="h2" style={{ marginBottom: 100 }}>
           {translated.cfbdc781}
         </View>
-        <Demo9 />
+        <Demo9
+          scrollTop={scrollTop}
+          onBackToTop={() => {
+            returningToTop.current = true
+            setScrollTarget(0)
+          }}
+        />
       </ScrollView>
     </>
   )
