@@ -41,6 +41,28 @@ test('base tabs props', () => {
   expect(el3).toHaveClass('nut-tabs-titles-card')
 })
 
+test('button type tabs', () => {
+  const { container } = render(
+    <Tabs value="0" activeType="button">
+      <TabPane title="Tab 1" value="0">
+        Tab 1
+      </TabPane>
+      <TabPane title="Tab 2" value="1">
+        Tab 2
+      </TabPane>
+    </Tabs>
+  )
+  const titles = container.querySelectorAll('.nut-tabs-titles')[0]
+  expect(titles).toHaveClass('nut-tabs-titles-button')
+
+  const items = container.querySelectorAll('.nut-tabs-titles-item')
+  const texts = container.querySelectorAll('.nut-tabs-titles-item-text')
+  expect(items[0]).toHaveClass('nut-tabs-titles-item-active')
+  expect(items[1]).not.toHaveClass('nut-tabs-titles-item-active')
+  expect(texts.length).toBe(2)
+  expect(texts[0]).toHaveTextContent('Tab 1')
+})
+
 test('base other props', async () => {
   const { container } = render(
     <Tabs duration={500}>

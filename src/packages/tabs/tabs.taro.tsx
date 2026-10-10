@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
@@ -10,6 +16,7 @@ import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
 import { useUuid } from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
+import { CardShoulderLeft, CardShoulderRight } from './icon.taro'
 import { TabsTitle, TaroTabsProps } from '@/types'
 import { td } from '@/utils/taro/platform'
 
@@ -58,6 +65,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
 
   const titleItemsRef = useRef<HTMLDivElement[]>([])
 
+  // 卡片模式下,标题栏可横向滑动时激活卡片贴合两端边缘;不可滑动时(全部 tab 放得下)
+  // 贴边端直角、留白端恢复双肩
+  const [isScrollable, setIsScrollable] = useState(!align)
+
   const getTitles = () => {
     const titles: TabsTitle[] = []
     React.Children.forEach(children, (child, idx) => {
@@ -99,10 +110,12 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
+    [`${classPrefix}-titles-not-scrollable`]:
+      activeType === 'card' && !isScrollable,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
-  const getRect = (selector: string) => {
+  const getRect = useCallback((selector: string) => {
     return new Promise((resolve) => {
       const query = createSelectorQuery()
       const scope = tabsRef.current?._scope
@@ -114,8 +127,8 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
           resolve(rect[0])
         })
     })
-  }
-  const getAllRect = (selector: string) => {
+  }, [])
+  const getAllRect = useCallback((selector: string) => {
     return new Promise((resolve) => {
       const query = createSelectorQuery()
       const scope = tabsRef.current?._scope
@@ -127,7 +140,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
           resolve(rect[0])
         })
     })
-  }
+  }, [])
   type RectItem = {
     bottom: number
     dataset: { sid: string }
@@ -138,6 +151,28 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
     top: number
     width: number
   }
+  const measureScrollable = useCallback(() => {
+    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
+    raf(() => {
+      Promise.all([
+        getRect(`#nut-tabs-titles-${name || uuid}`),
+        getAllRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-titles-item`),
+      ]).then(([navRect, itemRects]: any) => {
+        if (!navRect || !itemRects || !itemRects.length) return
+        const totalWidth = itemRects.reduce(
+          (sum: number, curr: RectItem) => sum + curr.width,
+          0
+        )
+        // 卡片模式 active 卡片 margin 不在 boundingClientRect 内,按最大 48px 预留,
+        // 与 scrollIntoView 的钳制口径一致,避免临界内容误判为放得下
+        setIsScrollable(totalWidth + 48 - navRect.width > 1)
+      })
+    })
+  }, [activeType, direction, name, uuid, getRect, getAllRect, align])
+  // 标题/内容变化后重新布局再测;挂载后首帧由默认 false 呈现对称样式,测量完异步翻转
+  useEffect(() => {
+    measureScrollable()
+  }, [measureScrollable, children])
   const scrollWithAnimation = useRef(false)
   const [scrollLeft, setScrollLeft] = useState(0)
   const [scrollTop, setScrollTop] = useState(0)
@@ -180,9 +215,13 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
           const left = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
+          // 卡片模式 active 卡片带 margin: 0 24px(贴边侧为 0),boundingClientRect 不含 margin,
+          // 矩形宽求和会少算,钳制点偏短导致滚动到末尾时末项卡片显示不全;
+          // 按最大 48px 预留,超设部分由 ScrollView 自动截断到真实最大滚动距离
+          const marginExtra = activeType === 'card' ? 48 : 0
           to = Math.min(
             Math.max(0, left - (navRect.width - titleRect.width) / 2),
-            totalWidth - navRect.width
+            totalWidth + marginExtra - navRect.width
           )
         }
 
@@ -256,6 +295,8 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {
+                const isActive =
+                  !item.disabled && String(item.value) === String(value)
                 return (
                   <View
                     key={item.value}
@@ -265,12 +306,21 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                     id={`scrollIntoView${index}`}
                     onClick={() => tabChange(item)}
                     className={classNames(`${classPrefix}-titles-item`, {
-                      [`nut-tabs-titles-item-active`]:
-                        !item.disabled && String(item.value) === String(value),
+                      [`nut-tabs-titles-item-active`]: isActive,
                       [`nut-tabs-titles-item-disabled`]: item.disabled,
                       [`nut-tabs-titles-item-${align}`]: align,
                     })}
                   >
+                    {activeType === 'card' && isActive && (
+                      <>
+                        <CardShoulderLeft
+                          className={`${classPrefix}-titles-item-shoulder-left`}
+                        />
+                        <CardShoulderRight
+                          className={`${classPrefix}-titles-item-shoulder-right`}
+                        />
+                      </>
+                    )}
                     {activeType === 'line' && (
                       <View
                         className={classNames(
