@@ -15,6 +15,7 @@ import {
 } from '@nutui/icons-react'
 import { Tabbar } from '../tabbar'
 import { normalizeTabbarItems } from '../utils'
+import MarketingDemo from '../demos/h5/demo5'
 import FixedBottomDemo from '../demos/h5/demo9'
 
 const renderTabbarItems = (count: number, props = {}) => {
@@ -420,6 +421,42 @@ test.each([
   )
 })
 
+test('uses 20px default icons and 10px semibold selected labels', () => {
+  const css = compileTabbarStyles('src/styles/variables.scss')
+  const icon = getDeclarations(css, '.nut-tabbar-item .nut-icon')
+  const label = getDeclarations(css, '.nut-tabbar-item-text')
+  const selectedLabel = getDeclarations(
+    css,
+    '.nut-tabbar-item-active .nut-tabbar-item-text'
+  )
+
+  expect(icon.width).toContain('20px')
+  expect(icon.height).toContain('20px')
+  expect(icon['font-size']).toContain('20px')
+  expect(label['font-size']).toContain('10px')
+  expect(selectedLabel['font-weight']).toContain('600')
+})
+
+test('marketing artwork has no separate label or badge', () => {
+  const { container } = render(<MarketingDemo />)
+  const items = container.querySelectorAll('.nut-tabbar-item')
+  const labels = () =>
+    Array.from(items).map(
+      (item) => item.querySelector('.nut-tabbar-item-text')?.textContent
+    )
+
+  expect(labels()).toEqual([undefined, undefined, '消息', '购物车', '我的'])
+  expect(items[0].querySelector('.nut-image-default')).toBeInTheDocument()
+  expect(items[1].querySelector('.nut-image-default')).toBeInTheDocument()
+  expect(items[1].querySelector('.nut-badge-sup')).toBeNull()
+
+  fireEvent.click(items[1])
+
+  expect(labels()).toEqual(['首页', '逛', '消息', '购物车', '我的'])
+  expect(items[0].querySelector('.nut-image-default')).toBeNull()
+  expect(items[1].querySelector('.nut-image-default')).toBeNull()
+})
+
 test.each([
   'src/styles/variables.scss',
   'src/styles/variables-daojia.scss',
@@ -482,12 +519,14 @@ test('should expose readable Tabbar colors in light and dark themes', () => {
   const dark = getRootCustomProperties('src/styles/theme-dark.scss')
 
   expect(light).toMatchObject({
-    '--nutui-tabbar-active-background': '#f0f2f7',
+    '--nutui-tabbar-active-background':
+      'var(--nutui-color-background-component)',
     '--nutui-tabbar-active-color': 'var(--nutui-color-primary)',
     '--nutui-tabbar-inactive-color': 'var(--nutui-color-title)',
   })
   expect(dark).toMatchObject({
-    '--nutui-tabbar-active-background': 'var(--nutui-color-background-sunken)',
+    '--nutui-tabbar-active-background':
+      'var(--nutui-color-background-component)',
     '--nutui-tabbar-active-color': 'var(--nutui-color-primary)',
     '--nutui-tabbar-inactive-color': 'var(--nutui-color-title)',
   })

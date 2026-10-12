@@ -1378,7 +1378,7 @@ $tabbar-border-radius: var(
 ) !default;
 $tabbar-active-background: var(
   --nutui-tabbar-active-background,
-  #f0f2f7
+  var(--nutui-color-background-component, #ebedf2)
 ) !default;
 $tabbar-active-border-radius: var(
   --nutui-tabbar-active-border-radius,

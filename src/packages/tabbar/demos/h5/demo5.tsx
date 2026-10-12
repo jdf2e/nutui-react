@@ -25,7 +25,6 @@ const Demo = () => {
           )
         }
         title={(active: boolean) => (active ? '逛' : '')}
-        value="AI"
       />
       <Tabbar.Item title="消息" icon={<Message />} value={100} />
       <Tabbar.Item title="购物车" icon={<Cart />} />

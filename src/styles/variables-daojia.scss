@@ -874,7 +874,7 @@ $tabbar-horizontal-padding: var(--nutui-tabbar-horizontal-padding, 12px) !defaul
 $tabbar-content-padding: var(--nutui-tabbar-content-padding, 4px) !default;
 $tabbar-border-radius: var(--nutui-tabbar-border-radius, 16px) !default;
 $tabbar-active-background: var(--nutui-tabbar-active-background,
-    #f0f2f7) !default;
+    var(--nutui-color-background-component, #ebedf2)) !default;
 $tabbar-active-border-radius: var(--nutui-tabbar-active-border-radius,
     12px) !default;
 $tabbar-active-color: var(--nutui-tabbar-active-color, $color-primary) !default;

@@ -1434,7 +1434,7 @@ $tabbar-content-padding: var(--nutui-tabbar-content-padding, 4px) !default;
 $tabbar-border-radius: var(--nutui-tabbar-border-radius, 16px) !default;
 $tabbar-active-background: var(
   --nutui-tabbar-active-background,
-  #f0f2f7
+  var(--nutui-color-background-component, #ebedf2)
 ) !default;
 $tabbar-active-border-radius: var(
   --nutui-tabbar-active-border-radius,
@@ -1452,7 +1452,7 @@ $tabbar-border-top: var(--nutui-tabbar-border-top, none) !default;
 $tabbar-border-bottom: var(--nutui-tabbar-border-bottom, none) !default;
 $tabbar-text-font-size: var(
   --nutui-tabbar-text-font-size,
-  $font-size-xs
+  $font-size-xxs
 ) !default;
 $tabbar-text-large-font-size: var(
   --nutui-tabbar-text-large-font-size,

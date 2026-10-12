@@ -13,9 +13,9 @@
   height: $tabbar-content-height;
 
   .nut-icon {
-    width: scale-px(24px);
-    height: scale-px(24px);
-    font-size: $font-size-xxl;
+    width: scale-px(20px);
+    height: scale-px(20px);
+    font-size: scale-px(20px);
     /* #ifdef harmony dynamic*/
     color: $tabbar-inactive-color;
     /* #endif*/
@@ -54,6 +54,10 @@
 
   &-active {
     color: $tabbar-active-color;
+
+    .nut-tabbar-item-text {
+      font-weight: $font-weight-bold;
+    }
 
     .nut-tabbar-item-text,
     .nut-icon {
