@@ -14,6 +14,8 @@ import raf from '@/utils/raf'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import { useRtl } from '../configprovider'
+import { CardShoulder } from './icon'
+import { getCardFlushSides } from './utils'
 import { TabsTitle, WebTabsProps } from '@/types'
 
 const defaultProps = {
@@ -78,10 +80,12 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     raf(measureScrollable)
   }, [children, measureScrollable])
   useEffect(() => {
+    // 仅卡片模式需要按可用宽度重测;其余模式提前返回,避免挂无用的 resize 监听
+    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
     const onResize = () => raf(measureScrollable)
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
-  }, [measureScrollable])
+  }, [activeType, direction, align, measureScrollable])
 
   const scrollDirection = (
     nav: HTMLDivElement,
@@ -162,9 +166,6 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
-    [`${classPrefix}-titles-scrollable`]: true,
-    [`${classPrefix}-titles-not-scrollable`]:
-      activeType === 'card' && !isScrollable,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
@@ -198,18 +199,41 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
       <div className={classesTitle} style={tabStyle} ref={navRef}>
         {!!title && typeof title === 'function'
           ? title()
-          : titles.current.map((item) => {
+          : titles.current.map((item, index) => {
+              const isActive =
+                !item.disabled && String(item.value) === String(value)
+              const flush =
+                isActive && activeType === 'card' && direction === 'horizontal'
+                  ? getCardFlushSides(index, titles.current.length, {
+                      scrollable: isScrollable,
+                      rtl,
+                      align,
+                    })
+                  : { left: false, right: false }
               return (
                 <div
                   key={item.value}
                   onClick={() => tabChange(item)}
                   className={classNames(`${classPrefix}-titles-item`, {
-                    [`nut-tabs-titles-item-active`]:
-                      !item.disabled && String(item.value) === String(value),
+                    [`nut-tabs-titles-item-active`]: isActive,
                     [`nut-tabs-titles-item-disabled`]: item.disabled,
                     [`nut-tabs-titles-item-${align}`]: align,
+                    [`${classPrefix}-titles-item-active--flush-left`]:
+                      flush.left,
+                    [`${classPrefix}-titles-item-active--flush-right`]:
+                      flush.right,
                   })}
                 >
+                  {activeType === 'card' && isActive && (
+                    <>
+                      <CardShoulder
+                        className={`${classPrefix}-titles-item-shoulder-left`}
+                      />
+                      <CardShoulder
+                        className={`${classPrefix}-titles-item-shoulder-right`}
+                      />
+                    </>
+                  )}
                   {activeType === 'line' && (
                     <div
                       className={classNames(
