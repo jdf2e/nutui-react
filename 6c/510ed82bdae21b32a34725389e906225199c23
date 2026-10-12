@@ -1,0 +1,23 @@
+.github/workflows/release.yml
+  s_72fedea1debe28::t_4ef958cf37fc5b 1,7,11
+  s_72fedea1debe28::t_7c7f22140d7b03 15,32-35,51,54-55,59-60
+.github/workflows/release-beta.yml
+  s_72fedea1debe28::t_7ec1d35b726be3 1,8,12
+  s_72fedea1debe28::t_505715927c07e1 16,52-55,72,75-76,80-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "6c510ed82bdae21b32a34725389e906225199c23",
+  "prompts": {},
+  "sessions": {
+    "s_72fedea1debe28": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "88799f1a-faab-46d1-9757-881cbbb166c7",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}

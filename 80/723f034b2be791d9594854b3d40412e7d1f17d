@@ -1,0 +1,50 @@
+src/packages/price/price.taro.tsx
+  s_2126af7893829e::t_95782b1ea54b02 106,139-140,155-156,168-169,179-180,193,196-199,207-210,218-220
+  s_2126af7893829e::t_29511b7ab18abe 8-11,23,35,49-54
+  s_2126af7893829e::t_0c704a053b35a2 194-195
+scripts/copilot/instructions.md
+  s_2126af7893829e::t_0cd24823ff0b41 1253
+src/sites/sites-react/doc/docs/react/migrate-from-v3.md
+  s_2126af7893829e::t_98f5c6674ef44a 161-162
+src/utils/should-render-price-raw.ts
+  s_2126af7893829e::t_fe50861cccddd5 3-6,15,28-33
+src/sites/sites-react/doc/docs/taro/migrate-from-v3.md
+  s_2126af7893829e::t_d06c0052685ade 161-162
+src/packages/price/doc.zh-TW.md
+  s_2126af7893829e::t_ca928b44f77c4b 115
+src/packages/price/doc.taro.md
+  s_2126af7893829e::t_58d643dc4c8475 115
+src/sites/sites-react/doc/docs/react/migrate-from-v3.en-US.md
+  s_2126af7893829e::t_923d4f6facb4b7 161-162
+src/packages/price/doc.en-US.md
+  s_2126af7893829e::t_207a260644419a 115
+src/packages/price/doc.md
+  s_2126af7893829e::t_ec88420669288d 115
+src/packages/price/price.tsx
+  s_2126af7893829e::t_769be14626fa65 6-9,21,33,47-52
+src/packages/price/__test__/price.spec.tsx
+  s_2126af7893829e::t_089fe0c36b822b 54-60,69-73
+  s_2126af7893829e::t_f7d675923f4915 62-64,66-68
+  s_2126af7893829e::t_ed0f66b4a5990a 61,65
+  s_2126af7893829e::t_72b9ee0aab87e1 74-81
+src/types/spec/price/base.ts
+  s_2126af7893829e::t_294597c1baeaac 22
+src/sites/sites-react/doc/docs/taro/migrate-from-v3.en-US.md
+  s_2126af7893829e::t_508f6c56932234 161-162
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "80723f034b2be791d9594854b3d40412e7d1f17d",
+  "prompts": {},
+  "sessions": {
+    "s_2126af7893829e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4540e2d7-3d8c-4fce-9b66-6c9f2ce67ab5",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}

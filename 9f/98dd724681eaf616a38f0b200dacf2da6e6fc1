@@ -1,0 +1,21 @@
+src/styles/variables-jmapp.scss
+  s_f0c0b0651332a6::t_7b876a17c62940 2079-2080
+src/styles/variables-jrkf.scss
+  s_f0c0b0651332a6::t_7b876a17c62940 2185-2186
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9f98dd724681eaf616a38f0b200dacf2da6e6fc1",
+  "prompts": {},
+  "sessions": {
+    "s_f0c0b0651332a6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1340d-0ad1-7530-a00d-fab7e2f41c41",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

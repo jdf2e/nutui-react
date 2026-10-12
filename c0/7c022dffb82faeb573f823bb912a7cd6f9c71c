@@ -1,0 +1,36 @@
+src/packages/badge/badge.tsx
+  s_e7a2c44921dd70::t_c5785daefc5220 54-59,74,87,89
+src/packages/tabbar/tabbar.scss
+  s_e7a2c44921dd70::t_000b562a5391c7 94
+src/packages/badge/badge.scss
+  s_e7a2c44921dd70::t_c5785daefc5220 29,43,52,64-66,73
+src/packages/badge/__test__/badge.spec.tsx
+  s_e7a2c44921dd70::t_5f176025fb9f57 33,39
+src/packages/tabbaritem/tabbaritem.scss
+  s_e7a2c44921dd70::t_000b562a5391c7 27,31
+src/packages/badge/badge.taro.tsx
+  s_e7a2c44921dd70::t_c5785daefc5220 48,66-71,97,110,112
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_e7a2c44921dd70::t_200bb91ebd83f1 452,454,801,807
+  s_e7a2c44921dd70::t_fdb060c6fbbccc 496
+src/packages/badge/__test__/__snapshots__/badge.spec.tsx.snap
+  s_e7a2c44921dd70::t_13ae896856e51e 6,30,33-34
+src/packages/tabbar/__tests__/__snapshots__/tabbar.spec.tsx.snap
+  s_e7a2c44921dd70::t_fa46b7573f5b1e 3,5,7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c07c022dffb82faeb573f823bb912a7cd6f9c71c",
+  "prompts": {},
+  "sessions": {
+    "s_e7a2c44921dd70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13319-9762-7d10-92fa-1cfd65b30f7f",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

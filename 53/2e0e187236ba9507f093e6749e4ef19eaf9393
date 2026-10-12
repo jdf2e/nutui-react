@@ -1,0 +1,19 @@
+src/styles/variables.scss
+  s_57e031e22d3702::t_6375a7b1270b7d 1315,1319,1323,1327,1331,1335
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "532e0e187236ba9507f093e6749e4ef19eaf9393",
+  "prompts": {},
+  "sessions": {
+    "s_57e031e22d3702": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "171c67a7-9573-4647-9696-898c118c4d31",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
