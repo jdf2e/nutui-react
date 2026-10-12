@@ -16,9 +16,11 @@ import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
 import { useUuid } from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
-import { CardShoulderLeft, CardShoulderRight } from './icon.taro'
+import { CardShoulder } from './icon.taro'
+import { getCardFlushSides } from './utils'
 import { TabsTitle, TaroTabsProps } from '@/types'
 import { td } from '@/utils/taro/platform'
+import { calcByProfile } from '@/utils'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -31,6 +33,14 @@ const defaultProps = {
 } as TaroTabsProps
 
 const classPrefix = 'nut-tabs'
+
+// 卡片模式下激活卡片两侧共预留 margin: 0 scale-px(24px),而 boundingClientRect 不含 margin,
+// 估算可滑动性与滚动钳制时都需按最大 48px(2 * 24px)回补,统一在此维护;
+// 设计基准值经 calcByProfile 换算,与 SCSS 的 scale-px 共用同一缩放系数 --nut-scale-f
+const CARD_ACTIVE_MARGIN_TOTAL = 48
+
+const getCardActiveMarginTotal = () => calcByProfile(CARD_ACTIVE_MARGIN_TOTAL)
+
 export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
@@ -62,8 +72,6 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
     defaultValue: outerDefaultValue,
     onChange,
   })
-
-  const titleItemsRef = useRef<HTMLDivElement[]>([])
 
   // 卡片模式下,标题栏可横向滑动时激活卡片贴合两端边缘;不可滑动时(全部 tab 放得下)
   // 贴边端直角、留白端恢复双肩
@@ -110,8 +118,6 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
-    [`${classPrefix}-titles-not-scrollable`]:
-      activeType === 'card' && !isScrollable,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
@@ -163,9 +169,11 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
           (sum: number, curr: RectItem) => sum + curr.width,
           0
         )
-        // 卡片模式 active 卡片 margin 不在 boundingClientRect 内,按最大 48px 预留,
+        // 卡片模式 active 卡片 margin 不在 boundingClientRect 内,按 CARD_ACTIVE_MARGIN_TOTAL 预留,
         // 与 scrollIntoView 的钳制口径一致,避免临界内容误判为放得下
-        setIsScrollable(totalWidth + 48 - navRect.width > 1)
+        setIsScrollable(
+          totalWidth + getCardActiveMarginTotal() - navRect.width > 1
+        )
       })
     })
   }, [activeType, direction, name, uuid, getRect, getAllRect, align])
@@ -217,8 +225,9 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
           // 卡片模式 active 卡片带 margin: 0 24px(贴边侧为 0),boundingClientRect 不含 margin,
           // 矩形宽求和会少算,钳制点偏短导致滚动到末尾时末项卡片显示不全;
-          // 按最大 48px 预留,超设部分由 ScrollView 自动截断到真实最大滚动距离
-          const marginExtra = activeType === 'card' ? 48 : 0
+          // 按 CARD_ACTIVE_MARGIN_TOTAL 预留,超设部分由 ScrollView 自动截断到真实最大滚动距离
+          const marginExtra =
+            activeType === 'card' ? getCardActiveMarginTotal() : 0
           to = Math.min(
             Math.max(0, left - (navRect.width - titleRect.width) / 2),
             totalWidth + marginExtra - navRect.width
@@ -297,26 +306,37 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
             : titles.current.map((item, index) => {
                 const isActive =
                   !item.disabled && String(item.value) === String(value)
+                const flush =
+                  isActive &&
+                  activeType === 'card' &&
+                  direction === 'horizontal'
+                    ? getCardFlushSides(index, titles.current.length, {
+                        scrollable: isScrollable,
+                        rtl,
+                        align,
+                      })
+                    : { left: false, right: false }
                 return (
                   <View
                     key={item.value}
-                    ref={(ref: HTMLDivElement) =>
-                      titleItemsRef.current.push(ref)
-                    }
                     id={`scrollIntoView${index}`}
                     onClick={() => tabChange(item)}
                     className={classNames(`${classPrefix}-titles-item`, {
                       [`nut-tabs-titles-item-active`]: isActive,
                       [`nut-tabs-titles-item-disabled`]: item.disabled,
                       [`nut-tabs-titles-item-${align}`]: align,
+                      [`${classPrefix}-titles-item-active--flush-left`]:
+                        flush.left,
+                      [`${classPrefix}-titles-item-active--flush-right`]:
+                        flush.right,
                     })}
                   >
                     {activeType === 'card' && isActive && (
                       <>
-                        <CardShoulderLeft
+                        <CardShoulder
                           className={`${classPrefix}-titles-item-shoulder-left`}
                         />
-                        <CardShoulderRight
+                        <CardShoulder
                           className={`${classPrefix}-titles-item-shoulder-right`}
                         />
                       </>

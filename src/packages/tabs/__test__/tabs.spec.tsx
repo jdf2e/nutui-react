@@ -3,6 +3,7 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Tabs } from '../tabs'
 import { TabPane } from '../../tabpane/tabpane'
+import { getCardFlushSides } from '../utils'
 
 test('base Tabs', () => {
   const { getByTestId } = render(
@@ -26,7 +27,89 @@ test('base tabs props', () => {
 
   expect(el2.length > 0).toBe(true)
   expect(el3).toHaveClass('nut-tabs-titles-smile')
-  expect(el3).toHaveClass('nut-tabs-titles-scrollable')
+  expect(el3).not.toHaveClass('nut-tabs-titles-scrollable')
+})
+
+test('card flush sides follow scrollable, align and rtl', () => {
+  // 可滑动(未设置 align):首项贴物理左端、末项贴物理右端
+  expect(getCardFlushSides(0, 3, { scrollable: true, rtl: false })).toEqual({
+    left: true,
+    right: false,
+  })
+  expect(getCardFlushSides(2, 3, { scrollable: true, rtl: false })).toEqual({
+    left: false,
+    right: true,
+  })
+  expect(getCardFlushSides(1, 3, { scrollable: true, rtl: false })).toEqual({
+    left: false,
+    right: false,
+  })
+  // RTL 镜像:首项贴物理右端、末项贴物理左端
+  expect(getCardFlushSides(0, 3, { scrollable: true, rtl: true })).toEqual({
+    left: false,
+    right: true,
+  })
+  expect(getCardFlushSides(2, 3, { scrollable: true, rtl: true })).toEqual({
+    left: true,
+    right: false,
+  })
+  // 不可滑动:内容靠向 align 一侧,只有贴靠该侧的那一项才贴边
+  expect(
+    getCardFlushSides(0, 3, { scrollable: false, rtl: false, align: 'left' })
+  ).toEqual({ left: true, right: false })
+  expect(
+    getCardFlushSides(2, 3, { scrollable: false, rtl: false, align: 'left' })
+  ).toEqual({ left: false, right: false })
+  expect(
+    getCardFlushSides(2, 3, { scrollable: false, rtl: false, align: 'right' })
+  ).toEqual({ left: false, right: true })
+  expect(
+    getCardFlushSides(0, 3, { scrollable: false, rtl: true, align: 'left' })
+  ).toEqual({ left: false, right: true })
+  expect(
+    getCardFlushSides(2, 3, { scrollable: false, rtl: true, align: 'right' })
+  ).toEqual({ left: true, right: false })
+  // 单项卡片两端同时贴边
+  expect(getCardFlushSides(0, 1, { scrollable: true, rtl: false })).toEqual({
+    left: true,
+    right: true,
+  })
+})
+
+test('card tabs apply flush modifier to active item', () => {
+  const { container } = render(
+    <Tabs value="0" activeType="card">
+      <TabPane title="Tab 1" value="0">
+        Tab 1
+      </TabPane>
+      <TabPane title="Tab 2" value="1">
+        Tab 2
+      </TabPane>
+    </Tabs>
+  )
+  const titles = container.querySelectorAll('.nut-tabs-titles')[0]
+  expect(titles).not.toHaveClass('nut-tabs-titles-scrollable')
+  expect(titles).not.toHaveClass('nut-tabs-titles-not-scrollable')
+
+  const items = container.querySelectorAll('.nut-tabs-titles-item')
+  expect(items[0]).toHaveClass('nut-tabs-titles-item-active--flush-left')
+  expect(items[0]).not.toHaveClass('nut-tabs-titles-item-active--flush-right')
+})
+
+test('card tabs flush modifier honours align when not scrollable', () => {
+  const { container } = render(
+    <Tabs value="1" activeType="card" align="right">
+      <TabPane title="Tab 1" value="0">
+        Tab 1
+      </TabPane>
+      <TabPane title="Tab 2" value="1">
+        Tab 2
+      </TabPane>
+    </Tabs>
+  )
+  const items = container.querySelectorAll('.nut-tabs-titles-item')
+  expect(items[1]).toHaveClass('nut-tabs-titles-item-active--flush-right')
+  expect(items[1]).not.toHaveClass('nut-tabs-titles-item-active--flush-left')
 })
 
 test('base tabs props', () => {
