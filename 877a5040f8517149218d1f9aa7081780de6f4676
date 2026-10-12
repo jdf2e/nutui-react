@@ -1,0 +1,19 @@
+package.json
+  s_a85b36f31f4a7c::t_777932be1a2830 133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "877a5040f8517149218d1f9aa7081780de6f4676",
+  "prompts": {},
+  "sessions": {
+    "s_a85b36f31f4a7c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "af2bb732-8092-4a72-bff0-06b97eed747c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}

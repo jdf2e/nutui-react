@@ -1,0 +1,83 @@
+src/packages/tabbar/doc.zh-TW.md
+  s_1f4de7322ecc49::t_b394895c01a2c5 3,127
+  s_1f4de7322ecc49::t_a8494e295f4ef9 129,136
+  h_47d82e98ad3863 79-80,124-126,128,130-131
+src/packages/tabbar/doc.en-US.md
+  h_47d82e98ad3863 79-80,124-126,128,130-131
+  s_1f4de7322ecc49::t_b394895c01a2c5 3,127
+  s_1f4de7322ecc49::t_a8494e295f4ef9 129,136
+src/packages/tabbar/doc.taro.md
+  s_1f4de7322ecc49::t_b394895c01a2c5 3,127
+  s_1f4de7322ecc49::t_a8494e295f4ef9 129,136
+  h_47d82e98ad3863 79-80,124-126,128,130-131
+src/styles/variables-jrkf.scss
+  s_1f4de7322ecc49::t_212e43f5d685f8 1537
+  h_47d82e98ad3863 1505-1515,1517-1523
+  s_1f4de7322ecc49::t_27ea2daa74c253 1516,1524,1535-1536,1538
+src/styles/variables-jmapp.scss
+  s_1f4de7322ecc49::t_27ea2daa74c253 1411,1419,1430-1431,1433
+  h_47d82e98ad3863 1400-1410,1412-1418
+  s_1f4de7322ecc49::t_212e43f5d685f8 1432
+src/packages/configprovider/types.ts
+  s_1f4de7322ecc49::t_5013221b5518f2 465
+  h_47d82e98ad3863 461-464,466-467
+src/styles/variables.scss
+  h_47d82e98ad3863 1314-1330,1335-1341
+  s_1f4de7322ecc49::t_27ea2daa74c253 1331-1334,1342,1350-1351,1353
+  s_1f4de7322ecc49::t_9285cacdb2c7a3 1352
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_1f4de7322ecc49::t_08be92ec4ff04e 131,139,145,147
+  h_47d82e98ad3863 4-5,18-70,91-130,132-138,140-143,149-172,230-231,234,237-238,299-311
+  s_1f4de7322ecc49::t_929cda87d207e5 146,148
+  s_1f4de7322ecc49::t_b394895c01a2c5 144
+  s_1f4de7322ecc49::t_ed5d45eb55ecb4 173-174,312-313
+src/packages/tabbar/tabbar.scss
+  s_1f4de7322ecc49::t_27ea2daa74c253 8,18-19
+  s_1f4de7322ecc49::t_b394895c01a2c5 16
+  s_1f4de7322ecc49::t_e7fd5bde840800 14-15
+  s_1f4de7322ecc49::t_cd8e5dfa1fc09f 17
+  s_1f4de7322ecc49::t_53f38c94213b46 12
+src/packages/tabbar/doc.md
+  s_1f4de7322ecc49::t_b394895c01a2c5 3,79-80,124-127
+  s_1f4de7322ecc49::t_a8494e295f4ef9 129-131,136
+  s_1f4de7322ecc49::t_ae26fc01925244 128
+docs/superpowers/plans/2026-09-28-tabbar-v16-researched-implementation.md
+  s_1f4de7322ecc49::t_7522b82b9541df 166-167,179-180
+  s_1f4de7322ecc49::t_ef380013818842 19,34,120,181,212,233
+  s_1f4de7322ecc49::t_fe859655818f1d 247,250-251,253
+  s_1f4de7322ecc49::t_3e88cc0d0864b9 3,248-249
+  s_1f4de7322ecc49::t_6333b651ef183e 1-2,4-18,20-33,35-119,121-165,168-178,182-211,213-232,234-246,252,254-301
+src/styles/variables-daojia.scss
+  s_1f4de7322ecc49::t_212e43f5d685f8 858
+  s_1f4de7322ecc49::t_27ea2daa74c253 847,857
+  h_47d82e98ad3863 841-846,848-851
+src/packages/tabbar/__tests__/demo.spec.tsx
+  s_1f4de7322ecc49::t_13a935641d7fd9 1-20
+src/packages/tabbaritem/tabbaritem.scss
+  h_47d82e98ad3863 7-11,13,29,69-73
+src/styles/theme-dark.scss
+  h_47d82e98ad3863 212-217
+src/styles/theme-default.scss
+  h_47d82e98ad3863 211-216
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "caf157c8c9f67c4e255adbf1082a886e0fa2d558",
+  "prompts": {},
+  "humans": {
+    "h_47d82e98ad3863": {
+      "author": "huanghao128 <huanghao128@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_1f4de7322ecc49": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0e743-cb3d-7872-a7a2-7d11eb143e27",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "huanghao128 <huanghao128@users.noreply.github.com>"
+    }
+  }
+}

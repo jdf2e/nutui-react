@@ -1,0 +1,21 @@
+src/packages/icon/demos/taro/demo6.tsx
+  s_5eb4245de4e91b::t_f36d749907fd3e 31-36,38-61
+  s_5eb4245de4e91b::t_1460c010cf8c63 7-30
+  s_5eb4245de4e91b::t_15671f6b7e448a 82-92,96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "8a8a7aac29a3070e46256fa5c626cbe8ce65d644",
+  "prompts": {},
+  "sessions": {
+    "s_5eb4245de4e91b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2e89a02-9194-4c4d-9e51-41c455e3db07",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}

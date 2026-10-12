@@ -1,0 +1,33 @@
+docs/superpowers/plans/2026-10-10-tabbar-materialview-migration.md
+  s_21d9fed6f22aba::t_c5c6aa8859f76e 27
+  s_21d9fed6f22aba::t_2e6c60307ed49e 1-10,12-26,28-61,63-73,75-78,80,82-84,88-93
+  s_21d9fed6f22aba::t_9f71f923d36db7 11,85
+  s_21d9fed6f22aba::t_c490d972c61725 81
+  s_21d9fed6f22aba::t_6f6d1e13038fb1 62,86
+  s_21d9fed6f22aba::t_d0ab480a05f55a 87
+  s_21d9fed6f22aba::t_4330f70c4c971f 74,79
+src/packages/tabbar/material.taro.ts
+  s_21d9fed6f22aba::t_3a0979e69b6fd7 115
+src/packages/tabbar/tabbar.tsx
+  s_21d9fed6f22aba::t_fc23a6867734e7 97
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_21d9fed6f22aba::t_ee4df7804eadda 724,727,730,741
+src/packages/tabbar/tabbar.taro.tsx
+  s_21d9fed6f22aba::t_fc23a6867734e7 109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6fc2d0baeff5c6fb781f62bfac53de5b2f6d21d1",
+  "prompts": {},
+  "sessions": {
+    "s_21d9fed6f22aba": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a12459-84fe-7ac2-acd0-c2757b223416",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

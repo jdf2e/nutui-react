@@ -1,0 +1,25 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b5a6e6e3a01f9531c8e685392d632732a41b913e",
+  "prompts": {},
+  "sessions": {
+    "s_1f4de7322ecc49": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0e743-cb3d-7872-a7a2-7d11eb143e27",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "huanghao128 <huanghao128@users.noreply.github.com>"
+    },
+    "s_332ce3e4d7b3d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0e6ec-1c1a-7162-b9e6-0053c7136d70",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "huanghao128 <huanghao128@users.noreply.github.com>"
+    }
+  }
+}

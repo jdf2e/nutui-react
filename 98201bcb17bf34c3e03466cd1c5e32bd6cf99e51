@@ -1,0 +1,25 @@
+src/packages/tabbar/doc.md
+  s_44a482381084b2::t_f142d2c1988ca2 103-109
+src/packages/tabbar/doc.taro.md
+  s_44a482381084b2::t_f142d2c1988ca2 103-109
+src/packages/tabbar/doc.zh-TW.md
+  s_44a482381084b2::t_f142d2c1988ca2 103-109
+src/packages/tabbar/doc.en-US.md
+  s_44a482381084b2::t_f142d2c1988ca2 103-109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "98201bcb17bf34c3e03466cd1c5e32bd6cf99e51",
+  "prompts": {},
+  "sessions": {
+    "s_44a482381084b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f179-aedc-7481-a96d-7d2c72dd94c3",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
