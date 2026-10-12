@@ -14,19 +14,7 @@ const Demo = ({ scrollTop = 0, onBackToTop }: DemoProps) => {
   return (
     <Tabbar fixed value={value} onSwitch={setValue}>
       <Tabbar.Item
-        title={
-          <span
-            style={{
-              display: 'block',
-              width: 44,
-              height: 14,
-              lineHeight: '14px',
-              textAlign: 'center',
-            }}
-          >
-            首页
-          </span>
-        }
+        title="首页"
         icon={(active) =>
           active && canBackToTop ? (
             <span

@@ -48,12 +48,18 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     return node && typeof node === 'function' ? node(active) : node
   }
   const renderedIcon = renderNodeWithActive(icon)
+  const renderedTitle = renderNodeWithActive(title)
+  const hasTitle =
+    renderedTitle !== '' &&
+    renderedTitle !== null &&
+    renderedTitle !== undefined &&
+    renderedTitle !== false
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
-      [`${classPrefix}-large`]: !icon || !title,
+      [`${classPrefix}-large`]: !icon || !hasTitle,
     },
     className
   )
@@ -69,14 +75,14 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
 
   const renderTitleText = () => {
     return (
-      title && (
+      hasTitle && (
         <View
           className={`${classPrefix}-text`}
           style={{
             color: active ? ctx?.activeColor : ctx?.inactiveColor,
           }}
         >
-          {renderNodeWithActive(title)}
+          {renderedTitle}
         </View>
       )
     )

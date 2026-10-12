@@ -47,12 +47,18 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     return node && typeof node === 'function' ? node(active) : node
   }
   const renderedIcon = renderNodeWithActive(icon)
+  const renderedTitle = renderNodeWithActive(title)
+  const hasTitle =
+    renderedTitle !== '' &&
+    renderedTitle !== null &&
+    renderedTitle !== undefined &&
+    renderedTitle !== false
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
-      [`${classPrefix}-large`]: !icon || !title,
+      [`${classPrefix}-large`]: !icon || !hasTitle,
     },
     className
   )
@@ -68,11 +74,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
 
   const renderTitleText = () => {
     return (
-      title && (
-        <div className={`${classPrefix}-text`}>
-          {renderNodeWithActive(title)}
-        </div>
-      )
+      hasTitle && <div className={`${classPrefix}-text`}>{renderedTitle}</div>
     )
   }
 
