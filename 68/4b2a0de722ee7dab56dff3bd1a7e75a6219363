@@ -1,0 +1,44 @@
+src/packages/tabbar/doc.zh-TW.md
+  s_88659702a6ba28::t_3043eb2c8d5a4e 166
+src/styles/theme-default.scss
+  s_88659702a6ba28::t_0948783f2d8386 212
+src/packages/tabbar/doc.taro.md
+  s_88659702a6ba28::t_3043eb2c8d5a4e 166
+src/styles/variables-daojia.scss
+  s_88659702a6ba28::t_0948783f2d8386 877
+src/styles/variables.scss
+  s_88659702a6ba28::t_0948783f2d8386 1381
+src/packages/tabbar/doc.en-US.md
+  s_88659702a6ba28::t_3043eb2c8d5a4e 166
+src/packages/tabbar/doc.md
+  s_88659702a6ba28::t_3043eb2c8d5a4e 166
+src/styles/variables-jmapp.scss
+  s_88659702a6ba28::t_0948783f2d8386 1437,1455
+src/styles/theme-dark.scss
+  s_88659702a6ba28::t_0948783f2d8386 213
+src/styles/variables-jrkf.scss
+  s_88659702a6ba28::t_0948783f2d8386 1542,1560
+src/packages/tabbaritem/tabbaritem.scss
+  s_88659702a6ba28::t_0948783f2d8386 16-18,58-60
+  s_88659702a6ba28::t_71e76e1093568c 61
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_88659702a6ba28::t_315f0c00ebbac0 18,438-443,446-457
+  s_88659702a6ba28::t_164aaa497253d5 444-445
+  s_88659702a6ba28::t_41cf3f917f12bc 424-437,458-459,522-523,528-529
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "684b2a0de722ee7dab56dff3bd1a7e75a6219363",
+  "prompts": {},
+  "sessions": {
+    "s_88659702a6ba28": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a12dff-c3c8-7333-a096-84b522e19baa",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
