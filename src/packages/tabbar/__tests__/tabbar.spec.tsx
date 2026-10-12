@@ -435,9 +435,45 @@ test('uses 20px default icons and 10px semibold selected labels', () => {
   expect(icon['font-size']).toContain('20px')
   expect(label['font-size']).toContain('10px')
   expect(selectedLabel['font-weight']).toContain('600')
+  const iconDot = getDeclarations(
+    css,
+    '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-dot > .nut-badge'
+  )
+  const iconValue = getDeclarations(
+    css,
+    '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-value > .nut-badge'
+  )
+  expect(iconDot.left).toContain('18px')
+  expect(iconDot.bottom).toContain('13px')
+  expect(iconValue.left).toContain('14px')
+  expect(iconValue.bottom).toContain('13px')
+  const valueBadge = getDeclarations(
+    css,
+    '.nut-tabbar-item .nut-badge-visual:not(.nut-badge-dot)'
+  )
+  const badgeBorder = getDeclarations(css, '.nut-tabbar-item .nut-badge-visual')
+  const valueText = getDeclarations(css, '.nut-tabbar-item .nut-badge-sup')
+  const dotBadge = getDeclarations(css, '.nut-tabbar-item .nut-badge-dot')
+  expect(valueBadge.height).toContain('14px')
+  expect(badgeBorder['border-width']).toContain('1px')
+  expect(valueBadge['min-width']).toContain('14px')
+  expect(valueText['font-size']).toContain('9px')
+  expect(valueText['line-height']).toContain('12px')
+  expect(valueText['font-family']).toContain('PingFang SC')
+  expect(valueText['font-weight']).toBe('400')
+  expect(valueText['letter-spacing']).toBe('0')
+  expect(valueText['text-align']).toBe('center')
+  expect(valueText.color).toBe('#fff')
+  expect(valueBadge['border-radius']).toContain('8px')
+  expect(valueBadge.padding).toContain('3px')
+  expect(valueBadge['box-sizing']).toBe('border-box')
+  expect(dotBadge.width).toContain('8px')
+  expect(dotBadge['min-width']).toContain('8px')
+  expect(dotBadge.height).toContain('8px')
+  expect(dotBadge['box-sizing']).toBe('border-box')
 })
 
-test('marketing artwork has no separate label or badge', () => {
+test('marketing artwork has no separate label and anchors its badges', () => {
   const { container } = render(<MarketingDemo />)
   const items = container.querySelectorAll('.nut-tabbar-item')
   const labels = () =>
@@ -445,16 +481,63 @@ test('marketing artwork has no separate label or badge', () => {
       (item) => item.querySelector('.nut-tabbar-item-text')?.textContent
     )
 
-  expect(labels()).toEqual([undefined, undefined, '消息', '购物车', '我的'])
+  expect(items).toHaveLength(5)
+  expect(labels()).toEqual([undefined, undefined, undefined, '购物车', '我的'])
   expect(items[0].querySelector('.nut-image-default')).toBeInTheDocument()
   expect(items[1].querySelector('.nut-image-default')).toBeInTheDocument()
-  expect(items[1].querySelector('.nut-badge-sup')).toBeNull()
+  expect(items[2].querySelector('.nut-image-default')).toBeInTheDocument()
+  expect(
+    items[0].querySelector(
+      '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-dot'
+    )
+  ).toBeInTheDocument()
+  expect(
+    items[1].querySelector(
+      '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-value .nut-badge-sup'
+    )
+  ).toHaveTextContent('8')
+  expect(
+    items[2].querySelector(
+      '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-value .nut-badge-sup'
+    )
+  ).toHaveTextContent('最多四字')
+  expect(
+    (
+      items[2].querySelector(
+        '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-value > .nut-badge'
+      ) as HTMLElement
+    ).style.right
+  ).toBe('')
+
+  const css = compileTabbarStyles('src/styles/variables.scss')
+  const imageDot = getDeclarations(
+    css,
+    '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-dot > .nut-badge'
+  )
+  const imageValue = getDeclarations(
+    css,
+    '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-value > .nut-badge'
+  )
+  expect(imageDot.left).toContain('27px')
+  expect(imageDot.bottom).toContain('31px')
+  expect(imageValue.left).toContain('23px')
+  expect(imageValue.bottom).toContain('31px')
 
   fireEvent.click(items[1])
 
-  expect(labels()).toEqual(['首页', '逛', '消息', '购物车', '我的'])
+  expect(labels()).toEqual(['首页', '逛', undefined, '购物车', '我的'])
   expect(items[0].querySelector('.nut-image-default')).toBeNull()
   expect(items[1].querySelector('.nut-image-default')).toBeNull()
+  expect(
+    items[0].querySelector(
+      '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-dot'
+    )
+  ).toBeInTheDocument()
+  expect(
+    items[1].querySelector(
+      '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-value'
+    )
+  ).toBeInTheDocument()
 })
 
 test.each([
@@ -684,6 +767,7 @@ test('should only render title', async () => {
       </Tabbar>
     </>
   )
+  expect(container.querySelector('.nut-tabbar-item-visual')).toBeNull()
   expect(container.innerHTML).toMatchSnapshot()
 })
 
@@ -711,6 +795,28 @@ test('render item size 2 and direction is horizontal', async () => {
       </Tabbar>
     </>
   )
+  expect(container.querySelector('.nut-tabbar-item-visual')).toBeNull()
+  expect(
+    container.querySelector(
+      '.nut-tabbar-wrap-horizontal .nut-badge-visual:not(.nut-badge-dot) .nut-badge-sup'
+    )
+  ).toHaveTextContent('招手')
+  const css = compileTabbarStyles('src/styles/variables.scss')
+  const horizontalBadge = getDeclarations(
+    css,
+    '.nut-tabbar-wrap-horizontal .nut-tabbar-item .nut-badge-visual:not(.nut-badge-dot)'
+  )
+  const horizontalText = getDeclarations(
+    css,
+    '.nut-tabbar-wrap-horizontal .nut-tabbar-item .nut-badge-sup'
+  )
+  expect(horizontalBadge.height).toContain('15px')
+  expect(horizontalText.padding).toContain('0.5px')
+  expect(
+    getDeclarations(css, '.nut-tabbar-wrap-horizontal .nut-tabbar-item')[
+      'justify-content'
+    ]
+  ).toBe('center')
   expect(container.innerHTML).toMatchSnapshot()
 })
 

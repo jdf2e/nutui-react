@@ -26,7 +26,7 @@
     }
   }
 
-  &-sup,
+  &-visual,
   &-icon {
     position: relative;
     border-radius: $badge-border-radius;
@@ -40,7 +40,7 @@
     }
   }
 
-  &-sup {
+  &-visual {
     /* #ifdef dynamic*/
     display: flex;
     /* #endif */
@@ -49,10 +49,15 @@
     /* #endif */
     align-items: center;
     justify-content: center;
-    text-align: center;
     height: $badge-height;
     min-width: $badge-min-width;
     padding: $badge-padding;
+    vertical-align: middle;
+    background: $badge-background-color;
+    z-index: 1;
+  }
+
+  &-sup {
     color: $badge-color;
     font-size: $badge-font-size;
     /* #ifdef weapp jd */
@@ -61,16 +66,14 @@
     line-height: $badge-height;
     white-space: nowrap;
     font-weight: normal;
-    vertical-align: middle;
-    background: $badge-background-color;
-    z-index: 1;
+    text-align: center;
   }
 
   &-disabled {
     background: $badge-background-disabled-color;
   }
 
-  &-number {
+  &-number .nut-badge-sup {
     font-family: 'JDZH-Regular';
   }
 
@@ -103,5 +106,9 @@
     background: $color-primary-text;
     color: $badge-outline-color;
     border-color: $badge-outline-color;
+
+    .nut-badge-sup {
+      color: $badge-outline-color;
+    }
   }
 }

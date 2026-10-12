@@ -91,7 +91,13 @@
           margin: 0 scale-px(4px) 0 scale-px(6px);
           font-size: $font-size-base;
         }
+        .nut-badge-visual:not(.nut-badge-dot) {
+          height: scale-px(15px);
+        }
         .nut-badge-sup {
+          padding: scale-px(0.5px);
+        }
+        .nut-badge-visual {
           &::after {
             border: 0;
           }

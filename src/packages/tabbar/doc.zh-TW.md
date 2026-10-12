@@ -20,6 +20,8 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 徽標提示
 
+圖標內容支援紅點、數字和文字招手。設計標註以圖標左下角為基準：紅點的左/下偏移為 19/14 DP，數字與文字為 15/14 DP。外框向四周各擴 1px 後，CSS 外框偏移分別為 18/13 和 14/13 DP，保持原視覺位置。紅點內部為 6×6px、含邊框外徑為 8×8px；數字與文字標籤外高 14px（含上下各 1px 邊框）、字號 9px、行高 12px、圓角 8px、左右內邊距各 3px。橫向佈局下，文字盒寬、高各增加 1px，標籤外高相應為 15px，並保持與內容水平置中。逛一逛的文字招手示例使用最多四個字。
+
 :::demo
 
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
@@ -43,6 +45,8 @@ import { Tabbar } from '@nutui/nutui-react'
 :::
 
 ### 首坑品牌+營銷態
+
+同一組示例展示營銷圖片上的紅點、數字和文字招手。設計標註以圖片左下角為基準：紅點的左/下偏移為 28/32 DP，數字與文字為 24/32 DP；扣除外框各側 1px 後，CSS 外框偏移分別為 27/31 和 23/31 DP。圖片下方不顯示文案。圖片與圖標按選中態切換時，`badgeAnchor` 也隨之切換。
 
 :::demo
 
@@ -141,6 +145,7 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 | title | 標簽頁的標題 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | icon | 自定義圖標 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | value | 徽標中顯示的內容，支持數字、字符和自定義內容 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
+| badgeAnchor | 招手相對的內容類型：`icon` 圖標、`image` 圖片、`text` 純文字；圖片需明確指定，純文字沿用原有位置，可按選中態返回類型 | `'icon' \| 'image' \| 'text' \| ((active: boolean) => 'icon' \| 'image' \| 'text')` | 有圖標時為 `icon`，否則為 `text` |
 | max | value 為數值時，最大值 | `number` | `99` |
 | dot | 徽標是否為小點 | `boolean` | `false` |
 | top | 徽標的上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |

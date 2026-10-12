@@ -19,6 +19,9 @@ export interface BaseTabbarItem extends BaseProps {
   title: ReactNode | ((active: boolean) => ReactNode)
   icon: ReactNode | ((active: boolean) => ReactNode)
   value: ReactNode | ((active: boolean) => ReactNode)
+  /** 徽标相对的内容类型；图片内容需显式指定，纯文字内容沿用原有位置 */
+  badgeAnchor?:
+    'icon' | 'image' | 'text' | ((active: boolean) => 'icon' | 'image' | 'text')
   dot: boolean
   max: number
   top: string

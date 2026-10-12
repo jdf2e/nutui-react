@@ -27,6 +27,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     title,
     icon,
     value,
+    badgeAnchor,
     dot,
     max,
     top,
@@ -48,6 +49,22 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   }
   const renderedIcon = renderNodeWithActive(icon)
   const renderedTitle = renderNodeWithActive(title)
+  const renderedValue = renderNodeWithActive(value)
+  const resolvedBadgeAnchor =
+    typeof badgeAnchor === 'function'
+      ? badgeAnchor(active)
+      : badgeAnchor || (icon ? 'icon' : 'text')
+  const isDesignBadge =
+    dot ||
+    (typeof renderedValue === 'number' && renderedValue !== 0) ||
+    (typeof renderedValue === 'string' && renderedValue !== '')
+  const useDesignBadge =
+    direction !== 'horizontal' &&
+    !!icon &&
+    resolvedBadgeAnchor !== 'text' &&
+    isDesignBadge &&
+    props.top === undefined &&
+    props.right === undefined
   const hasTitle =
     renderedTitle !== '' &&
     renderedTitle !== null &&
@@ -64,7 +81,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   )
 
   const badgeProps = {
-    value: renderNodeWithActive(value),
+    value: renderedValue,
     dot,
     max,
     top,
@@ -91,9 +108,22 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   const renderIconAndTitle = () => {
     return (
       <>
-        <Badge size="normal" {...badgeProps} top={3}>
-          {renderIcon()}
-        </Badge>
+        {useDesignBadge ? (
+          <div
+            className={classNames(
+              `${classPrefix}-visual`,
+              `${classPrefix}-visual-${resolvedBadgeAnchor}`,
+              `${classPrefix}-visual-${dot ? 'dot' : 'value'}`
+            )}
+          >
+            {renderIcon()}
+            <Badge size="normal" {...badgeProps} />
+          </div>
+        ) : (
+          <Badge size="normal" {...badgeProps} top={3}>
+            {renderIcon()}
+          </Badge>
+        )}
         {renderTitleText()}
       </>
     )

@@ -1,8 +1,11 @@
 import React from 'react'
 import { Tabbar, Image } from '@nutui/nutui-react'
-import { Cart, Hi, Home, User, Message } from '@nutui/icons-react'
+import { Cart, Hi, Home, User } from '@nutui/icons-react'
 
 const Demo = () => {
+  const image =
+    'https://storage.360buyimg.com/imgtools/cadd649d79-8de544e0-0a11-11f0-9f55-9901c75f24a0.png'
+
   return (
     <Tabbar>
       <Tabbar.Item
@@ -14,19 +17,21 @@ const Demo = () => {
             <Home />
           )
         }
+        badgeAnchor={(active: boolean) => (active ? 'image' : 'icon')}
+        dot
       />
-
       <Tabbar.Item
-        icon={(active: boolean) =>
-          active ? (
-            <Hi />
-          ) : (
-            <Image src="https://storage.360buyimg.com/imgtools/cadd649d79-8de544e0-0a11-11f0-9f55-9901c75f24a0.png" />
-          )
-        }
+        icon={(active: boolean) => (active ? <Hi /> : <Image src={image} />)}
+        badgeAnchor={(active: boolean) => (active ? 'icon' : 'image')}
         title={(active: boolean) => (active ? '逛' : '')}
+        value={8}
       />
-      <Tabbar.Item title="消息" icon={<Message />} value={100} />
+      <Tabbar.Item
+        title=""
+        icon={<Image src={image} />}
+        badgeAnchor="image"
+        value="最多四字"
+      />
       <Tabbar.Item title="购物车" icon={<Cart />} />
       <Tabbar.Item title="我的" icon={<User />} />
     </Tabbar>

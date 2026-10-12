@@ -20,6 +20,8 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### Logo Tips
 
+Icon content supports dot, number, and text badges. The design offsets from the icon's left and bottom edges are 19/14 DP for a dot and 15/14 DP for numbers or text. After expanding the outer box by 1px on every side, the CSS outer-box offsets are 18/13 and 14/13 DP respectively, preserving the visual position. Dots have a 6×6px interior and an 8×8px outer box including the border; number and text badges are 14px high including a 1px border on each vertical side, with 9px text, 12px line height, 8px corners, and 3px horizontal padding on each side. In horizontal layouts, the text box gains 1px in both width and height, making the badge 15px high while keeping it centered with the content. The text badge in the example uses at most four Chinese characters.
+
 :::demo
 
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
@@ -43,6 +45,8 @@ import { Tabbar } from '@nutui/nutui-react'
 :::
 
 ### Custom
+
+This single marketing example shows dot, number, and text badges on images. The design offsets from the image's left and bottom edges are 28/32 DP for a dot and 24/32 DP for numbers or text; after accounting for the 1px outer border, the CSS outer-box offsets are 27/31 and 23/31 DP respectively. Images have no label below them. When the content switches between an image and an icon, switch `badgeAnchor` with it.
 
 :::demo
 
@@ -141,6 +145,7 @@ When `skinBackground` is provided, its content replaces the default `MaterialVie
 | title | the title of the tab | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | icon | Custom icon | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | value | value to show in Badge, eg number、charctor and custom content | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
+| badgeAnchor | Badge anchor content: `icon`, `image`, or text-only `text`; specify `image` explicitly. Text-only content keeps its existing badge position. Supports an active-state callback. | `'icon' \| 'image' \| 'text' \| ((active: boolean) => 'icon' \| 'image' \| 'text')` | `icon` with an icon, otherwise `text` |
 | max | when value is number, it's the max size | `number` | `99` |
 | dot | Whether Badge is dotted | `boolean` | `false` |
 | top | Up and down offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |

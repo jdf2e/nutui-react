@@ -24,6 +24,64 @@
     /* #endif*/
   }
 
+  .nut-badge-visual {
+    border-width: scale-px(1px);
+  }
+
+  .nut-badge-visual:not(.nut-badge-dot) {
+    box-sizing: border-box;
+    height: scale-px(14px);
+    min-width: scale-px(14px);
+    padding: 0 scale-px(3px);
+    border-radius: scale-px(8px);
+  }
+
+  .nut-badge-sup {
+    color: #fff;
+    font-family: 'PingFang SC', 'PingFang-SC', sans-serif;
+    font-size: scale-font-px(9px);
+    font-weight: 400;
+    line-height: scale-font-px(12px);
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .nut-badge-dot {
+    box-sizing: border-box;
+    width: scale-px(8px);
+    min-width: scale-px(8px);
+    height: scale-px(8px);
+  }
+
+  &-visual {
+    position: relative;
+    display: inline-flex;
+
+    > .nut-badge {
+      position: absolute;
+    }
+
+    &-icon#{&}-dot > .nut-badge {
+      left: scale-px(18px);
+      bottom: scale-px(13px);
+    }
+
+    &-icon#{&}-value > .nut-badge {
+      left: scale-px(14px);
+      bottom: scale-px(13px);
+    }
+
+    &-image#{&}-dot > .nut-badge {
+      left: scale-px(27px);
+      bottom: scale-px(31px);
+    }
+
+    &-image#{&}-value > .nut-badge {
+      left: scale-px(23px);
+      bottom: scale-px(31px);
+    }
+  }
+
   &-text {
     display: block;
     color: inherit;
