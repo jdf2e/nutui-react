@@ -86,16 +86,16 @@
   }
 
   &-title {
-    height: scale-px(14px);
-    line-height: scale-px(14px);
+    height: 14px;
+    line-height: 14px;
     font-size: $steps-base-title-font-size;
     color: $steps-base-title-color;
     white-space: nowrap;
   }
 
   &-description {
-    height: scale-px(16px);
-    line-height: scale-px(16px);
+    height: 16px;
+    line-height: 16px;
     margin-top: $steps-base-description-margin-top;
     font-size: $steps-base-description-font-size;
     color: $steps-base-description-color;
