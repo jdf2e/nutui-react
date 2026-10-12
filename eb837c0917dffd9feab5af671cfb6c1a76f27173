@@ -1,0 +1,29 @@
+src/styles/variables-jrkf.scss
+  s_da4570d64aa763::t_4a48a3596db863 2228-2232
+  s_da4570d64aa763::t_e2166a149461bd 1106-1109,1113-1116,1126-1129
+  s_da4570d64aa763::t_ec841d0ecb00f0 1944-1968
+CHANGELOG.md
+  s_da4570d64aa763::t_e84c12ed21e328 3-34
+src/styles/variables-daojia.scss
+  s_da4570d64aa763::t_8f0c756916118d 1108-1120
+src/styles/variables-jmapp.scss
+  s_da4570d64aa763::t_ede835e72cb5e2 2122-2126
+  s_da4570d64aa763::t_899e751d9d8346 1833-1857
+  s_da4570d64aa763::t_af50dd9a41df6c 1026-1029,1033-1036,1046-1049
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "eb837c0917dffd9feab5af671cfb6c1a76f27173",
+  "prompts": {},
+  "sessions": {
+    "s_da4570d64aa763": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "028e1e40-db79-4cae-8700-9c0603203479",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
