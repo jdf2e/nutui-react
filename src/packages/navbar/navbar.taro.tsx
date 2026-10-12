@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, ViewProps } from '@tarojs/components'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import SafeArea from '@/packages/safearea/index.taro'
@@ -17,7 +17,9 @@ const defaultProps = {
   placeholder: false,
   zIndex: 10,
 } as TaroNavBarProps
-export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
+export const NavBar: FunctionComponent<Partial<TaroNavBarProps> & ViewProps> = (
+  props
+) => {
   const {
     right,
     left,
@@ -31,6 +33,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
     placeholder,
     zIndex,
     onBackClick,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -114,7 +117,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
 
   const renderWrapper = () => {
     return (
-      <View className={cls} style={styles()}>
+      <View className={cls} style={styles()} {...rest}>
         {renderLeft()}
         {renderContent()}
         {renderRight()}

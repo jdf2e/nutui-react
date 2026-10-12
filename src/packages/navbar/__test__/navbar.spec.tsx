@@ -126,3 +126,15 @@ test('should not render sub bar when subBar is not passed', () => {
   expect(container.firstChild).not.toHaveClass('nut-navbar-has-subbar')
   expect(container.querySelectorAll('.nut-navbar-subbar').length).toBe(0)
 })
+
+test('should forward id and other native attributes to root node', () => {
+  const { container } = render(
+    <NavBar id="nav-bar" aria-label="导航栏" data-testid="navbar">
+      订单详情
+    </NavBar>
+  )
+  const root = container.firstChild as HTMLDivElement
+  expect(root).toHaveAttribute('id', 'nav-bar')
+  expect(root).toHaveAttribute('aria-label', '导航栏')
+  expect(root).toHaveAttribute('data-testid', 'navbar')
+})

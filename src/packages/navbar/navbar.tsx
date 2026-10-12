@@ -16,7 +16,9 @@ const defaultProps = {
   placeholder: false,
   zIndex: 10,
 } as WebNavBarProps
-export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
+export const NavBar: FunctionComponent<
+  Partial<WebNavBarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+> = (props) => {
   const {
     right,
     left,
@@ -30,6 +32,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
     placeholder,
     zIndex,
     onBackClick,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -113,7 +116,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
 
   const renderWrapper = () => {
     return (
-      <div className={cls} style={styles()}>
+      <div className={cls} style={styles()} {...rest}>
         {renderLeft()}
         {renderContent()}
         {renderRight()}
