@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, View } from '@tarojs/components'
+import { ITouchEvent, View, ViewProps } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
@@ -33,8 +33,7 @@ const defaultProps = {
 const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
-  Partial<CellTaroProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'content' | 'onClick'>
+  Partial<CellTaroProps> & Omit<ViewProps, 'title' | 'content' | 'onClick'>
 > & { Group: typeof CellGroup } = (props) => {
   const ctx = useContext(CellGroupContext)
   const {
@@ -51,6 +50,7 @@ export const Cell: FunctionComponent<
     className,
     style,
     clickable,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -72,71 +72,66 @@ export const Cell: FunctionComponent<
     alignItems: align,
   }
 
-  // 结构 B 中标题与右侧区同行，纵向对齐需与根节点保持一致
-  const headerStyle = { alignItems: align }
-
-  const titleNode = title ? (
-    <View className={`${classPrefix}-title`}>{title}</View>
-  ) : null
-  const descriptionNode = description ? (
-    <View className={`${classPrefix}-description`}>{description}</View>
-  ) : null
-  const extraNode = extra ? (
-    <View className={`${classPrefix}-extra`}>{extra}</View>
-  ) : null
-
-  const renderInner = () => {
-    // 有 content 时说明文案与业务插槽需要通栏，改用 header + 通栏子块的结构
-    if (content) {
-      return (
-        <View className={`${classPrefix}-body`}>
-          {title || extra ? (
-            <View className={`${classPrefix}-header`} style={headerStyle}>
-              {titleNode}
-              {extraNode}
-            </View>
-          ) : null}
-          {descriptionNode}
-          <View className={`${classPrefix}-content`}>{content}</View>
-        </View>
-      )
-    }
-    return (
-      <>
-        {title || description ? (
-          <View className={`${classPrefix}-body`}>
-            {titleNode}
-            {descriptionNode}
-          </View>
-        ) : null}
-        {extraNode}
-      </>
-    )
-  }
-
   return (
     <>
       <View
-        hoverStyle={{ opacity: clickable ? 0.7 : 1 }}
-        className={`${classNames(
-          [
-            classPrefix,
-            className,
-            {
-              [`${classPrefix}-group-item`]: ctx?.group,
-            },
-          ],
-          clickable ? `${classPrefix}-clickable` : ''
-        )}`}
+        hoverStyle={clickable ? { opacity: 0.7 } : undefined}
+        className={classNames(classPrefix, className, {
+          [`${classPrefix}-group-item`]: ctx?.group,
+          [`${classPrefix}-clickable`]: clickable,
+        })}
         onClick={(event) => handleClick(event)}
         style={baseStyle}
+        {...rest}
       >
         {children || (
           <>
             {leading ? (
               <View className={`${classPrefix}-leading`}>{leading}</View>
             ) : null}
-            {renderInner()}
+            {content ? (
+              // 有 content 时说明文案与业务插槽需要通栏，改用 header + 通栏子块的结构
+              <View className={`${classPrefix}-body`}>
+                {title || extra ? (
+                  // 结构 B 中标题与右侧区同行，纵向对齐需与根节点保持一致
+                  <View
+                    className={`${classPrefix}-header`}
+                    style={{ alignItems: align }}
+                  >
+                    {title ? (
+                      <View className={`${classPrefix}-title`}>{title}</View>
+                    ) : null}
+                    {extra ? (
+                      <View className={`${classPrefix}-extra`}>{extra}</View>
+                    ) : null}
+                  </View>
+                ) : null}
+                {description ? (
+                  <View className={`${classPrefix}-description`}>
+                    {description}
+                  </View>
+                ) : null}
+                <View className={`${classPrefix}-content`}>{content}</View>
+              </View>
+            ) : (
+              <>
+                {title || description ? (
+                  <View className={`${classPrefix}-body`}>
+                    {title ? (
+                      <View className={`${classPrefix}-title`}>{title}</View>
+                    ) : null}
+                    {description ? (
+                      <View className={`${classPrefix}-description`}>
+                        {description}
+                      </View>
+                    ) : null}
+                  </View>
+                ) : null}
+                {extra ? (
+                  <View className={`${classPrefix}-extra`}>{extra}</View>
+                ) : null}
+              </>
+            )}
           </>
         )}
       </View>

@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Cell } from '../cell'
@@ -121,4 +123,14 @@ test('children takes over rendering', () => {
   expect(container.querySelector('.nut-cell-title')).not.toBeInTheDocument()
   expect(container.querySelector('.nut-cell-content')).not.toBeInTheDocument()
   expect(container).toContainHTML('<div>自定义内容</div>')
+})
+
+// Taro 端无渲染测试基建，沿用仓库既有做法对源码透传做回归校验
+test('taro cell forwards rest props to View', () => {
+  const taroCell = readFileSync(
+    resolve(process.cwd(), 'src/packages/cell/cell.taro.tsx'),
+    'utf8'
+  )
+  expect(taroCell).toMatch(/\.\.\.rest\s*\n\s*\}\s*=\s*\{/)
+  expect(taroCell).toMatch(/<View[\s\S]*?\{\.\.\.rest\}[\s\S]*?>/)
 })

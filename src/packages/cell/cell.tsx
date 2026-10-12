@@ -58,61 +58,13 @@ export const Cell: FunctionComponent<
     alignItems: align,
   }
 
-  // 结构 B 中标题与右侧区同行，纵向对齐需与根节点保持一致
-  const headerStyle = { alignItems: align }
-
-  const titleNode = title ? (
-    <div className={`${classPrefix}-title`}>{title}</div>
-  ) : null
-  const descriptionNode = description ? (
-    <div className={`${classPrefix}-description`}>{description}</div>
-  ) : null
-  const extraNode = extra ? (
-    <div className={`${classPrefix}-extra`}>{extra}</div>
-  ) : null
-
-  const renderInner = () => {
-    // 有 content 时说明文案与业务插槽需要通栏，改用 header + 通栏子块的结构
-    if (content) {
-      return (
-        <div className={`${classPrefix}-body`}>
-          {title || extra ? (
-            <div className={`${classPrefix}-header`} style={headerStyle}>
-              {titleNode}
-              {extraNode}
-            </div>
-          ) : null}
-          {descriptionNode}
-          <div className={`${classPrefix}-content`}>{content}</div>
-        </div>
-      )
-    }
-    return (
-      <>
-        {title || description ? (
-          <div className={`${classPrefix}-body`}>
-            {titleNode}
-            {descriptionNode}
-          </div>
-        ) : null}
-        {extraNode}
-      </>
-    )
-  }
-
   return (
     <>
       <div
-        className={`${classNames(
-          [
-            classPrefix,
-            className,
-            {
-              [`${classPrefix}-group-item`]: ctx?.group,
-            },
-          ],
-          clickable ? `${classPrefix}-clickable` : ''
-        )}`}
+        className={classNames(classPrefix, className, {
+          [`${classPrefix}-group-item`]: ctx?.group,
+          [`${classPrefix}-clickable`]: clickable,
+        })}
         onClick={(event) => handleClick(event)}
         style={baseStyle}
         {...rest}
@@ -122,7 +74,49 @@ export const Cell: FunctionComponent<
             {leading ? (
               <div className={`${classPrefix}-leading`}>{leading}</div>
             ) : null}
-            {renderInner()}
+            {content ? (
+              // 有 content 时说明文案与业务插槽需要通栏，改用 header + 通栏子块的结构
+              <div className={`${classPrefix}-body`}>
+                {title || extra ? (
+                  // 结构 B 中标题与右侧区同行，纵向对齐需与根节点保持一致
+                  <div
+                    className={`${classPrefix}-header`}
+                    style={{ alignItems: align }}
+                  >
+                    {title ? (
+                      <div className={`${classPrefix}-title`}>{title}</div>
+                    ) : null}
+                    {extra ? (
+                      <div className={`${classPrefix}-extra`}>{extra}</div>
+                    ) : null}
+                  </div>
+                ) : null}
+                {description ? (
+                  <div className={`${classPrefix}-description`}>
+                    {description}
+                  </div>
+                ) : null}
+                <div className={`${classPrefix}-content`}>{content}</div>
+              </div>
+            ) : (
+              <>
+                {title || description ? (
+                  <div className={`${classPrefix}-body`}>
+                    {title ? (
+                      <div className={`${classPrefix}-title`}>{title}</div>
+                    ) : null}
+                    {description ? (
+                      <div className={`${classPrefix}-description`}>
+                        {description}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
+                {extra ? (
+                  <div className={`${classPrefix}-extra`}>{extra}</div>
+                ) : null}
+              </>
+            )}
           </>
         )}
       </div>
