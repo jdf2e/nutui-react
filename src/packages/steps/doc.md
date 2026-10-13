@@ -158,6 +158,8 @@ import { Steps } from '@nutui/nutui-react'
 | \--nutui-steps-horizontal-item-line-padding | 水平项分割线内边距 | `0 8px` |
 | \--nutui-steps-horizontal-item-special-padding-right | 特殊水平项右内边距 | `22px` |
 | \--nutui-steps-horizontal-item-special-3-padding-right | 3项特殊水平项右内边距 | `9px` |
+| \--nutui-steps-horizontal-single-line-min-length | 横向单行布局分割线最小长度 | `12px` |
+| \--nutui-steps-horizontal-double-line-min-length | 横向上下布局分割线最小长度 | `40px` |
 | \--nutui-steps-vertical-item-padding-bottom | 垂直项下内边距 | `13px` |
 | \--nutui-steps-vertical-title-font-size | 垂直标题字号 | `$font-size-l` |
 | \--nutui-steps-vertical-title-margin-bottom | 垂直标题下边距 | `4px` |

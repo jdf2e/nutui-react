@@ -277,6 +277,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-button-active-font-size | Font size of selected button-type title | `$font-size-base` |
 | \--nutui-tabs-button-active-font-weight | Font weight of selected button-type title | `$font-weight-bold` |
 | \--nutui-tabs-button-background-color | Background color of unselected button-type title | `var(--nutui-color-background-component)` |
+| \--nutui-tabs-button-active-border | Inner border of the selected button-type title | `inset 0 0 0 1px $color-primary` |
 | \--nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
 | \--nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` |
 | \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
@@ -284,5 +285,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-vertical-tab-line-height | The height of the vertical title line | `12px` |
 | \--nutui-tabs-tabpane-padding | Padding of the Tabpane content | `24px 20px` |
 | \--nutui-tabs-tabpane-background-color | BackgroundColor of the Tabpane content | `#fff` |
+
+> Note: since v16, `--nutui-tabs-button-active-border` is applied as a `box-shadow` (used for the inner border), so its value must be a valid box-shadow (e.g. `inset 0 0 0 1px #ff0f23`). The legacy `border` shorthand (e.g. `1px solid #ff0f23`) no longer takes effect.
 
 <Contribution name="Tabs" />

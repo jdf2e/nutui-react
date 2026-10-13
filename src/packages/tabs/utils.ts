@@ -1,4 +1,28 @@
 import { PositionX } from '@/types'
+import { calcByProfile } from '@/utils/scale-f'
+
+/**
+ * 卡片模式下激活卡片左右外边距之和(设计稿基准值:24px * 2),
+ * 对应 tabs.scss 中激活项的 `margin: 0 24px`。
+ * boundingClientRect/offsetWidth 不含外边距,估算可滑动性时需按此回补。
+ */
+export const CARD_ACTIVE_MARGIN_TOTAL = 48
+
+/** 按当前缩放换算激活卡片预留的总外边距,与 SCSS 的 scale-px 共用同一缩放系数 */
+export const getCardActiveMarginTotal = () =>
+  calcByProfile(CARD_ACTIVE_MARGIN_TOTAL)
+
+/**
+ * 内容是否超出容器而需要横向滑动。
+ * H5 与 Taro 共用同一判定口径,避免临界宽度下两端得出不同结论、出现一端贴边一端留肩。
+ *
+ * @param contentWidth 内容总宽度(各项宽度之和 + 激活卡片预留外边距)
+ * @param containerWidth 标题容器可视宽度
+ */
+export const isContentScrollable = (
+  contentWidth: number,
+  containerWidth: number
+) => contentWidth - containerWidth > 1
 
 export interface CardFlushSides {
   left: boolean

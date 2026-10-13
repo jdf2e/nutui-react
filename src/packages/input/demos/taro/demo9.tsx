@@ -12,7 +12,7 @@ const Demo9 = () => {
         flexWrap: 'nowrap',
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#ebedf2',
       }}
     >
       <Input type={inputType} placeholder="请输入密码" />

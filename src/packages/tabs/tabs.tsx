@@ -15,7 +15,11 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import { useRtl } from '../configprovider'
 import { CardShoulder } from './icon'
-import { getCardFlushSides } from './utils'
+import {
+  getCardActiveMarginTotal,
+  getCardFlushSides,
+  isContentScrollable,
+} from './utils'
 import { TabsTitle, WebTabsProps } from '@/types'
 
 const defaultProps = {
@@ -67,7 +71,22 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     if (activeType !== 'card' || direction !== 'horizontal' || !align) return
     const nav = navRef.current
     if (!nav) return
-    setIsScrollable(nav.scrollWidth - nav.clientWidth > 1)
+    const items = nav.querySelectorAll<HTMLElement>(
+      `.${classPrefix}-titles-item`
+    )
+    // 与 Taro 端保持同一口径:各项宽度之和 + 激活卡片预留外边距 vs 容器可视宽度
+    const totalWidth = Array.from(items).reduce(
+      (sum, item) => sum + item.getBoundingClientRect().width,
+      0
+    )
+    // 布局未就绪(宽度为 0)时不判定,保留初始状态
+    if (totalWidth <= 0) return
+    setIsScrollable(
+      isContentScrollable(
+        totalWidth + getCardActiveMarginTotal(),
+        nav.clientWidth
+      )
+    )
   }, [activeType, direction, align])
 
   // 挂载后立即测量,避免首帧样式闪变
@@ -166,6 +185,8 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
+    // @deprecated 兼容旧版恒定的可滑动类名,保留以确保业务侧既有样式覆盖不失效,后续版本移除
+    [`${classPrefix}-titles-scrollable`]: true,
     [`${classPrefix}-titles-${align}`]: align,
   })
 

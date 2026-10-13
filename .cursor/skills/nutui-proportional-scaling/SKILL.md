@@ -51,11 +51,14 @@ description: >-
 
 **主题字号档**（`theme-default.scss` / `theme-dark.scss`）：`--nutui-font-size-*` 使用 `calc(Npx * var(--nut-scale-font, var(--nut-scale-f, 1)))`，与 **大字/老年** 档位对齐。
 
-### 2.1 `npm run build` / `npm run build:taro` 时的 px → `scale-px`
+### 2.1 构建与本地开发（Dev & Build）时的 px → `scale-px` 自动转换
 
-- 与 `package.json` 中顺序一致：先跑 **`scripts/replace-css-var.js`**，再 **`scripts/build.mjs`** 或 **`scripts/build-taro.mjs`**；上述脚本在读取 **`src/packages/**/\*.scss`（不含 demo）** 后，会经 **`scripts/px-to-scale-px-in-component-scss.cjs`** 在**内存**里把声明值中的裸 **`Npx`** 转为 **`scale-px(Npx)`**（规则见 §3），**不写回\*\*仓库里的组件 SCSS。
-- 源码里可继续手写 **`scale-px` / `scale-font-px` / `scale-icon-px`**；构建不会重复嵌套 `scale-px`。
-- 该脚本对 **`calc(...)` 体内同时含 `$` 与 `/`** 的整段先做占位再替换裸 `px`，避免 postcss-scss 把 **`calc($var / 2)`** 等拆坏；其它 `calc` 内的裸 `Npx` 仍会按规则转为 `scale-px`。
+- **无需手动在组件 SCSS 源码书写 `scale-px()`**：
+  - 源码（`src/packages/*/*.scss`）直接书写设计稿的标准裸 `px`（例如 `padding: 12px 16px; margin-top: 8px; border-radius: 4px;`）。
+  - **生产构建（`build.mjs` / `build-taro.mjs`）**：在内存中经由 `scripts/px-to-scale-px-in-component-scss.cjs` 将裸 `px` 自动包裹为 `scale-px(Npx)`，不污染磁盘上的源码。
+  - **本地开发（`vite.config.mts`）**：开发服务器的 SCSS 加载钩子中已接入该转换逻辑，本地 `pnpm dev` 同样实时生效，所见即所得。
+- **变量兜底必须显式书写**：`src/styles/variables*.scss` 不被自动脚本处理，其默认值声明必须显式包裹 `scale-px()`。
+- **特定场景专用函数**：字号/行高使用 `scale-font-px()`，图标使用 `scale-icon-px()`。
 
 ---
 
@@ -63,18 +66,23 @@ description: >-
 
 ### 3.1 「0px 不转换」（`1a35d9b8`）
 
-凡应为 **数值 0** 的尺寸，**不要**写 `scale-px(0px)`，一律 **`0`** 或 **`0px`**（如 padding 某一维、`box-shadow` 偏移、border 为 0、`margin: 0`）。  
+凡应为 **数值 0** 的尺寸，**严禁**写 `scale-px(0px)`，一律 **`0`** 或 **`0px`**（如 padding 某一维、`box-shadow` 偏移、border 为 0、`margin: 0`）。  
 否则会得到 `calc(0px * var(--nut-scale-f))`，在部分浏览器或亚像素场景下与纯 `0` 表现不一致。
 
-### 3.2 `line-height`
+### 3.2 「细边框物理像素保护」（`border ≤ 1px`）
+
+- 对于 `border` 与 `outline` 属性上数值 `≤ 1px`（如 `1px`、`0.5px`）的细线条，AST 转换器会进行物理像素保护，**不会且不应缩放**。
+- 避免在 Retina 屏幕上被放大到 `1.17px` / `1.2px` 导致亚像素模糊、粗细不均或断线。
+
+### 3.3 `line-height`
 
 - **比例行高**（如 `line-height: 1`）：不随系数变，用于挤压行盒、图标对齐等 — 与「等比 px」不同维度。
 - **与设计稿 px 绑定的行高**：用与字号一致的档位，通常为 **`scale-font-px`**，或与同一变量体系。
 - 参考历史修复：弹层标题等曾去掉不恰当的固定 `line-height` 以免与大字模式冲突 — 新增时不要给标题随意写死 `line-height: 20px` 类样式，除非走缩放函数或主题变量。
 
-### 3.3 组件 SCSS 迁移模式（`dc4f1e28` / 后续 style 提交）
+### 3.4 组件 SCSS 书写模式
 
-- 间距、圆角、`border` 粗细、固定宽高（非纯文字）：优先 **`scale-px`**。
+- 间距、圆角、固定宽高（非纯文字）：直接写标准设计稿裸 `px`，由构建/dev 工具链内存转换。
 - 纯字体大小：`scale-font-px` 或主题已有 `--nutui-font-size-*`。
 - 图标占位：**`scale-icon-px`** 或已有 `--nut-icon-*`。
 - 保持与 **无障碍/大屏** 相关提交协同：同一文件改尺度时，勿回退 `dialog` 等对大字兼容的改动。

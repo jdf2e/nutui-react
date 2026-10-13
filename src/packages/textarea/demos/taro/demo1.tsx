@@ -12,7 +12,14 @@ const Demo = () => {
         onFocus={() => console.log('focus')}
       />
       <TextArea
-        defaultValue="基础用法：容器型"
+        defaultValue="基础用法：灰底容器型"
+        onChange={(value) => console.log('change', value)}
+        onBlur={() => console.log('blur')}
+        onFocus={() => console.log('focus')}
+      />
+      <TextArea
+        containerType="white"
+        defaultValue="基础用法：白底容器型"
         onChange={(value) => console.log('change', value)}
         onBlur={() => console.log('blur')}
         onFocus={() => console.log('focus')}

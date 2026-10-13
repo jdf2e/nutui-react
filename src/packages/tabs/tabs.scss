@@ -34,14 +34,14 @@
   &-left {
     justify-content: flex-start;
     .nut-tabs-titles-item {
-      padding: 0 scale-px(8px);
+      padding: 0 8px;
     }
   }
 
   &-right {
     justify-content: flex-end;
     .nut-tabs-titles-item {
-      padding: 0 scale-px(8px);
+      padding: 0 8px;
     }
 
     .nut-tabs-list {
@@ -107,8 +107,8 @@
     }
 
     &-smile-icon {
-      width: scale-px(12px);
-      height: scale-px(12px);
+      width: 12px;
+      height: 12px;
     }
 
     &-active {
@@ -137,8 +137,8 @@
         /* #ifndef dynamic*/
         overflow: unset;
         /* #endif */
-        width: scale-px(12px);
-        height: scale-px(12px);
+        width: 12px;
+        height: 12px;
 
         .nut-icon {
           color: $tabs-titles-item-active-color;
@@ -171,7 +171,7 @@
 
   &-card {
     .nut-tabs-titles-item {
-      padding: 0 scale-px(8px);
+      padding: 0 8px;
       flex-direction: column;
       justify-content: center;
       line-height: initial;
@@ -180,7 +180,7 @@
       &-active {
         position: relative;
         z-index: 1;
-        margin: 0 scale-px(24px);
+        margin: 0 24px;
         font-weight: $font-weight-bold;
         background-color: $tabs-titles-item-active-background-color;
 
@@ -188,20 +188,20 @@
         .nut-tabs-titles-item-shoulder-right {
           position: absolute;
           bottom: 0;
-          width: scale-px(24px);
+          width: 24px;
           height: 100%;
           display: block;
           pointer-events: none;
         }
 
         .nut-tabs-titles-item-shoulder-left {
-          left: scale-px(-24px);
+          left: -24px;
           // 左肩复用右肩图形,水平镜像即可,无需第二份资源
           transform: scaleX(-1);
         }
 
         .nut-tabs-titles-item-shoulder-right {
-          right: scale-px(-24px);
+          right: -24px;
         }
 
         // 贴边端由 TSX 按可滑动性、对齐方式与书写方向(RTL)统一计算,
@@ -227,14 +227,14 @@
 
   &-button {
     .nut-tabs-titles-item {
-      padding: 0 scale-px(4px);
+      padding: 0 4px;
       .nut-tabs-titles-item-text {
         flex: 1;
-        height: scale-px(28px);
+        height: 28px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0 scale-px(8px);
+        padding: 0 8px;
         background: $tabs-tab-button-background-color;
         border-radius: $tabs-tab-button-border-radius;
         font-size: $tabs-tab-button-font-size;
@@ -254,7 +254,7 @@
   }
 
   &-divider {
-    border-bottom: scale-px(1px) solid $color-border;
+    border-bottom: 1px solid $color-border;
 
     .nut-tabs-titles-item {
       position: relative;
@@ -265,7 +265,7 @@
         right: 0;
         top: 50%;
         height: 50%;
-        width: scale-px(1px);
+        width: 1px;
         background: $color-border;
         transform: translateY(-50%);
       }
@@ -306,12 +306,12 @@
   .nut-tabs-ellipsis {
     white-space: break-spaces;
     /* #ifdef harmony dynamic*/
-    padding-left: scale-px(12px);
+    padding-left: 12px;
     /* #endif */
     /* #ifndef harmony dynamic*/
-    padding-left: scale-px(6px);
+    padding-left: 6px;
     /* #endif */
-    width: scale-px(90px);
+    width: 90px;
     line-height: $font-size-base;
   }
 
@@ -347,14 +347,14 @@
     &-active {
       background-color: $tabs-titles-item-active-background-color;
       .nut-tabs-titles-item-line {
-        left: scale-px(8px);
+        left: 8px;
         width: $tabs-vertical-tab-line-width;
         height: $tabs-vertical-tab-line-height;
         background: $tabs-vertical-tab-line-color;
       }
 
       .nut-tabs-titles-item-smile {
-        right: scale-px(3px);
+        right: 3px;
         bottom: 12%;
         left: auto;
         transform: rotate(320deg);
@@ -475,7 +475,7 @@
     &-line {
       .nut-tabs-titles-item {
         padding-left: 0;
-        padding-right: scale-px(14px);
+        padding-right: 14px;
       }
     }
   }
@@ -484,11 +484,11 @@
     &-active {
       .nut-tabs-titles-item-line {
         left: auto;
-        right: scale-px(10px);
+        right: 10px;
       }
 
       .nut-tabs-titles-item-smile {
-        left: scale-px(3px);
+        left: 3px;
         right: auto;
         transform: rotate(-320deg);
       }
