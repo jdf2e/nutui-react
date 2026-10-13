@@ -166,9 +166,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-content-height | content layer height | `44px` |
 | \--nutui-tabbar-horizontal-padding | horizontal inset | `12px` |
 | \--nutui-tabbar-content-padding | navigation board inner padding | `4px` |
-| \--nutui-tabbar-border-radius | navigation board radius | `16px` |
+| \--nutui-tabbar-border-radius | navigation board radius | fully rounded (follows navigation height) |
 | \--nutui-tabbar-active-background | selected item background | `var(--nutui-color-background-component)` |
-| \--nutui-tabbar-active-border-radius | selected item radius | `12px` |
+| \--nutui-tabbar-active-border-radius | item radius | fully rounded (follows item height) |
 | \--nutui-tabbar-active-color | active color | `$color-primary` |
 | \--nutui-tabbar-inactive-color | default color | `$color-title` |
 | \--nutui-tabbar-border-top | borderTop | `1px solid #eee` |

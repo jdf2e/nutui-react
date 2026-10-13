@@ -91,7 +91,6 @@ export function Tabbar(props: Partial<TaroTabbarProps>) {
         <MaterialView
           scene="bottom-bar"
           className={`${classPrefix}-backdrop`}
-          style={{ borderRadius: 16 }}
           aria-hidden="true"
         />
       )}

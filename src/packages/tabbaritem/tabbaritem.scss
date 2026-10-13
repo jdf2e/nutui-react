@@ -11,6 +11,7 @@
   padding: 0;
   color: $tabbar-inactive-color;
   height: $tabbar-content-height;
+  border-radius: $tabbar-active-border-radius;
 
   .nut-icon {
     width: scale-px(20px);
@@ -121,5 +122,4 @@
 
 .nut-tabbar-wrap:not(.nut-tabbar-wrap-horizontal) .nut-tabbar-item-active {
   background: $tabbar-active-background;
-  border-radius: $tabbar-active-border-radius;
 }

@@ -93,7 +93,6 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
           scene="bottom-bar"
           className={`${classPrefix}-backdrop`}
           style={{
-            borderRadius: 16,
             backgroundColor:
               'var(--nut-tabbar-backdrop-tint, rgba(255, 255, 255, 0.8))',
           }}

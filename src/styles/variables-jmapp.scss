@@ -1431,14 +1431,14 @@ $tabbar-horizontal-padding: var(
   12px
 ) !default;
 $tabbar-content-padding: var(--nutui-tabbar-content-padding, 4px) !default;
-$tabbar-border-radius: var(--nutui-tabbar-border-radius, 16px) !default;
+$tabbar-border-radius: var(--nutui-tabbar-border-radius, #{$tabbar-height}) !default;
 $tabbar-active-background: var(
   --nutui-tabbar-active-background,
   var(--nutui-color-background-component, #ebedf2)
 ) !default;
 $tabbar-active-border-radius: var(
   --nutui-tabbar-active-border-radius,
-  12px
+  #{$tabbar-content-height}
 ) !default;
 $tabbar-active-color: var(
   --nutui-tabbar-active-color,

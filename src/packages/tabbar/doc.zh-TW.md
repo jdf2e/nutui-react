@@ -166,9 +166,9 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 | \--nutui-tabbar-content-height | 內容層高度 | `44px` |
 | \--nutui-tabbar-horizontal-padding | 導航層左右間距 | `12px` |
 | \--nutui-tabbar-content-padding | 導航背板內邊距 | `4px` |
-| \--nutui-tabbar-border-radius | 導航背板圓角 | `16px` |
+| \--nutui-tabbar-border-radius | 導航背板圓角 | 全圓角（跟隨導航高度） |
 | \--nutui-tabbar-active-background | 選中項背景 | `var(--nutui-color-background-component)` |
-| \--nutui-tabbar-active-border-radius | 選中項圓角 | `12px` |
+| \--nutui-tabbar-active-border-radius | 子項圓角 | 全圓角（跟隨子項高度） |
 | \--nutui-tabbar-active-color | 選中顏色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未選中顏色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上邊框 | `1px solid #eee` |
