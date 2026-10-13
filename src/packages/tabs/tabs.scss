@@ -230,7 +230,7 @@
       padding: 0 scale-px(4px);
       .nut-tabs-titles-item-text {
         flex: 1;
-        height: scale-px(28px);
+        height: 28px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -254,7 +254,7 @@
   }
 
   &-divider {
-    border-bottom: scale-px(1px) solid $color-border;
+    border-bottom: 1px solid $color-border;
 
     .nut-tabs-titles-item {
       position: relative;
@@ -265,7 +265,7 @@
         right: 0;
         top: 50%;
         height: 50%;
-        width: scale-px(1px);
+        width: 1px;
         background: $color-border;
         transform: translateY(-50%);
       }
@@ -306,12 +306,12 @@
   .nut-tabs-ellipsis {
     white-space: break-spaces;
     /* #ifdef harmony dynamic*/
-    padding-left: scale-px(12px);
+    padding-left: 12px;
     /* #endif */
     /* #ifndef harmony dynamic*/
-    padding-left: scale-px(6px);
+    padding-left: 6px;
     /* #endif */
-    width: scale-px(90px);
+    width: 90px;
     line-height: $font-size-base;
   }
 
@@ -475,7 +475,7 @@
     &-line {
       .nut-tabs-titles-item {
         padding-left: 0;
-        padding-right: scale-px(14px);
+        padding-right: 14px;
       }
     }
   }
@@ -484,7 +484,7 @@
     &-active {
       .nut-tabs-titles-item-line {
         left: auto;
-        right: scale-px(10px);
+        right: 10px;
       }
 
       .nut-tabs-titles-item-smile {

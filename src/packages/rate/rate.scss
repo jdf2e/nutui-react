@@ -126,7 +126,7 @@
 
     // 12DP - star gap 2px
     .nut-rate-item-small {
-      margin-left: scale-px(2px);
+      margin-left: 2px;
       &:first-child {
         margin-left: 0;
       }
@@ -152,33 +152,33 @@
 
     .nut-rate-label-small {
       font-size: $font-size-s;
-      margin-right: scale-px(4px);
+      margin-right: 4px;
     }
 
     .nut-rate-label-normal {
       font-size: $font-size-s;
-      margin-right: scale-px(12px);
+      margin-right: 12px;
     }
 
     .nut-rate-label-large {
       font-size: $font-size-base;
-      margin-right: scale-px(12px);
+      margin-right: 12px;
     }
 
     .nut-rate-score-small {
-      padding-left: scale-px(4px);
+      padding-left: 4px;
       font-size: $font-size-s;
       line-height: $line-height-s;
     }
 
     .nut-rate-score-normal {
-      padding-left: scale-px(12px);
+      padding-left: 12px;
       font-size: $font-size-s;
       line-height: $line-height-s;
     }
 
     .nut-rate-score-large {
-      padding-left: scale-px(12px);
+      padding-left: 12px;
       font-size: $font-size-base;
       line-height: $line-height-base;
     }
@@ -219,12 +219,12 @@
     .nut-rate-label-small,
     .nut-rate-label-normal {
       font-size: $font-size-xs;
-      margin-top: scale-px(6px);
+      margin-top: 6px;
     }
 
     .nut-rate-label-large {
       font-size: $font-size-s;
-      margin-top: scale-px(8px);
+      margin-top: 8px;
     }
 
     .nut-rate-labels {
@@ -233,7 +233,7 @@
 
     .nut-rate-labels-small,
     .nut-rate-labels-normal {
-      margin-top: scale-px(6px);
+      margin-top: 6px;
 
       .nut-rate-labels-item {
         font-size: $font-size-xs;
@@ -241,7 +241,7 @@
     }
 
     .nut-rate-labels-large {
-      margin-top: scale-px(8px);
+      margin-top: 8px;
 
       .nut-rate-labels-item {
         font-size: $font-size-s;
@@ -252,13 +252,13 @@
     .nut-rate-score-normal {
       font-size: $font-size-xs;
       line-height: $line-height-xs;
-      margin-top: scale-px(6px);
+      margin-top: 6px;
     }
 
     .nut-rate-score-large {
       font-size: $font-size-s;
       line-height: $line-height-s;
-      margin-top: scale-px(8px);
+      margin-top: 8px;
     }
   }
 }
@@ -289,7 +289,7 @@
 
     .nut-rate-item-small {
       margin-left: 0;
-      margin-right: scale-px(2px);
+      margin-right: 2px;
 
       &:first-child {
         margin-right: 0;
@@ -301,15 +301,15 @@
     }
 
     .nut-rate-label-small {
-      margin-left: scale-px(4px);
+      margin-left: 4px;
     }
 
     .nut-rate-label-normal {
-      margin-left: scale-px(12px);
+      margin-left: 12px;
     }
 
     .nut-rate-label-large {
-      margin-left: scale-px(12px);
+      margin-left: 12px;
     }
 
     .nut-rate-score {
@@ -317,15 +317,15 @@
     }
 
     .nut-rate-score-small {
-      padding-right: scale-px(4px);
+      padding-right: 4px;
     }
 
     .nut-rate-score-normal {
-      padding-right: scale-px(12px);
+      padding-right: 12px;
     }
 
     .nut-rate-score-large {
-      padding-right: scale-px(12px);
+      padding-right: 12px;
     }
   }
 

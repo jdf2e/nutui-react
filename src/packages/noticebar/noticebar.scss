@@ -151,7 +151,7 @@
       &::before {
         content: '';
         position: absolute;
-        inset: scale-px(1px);
+        inset: 1px;
         background: $noticebar-background;
         border-radius: 50%;
       }
@@ -165,8 +165,8 @@
     }
 
     &-left-icon--product {
-      height: scale-px(32px);
-      min-width: scale-px(32px);
+      height: 32px;
+      min-width: 32px;
 
       img {
         background: $white;

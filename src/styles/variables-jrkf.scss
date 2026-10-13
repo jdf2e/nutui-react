@@ -829,9 +829,33 @@ $input-container-height: var(--nutui-input-container-height, 38px) !default;
 // textarea（✅）
 
 $textarea-font: var(--nutui-textarea-font, $font-text) !default;
+$textarea-plain-min-height: var(
+  --nutui-textarea-plain-min-height,
+  44px
+) !default;
+$textarea-container-min-height: var(
+  --nutui-textarea-container-min-height,
+  60px
+) !default;
 $textarea-padding: var(
   --nutui-textarea-padding,
-  $spacing-base $spacing-xxxl
+  8px 12px
+) !default;
+$textarea-container-gray-background-color: var(
+  --nutui-textarea-container-gray-background-color,
+  var(--nutui-color-background-component, $color-background-sunken)
+) !default;
+$textarea-container-white-background-color: var(
+  --nutui-textarea-container-white-background-color,
+  $color-background-overlay
+) !default;
+$textarea-limit-error-color: var(
+  --nutui-textarea-limit-error-color,
+  $color-error
+) !default;
+$textarea-error-color: var(
+  --nutui-textarea-error-color,
+  $color-error
 ) !default;
 $textarea-limit-color: var(
   --nutui-textarea-limit-color,
@@ -1742,6 +1766,14 @@ $steps-horizontal-item-special-padding-right: var(
 $steps-horizontal-item-special-3-padding-right: var(
   --nutui-steps-horizontal-item-special-3-padding-right,
   9px
+) !default;
+$steps-horizontal-single-line-min-length: var(
+  --nutui-steps-horizontal-single-line-min-length,
+  12px
+) !default;
+$steps-horizontal-double-line-min-length: var(
+  --nutui-steps-horizontal-double-line-min-length,
+  40px
 ) !default;
 $steps-vertical-item-padding-bottom: var(
   --nutui-steps-vertical-item-padding-bottom,
@@ -3109,6 +3141,10 @@ $resultpage-title-margin-bottom: var(
 $resultpage-title-font-size: var(
   --nutui-resultpage-title-font-size,
   $font-size-xl
+) !default;
+$resultpage-title-line-height: var(
+  --nutui-resultpage-title-line-height,
+  $line-height-xl
 ) !default;
 $resultpage-title-color: var(
   --nutui-resultpage-title-color,
