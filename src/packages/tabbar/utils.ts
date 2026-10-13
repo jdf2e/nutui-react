@@ -1,11 +1,16 @@
 import React, { ReactElement, ReactNode } from 'react'
 
+interface NormalizedTabbarItem {
+  element: ReactElement
+  key: string
+}
+
 /** 递归展开 Fragment，识别 Tabbar.Item 及同名包装组件，并生成稳定的层级 key */
 export const normalizeTabbarItems = (
   children: ReactNode,
   itemType: React.ElementType & { displayName?: string }
-): ReactElement[] => {
-  const items: ReactElement[] = []
+): NormalizedTabbarItem[] => {
+  const items: NormalizedTabbarItem[] = []
   const itemDisplayName = itemType.displayName
 
   const visit = (nodes: ReactNode, parentKey = '') => {
@@ -24,7 +29,7 @@ export const normalizeTabbarItems = (
           (child.type as { displayName?: string }).displayName ===
             itemDisplayName)
       ) {
-        items.push(React.cloneElement(child, { key }))
+        items.push({ element: child, key })
       }
     })
   }

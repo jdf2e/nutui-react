@@ -57,22 +57,11 @@ export function Tabbar(props: Partial<TaroTabbarProps>) {
     onChange: onSwitch,
   })
 
-  const sizeCls = useMemo(() => {
-    const size = items.length
-    return size > 3
-      ? ''
-      : classNames({
-          [`${classPrefix}-wrap-3`]: size === 3,
-          [`${classPrefix}-wrap-2`]: size === 2,
-          [`${classPrefix}-wrap-${direction}`]:
-            size === 2 && direction !== 'vertical',
-        })
-  }, [items, direction])
-
-  const itemDirection = useMemo(() => {
-    const size = items.length
-    return size === 2 && direction !== 'vertical' && direction
-  }, [direction, items])
+  const itemDirection =
+    items.length === 2 && direction !== 'vertical' ? direction : undefined
+  const directionCls = itemDirection
+    ? `${classPrefix}-wrap-${itemDirection}`
+    : ''
 
   const contextValue = {
     selectIndex,
@@ -80,10 +69,9 @@ export function Tabbar(props: Partial<TaroTabbarProps>) {
     inactiveColor,
     handleClick: setSelectIndex,
   }
-  const renderedItems = items.map((child, index) =>
-    React.cloneElement(child, {
-      ...child.props,
-      key: child.key ?? index,
+  const renderedItems = items.map(({ element, key }, index) =>
+    React.cloneElement(element, {
+      key,
       index,
       direction: itemDirection,
     })
@@ -91,7 +79,7 @@ export function Tabbar(props: Partial<TaroTabbarProps>) {
 
   const navigation = (
     <View
-      className={classNames(`${classPrefix}-wrap`, sizeCls, {
+      className={classNames(`${classPrefix}-wrap`, directionCls, {
         [`${classPrefix}-wrap-skin`]: hasSkin,
       })}
     >
