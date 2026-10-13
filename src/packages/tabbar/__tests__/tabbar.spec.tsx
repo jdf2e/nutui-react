@@ -66,6 +66,9 @@ test('should render custom color and badge when using prop', () => {
 
   expect(items[0].style.color).toBe('blue')
   expect(items[1].style.color).toBe('grey')
+  expect(
+    items[1].querySelector<HTMLElement>('.nut-tabbar-item-text')?.style.color
+  ).toBe('grey')
   expect(items[0].querySelector('.nut-badge-sup')).toHaveTextContent('11')
 })
 

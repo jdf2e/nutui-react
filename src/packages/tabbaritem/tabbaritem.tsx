@@ -90,7 +90,16 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
 
   const renderTitleText = () => {
     return (
-      hasTitle && <div className={`${classPrefix}-text`}>{renderedTitle}</div>
+      hasTitle && (
+        <div
+          className={`${classPrefix}-text`}
+          style={{
+            color: active ? undefined : (style?.color ?? ctx?.inactiveColor),
+          }}
+        >
+          {renderedTitle}
+        </div>
+      )
     )
   }
 
