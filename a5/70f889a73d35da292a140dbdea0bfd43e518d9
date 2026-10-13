@@ -1,0 +1,21 @@
+src/sites/mobile/App.tsx
+  s_e7a2c44921dd70::t_8262bfb245fb2e 168-174,179-185
+src/packages/configprovider/types.ts
+  s_e7a2c44921dd70::t_b41596795e9b77 672
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a570f889a73d35da292a140dbdea0bfd43e518d9",
+  "prompts": {},
+  "sessions": {
+    "s_e7a2c44921dd70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13319-9762-7d10-92fa-1cfd65b30f7f",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
