@@ -449,9 +449,9 @@ test('uses 20px default icons and 10px semibold selected labels', () => {
   expect(iconValue.bottom).toContain('13px')
   const valueBadge = getDeclarations(
     css,
-    '.nut-tabbar-item .nut-badge-visual:not(.nut-badge-dot)'
+    '.nut-tabbar-item .nut-badge-sup:not(.nut-badge-dot)'
   )
-  const badgeBorder = getDeclarations(css, '.nut-tabbar-item .nut-badge-visual')
+  const badgeBorder = getDeclarations(css, '.nut-tabbar-item .nut-badge-sup')
   const valueText = getDeclarations(css, '.nut-tabbar-item .nut-badge-sup')
   const dotBadge = getDeclarations(css, '.nut-tabbar-item .nut-badge-dot')
   expect(valueBadge.height).toContain('14px')
@@ -493,7 +493,7 @@ test('marketing artwork has no separate label and anchors its badges', () => {
   ).toBeInTheDocument()
   expect(
     items[1].querySelector(
-      '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-value .nut-badge-sup'
+      '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-value > .nut-badge > .nut-badge-sup'
     )
   ).toHaveTextContent('8')
   expect(
@@ -798,13 +798,13 @@ test('render item size 2 and direction is horizontal', async () => {
   expect(container.querySelector('.nut-tabbar-item-visual')).toBeNull()
   expect(
     container.querySelector(
-      '.nut-tabbar-wrap-horizontal .nut-badge-visual:not(.nut-badge-dot) .nut-badge-sup'
+      '.nut-tabbar-wrap-horizontal .nut-badge-sup:not(.nut-badge-dot)'
     )
   ).toHaveTextContent('招手')
   const css = compileTabbarStyles('src/styles/variables.scss')
   const horizontalBadge = getDeclarations(
     css,
-    '.nut-tabbar-wrap-horizontal .nut-tabbar-item .nut-badge-visual:not(.nut-badge-dot)'
+    '.nut-tabbar-wrap-horizontal .nut-tabbar-item .nut-badge-sup:not(.nut-badge-dot)'
   )
   const horizontalText = getDeclarations(
     css,

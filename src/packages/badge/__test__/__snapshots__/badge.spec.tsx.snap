@@ -3,7 +3,7 @@
 exports[`should match custom icon 1`] = `
 <DocumentFragment>
   <div
-    class="nut-badge nut-badge-wrap"
+    class="nut-badge"
   >
     <div
       class="nut-badge-content nut-badge-icon"
@@ -27,10 +27,11 @@ exports[`should match custom icon 1`] = `
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-badge nut-badge-visual nut-badge-number"
+    class="nut-badge"
   >
     <div
-      class="nut-badge-sup"
+      class="nut-badge-sup nut-badge-number"
+      style="top: 0px; right: 0px;"
     >
       8
     </div>

@@ -51,7 +51,12 @@ export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
     if (typeof value === 'number' && value) return value
   }
 
-  const contentClasses = classNames(classPrefix, `${classPrefix}-visual`, {
+  function isString() {
+    if (typeof value === 'string' && value) return value
+  }
+
+  const contentClasses = classNames({
+    [`${classPrefix}-sup`]: isNumber() || isString() || dot,
     [`${classPrefix}-number`]: isNumber(),
     [`${classPrefix}-dot`]: dot,
     [`${classPrefix}-dot-${size}`]: dot,
@@ -65,27 +70,8 @@ export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
     [rtl ? 'left' : 'right']: `${Number(right) || 0}px`,
   })
 
-  const hasBadge = !!(getContent() || dot)
-  const standalonePositionStyle: CSSProperties = {
-    ...(Number(top) ? { top: `${Number(top)}px` } : {}),
-    ...(Number(right)
-      ? { [rtl ? 'left' : 'right']: `${Number(right)}px` }
-      : {}),
-  }
-
-  if (!children && hasBadge && !isIcon()) {
-    return (
-      <div
-        className={classNames(contentClasses, className)}
-        style={{ ...style, ...standalonePositionStyle }}
-      >
-        {!dot && <div className={`${classPrefix}-sup`}>{getContent()}</div>}
-      </div>
-    )
-  }
-
   return (
-    <div className={classNames(classes, `${classPrefix}-wrap`)} style={style}>
+    <div className={classes} style={style}>
       {isIcon() && (
         <div
           className={classNames(`${classPrefix}-content`, {
@@ -98,9 +84,9 @@ export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
         </div>
       )}
       {children}
-      {!isIcon() && hasBadge && (
+      {!isIcon() && (getContent() || dot) && (
         <div className={contentClasses} style={getPositionStyle()}>
-          {!dot && <div className={`${classPrefix}-sup`}>{getContent()}</div>}
+          {getContent()}
         </div>
       )}
     </div>

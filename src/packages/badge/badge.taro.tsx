@@ -45,7 +45,7 @@ export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
   const isHarmony = harmony()
   const classes = classNames(classPrefix, className)
   const badgeRef = useRef(null)
-  const [contentStyle, setContentStyle] = useState<CSSProperties>({})
+  const [contentStyle, setContentStyle] = useState({})
 
   function getContent() {
     if (dot || value === 0) return null
@@ -63,7 +63,12 @@ export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
     if (typeof value === 'number' && value) return value
   }
 
-  const contentClasses = classNames(classPrefix, `${classPrefix}-visual`, {
+  function isString() {
+    if (typeof value === 'string' && value) return value
+  }
+
+  const contentClasses = classNames({
+    [`${classPrefix}-sup`]: isNumber() || isString() || dot,
     [`${classPrefix}-number`]: isNumber(),
     [`${classPrefix}-dot`]: dot,
     [`${classPrefix}-dot-${size}`]: dot,
@@ -88,34 +93,8 @@ export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
     setContentStyle(style)
   }
 
-  const hasBadge = !!(getContent() || dot)
-  const standalonePositionStyle: CSSProperties = {
-    ...(Number(top) ? { top: contentStyle.top } : {}),
-    ...(Number(right)
-      ? { [rtl ? 'left' : 'right']: contentStyle[rtl ? 'left' : 'right'] }
-      : {}),
-  }
-
-  if (!children && hasBadge && !isIcon()) {
-    return (
-      <View
-        className={classNames(contentClasses, className)}
-        style={{ ...style, ...standalonePositionStyle }}
-        ref={badgeRef}
-        {...rest}
-      >
-        {!dot && <View className={`${classPrefix}-sup`}>{getContent()}</View>}
-      </View>
-    )
-  }
-
   return (
-    <View
-      className={classNames(classes, `${classPrefix}-wrap`)}
-      style={style}
-      ref={badgeRef}
-      {...rest}
-    >
+    <View className={classes} style={style} ref={badgeRef} {...rest}>
       {isIcon() && (
         <View
           className={classNames(`${classPrefix}-content`, {
@@ -128,9 +107,9 @@ export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
         </View>
       )}
       {children}
-      {!isIcon() && hasBadge && (
+      {!isIcon() && (getContent() || dot) && (
         <View className={contentClasses} style={contentStyle}>
-          {!dot && <View className={`${classPrefix}-sup`}>{getContent()}</View>}
+          {getContent()}
         </View>
       )}
     </View>
