@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -30,9 +24,7 @@ const defaultProps = {
   onSwitch: () => {},
 } as WebTabbarProps
 
-export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
-  Item: typeof TabbarItem
-} = (props) => {
+export function Tabbar(props: Partial<WebTabbarProps>) {
   const {
     children,
     defaultValue,
@@ -63,10 +55,7 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     update()
     return () => observer.disconnect()
   }, [])
-  const items = useMemo(
-    () => normalizeTabbarItems(children, TabbarItem),
-    [children]
-  )
+  const items = useMemo(() => normalizeTabbarItems(children), [children])
   const hasAgent =
     agent !== null && agent !== undefined && typeof agent !== 'boolean'
   const hasSkin =

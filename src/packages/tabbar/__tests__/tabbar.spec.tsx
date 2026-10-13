@@ -284,7 +284,12 @@ test('omits the Agent layout when the supplied slot is empty', () => {
   expect(container.querySelector('.nut-tabbar-has-agent')).toBeInTheDocument()
 })
 
-test('indexes only rendered Tabbar Items across conditional and Fragment children', () => {
+test('indexes rendered children across conditional and Fragment children', () => {
+  const WrappedItem = React.memo(function WrappedItem(
+    props: React.ComponentProps<typeof Tabbar.Item>
+  ) {
+    return <Tabbar.Item {...props} />
+  })
   const onSwitch = vi.fn()
   const { container } = render(
     <Tabbar onSwitch={onSwitch}>
@@ -294,15 +299,13 @@ test('indexes only rendered Tabbar Items across conditional and Fragment childre
       <>
         <Tabbar.Item title="分类" />
         {undefined}
-        <Tabbar.Item title="我的" />
+        <WrappedItem title="我的" />
       </>
-      <span>not a tab</span>
     </Tabbar>
   )
 
   const items = container.querySelectorAll('.nut-tabbar-item')
   expect(items).toHaveLength(3)
-  expect(container.querySelector('.nut-tabbar-wrap > span')).toBeNull()
   fireEvent.click(items[2])
   expect(onSwitch).toHaveBeenCalledWith(2)
 })
@@ -324,8 +327,8 @@ test('keeps keyed Fragment groups distinct when a preceding group is removed', (
     </>
   )
 
-  const before = normalizeTabbarItems(groups(true), Tabbar.Item)
-  const after = normalizeTabbarItems(groups(false), Tabbar.Item)
+  const before = normalizeTabbarItems(groups(true))
+  const after = normalizeTabbarItems(groups(false))
   expect(before[0].key).not.toBe(before[1].key)
   expect(before[1].key).toBe(after[0].key)
 })

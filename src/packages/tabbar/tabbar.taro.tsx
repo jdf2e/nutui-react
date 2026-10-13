@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
@@ -21,9 +21,7 @@ const defaultProps = {
   onSwitch: () => {},
 } as TaroTabbarProps
 
-export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
-  Item: typeof TabbarItem
-} = (props) => {
+export function Tabbar(props: Partial<TaroTabbarProps>) {
   const {
     children,
     defaultValue,
@@ -40,10 +38,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     onSwitch,
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-tabbar'
-  const items = useMemo(
-    () => normalizeTabbarItems(children, TabbarItem),
-    [children]
-  )
+  const items = useMemo(() => normalizeTabbarItems(children), [children])
   const hasAgent =
     agent !== null && agent !== undefined && typeof agent !== 'boolean'
   const hasSkin =
