@@ -597,22 +597,23 @@ test.each([
   expect(wrap['margin-left']).toContain('--nutui-tabbar-agent-outset')
 })
 
-test('should expose readable Tabbar colors in light and dark themes', () => {
-  const light = getRootCustomProperties('src/styles/theme-default.scss')
-  const dark = getRootCustomProperties('src/styles/theme-dark.scss')
+test('uses semantic theme colors through Tabbar fallbacks', () => {
+  expect(getRootCustomProperties('src/styles/theme-default.scss')).toEqual({})
+  expect(getRootCustomProperties('src/styles/theme-dark.scss')).toEqual({})
 
-  expect(light).toMatchObject({
-    '--nutui-tabbar-active-background':
-      'var(--nutui-color-background-component)',
-    '--nutui-tabbar-active-color': 'var(--nutui-color-primary)',
-    '--nutui-tabbar-inactive-color': 'var(--nutui-color-title)',
-  })
-  expect(dark).toMatchObject({
-    '--nutui-tabbar-active-background':
-      'var(--nutui-color-background-component)',
-    '--nutui-tabbar-active-color': 'var(--nutui-color-primary)',
-    '--nutui-tabbar-inactive-color': 'var(--nutui-color-title)',
-  })
+  const css = compileTabbarStyles('src/styles/variables.scss')
+  const item = getDeclarations(css, '.nut-tabbar-item')
+  const activeItem = getDeclarations(css, '.nut-tabbar-item-active')
+  const activeBackground = getDeclarations(
+    css,
+    '.nut-tabbar-wrap:not(.nut-tabbar-wrap-horizontal) .nut-tabbar-item-active'
+  )
+
+  expect(item.color).toContain('--nutui-color-title')
+  expect(activeItem.color).toContain('--nutui-color-primary')
+  expect(activeBackground.background).toContain(
+    '--nutui-color-background-component'
+  )
 })
 
 test('should render custom color and badge when using prop', () => {

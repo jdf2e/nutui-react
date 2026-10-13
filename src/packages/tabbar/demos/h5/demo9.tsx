@@ -26,7 +26,8 @@ const Demo = ({ scrollTop = 0, onBackToTop }: DemoProps) => {
                 width: 20,
                 height: 20,
                 borderRadius: '50%',
-                backgroundColor: 'var(--nutui-tabbar-active-color, #ff0f23)',
+                backgroundColor:
+                  'var(--nutui-tabbar-active-color, var(--nutui-color-primary, #ff0f23))',
               }}
             >
               <Top width={12} height={12} color="#fff" />
