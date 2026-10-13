@@ -1,0 +1,301 @@
+src/sites/sites-react/doc/docs/react/migrate-from-v3.md
+  s_330fb385cda529::t_6ca1b49179ce96 108-121
+src/packages/shortpassword/shortpassword.scss
+  s_330fb385cda529::t_6ca1b49179ce96 5-6,21-22,29,37-38,46-48,54,58-59,71-72,82,85,101,114,118-120,132-133
+src/packages/resultpage/demos/h5/demo4.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 10,14,23,27
+src/packages/input/input.scss
+  s_330fb385cda529::t_6ca1b49179ce96 90
+src/packages/resultpage/demos/taro/demo5.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 9
+src/packages/avatar/avatar.scss
+  s_330fb385cda529::t_6ca1b49179ce96 15
+src/packages/radio/radio.scss
+  s_330fb385cda529::t_6ca1b49179ce96 7,19,70,77,87,94
+src/packages/swipe/doc.zh-TW.md
+  s_330fb385cda529::t_6ca1b49179ce96 45,47
+src/packages/avatarcropper/avatarcropper.scss
+  s_330fb385cda529::t_6ca1b49179ce96 75,101
+src/packages/calendarcard/calendarcard.scss
+  s_330fb385cda529::t_6ca1b49179ce96 3,21,24,28,34-35,53,55,75,77,154,159
+src/packages/input/demos/h5/demo15.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 2,6
+src/packages/swipe/doc.en-US.md
+  s_330fb385cda529::t_6ca1b49179ce96 45,47
+src/packages/steps/doc.en-US.md
+  s_330fb385cda529::t_6ca1b49179ce96 161-162
+src/packages/textarea/textarea.scss
+  s_330fb385cda529::t_6ca1b49179ce96 44,67,128
+CONTRIBUTING.md
+  s_330fb385cda529::t_6ca1b49179ce96 1-143
+src/packages/resultpage/resultpage.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 16,39,44
+src/packages/avatargroup/avatargroup.scss
+  s_330fb385cda529::t_6ca1b49179ce96 7-8,11,21
+src/packages/navbar/navbar.scss
+  s_330fb385cda529::t_6ca1b49179ce96 15,54,68,74-75,82,87-88,92,100,110,112,115
+src/packages/resultpage/demos/h5/demo5.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 9
+src/packages/resultpage/demos/taro/demo7.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 1-43
+src/packages/formitem/formitem.scss
+  s_330fb385cda529::t_6ca1b49179ce96 26,33,77,141,147,159-160,172,179,190
+src/packages/input/demos/taro/demo7.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 14
+src/packages/resultpage/demos/taro/demo3.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 8,12,15
+src/packages/divider/divider.scss
+  s_330fb385cda529::t_6ca1b49179ce96 56
+src/packages/resultpage/demos/h5/demo3.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 8,12,15
+src/packages/input/input.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 197,213
+src/packages/infiniteloading/infiniteloading.scss
+  s_330fb385cda529::t_6ca1b49179ce96 25,35,46,65
+src/packages/input/demos/taro/demo13.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 14
+src/packages/input/demos/h5/demo8.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 11
+src/packages/cell/cell.scss
+  s_330fb385cda529::t_6ca1b49179ce96 14,76,81
+src/packages/ellipsis/ellipsis.scss
+  s_330fb385cda529::t_6ca1b49179ce96 17
+src/packages/popover/popover.scss
+  s_330fb385cda529::t_6ca1b49179ce96 9-10,15-16,20,24,28,37,42,51,56,61,90,361
+src/packages/switch/switch.scss
+  s_330fb385cda529::t_6ca1b49179ce96 6,66,68,94,96,101,103
+src/packages/virtuallist/virtuallist.scss
+  s_330fb385cda529::t_6ca1b49179ce96 9-10,26-29,31,77
+src/packages/menuitem/menuitem.scss
+  s_330fb385cda529::t_6ca1b49179ce96 82,103
+src/packages/resultpage/doc.md
+  s_330fb385cda529::t_6ca1b49179ce96 55-74,84-96,107-116
+src/packages/resultpage/resultpage.taro.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 17,45
+src/packages/resultpage/demo.taro.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 11-12,22-23,31-32,40-41,58-61
+src/packages/countdown/countdown.scss
+  s_330fb385cda529::t_6ca1b49179ce96 18,44,52
+src/packages/input/demos/h5/demo16.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 2,6-10,13
+src/packages/step/step.scss
+  s_330fb385cda529::t_6ca1b49179ce96 89-90,97-98,116-120
+  s_330fb385cda529::t_63b00eeeadcdfa 121
+.cursor/rules/component-development.mdc
+  s_330fb385cda529::t_6ca1b49179ce96 1-37
+src/packages/resultpage/demo.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 8-9,19-20,28-29,37-38,54-57
+src/packages/notify/notify.scss
+  s_330fb385cda529::t_6ca1b49179ce96 46-47,87,89-90,95,97-98
+src/packages/progress/progress.scss
+  s_330fb385cda529::t_6ca1b49179ce96 38
+src/packages/griditem/griditem.scss
+  s_330fb385cda529::t_6ca1b49179ce96 101,106
+src/packages/configprovider/types.ts
+  s_330fb385cda529::t_6ca1b49179ce96 1010
+packages/nutui-react-cli/skills/nutui-react-to-taro/SKILL.en.md
+  s_330fb385cda529::t_6ca1b49179ce96 147,149,229,237,242
+src/packages/imagepreview/imagepreview.scss
+  s_330fb385cda529::t_6ca1b49179ce96 19,28,47-48,52-53,57,106,113,118
+src/packages/checkbox/checkbox.scss
+  s_330fb385cda529::t_6ca1b49179ce96 7,10,95,102,113,138,149-150,158,201,207
+src/packages/popup/popup.scss
+  s_330fb385cda529::t_6ca1b49179ce96 88,117,130
+src/packages/segmented/segmented.scss
+  s_330fb385cda529::t_6ca1b49179ce96 9,37-38,41-42
+src/packages/cellgroup/cellgroup.scss
+  s_330fb385cda529::t_6ca1b49179ce96 12-13,24-25
+src/packages/resultpage/demos/h5/demo6.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 1-55
+src/packages/input/demos/taro/demo8.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 14
+src/packages/backtop/backtop.scss
+  s_330fb385cda529::t_6ca1b49179ce96 11
+src/packages/steps/doc.taro.md
+  s_330fb385cda529::t_6ca1b49179ce96 161-162
+src/packages/swiper/swiper.scss
+  s_330fb385cda529::t_6ca1b49179ce96 22,29,32,71
+src/packages/swipe/doc.md
+  s_330fb385cda529::t_6ca1b49179ce96 45,47
+packages/nutui-react-cli/skills/nutui-react-to-taro/SKILL.md
+  s_330fb385cda529::t_6ca1b49179ce96 124,126
+src/packages/swipe/demos/taro/demo2.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 2,4,6-17,20,26-30,33-43,49-86,99
+src/packages/resultpage/doc.en-US.md
+  s_330fb385cda529::t_6ca1b49179ce96 55-74,84-96,107-116
+src/packages/uploader/uploader.scss
+  s_330fb385cda529::t_6ca1b49179ce96 76,106-107,112,117,124-125,136
+src/packages/resultpage/demos/h5/demo1.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 9,13,16
+src/packages/dialog/dialog.scss
+  s_330fb385cda529::t_6ca1b49179ce96 63,104,159
+src/packages/swipe/doc.taro.md
+  s_330fb385cda529::t_6ca1b49179ce96 45,47
+src/packages/quickenter/quickenter.scss
+  s_330fb385cda529::t_6ca1b49179ce96 8,27,56,78-79,84,91-92,99,117-119
+src/packages/resultpage/demos/taro/demo6.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 1-56
+src/packages/resultpage/demos/taro/demo1.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 9,13,16
+src/packages/resultpage/resultpage.scss
+  s_330fb385cda529::t_6ca1b49179ce96 8-10,23,33,49-51
+src/packages/calendar/calendar.scss
+  s_330fb385cda529::t_6ca1b49179ce96 49,53-54,62-64,90-91,94,108-110,128,149,152,158,164,240-242,253
+src/packages/resultpage/__test__/resultpage.spec.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 9,13
+src/packages/tour/tour.scss
+  s_330fb385cda529::t_6ca1b49179ce96 32-33,54
+src/packages/pulltorefresh/pulltorefresh.scss
+  s_330fb385cda529::t_6ca1b49179ce96 21
+src/packages/barrage/barrage.scss
+  s_330fb385cda529::t_6ca1b49179ce96 16-17
+src/packages/empty/empty.scss
+  s_330fb385cda529::t_6ca1b49179ce96 39-40
+src/packages/input/demos/taro/demo15.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 2,6
+src/packages/swipe/swipe.scss
+  s_330fb385cda529::t_6ca1b49179ce96 23-26
+src/packages/actionsheet/actionsheet.scss
+  s_330fb385cda529::t_6ca1b49179ce96 37,70-71,90-91,96-97,108,116-121,129,139,163-165,177,182,213,247,253
+src/packages/swipe/demos/h5/demo2.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 3,5-16,19,25-29,32-42,48-85,98
+src/packages/radiogroup/radiogroup.scss
+  s_330fb385cda529::t_6ca1b49179ce96 26,41,58
+src/packages/elevator/elevator.scss
+  s_330fb385cda529::t_6ca1b49179ce96 109-110,112
+src/styles/variables-jrkf.scss
+  s_330fb385cda529::t_6ca1b49179ce96 1786-1793,3135-3138
+src/packages/resultpage/demos/taro/demo4.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 10,14,23,27
+src/packages/animate/animate.scss
+  s_330fb385cda529::t_6ca1b49179ce96 79,82,85,88,91,94,97,100,103,145-146,149,151,153-154,183-184,197,203,207,217,220,223,240,243,246
+src/packages/table/table.scss
+  s_330fb385cda529::t_6ca1b49179ce96 15,104,111-112,147-148,159,164,189,218,235,241
+src/packages/collapseitem/collapseitem.scss
+  s_330fb385cda529::t_6ca1b49179ce96 9-10,37-38,60,69,79,129
+src/packages/numberkeyboard/numberkeyboard.scss
+  s_330fb385cda529::t_6ca1b49179ce96 10-11,54,72,106-107,136,138,148
+src/packages/address/address.scss
+  s_330fb385cda529::t_6ca1b49179ce96 7-8,15,25,32-34,38-39,43,54,57,65-66,68-69,71,74,86-87,94-95,98,102-105,109,115,125,132-133,148-149,151-152,170
+src/packages/input/demos/h5/demo13.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 11
+src/packages/noticebar/noticebar.scss
+  s_330fb385cda529::t_6ca1b49179ce96 154,168-169
+src/packages/resultpage/doc.zh-TW.md
+  s_330fb385cda529::t_6ca1b49179ce96 55-74,84-96,107-116
+src/packages/pagination/pagination.scss
+  s_330fb385cda529::t_6ca1b49179ce96 11-12,56-58,133
+src/packages/resultpage/demos/h5/demo7.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 1-43
+vite.config.mts
+  s_330fb385cda529::t_6ca1b49179ce96 8,11-13,123,130,134-143
+src/packages/tabs/tabs.scss
+  s_330fb385cda529::t_6ca1b49179ce96 37,44,103-104,131-132,175,178,182,198,209,227,230,232,268,275,314,369,378,382
+src/packages/timeselect/timeselect.scss
+  s_330fb385cda529::t_6ca1b49179ce96 8,27
+src/packages/button/button.scss
+  s_330fb385cda529::t_6ca1b49179ce96 36,187,207,241,252,262,273
+src/packages/input/demos/taro/demo9.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 15
+src/packages/fixednav/fixednav.scss
+  s_330fb385cda529::t_6ca1b49179ce96 8,32,35,41-42,62,72,82-84,92,94,101,103-104,114,116,124,126-127,153,156,165-166,169-170,188,192,201,204-205
+src/packages/range/range.scss
+  s_330fb385cda529::t_6ca1b49179ce96 22,28,49,64-66,112,118-120,122,134-136,173,204,210,243,249-250,252,259,269,286,381
+src/packages/steps/doc.md
+  s_330fb385cda529::t_6ca1b49179ce96 161-162
+src/packages/resultpage/demos/taro/demo2.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 4,9,13,16,24
+src/styles/variables-daojia.scss
+  s_330fb385cda529::t_6ca1b49179ce96 1015-1018,1892,1894,1896-1898,1906,1908
+src/packages/audio/audio.scss
+  s_330fb385cda529::t_6ca1b49179ce96 13-14,17,29-30,33,43,47,51,57-58,64,70,81,95
+src/packages/input/__test__/input.spec.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 286-288,293-295,298,300,302-304,306-310
+src/packages/searchbar/searchbar.scss
+  s_330fb385cda529::t_6ca1b49179ce96 28,98-99,101,107,109-110,118,133-134,196,199
+src/packages/checkboxgroup/checkboxgroup.scss
+  s_330fb385cda529::t_6ca1b49179ce96 78,85
+src/packages/steps/doc.zh-TW.md
+  s_330fb385cda529::t_6ca1b49179ce96 161-162
+src/packages/toast/toast.scss
+  s_330fb385cda529::t_6ca1b49179ce96 47-48,59-60,102,116,121-122,135,142-143
+src/styles/variables-jmapp.scss
+  s_330fb385cda529::t_6ca1b49179ce96 1681-1688,3102-3105
+src/packages/input/demos/h5/demo7.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 8
+scripts/px-to-scale-px-in-component-scss.cjs
+  s_330fb385cda529::t_6ca1b49179ce96 16-22,88,94-98,105-112,115,122,136
+src/packages/input/demo.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 96
+src/packages/input/demo.taro.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 140
+src/packages/input/input.taro.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 228-240
+src/sites/sites-react/doc/docs/taro/migrate-from-v3.en-US.md
+  s_330fb385cda529::t_6ca1b49179ce96 108-121
+src/styles/variables.scss
+  s_330fb385cda529::t_6ca1b49179ce96 1625-1632,3079,3083,3087-3091,3107,3111
+src/packages/skeleton/skeleton.scss
+  s_330fb385cda529::t_6ca1b49179ce96 28,51-52,67,97,103
+src/packages/card/card.scss
+  s_330fb385cda529::t_6ca1b49179ce96 12-13,26,38-40,44,57,60-61,75,88,96
+packages/nutui-react-cli/docs/mcp.md
+  s_330fb385cda529::t_6ca1b49179ce96 62
+src/packages/inputnumber/inputnumber.scss
+  s_330fb385cda529::t_6ca1b49179ce96 26-27,75-76,80-81
+src/sites/sites-react/doc/docs/taro/migrate-from-v3.md
+  s_330fb385cda529::t_6ca1b49179ce96 108-121
+src/packages/steps/steps.scss
+  s_330fb385cda529::t_6ca1b49179ce96 73,78,89,119,136,163,215-216,227,244,281,285,289,296-297,309,321-322,338,340,353-357
+.github/pull_request_template.md
+  s_330fb385cda529::t_6ca1b49179ce96 2,10,19,24,32,35,37,39-75
+src/packages/rate/rate.scss
+  s_330fb385cda529::t_6ca1b49179ce96 129,155,160,165,169,175,181,222,227,236,244,255,261,292,304,308,312,320,324,328
+src/packages/tabbar/tabbar.scss
+  s_330fb385cda529::t_6ca1b49179ce96 96-97,100
+src/packages/input/demos/h5/demo9.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 12
+src/sites/sites-react/doc/docs/react/migrate-from-v3.en-US.md
+  s_330fb385cda529::t_6ca1b49179ce96 108-121
+src/packages/tag/tag.scss
+  s_330fb385cda529::t_6ca1b49179ce96 15,75,93
+src/config.json
+  s_330fb385cda529::t_6ca1b49179ce96 1079,1419,1421
+src/packages/grid/grid.scss
+  s_330fb385cda529::t_6ca1b49179ce96 20
+src/packages/resultpage/doc.taro.md
+  s_330fb385cda529::t_6ca1b49179ce96 55-74,84-96,107-116
+src/packages/hoverbuttonitem/hoverbuttonitem.scss
+  s_330fb385cda529::t_6ca1b49179ce96 6,29-30,37-39,45-46,57-58,63-64
+src/packages/resultpage/demos/h5/demo2.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 4,9,13,16,24
+src/packages/timedetail/timedetail.scss
+  s_330fb385cda529::t_6ca1b49179ce96 7,16,18,22,31
+src/packages/input/demos/taro/demo16.tsx
+  s_330fb385cda529::t_6ca1b49179ce96 2,6-10,13
+.cursor/skills/nutui-proportional-scaling/SKILL.md
+  s_330fb385cda529::t_6ca1b49179ce96 54,56-61,69,72-77,83,85
+src/packages/resultpage/__test__/__snapshots__/resultpage.spec.tsx.snap
+  s_330fb385cda529::t_18bbc1db0a132e 31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f8412f2f0b1fa49cbcfb1761f74ab1e8a3ee20f3",
+  "prompts": {},
+  "humans": {
+    "h_2c3c1de054c74d": {
+      "author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_330fb385cda529": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13583-14b5-7960-ac76-437a7834b6d7",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
