@@ -9,6 +9,12 @@
   border-top: $tabbar-border-top;
   width: 100%;
   background: transparent;
+  --nut-tabbar-backdrop-tint: rgba(255, 255, 255, 0.8);
+
+  .nut-theme-dark &,
+  &.nut-theme-dark {
+    --nut-tabbar-backdrop-tint: rgba(20, 23, 26, 0.8);
+  }
 
   &-main {
     position: relative;

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useMemo } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -8,10 +8,6 @@ import { WebTabbarProps } from '@/types'
 import SafeArea from '@/packages/safearea/index'
 import { normalizeTabbarItems } from './utils'
 import MaterialView from '../materialview'
-
-const isDocumentDark = () =>
-  typeof document !== 'undefined' &&
-  document.documentElement.classList.contains('nut-theme-dark')
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -42,19 +38,6 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-tabbar'
-  const rootRef = useRef<HTMLDivElement>(null)
-  const [themeDark, setThemeDark] = useState(isDocumentDark)
-  useEffect(() => {
-    const root = rootRef.current
-    if (!root) return
-    const update = () => setThemeDark(Boolean(root.closest('.nut-theme-dark')))
-    const observer = new MutationObserver(update)
-    for (let node: HTMLElement | null = root; node; node = node.parentElement) {
-      observer.observe(node, { attributes: true, attributeFilter: ['class'] })
-    }
-    update()
-    return () => observer.disconnect()
-  }, [])
   const items = useMemo(
     () => normalizeTabbarItems(children, TabbarItem),
     [children]
@@ -120,9 +103,12 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
       ) : (
         <MaterialView
           scene="bottom-bar"
-          darkMode={themeDark}
           className={`${classPrefix}-backdrop`}
-          style={{ borderRadius: 16 }}
+          style={{
+            borderRadius: 16,
+            backgroundColor:
+              'var(--nut-tabbar-backdrop-tint, rgba(255, 255, 255, 0.8))',
+          }}
           aria-hidden="true"
         />
       )}
@@ -134,7 +120,6 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
 
   return (
     <div
-      ref={rootRef}
       className={classNames(
         classPrefix,
         {
