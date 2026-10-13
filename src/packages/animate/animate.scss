@@ -76,31 +76,31 @@
       transform: translateX(0);
     }
     10% {
-      transform: translateX(scale-px(-9px));
+      transform: translateX(-9px);
     }
     20% {
-      transform: translateX(scale-px(8px));
+      transform: translateX(8px);
     }
     30% {
-      transform: translateX(scale-px(-7px));
+      transform: translateX(-7px);
     }
     40% {
-      transform: translateX(scale-px(6px));
+      transform: translateX(6px);
     }
     50% {
-      transform: translateX(scale-px(-5px));
+      transform: translateX(-5px);
     }
     60% {
-      transform: translateX(scale-px(4px));
+      transform: translateX(4px);
     }
     70% {
-      transform: translateX(scale-px(-3px));
+      transform: translateX(-3px);
     }
     80% {
-      transform: translateX(scale-px(2px));
+      transform: translateX(2px);
     }
     90% {
-      transform: translateX(scale-px(-1px));
+      transform: translateX(-1px);
     }
   }
   .nut-animate-shake {
@@ -142,16 +142,16 @@
     position: relative;
     &::after,
     &::before {
-      width: scale-px(60px);
-      height: scale-px(60px);
+      width: 60px;
+      height: 60px;
       content: '';
       box-sizing: border-box;
-      border: scale-px(4px) solid rgba(255, 255, 255, 0.6);
+      border: 4px solid rgba(255, 255, 255, 0.6);
       position: absolute;
-      border-radius: scale-px(30px);
+      border-radius: 30px;
       right: 50%;
-      margin-top: scale-px(-30px);
-      margin-right: scale-px(-30px);
+      margin-top: -30px;
+      margin-right: -30px;
       z-index: 1;
       transform: scale(0);
       animation: twinkle 2s ease-out infinite;
@@ -180,8 +180,8 @@
     position: relative;
     overflow: hidden;
     &::after {
-      width: scale-px(100px);
-      height: scale-px(60px);
+      width: 100px;
+      height: 60px;
       position: absolute;
       left: 0;
       top: 0;
@@ -194,17 +194,17 @@
       );
       animation: flicker 1.5s linear infinite;
       transform: skewX(-20deg);
-      filter: blur(scale-px(3px));
+      filter: blur(3px);
     }
   }
 
   @keyframes flicker {
     0% {
-      transform: translateX(scale-px(-100px)) skewX(-20deg);
+      transform: translateX(-100px) skewX(-20deg);
     }
     40%,
     100% {
-      transform: translateX(scale-px(150px)) skewX(-20deg);
+      transform: translateX(150px) skewX(-20deg);
     }
   }
 
@@ -214,13 +214,13 @@
       transform: rotate(0) translateY(0);
     }
     25% {
-      transform: rotate(10deg) translateY(scale-px(20px));
+      transform: rotate(10deg) translateY(20px);
     }
     50% {
-      transform: rotate(0) translateY(scale-px(-10px));
+      transform: rotate(0) translateY(-10px);
     }
     75% {
-      transform: rotate(-10deg) translateY(scale-px(20px));
+      transform: rotate(-10deg) translateY(20px);
     }
     100% {
       transform: rotate(0) translateY(0);
@@ -237,13 +237,13 @@
       top: 0;
     }
     25% {
-      top: scale-px(1px);
+      top: 1px;
     }
     50% {
-      top: scale-px(4px);
+      top: 4px;
     }
     75% {
-      top: scale-px(1px);
+      top: 1px;
     }
     100% {
       top: 0;

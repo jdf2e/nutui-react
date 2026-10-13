@@ -21,8 +21,7 @@ export interface BaseContentProps extends BasicComponent {
   footerDirection: DialogFooterDirection
 }
 export interface DialogWrapProps
-  extends WebOverlayProps,
-    Omit<BaseContentProps, 'onClick'> {
+  extends WebOverlayProps, Omit<BaseContentProps, 'onClick'> {
   visible: boolean
   overlay: boolean
   overlayStyle: CSSProperties
@@ -56,8 +55,9 @@ export type DialogReturnProps = {
   close: () => void
 }
 
-export interface DialogComponent
-  extends ForwardRefExoticComponent<PropsWithChildren<Partial<BaseDialog>>> {
+export interface DialogComponent extends ForwardRefExoticComponent<
+  PropsWithChildren<Partial<BaseDialog>>
+> {
   confirm: (props: Partial<BaseDialog>) => DialogReturnProps
   alert: (props: Partial<BaseDialog>) => DialogReturnProps
   config: (config: DialogConfigType) => void
