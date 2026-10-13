@@ -5,7 +5,7 @@ import Form from '@/packages/form'
 const Demo7 = () => {
   return (
     <Form>
-      <Form.Item label="文本" name="username">
+      <Form.Item label="文本" name="username" style={{ background: '#ebedf2' }}>
         <Input
           className="nut-input-text"
           placeholder="请输入文本"

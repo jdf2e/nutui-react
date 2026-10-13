@@ -1007,6 +1007,7 @@ export type NutCSSVariables =
   | 'nutuiResultpageIconMarginBottom'
   | 'nutuiResultpageTitleMarginBottom'
   | 'nutuiResultpageTitleFontSize'
+  | 'nutuiResultpageTitleLineHeight'
   | 'nutuiResultpageTitleColor'
   | 'nutuiResultpageDescriptionFontSize'
   | 'nutuiResultpageDescriptionColor'

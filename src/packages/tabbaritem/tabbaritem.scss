@@ -14,8 +14,8 @@
   border-radius: $tabbar-active-border-radius;
 
   .nut-icon {
-    width: scale-px(20px);
-    height: scale-px(20px);
+    width: 20px;
+    height: 20px;
     font-size: scale-px(20px);
     /* #ifdef harmony dynamic*/
     color: $tabbar-inactive-color;
@@ -83,9 +83,9 @@
 
   .nut-image {
     &-default {
-      width: scale-px(38px);
-      height: scale-px(38px);
-      border-radius: scale-px(38px);
+      width: 38px;
+      height: 38px;
+      border-radius: 38px;
     }
   }
 

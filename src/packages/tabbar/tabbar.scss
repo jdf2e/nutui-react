@@ -93,11 +93,11 @@
         flex-direction: row;
         justify-content: center;
         .nut-icon {
-          width: scale-px(20px);
-          height: scale-px(20px);
+          width: 20px;
+          height: 20px;
         }
         .nut-tabbar-item-text {
-          margin: 0 scale-px(4px) 0 scale-px(6px);
+          margin: 0 4px 0 6px;
           font-size: $font-size-base;
         }
         .nut-badge-sup:not(.nut-badge-dot) {

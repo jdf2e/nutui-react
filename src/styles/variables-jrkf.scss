@@ -1783,6 +1783,14 @@ $steps-horizontal-item-special-3-padding-right: var(
   --nutui-steps-horizontal-item-special-3-padding-right,
   9px
 ) !default;
+$steps-horizontal-single-line-min-length: var(
+  --nutui-steps-horizontal-single-line-min-length,
+  12px
+) !default;
+$steps-horizontal-double-line-min-length: var(
+  --nutui-steps-horizontal-double-line-min-length,
+  40px
+) !default;
 $steps-vertical-item-padding-bottom: var(
   --nutui-steps-vertical-item-padding-bottom,
   13px
@@ -3123,6 +3131,10 @@ $resultpage-title-margin-bottom: var(
 $resultpage-title-font-size: var(
   --nutui-resultpage-title-font-size,
   $font-size-xl
+) !default;
+$resultpage-title-line-height: var(
+  --nutui-resultpage-title-line-height,
+  $line-height-xl
 ) !default;
 $resultpage-title-color: var(
   --nutui-resultpage-title-color,
