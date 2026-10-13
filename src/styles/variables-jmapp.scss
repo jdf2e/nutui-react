@@ -2076,6 +2076,8 @@ $badge-background-disabled-color: var(
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-xs) !default;
+$badge-border-width: var(--nutui-badge-border-width, 2px) !default;
+$badge-border-color: var(--nutui-badge-border-color, $badge-color) !default;
 $badge-border: var(--nutui-badge-border, 2px solid $badge-color) !default;
 $badge-border-radius: var(
   --nutui-badge-border-radius,
