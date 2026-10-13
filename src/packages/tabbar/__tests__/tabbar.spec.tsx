@@ -832,16 +832,28 @@ test('icon(active) follows ordinary item selection', () => {
   const { container } = render(
     <Tabbar defaultValue={0} onSwitch={onSwitch}>
       <Tabbar.Item title="首页" icon={icon} />
-      <Tabbar.Item title="我的" icon={icon} />
+      <Tabbar.Item
+        title="我的"
+        icon={(active) => (active ? <img src="/pressed.png" alt="" /> : null)}
+        value={8}
+      />
     </Tabbar>
   )
   const items = container.querySelectorAll('.nut-tabbar-item')
   expect(items).toHaveLength(2)
   expect(items[0].querySelector('img')).toHaveAttribute('src', '/pressed.png')
-  expect(items[1].querySelector('img')).toHaveAttribute('src', '/normal.png')
+  expect(items[1].querySelector('img')).toBeNull()
+  expect(items[1]).toHaveClass('nut-tabbar-item-large')
+  expect(items[1].querySelector('.nut-tabbar-item-visual')).toBeNull()
+  expect(items[1].querySelector('.nut-tabbar-item-text')).toHaveTextContent(
+    '我的'
+  )
+  expect(items[1].querySelector('.nut-badge-sup')).toHaveTextContent('8')
 
   fireEvent.click(items[1])
   expect(onSwitch).toHaveBeenCalledTimes(1)
   expect(onSwitch).toHaveBeenCalledWith(1)
   expect(items[1].querySelector('img')).toHaveAttribute('src', '/pressed.png')
+  expect(items[1]).not.toHaveClass('nut-tabbar-item-large')
+  expect(items[1].querySelector('.nut-tabbar-item-visual-icon')).not.toBeNull()
 })

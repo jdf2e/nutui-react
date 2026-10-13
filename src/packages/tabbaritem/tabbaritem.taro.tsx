@@ -49,19 +49,20 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     return node && typeof node === 'function' ? node(active) : node
   }
   const renderedIcon = renderNodeWithActive(icon)
+  const hasIcon = React.isValidElement(renderedIcon)
   const renderedTitle = renderNodeWithActive(title)
   const renderedValue = renderNodeWithActive(value)
   const resolvedBadgeAnchor =
     typeof badgeAnchor === 'function'
       ? badgeAnchor(active)
-      : badgeAnchor || (icon ? 'icon' : 'text')
+      : badgeAnchor || (hasIcon ? 'icon' : 'text')
   const isDesignBadge =
     dot ||
     (typeof renderedValue === 'number' && renderedValue !== 0) ||
     (typeof renderedValue === 'string' && renderedValue !== '')
   const useDesignBadge =
     direction !== 'horizontal' &&
-    !!icon &&
+    hasIcon &&
     resolvedBadgeAnchor !== 'text' &&
     isDesignBadge &&
     props.top === undefined &&
@@ -76,7 +77,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
-      [`${classPrefix}-large`]: !icon || !hasTitle,
+      [`${classPrefix}-large`]: !hasIcon || !hasTitle,
     },
     className
   )
@@ -170,10 +171,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
       {direction === 'horizontal' && !dot ? (
         renderDualItem()
       ) : (
-        <>
-          {icon && renderIconAndTitle()}
-          {!icon && renderTitle()}
-        </>
+        <>{hasIcon ? renderIconAndTitle() : renderTitle()}</>
       )}
     </View>
   )
