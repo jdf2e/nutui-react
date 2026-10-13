@@ -171,6 +171,8 @@ npm install @nutui/nutui-react-taro
 - **背景色默认值由白色改为透明（视觉变更）**：
   - `--nutui-navbar-background` 的默认值由 `$white` 调整为 `transparent`。若你的页面依赖导航栏自带白底，请显式设置 `--nutui-navbar-background`，或为外层容器补充背景。
 - **内边距与左右内容区宽度变量化（新增）**：
-  - 新增 `--nutui-navbar-padding`（默认 `4px 8px`）、`--nutui-navbar-side-maxwidth`（默认 `108px`）、`--nutui-navbar-side-padding`（默认 `8px`）。导航栏左右内边距由 `16px` 收紧为 `8px`，左右内容区最大宽度由 `124px` 调整为 `116px`。
+  - 新增 `--nutui-navbar-padding`（默认 `4px 8px`）、`--nutui-navbar-subbar-padding`（默认 `8px 0`，控制二级楼层的内边距）、`--nutui-navbar-side-maxwidth`（默认 `108px`）、`--nutui-navbar-side-padding`（默认 `8px`）。导航栏左右内边距由 `16px` 收紧为 `8px`，左右内容区最大宽度由 `124px` 调整为 `116px`。
+- **新增二级楼层 `subBar` 能力（新增）**：
+  - 新增 `subBar` 属性，用于在标题行下方渲染二级楼层内容；传入后根节点会自动换行排布（附加 `nut-navbar-has-subbar` 类）。属纯新增能力，不影响原有用法。
 - **标题字号在品牌间统一为 18px（视觉变更）**：
   - `--nutui-navbar-title-font-size` 在 JMAPP 主题由 `20px`、JRKF 主题由 `16px` 统一为 `18px`（`$font-size-xl`）。
