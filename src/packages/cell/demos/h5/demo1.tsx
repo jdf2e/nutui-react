@@ -16,9 +16,7 @@ const Demo1 = () => {
         title="我是标题"
         extra="描述文字"
         align="center"
-        style={{
-          '--nutui-cell-leading-margin': 'calc(8px * var(--nut-scale-f, 1))',
-        }}
+        style={{ '--nutui-cell-leading-margin': '8px' }}
       />
       <Cell title="我是标题" description="我是描述" extra="描述文字" />
       <Cell

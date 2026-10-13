@@ -126,12 +126,10 @@
 
   &-divider {
     display: flex;
-    min-height: 1px;
     padding-left: $cell-divider-left;
     padding-right: $cell-divider-right;
     &-inner {
       display: flex;
-      height: 1px;
       width: 100%;
       border-top: $cell-divider-border-bottom;
     }

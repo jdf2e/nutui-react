@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
+import { Cell, pxTransform } from '@nutui/nutui-react-taro'
 import { ITouchEvent } from '@tarojs/components'
 import { ConfigI } from '@nutui/icons-react-taro'
 
@@ -17,9 +17,7 @@ const Demo1 = () => {
         title="我是标题"
         extra="描述文字"
         align="center"
-        style={{
-          '--nutui-cell-leading-margin': 'calc(8px * var(--nut-scale-f, 1))',
-        }}
+        style={{ '--nutui-cell-leading-margin': pxTransform(8) }}
       />
       <Cell title="我是标题" description="我是描述" extra="描述文字" />
       <Cell
