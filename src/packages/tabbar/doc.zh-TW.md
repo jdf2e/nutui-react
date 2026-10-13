@@ -92,7 +92,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### addonBefore 前置入口
 
-透過 `addonBefore` 傳入圖片或自訂節點。元件只提供 52×52px 定位容器，圖片、外觀與點擊行為由呼叫方負責；`addonBefore` 不參與一般標籤的索引，也不觸發 `onSwitch`。示例使用設計稿 `1545:72` 匯出的 132×132px 透明 PNG，圖片置中覆蓋來源容器並包含陰影，點擊只列印控制台訊息。
+透過 `addonBefore` 傳入圖片或自訂節點。元件提供預設 52×52px 定位容器，右上角和右下角為全圓角，超出容器的內容會被裁切；圖片、外觀與點擊行為由呼叫方負責。`addonBefore` 不參與一般標籤的索引，也不觸發 `onSwitch`。示例使用設計稿 `1545:72` 匯出的 132×132px 透明 PNG，圖片置中覆蓋來源容器並包含陰影，點擊只列印控制台訊息。
 
 :::demo
 
@@ -102,7 +102,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 毛玻璃材質
 
-Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背板：3px 模糊、80% 明暗疊色，並將可見背板圓角設為 16px。明暗跟隨 `MaterialView` 的系統主題處理。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例在直向彩色背景圖上展示 `addonBefore` 內容與半透明背板。各端實際視覺效果以 `MaterialView` 的目標執行環境能力為準。
+Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背板：3px 模糊、80% 明暗疊色，可見背板為全圓角。明暗跟隨 `MaterialView` 的系統主題處理。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例在直向彩色背景圖上展示 `addonBefore` 內容與半透明背板。各端實際視覺效果以 `MaterialView` 的目標執行環境能力為準。
 
 :::demo
 
@@ -112,7 +112,7 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 
 ### 換膚背板
 
-傳入 `skinBackground` 後，背板內容取代預設的 `MaterialView` 材質。元件負責背板裁切、16px 圓角與導航項層級；示例圖片、圖示選中態和專屬定位均在 demo 中實作。`icon(active)` 可依選中狀態切換圖片。
+傳入 `skinBackground` 後，背板內容取代預設的 `MaterialView` 材質。元件負責背板裁切、全圓角與導航項層級；示例圖片、圖示選中態和專屬定位均在 demo 中實作。`icon(active)` 可依選中狀態切換圖片。
 
 :::demo
 

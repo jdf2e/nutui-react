@@ -31,6 +31,8 @@
     width: $tabbar-addon-before-source-size;
     height: $tabbar-addon-before-source-size;
     box-sizing: border-box;
+    border-radius: 0 50% 50% 0;
+    overflow: hidden;
     z-index: 1;
   }
 

@@ -92,7 +92,7 @@ This extends the fixed bottom demo. The demo page passes its scroll position to 
 
 ### addonBefore Entry
 
-Pass an image or custom node through `addonBefore`. The component supplies only the 52×52px positioning box; the caller supplies the image, appearance, and click behavior. `addonBefore` does not take a tab index or trigger `onSwitch`. This demo uses the 132×132px transparent PNG exported from design node `1545:72`, centered over the source box with its shadow. Clicking logs to the console only.
+Pass an image or custom node through `addonBefore`. The component supplies a 52×52px positioning box by default, with fully rounded top-right and bottom-right corners; content outside the box is clipped. The caller supplies the image, appearance, and click behavior. `addonBefore` does not take a tab index or trigger `onSwitch`. This demo uses the 132×132px transparent PNG exported from design node `1545:72`, centered over the source box with its shadow. Clicking logs to the console only.
 
 :::demo
 
@@ -102,7 +102,7 @@ Pass an image or custom node through `addonBefore`. The component supplies only 
 
 ### Frosted Glass Material
 
-By default, Tabbar uses the `MaterialView` `bottom-bar` preset for its 52px navigation board: 3px blur and an 80% light or dark tint. The visible board has a 16px radius. `MaterialView` follows the system theme. The outer layer and SafeArea remain transparent; extend the page background under the safe area. The demo shows `addonBefore` content and a translucent board over a color image. Check the actual appearance in each target runtime supported by `MaterialView`.
+By default, Tabbar uses the `MaterialView` `bottom-bar` preset for its 52px navigation board: 3px blur and an 80% light or dark tint. The visible board is fully rounded. `MaterialView` follows the system theme. The outer layer and SafeArea remain transparent; extend the page background under the safe area. The demo shows `addonBefore` content and a translucent board over a color image. Check the actual appearance in each target runtime supported by `MaterialView`.
 
 :::demo
 
@@ -112,7 +112,7 @@ By default, Tabbar uses the `MaterialView` `bottom-bar` preset for its 52px navi
 
 ### Custom Skin Background
 
-When `skinBackground` is provided, its content replaces the default `MaterialView` board. Tabbar handles clipping, the 16px radius, and item stacking. The artwork, selected icons, and their positioning belong to the demo. `icon(active)` switches images with the selection state.
+When `skinBackground` is provided, its content replaces the default `MaterialView` board. Tabbar handles clipping, the fully rounded shape, and item stacking. The artwork, selected icons, and their positioning belong to the demo. `icon(active)` switches images with the selection state.
 
 :::demo
 
