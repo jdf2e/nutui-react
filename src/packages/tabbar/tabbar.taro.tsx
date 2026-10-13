@@ -32,15 +32,20 @@ export function Tabbar(props: Partial<TaroTabbarProps>) {
     direction,
     safeArea,
     skinBackground,
-    agent,
+    addonBefore,
     className,
     style,
     onSwitch,
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-tabbar'
-  const items = useMemo(() => normalizeTabbarItems(children), [children])
-  const hasAgent =
-    agent !== null && agent !== undefined && typeof agent !== 'boolean'
+  const items = useMemo(
+    () => normalizeTabbarItems(children, TabbarItem),
+    [children]
+  )
+  const hasAddonBefore =
+    addonBefore !== null &&
+    addonBefore !== undefined &&
+    typeof addonBefore !== 'boolean'
   const hasSkin =
     skinBackground !== null &&
     skinBackground !== undefined &&
@@ -114,15 +119,15 @@ export function Tabbar(props: Partial<TaroTabbarProps>) {
         classPrefix,
         {
           [`${classPrefix}-fixed`]: fixed,
-          [`${classPrefix}-has-agent`]: hasAgent,
+          [`${classPrefix}-has-addon-before`]: hasAddonBefore,
         },
         className
       )}
       style={style}
     >
-      {hasAgent ? (
+      {hasAddonBefore ? (
         <View className={`${classPrefix}-main`}>
-          <View className={`${classPrefix}-agent`}>{agent}</View>
+          <View className={`${classPrefix}-addon-before`}>{addonBefore}</View>
           {navigation}
         </View>
       ) : (

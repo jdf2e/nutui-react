@@ -46,7 +46,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 首坑品牌+營銷態
 
-同一組示例展示營銷圖片上的紅點、數字和文字招手。設計標註以圖片左下角為基準：紅點的左/下偏移為 28/32 DP，數字與文字為 24/32 DP；扣除外框各側 1px 後，CSS 外框偏移分別為 27/31 和 23/31 DP。圖片下方不顯示文案。圖片與圖標按選中態切換時，`badgeAnchor` 也隨之切換。
+同一組示例展示營銷圖片上的紅點、數字和文字招手。設計標註以圖片左下角為基準：紅點的左/下偏移為 28/32 DP，數字與文字為 24/32 DP；扣除外框各側 1px 後，CSS 外框偏移分別為 27/31 和 23/31 DP。圖片下方不顯示文案。圖片徽標的位置由示例專用樣式 `badge-demo.scss` 控制，切換圖片與圖標時按選中態調整樣式。
 
 :::demo
 
@@ -90,9 +90,9 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### Agent 組合入口
+### addonBefore 前置入口
 
-透過 `agent` 傳入圖片或自訂節點。元件只提供 52×52px 定位容器，圖片、外觀與點擊行為由呼叫方負責；Agent 不參與一般標籤的索引，也不觸發 `onSwitch`。示例使用設計稿 `1545:72` 匯出的 132×132px 透明 PNG，圖片置中覆蓋來源容器並包含陰影，點擊只列印控制台訊息。
+透過 `addonBefore` 傳入圖片或自訂節點。元件只提供 52×52px 定位容器，圖片、外觀與點擊行為由呼叫方負責；`addonBefore` 不參與一般標籤的索引，也不觸發 `onSwitch`。示例使用設計稿 `1545:72` 匯出的 132×132px 透明 PNG，圖片置中覆蓋來源容器並包含陰影，點擊只列印控制台訊息。
 
 :::demo
 
@@ -102,7 +102,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 毛玻璃材質
 
-Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背板：3px 模糊、80% 明暗疊色，並將可見背板圓角設為 16px。明暗跟隨 `MaterialView` 的系統主題處理。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例在直向彩色背景圖上展示 Agent 與半透明背板。各端實際視覺效果以 `MaterialView` 的目標執行環境能力為準。
+Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背板：3px 模糊、80% 明暗疊色，並將可見背板圓角設為 16px。明暗跟隨 `MaterialView` 的系統主題處理。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例在直向彩色背景圖上展示 `addonBefore` 內容與半透明背板。各端實際視覺效果以 `MaterialView` 的目標執行環境能力為準。
 
 :::demo
 
@@ -133,7 +133,7 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 | inactiveColor | icon未激活的顏色 | `string` | `#7d7e80` |
 | safeArea | 是否開啟iphone繫列全面屏底部安全區適配 | `boolean` | `false` |
 | skinBackground | 自訂換膚背板內容，傳入時取代預設材質 | `ReactNode` | `-` |
-| agent | 獨立 Agent 入口內容，圖片與點擊由呼叫方提供 | `ReactNode` | `-` |
+| addonBefore | 前置入口內容，圖片與點擊由呼叫方提供 | `ReactNode` | `-` |
 | onSwitch | 切換頁簽時觸發事件 | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -145,7 +145,6 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 | title | 標簽頁的標題 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | icon | 自定義圖標 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | value | 徽標中顯示的內容，支持數字、字符和自定義內容 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
-| badgeAnchor | 招手相對的內容類型：`icon` 圖標、`image` 圖片、`text` 純文字；圖片需明確指定，純文字沿用原有位置，可按選中態返回類型 | `'icon' \| 'image' \| 'text' \| ((active: boolean) => 'icon' \| 'image' \| 'text')` | 有圖標時為 `icon`，否則為 `text` |
 | max | value 為數值時，最大值 | `number` | `99` |
 | dot | 徽標是否為小點 | `boolean` | `false` |
 | top | 徽標的上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
@@ -161,9 +160,9 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-tabbar-height | 導航層高度 | `52px` |
-| \--nutui-tabbar-agent-source-size | Agent 定位容器尺寸 | `52px` |
-| \--nutui-tabbar-agent-gap | Agent 與導航背板間距 | `8px` |
-| \--nutui-tabbar-agent-outset | Agent 向外側抽縮距離 | `16px` |
+| \--nutui-tabbar-addon-before-source-size | `addonBefore` 定位容器尺寸 | `52px` |
+| \--nutui-tabbar-addon-before-gap | `addonBefore` 與導航背板間距 | `8px` |
+| \--nutui-tabbar-addon-before-outset | `addonBefore` 向外側抽縮距離 | `16px` |
 | \--nutui-tabbar-content-height | 內容層高度 | `44px` |
 | \--nutui-tabbar-horizontal-padding | 導航層左右間距 | `12px` |
 | \--nutui-tabbar-content-padding | 導航背板內邊距 | `4px` |

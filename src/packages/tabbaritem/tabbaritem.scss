@@ -70,16 +70,6 @@
       left: scale-px(14px);
       bottom: scale-px(13px);
     }
-
-    &-image#{&}-dot > .nut-badge {
-      left: scale-px(27px);
-      bottom: scale-px(31px);
-    }
-
-    &-image#{&}-value > .nut-badge {
-      left: scale-px(23px);
-      bottom: scale-px(31px);
-    }
   }
 
   &-text {

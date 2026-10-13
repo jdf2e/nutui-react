@@ -35,7 +35,7 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
     direction,
     safeArea,
     skinBackground,
-    agent,
+    addonBefore,
     className,
     style,
     onSwitch,
@@ -55,9 +55,14 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
     update()
     return () => observer.disconnect()
   }, [])
-  const items = useMemo(() => normalizeTabbarItems(children), [children])
-  const hasAgent =
-    agent !== null && agent !== undefined && typeof agent !== 'boolean'
+  const items = useMemo(
+    () => normalizeTabbarItems(children, TabbarItem),
+    [children]
+  )
+  const hasAddonBefore =
+    addonBefore !== null &&
+    addonBefore !== undefined &&
+    typeof addonBefore !== 'boolean'
   const hasSkin =
     skinBackground !== null &&
     skinBackground !== undefined &&
@@ -134,15 +139,15 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
         classPrefix,
         {
           [`${classPrefix}-fixed`]: fixed,
-          [`${classPrefix}-has-agent`]: hasAgent,
+          [`${classPrefix}-has-addon-before`]: hasAddonBefore,
         },
         className
       )}
       style={style}
     >
-      {hasAgent ? (
+      {hasAddonBefore ? (
         <div className={`${classPrefix}-main`}>
-          <div className={`${classPrefix}-agent`}>{agent}</div>
+          <div className={`${classPrefix}-addon-before`}>{addonBefore}</div>
           {navigation}
         </div>
       ) : (

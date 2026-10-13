@@ -42,11 +42,11 @@ const Demo11 = () => {
         value={value}
         onSwitch={setValue}
         style={{ position: 'relative', zIndex: 1 }}
-        agent={
+        addonBefore={
           <View
             role="button"
-            aria-label="打开 Agent"
-            onClick={() => console.log('Agent 已点击')}
+            aria-label="打开前置入口"
+            onClick={() => console.log('前置入口已点击')}
             style={{ width: '52px', height: '52px' }}
           >
             <Image

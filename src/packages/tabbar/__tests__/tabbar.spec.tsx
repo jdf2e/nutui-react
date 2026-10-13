@@ -192,15 +192,15 @@ test('render item size 2 and direction is horizontal', () => {
   expect(container.innerHTML).toMatchSnapshot()
 })
 
-test('Agent does not occupy a navigation index', () => {
-  const onAgentClick = vi.fn()
+test('addonBefore does not occupy a navigation index', () => {
+  const onAddonBeforeClick = vi.fn()
   const onSwitch = vi.fn()
   const { container } = render(
     <Tabbar
       onSwitch={onSwitch}
-      agent={
-        <button type="button" onClick={onAgentClick}>
-          Agent entry
+      addonBefore={
+        <button type="button" onClick={onAddonBeforeClick}>
+          Addon before entry
         </button>
       }
     >
@@ -210,10 +210,10 @@ test('Agent does not occupy a navigation index', () => {
   )
   const items = container.querySelectorAll('.nut-tabbar-item')
 
-  expect(container.querySelectorAll('.nut-tabbar-agent')).toHaveLength(1)
+  expect(container.querySelectorAll('.nut-tabbar-addon-before')).toHaveLength(1)
   expect(items).toHaveLength(2)
-  fireEvent.click(container.querySelector('.nut-tabbar-agent button')!)
-  expect(onAgentClick).toHaveBeenCalledTimes(1)
+  fireEvent.click(container.querySelector('.nut-tabbar-addon-before button')!)
+  expect(onAddonBeforeClick).toHaveBeenCalledTimes(1)
   expect(onSwitch).not.toHaveBeenCalled()
   fireEvent.click(items[1])
   expect(onSwitch).toHaveBeenCalledWith(1)
@@ -225,6 +225,7 @@ test('indexes rendered children across conditional and Fragment children', () =>
   ) {
     return <Tabbar.Item {...props} />
   })
+  WrappedItem.displayName = Tabbar.Item.displayName
   const onSwitch = vi.fn()
   const { container } = render(
     <Tabbar onSwitch={onSwitch}>
@@ -236,11 +237,13 @@ test('indexes rendered children across conditional and Fragment children', () =>
         {undefined}
         <WrappedItem title="我的" />
       </>
+      <span>not a tab</span>
     </Tabbar>
   )
   const items = container.querySelectorAll('.nut-tabbar-item')
 
   expect(items).toHaveLength(3)
+  expect(container.querySelector('.nut-tabbar-wrap > span')).toBeNull()
   fireEvent.click(items[2])
   expect(onSwitch).toHaveBeenCalledWith(2)
 })
@@ -250,11 +253,7 @@ test('keeps dot, number and text badges on their content', () => {
     <Tabbar>
       <Tabbar.Item title="红点" icon={<Home />} dot />
       <Tabbar.Item title="数字" icon={<Category />} value={8} />
-      <Tabbar.Item
-        icon={<img src="/image.png" alt="" />}
-        badgeAnchor="image"
-        value="最多四字"
-      />
+      <Tabbar.Item icon={<img src="/image.png" alt="" />} value="最多四字" />
       <Tabbar.Item title="纯文本" value={5} />
     </Tabbar>
   )
@@ -272,7 +271,7 @@ test('keeps dot, number and text badges on their content', () => {
   ).toHaveTextContent('8')
   expect(
     items[2].querySelector(
-      '.nut-tabbar-item-visual-image.nut-tabbar-item-visual-value .nut-badge-sup'
+      '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-value .nut-badge-sup'
     )
   ).toHaveTextContent('最多四字')
   expect(items[2].querySelector('.nut-tabbar-item-text')).toBeNull()

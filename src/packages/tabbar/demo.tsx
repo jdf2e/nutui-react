@@ -27,7 +27,7 @@ const TabbarDemo = () => {
       cfbdc781: '固定底部与返顶',
       c9e6df49: '受控',
       c9e6df48: '再次点击当前项',
-      agent: 'Agent 组合入口',
+      addonBefore: 'addonBefore 前置入口',
       material: '毛玻璃材质',
       skin: '换肤背板',
     },
@@ -41,7 +41,7 @@ const TabbarDemo = () => {
       cfbdc781: '固定底部與返頂',
       c9e6df49: '受控',
       c9e6df48: '再次點擊目前項目',
-      agent: 'Agent 組合入口',
+      addonBefore: 'addonBefore 前置入口',
       material: '毛玻璃材質',
       skin: '換膚背板',
     },
@@ -55,7 +55,7 @@ const TabbarDemo = () => {
       cfbdc781: 'Fixed Bottom and Back to Top',
       c9e6df49: 'With Controled',
       c9e6df48: 'Click Active Item Again',
-      agent: 'Agent Entry',
+      addonBefore: 'addonBefore Entry',
       material: 'Frosted Glass Material',
       skin: 'Custom Skin Background',
     },
@@ -85,7 +85,7 @@ const TabbarDemo = () => {
         <Demo7 />
         <h2>{translated.c9e6df48}</h2>
         <Demo8 />
-        <h2>{translated.agent}</h2>
+        <h2>{translated.addonBefore}</h2>
         <Demo10 />
         <h2>{translated.material}</h2>
         <Demo11 />

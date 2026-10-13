@@ -46,7 +46,7 @@ Icon content supports dot, number, and text badges. The design offsets from the 
 
 ### Custom
 
-This single marketing example shows dot, number, and text badges on images. The design offsets from the image's left and bottom edges are 28/32 DP for a dot and 24/32 DP for numbers or text; after accounting for the 1px outer border, the CSS outer-box offsets are 27/31 and 23/31 DP respectively. Images have no label below them. When the content switches between an image and an icon, switch `badgeAnchor` with it.
+This single marketing example shows dot, number, and text badges on images. The design offsets from the image's left and bottom edges are 28/32 DP for a dot and 24/32 DP for numbers or text; after accounting for the 1px outer border, the CSS outer-box offsets are 27/31 and 23/31 DP respectively. Images have no label below them. The example-specific `badge-demo.scss` positions badges over the artwork and adjusts the placement when the content switches between an image and an icon.
 
 :::demo
 
@@ -90,9 +90,9 @@ This extends the fixed bottom demo. The demo page passes its scroll position to 
 
 :::
 
-### Agent Entry
+### addonBefore Entry
 
-Pass an image or custom node through `agent`. The component supplies only the 52×52px positioning box; the caller supplies the image, appearance, and click behavior. The Agent does not take a tab index or trigger `onSwitch`. This demo uses the 132×132px transparent PNG exported from design node `1545:72`, centered over the source box with its shadow. Clicking logs to the console only.
+Pass an image or custom node through `addonBefore`. The component supplies only the 52×52px positioning box; the caller supplies the image, appearance, and click behavior. `addonBefore` does not take a tab index or trigger `onSwitch`. This demo uses the 132×132px transparent PNG exported from design node `1545:72`, centered over the source box with its shadow. Clicking logs to the console only.
 
 :::demo
 
@@ -102,7 +102,7 @@ Pass an image or custom node through `agent`. The component supplies only the 52
 
 ### Frosted Glass Material
 
-By default, Tabbar uses the `MaterialView` `bottom-bar` preset for its 52px navigation board: 3px blur and an 80% light or dark tint. The visible board has a 16px radius. `MaterialView` follows the system theme. The outer layer and SafeArea remain transparent; extend the page background under the safe area. The demo shows an Agent and a translucent board over a color image. Check the actual appearance in each target runtime supported by `MaterialView`.
+By default, Tabbar uses the `MaterialView` `bottom-bar` preset for its 52px navigation board: 3px blur and an 80% light or dark tint. The visible board has a 16px radius. `MaterialView` follows the system theme. The outer layer and SafeArea remain transparent; extend the page background under the safe area. The demo shows `addonBefore` content and a translucent board over a color image. Check the actual appearance in each target runtime supported by `MaterialView`.
 
 :::demo
 
@@ -133,7 +133,7 @@ When `skinBackground` is provided, its content replaces the default `MaterialVie
 | inactiveColor | Icon inactive color | `string` | `#7d7e80` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
 | skinBackground | Custom skin board content; replaces the default material | `ReactNode` | `-` |
-| agent | Separate Agent entry content; the caller provides its image and click behavior | `ReactNode` | `-` |
+| addonBefore | Leading entry content; the caller provides its image and click behavior | `ReactNode` | `-` |
 | onSwitch | Trigger an event when switching tabs | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -145,7 +145,6 @@ When `skinBackground` is provided, its content replaces the default `MaterialVie
 | title | the title of the tab | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | icon | Custom icon | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | value | value to show in Badge, eg number、charctor and custom content | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
-| badgeAnchor | Badge anchor content: `icon`, `image`, or text-only `text`; specify `image` explicitly. Text-only content keeps its existing badge position. Supports an active-state callback. | `'icon' \| 'image' \| 'text' \| ((active: boolean) => 'icon' \| 'image' \| 'text')` | `icon` with an icon, otherwise `text` |
 | max | when value is number, it's the max size | `number` | `99` |
 | dot | Whether Badge is dotted | `boolean` | `false` |
 | top | Up and down offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
@@ -161,9 +160,9 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-tabbar-height | navigation layer height | `52px` |
-| \--nutui-tabbar-agent-source-size | Agent positioning box size | `52px` |
-| \--nutui-tabbar-agent-gap | Gap between Agent and navigation board | `8px` |
-| \--nutui-tabbar-agent-outset | Agent outward offset | `16px` |
+| \--nutui-tabbar-addon-before-source-size | `addonBefore` positioning box size | `52px` |
+| \--nutui-tabbar-addon-before-gap | Gap between `addonBefore` and navigation board | `8px` |
+| \--nutui-tabbar-addon-before-outset | `addonBefore` outward offset | `16px` |
 | \--nutui-tabbar-content-height | content layer height | `44px` |
 | \--nutui-tabbar-horizontal-padding | horizontal inset | `12px` |
 | \--nutui-tabbar-content-padding | navigation board inner padding | `4px` |

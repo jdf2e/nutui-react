@@ -27,7 +27,6 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     title,
     icon,
     value,
-    badgeAnchor,
     dot,
     max,
     top,
@@ -55,10 +54,6 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     renderedIcon !== ''
   const renderedTitle = renderNodeWithActive(title)
   const renderedValue = renderNodeWithActive(value)
-  const resolvedBadgeAnchor =
-    typeof badgeAnchor === 'function'
-      ? badgeAnchor(active)
-      : badgeAnchor || (hasIcon ? 'icon' : 'text')
   const isDesignBadge =
     dot ||
     (typeof renderedValue === 'number' && renderedValue !== 0) ||
@@ -66,7 +61,6 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   const useDesignBadge =
     direction !== 'horizontal' &&
     hasIcon &&
-    resolvedBadgeAnchor !== 'text' &&
     isDesignBadge &&
     props.top === undefined &&
     props.right === undefined
@@ -117,7 +111,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
           <div
             className={classNames(
               `${classPrefix}-visual`,
-              `${classPrefix}-visual-${resolvedBadgeAnchor}`,
+              `${classPrefix}-visual-icon`,
               `${classPrefix}-visual-${dot ? 'dot' : 'value'}`
             )}
           >
@@ -162,3 +156,5 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     </div>
   )
 }
+
+TabbarItem.displayName = 'NutTabbarItem'

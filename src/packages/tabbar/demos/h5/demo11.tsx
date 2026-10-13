@@ -27,11 +27,11 @@ const Demo11 = () => {
       <Tabbar
         value={value}
         onSwitch={setValue}
-        agent={
+        addonBefore={
           <button
             type="button"
-            aria-label="打开 Agent"
-            onClick={() => console.log('Agent 已点击')}
+            aria-label="打开前置入口"
+            onClick={() => console.log('前置入口已点击')}
             style={{
               width: 52,
               height: 52,

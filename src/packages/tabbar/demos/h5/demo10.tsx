@@ -7,11 +7,11 @@ const joyImage =
 
 const Demo10 = () => (
   <Tabbar
-    agent={
+    addonBefore={
       <button
         type="button"
-        aria-label="打开 Agent"
-        onClick={() => console.log('Agent 已点击')}
+        aria-label="打开前置入口"
+        onClick={() => console.log('前置入口已点击')}
         style={{
           width: '52px',
           height: '52px',
@@ -25,7 +25,7 @@ const Demo10 = () => (
       >
         <img
           src={joyImage}
-          alt="Joy Agent"
+          alt="前置入口"
           style={{
             display: 'block',
             width: '100%',

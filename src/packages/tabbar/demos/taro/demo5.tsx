@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tabbar, Image, harmony, pxTransform } from '@nutui/nutui-react-taro'
 import { Cart, Hi, Home, User } from '@nutui/icons-react-taro'
+import '../badge-demo.scss'
 
 const Demo = () => {
   const image =
@@ -14,8 +15,9 @@ const Demo = () => {
   )
 
   return (
-    <Tabbar>
+    <Tabbar className="tabbar-marketing-demo">
       <Tabbar.Item
+        className="image-when-active"
         title={(active: boolean) => (active ? '' : '首页')}
         icon={(active: boolean) =>
           active ? (
@@ -26,19 +28,18 @@ const Demo = () => {
             <Home />
           )
         }
-        badgeAnchor={(active: boolean) => (active ? 'image' : 'icon')}
         dot
       />
       <Tabbar.Item
+        className="image-when-inactive"
         icon={(active: boolean) => (active ? <Hi /> : marketingImage(image))}
-        badgeAnchor={(active: boolean) => (active ? 'icon' : 'image')}
         title={(active: boolean) => (active ? '逛' : '')}
         value={8}
       />
       <Tabbar.Item
+        className="image-always"
         title=""
         icon={marketingImage(image)}
-        badgeAnchor="image"
         value="最多四字"
       />
       <Tabbar.Item title="购物车" icon={<Cart />} />

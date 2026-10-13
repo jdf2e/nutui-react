@@ -1,8 +1,12 @@
 import React, { ReactElement, ReactNode } from 'react'
 
-/** 递归展开 Fragment、过滤空节点，并为有效子元素生成稳定的层级 key */
-export const normalizeTabbarItems = (children: ReactNode): ReactElement[] => {
+/** 递归展开 Fragment，识别 Tabbar.Item 及同名包装组件，并生成稳定的层级 key */
+export const normalizeTabbarItems = (
+  children: ReactNode,
+  itemType: React.ElementType & { displayName?: string }
+): ReactElement[] => {
   const items: ReactElement[] = []
+  const itemDisplayName = itemType.displayName
 
   const visit = (nodes: ReactNode, parentKey = '') => {
     React.Children.toArray(nodes).forEach((child) => {
@@ -13,7 +17,13 @@ export const normalizeTabbarItems = (children: ReactNode): ReactElement[] => {
 
       if (child.type === React.Fragment) {
         visit((child.props as { children?: ReactNode }).children, key)
-      } else {
+      } else if (
+        child.type === itemType ||
+        (itemDisplayName &&
+          typeof child.type !== 'string' &&
+          (child.type as { displayName?: string }).displayName ===
+            itemDisplayName)
+      ) {
         items.push(React.cloneElement(child, { key }))
       }
     })
