@@ -17,10 +17,13 @@ import raf from '@/utils/raf'
 import { useUuid } from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
 import { CardShoulder } from './icon.taro'
-import { getCardFlushSides } from './utils'
+import {
+  getCardActiveMarginTotal,
+  getCardFlushSides,
+  isContentScrollable,
+} from './utils'
 import { TabsTitle, TaroTabsProps } from '@/types'
 import { td } from '@/utils/taro/platform'
-import { calcByProfile } from '@/utils'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -33,13 +36,6 @@ const defaultProps = {
 } as TaroTabsProps
 
 const classPrefix = 'nut-tabs'
-
-// 卡片模式下激活卡片两侧共预留 margin: 0 scale-px(24px),而 boundingClientRect 不含 margin,
-// 估算可滑动性与滚动钳制时都需按最大 48px(2 * 24px)回补,统一在此维护;
-// 设计基准值经 calcByProfile 换算,与 SCSS 的 scale-px 共用同一缩放系数 --nut-scale-f
-const CARD_ACTIVE_MARGIN_TOTAL = 48
-
-const getCardActiveMarginTotal = () => calcByProfile(CARD_ACTIVE_MARGIN_TOTAL)
 
 export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   TabPane: typeof TabPane
@@ -118,6 +114,8 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
+    // @deprecated 兼容旧版恒定的可滑动类名,保留以确保业务侧既有样式覆盖不失效,后续版本移除
+    [`${classPrefix}-titles-scrollable`]: true,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
@@ -169,10 +167,14 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
           (sum: number, curr: RectItem) => sum + curr.width,
           0
         )
-        // 卡片模式 active 卡片 margin 不在 boundingClientRect 内,按 CARD_ACTIVE_MARGIN_TOTAL 预留,
-        // 与 scrollIntoView 的钳制口径一致,避免临界内容误判为放得下
+        // 布局未就绪(宽度为 0)时不判定,保留初始状态
+        if (totalWidth <= 0) return
+        // 与 H5 端保持同一口径:各项宽度之和 + 激活卡片预留外边距 vs 容器可视宽度
         setIsScrollable(
-          totalWidth + getCardActiveMarginTotal() - navRect.width > 1
+          isContentScrollable(
+            totalWidth + getCardActiveMarginTotal(),
+            navRect.width
+          )
         )
       })
     })

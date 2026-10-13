@@ -3,7 +3,7 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Tabs } from '../tabs'
 import { TabPane } from '../../tabpane/tabpane'
-import { getCardFlushSides } from '../utils'
+import { getCardFlushSides, isContentScrollable } from '../utils'
 
 test('base Tabs', () => {
   const { getByTestId } = render(
@@ -27,7 +27,19 @@ test('base tabs props', () => {
 
   expect(el2.length > 0).toBe(true)
   expect(el3).toHaveClass('nut-tabs-titles-smile')
-  expect(el3).not.toHaveClass('nut-tabs-titles-scrollable')
+  // 兼容旧版的恒定可滑动类名(已废弃)仍保留,确保业务侧既有样式覆盖不失效
+  expect(el3).toHaveClass('nut-tabs-titles-scrollable')
+})
+
+test('isContentScrollable treats boundary width correctly', () => {
+  // 内容与容器等宽:不可滑动
+  expect(isContentScrollable(200, 200)).toBe(false)
+  // 仅超出 1px:落在容差内,不判定为可滑动
+  expect(isContentScrollable(201, 200)).toBe(false)
+  // 超出超过 1px:判定为可滑动
+  expect(isContentScrollable(202, 200)).toBe(true)
+  // 内容小于容器:不可滑动
+  expect(isContentScrollable(180, 200)).toBe(false)
 })
 
 test('card flush sides follow scrollable, align and rtl', () => {
@@ -88,8 +100,8 @@ test('card tabs apply flush modifier to active item', () => {
     </Tabs>
   )
   const titles = container.querySelectorAll('.nut-tabs-titles')[0]
-  expect(titles).not.toHaveClass('nut-tabs-titles-scrollable')
-  expect(titles).not.toHaveClass('nut-tabs-titles-not-scrollable')
+  // 兼容旧版的恒定可滑动类名(已废弃)仍保留
+  expect(titles).toHaveClass('nut-tabs-titles-scrollable')
 
   const items = container.querySelectorAll('.nut-tabs-titles-item')
   expect(items[0]).toHaveClass('nut-tabs-titles-item-active--flush-left')

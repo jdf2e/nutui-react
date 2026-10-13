@@ -277,6 +277,7 @@ import { Tabs } from '@nutui/nutui-react'
 | \--nutui-tabs-button-active-font-size | 按钮模式选中标题的字号 | `$font-size-base` |
 | \--nutui-tabs-button-active-font-weight | 按钮模式选中标题的字重 | `$font-weight-bold` |
 | \--nutui-tabs-button-background-color | 按钮模式未选中标题的背景色 | `var(--nutui-color-background-component)` |
+| \--nutui-tabs-button-active-border | 按钮模式选中标题的内描边 | `inset 0 0 0 1px $color-primary` |
 | \--nutui-tabs-vertical-titles-width | 垂直方向标题的宽度 | `100px` |
 | \--nutui-tabs-vertical-titles-item-height | 垂直方向标题的高度 | `40px` |
 | \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $color-primary 0%, rgba(#FF0F23, 0.15) 100%)` |
@@ -284,5 +285,7 @@ import { Tabs } from '@nutui/nutui-react'
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向标题线条的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的内边距 | `24px 20px` |
 | \--nutui-tabs-tabpane-background-color | Tabpane 的背景色 | `#fff` |
+
+> 备注：`--nutui-tabs-button-active-border` 自 v16 起通过 `box-shadow` 生效（用于内描边），取值需为合法的 box-shadow 值（如 `inset 0 0 0 1px #ff0f23`）；旧版的 `border` 简写（如 `1px solid #ff0f23`）不再生效。
 
 <Contribution name="Tabs" />

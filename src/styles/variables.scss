@@ -2373,7 +2373,7 @@ $tabs-tab-button-active-background-color: var(
 ) !default;
 $tabs-tab-button-active-border: var(
   --nutui-tabs-button-active-border,
-  inset 0 0 0 scale-px(1px) $color-primary
+  inset 0 0 0 1px $color-primary
 ) !default;
 $tabs-vertical-titles-width: var(
   --nutui-tabs-vertical-titles-width,
