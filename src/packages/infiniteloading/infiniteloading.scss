@@ -17,13 +17,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
-      &-icons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 4px;
-      }
     }
   }
 
@@ -32,38 +25,59 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding-top: 6px;
-    color: $infiniteloading-color;
+    box-sizing: border-box;
+    padding: calc(10px * var(--nut-scale-f, 1)) 0;
+    color: $color-text;
     text-align: center;
 
     &-tips {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: $font-size-xxs;
+      gap: calc(4px * var(--nut-scale-f, 1));
+      font-size: $font-size-s;
+      font-weight: $font-weight;
+      line-height: calc(18px * var(--nut-scale-f, 1));
+    }
 
-      &-icons {
-        margin-right: 8px;
+    // 图标一律由图片承载（内置 gif 与 renderIcon 传入的图片走同一套规则），
+    // 尺寸直接给到图片本身。
+    // img: H5；image: 小程序；taro-image-core: Taro 的 H5 实现（默认 320x240，必须显式覆盖）
+    &-icon {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: $infiniteloading-icon-size;
+      height: $infiniteloading-icon-size;
+      line-height: 0;
+
+      img,
+      image,
+      taro-image-core {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
     }
+
+    &-text {
+      width: max-content;
+      max-width: 100%;
+      white-space: nowrap;
+    }
   }
+
   &-primary {
     background-color: $color-primary;
-    .nut-infinite-bottom,
+
     .nut-infinite-top {
       color: $color-text-dark;
     }
-  }
-}
 
-[dir='rtl'] .nut-infiniteloading,
-.nut-rtl .nut-infiniteloading {
-  .nut-infinite-bottom {
-    &-tips {
-      &-icons {
-        margin-right: 0;
-        margin-left: 8px;
-      }
+    .nut-infinite-bottom {
+      color: $color-primary-text;
     }
   }
 }

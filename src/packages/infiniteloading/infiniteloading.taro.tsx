@@ -1,19 +1,27 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import { ScrollView, View } from '@tarojs/components'
+import { Image, ScrollView, View } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { TaroInfiniteLoadingProps } from '@/types'
+import { runWithMinimumDuration } from '@/utils/run-with-minimum-duration'
+import { InfiniteLoadingStatus, TaroInfiniteLoadingProps } from '@/types'
 import { pxTransform } from '@/utils/taro/px-transform'
+import {
+  INFINITE_LOADING_DEFAULT_COMPLETE_ICON,
+  INFINITE_LOADING_DEFAULT_ICON,
+  INFINITE_LOADING_PRIMARY_COMPLETE_ICON,
+  INFINITE_LOADING_PRIMARY_ICON,
+} from './images'
 
 const defaultProps = {
   ...ComponentDefaults,
   type: 'default',
   hasMore: true,
-  threshold: 40,
+  threshold: 200,
   target: '',
   pullRefresh: false,
+  minimumLoadingTime: 200,
 } as TaroInfiniteLoadingProps
 
 const classPrefix = `nut-infiniteloading`
@@ -30,8 +38,12 @@ export const InfiniteLoading: FunctionComponent<
     target,
     pullRefresh,
     pullingText,
+    pullUpText,
     loadingText,
     loadMoreText,
+    minimumLoadingTime,
+    iconStyle,
+    renderIcon,
     className,
     onRefresh,
     onLoadMore,
@@ -42,6 +54,7 @@ export const InfiniteLoading: FunctionComponent<
     ...props,
   }
   const [isInfiniting, setIsInfiniting] = useState(false)
+  const loadingRef = useRef(false)
   const [topDisScoll, setTopDisScoll] = useState(0)
   const refreshTop = useRef<HTMLDivElement>(null)
   const scrollHeight = useRef(0)
@@ -51,15 +64,26 @@ export const InfiniteLoading: FunctionComponent<
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
+  let status: InfiniteLoadingStatus = 'complete'
+  if (isInfiniting) {
+    status = 'loading'
+  } else if (hasMore) {
+    status = 'idle'
+  }
+  const classes = classNames(
+    classPrefix,
+    `${classPrefix}-taro`,
+    className,
+    `${classPrefix}-${type}`
+  )
 
   useEffect(() => {
-    refreshMaxH.current = threshold
+    refreshMaxH.current = 40
     const timer = setTimeout(() => {
       getScrollHeight()
     }, 200)
     return () => clearTimeout(timer)
-  }, [hasMore, isInfiniting, threshold])
+  }, [hasMore, isInfiniting])
 
   /** 获取需要滚动的距离 */
   const getScrollHeight = () => {
@@ -83,6 +107,7 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const infiniteDone = () => {
+    loadingRef.current = false
     setIsInfiniting(false)
   }
 
@@ -102,12 +127,16 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const lower = async () => {
-    if (!hasMore || isInfiniting) {
+    if (!hasMore || loadingRef.current) {
       return false
     }
+    loadingRef.current = true
     setIsInfiniting(true)
-    await onLoadMore?.()
-    infiniteDone()
+    try {
+      await runWithMinimumDuration(onLoadMore, minimumLoadingTime)
+    } finally {
+      infiniteDone()
+    }
   }
 
   const touchStart = (event: any) => {
@@ -151,14 +180,37 @@ export const InfiniteLoading: FunctionComponent<
     if (!hasMore) {
       return loadMoreText || locale.infiniteloading.loadMoreText
     }
-    return null
+    return pullUpText || locale.infiniteloading.pullUpText
+  }
+
+  // 内置图标按 type 与 status 取：加载中用 gif 动图，没有更多了用静态图
+  function getBuiltInIconSrc() {
+    const isPrimary = type === 'primary'
+    if (status === 'complete') {
+      return isPrimary
+        ? INFINITE_LOADING_PRIMARY_COMPLETE_ICON
+        : INFINITE_LOADING_DEFAULT_COMPLETE_ICON
+    }
+    return isPrimary
+      ? INFINITE_LOADING_PRIMARY_ICON
+      : INFINITE_LOADING_DEFAULT_ICON
+  }
+
+  // 使用方可通过 renderIcon 完全接管内置图标
+  function getBottomTipsIcon() {
+    if (renderIcon) {
+      return renderIcon(status)
+    }
+    return <Image src={getBuiltInIconSrc()} />
   }
 
   return (
     <ScrollView
       {...rest}
       className={classes}
+      data-status={status}
       scrollY
+      lowerThreshold={threshold}
       id="scroller"
       type="list"
       style={{ height: '100%' }}
@@ -175,7 +227,14 @@ export const InfiniteLoading: FunctionComponent<
       </View>
       <View className="nut-infinite-container">{children}</View>
       <View className="nut-infinite-bottom">
-        <View className="nut-infinite-bottom-tips">{getBottomTipsText()}</View>
+        <View className="nut-infinite-bottom-tips">
+          <View className="nut-infinite-bottom-icon" style={iconStyle}>
+            {getBottomTipsIcon()}
+          </View>
+          <View className="nut-infinite-bottom-text">
+            {getBottomTipsText()}
+          </View>
+        </View>
       </View>
     </ScrollView>
   )
