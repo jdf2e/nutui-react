@@ -58,8 +58,9 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     dot ||
     (typeof renderedValue === 'number' && renderedValue !== 0) ||
     (typeof renderedValue === 'string' && renderedValue !== '')
-  // 只在竖向布局、有图标且未指定 top/right 时启用，避免覆盖横向排版和调用方设置的位置
+  // 只在材质背板的竖向图标上使用新定位，standard 沿用原有徽标样式
   const shouldUseIconBadgeLayout =
+    !!ctx?.hasMaterialBackground &&
     direction !== 'horizontal' &&
     hasIcon &&
     hasDotOrLabelBadge &&

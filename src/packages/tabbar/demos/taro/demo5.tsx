@@ -15,7 +15,7 @@ const Demo = () => {
   )
 
   return (
-    <Tabbar className="tabbar-marketing-demo">
+    <Tabbar material="frosted" className="tabbar-marketing-demo">
       <Tabbar.Item
         className="image-when-active"
         title={(active: boolean) => (active ? '' : '首页')}

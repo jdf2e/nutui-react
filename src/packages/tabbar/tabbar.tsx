@@ -17,6 +17,7 @@ const defaultProps = {
   activeColor: '',
   direction: 'vertical',
   safeArea: false,
+  material: 'standard',
   onSwitch: () => {},
 } as WebTabbarProps
 
@@ -30,6 +31,7 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
     inactiveColor,
     direction,
     safeArea,
+    material,
     skinBackground,
     addonBefore,
     className,
@@ -50,6 +52,8 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
     skinBackground !== null &&
     skinBackground !== undefined &&
     typeof skinBackground !== 'boolean'
+  const isFrostedMaterial = material === 'frosted' && !hasSkin
+  const hasMaterialBackground = hasSkin || isFrostedMaterial
 
   const [selectIndex, setSelectIndex] = usePropsValue<number>({
     value,
@@ -63,12 +67,17 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
   const directionCls = itemDirection
     ? `${classPrefix}-wrap-${itemDirection}`
     : ''
+  const sizeCls =
+    items.length === 2 || items.length === 3
+      ? `${classPrefix}-wrap-${items.length}`
+      : ''
 
   const contextValue = {
     selectIndex,
     activeColor,
     inactiveColor,
     handleClick: setSelectIndex,
+    hasMaterialBackground,
   }
   const renderedItems = items.map(({ element, key }, index) =>
     React.cloneElement(element, {
@@ -80,7 +89,7 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
 
   const navigation = (
     <div
-      className={classNames(`${classPrefix}-wrap`, directionCls, {
+      className={classNames(`${classPrefix}-wrap`, sizeCls, directionCls, {
         [`${classPrefix}-wrap-skin`]: hasSkin,
       })}
     >
@@ -88,7 +97,7 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
         <div className={`${classPrefix}-skin-background`} aria-hidden="true">
           {skinBackground}
         </div>
-      ) : (
+      ) : isFrostedMaterial ? (
         <MaterialView
           scene="bottom-bar"
           className={`${classPrefix}-backdrop`}
@@ -98,7 +107,7 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
           }}
           aria-hidden="true"
         />
-      )}
+      ) : null}
       <TabbarContext.Provider value={contextValue}>
         {renderedItems}
       </TabbarContext.Provider>
@@ -112,6 +121,7 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
         {
           [`${classPrefix}-fixed`]: fixed,
           [`${classPrefix}-has-addon-before`]: hasAddonBefore,
+          [`${classPrefix}-material-background`]: hasMaterialBackground,
         },
         className
       )}

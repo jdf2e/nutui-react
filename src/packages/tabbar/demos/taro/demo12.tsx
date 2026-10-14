@@ -9,6 +9,7 @@ const Demo12 = () => {
 
   return (
     <Tabbar
+      material="frosted"
       className="tabbar-skin-demo"
       value={value}
       onSwitch={setValue}

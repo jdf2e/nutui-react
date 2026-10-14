@@ -865,14 +865,15 @@ $rate-font-size: var(--nutui-rate-font-size, 12px) !default;
 $rate-label-color: var(--nutui-rate-label-color, $color-text-disabled) !default;
 
 // tabbar（✅）
-$tabbar-height: var(--nutui-tabbar-height, 52px) !default;
+$tabbar-height: var(--nutui-tabbar-height, 46px) !default;
+$tabbar-material-height: var(--nutui-tabbar-height, 52px) !default;
 $tabbar-addon-before-source-size: var(--nutui-tabbar-addon-before-source-size, 52px) !default;
 $tabbar-addon-before-gap: var(--nutui-tabbar-addon-before-gap, 8px) !default;
 $tabbar-addon-before-outset: var(--nutui-tabbar-addon-before-outset, 16px) !default;
 $tabbar-content-height: var(--nutui-tabbar-content-height, 44px) !default;
 $tabbar-horizontal-padding: var(--nutui-tabbar-horizontal-padding, 12px) !default;
 $tabbar-content-padding: var(--nutui-tabbar-content-padding, 4px) !default;
-$tabbar-border-radius: var(--nutui-tabbar-border-radius, #{$tabbar-height}) !default;
+$tabbar-border-radius: var(--nutui-tabbar-border-radius, #{$tabbar-material-height}) !default;
 $tabbar-active-background: var(--nutui-tabbar-active-background,
     var(--nutui-color-background-component, #ebedf2)) !default;
 $tabbar-active-border-radius: var(--nutui-tabbar-active-border-radius,

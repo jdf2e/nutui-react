@@ -7,7 +7,11 @@ const Demo = () => {
 
   return (
     <>
-      <Tabbar value={index} onSwitch={(value) => setIndex(value)}>
+      <Tabbar
+        material="frosted"
+        value={index}
+        onSwitch={(value) => setIndex(value)}
+      >
         <Tabbar.Item title="首页" icon={<Home />} />
         <Tabbar.Item title="逛" icon={<Hi />} />
         <Tabbar.Item title="购物车" icon={<Cart />} />

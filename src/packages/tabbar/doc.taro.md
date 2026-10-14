@@ -1,6 +1,6 @@
 # Tabbar 标签栏
 
-Tabbar 用于底部导航，导航背板默认左右各留 12px、四周内边距为 4px，并使用跟随高度的全圆角，组件外层背景透明。
+Tabbar 用于底部导航。默认使用兼容原有配置和样式的普通材质；示例通过 `material="frosted"` 展示悬浮圆角毛玻璃背板。
 
 ## 引入
 
@@ -80,7 +80,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### 固定底部与返顶
 
-`fixed` 用于固定底部导航，传入 `fixed` 或 `safeArea` 时会渲染底部安全区；导航层默认高度为 52px，安全区高度取 `env(safe-area-inset-bottom)`，并可通过 `--nutui-safe-area-multiple` 调整。
+`fixed` 用于固定底部导航，传入 `fixed` 或 `safeArea` 时会渲染底部安全区；普通材质的导航层默认高度为 46px（JMAPP/JRKF 主题为 50px），毛玻璃材质为 52px，安全区高度取 `env(safe-area-inset-bottom)`，并可通过 `--nutui-safe-area-multiple` 调整。
 
 返顶示例从 `ScrollView` 的 `onScroll` 读取滚动位置，在首页选中且滚动达到 160px 后切换图标，再次点击首页时通过 `scrollTop` 和 `scrollWithAnimation` 滚动同一容器；`icon(active)`、`onActiveClick` 和滚动状态由调用方组合，无需新增 Tabbar 属性。
 
@@ -104,7 +104,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### 毛玻璃材质
 
-Tabbar 默认使用 `MaterialView` 的 `bottom-bar` 场景作为导航背板，设置 3px 模糊和透明度为 80% 的叠加色；背板为全圆角，组件外层和底部安全区保持透明。
+设置 `material="frosted"` 后，Tabbar 使用 `MaterialView` 的 `bottom-bar` 场景作为导航背板，设置 3px 模糊和透明度为 80% 的叠加色；背板为全圆角，组件外层和底部安全区保持透明。不传 `material` 时沿用普通材质的铺满宽度背景、旧版布局类和主题变量。
 
 Taro 背板的明暗由 `MaterialView` 根据系统主题决定，页面背景建议延伸到安全区；实际模糊效果取决于目标运行环境。
 
@@ -116,7 +116,7 @@ Taro 背板的明暗由 `MaterialView` 根据系统主题决定，页面背景�
 
 ### 换肤背板
 
-传入 `skinBackground` 后，自定义内容会替代默认的 `MaterialView` 背板；组件负责背板裁切、全圆角和导航项层级，图片及专属定位由调用方实现。
+传入 `skinBackground` 后，自定义内容优先于 `material`，替代内置背板；组件负责背板裁切、全圆角和导航项层级，图片及专属定位由调用方实现。
 
 可以通过 `icon(active)` 根据选中状态切换图标图片。
 
@@ -139,6 +139,7 @@ Taro 背板的明暗由 `MaterialView` 根据系统主题决定，页面背景�
 | inactiveColor | 未选中项颜色，留空时由主题样式决定 | `string` | `''` |
 | direction | 排列方向，恰好两个标签时可设为横向 | `'vertical' \| 'horizontal'` | `'vertical'` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
+| material | 背板材质；普通材质保留旧版布局，毛玻璃使用悬浮圆角背板 | `'standard' \| 'frosted'` | `'standard'` |
 | skinBackground | 自定义换肤背板内容，传入时替代默认材质 | `ReactNode` | `-` |
 | addonBefore | 前置入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
 | onSwitch | 切换页签时触发事件 | `(value) => void` | `-` |
@@ -162,11 +163,11 @@ Taro 背板的明暗由 `MaterialView` 根据系统主题决定，页面背景�
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。普通材质继续使用原有颜色、边框、阴影和高度变量；内容层、间距、圆角和选中项背景变量用于毛玻璃及换肤背板。
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 导航层高度 | `52px` |
+| \--nutui-tabbar-height | 导航层高度 | 普通材质 `46px`（JMAPP/JRKF `50px`）；毛玻璃 `52px` |
 | \--nutui-tabbar-addon-before-source-size | `addonBefore` 定位容器尺寸 | `52px` |
 | \--nutui-tabbar-addon-before-gap | `addonBefore` 与导航背板间距 | `8px` |
 | \--nutui-tabbar-addon-before-outset | `addonBefore` 向外侧抽缩距离 | `16px` |

@@ -8,7 +8,7 @@ const Demo = () => {
     'https://storage.360buyimg.com/imgtools/cadd649d79-8de544e0-0a11-11f0-9f55-9901c75f24a0.png'
 
   return (
-    <Tabbar className="tabbar-marketing-demo">
+    <Tabbar material="frosted" className="tabbar-marketing-demo">
       <Tabbar.Item
         className="image-when-active"
         title={(active: boolean) => (active ? '' : '首页')}

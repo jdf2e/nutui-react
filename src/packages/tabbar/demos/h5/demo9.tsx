@@ -12,7 +12,7 @@ const Demo = ({ scrollTop = 0, onBackToTop }: DemoProps) => {
   const canBackToTop = scrollTop >= 160
 
   return (
-    <Tabbar fixed value={value} onSwitch={setValue}>
+    <Tabbar material="frosted" fixed value={value} onSwitch={setValue}>
       <Tabbar.Item
         title="首页"
         icon={(active) =>

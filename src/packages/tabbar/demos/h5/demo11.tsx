@@ -25,6 +25,7 @@ const Demo11 = () => {
       }}
     >
       <Tabbar
+        material="frosted"
         value={value}
         onSwitch={setValue}
         addonBefore={

@@ -1,6 +1,6 @@
 # Tabbar
 
-Tabbar provides bottom navigation with 12px horizontal insets, 4px inner padding, fully rounded board corners that follow its height, and a transparent outer container by default.
+Tabbar provides bottom navigation. Its standard material preserves the previous configuration and styling by default; the examples opt into the rounded frosted material board with `material="frosted"`.
 
 ## Import
 
@@ -80,7 +80,7 @@ This example shows dot, number, and text badges on marketing artwork, controls t
 
 ### Fixed Bottom and Back to Top
 
-Use `fixed` to pin Tabbar to the bottom; `fixed` or `safeArea` renders the bottom safe area, while the navigation height defaults to 52px and the inset from `env(safe-area-inset-bottom)` can be adjusted with `--nutui-safe-area-multiple`.
+Use `fixed` to pin Tabbar to the bottom; `fixed` or `safeArea` renders the bottom safe area. The navigation height defaults to 46px with the standard material (50px in JMAPP/JRKF themes) and 52px with frosted material. The inset from `env(safe-area-inset-bottom)` can be adjusted with `--nutui-safe-area-multiple`.
 
 The back-to-top example switches the Home icon when Home is selected and the scroll position reaches 160px, then scrolls the same container through `onActiveClick` when Home is clicked again; the caller controls `icon(active)` and scroll state without adding a Tabbar prop.
 
@@ -104,7 +104,7 @@ The caller implements the image, appearance, and click behavior; `addonBefore` d
 
 ### Frosted Glass Material
 
-By default, Tabbar uses the `MaterialView` `bottom-bar` scene for its navigation board, with 3px blur, a tint at 80% opacity, fully rounded corners, and transparent outer and safe-area backgrounds.
+With `material="frosted"`, Tabbar uses the `MaterialView` `bottom-bar` scene for its navigation board, with 3px blur, a tint at 80% opacity, fully rounded corners, and transparent outer and safe-area backgrounds. Without this prop, the standard material keeps the full-width background, previous layout classes, and theme variables.
 
 On H5, the `.nut-theme-dark` theme class controls the board tint, and the page background should extend beneath the safe area; the blur effect depends on browser support.
 
@@ -116,7 +116,7 @@ On H5, the `.nut-theme-dark` theme class controls the board tint, and the page b
 
 ### Custom Skin Background
 
-Providing `skinBackground` replaces the default `MaterialView` board with custom content; Tabbar handles clipping, fully rounded corners, and item stacking, while the caller implements artwork and its positioning.
+Providing `skinBackground` takes precedence over `material` and replaces the built-in board with custom content; Tabbar handles clipping, fully rounded corners, and item stacking, while the caller implements artwork and its positioning.
 
 Use `icon(active)` to switch icon images based on the selected state.
 
@@ -139,6 +139,7 @@ Use `icon(active)` to switch icon images based on the selected state.
 | inactiveColor | Unselected item color; theme styles apply when empty | `string` | `''` |
 | direction | Item direction; horizontal layout applies with exactly two items | `'vertical' \| 'horizontal'` | `'vertical'` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
+| material | Board material; standard preserves the previous layout, frosted uses the rounded material board | `'standard' \| 'frosted'` | `'standard'` |
 | skinBackground | Custom skin board content; replaces the default material | `ReactNode` | `-` |
 | addonBefore | Leading entry content; the caller provides its image and click behavior | `ReactNode` | `-` |
 | onSwitch | Trigger an event when switching tabs | `(value) => void` | `-` |
@@ -162,11 +163,11 @@ Use `icon(active)` to switch icon images based on the selected state.
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider). The standard material retains the previous color, border, shadow, and height variables; content height, inset, radius, and selected background variables apply to frosted and custom skin boards.
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-tabbar-height | navigation layer height | `52px` |
+| \--nutui-tabbar-height | navigation layer height | Standard `46px` (JMAPP/JRKF `50px`); frosted `52px` |
 | \--nutui-tabbar-addon-before-source-size | `addonBefore` positioning box size | `52px` |
 | \--nutui-tabbar-addon-before-gap | Gap between `addonBefore` and navigation board | `8px` |
 | \--nutui-tabbar-addon-before-outset | `addonBefore` outward offset | `16px` |

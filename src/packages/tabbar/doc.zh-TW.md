@@ -1,6 +1,6 @@
 # Tabbar 標簽欄
 
-Tabbar 用於底部導航，導航背板預設左右各留 12px、四周內邊距為 4px，並使用跟隨高度的全圓角，元件外層背景透明。
+Tabbar 用於底部導航。預設使用相容原有設定和樣式的一般材質；示例透過 `material="frosted"` 展示懸浮圓角毛玻璃背板。
 
 ## 引入
 
@@ -80,7 +80,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 固定底部與返頂
 
-`fixed` 用於固定底部導航，傳入 `fixed` 或 `safeArea` 時會渲染底部安全區；導航層預設高度為 52px，安全區高度取 `env(safe-area-inset-bottom)`，並可透過 `--nutui-safe-area-multiple` 調整。
+`fixed` 用於固定底部導航，傳入 `fixed` 或 `safeArea` 時會渲染底部安全區；一般材質的導航層預設高度為 46px（JMAPP/JRKF 主題為 50px），毛玻璃材質為 52px，安全區高度取 `env(safe-area-inset-bottom)`，並可透過 `--nutui-safe-area-multiple` 調整。
 
 返頂示例在首頁選中且捲動達到 160px 後切換圖標，再次點擊首頁時由呼叫方透過 `onActiveClick` 捲動目前容器；`icon(active)` 和捲動狀態也由呼叫方控制，無須新增 Tabbar 屬性。
 
@@ -104,7 +104,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 毛玻璃材質
 
-Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 場景作為導航背板，設定 3px 模糊和透明度為 80% 的疊加色；背板為全圓角，元件外層和底部安全區保持透明。
+設定 `material="frosted"` 後，Tabbar 使用 `MaterialView` 的 `bottom-bar` 場景作為導航背板，設定 3px 模糊和透明度為 80% 的疊加色；背板為全圓角，元件外層和底部安全區保持透明。不傳 `material` 時沿用一般材質的全寬背景、舊版布局類別和主題變數。
 
 H5 背板的明暗由 `.nut-theme-dark` 主題類控制，頁面背景建議延伸到安全區；實際模糊效果取決於瀏覽器支援。
 
@@ -116,7 +116,7 @@ H5 背板的明暗由 `.nut-theme-dark` 主題類控制，頁面背景建議延�
 
 ### 換膚背板
 
-傳入 `skinBackground` 後，自訂內容會取代預設的 `MaterialView` 背板；元件負責背板裁切、全圓角和導航項層級，圖片及專屬定位由呼叫方實作。
+傳入 `skinBackground` 後，自訂內容優先於 `material`，取代內建背板；元件負責背板裁切、全圓角和導航項層級，圖片及專屬定位由呼叫方實作。
 
 可以透過 `icon(active)` 依選中狀態切換圖標圖片。
 
@@ -139,6 +139,7 @@ H5 背板的明暗由 `.nut-theme-dark` 主題類控制，頁面背景建議延�
 | inactiveColor | 未選中項顏色，留空時由主題樣式決定 | `string` | `''` |
 | direction | 排列方向，恰好兩個標籤時可設為橫向 | `'vertical' \| 'horizontal'` | `'vertical'` |
 | safeArea | 是否開啟iphone繫列全面屏底部安全區適配 | `boolean` | `false` |
+| material | 背板材質；一般材質保留舊版布局，毛玻璃使用懸浮圓角背板 | `'standard' \| 'frosted'` | `'standard'` |
 | skinBackground | 自訂換膚背板內容，傳入時取代預設材質 | `ReactNode` | `-` |
 | addonBefore | 前置入口內容，圖片與點擊由呼叫方提供 | `ReactNode` | `-` |
 | onSwitch | 切換頁簽時觸發事件 | `(value) => void` | `-` |
@@ -162,11 +163,11 @@ H5 背板的明暗由 `.nut-theme-dark` 主題類控制，頁面背景建議延�
 
 ### 樣式變量
 
-組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。一般材質沿用原有顏色、邊框、陰影和高度變量；內容層、間距、圓角和選中項背景變量用於毛玻璃及換膚背板。
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 導航層高度 | `52px` |
+| \--nutui-tabbar-height | 導航層高度 | 一般材質 `46px`（JMAPP/JRKF `50px`）；毛玻璃 `52px` |
 | \--nutui-tabbar-addon-before-source-size | `addonBefore` 定位容器尺寸 | `52px` |
 | \--nutui-tabbar-addon-before-gap | `addonBefore` 與導航背板間距 | `8px` |
 | \--nutui-tabbar-addon-before-outset | `addonBefore` 向外側抽縮距離 | `16px` |

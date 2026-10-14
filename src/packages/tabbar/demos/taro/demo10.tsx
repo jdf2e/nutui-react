@@ -8,6 +8,7 @@ const joyImage =
 
 const Demo10 = () => (
   <Tabbar
+    material="frosted"
     addonBefore={
       <View
         role="button"

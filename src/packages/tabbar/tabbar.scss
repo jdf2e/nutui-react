@@ -9,17 +9,25 @@
   border-bottom: $tabbar-border-bottom;
   border-top: $tabbar-border-top;
   width: 100%;
-  background: transparent;
-  --nut-tabbar-backdrop-tint: rgba(255, 255, 255, 0.8);
+  background: $color-background-overlay;
 
-  .nut-theme-dark &,
-  &.nut-theme-dark {
-    --nut-tabbar-backdrop-tint: rgba(20, 23, 26, 0.8);
+  &-material-background {
+    background: transparent;
+    --nut-tabbar-backdrop-tint: rgba(255, 255, 255, 0.8);
+
+    .nut-theme-dark &,
+    &.nut-theme-dark {
+      --nut-tabbar-backdrop-tint: rgba(20, 23, 26, 0.8);
+    }
   }
 
   &-main {
     position: relative;
     height: $tabbar-height;
+  }
+
+  &-material-background &-main {
+    height: $tabbar-material-height;
   }
 
   &-addon-before {
@@ -37,22 +45,17 @@
     z-index: 1;
   }
 
-  &-has-addon-before &-wrap {
-    margin-left: calc(
-      #{$tabbar-addon-before-source-size} - #{$tabbar-addon-before-outset} +
-        #{$tabbar-addon-before-gap}
-    );
-  }
-
   &-wrap {
-    position: relative;
     height: $tabbar-height;
-    box-sizing: border-box;
     display: flex;
-    margin-left: $tabbar-horizontal-padding;
-    margin-right: $tabbar-horizontal-padding;
-    padding: $tabbar-content-padding;
-    border-radius: $tabbar-border-radius;
+
+    &-3 {
+      padding: 0 scale-px(16px);
+    }
+
+    &-2 {
+      padding: 0 scale-px(32px);
+    }
 
     > .nut-tabbar-backdrop {
       position: absolute;
@@ -84,34 +87,57 @@
       }
     }
 
-    > .nut-tabbar-item {
-      position: relative;
-    }
-
     &-horizontal {
       align-items: center;
       .nut-tabbar-item {
         flex-direction: row;
         justify-content: center;
         .nut-icon {
-          width: 20px;
-          height: 20px;
+          width: scale-px(20px);
+          height: scale-px(20px);
         }
         .nut-tabbar-item-text {
-          margin: 0 4px 0 6px;
+          margin: 0 scale-px(4px) 0 scale-px(6px);
           font-size: $font-size-base;
-        }
-        .nut-badge-sup:not(.nut-badge-dot) {
-          height: scale-px(15px);
-        }
-        .nut-badge-sup {
-          padding: scale-px(0.5px);
-          &::after {
-            border: 0;
-          }
+          line-height: var(--nutui-tabbar-text-line-height, #{$font-size-base});
         }
       }
     }
+  }
+
+  &-material-background &-wrap {
+    position: relative;
+    height: $tabbar-material-height;
+    box-sizing: border-box;
+    margin-left: $tabbar-horizontal-padding;
+    margin-right: $tabbar-horizontal-padding;
+    padding: $tabbar-content-padding;
+    border-radius: $tabbar-border-radius;
+
+    > .nut-tabbar-item {
+      position: relative;
+    }
+
+    &-horizontal .nut-tabbar-item {
+      .nut-badge-sup:not(.nut-badge-dot) {
+        height: scale-px(15px);
+      }
+
+      .nut-badge-sup {
+        padding: scale-px(0.5px);
+
+        &::after {
+          border: 0;
+        }
+      }
+    }
+  }
+
+  &-has-addon-before &-wrap {
+    margin-left: calc(
+      #{$tabbar-addon-before-source-size} - #{$tabbar-addon-before-outset} +
+        #{$tabbar-addon-before-gap}
+    );
   }
 
   &-fixed {

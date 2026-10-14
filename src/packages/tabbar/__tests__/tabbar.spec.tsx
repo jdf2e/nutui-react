@@ -13,7 +13,7 @@ import {
 } from '@nutui/icons-react'
 import { Tabbar } from '../tabbar'
 
-test('renders either the default backdrop or the supplied skin', () => {
+test('defaults to the standard surface and opts into frosted material', () => {
   const items = (
     <>
       <Tabbar.Item title="首页" icon={<Home />} />
@@ -22,13 +22,26 @@ test('renders either the default backdrop or the supplied skin', () => {
   )
   const { container, rerender } = render(<Tabbar>{items}</Tabbar>)
 
+  expect(container.querySelector('.nut-tabbar-backdrop')).toBeNull()
+  expect(container.querySelector('.nut-tabbar-wrap')).toHaveClass(
+    'nut-tabbar-wrap-2'
+  )
+  expect(container.querySelector('.nut-tabbar-wrap')?.parentElement).toBe(
+    container.firstChild
+  )
+
+  rerender(<Tabbar material="frosted">{items}</Tabbar>)
   expect(container.querySelector('.nut-tabbar-backdrop')).toHaveAttribute(
     'aria-hidden',
     'true'
   )
   expect(container.querySelector('.nut-tabbar-skin-background')).toBeNull()
 
-  rerender(<Tabbar skinBackground={<span>skin artwork</span>}>{items}</Tabbar>)
+  rerender(
+    <Tabbar material="frosted" skinBackground={<span>skin artwork</span>}>
+      {items}
+    </Tabbar>
+  )
   expect(container.querySelector('.nut-tabbar-backdrop')).toBeNull()
   expect(
     container.querySelector('.nut-tabbar-skin-background')
@@ -70,6 +83,8 @@ test('should render custom color and badge when using prop', () => {
     items[1].querySelector<HTMLElement>('.nut-tabbar-item-text')?.style.color
   ).toBe('grey')
   expect(items[0].querySelector('.nut-badge-sup')).toHaveTextContent('11')
+  expect(items[0].querySelector('.nut-badge > .nut-icon')).toBeInTheDocument()
+  expect(items[0].querySelector('.nut-tabbar-item-visual')).toBeNull()
 })
 
 test('should render fixed element when using bottom prop', () => {
@@ -88,7 +103,7 @@ test('should render fixed element when using bottom prop', () => {
 
 test('should match active tabbar by click', async () => {
   const { container } = render(
-    <Tabbar inactiveColor="grey" activeColor="blue">
+    <Tabbar material="frosted" inactiveColor="grey" activeColor="blue">
       <Tabbar.Item
         title={(active) => (active ? '首页' : '首页2')}
         icon={(active) => (active ? <HeartFill /> : <Heart />)}
@@ -253,7 +268,7 @@ test('indexes rendered children across conditional and Fragment children', () =>
 
 test('keeps dot, number and text badges on their content', () => {
   const { container } = render(
-    <Tabbar>
+    <Tabbar material="frosted">
       <Tabbar.Item title="红点" icon={<Home />} dot />
       <Tabbar.Item title="数字" icon={<Category />} value={8} />
       <Tabbar.Item icon={<img src="/image.png" alt="" />} value="最多四字" />

@@ -3,7 +3,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 import { Cart, Hi, Home, User, Message } from '@nutui/icons-react-taro'
 
 const Demo5 = () => (
-  <Tabbar>
+  <Tabbar material="frosted">
     <Tabbar.Item icon={<Home />} title="首页" dot />
     <Tabbar.Item title="逛一逛" icon={<Hi />} value="最多四字" />
     <Tabbar.Item title="消息" icon={<Message />} value={100} />

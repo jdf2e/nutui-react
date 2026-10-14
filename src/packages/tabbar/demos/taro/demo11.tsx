@@ -39,6 +39,7 @@ const Demo11 = () => {
         />
       </View>
       <Tabbar
+        material="frosted"
         value={value}
         onSwitch={setValue}
         style={{ position: 'relative', zIndex: 1 }}
