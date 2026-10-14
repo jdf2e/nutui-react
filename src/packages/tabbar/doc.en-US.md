@@ -173,6 +173,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-inactive-color | default color | `$color-title` |
 | \--nutui-tabbar-border-top | borderTop | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
+| \--nutui-tabbar-box-shadow | boxShadow | `none` |
 | \--nutui-tabbar-text-font-size | title fontSize | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | title fontWeight when icon is null | `$font-weight` |

@@ -471,6 +471,7 @@ export type NutCSSVariables =
   | 'nutuiTabbarInactiveColor'
   | 'nutuiTabbarBorderTop'
   | 'nutuiTabbarBorderBottom'
+  | 'nutuiTabbarBoxShadow'
   | 'nutuiTabbarTextFontSize'
   | 'nutuiTabbarTextLargeFontSize'
   | 'nutuiTabbarTextLargeFontWeight'
