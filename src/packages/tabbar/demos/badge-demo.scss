@@ -8,7 +8,7 @@
       bottom: calc(31px * var(--nut-scale-f, 1));
     }
 
-    .nut-tabbar-item-visual-value > .nut-badge {
+    .nut-tabbar-item-visual-text > .nut-badge {
       left: calc(23px * var(--nut-scale-f, 1));
       bottom: calc(31px * var(--nut-scale-f, 1));
     }
@@ -16,7 +16,7 @@
 
   // The second example switches from an image to an ordinary icon.
   .image-when-inactive.nut-tabbar-item-active {
-    .nut-tabbar-item-visual-value > .nut-badge {
+    .nut-tabbar-item-visual-text > .nut-badge {
       left: calc(14px * var(--nut-scale-f, 1));
       bottom: calc(13px * var(--nut-scale-f, 1));
     }

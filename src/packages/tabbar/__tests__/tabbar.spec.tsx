@@ -269,12 +269,12 @@ test('keeps dot, number and text badges on their content', () => {
   ).toBeInTheDocument()
   expect(
     items[1].querySelector(
-      '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-value .nut-badge-sup'
+      '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-text .nut-badge-sup'
     )
   ).toHaveTextContent('8')
   expect(
     items[2].querySelector(
-      '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-value .nut-badge-sup'
+      '.nut-tabbar-item-visual-icon.nut-tabbar-item-visual-text .nut-badge-sup'
     )
   ).toHaveTextContent('最多四字')
   expect(items[2].querySelector('.nut-tabbar-item-text')).toBeNull()

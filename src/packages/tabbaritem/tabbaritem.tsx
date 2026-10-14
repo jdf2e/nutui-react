@@ -41,10 +41,11 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     ...props,
   }
   const active = index === ctx?.selectIndex
+  // 图标、标题和徽标可随 active 变化，布局判断要使用求值后的内容
   const renderNodeWithActive = (
     node: ReactNode | ((active: boolean) => ReactNode)
   ) => {
-    return node && typeof node === 'function' ? node(active) : node
+    return typeof node === 'function' ? node(active) : node
   }
   const renderedIcon = renderNodeWithActive(icon)
   const hasIcon =
@@ -54,16 +55,19 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     renderedIcon !== ''
   const renderedTitle = renderNodeWithActive(title)
   const renderedValue = renderNodeWithActive(value)
-  const isDesignBadge =
+  // 红点、非零数字和非空文字有对应的图标旁定位样式；自定义节点没有
+  const hasDotOrLabelBadge =
     dot ||
     (typeof renderedValue === 'number' && renderedValue !== 0) ||
     (typeof renderedValue === 'string' && renderedValue !== '')
-  const useDesignBadge =
+  // 只在竖向布局、有图标且未指定 top/right 时启用，避免覆盖横向排版和调用方设置的位置
+  const shouldUseIconBadgeLayout =
     direction !== 'horizontal' &&
     hasIcon &&
-    isDesignBadge &&
+    hasDotOrLabelBadge &&
     props.top === undefined &&
     props.right === undefined
+  // 空标题不占位，纯图标或图片内容按单内容布局居中
   const hasTitle =
     renderedTitle !== '' &&
     renderedTitle !== null &&
@@ -116,12 +120,13 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   const renderIconAndTitle = () => {
     return (
       <>
-        {useDesignBadge ? (
+        {shouldUseIconBadgeLayout ? (
           <div
             className={classNames(
               `${classPrefix}-visual`,
               `${classPrefix}-visual-icon`,
-              `${classPrefix}-visual-${dot ? 'dot' : 'value'}`
+              // dot 为 true 时 Badge 显示红点；红点与数字/文字标签尺寸不同，需使用各自的定位偏移数值
+              `${classPrefix}-visual-${dot ? 'dot' : 'text'}`
             )}
           >
             {renderIcon()}
