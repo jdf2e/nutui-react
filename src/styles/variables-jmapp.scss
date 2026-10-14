@@ -1463,7 +1463,7 @@ $tabbar-text-large-font-weight: var(
   --nutui-tabbar-text-large-font-weight,
   $font-weight-bold
 ) !default;
-$tabbar-text-line-height: var(--nutui-tabbar-text-line-height, 20px) !default;
+$tabbar-text-line-height: var(--nutui-tabbar-text-line-height, #{$tabbar-text-font-size}) !default;
 $tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 3px) !default;
 
 //pulltorefresh

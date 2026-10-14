@@ -184,7 +184,7 @@ Taro 背板的明暗由 `MaterialView` 根据系统主题决定，页面背景�
 | \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 无图标时标题字体粗细 | `$font-weight` |
-| \--nutui-tabbar-text-line-height | 字体行高 | `initial` |
+| \--nutui-tabbar-text-line-height | 字体行高 | 跟随标题字体大小 |
 | \--nutui-tabbar-text-margin-top | 标题上外边距 | `4px` |
 
 <Contribution name="Tabbar" />

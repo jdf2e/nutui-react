@@ -77,7 +77,7 @@
     display: block;
     color: $color-text;
     font-size: $tabbar-text-font-size;
-    line-height: $tabbar-text-font-size;
+    line-height: $tabbar-text-line-height;
     margin-top: $tabbar-text-margin-top;
   }
 
@@ -96,7 +96,10 @@
     .nut-tabbar-item-text {
       font-size: $tabbar-text-large-font-size;
       margin-top: 0;
-      line-height: $tabbar-text-large-font-size;
+      line-height: var(
+        --nutui-tabbar-text-line-height,
+        #{$tabbar-text-large-font-size}
+      );
       font-weight: $tabbar-text-large-font-weight;
     }
   }

@@ -184,7 +184,7 @@ H5 背板的明暗由 `.nut-theme-dark` 主題類控制，頁面背景建議延�
 | \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 無圖標時標題字體粗細 | `$font-weight` |
-| \--nutui-tabbar-text-line-height | 字體行高 | `initial` |
+| \--nutui-tabbar-text-line-height | 字體行高 | 跟隨標題字體大小 |
 | \--nutui-tabbar-text-margin-top | 標題上外邊距 | `4px` |
 
 <Contribution name="Tabbar" />
