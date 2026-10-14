@@ -1003,19 +1003,35 @@ $numberkeyboard-key-confirm-background-color: var(
 // countdown（✅）
 $countdown-display: var(--nutui-countdown-display, flex) !default;
 $countdown-color: var(--nutui-countdown-color, $color-primary) !default;
-$countdown-font-size: var(--nutui-countdown-font-size, $font-size-xs) !default;
+$countdown-font-size: var(--nutui-countdown-font-size, $font-size-xs) !default; // 11px，非 text
+$countdown-font-size-text: var(
+  --nutui-countdown-font-size-text,
+  $font-size-xxs
+) !default; // 10px，type=text
 $coutdown-font-weight: var(
   --nutui-countdown-font-weight,
   $font-weight
 ) !default;
 $countdown-height: var(--nutui-countdown-height, scale-px(16px)) !default;
 $countdown-width: var(--nutui-countdown-width, scale-px(16px)) !default;
-$countdown-number-padding: var(--nutui-countdown-number-padding, 0 0) !default;
+$countdown-number-ssi-min-width: var(
+  --nutui-countdown-number-ssi-min-width,
+  scale-px(25px)
+) !default;
+$countdown-number-padding: var(
+  --nutui-countdown-number-padding,
+  scale-px(1px)
+) !default;
 $countdown-number-border-radius: var(
   --nutui-countdown-number-border-radius,
-  $radius-xxs
+  scale-px(2px)
 ) !default;
 $countdown-number-margin: var(--nutui-countdown-number-margin, 0 scale-px(1px)) !default;
+// ::after 上物理 1px，经 scale(1/3) 后视觉约 0.33px
+$countdown-number-border-width: var(
+  --nutui-countdown-number-border-width,
+  scale-px(1px)
+) !default;
 $countdown-number-color: var(
   --nutui-countdown-number-color,
   $color-primary
