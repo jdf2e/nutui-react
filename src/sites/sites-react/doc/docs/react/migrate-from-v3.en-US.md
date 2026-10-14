@@ -105,6 +105,20 @@ npm install @nutui/nutui-react-taro
   - `--nutui-popover-content-background-color` default changed from `#ffffff` to `$color-mask`; `--nutui-popover-text-color` from `$color-mask` to `$color-primary-text`.
   - `--nutui-popover-item-width` default changed from `160px` to `240px` (same as status max width).
 
+### ResultPage
+
+> **No v3 compatibility in v4**: no prop aliases. Migrate manually using the table below.
+
+- **Type entry change**:
+  - Removed `src/packages/resultpage/types.ts`; import `ResultPageStatus`, `ResultPageAction`, and `ResultPageProps` from `@/types`.
+- **Visual spec aligned with JD APP 16.0**:
+  - Description text is centered by default; H5 error icon color aligns with `$color-primary` (`#ff2159`).
+  - 4px below icon; 4px between title and description; 12px above actions; 12px between buttons (`margin: 0 6px`).
+  - Title: `$font-size-md` / line height 24px; description line height 22px.
+- **Theme variable updates**:
+  - Added `--nutui-resultpage-title-line-height`.
+  - `--nutui-resultpage-icon-margin-bottom` default `12px` → `4px`; `--nutui-resultpage-title-margin-bottom` `12px` → `4px`; `--nutui-resultpage-title-font-size` `$font-size-xl` → `$font-size-md`; `--nutui-resultpage-description-line-height` `20px` → `22px`; `--nutui-resultpage-actions-margin-top` `16px` → `12px`.
+
 ### Skeleton
 
 - **`size` visual spec updates (compatible)**:
@@ -116,6 +130,25 @@ npm install @nutui/nutui-react-taro
   - `--nutui-skeleton-background` default fallback changed from `$color-background-sunken` to `$color-background`, following the `color-background` token in dark mode automatically.
 - **Shimmer visual redesign**:
   - The loading shimmer changed from a dark horizontal-translate overlay to a white 30° diagonal light band (80px wide, gradient opacity 0% → 50% → 0%), sweeping left to right over 400ms and looping after a ~1s pause.
+
+### CountDown
+
+- **Visual spec aligned to JD APP 16.0**:
+  - `type` remains `default` (outline) / `primary` (solid) / `text` (plain text). **No type rename Breaking Change**.
+  - Outline: white fill, red border & text; solid: red fill, white text, rounded blocks; text: red text, no fill/border. Separators stay outside number blocks.
+  - Number blocks: height `16px`, min-width `16px`, `padding: 1px`, radius `2px`; border keeps `::after`, scale changed from `0.5` to `1/3` (~0.33px visually).
+- **New format token `i`**:
+  - Hundred-millisecond, 1 digit (0–9); `ss.i` rendered in the same block (e.g. `30.5`); still RAF-driven, `setState` only when the display bucket changes.
+  - Legacy tokens (`DD`/`HH`/`mm`/`ss`/`S`/`SS`/`SSS`) and custom `format` behavior are unchanged.
+- **End callback behavior**:
+  - When time hits 0, only `onEnd` fires; `onPaused` is no longer called as a side effect.
+- **Removed `millisecond` (breaking)**:
+  - The prop had no effect; ms / hundred-ms precision is controlled by `format` tokens `i` / `S` / `SS` / `SSS` (RAF-driven, `setState` on display bucket change). Remove `millisecond` from call sites.
+- **Added `refreshInterval` (compatible)**:
+  - Pass a fixed ms step to throttle via `Math.floor(remainTime / refreshInterval)`; omit to keep flooring by the finest `format` unit.
+- **Recommended formats (docs only; component does not auto-switch by duration)**:
+  - ≥1 day: `DD天HH:mm:ss`, prefer `type="text"`; 1–24h: `HH:mm:ss` or `HH:mm:ss.i`; &lt;1h: `mm:ss` or `mm:ss.i`.
+  - Hundred-millisecond is recommended only within 24h for strong promo scenes.
 
 ### Range
 
@@ -149,3 +182,16 @@ npm install @nutui/nutui-react-taro
   - Pop up from the top via `position="top"`; the content is displayed as a grid. `options` support an `icon` field (a string is rendered with `img`, or a custom node can be passed), and `columns` sets the number of columns (only `4` / `5`, default `5`). `cancelText` is rendered as a "collapse" button in top mode. The grid layout can also be used for bottom popups via `layout="grid"`.
 - **Header styling and close capabilities (new)**:
   - Added `titleAlign` (`left` / `center`, default `center`; `description` only takes effect when `center`), `headerLeft`, and `headerRight` for customizing the left and right content of the header, as well as `closeable` / `closeIconPosition` to control the display and position of the close button. All of the above are purely additive and do not affect existing usage.
+
+### Cell (Display)
+
+- **Left area class renamed from `.nut-cell-left` to `.nut-cell-body` (breaking change)**:
+  - To make room for the new leading area (`leading`), the former left content area is now the main area. If you overrode cell styles via `.nut-cell-left`, migrate to `.nut-cell-body`.
+- **Cell padding changed to `16px` (behavior change)**:
+  - The default of `--nutui-cell-padding` changed from `13px 16px` to `16px`, so cells become slightly taller. To keep the previous spacing, set `--nutui-cell-padding: 13px 16px` explicitly.
+- **Title is now truncated on a single line (behavior change)**:
+  - An overlong `title` no longer wraps; it is truncated with an ellipsis on one line. If you need a multi-line title, pass your own node as `title` and override the truncation styles.
+- **Right area no longer stretches (behavior change)**:
+  - `.nut-cell-extra` changed from `flex: 1` to sizing to its content, keeping a `24px` minimum gap from the main area (tunable via `--nutui-cell-extra-margin`). Previously a long right area split the remaining space evenly with the main area; now the right area takes its space first and the main area shrinks accordingly, so you may see the title truncate while the right content stays complete.
+- **New leading area and full-width slot (new)**:
+  - Added the `leading` prop for the leading area (an icon or an avatar). The component only handles the `12px` gap (`--nutui-cell-leading-margin`) and alignment; sizing is up to you. Added the `content` prop as a full-width slot below the row, aligned with the main area's left edge. Once `content` is passed, `description` moves from below the title to a full-width row. Both are purely additive; omitting them does not affect existing usage.
