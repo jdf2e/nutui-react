@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Cart, Home, Message, Search, User } from '@nutui/icons-react'
 import { Tabbar } from '@nutui/nutui-react'
+import { addonBeforeDarkImage, addonBeforeImage } from '../addon-before-assets'
+import '../addon-before-demo.scss'
 
-const joyImage =
-  'https://img11.360buyimg.com/img/jfs/t1/535270/25/4911/39037/6abb699eF4fefba06/02760f00f05076ee.png'
 const backgroundImage =
   'https://img12.360buyimg.com/img/jfs/t1/527314/4/14719/1262/6abc7fc4F8586369f/02761771402b1daa.png'
 
@@ -42,7 +42,16 @@ const Demo11 = () => {
               cursor: 'pointer',
             }}
           >
-            <img src={joyImage} alt="" style={{ width: 52, height: 52 }} />
+            <img
+              className="tabbar-addon-image tabbar-addon-image-light"
+              src={addonBeforeImage}
+              alt=""
+            />
+            <img
+              className="tabbar-addon-image tabbar-addon-image-dark"
+              src={addonBeforeDarkImage}
+              alt=""
+            />
           </button>
         }
       >

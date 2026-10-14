@@ -2,9 +2,8 @@ import React from 'react'
 import { Image, View } from '@tarojs/components'
 import { Cart, Home, Message, User } from '@nutui/icons-react-taro'
 import { Tabbar } from '@nutui/nutui-react-taro'
-
-const joyImage =
-  'https://img11.360buyimg.com/img/jfs/t1/535270/25/4911/39037/6abb699eF4fefba06/02760f00f05076ee.png'
+import { addonBeforeDarkImage, addonBeforeImage } from '../addon-before-assets'
+import '../addon-before-demo.scss'
 
 const Demo10 = () => (
   <Tabbar
@@ -22,14 +21,14 @@ const Demo10 = () => (
         }}
       >
         <Image
-          src={joyImage}
+          className="tabbar-addon-image tabbar-addon-image-light"
+          src={addonBeforeImage}
           mode="scaleToFill"
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            objectFit: 'fill',
-          }}
+        />
+        <Image
+          className="tabbar-addon-image tabbar-addon-image-dark"
+          src={addonBeforeDarkImage}
+          mode="scaleToFill"
         />
       </View>
     }

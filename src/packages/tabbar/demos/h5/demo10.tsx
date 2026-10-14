@@ -1,9 +1,8 @@
 import React from 'react'
 import { Cart, Home, Message, User } from '@nutui/icons-react'
 import { Tabbar } from '@nutui/nutui-react'
-
-const joyImage =
-  'https://img11.360buyimg.com/img/jfs/t1/535270/25/4911/39037/6abb699eF4fefba06/02760f00f05076ee.png'
+import { addonBeforeDarkImage, addonBeforeImage } from '../addon-before-assets'
+import '../addon-before-demo.scss'
 
 const Demo10 = () => (
   <Tabbar
@@ -25,14 +24,14 @@ const Demo10 = () => (
         }}
       >
         <img
-          src={joyImage}
-          alt="前置入口"
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            objectFit: 'fill',
-          }}
+          className="tabbar-addon-image tabbar-addon-image-light"
+          src={addonBeforeImage}
+          alt=""
+        />
+        <img
+          className="tabbar-addon-image tabbar-addon-image-dark"
+          src={addonBeforeDarkImage}
+          alt=""
         />
       </button>
     }
