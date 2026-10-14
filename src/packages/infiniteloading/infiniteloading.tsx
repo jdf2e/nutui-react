@@ -2,7 +2,14 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
-import { WebInfiniteLoadingProps } from '@/types'
+import { runWithMinimumDuration } from '@/utils/run-with-minimum-duration'
+import { InfiniteLoadingStatus, WebInfiniteLoadingProps } from '@/types'
+import {
+  INFINITE_LOADING_DEFAULT_COMPLETE_ICON,
+  INFINITE_LOADING_DEFAULT_ICON,
+  INFINITE_LOADING_PRIMARY_COMPLETE_ICON,
+  INFINITE_LOADING_PRIMARY_ICON,
+} from './images'
 
 declare let window: Window & { webkitRequestAnimationFrame: any } & {
   mozRequestAnimationFrame: any
@@ -16,6 +23,7 @@ const defaultProps = {
   target: '',
   capture: false,
   pullRefresh: false,
+  minimumLoadingTime: 200,
 } as WebInfiniteLoadingProps
 
 const classPrefix = `nut-infiniteloading`
@@ -33,8 +41,12 @@ export const InfiniteLoading: FunctionComponent<
     capture,
     pullRefresh,
     pullingText,
+    pullUpText,
     loadingText,
     loadMoreText,
+    minimumLoadingTime,
+    iconStyle,
+    renderIcon,
     className,
     onRefresh,
     onLoadMore,
@@ -45,6 +57,7 @@ export const InfiniteLoading: FunctionComponent<
     ...props,
   }
   const [isInfiniting, setIsInfiniting] = useState(false)
+  const loadingRef = useRef(false)
   const scroller = useRef<HTMLDivElement>(null)
   const refreshTop = useRef<HTMLDivElement>(null)
   const scrollEl = useRef<Window | HTMLElement | null>(null)
@@ -54,6 +67,12 @@ export const InfiniteLoading: FunctionComponent<
   const y = useRef(0)
   const distance = useRef(0)
 
+  let status: InfiniteLoadingStatus = 'complete'
+  if (isInfiniting) {
+    status = 'loading'
+  } else if (hasMore) {
+    status = 'idle'
+  }
   const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
   useEffect(() => {
@@ -67,7 +86,7 @@ export const InfiniteLoading: FunctionComponent<
     return () => {
       scrollEl.current?.removeEventListener('scroll', handleScroll, capture)
     }
-  }, [hasMore, isInfiniting, onLoadMore])
+  }, [hasMore, minimumLoadingTime, onLoadMore])
 
   useEffect(() => {
     const element = scroller.current as HTMLDivElement
@@ -90,15 +109,20 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const handleScroll = async () => {
-    if (!isScrollAtBottom() || !hasMore || isInfiniting) {
+    if (!isScrollAtBottom() || !hasMore || loadingRef.current) {
       return
     }
+    loadingRef.current = true
     setIsInfiniting(true)
-    await onLoadMore?.()
-    infiniteDone()
+    try {
+      await runWithMinimumDuration(onLoadMore, minimumLoadingTime)
+    } finally {
+      infiniteDone()
+    }
   }
 
   const infiniteDone = () => {
+    loadingRef.current = false
     setIsInfiniting(false)
   }
 
@@ -200,12 +224,34 @@ export const InfiniteLoading: FunctionComponent<
     if (!hasMore) {
       return loadMoreText || locale.infiniteloading.loadMoreText
     }
-    return null
+    return pullUpText || locale.infiniteloading.pullUpText
+  }
+
+  // 内置图标按 type 与 status 取：加载中用 gif 动图，没有更多了用静态图
+  function getBuiltInIconSrc() {
+    const isPrimary = type === 'primary'
+    if (status === 'complete') {
+      return isPrimary
+        ? INFINITE_LOADING_PRIMARY_COMPLETE_ICON
+        : INFINITE_LOADING_DEFAULT_COMPLETE_ICON
+    }
+    return isPrimary
+      ? INFINITE_LOADING_PRIMARY_ICON
+      : INFINITE_LOADING_DEFAULT_ICON
+  }
+
+  // 使用方可通过 renderIcon 完全接管内置图标
+  function getBottomTipsIcon() {
+    if (renderIcon) {
+      return renderIcon(status)
+    }
+    return <img alt="" src={getBuiltInIconSrc()} />
   }
 
   return (
     <div
       className={classes}
+      data-status={status}
       ref={scroller}
       onTouchStart={touchStart}
       onTouchEnd={touchEnd}
@@ -218,7 +264,12 @@ export const InfiniteLoading: FunctionComponent<
       </div>
       <div className="nut-infinite-container">{children}</div>
       <div className="nut-infinite-bottom">
-        <div className="nut-infinite-bottom-tips">{getBottomTipsText()}</div>
+        <div className="nut-infinite-bottom-tips">
+          <div className="nut-infinite-bottom-icon" style={iconStyle}>
+            {getBottomTipsIcon()}
+          </div>
+          <div className="nut-infinite-bottom-text">{getBottomTipsText()}</div>
+        </div>
       </div>
     </div>
   )

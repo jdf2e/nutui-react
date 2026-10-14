@@ -131,6 +131,25 @@ npm install @nutui/nutui-react-taro
 - **光晕视觉重做**：
   - 加载光晕由横向平移的深色叠加改为白色 30° 斜向光带（宽 80px，渐变透明度 0% → 50% → 0%），由左至右移动 400ms、停顿约 1s 后循环。
 
+### CountDown (展示类)
+
+- **视觉规格对齐 JD APP 16.0**：
+  - `type` 仍为 `default`（线性标）/ `primary`（面性标）/ `text`（文本标），**无 type 重命名 Breaking**。
+  - 线性标：白底红描边红字；面性标：红底白字圆角块；文本标：红字无底无边。分隔符均在数字块外。
+  - 数字块高度 `16px`、最小宽度 `16px`、`padding: 1px`、圆角 `2px`；描边沿用 `::after`，由半倍缩放改为 `scale(1/3)`，视觉约 0.33px（三分之一）。
+- **新增 format token `i`**：
+  - 百毫秒 1 位（0–9）；`ss.i` 同块渲染（如 `30.5`）；刷新仍由 `requestAnimationFrame` 驱动，仅在展示档变化时 `setState`。
+  - 旧 token（`DD`/`HH`/`mm`/`ss`/`S`/`SS`/`SSS`）与自定义 `format` 行为保持不变。
+- **结束回调行为**：
+  - 倒计时到 0 时仅触发 `onEnd`，不再顺带调用 `onPaused`。
+- **移除 `millisecond`（不兼容变更）**：
+  - 该属性此前已无实际作用；毫秒/百毫秒精度改由 `format` 中的 `i` / `S` / `SS` / `SSS` 决定（RAF 驱动，按展示档 `setState`）。请删除业务侧的 `millisecond` 传参。
+- **新增 `refreshInterval`（兼容）**：
+  - 传入固定毫秒步长后，按 `Math.floor(remainTime / refreshInterval)` 节流 `setState`；不传则仍按 `format` 最细单位取整。
+- **推荐格式（文档约定，组件不强制按时长自动切换）**：
+  - ≥1 天：`DD天HH:mm:ss`，建议 `type="text"`；1～24h：`HH:mm:ss` 或 `HH:mm:ss.i`；&lt;1h：`mm:ss` 或 `mm:ss.i`。
+  - 百毫秒仅建议 24h 内强促销场景使用。
+
 ### Range (数据录入)
 
 - **游标视觉规格调整（兼容升级）**：
@@ -163,3 +182,16 @@ npm install @nutui/nutui-react-taro
   - 通过 `position="top"` 从顶部弹出，内容以网格形式展示，`options` 支持 `icon` 字段（字符串使用 `img` 渲染，也可传入自定义节点），可通过 `columns` 设置列数（仅支持 `4` / `5`，默认 `5`）；`cancelText` 在顶部模式下渲染为「点击收起」按钮。网格布局也可通过 `layout="grid"` 用于底部弹出。
 - **头部样式与关闭能力（新增）**：
   - 新增 `titleAlign`（`left` / `center`，默认 `center`，仅 `center` 时 `description` 生效）、`headerLeft`、`headerRight` 自定义头部左右内容，以及 `closeable` / `closeIconPosition` 控制关闭按钮的显示与位置。以上均为纯新增能力，不影响原有用法。
+
+### Cell (展示类)
+
+- **左侧区域类名由 `.nut-cell-left` 改为 `.nut-cell-body`（不兼容变更）**：
+  - 为承载新增的识别区（`leading`），原左侧内容区更名为主信息区。若此前通过 `.nut-cell-left` 覆盖过单元格样式，请改用 `.nut-cell-body`。
+- **单元格内边距调整为 `16px`（行为变更）**：
+  - `--nutui-cell-padding` 默认值由 `13px 16px` 调整为 `16px`，单元格整体高度会增加。若需维持原有间距，可显式设置 `--nutui-cell-padding: 13px 16px`。
+- **标题改为单行打点（行为变更）**：
+  - `title` 超长时不再换行，改为单行省略号截断。若需要多行标题，请在 `title` 中自行传入节点并覆盖截断样式。
+- **右侧区域不再参与拉伸（行为变更）**：
+  - `.nut-cell-extra` 由 `flex: 1` 改为按内容宽度自适应，并与主信息区保持 `24px` 最小间距（可通过 `--nutui-cell-extra-margin` 调整）。此前右侧内容较长时会与主信息区平分剩余空间，现在改为右侧优先占位、主信息区相应收窄，可能出现主标题被截断而右侧内容完整的观感变化。
+- **新增识别区与下挂插槽（新增）**：
+  - 新增 `leading` 属性用于渲染左侧识别区（图标或头像），组件只负责 `12px` 间距（`--nutui-cell-leading-margin`）与对齐，尺寸由使用方决定；新增 `content` 属性作为下挂通栏业务插槽，宽度撑满内容区并与主信息左边界对齐。传入 `content` 后，`description` 会由标题下方改为通栏展示。两项均为纯新增能力，不传时不影响原有用法。

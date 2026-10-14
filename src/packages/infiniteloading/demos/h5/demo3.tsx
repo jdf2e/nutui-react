@@ -1,5 +1,9 @@
 import React, { useState, useEffect, CSSProperties } from 'react'
-import { Cell, InfiniteLoading } from '@nutui/nutui-react'
+import {
+  Cell,
+  InfiniteLoading,
+  InfiniteLoadingStatus,
+} from '@nutui/nutui-react'
 
 const sleep = (time: number): Promise<unknown> =>
   new Promise((resolve) => {
@@ -19,6 +23,21 @@ const InfiniteLiStyle: CSSProperties = {
   color: 'rgba(100, 100, 100, 1)',
   textAlign: 'center',
 }
+
+const renderCustomIcon = (status: InfiniteLoadingStatus) => (
+  <svg aria-hidden="true" height="100%" viewBox="0 0 20 20" width="100%">
+    <circle
+      cx="10"
+      cy="10"
+      fill={status === 'complete' ? 'currentColor' : 'none'}
+      r="7"
+      stroke="currentColor"
+      strokeDasharray={status === 'loading' ? '8 4' : undefined}
+      strokeWidth="2"
+    />
+  </svg>
+)
+
 const Demo3 = () => {
   const [customList, setCustomList] = useState<string[]>([])
   const [customHasMore, setCustomHasMore] = useState(true)
@@ -55,6 +74,8 @@ const Demo3 = () => {
             target="customScroll"
             loadingText="loading"
             loadMoreText="没有啦～"
+            iconStyle={{ color: '#2db7f5', width: 24, height: 24 }}
+            renderIcon={renderCustomIcon}
             hasMore={customHasMore}
             onLoadMore={customLoadMore}
           >

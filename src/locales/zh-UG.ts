@@ -26,6 +26,7 @@ const zhUG: BaseLang = {
   },
   infiniteloading: {
     pullRefreshText: 'قويۇپ بېرىڭ',
+    pullUpText: 'تېخىمۇ كۆپ يۈكلەش ئۈچۈن ئۈستىگە سىيرىڭ',
     loadText: 'سەل ساقلاڭ',
     loadMoreText: 'ۋاي تۈگىدى',
   },
