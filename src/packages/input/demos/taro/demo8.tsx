@@ -11,7 +11,7 @@ const Demo8 = () => {
         flexWrap: 'nowrap',
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#ebedf2',
       }}
     >
       <Input

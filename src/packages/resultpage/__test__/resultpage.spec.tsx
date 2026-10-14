@@ -6,11 +6,11 @@ import { ResultPage } from '../resultpage'
 
 test('should render description correctly', () => {
   const { container, getByText } = render(
-    <ResultPage description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行" />
+    <ResultPage description="内容描述可折行，建议最多不超过两行建议最多不超过两行内容描述可折行，建议最多不超过两行建议最多不超过两行" />
   )
   expect(
     getByText(
-      '内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行'
+      '内容描述可折行，建议最多不超过两行建议最多不超过两行内容描述可折行，建议最多不超过两行建议最多不超过两行'
     )
   ).toBeTruthy()
   expect(container).toMatchSnapshot()

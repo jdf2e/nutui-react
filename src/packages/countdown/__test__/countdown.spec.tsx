@@ -2,8 +2,19 @@ import * as React from 'react'
 import { act, fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { CountDown } from '../countdown'
+import { getDisplayBucket } from '../utils'
 import { sleep } from '@/utils/sleep'
 import Button from '@/packages/button'
+
+describe('countdown utils display bucket', () => {
+  test('bucket by format granularity', () => {
+    expect(getDisplayBucket(1500, 'HH:mm:ss')).toBe(1)
+    expect(getDisplayBucket(1500, 'mm:ss.i')).toBe(15)
+    expect(getDisplayBucket(305, 'HH:mm:ss:S')).toBe(3)
+    expect(getDisplayBucket(305, 'HH:mm:ss:SS')).toBe(30)
+    expect(getDisplayBucket(305, 'HH:mm:ss:SSS')).toBe(305)
+  })
+})
 
 describe('Countdown', () => {
   let container: any
@@ -19,12 +30,20 @@ describe('Countdown', () => {
   })
   test('endTime props', async () => {
     const testClick = vi.fn()
-    render(<CountDown endTime={Date.now() + 1 * 1000} onEnd={testClick} />)
+    const onPaused = vi.fn()
+    render(
+      <CountDown
+        endTime={Date.now() + 1 * 1000}
+        onEnd={testClick}
+        onPaused={onPaused}
+      />
+    )
     expect(testClick).not.toBeCalled()
     await act(async () => {
       await sleep(1000)
       waitFor(() => {
         expect(testClick).toBeCalled()
+        expect(onPaused).not.toBeCalled()
       })
     })
   })
@@ -45,7 +64,7 @@ describe('Countdown', () => {
 
   test('type props text', async () => {
     const { container } = render(
-      <CountDown endTime={Date.now() + 1 * 1000} type="text" />
+      <CountDown autoStart={false} time={0} type="text" />
     )
     const countdownDom = container.querySelector('.nut-countdown') as Element
     expect(container).toMatchSnapshot()
@@ -56,13 +75,54 @@ describe('Countdown', () => {
 
   test('type props primary', async () => {
     const { container } = render(
-      <CountDown endTime={Date.now() + 1 * 1000} type="primary" />
+      <CountDown autoStart={false} time={0} type="primary" />
     )
     const countdownDom = container.querySelector('.nut-countdown') as Element
     expect(container).toMatchSnapshot()
     expect(
       countdownDom?.querySelectorAll('.nut-countdown-number-primary')?.length
     ).toBe(3)
+  })
+
+  test('type props default', async () => {
+    const { container } = render(
+      <CountDown autoStart={false} time={0} type="default" />
+    )
+    const countdownDom = container.querySelector('.nut-countdown') as Element
+    expect(
+      countdownDom?.querySelectorAll('.nut-countdown-number')?.length
+    ).toBe(3)
+  })
+
+  test('format token i hundred-millisecond', async () => {
+    const { container } = render(
+      <CountDown
+        autoStart={false}
+        time={30500}
+        format="mm:ss.i"
+        type="primary"
+      />
+    )
+    const countdownDom = container.querySelector('.nut-countdown') as Element
+    const blocks = countdownDom?.querySelectorAll(
+      '.nut-countdown-number-primary'
+    )
+    // mm and ss.i should be two blocks; ss.i stays in the same block (e.g. 30.5)
+    expect(blocks?.length).toBe(2)
+    const ssBlock = blocks?.[1]
+    expect(ssBlock?.textContent).toMatch(/^\d{2}\.\d$/)
+    expect(ssBlock?.classList.contains('nut-countdown-number-ssi')).toBe(true)
+  })
+
+  test('legacy format HH:mm:ss still works', async () => {
+    const { container } = render(
+      <CountDown endTime={Date.now() + 90 * 1000} format="HH:mm:ss" />
+    )
+    const countdownDom = container.querySelector('.nut-countdown') as Element
+    expect(
+      countdownDom?.querySelectorAll('.nut-countdown-number')?.length
+    ).toBe(3)
+    expect(countdownDom?.innerHTML).toContain(':')
   })
 
   test('paused props', async () => {

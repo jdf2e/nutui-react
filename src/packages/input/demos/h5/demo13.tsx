@@ -8,7 +8,7 @@ const Demo13 = () => {
       style={{
         display: 'flex',
         alignItems: 'center',
-        background: '#fff',
+        background: '#ebedf2',
         padding: '0 10px',
       }}
     >

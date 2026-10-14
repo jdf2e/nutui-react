@@ -8,6 +8,8 @@ import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 const ResultPageDemo = () => {
   const [translated] = useTranslate({
@@ -17,6 +19,8 @@ const ResultPageDemo = () => {
       noTitle: '无标题',
       singleButton: '单按钮',
       noButton: '无按钮',
+      popup: '半弹层内嵌',
+      dialog: '弹窗内嵌',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -24,6 +28,8 @@ const ResultPageDemo = () => {
       noTitle: '無標題',
       singleButton: '單按鈕',
       noButton: '無按鈕',
+      popup: '半彈層內嵌',
+      dialog: '彈窗內嵌',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -31,6 +37,8 @@ const ResultPageDemo = () => {
       noTitle: 'No Title',
       singleButton: 'Single Button',
       noButton: 'No Button',
+      popup: 'Inside Popup',
+      dialog: 'Inside Dialog',
     },
   })
   return (
@@ -47,6 +55,10 @@ const ResultPageDemo = () => {
         <Demo4 />
         <View className="h2">{translated.noButton}</View>
         <Demo5 />
+        <View className="h2">{translated.popup}</View>
+        <Demo6 />
+        <View className="h2">{translated.dialog}</View>
+        <Demo7 />
       </ScrollView>
     </>
   )

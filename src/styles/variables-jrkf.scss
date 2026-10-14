@@ -552,7 +552,7 @@ $cell-description-font-size: var(
 ) !default;
 $cell-description-color: var(
   --nutui-cell-description-color,
-  $color-text
+  $color-text-help
 ) !default;
 $cell-extra-font-size: var(
   --nutui-cell-extra-font-size,
@@ -560,7 +560,21 @@ $cell-extra-font-size: var(
 ) !default;
 $cell-extra-color: var(--nutui-cell-extra-color, $color-text) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, $radius-s) !default;
-$cell-padding: var(--nutui-cell-padding, $spacing-xxl $spacing-xxxl) !default;
+$cell-padding: var(--nutui-cell-padding, $spacing-xxl) !default;
+$cell-leading-margin: var(--nutui-cell-leading-margin, $spacing-xl) !default;
+$cell-leading-align-self: var(--nutui-cell-leading-align-self, auto) !default;
+$cell-extra-margin: var(
+  --nutui-cell-extra-margin,
+  scale-px(24px)
+) !default;
+$cell-description-margin: var(
+  --nutui-cell-description-margin,
+  scale-px(2px)
+) !default;
+$cell-content-margin: var(
+  --nutui-cell-content-margin,
+  scale-px(8px)
+) !default;
 $cell-line-height: var(--nutui-cell-line-height, 20px) !default;
 $cell-divider-right: var(--nutui-cell-divider-right, 16px) !default;
 $cell-divider-left: var(--nutui-cell-divider-left, 16px) !default;
@@ -829,9 +843,33 @@ $input-container-height: var(--nutui-input-container-height, 38px) !default;
 // textarea（✅）
 
 $textarea-font: var(--nutui-textarea-font, $font-text) !default;
+$textarea-plain-min-height: var(
+  --nutui-textarea-plain-min-height,
+  44px
+) !default;
+$textarea-container-min-height: var(
+  --nutui-textarea-container-min-height,
+  60px
+) !default;
 $textarea-padding: var(
   --nutui-textarea-padding,
-  $spacing-base $spacing-xxxl
+  8px 12px
+) !default;
+$textarea-container-gray-background-color: var(
+  --nutui-textarea-container-gray-background-color,
+  var(--nutui-color-background-component, $color-background-sunken)
+) !default;
+$textarea-container-white-background-color: var(
+  --nutui-textarea-container-white-background-color,
+  $color-background-overlay
+) !default;
+$textarea-limit-error-color: var(
+  --nutui-textarea-limit-error-color,
+  $color-error
+) !default;
+$textarea-error-color: var(
+  --nutui-textarea-error-color,
+  $color-error
 ) !default;
 $textarea-limit-color: var(
   --nutui-textarea-limit-color,
@@ -1079,7 +1117,7 @@ $countdown-number-border-radius: var(
 $countdown-number-margin: var(--nutui-countdown-number-margin, 0 2px) !default;
 $countdown-number-border-color: var(
   --nutui-countdown-number-border-color,
-  $color-primary-light
+  $color-primary-disabled-special
 ) !default;
 $countdown-number-color: var(
   --nutui-countdown-number-color,
@@ -1743,6 +1781,14 @@ $steps-horizontal-item-special-3-padding-right: var(
   --nutui-steps-horizontal-item-special-3-padding-right,
   9px
 ) !default;
+$steps-horizontal-single-line-min-length: var(
+  --nutui-steps-horizontal-single-line-min-length,
+  12px
+) !default;
+$steps-horizontal-double-line-min-length: var(
+  --nutui-steps-horizontal-double-line-min-length,
+  40px
+) !default;
 $steps-vertical-item-padding-bottom: var(
   --nutui-steps-vertical-item-padding-bottom,
   13px
@@ -2242,6 +2288,75 @@ $progress-text-position-bottom: var(
 $progress-text-border-radius: var(
   --nutui-progress-text-border-radius,
   5px
+) !default;
+$progress-video-track-color: var(
+  --nutui-progress-video-track-color,
+  rgba(255, 255, 255, 0.2)
+) !default;
+$progress-video-fill-color: var(
+  --nutui-progress-video-fill-color,
+  rgba(255, 255, 255, 0.7)
+) !default;
+$progress-video-thumb-color: var(
+  --nutui-progress-video-thumb-color,
+  #ffffff
+) !default;
+$progress-video-height: var(--nutui-progress-video-height, 1px) !default;
+$progress-video-active-height: var(
+  --nutui-progress-video-active-height,
+  8px
+) !default;
+$progress-video-paused-height: var(
+  --nutui-progress-video-paused-height,
+  3px
+) !default;
+$progress-video-thumb-width: var(
+  --nutui-progress-video-thumb-width,
+  2px
+) !default;
+$progress-video-thumb-height: var(
+  --nutui-progress-video-thumb-height,
+  1px
+) !default;
+$progress-video-thumb-radius: var(
+  --nutui-progress-video-thumb-radius,
+  0.5px
+) !default;
+$progress-video-thumb-active-width: var(
+  --nutui-progress-video-thumb-active-width,
+  6px
+) !default;
+$progress-video-thumb-active-height: var(
+  --nutui-progress-video-thumb-active-height,
+  12px
+) !default;
+$progress-video-thumb-active-radius: var(
+  --nutui-progress-video-thumb-active-radius,
+  3px
+) !default;
+$progress-video-thumb-paused-width: var(
+  --nutui-progress-video-thumb-paused-width,
+  6px
+) !default;
+$progress-video-thumb-paused-height: var(
+  --nutui-progress-video-thumb-paused-height,
+  3px
+) !default;
+$progress-video-thumb-paused-radius: var(
+  --nutui-progress-video-thumb-paused-radius,
+  1.5px
+) !default;
+$progress-video-opacity-static: var(
+  --nutui-progress-video-opacity-static,
+  0.6
+) !default;
+$progress-video-opacity-paused: var(
+  --nutui-progress-video-opacity-paused,
+  0.85
+) !default;
+$progress-video-container-height: var(
+  --nutui-progress-video-container-height,
+  68px
 ) !default;
 
 //pagination（✅）
@@ -3081,6 +3196,10 @@ $resultpage-title-margin-bottom: var(
 $resultpage-title-font-size: var(
   --nutui-resultpage-title-font-size,
   $font-size-xl
+) !default;
+$resultpage-title-line-height: var(
+  --nutui-resultpage-title-line-height,
+  $line-height-xl
 ) !default;
 $resultpage-title-color: var(
   --nutui-resultpage-title-color,

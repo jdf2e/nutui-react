@@ -5,7 +5,7 @@
   background-color: $color-background-overlay;
   display: flex;
   flex-direction: column;
-  height: calc(100% - scale-px(50px));
+  height: calc(100% - 50px);
 
   &-content {
     display: flex;
@@ -24,7 +24,7 @@
 }
 
 .nut-timepannel {
-  padding: 0 scale-px(16px);
+  padding: 0 16px;
   height: $timeselect-date-height;
   line-height: $timeselect-date-height;
   text-align: start;
