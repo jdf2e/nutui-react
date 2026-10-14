@@ -1167,7 +1167,7 @@
 | remainingTime | 剩余时间，单位是毫秒 | `number` | 0 |
 | paused | 是否暂停 | `boolean` | false |
 | format | 时间格式 | `string` | HH:mm:ss |
-| millisecond | 是否开启毫秒级渲染 | `boolean` | false |
+| refreshInterval | 刷新步长（毫秒）；传入则按该值取整节流，不传则按 format 最细单位 | `number` | `-` |
 | autoStart | 是否自动开始倒计时 | `boolean` | true |
 | time | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | `number` | 0 |
 | destroy | 销毁实例 | `boolean` | false |

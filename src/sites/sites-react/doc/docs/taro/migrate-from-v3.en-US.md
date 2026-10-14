@@ -131,6 +131,25 @@ npm install @nutui/nutui-react-taro
 - **Shimmer visual redesign**:
   - The loading shimmer changed from a dark horizontal-translate overlay to a white 30° diagonal light band (80px wide, gradient opacity 0% → 50% → 0%), sweeping left to right over 400ms and looping after a ~1s pause.
 
+### CountDown
+
+- **Visual spec aligned to JD APP 16.0**:
+  - `type` remains `default` (outline) / `primary` (solid) / `text` (plain text). **No type rename Breaking Change**.
+  - Outline: white fill, red border & text; solid: red fill, white text, rounded blocks; text: red text, no fill/border. Separators stay outside number blocks.
+  - Number blocks: height `16px`, min-width `16px`, `padding: 1px`, radius `2px`; border keeps `::after`, scale changed from `0.5` to `1/3` (~0.33px visually).
+- **New format token `i`**:
+  - Hundred-millisecond, 1 digit (0–9); `ss.i` rendered in the same block (e.g. `30.5`); still RAF-driven, `setState` only when the display bucket changes.
+  - Legacy tokens (`DD`/`HH`/`mm`/`ss`/`S`/`SS`/`SSS`) and custom `format` behavior are unchanged.
+- **End callback behavior**:
+  - When time hits 0, only `onEnd` fires; `onPaused` is no longer called as a side effect.
+- **Removed `millisecond` (breaking)**:
+  - The prop had no effect; ms / hundred-ms precision is controlled by `format` tokens `i` / `S` / `SS` / `SSS` (RAF-driven, `setState` on display bucket change). Remove `millisecond` from call sites.
+- **Added `refreshInterval` (compatible)**:
+  - Pass a fixed ms step to throttle via `Math.floor(remainTime / refreshInterval)`; omit to keep flooring by the finest `format` unit.
+- **Recommended formats (docs only; component does not auto-switch by duration)**:
+  - ≥1 day: `DD天HH:mm:ss`, prefer `type="text"`; 1–24h: `HH:mm:ss` or `HH:mm:ss.i`; &lt;1h: `mm:ss` or `mm:ss.i`.
+  - Hundred-millisecond is recommended only within 24h for strong promo scenes.
+
 ### Range
 
 - **Thumb visual spec updates (compatible)**:
