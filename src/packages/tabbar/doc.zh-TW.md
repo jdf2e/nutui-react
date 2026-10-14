@@ -1,6 +1,6 @@
 # Tabbar 標簽欄
 
-底部導航常用場景。導航背板左右各留 12px、內部四周留 4px，使用 16px 圓角；元件外層保持透明。
+Tabbar 用於底部導航，導航背板預設左右各留 12px、四周內邊距為 4px，並使用跟隨高度的全圓角，元件外層背景透明。
 
 ## 引入
 
@@ -20,7 +20,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 徽標提示
 
-圖標內容支援紅點、數字和文字招手。設計標註以圖標左下角為基準：紅點的左/下偏移為 19/14 DP，數字與文字為 15/14 DP。外框向四周各擴 1px 後，CSS 外框偏移分別為 18/13 和 14/13 DP，保持原視覺位置。紅點內部為 6×6px、含邊框外徑為 8×8px；數字與文字標籤外高 14px（含上下各 1px 邊框）、字號 9px、行高 12px、圓角 8px、左右內邊距各 3px。橫向佈局下，文字盒寬、高各增加 1px，標籤外高相應為 15px，並保持與內容水平置中。逛一逛的文字招手示例使用最多四個字。
+透過 `dot` 或 `value` 可以在標籤圖標上展示紅點、數字或文字徽標，普通圖標使用元件預設定位，營銷圖片可透過業務樣式調整徽標位置。
 
 :::demo
 
@@ -46,7 +46,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 首坑品牌+營銷態
 
-同一組示例展示營銷圖片上的紅點、數字和文字招手。設計標註以圖片左下角為基準：紅點的左/下偏移為 28/32 DP，數字與文字為 24/32 DP；扣除外框各側 1px 後，CSS 外框偏移分別為 27/31 和 23/31 DP。圖片下方不顯示文案。圖片徽標的位置由示例專用樣式 `badge-demo.scss` 控制，切換圖片與圖標時按選中態調整樣式。
+此示例展示營銷圖片上的紅點、數字和文字徽標，透過 `title(active)` 控制圖片下方的文案，並使用 `badge-demo.scss` 調整圖片徽標的位置。
 
 :::demo
 
@@ -80,9 +80,9 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 固定底部與返頂
 
-`fixed` 或 `safeArea` 開啟時，底部安全區使用系統 `env(safe-area-inset-bottom)`。元件總高為 52px 加裝置實際安全區，不固定為 69px 或 74px。
+`fixed` 用於固定底部導航，傳入 `fixed` 或 `safeArea` 時會渲染底部安全區；導航層預設高度為 52px，安全區高度取 `env(safe-area-inset-bottom)`，並可透過 `--nutui-safe-area-multiple` 調整。
 
-此示例沿用固定底部導覽。示例頁將目前頁面捲動位置傳入 `demo9`；捲動超過 160px（僅為示範門檻）且首頁已選取時，首頁圖示切換為返頂圖示。從其他項目首次點擊首頁只切換選取，再次點擊目前首頁才讓同一頁面容器平滑回到頂部。呼叫方組合 `icon(active)`、`onActiveClick` 與頁面捲動狀態，無須新增 Tabbar 屬性。「首頁」是示例文字。
+返頂示例在首頁選中且捲動達到 160px 後切換圖標，再次點擊首頁時由呼叫方透過 `onActiveClick` 捲動目前容器；`icon(active)` 和捲動狀態也由呼叫方控制，無須新增 Tabbar 屬性。
 
 :::demo
 
@@ -92,7 +92,9 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### addonBefore 前置入口
 
-透過 `addonBefore` 傳入圖片或自訂節點。元件提供預設 52×52px 定位容器，右上角和右下角為全圓角，超出容器的內容會被裁切；圖片、外觀與點擊行為由呼叫方負責。`addonBefore` 不參與一般標籤的索引，也不觸發 `onSwitch`。示例使用設計稿 `1545:72` 匯出的 132×132px 透明 PNG，圖片置中覆蓋來源容器並包含陰影，點擊只列印控制台訊息。
+透過 `addonBefore` 傳入圖片或自訂節點，元件預設提供右側兩角為全圓角的 52×52px 定位容器，並裁切超出容器的內容。
+
+圖片、外觀與點擊行為由呼叫方實作；`addonBefore` 不占用標籤索引，點擊時不會觸發 `onSwitch`。
 
 :::demo
 
@@ -102,7 +104,9 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 毛玻璃材質
 
-Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背板：3px 模糊、80% 明暗疊色，可見背板為全圓角。明暗跟隨 `MaterialView` 的系統主題處理。外層與 SafeArea 保持透明，頁面背景應延伸至安全區。示例在直向彩色背景圖上展示 `addonBefore` 內容與半透明背板。各端實際視覺效果以 `MaterialView` 的目標執行環境能力為準。
+Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 場景作為導航背板，設定 3px 模糊和透明度為 80% 的疊加色；背板為全圓角，元件外層和底部安全區保持透明。
+
+H5 背板的明暗由 `.nut-theme-dark` 主題類控制，頁面背景建議延伸到安全區；實際模糊效果取決於瀏覽器支援。
 
 :::demo
 
@@ -112,7 +116,9 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 
 ### 換膚背板
 
-傳入 `skinBackground` 後，背板內容取代預設的 `MaterialView` 材質。元件負責背板裁切、全圓角與導航項層級；示例圖片、圖示選中態和專屬定位均在 demo 中實作。`icon(active)` 可依選中狀態切換圖片。
+傳入 `skinBackground` 後，自訂內容會取代預設的 `MaterialView` 背板；元件負責背板裁切、全圓角和導航項層級，圖片及專屬定位由呼叫方實作。
+
+可以透過 `icon(active)` 依選中狀態切換圖標圖片。
 
 :::demo
 
@@ -128,9 +134,10 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 | --- | --- | --- | --- |
 | defaultValue | 默認選中的標簽的索引值 | `number` | `0` |
 | value | 選中的標簽的索引值 | `number` | `-` |
-| fixed | 是否固定在頁面底部，為 true 時默認開啟 safeArea | `boolean` | `false` |
-| activeColor | icon激活的顏色 | `string` | `#0073ff` |
-| inactiveColor | icon未激活的顏色 | `string` | `#7d7e80` |
+| fixed | 是否固定在頁面底部，開啟時會渲染底部安全區 | `boolean` | `false` |
+| activeColor | 選中項顏色，留空時由主題樣式決定 | `string` | `''` |
+| inactiveColor | 未選中項顏色，留空時由主題樣式決定 | `string` | `''` |
+| direction | 排列方向，恰好兩個標籤時可設為橫向 | `'vertical' \| 'horizontal'` | `'vertical'` |
 | safeArea | 是否開啟iphone繫列全面屏底部安全區適配 | `boolean` | `false` |
 | skinBackground | 自訂換膚背板內容，傳入時取代預設材質 | `ReactNode` | `-` |
 | addonBefore | 前置入口內容，圖片與點擊由呼叫方提供 | `ReactNode` | `-` |
@@ -149,7 +156,7 @@ Tabbar 預設使用 `MaterialView` 的 `bottom-bar` 材質作為 52px 導航背�
 | dot | 徽標是否為小點 | `boolean` | `false` |
 | top | 徽標的上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
 | right | 徽標的左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
-| onActiveClick | 用於處理當元素處於焦點時，再次點擊時可增加自定義事件。 | `() => void` | `-` |
+| onActiveClick | 再次點擊目前選中項時觸發 | `() => void` | `-` |
 
 ## 主題定製
 

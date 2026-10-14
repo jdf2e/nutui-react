@@ -1,6 +1,6 @@
 # Tabbar
 
-Common bottom-navigation scenarios. The navigation board keeps a 12px inset on both sides, 4px inner padding, and a 16px radius. The component shell remains transparent.
+Tabbar provides bottom navigation with 12px horizontal insets, 4px inner padding, fully rounded board corners that follow its height, and a transparent outer container by default.
 
 ## Import
 
@@ -20,7 +20,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### Logo Tips
 
-Icon content supports dot, number, and text badges. The design offsets from the icon's left and bottom edges are 19/14 DP for a dot and 15/14 DP for numbers or text. After expanding the outer box by 1px on every side, the CSS outer-box offsets are 18/13 and 14/13 DP respectively, preserving the visual position. Dots have a 6×6px interior and an 8×8px outer box including the border; number and text badges are 14px high including a 1px border on each vertical side, with 9px text, 12px line height, 8px corners, and 3px horizontal padding on each side. In horizontal layouts, the text box gains 1px in both width and height, making the badge 15px high while keeping it centered with the content. The text badge in the example uses at most four Chinese characters.
+Use `dot` or `value` to show a dot, number, or text badge on an item icon; ordinary icons use the default badge position, while marketing artwork can use application styles to adjust it.
 
 :::demo
 
@@ -46,7 +46,7 @@ Icon content supports dot, number, and text badges. The design offsets from the 
 
 ### Custom
 
-This single marketing example shows dot, number, and text badges on images. The design offsets from the image's left and bottom edges are 28/32 DP for a dot and 24/32 DP for numbers or text; after accounting for the 1px outer border, the CSS outer-box offsets are 27/31 and 23/31 DP respectively. Images have no label below them. The example-specific `badge-demo.scss` positions badges over the artwork and adjusts the placement when the content switches between an image and an icon.
+This example shows dot, number, and text badges on marketing artwork, controls the label below an image with `title(active)`, and positions image badges in `badge-demo.scss`.
 
 :::demo
 
@@ -80,9 +80,9 @@ This single marketing example shows dot, number, and text badges on images. The 
 
 ### Fixed Bottom and Back to Top
 
-When `fixed` or `safeArea` is enabled, the bottom inset uses the system `env(safe-area-inset-bottom)` value. The total height is 52px plus the device inset; it is not hard-coded to 69px or 74px.
+Use `fixed` to pin Tabbar to the bottom; `fixed` or `safeArea` renders the bottom safe area, while the navigation height defaults to 52px and the inset from `env(safe-area-inset-bottom)` can be adjusted with `--nutui-safe-area-multiple`.
 
-This extends the fixed bottom demo. The demo page passes its scroll position to `demo9`; after 160px (an example threshold), the selected Home item shows a back-to-top icon. Clicking Home from another item selects it without scrolling. Clicking the already selected Home item scrolls the same page container smoothly to the top. The caller combines `icon(active)`, `onActiveClick`, and page scroll state; no new Tabbar prop is needed. “Home” is the demo label.
+The back-to-top example switches the Home icon when Home is selected and the scroll position reaches 160px, then scrolls the same container through `onActiveClick` when Home is clicked again; the caller controls `icon(active)` and scroll state without adding a Tabbar prop.
 
 :::demo
 
@@ -92,7 +92,9 @@ This extends the fixed bottom demo. The demo page passes its scroll position to 
 
 ### addonBefore Entry
 
-Pass an image or custom node through `addonBefore`. The component supplies a 52×52px positioning box by default, with fully rounded top-right and bottom-right corners; content outside the box is clipped. The caller supplies the image, appearance, and click behavior. `addonBefore` does not take a tab index or trigger `onSwitch`. This demo uses the 132×132px transparent PNG exported from design node `1545:72`, centered over the source box with its shadow. Clicking logs to the console only.
+Pass an image or custom node through `addonBefore`; the component provides a 52×52px positioning box with fully rounded right corners and clips content outside it by default.
+
+The caller implements the image, appearance, and click behavior; `addonBefore` does not occupy a tab index, and clicking it does not trigger `onSwitch`.
 
 :::demo
 
@@ -102,7 +104,9 @@ Pass an image or custom node through `addonBefore`. The component supplies a 52�
 
 ### Frosted Glass Material
 
-By default, Tabbar uses the `MaterialView` `bottom-bar` preset for its 52px navigation board: 3px blur and an 80% light or dark tint. The visible board is fully rounded. `MaterialView` follows the system theme. The outer layer and SafeArea remain transparent; extend the page background under the safe area. The demo shows `addonBefore` content and a translucent board over a color image. Check the actual appearance in each target runtime supported by `MaterialView`.
+By default, Tabbar uses the `MaterialView` `bottom-bar` scene for its navigation board, with 3px blur, a tint at 80% opacity, fully rounded corners, and transparent outer and safe-area backgrounds.
+
+On H5, the `.nut-theme-dark` theme class controls the board tint, and the page background should extend beneath the safe area; the blur effect depends on browser support.
 
 :::demo
 
@@ -112,7 +116,9 @@ By default, Tabbar uses the `MaterialView` `bottom-bar` preset for its 52px navi
 
 ### Custom Skin Background
 
-When `skinBackground` is provided, its content replaces the default `MaterialView` board. Tabbar handles clipping, the fully rounded shape, and item stacking. The artwork, selected icons, and their positioning belong to the demo. `icon(active)` switches images with the selection state.
+Providing `skinBackground` replaces the default `MaterialView` board with custom content; Tabbar handles clipping, fully rounded corners, and item stacking, while the caller implements artwork and its positioning.
+
+Use `icon(active)` to switch icon images based on the selected state.
 
 :::demo
 
@@ -128,9 +134,10 @@ When `skinBackground` is provided, its content replaces the default `MaterialVie
 | --- | --- | --- | --- |
 | defaultValue | The default index value of the selected label | `number` | `0` |
 | value | The index value of the selected label | `number` | `-` |
-| fixed | Whether it is fixed at the bottom of the page | `boolean` | `false` |
-| activeColor | icon active color | `string` | `#0073ff` |
-| inactiveColor | Icon inactive color | `string` | `#7d7e80` |
+| fixed | Fix Tabbar to the bottom and render the bottom safe area | `boolean` | `false` |
+| activeColor | Selected item color; theme styles apply when empty | `string` | `''` |
+| inactiveColor | Unselected item color; theme styles apply when empty | `string` | `''` |
+| direction | Item direction; horizontal layout applies with exactly two items | `'vertical' \| 'horizontal'` | `'vertical'` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
 | skinBackground | Custom skin board content; replaces the default material | `ReactNode` | `-` |
 | addonBefore | Leading entry content; the caller provides its image and click behavior | `ReactNode` | `-` |
@@ -149,7 +156,7 @@ When `skinBackground` is provided, its content replaces the default `MaterialVie
 | dot | Whether Badge is dotted | `boolean` | `false` |
 | top | Up and down offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
 | right | Left and right offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
-| onActiveClick | When item is focused, you can add your callback when you click it again | `() => void` | `-` |
+| onActiveClick | Called when the currently selected item is clicked again | `() => void` | `-` |
 
 ## Theming
 

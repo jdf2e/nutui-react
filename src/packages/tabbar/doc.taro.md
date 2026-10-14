@@ -1,6 +1,6 @@
 # Tabbar 标签栏
 
-底部导航常用场景。导航背板左右各留 12px、内部四周留 4px，使用 16px 圆角；组件外层保持透明。
+Tabbar 用于底部导航，导航背板默认左右各留 12px、四周内边距为 4px，并使用跟随高度的全圆角，组件外层背景透明。
 
 ## 引入
 
@@ -20,7 +20,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### 徽标提示
 
-图标内容支持红点、数字和文字招手。设计标注以图标左下角为基准：红点的左/下偏移为 19/14 DP，数字与文字为 15/14 DP。外框向四周各扩 1px 后，CSS 外框偏移分别为 18/13 和 14/13 DP，保持原视觉位置。红点内部为 6×6px、含边框外径为 8×8px；数字与文字标签外高 14px（含上下各 1px 边框）、字号 9px、行高 12px、圆角 8px、左右内边距各 3px。横向布局下，文字盒宽、高各增加 1px，标签外高相应为 15px，并保持与内容水平居中。逛一逛的文字招手示例使用最多四个字。
+通过 `dot` 或 `value` 可以在标签图标上展示红点、数字或文字徽标，普通图标使用组件默认定位，营销图片可通过业务样式调整徽标位置。
 
 :::demo
 
@@ -46,7 +46,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### 首坑品牌+营销态
 
-同一组示例展示营销图片上的红点、数字和文字招手。设计标注以图片左下角为基准：红点的左/下偏移为 28/32 DP，数字与文字为 24/32 DP；扣除外框各侧 1px 后，CSS 外框偏移分别为 27/31 和 23/31 DP。图片下方不显示文案。图片徽标的位置由示例专用样式 `badge-demo.scss` 控制，切换图片与图标时按选中态调整样式。
+此示例展示营销图片上的红点、数字和文字徽标，通过 `title(active)` 控制图片下方的文案，并使用 `badge-demo.scss` 调整图片徽标的位置。
 
 :::demo
 
@@ -80,9 +80,9 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### 固定底部与返顶
 
-`fixed` 或 `safeArea` 开启时，底部安全区使用系统 `env(safe-area-inset-bottom)`。组件总高为 52px 加设备实际安全区，不固定为 69px 或 74px。
+`fixed` 用于固定底部导航，传入 `fixed` 或 `safeArea` 时会渲染底部安全区；导航层默认高度为 52px，安全区高度取 `env(safe-area-inset-bottom)`，并可通过 `--nutui-safe-area-multiple` 调整。
 
-该示例沿用固定底部导航。示例页从外层 `ScrollView` 的 `onScroll` 读取 `event.detail.scrollTop` 并传入 `demo9`；滚动超过 160px（仅为演示阈值）且首页已选中时，首页图标切换为返顶图标。首次从其他项点击首页只切换选中，再次点击当前首页才通过同一 `ScrollView` 的 `scrollTop` 和 `scrollWithAnimation` 返顶，不使用页面级滚动 API。返顶由调用方组合 `icon(active)`、`onActiveClick` 和滚动状态实现，无新增 Tabbar 属性。标题“首页”是示例用语。
+返顶示例从 `ScrollView` 的 `onScroll` 读取滚动位置，在首页选中且滚动达到 160px 后切换图标，再次点击首页时通过 `scrollTop` 和 `scrollWithAnimation` 滚动同一容器；`icon(active)`、`onActiveClick` 和滚动状态由调用方组合，无需新增 Tabbar 属性。
 
 :::demo
 
@@ -92,7 +92,9 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### addonBefore 前置入口
 
-通过 `addonBefore` 传入 Taro `Image` 或自定义节点。组件提供默认 52×52px 的定位容器，右上角和右下角为全圆角，超出容器的内容会被裁切；图片、外观和点击行为由调用方负责。`addonBefore` 不参与普通标签的索引，也不触发 `onSwitch`。示例使用设计稿 `1545:72` 导出的 132×132px 透明 PNG，图片居中覆盖源盒，包含阴影，点击只打印控制台日志。
+通过 `addonBefore` 传入 Taro `Image` 或自定义节点，组件默认提供右侧两角为全圆角的 52×52px 定位容器，并裁切超出容器的内容。
+
+图片、外观和点击行为由调用方实现；`addonBefore` 不占用标签索引，点击时不会触发 `onSwitch`。
 
 :::demo
 
@@ -102,7 +104,9 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### 毛玻璃材质
 
-Tabbar 默认使用 `MaterialView` 的 `bottom-bar` 材质作为 52px 导航背板：3px 模糊、80% 明暗叠加色，可见背板为全圆角。明暗跟随 `MaterialView` 的系统主题处理。外层和 SafeArea 保持透明，页面背景应延伸到安全区。下方示例在竖向彩色背景图上展示 `addonBefore` 内容与半透明背板。各端实际视觉效果以 `MaterialView` 的目标运行时能力为准。
+Tabbar 默认使用 `MaterialView` 的 `bottom-bar` 场景作为导航背板，设置 3px 模糊和透明度为 80% 的叠加色；背板为全圆角，组件外层和底部安全区保持透明。
+
+Taro 背板的明暗由 `MaterialView` 根据系统主题决定，页面背景建议延伸到安全区；实际模糊效果取决于目标运行环境。
 
 :::demo
 
@@ -112,7 +116,9 @@ Tabbar 默认使用 `MaterialView` 的 `bottom-bar` 材质作为 52px 导航背�
 
 ### 换肤背板
 
-传入 `skinBackground` 后，背板内容替代默认的 `MaterialView` 材质。组件负责背板裁剪、全圆角与导航项层级；示例图片、图标选中态和专属定位均在 demo 中实现。`icon(active)` 可根据选中状态切换图片。
+传入 `skinBackground` 后，自定义内容会替代默认的 `MaterialView` 背板；组件负责背板裁切、全圆角和导航项层级，图片及专属定位由调用方实现。
+
+可以通过 `icon(active)` 根据选中状态切换图标图片。
 
 :::demo
 
@@ -128,9 +134,10 @@ Tabbar 默认使用 `MaterialView` 的 `bottom-bar` 材质作为 52px 导航背�
 | --- | --- | --- | --- |
 | defaultValue | 默认选中的标签的索引值 | `number` | `0` |
 | value | 选中的标签的索引值 | `number` | `-` |
-| fixed | 是否固定在页面底部，为 true 时默认开启 safeArea | `boolean` | `false` |
-| activeColor | icon激活的颜色 | `string` | `#0073ff` |
-| inactiveColor | icon未激活的颜色 | `string` | `#7d7e80` |
+| fixed | 是否固定在页面底部，开启时会渲染底部安全区 | `boolean` | `false` |
+| activeColor | 选中项颜色，留空时由主题样式决定 | `string` | `''` |
+| inactiveColor | 未选中项颜色，留空时由主题样式决定 | `string` | `''` |
+| direction | 排列方向，恰好两个标签时可设为横向 | `'vertical' \| 'horizontal'` | `'vertical'` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
 | skinBackground | 自定义换肤背板内容，传入时替代默认材质 | `ReactNode` | `-` |
 | addonBefore | 前置入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
@@ -149,7 +156,7 @@ Tabbar 默认使用 `MaterialView` 的 `bottom-bar` 材质作为 52px 导航背�
 | dot | 徽标是否为小点 | `boolean` | `false` |
 | top | 徽标的上下偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
 | right | 徽标的左右偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
-| onActiveClick | 用于处理当元素处于焦点时，再次点击时可增加自定义事件。 | `() => void` | `-` |
+| onActiveClick | 再次点击当前选中项时触发 | `() => void` | `-` |
 
 ## 主题定制
 
