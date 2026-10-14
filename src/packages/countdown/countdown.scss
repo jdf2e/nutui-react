@@ -15,7 +15,8 @@
     box-sizing: border-box;
     font-weight: $coutdown-font-weight;
     font-size: $countdown-font-size;
-    line-height: calc($countdown-font-size + scale-px(2px));
+    line-height: calc($countdown-font-size + 2px);
+    font-family: 'JDZH-Regular';
   }
   &-number,
   &-number-primary {
