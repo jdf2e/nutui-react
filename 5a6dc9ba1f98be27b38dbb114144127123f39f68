@@ -1,0 +1,17 @@
+src/styles/variables-daojia.scss
+  s_da4570d64aa763::t_8f0c756916118d 1108-1113,1115-1120
+src/styles/variables-jrkf.scss
+  s_da4570d64aa763::t_e2166a149461bd 1106-1109,1113-1116,1126-1129
+  s_da4570d64aa763::t_4a48a3596db863 2229-2232
+CHANGELOG.md
+  s_da4570d64aa763::t_e84c12ed21e328 3-34
+src/styles/variables-jmapp.scss
+  s_da4570d64aa763::t_af50dd9a41df6c 1026-1029,1033-1036,1046-1049
+  s_da4570d64aa763::t_ede835e72cb5e2 2123-2126
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "5a6dc9ba1f98be27b38dbb114144127123f39f68",
+  "prompts": {}
+}
