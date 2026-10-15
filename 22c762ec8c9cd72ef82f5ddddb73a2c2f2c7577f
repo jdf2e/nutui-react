@@ -1,0 +1,28 @@
+demo.html
+  s_2126af7893829e::t_0f02e3bcbe3204 2
+src/packages/price/price.tsx
+  s_2126af7893829e::t_72e0f354ae52c3 136,152,164,174,187-188,192-193,198-200
+  s_2126af7893829e::t_fd66530275083b 103
+  s_2126af7893829e::t_69338bcfd51c9e 73-82
+  s_2126af7893829e::t_dfaa8e2b1022e7 186,189-191
+index.html
+  s_2126af7893829e::t_86c4acf9b4b3cb 2
+src/packages/price/__test__/price.spec.tsx
+  s_2126af7893829e::t_0818ad0b1f137e 61,67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "22c762ec8c9cd72ef82f5ddddb73a2c2f2c7577f",
+  "prompts": {},
+  "sessions": {
+    "s_2126af7893829e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4540e2d7-3d8c-4fce-9b66-6c9f2ce67ab5",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
