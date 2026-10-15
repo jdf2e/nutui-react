@@ -1,7 +1,7 @@
 import { BaseProps } from '../../base/props'
-import { SimpleValue, UISize } from '../../base/atoms'
+import { SimpleValue } from '../../base/atoms'
 
-export type PriceSize = Exclude<UISize, 'mini'>
+export type PriceSize = 'xlarge' | 'large' | 'normal' | 'medium' | 'small'
 export type SpecificPriceColor = 'primary' | 'gray' | 'darkgray'
 export type PriceColor = SpecificPriceColor | string
 export enum PriceColorEnum {

@@ -8,6 +8,9 @@ const Demo1 = () => {
         <Price price={618.68} size="small" thousands />
       </Cell>
       <Cell>
+        <Price price={618.68} size="medium" thousands />
+      </Cell>
+      <Cell>
         <Price price={618.68} size="normal" thousands />
       </Cell>
       <Cell>

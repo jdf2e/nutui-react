@@ -10,7 +10,7 @@ import { Price } from '@nutui/nutui-react'
 
 ## Demo
 
-### Support sizes：small、normal、large、xlarge
+### Support sizes：small、medium、normal、large、xlarge
 
 :::demo
 
@@ -110,7 +110,7 @@ import { Price } from '@nutui/nutui-react'
 | digits | Decimal digits, pass `null` for original data output | `number` \| `null` | `2` |
 | thousands | Thousands separation | `boolean` | `false` |
 | position | The symbol appear before or after the price，`before`、`after` | `string` | `before` |
-| size | Size，`xlarge` \| `large` \| `normal` \| `small` | `string` | `normal` |
+| size | Size，`xlarge` \| `large` \| `normal` \| `medium` \| `small` | `string` | `normal` |
 | line | Line-through price | `boolean` | `false` |
 
 ## Theming
@@ -121,20 +121,23 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-price-primary-color | Text color when color is primary | `#ff0f23` |
-| \--nutui-price-color | Text color when color is gray | `#888b94` |
-| \--nutui-price-darkgray-color | Text color when color is darkgray | `#1a1a1a` |
-| \--nutui-price-line-color | Underline price color | `#888b94` |
+| \--nutui-price-primary-color | Text color when color is primary | `#FF0F23` |
+| \--nutui-price-color | Text color when color is gray | `#8D9199` |
+| \--nutui-price-darkgray-color | Text color when color is darkgray | `#11141A` |
+| \--nutui-price-line-color | Underline price color | `#8D9199` |
 | \--nutui-price-symbol-padding-right | Right padding of symbol | `0px` |
-| \--nutui-price-symbol-xlarge-size | xlarge size symbol font size | `12px` |
+| \--nutui-price-symbol-xlarge-size | xlarge size symbol font size | `16px` |
 | \--nutui-price-integer-xlarge-size | xlarge size integer part font size | `24px` |
-| \--nutui-price-decimal-xlarge-size | xlarge size decimal part font size | `12px` |
-| \--nutui-price-symbol-large-size | large size symbol font size | `12px` |
+| \--nutui-price-decimal-xlarge-size | xlarge size decimal part font size | `16px` |
+| \--nutui-price-symbol-large-size | large size symbol font size | `14px` |
 | \--nutui-price-integer-large-size | large size integer part font size | `18px` |
-| \--nutui-price-decimal-large-size | large size decimal part font size | `12px` |
+| \--nutui-price-decimal-large-size | large size decimal part font size | `14px` |
 | \--nutui-price-symbol-normal-size | normal size symbol font size | `12px` |
 | \--nutui-price-integer-normal-size | normal size integer part font size | `16px` |
 | \--nutui-price-decimal-normal-size | normal size decimal part font size | `12px` |
+| \--nutui-price-symbol-medium-size | medium size symbol font size | `12px` |
+| \--nutui-price-integer-medium-size | medium size integer part font size | `14px` |
+| \--nutui-price-decimal-medium-size | medium size decimal part font size | `12px` |
 | \--nutui-price-symbol-small-size | small size symbol font size | `12px` |
 | \--nutui-price-integer-small-size | small Size integer part font size | `12px` |
 | \--nutui-price-decimal-small-size | small Size decimal part font size | `12px` |

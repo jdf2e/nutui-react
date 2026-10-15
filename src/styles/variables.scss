@@ -1072,38 +1072,32 @@ $countdown-number-primary-border-color: var(
 ) !default;
 
 //price（✅）
-$price-primary-color: var(--nutui-price-color, $color-primary) !default;
-$price-color: var(--nutui-price-color, var(--nutui-color-text-help)) !default;
-$price-darkgray-color: var(
-  --nutui-price-darkgray-color,
-  var(--nutui-gray-7)
-) !default;
-$price-line-color: var(
-  --nutui-price-line-color,
-  var(--nutui-color-text-help)
-) !default;
+$price-primary-color: var(--nutui-price-primary-color, $color-primary) !default;
+$price-color: var(--nutui-price-color, $color-text-help) !default;
+$price-darkgray-color: var(--nutui-price-darkgray-color, $color-title) !default;
+$price-line-color: var(--nutui-price-line-color, $color-text-help) !default;
 $price-symbol-padding-right: var(
   --nutui-price-symbol-padding-right,
   0px
 ) !default;
 
-//xlarge price（✅）
-$price-symbol-xlarge-size: var(--nutui-price-symbol-xlarge-size, $font-size-s) !default;
+//xlarge price（✅）羊角符/整数/小数：16 / 24 / 16，正黑 Bold
+$price-symbol-xlarge-size: var(--nutui-price-symbol-xlarge-size, $font-size-md) !default;
 $price-integer-xlarge-size: var(
   --nutui-price-integer-xlarge-size,
   $font-size-xxl
 ) !default;
 $price-decimal-xlarge-size: var(
   --nutui-price-decimal-xlarge-size,
-  $font-size-s
+  $font-size-md
 ) !default;
 
-//large price（✅）
-$price-symbol-large-size: var(--nutui-price-symbol-large-size, $font-size-s) !default;
+//large price（✅）14 / 18 / 14，正黑 Bold
+$price-symbol-large-size: var(--nutui-price-symbol-large-size, $font-size-base) !default;
 $price-integer-large-size: var(--nutui-price-integer-large-size, $font-size-xl) !default;
-$price-decimal-large-size: var(--nutui-price-decimal-large-size, $font-size-s) !default;
+$price-decimal-large-size: var(--nutui-price-decimal-large-size, $font-size-base) !default;
 
-//normal price（✅）
+//normal price（✅）12 / 16 / 12，正黑 Bold
 $price-symbol-normal-size: var(--nutui-price-symbol-normal-size, $font-size-s) !default;
 $price-integer-normal-size: var(
   --nutui-price-integer-normal-size,
@@ -1114,7 +1108,18 @@ $price-decimal-normal-size: var(
   $font-size-s
 ) !default;
 
-// small price（✅）
+//medium price（✅）12 / 14 / 12，正黑 Regular
+$price-symbol-medium-size: var(--nutui-price-symbol-medium-size, $font-size-s) !default;
+$price-integer-medium-size: var(
+  --nutui-price-integer-medium-size,
+  $font-size-base
+) !default;
+$price-decimal-medium-size: var(
+  --nutui-price-decimal-medium-size,
+  $font-size-s
+) !default;
+
+// small price（✅）12 / 12 / 12，正黑 Regular
 $price-symbol-small-size: var(--nutui-price-symbol-small-size, $font-size-s) !default;
 $price-integer-small-size: var(--nutui-price-integer-small-size, $font-size-s) !default;
 $price-decimal-small-size: var(--nutui-price-decimal-small-size, $font-size-s) !default;

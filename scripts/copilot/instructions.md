@@ -1248,7 +1248,7 @@
 | digits | 小数位位数 | `number` | 2 |
 | thousands | 是否按照千分号形式显示 | `boolean` | false |
 | position | 符号显示在价格前或者后，`before`、`after` | `string` | before |
-| size | 价格尺寸，`large`、`normal`、`small` | `string` | large |
+| size | 价格尺寸，`xlarge` \| `large` \| `normal` \| `medium` \| `small` | `string` | `normal` |
 | line | 是否划线价 | `boolean` | false |
 
 ### <Progress />
