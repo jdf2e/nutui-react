@@ -5,7 +5,10 @@ import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroPriceProps, PriceColorEnum } from '@/types'
 import { harmony } from '@/utils/taro/platform'
-import { shouldRenderPriceAsRaw } from '@/utils/should-render-price-raw'
+import {
+  shouldRenderPriceAsRaw,
+  hasNonPriceChars,
+} from '@/utils/should-render-price-raw'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -17,6 +20,7 @@ const defaultProps = {
   position: 'before',
   size: 'normal',
   line: false,
+  raw: false,
 } as TaroPriceProps
 export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   const {
@@ -28,6 +32,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
     position,
     size,
     line,
+    raw,
     className,
     style,
   } = {
@@ -41,9 +46,12 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
 
   const isRenderPriceRaw = useMemo(
     () =>
-      typeof originalPrice === 'string' &&
-      shouldRenderPriceAsRaw(originalPrice),
-    [originalPrice]
+      (typeof originalPrice === 'string' &&
+        shouldRenderPriceAsRaw(originalPrice)) ||
+      (raw &&
+        typeof originalPrice === 'string' &&
+        hasNonPriceChars(originalPrice)),
+    [originalPrice, raw]
   )
 
   const price = useMemo(() => {
@@ -95,7 +103,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   }
 
   const formatDecimal = (decimalNum: any) => {
-    if (Number(decimalNum) === 0) {
+    if (Number(decimalNum) === 0 && !checkPoint(decimalNum)) {
       decimalNum = 0
     }
 
@@ -128,6 +136,8 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
           },
         ])}
         style={priceColorStyle}
+        // @ts-ignore
+        ariaHidden
       >
         {symbol ? replaceSpecialChar(symbol) : ''}
       </Text>
@@ -142,6 +152,8 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
             line ? `${classPrefix}-line` : ''
           }`}
           style={priceColorStyle}
+          // @ts-ignore
+          ariaHidden
         >
           {formatThousands(price)}
         </Text>
@@ -153,6 +165,8 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
                   line ? `${classPrefix}-line` : ''
                 }`}
                 style={priceColorStyle}
+                // @ts-ignore
+                ariaHidden
               >
                 .
               </Text>
@@ -162,6 +176,8 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
                 line ? `${classPrefix}-line` : ''
               }`}
               style={priceColorStyle}
+              // @ts-ignore
+              ariaHidden
             >
               {formatDecimal(price)}
             </Text>
@@ -174,6 +190,13 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   }
 
   const renderRawContent = () => <>{originalPrice}</>
+  const accessiblePriceText = useMemo(() => {
+    const safeSymbol = symbol ? replaceSpecialChar(symbol) : ''
+    const numberText = isRenderPriceRaw ? `${originalPrice}` : `${price}`
+    return position === 'after'
+      ? `${numberText}${safeSymbol}`
+      : `${safeSymbol}${numberText}`
+  }, [symbol, price, position, originalPrice, isRenderPriceRaw])
 
   return (
     <>
@@ -181,6 +204,10 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
         <Text
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
+          // @ts-ignore
+          ariaLabel={accessiblePriceText}
+          // eslint-disable-next-line jsx-a11y/aria-role
+          role="text"
         >
           {isRenderPriceRaw ? renderRawContent() : renderInner()}
         </Text>
@@ -188,6 +215,9 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
         <View
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
+          ariaLabel={accessiblePriceText}
+          // eslint-disable-next-line jsx-a11y/aria-role
+          role="text"
         >
           {isRenderPriceRaw ? renderRawContent() : renderInner()}
         </View>

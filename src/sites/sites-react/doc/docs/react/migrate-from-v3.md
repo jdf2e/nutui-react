@@ -158,6 +158,8 @@ npm install @nutui/nutui-react-taro
   - 字体：`xlarge` / `large` / `normal` 使用京东正黑 Bold；`medium` / `small` 使用京东正黑 Regular。
 - **颜色令牌对齐（兼容升级）**：
   - `primary` → `#FF0F23`；`gray` → `#8D9199`；`darkgray` → `#11141A`。
+- **新增 `raw`（兼容）**：
+  - `raw={true}` 且 `price` 含非法字符时按原文展示；未开启时仍会自动识别无法安全格式化的字符串并原样输出。
 
 ### Range (数据录入)
 

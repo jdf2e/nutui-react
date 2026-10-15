@@ -158,6 +158,8 @@ npm install @nutui/nutui-react-taro
   - Font: `xlarge` / `large` / `normal` use JDZH Bold; `medium` / `small` use JDZH Regular.
 - **Color tokens aligned (compatible)**:
   - `primary` → `#FF0F23`; `gray` → `#8D9199`; `darkgray` → `#11141A`.
+- **Added `raw` (compatible)**:
+  - With `raw={true}`, prices containing illegal characters render as-is; without it, unsafe strings are still auto-detected and rendered raw.
 
 ### Range
 

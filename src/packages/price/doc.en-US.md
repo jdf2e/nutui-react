@@ -112,6 +112,7 @@ import { Price } from '@nutui/nutui-react'
 | position | The symbol appear before or after the price，`before`、`after` | `string` | `before` |
 | size | Size，`xlarge` \| `large` \| `normal` \| `medium` \| `small` | `string` | `normal` |
 | line | Line-through price | `boolean` | `false` |
+| raw | When enabled, render price as-is if it contains illegal characters | `boolean` | `false` |
 
 ## Theming
 

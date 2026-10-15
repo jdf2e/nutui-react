@@ -1250,6 +1250,7 @@
 | position | 符号显示在价格前或者后，`before`、`after` | `string` | before |
 | size | 价格尺寸，`xlarge` \| `large` \| `normal` \| `medium` \| `small` | `string` | `normal` |
 | line | 是否划线价 | `boolean` | false |
+| raw | 开启后，当 price 包含非法字符时，原样展示，不做格式化处理 | `boolean` | false |
 
 ### <Progress />
 

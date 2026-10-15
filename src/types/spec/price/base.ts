@@ -19,4 +19,5 @@ export interface BasePrice extends BaseProps {
   position: string
   size: PriceSize
   line: boolean
+  raw: boolean
 }
