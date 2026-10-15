@@ -1,0 +1,98 @@
+src/packages/price/price.scss
+  s_2126af7893829e::t_0fa1309e932844 13,54-60,64-65,90-96,100-101,121-127,131-132
+src/packages/price/demos/taro/demo11.tsx
+  s_2126af7893829e::t_a8ee1baa3cc319 11-14
+src/sites/sites-react/doc/docs/taro/migrate-from-v3.en-US.md
+  s_2126af7893829e::t_701cd0fa4b6226 153-158,161
+  s_2126af7893829e::t_7a3327d74a0fd2 160
+  s_2126af7893829e::t_6460464420ca1f 159
+src/packages/price/demos/taro/demo10.tsx
+  s_2126af7893829e::t_823f88dc3f5403 11-12
+src/packages/price/demos/h5/demo10.tsx
+  s_2126af7893829e::t_b4ed54d1c5c31a 11-12
+src/styles/variables-jmapp.scss
+  s_2126af7893829e::t_cac2940d9cf607 1076-1079
+  s_2126af7893829e::t_26546de24982c7 1086,1093,1101-1103,1108,1115-1121,1124-1127,1130,1132
+src/sites/sites-react/doc/docs/react/migrate-from-v3.md
+  s_2126af7893829e::t_7377c8f6769c61 153-158,161
+  s_2126af7893829e::t_4245f562b17456 160
+  s_2126af7893829e::t_b057a36b97feba 159
+src/sites/sites-react/doc/docs/react/migrate-from-v3.en-US.md
+  s_2126af7893829e::t_16eb9d44e6cf24 159
+  s_2126af7893829e::t_5325d1fa8dc608 153-158,161
+  s_2126af7893829e::t_db120faaa7e448 160
+src/packages/price/demos/h5/demo1.tsx
+  s_2126af7893829e::t_de67b47023b293 11-12
+src/packages/price/doc.en-US.md
+  s_2126af7893829e::t_a0a1cbf97435f5 124-127
+  s_2126af7893829e::t_773c5ea458d3f8 113
+  s_2126af7893829e::t_ce739bcbd9ac22 129,131-132,134,138-140
+  s_2126af7893829e::t_c3775e14aad246 13
+src/packages/price/demos/taro/demo1.tsx
+  s_2126af7893829e::t_2f1d1a6b5a353a 11-12
+scripts/copilot/instructions.md
+  s_2126af7893829e::t_b6343b9aef19cd 1251
+src/packages/price/doc.taro.md
+  s_2126af7893829e::t_6146911d3d4f46 13
+  s_2126af7893829e::t_b99fe0aa5831d5 129,131-132,134,138-140
+  s_2126af7893829e::t_a183076ff5c10b 113
+  s_2126af7893829e::t_aea6ce44a10dc8 124-127
+src/packages/price/demo.taro.tsx
+  s_2126af7893829e::t_73e1dd2ed6f74a 47
+  s_2126af7893829e::t_a7637973076486 34
+  s_2126af7893829e::t_648dfd8c523b61 21
+src/styles/variables-jrkf.scss
+  s_2126af7893829e::t_5d1db146f2b220 1177-1180
+  s_2126af7893829e::t_045b2467520fbc 1207-1208,1210
+  s_2126af7893829e::t_d5c75f7a230e6c 1154-1155,1162,1164,1172,1174
+  s_2126af7893829e::t_fb4ba81e276654 1188,1191,1195
+src/sites/sites-react/doc/docs/taro/migrate-from-v3.md
+  s_2126af7893829e::t_619afba69b52d8 159
+  s_2126af7893829e::t_aaf3ac98a18858 160
+  s_2126af7893829e::t_a4a84c6647a592 153-158,161
+src/styles/variables-daojia.scss
+  s_2126af7893829e::t_35c4596ba149c6 687-688,692,694-695,697,699,706-711
+  s_2126af7893829e::t_16568480ea785d 680-683
+src/packages/price/doc.md
+  s_2126af7893829e::t_645cfdd6b18492 13
+  s_2126af7893829e::t_a18a536608c56e 124-127
+  s_2126af7893829e::t_e55896b6329f8c 113
+  s_2126af7893829e::t_e33f4497a11494 129,131-132,134,138-140
+src/packages/price/demos/h5/demo11.tsx
+  s_2126af7893829e::t_db9ed381e986b9 11-14
+src/packages/price/demo.tsx
+  s_2126af7893829e::t_c1c805a59b3fff 42
+  s_2126af7893829e::t_928db142563bdb 18
+  s_2126af7893829e::t_377ca11d7912b1 31
+src/packages/price/demos/h5/demo9.tsx
+  s_2126af7893829e::t_d0b7e343bf5016 25-28
+src/packages/price/doc.zh-TW.md
+  s_2126af7893829e::t_379ac9f273de52 113
+  s_2126af7893829e::t_49a81fc848b2e4 124-127
+  s_2126af7893829e::t_37a3a1c1aab9cf 13
+  s_2126af7893829e::t_73e2f05a0e703b 129,131-132,134,138-140
+src/styles/variables.scss
+  s_2126af7893829e::t_0f668be2a8bf60 1075-1078
+  s_2126af7893829e::t_0cb378b2e02087 1084-1085,1092,1095-1096,1098,1100,1111-1122
+src/packages/price/demos/taro/demo9.tsx
+  s_2126af7893829e::t_a4a9cd13838c66 28-31
+src/types/spec/price/base.ts
+  s_2126af7893829e::t_e9e136aa282826 4
+  s_2126af7893829e::t_fd4566620622dc 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "0b7f87f483330d23d01124f64785812912b20004",
+  "prompts": {},
+  "sessions": {
+    "s_2126af7893829e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4540e2d7-3d8c-4fce-9b66-6c9f2ce67ab5",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
