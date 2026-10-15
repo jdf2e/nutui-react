@@ -1,0 +1,36 @@
+src/packages/tabbar/tabbar.scss
+  h_2c3c1de054c74d 123
+src/packages/tabbar/demos/h5/demo10.tsx
+  s_8a7509ebb38772::t_4c0235bd0127fc 4-5,27-34
+src/packages/tabbar/demos/taro/demo10.tsx
+  s_8a7509ebb38772::t_4c0235bd0127fc 5-6,24-30
+src/packages/tabbar/demos/addon-before-assets.ts
+  s_8a7509ebb38772::t_4c0235bd0127fc 1-5
+src/packages/tabbar/demos/taro/demo11.tsx
+  s_8a7509ebb38772::t_4c0235bd0127fc 5-6,54-60
+src/packages/tabbar/demos/addon-before-demo.scss
+  s_8a7509ebb38772::t_4c0235bd0127fc 1-19
+src/packages/tabbar/demos/h5/demo11.tsx
+  s_8a7509ebb38772::t_4c0235bd0127fc 4-5,45-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dd56e2c5c44fd20d91fff12c50917a09e03543da",
+  "prompts": {},
+  "humans": {
+    "h_2c3c1de054c74d": {
+      "author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_8a7509ebb38772": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13a7c-672f-7a31-bfb9-99d52616acc3",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

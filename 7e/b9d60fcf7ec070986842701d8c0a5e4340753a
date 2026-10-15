@@ -1,0 +1,220 @@
+src/types/spec/cell/taro.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-2,5-9
+src/packages/countdown/demo.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 19,30,41
+src/packages/countdown/utils.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-18
+src/packages/infiniteloading/infiniteloading.taro.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 3,7-8,10-15,21,24,41,44-46,57,67-78,81,86,110,130,133,135-139,183-204,211,213,230-237
+src/locales/tr-TR.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29
+src/packages/countdown/demos/taro/demo1.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 6-7
+src/packages/infiniteloading/demo.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 23,30,37
+src/locales/en-US.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29
+src/packages/cell/cell.scss
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 23-30,33,35-42,56-71,83-105,142-153
+  s_6bb13e74e4591f::t_62ed6a55acafea 154
+src/packages/cell/index.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 3
+src/styles/variables-jmapp.scss
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 535,543-557,1026-1029,1033-1036,1046-1049,1052,1510,1514,1851-1875,2141-2144,2245-2313
+src/packages/countdown/doc.taro.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 37,99,116,121-132,151-152,154-158,163
+src/packages/countdown/demos/taro/demo3.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 6-9,14-18,21-28,33-34
+src/types/spec/countdown/base.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 12-13,23-27
+src/packages/cell/demo.taro.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 16-19,22-26,30-33,43,45,47,49
+src/packages/countdown/countdown.taro.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 14,40,65,87,101-109,113,115,118,189-192,207,244,278,283-288,298,316-318,325,327-338,340-350,359
+src/packages/configprovider/types.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 195-199,278-280,282-285,348,352,356,421-426,560-561,604-610,618-619,628-630,637,711,756-773
+src/packages/countdown/countdown.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 11,37,62,82,96-104,108,110,113,189-205,222,260,301
+src/packages/countdown/doc.zh-TW.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 37,99,116,121-132,151-152,154-158,163
+src/types/spec/infiniteloading/base.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1,6-10,20,23-25
+src/packages/cell/cell.taro.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 3,9,11,22-23,36,45-46,53,78-82,85,89-107,114,116-134
+src/packages/cell/demos/taro/demo3.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2-4,7-26,29-35
+src/styles/variables-daojia.scss
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 354,359-373,644-648,653-662,664,932,934,1120-1132,1377-1411
+src/packages/infiniteloading/doc.taro.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29,47-48,57-62,77-78
+src/packages/cell/demos/h5/demo3.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2-3,6-21,24-30
+src/locales/vi-VN.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29
+src/packages/cell/demos/taro/demo1.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2,4,15-21,24-28,30
+src/packages/cell/demos/taro/demo5.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2-5,8-16,18-132
+src/packages/cell/demos/h5/demo5.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2-3,6-14,16-112
+src/packages/countdown/countdown.scss
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29-30,34-42,49,57,64-71,75-92
+scripts/copilot/instructions.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1170
+src/packages/countdown/demos/taro/demo4.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 6-9,12-47
+src/packages/countdown/__test__/countdown.spec.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 5,9-18,33-40,46,67,78,87-126
+  s_6bb13e74e4591f::t_027db49d1f57f1 127
+src/packages/infiniteloading/demos/h5/demo3.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2-6,26-40,77-78
+src/packages/infiniteloading/index.taro.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 4-5
+src/locales/ja-JP.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29
+src/packages/cell/demo.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 13-16,19-23,27-30,39,41,43,45
+src/packages/progress/__tests__/progress.spec.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2,68-168
+  s_6bb13e74e4591f::t_0d654466f16cc6 169
+src/packages/progress/doc.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 83-92,113-126,147-163
+src/packages/cell/index.taro.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 3
+src/packages/countdown/doc.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 37,99,116,121-132,151-152,154-158,163
+src/packages/progress/doc.zh-TW.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 83-92,113-126,147-163
+src/packages/progress/progress.scss
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 62-170
+src/packages/cell/doc.taro.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 21,29,43,49,53,73-77,79,93,98-103
+src/packages/countdown/demo.taro.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 22,33,44
+src/packages/cell/demos/taro/demo4.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2,4,6-11,14
+src/locales/id-ID.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29
+src/config.json
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 106,151,876,938,1107,1251,1335,1349,1391
+src/packages/progress/demos/h5/demo10.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-47
+src/packages/cell/__test__/cell.spec.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2-3,60-136
+src/sites/sites-react/doc/docs/react/migrate-from-v3.en-US.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 134-152,185-197
+src/packages/cell/demos/h5/demo4.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2,4,6-11,14
+src/packages/infiniteloading/demo.taro.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 23,29,35
+src/locales/zh-CN.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29
+src/packages/countdown/doc.en-US.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 37,99,115,120-131,150-151,153-157,162
+src/packages/infiniteloading/doc.en-US.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29,55-56,66-71,86-87
+src/packages/infiniteloading/__tests__/infiniteloading.spec.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2,7-13,221-359
+  s_6bb13e74e4591f::t_0f32fb37e08dc0 360
+src/packages/infiniteloading/demos/taro/demo3.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 2-7,28-42,79-80
+package.json
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 3
+src/packages/countdown/demos/h5/demo4.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 6-9,12-47
+src/packages/progress/demos/taro/demo10.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-47
+src/locales/base.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 27
+src/packages/cell/doc.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 21,29,43,49,53,73-77,79,93,98-103
+src/packages/progress/demo.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 12,26,38,50,75-76
+src/packages/cell/demos/h5/demo1.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 3,14-20,22-28
+src/locales/zh-TW.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29
+src/packages/cell/cell.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 7,14-15,21,26-27,37-38,64-67,74-92,99,101-119
+src/sites/sites-react/doc/docs/react/migrate-from-v3.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 134-152,185-197
+src/sites/sites-react/doc/docs/taro/migrate-from-v3.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 134-152,185-197
+src/styles/variables.scss
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 538,546-560,566,1020-1024,1031-1038,1041,1044-1048,1455,1459,2255-2323
+src/utils/run-with-minimum-duration.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-20
+src/packages/infiniteloading/doc.zh-TW.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29,55-56,66-71,86-87
+src/types/spec/progress/base.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1,4-6,22-46
+src/packages/countdown/demos/h5/demo3.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 6-9,14-18,21-28,33-34
+src/packages/cell/doc.zh-TW.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 21,29,43,49,53,73-77,79,93,98-103
+CHANGELOG.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-35
+src/packages/infiniteloading/doc.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29,55-56,66-71,86-87
+src/packages/cell/doc.en-US.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 21,29,43,47,49,53,73-77,79,93,98-103
+src/packages/progress/doc.en-US.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 83-92,113-126,147-163
+src/packages/progress/progress.taro.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-7,9-10,25-30,33-44,46-47,72-84,162,221,228-345,370-414
+src/sites/sites-react/doc/docs/taro/migrate-from-v3.en-US.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 134-152,185-197
+src/styles/variables-jrkf.scss
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 555,563-577,1106-1109,1113-1116,1126-1129,1132,1615,1619,1962-1986,2247-2250,2352-2420
+src/types/spec/cell/base.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 9-10,18-19
+  s_6bb13e74e4591f::t_6a958ccbc97a5e 20
+src/packages/progress/demo.taro.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 15,29,41,53,84-85
+src/locales/zh-UG.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 29
+src/packages/infiniteloading/images.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-24
+src/packages/infiniteloading/infiniteloading.scss
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 28-30,37-41,43-61,64-69,71,74,79-80
+src/packages/infiniteloading/index.ts
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 4-5
+src/packages/progress/progress.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 1-10,23-28,31-37,39-40,60-72,121,153,169-391
+  s_6bb13e74e4591f::t_ef3dbd820b5cbf 392
+src/packages/countdown/demos/h5/demo1.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 6-7
+src/packages/progress/doc.taro.md
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 83-97,118-131,152-168
+src/packages/infiniteloading/infiniteloading.tsx
+  s_6bb13e74e4591f::t_5b1c34bcb787d6 5-12,26,44,47-49,60,70-75,89,112,115,117-121,125,227-248,254,267-272
+src/packages/cell/__test__/__snapshots__/cell.spec.tsx.snap
+  s_6bb13e74e4591f::t_9f4945fdc7bc7f 3-71,79,104,133,159
+src/packages/cellgroup/__test__/__snapshots__/cellgroup.spec.tsx.snap
+  s_6bb13e74e4591f::t_0fcc856f55a495 21,42
+src/packages/countdown/__test__/__snapshots__/countdown.spec.tsx.snap
+  s_6bb13e74e4591f::t_17dcac3e5fce72 6,32
+src/packages/infiniteloading/__tests__/__snapshots__/infiniteloading.spec.tsx.snap
+  s_6bb13e74e4591f::t_060fe11c41b392 7,27-41,51,123-135,146,166-180,190,210-224,234,254-268,278,298-312,322,342-356
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7eb9d60fcf7ec070986842701d8c0a5e4340753a",
+  "prompts": {},
+  "humans": {
+    "h_2c3c1de054c74d": {
+      "author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_6bb13e74e4591f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13a56-c106-7692-a7e3-0b3d35dd655e",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

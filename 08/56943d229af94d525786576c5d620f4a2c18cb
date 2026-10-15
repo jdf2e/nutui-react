@@ -1,0 +1,141 @@
+src/packages/tabbar/tabbar.taro.tsx
+  s_e72835b59c4c17::t_6e0ef9ab287b64 55,99
+  s_e72835b59c4c17::t_66293e30ee3ad2 21,35,69-72,91,105
+  s_e72835b59c4c17::t_f90a24e210a9a2 56,119
+  s_e72835b59c4c17::t_c202b10df0e004 79
+src/packages/tabbar/demos/h5/demo3.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 6
+src/packages/tabbar/context.ts
+  s_e72835b59c4c17::t_c202b10df0e004 8
+src/packages/tabbar/demos/h5/demo9.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 15
+src/packages/tabbar/demos/taro/demo2.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 6
+src/styles/variables.scss
+  s_e72835b59c4c17::t_86e5326b2440a4 1360,1378
+  s_e72835b59c4c17::t_a8638895dacf76 1359
+src/types/spec/tabbar/base.ts
+  s_e72835b59c4c17::t_66293e30ee3ad2 12-13
+  s_e72835b59c4c17::t_9417e16d41415d 14
+src/packages/tabbar/demos/taro/demo5.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 18
+src/packages/tabbar/demos/taro/demo6.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 8,18,27
+src/packages/tabbar/demos/taro/demo8.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 6
+src/packages/tabbar/demos/taro/demo10.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 11
+src/packages/tabbar/demos/h5/demo2.tsx
+  s_e72835b59c4c17::t_9212a22a8cf8c2 6
+src/packages/tabbar/tabbar.scss
+  s_e72835b59c4c17::t_2bdfbb56094b09 12,15-21,31,51-52,54-56,58,104-107,109,111-118,141
+  s_e72835b59c4c17::t_f90a24e210a9a2 14,29,108
+  s_e72835b59c4c17::t_86e5326b2440a4 30,110
+  s_e72835b59c4c17::t_59b150b6253ae3 136-140
+  s_e72835b59c4c17::t_bc7620815e30d0 102
+  s_e72835b59c4c17::t_3381f6f634b130 119-130
+  s_e72835b59c4c17::t_ee3a3b41ce3df8 53,57,96-97,100
+  s_e72835b59c4c17::t_6ec5697c2f68fd 32
+  s_e72835b59c4c17::t_4e966fe8bfffbf 142
+src/packages/tabbar/demos/h5/demo8.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 6
+src/packages/tabbar/doc.zh-TW.md
+  s_e72835b59c4c17::t_4ac3088cb960ac 3,83,107,119,142
+  s_e72835b59c4c17::t_9417e16d41415d 166,170
+src/packages/tabbar/demos/taro/demo9.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 16
+src/packages/tabbaritem/tabbaritem.tsx
+  s_e72835b59c4c17::t_c202b10df0e004 63,65
+src/packages/tabbar/demos/taro/demo7.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 10-14
+src/packages/tabbar/doc.en-US.md
+  s_e72835b59c4c17::t_4ac3088cb960ac 83,107,119
+  s_e72835b59c4c17::t_86e5326b2440a4 3,142
+  s_e72835b59c4c17::t_9417e16d41415d 166,170
+src/packages/tabbaritem/tabbaritem.taro.tsx
+  s_e72835b59c4c17::t_c202b10df0e004 61,63
+src/styles/variables-jmapp.scss
+  s_e72835b59c4c17::t_e22baf76a4cfbc 1457
+  s_e72835b59c4c17::t_a8638895dacf76 1424
+  s_e72835b59c4c17::t_86e5326b2440a4 1425,1435
+src/packages/tabbar/demos/h5/demo5.tsx
+  s_e72835b59c4c17::t_62b8fe778cd4db 11
+src/packages/tabbar/doc.md
+  s_e72835b59c4c17::t_07500a2815ef11 3,107,119,142,166,170
+  s_e72835b59c4c17::t_9417e16d41415d 83
+src/packages/tabbar/demos/h5/demo11.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 28
+src/packages/tabbar/tabbar.tsx
+  s_e72835b59c4c17::t_6e0ef9ab287b64 55,100
+  s_e72835b59c4c17::t_f90a24e210a9a2 56,124
+  s_e72835b59c4c17::t_66293e30ee3ad2 20,34,70-73,92,110
+  s_e72835b59c4c17::t_c202b10df0e004 80
+src/packages/tabbar/doc.taro.md
+  s_e72835b59c4c17::t_07500a2815ef11 3,107,119,142
+  s_e72835b59c4c17::t_9417e16d41415d 83,166,170
+src/packages/tabbar/demos/taro/demo4.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 5
+src/packages/tabbar/demos/taro/demo1.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 6
+src/styles/variables-daojia.scss
+  s_e72835b59c4c17::t_a8638895dacf76 868
+  s_e72835b59c4c17::t_86e5326b2440a4 869,876
+src/packages/tabbar/demos/taro/demo3.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 6
+src/packages/tabbar/demos/taro/demo12.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 12
+src/packages/tabbar/demos/h5/demo1.tsx
+  h_2c3c1de054c74d 6
+src/packages/tabbar/demos/h5/demo10.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 10
+src/packages/tabbar/demos/h5/demo12.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 11
+src/styles/variables-jrkf.scss
+  s_e72835b59c4c17::t_86e5326b2440a4 1530,1540
+  s_e72835b59c4c17::t_e22baf76a4cfbc 1562
+  s_e72835b59c4c17::t_a8638895dacf76 1529
+src/packages/tabbar/demos/h5/demo6.tsx
+  h_2c3c1de054c74d 18,27
+  s_e72835b59c4c17::t_b5c39e40c6300c 8
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_e72835b59c4c17::t_6759f08ef11772 106,271
+  s_e72835b59c4c17::t_d89e965b0034c8 16,25-33,40-44
+  s_e72835b59c4c17::t_c202b10df0e004 86-87
+src/packages/tabbar/demos/h5/demo4.tsx
+  s_e72835b59c4c17::t_99080d51d8b6bb 5
+src/packages/tabbar/demos/taro/demo11.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 42
+src/packages/tabbaritem/tabbaritem.scss
+  s_e72835b59c4c17::t_f90a24e210a9a2 149
+  s_e72835b59c4c17::t_3381f6f634b130 97-125
+  s_e72835b59c4c17::t_ee3a3b41ce3df8 8,13-14,53-55
+  s_e72835b59c4c17::t_c814cb55940738 7,10,15,131-135,150-151
+  s_e72835b59c4c17::t_7f135e6a7f1ed4 89-96,126-130
+  s_e72835b59c4c17::t_bc7620815e30d0 136-147
+  s_e72835b59c4c17::t_c7bde0316428e1 148
+src/packages/tabbar/demos/h5/demo7.tsx
+  s_e72835b59c4c17::t_b5c39e40c6300c 10-14
+src/packages/tabbar/__tests__/__snapshots__/tabbar.spec.tsx.snap
+  s_e72835b59c4c17::t_871e4bcec6f50c 3,5,7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0856943d229af94d525786576c5d620f4a2c18cb",
+  "prompts": {},
+  "humans": {
+    "h_2c3c1de054c74d": {
+      "author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_e72835b59c4c17": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a138f8-46ac-70d0-81d9-d344282bd320",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

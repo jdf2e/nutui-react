@@ -1,0 +1,25 @@
+src/packages/tabbar/tabbar.tsx
+  s_e7a2c44921dd70::t_7dc35bd65f7686 61-65,73-75,83
+src/packages/tabbar/tabbar.taro.tsx
+  s_e7a2c44921dd70::t_7dc35bd65f7686 60-64,72-74,82
+src/packages/tabbar/utils.ts
+  s_e7a2c44921dd70::t_7dc35bd65f7686 3-7,12-13,32
+src/packages/tabbar/__tests__/__snapshots__/tabbar.spec.tsx.snap
+  s_e7a2c44921dd70::t_42d56029022635 3,5,7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "780930e9b51a03d183107f9e38568ea7f9a3115b",
+  "prompts": {},
+  "sessions": {
+    "s_e7a2c44921dd70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13319-9762-7d10-92fa-1cfd65b30f7f",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

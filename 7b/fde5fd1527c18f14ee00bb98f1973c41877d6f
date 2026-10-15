@@ -1,0 +1,40 @@
+src/packages/tabbaritem/tabbaritem.taro.tsx
+  h_2c3c1de054c74d 134
+  s_ec182717c97682::t_fa94b6694f523b 135
+  s_ec182717c97682::t_d70a521a9b171c 49
+  s_ec182717c97682::t_d8b1c6667f8287 56,61
+  s_ec182717c97682::t_cfeda584c82e29 45,52,57,62,65,68,129
+src/packages/tabbar/demos/badge-demo.scss
+  s_ec182717c97682::t_fa94b6694f523b 11,19
+src/packages/tabbaritem/tabbaritem.tsx
+  s_ec182717c97682::t_d8b1c6667f8287 58,63
+  h_2c3c1de054c74d 128
+  s_ec182717c97682::t_cfeda584c82e29 44,59,64,67,70,123
+  s_ec182717c97682::t_fa94b6694f523b 129
+  s_ec182717c97682::t_d70a521a9b171c 48
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_ec182717c97682::t_fa94b6694f523b 272,277
+src/packages/tabbaritem/tabbaritem.scss
+  s_ec182717c97682::t_fa94b6694f523b 70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7bfde5fd1527c18f14ee00bb98f1973c41877d6f",
+  "prompts": {},
+  "humans": {
+    "h_2c3c1de054c74d": {
+      "author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_ec182717c97682": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1383d-23b0-7e20-b909-b23491eb4fb5",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

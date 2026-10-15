@@ -1,0 +1,34 @@
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_e7a2c44921dd70::t_feedd568f4a0ba 69-71
+src/packages/tabbaritem/tabbaritem.tsx
+  s_e7a2c44921dd70::t_feedd568f4a0ba 96-98
+  s_e7a2c44921dd70::t_cf31b8887185fa 93-95,99-102
+src/packages/tabbaritem/tabbaritem.scss
+  s_e7a2c44921dd70::t_cf31b8887185fa 78
+src/packages/tabbar/__tests__/__snapshots__/tabbar.spec.tsx.snap
+  s_d8a7b880baac01::t_2b5c28179212a5 3,5,7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5415d5b060b825939af353e1a8470abfdadac70d",
+  "prompts": {},
+  "sessions": {
+    "s_d8a7b880baac01": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13544-7ae7-7830-8a6f-1822c4a89b27",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    },
+    "s_e7a2c44921dd70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13319-9762-7d10-92fa-1cfd65b30f7f",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

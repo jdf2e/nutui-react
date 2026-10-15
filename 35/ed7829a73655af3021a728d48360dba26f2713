@@ -1,0 +1,32 @@
+src/packages/materialview/doc.md
+  s_c2bbc2af0851a4::t_3af6ee60a9f0e3 79-86
+src/packages/materialview/scene-presets.ts
+  s_c2bbc2af0851a4::t_036c984ad8856d 1-110
+src/packages/materialview/index.taro.ts
+  s_c2bbc2af0851a4::t_60feb50062d6c3 10-14
+src/packages/materialview/index.ts
+  s_c2bbc2af0851a4::t_60feb50062d6c3 10-14
+src/packages/materialview/materialview.tsx
+  s_c2bbc2af0851a4::t_3af6ee60a9f0e3 16
+  s_c2bbc2af0851a4::t_50a51b8c59ac93 15
+src/packages/materialview/materialview.taro.tsx
+  s_c2bbc2af0851a4::t_50a51b8c59ac93 18
+src/packages/materialview/doc.taro.md
+  s_c2bbc2af0851a4::t_3af6ee60a9f0e3 79-86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "35ed7829a73655af3021a728d48360dba26f2713",
+  "prompts": {},
+  "sessions": {
+    "s_c2bbc2af0851a4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13048-534f-7783-ae0e-fbf81b71928c",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}

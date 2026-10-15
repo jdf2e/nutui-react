@@ -1,0 +1,111 @@
+src/packages/tabbar/doc.md
+  s_360f8a58654070::t_b77abca91ecc51 49
+  s_360f8a58654070::t_34fb811f4afa7c 24,148
+  s_360f8a58654070::t_ee712389288d1f 23
+  s_360f8a58654070::t_5d7021796d9455 50
+src/packages/tabbar/demos/h5/demo2.tsx
+  s_360f8a58654070::t_aa287a5087bbed 8
+src/packages/badge/badge.taro.tsx
+  s_360f8a58654070::t_416b091a8c9e50 66,91,98-102,104-111,131,133
+  s_360f8a58654070::t_99e5ae005d2551 113-118
+  s_360f8a58654070::t_a7d07ecc4c8c93 48
+  s_360f8a58654070::t_275815d1862f46 92-97,103
+src/packages/tabbaritem/tabbaritem.tsx
+  s_360f8a58654070::t_fc0a814efe86d5 30,52-67,84,111-126
+src/packages/tabbar/tabbar.scss
+  s_360f8a58654070::t_576771131a7efd 94-96,98-99
+  s_360f8a58654070::t_43e6676fd23e36 100
+src/packages/tabbar/demos/taro/demo2.tsx
+  s_360f8a58654070::t_aa287a5087bbed 8
+src/packages/badge/badge.tsx
+  s_360f8a58654070::t_416b091a8c9e50 54,68,75-79,81-86,88,101,103
+  s_360f8a58654070::t_275815d1862f46 69-74,80
+src/packages/tabbar/doc.taro.md
+  s_360f8a58654070::t_ee712389288d1f 23
+  s_360f8a58654070::t_34fb811f4afa7c 24,148
+  s_360f8a58654070::t_b77abca91ecc51 49
+  s_360f8a58654070::t_a8cb768848a420 50
+src/packages/tabbaritem/tabbaritem.scss
+  s_360f8a58654070::t_ecc17ab28cb648 33,35
+  s_360f8a58654070::t_e280c466874f50 34,70-71,80-81
+  s_360f8a58654070::t_fc563c7957b48d 37-38
+  s_360f8a58654070::t_0d22b8500d5eb1 51-53,65-66,75-76
+  s_360f8a58654070::t_38ee0d117fe373 36
+  s_360f8a58654070::t_32664e9a22b095 27-30
+  s_360f8a58654070::t_fc0a814efe86d5 56-64,67-69,72-74,77-79,82-84
+  s_360f8a58654070::t_f27f3babca970a 47-50
+  s_360f8a58654070::t_43e6676fd23e36 31,39
+  s_360f8a58654070::t_f0429490c0b1a4 32,54-55
+  s_360f8a58654070::t_e8c76d65ac4c14 40-43,45-46
+  s_360f8a58654070::t_d26e5c28d2641d 44
+src/packages/tabbar/demos/taro/demo5.tsx
+  s_360f8a58654070::t_845697a7daf6c1 39
+  s_360f8a58654070::t_aa287a5087bbed 6-7,9-11,13-14
+  s_360f8a58654070::t_e7cb8188a8f228 33
+  s_360f8a58654070::t_fd9e164988395c 3-5,8,12,22-24,29-30,34,36-38,40-42,50
+src/types/spec/tabbar/base.ts
+  s_360f8a58654070::t_fc0a814efe86d5 22-23
+  s_360f8a58654070::t_e7cb8188a8f228 24
+src/packages/tabbaritem/tabbaritem.taro.tsx
+  s_360f8a58654070::t_fc0a814efe86d5 31,53-68,85,129-144
+src/packages/tabbar/demos/h5/demo5.tsx
+  s_360f8a58654070::t_bcf33ded727c7b 3,20-21,25,27-29,31-33
+  s_360f8a58654070::t_aa287a5087bbed 6-8
+  s_360f8a58654070::t_e7cb8188a8f228 24
+  s_360f8a58654070::t_845697a7daf6c1 30
+src/packages/badge/badge.scss
+  s_360f8a58654070::t_43e6676fd23e36 29,43,60,76,110
+  s_360f8a58654070::t_fc563c7957b48d 55-59,69,109,111-112
+src/packages/tabbar/__tests__/tabbar.spec.tsx
+  s_360f8a58654070::t_a2df8eb161c4e6 450-451,453
+  s_360f8a58654070::t_e1fe2a896bd8a5 457,468
+  s_360f8a58654070::t_904be8051faefc 504-510
+  s_360f8a58654070::t_b2f7f0c580eefa 799-803,805-806
+  s_360f8a58654070::t_bd8e2fdcb4221c 476,770,798,804
+  s_360f8a58654070::t_43e6676fd23e36 452,455
+  s_360f8a58654070::t_508404a07f1863 807-814
+  s_360f8a58654070::t_284f0afa2fb434 448-449,459,523-524
+  s_360f8a58654070::t_32664e9a22b095 454,458
+  s_360f8a58654070::t_899dff00a1a3f4 460-466
+  s_360f8a58654070::t_f27f3babca970a 456,469,473
+  s_360f8a58654070::t_10fe5e40efb9cb 446-447,470-472,521-522
+  s_360f8a58654070::t_fca65b448566f0 511-512
+  s_360f8a58654070::t_e7cb8188a8f228 438-445,489-503,513-520,531-540,815-819
+  s_360f8a58654070::t_38ee0d117fe373 467
+  s_360f8a58654070::t_845697a7daf6c1 484-485,488,528
+src/packages/tabbar/doc.zh-TW.md
+  s_360f8a58654070::t_b77abca91ecc51 49
+  s_360f8a58654070::t_ee712389288d1f 23
+  s_360f8a58654070::t_34fb811f4afa7c 24,148
+  s_360f8a58654070::t_82008073b414d2 50
+src/packages/badge/__test__/badge.spec.tsx
+  s_360f8a58654070::t_5b942ea6e30b30 25-27
+  s_360f8a58654070::t_2da6c721446d36 19-24,28-30
+  s_360f8a58654070::t_43e6676fd23e36 17,43,48,54
+  s_360f8a58654070::t_904be8051faefc 18
+src/packages/tabbar/doc.en-US.md
+  s_360f8a58654070::t_ee712389288d1f 23
+  s_360f8a58654070::t_b77abca91ecc51 49
+  s_360f8a58654070::t_34fb811f4afa7c 24,148
+  s_360f8a58654070::t_08bc65a1192925 50
+src/packages/badge/__test__/__snapshots__/badge.spec.tsx.snap
+  s_360f8a58654070::t_d7c889e3aee20d 6,30,33
+src/packages/tabbar/__tests__/__snapshots__/tabbar.spec.tsx.snap
+  s_360f8a58654070::t_7532d11826a3da 3,5,7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bd1471ae8e0cf423928ca0fbd8f56e8335bf4f82",
+  "prompts": {},
+  "sessions": {
+    "s_360f8a58654070": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a12f27-52e2-7eb3-89b1-04e80a19d085",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Henry129999 <Henry129999@users.noreply.github.com>"
+    }
+  }
+}
