@@ -1,0 +1,67 @@
+src/packages/badge/doc.zh-TW.md
+  s_2126af7893829e::t_b300bbb8c74227 126-128
+  s_2126af7893829e::t_d3359a88b191b0 115
+  s_2126af7893829e::t_42d15d5c30b613 113-114
+  s_2126af7893829e::t_251e3d4e865685 117
+  s_2126af7893829e::t_aa6bb7c0804d52 112
+  s_2126af7893829e::t_50f22ce99fa805 118
+src/styles/variables-daojia.scss
+  s_2126af7893829e::t_33c389665dce99 1185
+  s_2126af7893829e::t_c8d7f6e621cd72 1186-1189,1191,1203-1204
+  s_2126af7893829e::t_61d1540442d5cd 1193
+  s_2126af7893829e::t_54a424657c592d 1207
+  s_2126af7893829e::t_4fc8b1417afd8a 1184
+  s_2126af7893829e::t_2044cd9b20a26a 1194
+src/styles/variables.scss
+  s_2126af7893829e::t_e088fd357d6c27 1964
+  s_2126af7893829e::t_badbf1567f0ef4 1945
+  s_2126af7893829e::t_54c5f2158c8951 1934
+  s_2126af7893829e::t_73bfcab8de9b6e 1935
+  s_2126af7893829e::t_0675235ca6c6e3 1936-1939,1942,1957-1960
+  s_2126af7893829e::t_e47ec2af111bf2 1946
+src/config.json
+  s_2126af7893829e::t_66054ec2802dfe 924
+src/packages/badge/demos/taro/demo5.tsx
+  s_2126af7893829e::t_3a2e967164452e 12
+src/packages/badge/doc.md
+  s_2126af7893829e::t_9ba68b3097d161 115
+  s_2126af7893829e::t_0ddfb898e4536a 118
+  s_2126af7893829e::t_5929362d195a3d 117
+  s_2126af7893829e::t_90c68a62d6bf8e 113-114
+  s_2126af7893829e::t_35485a87240e08 126-128
+  s_2126af7893829e::t_8a2f894e17c589 112
+src/packages/badge/demos/h5/demo5.tsx
+  s_2126af7893829e::t_ce70a02f7d6042 6
+src/packages/configprovider/types.ts
+  s_2126af7893829e::t_561e318a338c79 650-651
+src/packages/badge/doc.taro.md
+  s_2126af7893829e::t_94bd541c1ac9f2 113-114
+  s_2126af7893829e::t_d934b48d66167e 118
+  s_2126af7893829e::t_2f1f208c0f3d3e 115
+  s_2126af7893829e::t_263c3f4d5aa977 112
+  s_2126af7893829e::t_a7a3344c5e1ce9 117
+  s_2126af7893829e::t_cf0dc9b2de0747 126-128
+src/packages/badge/doc.en-US.md
+  s_2126af7893829e::t_bbd1d0b393e408 119
+  s_2126af7893829e::t_26a3b433b81892 116
+  s_2126af7893829e::t_5f3504c697749c 113
+  s_2126af7893829e::t_83dba8f372388e 114-115
+  s_2126af7893829e::t_da8cadf9164b7e 118
+  s_2126af7893829e::t_d60375f88bb19f 127-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "f5415182c322d865876d15926b248561e2e68958",
+  "prompts": {},
+  "sessions": {
+    "s_2126af7893829e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4540e2d7-3d8c-4fce-9b66-6c9f2ce67ab5",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
