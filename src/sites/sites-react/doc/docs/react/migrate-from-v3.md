@@ -150,6 +150,17 @@ npm install @nutui/nutui-react-taro
   - ≥1 天：`DD天HH:mm:ss`，建议 `type="text"`；1～24h：`HH:mm:ss` 或 `HH:mm:ss.i`；&lt;1h：`mm:ss` 或 `mm:ss.i`。
   - 百毫秒仅建议 24h 内强促销场景使用。
 
+### Price (展示类)
+
+- **尺寸档位扩展与字号调整（兼容升级）**：
+  - 新增 `size="medium"`（羊角符 / 整数 / 小数：`12 / 14 / 12`）。
+  - `xlarge` 调整为 `16 / 24 / 16`，`large` 调整为 `14 / 18 / 14`；`normal`、`small` 字号不变。
+  - 字体：`xlarge` / `large` / `normal` 使用京东正黑 Bold；`medium` / `small` 使用京东正黑 Regular。
+- **颜色令牌对齐（兼容升级）**：
+  - `primary` → `#FF0F23`；`gray` → `#8D9199`；`darkgray` → `#11141A`。
+- **新增 `raw`（兼容）**：
+  - `raw={true}` 且 `price` 含非法字符时按原文展示；未开启时仍会自动识别无法安全格式化的字符串并原样输出。
+
 ### Range (数据录入)
 
 - **游标视觉规格调整（兼容升级）**：

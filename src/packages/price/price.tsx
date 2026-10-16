@@ -3,7 +3,10 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
 import { WebPriceProps, PriceColorEnum } from '@/types'
-import { shouldRenderPriceAsRaw } from '@/utils/should-render-price-raw'
+import {
+  shouldRenderPriceAsRaw,
+  hasNonPriceChars,
+} from '@/utils/should-render-price-raw'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -15,6 +18,7 @@ const defaultProps = {
   position: 'before',
   size: 'normal',
   line: false,
+  raw: false,
 } as WebPriceProps
 export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   const {
@@ -26,6 +30,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     position,
     size,
     line,
+    raw,
     className,
     style,
     ...rest
@@ -39,9 +44,12 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   const rtl = useRtl()
   const isRenderPriceRaw = useMemo(
     () =>
-      typeof originalPrice === 'string' &&
-      shouldRenderPriceAsRaw(originalPrice),
-    [originalPrice]
+      (typeof originalPrice === 'string' &&
+        shouldRenderPriceAsRaw(originalPrice)) ||
+      (raw &&
+        typeof originalPrice === 'string' &&
+        hasNonPriceChars(originalPrice)),
+    [originalPrice, raw]
   )
 
   const price = useMemo(() => {
@@ -61,6 +69,16 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
         }
       : {}
   }, [isCustomPriceColor, color])
+
+  const replaceSpecialChar = (url: string) => {
+    url = url.replace(/&quot;/g, '"')
+    url = url.replace(/&amp;/g, '&')
+    url = url.replace(/&lt;/g, '<')
+    url = url.replace(/&gt;/g, '>')
+    url = url.replace(/&nbsp;/g, ' ')
+    url = url.replace(/&yen;/g, '¥')
+    return url
+  }
 
   const checkPoint = (price: string | number) => {
     return String(price).indexOf('.') > 0
@@ -82,7 +100,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   }
 
   const formatDecimal = (decimalNum: any) => {
-    if (Number(decimalNum) === 0) {
+    if (Number(decimalNum) === 0 && !checkPoint(decimalNum)) {
       decimalNum = 0
     }
 
@@ -115,6 +133,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
           },
         ])}
         style={priceColorStyle}
+        aria-hidden
         dangerouslySetInnerHTML={{ __html: symbol || '' }}
       />
     )
@@ -130,6 +149,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
             line ? `${classPrefix}-line` : ''
           }`}
           style={priceColorStyle}
+          aria-hidden
         >
           {formatThousands(price)}
         </div>
@@ -141,6 +161,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
                   line ? `${classPrefix}-line` : ''
                 }`}
                 style={priceColorStyle}
+                aria-hidden
               >
                 .
               </div>
@@ -150,6 +171,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
                 line ? `${classPrefix}-line` : ''
               }`}
               style={priceColorStyle}
+              aria-hidden
             >
               {formatDecimal(price)}
             </div>
@@ -161,10 +183,21 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     )
   }
 
+  const accessiblePriceText = useMemo(() => {
+    const safeSymbol = symbol ? replaceSpecialChar(symbol) : ''
+    const numberText = isRenderPriceRaw ? `${originalPrice}` : `${price}`
+    return position === 'after'
+      ? `${numberText}${safeSymbol}`
+      : `${safeSymbol}${numberText}`
+  }, [symbol, price, position, originalPrice, isRenderPriceRaw])
+
   return (
     <div
       className={`${classPrefix} ${classPrefix}-${isCustomPriceColor ? 'custom' : color} ${className}`}
       style={style}
+      aria-label={accessiblePriceText}
+      // eslint-disable-next-line jsx-a11y/aria-role
+      role="text"
       {...rest}
     >
       {isRenderPriceRaw ? renderRawContent() : renderInner()}

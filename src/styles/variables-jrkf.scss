@@ -1151,17 +1151,17 @@ $countdown-number-primary-background-color: var(
   --nutui-countdown-number-primary-background-color,
   $color-primary
 ) !default;
-//xlarge price（✅）
-$price-symbol-xlarge-size: var(--nutui-price-symbol-xlarge-size, 12px) !default;
+//xlarge price（✅）16 / 24 / 16
+$price-symbol-xlarge-size: var(--nutui-price-symbol-xlarge-size, 16px) !default;
 $price-integer-xlarge-size: var(
   --nutui-price-integer-xlarge-size,
   24px
 ) !default;
 $price-decimal-xlarge-size: var(
   --nutui-price-decimal-xlarge-size,
-  12px
+  16px
 ) !default;
-//large price（✅）
+//large price（✅）14 / 18 / 14
 $price-symbol-padding-right: var(
   --nutui-price-symbol-padding-right,
   1px
@@ -1169,21 +1169,15 @@ $price-symbol-padding-right: var(
 $price-symbol-big-size: var(--nutui-price-symbol-big-size, 18px) !default;
 $price-integer-big-size: var(--nutui-price-integer-big-size, 24px) !default;
 $price-decimal-big-size: var(--nutui-price-decimal-big-size, 18px) !default;
-$price-symbol-large-size: var(--nutui-price-symbol-large-size, 12px) !default;
+$price-symbol-large-size: var(--nutui-price-symbol-large-size, 14px) !default;
 $price-integer-large-size: var(--nutui-price-integer-large-size, 18px) !default;
-$price-decimal-large-size: var(--nutui-price-decimal-large-size, 12px) !default;
+$price-decimal-large-size: var(--nutui-price-decimal-large-size, 14px) !default;
 
 //price（✅）
-$price-primary-color: var(--nutui-price-color, $color-primary) !default;
-$price-color: var(--nutui-price-color, var(--nutui-color-text-help)) !default;
-$price-darkgray-color: var(
-  --nutui-price-darkgray-color,
-  var(--nutui-gray-7)
-) !default;
-$price-line-color: var(
-  --nutui-price-line-color,
-  var(--nutui-color-text-help)
-) !default;
+$price-primary-color: var(--nutui-price-primary-color, $color-primary) !default;
+$price-color: var(--nutui-price-color, $color-text-help) !default;
+$price-darkgray-color: var(--nutui-price-darkgray-color, $color-title) !default;
+$price-line-color: var(--nutui-price-line-color, $color-text-help) !default;
 $price-symbol-padding-right: var(
   --nutui-price-symbol-padding-right,
   0px
@@ -1191,14 +1185,14 @@ $price-symbol-padding-right: var(
 //normal price（✅）
 $price-line-color: var(--nutui-price-line-color, $color-border) !default;
 $price-line-font-size: var(--nutui-price-line-font-size, 12px) !default;
-$price-symbol-medium-size: var(--nutui-price-symbol-medium-size, 14px) !default;
+$price-symbol-medium-size: var(--nutui-price-symbol-medium-size, 12px) !default;
 $price-integer-medium-size: var(
   --nutui-price-integer-medium-size,
-  16px
+  14px
 ) !default;
 $price-decimal-medium-size: var(
   --nutui-price-decimal-medium-size,
-  14px
+  12px
 ) !default;
 $price-symbol-normal-size: var(--nutui-price-symbol-normal-size, 12px) !default;
 $price-integer-normal-size: var(
@@ -1210,10 +1204,10 @@ $price-decimal-normal-size: var(
   12px
 ) !default;
 
-// small price（✅）
-$price-symbol-small-size: var(--nutui-price-symbol-small-size, 10px) !default;
+// small price（✅）12 / 12 / 12
+$price-symbol-small-size: var(--nutui-price-symbol-small-size, 12px) !default;
 $price-integer-small-size: var(--nutui-price-integer-small-size, 12px) !default;
-$price-decimal-small-size: var(--nutui-price-decimal-small-size, 10px) !default;
+$price-decimal-small-size: var(--nutui-price-decimal-small-size, 12px) !default;
 
 //avatar（✅）
 $avatar-square: var(--nutui-avatar-square, $radius-base) !default;

@@ -150,6 +150,17 @@ npm install @nutui/nutui-react-taro
   - ≥1 day: `DD天HH:mm:ss`, prefer `type="text"`; 1–24h: `HH:mm:ss` or `HH:mm:ss.i`; &lt;1h: `mm:ss` or `mm:ss.i`.
   - Hundred-millisecond is recommended only within 24h for strong promo scenes.
 
+### Price
+
+- **Size tiers extended and font sizes updated (compatible)**:
+  - Added `size="medium"` (symbol / integer / decimal: `12 / 14 / 12`).
+  - `xlarge` now `16 / 24 / 16`, `large` now `14 / 18 / 14`; `normal` and `small` unchanged.
+  - Font: `xlarge` / `large` / `normal` use JDZH Bold; `medium` / `small` use JDZH Regular.
+- **Color tokens aligned (compatible)**:
+  - `primary` → `#FF0F23`; `gray` → `#8D9199`; `darkgray` → `#11141A`.
+- **Added `raw` (compatible)**:
+  - With `raw={true}`, prices containing illegal characters render as-is; without it, unsafe strings are still auto-detected and rendered raw.
+
 ### Range
 
 - **Thumb visual spec updates (compatible)**:
