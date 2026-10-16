@@ -12,7 +12,8 @@
   font-size: $navbar-font-size;
   color: $navbar-color;
   overflow: hidden;
-  padding: 0 16px;
+  padding: 0 calc(16px + env(safe-area-inset-right, 0px)) 0
+    calc(16px + env(safe-area-inset-left, 0px));
 
   &-fixed {
     position: fixed;
@@ -30,6 +31,7 @@
   &-safe-area-inset-top {
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
+    height: calc(#{$navbar-height} + env(safe-area-inset-top, 0px));
   }
 
   &-title-wrapper {

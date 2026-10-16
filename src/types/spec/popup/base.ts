@@ -21,6 +21,8 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   destroyOnClose: boolean
   overlay: boolean
   round: boolean
+  centerBase?: 'safeArea' | 'full'
+  segment?: 'left' | 'right' | 'auto'
   onOpen: () => void
   onClose: () => void
   onOverlayClick: (e: any) => boolean | void

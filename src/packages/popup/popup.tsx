@@ -62,6 +62,8 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    centerBase,
+    segment,
     onOpen,
     onClose,
     onOverlayClick,
@@ -89,6 +91,10 @@ export const Popup: FunctionComponent<
     {
       [`${classPrefix}-round`]: round || position === 'bottom',
       [`${classPrefix}-${position}`]: true,
+      [`${classPrefix}-center-full`]:
+        position === 'center' && centerBase === 'full',
+      [`${classPrefix}-center-segment-right`]:
+        position === 'center' && segment === 'right',
     },
     className
   )

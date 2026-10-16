@@ -19,16 +19,61 @@
     position: fixed;
     max-height: 100%;
     background-color: $white;
+    box-sizing: border-box;
     transition:
-      transform 0.2s,
-      -webkit-transform 0.2s;
+      left 0.35s cubic-bezier(0.2, 0.9, 0.4, 1),
+      transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1),
+      filter 0.25s ease-out,
+      max-width 0.35s ease;
     -webkit-overflow-scrolling: touch;
     top: 50%;
-    left: 50%;
+    /* 默认基于安全区域居中：避让右侧导航区和左侧圆角 */
+    left: calc(
+      env(safe-area-inset-left, 0px) +
+        (
+          100% - env(safe-area-inset-left, 0px) - env(
+              safe-area-inset-right,
+              0px
+            )
+        ) /
+        2
+    );
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    max-width: calc(
+      100% - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
+        32px
+    );
     border-radius: $dialog-border-radius;
     animation-duration: 0.3s;
+
+    /* 双屏展开/半折叠态：避开折痕，吸附至左屏中心 */
+    @media (horizontal-viewport-segments: 2) {
+      left: calc(
+        env(safe-area-inset-left, 0px) +
+          (
+            env(viewport-segment-width 0 0, 50vw) - env(
+                safe-area-inset-left,
+                0px
+              )
+          ) /
+          2
+      );
+      max-width: calc(
+        env(viewport-segment-width 0 0, 50vw) - env(safe-area-inset-left, 0px) -
+          32px
+      );
+    }
+
+    &-full {
+      left: 50%;
+      max-width: calc(100% - 32px);
+
+      @media (horizontal-viewport-segments: 2) {
+        left: 50%;
+        max-width: calc(100% - 32px);
+      }
+    }
   }
 
   &-close {

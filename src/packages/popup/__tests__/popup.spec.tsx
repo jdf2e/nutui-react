@@ -171,3 +171,15 @@ test('pop destroyOnClose', () => {
   fireEvent.click(overlay)
   expect(onClose).toBeCalled()
 })
+
+test('should render centerBase and segment classes for iPhone Duo', () => {
+  const { container, rerender } = render(
+    <Popup visible position="center" centerBase="full" />
+  )
+  expect(container.querySelector('.nut-popup-center-full')).toBeTruthy()
+
+  rerender(<Popup visible position="center" segment="right" />)
+  expect(
+    container.querySelector('.nut-popup-center-segment-right')
+  ).toBeTruthy()
+})

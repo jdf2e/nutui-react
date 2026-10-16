@@ -80,25 +80,107 @@
 
   &-center {
     top: 50%;
-    left: 50%;
+    /* 默认基于安全区域居中：避让右侧导航区和左侧圆角 */
+    left: calc(
+      env(safe-area-inset-left, 0px) +
+        (
+          100% - env(safe-area-inset-left, 0px) - env(
+              safe-area-inset-right,
+              0px
+            )
+        ) /
+        2
+    );
     min-height: 10%;
-    max-width: 295px;
+    max-width: calc(
+      100% - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
+        32px
+    );
     transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    transition:
+      left 0.35s cubic-bezier(0.2, 0.9, 0.4, 1),
+      transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1),
+      filter 0.25s ease-out,
+      max-width 0.35s ease;
 
     &.nut-popup-round {
       border-radius: $popup-border-radius;
     }
+
+    /* 双屏展开/半折叠态：避开折痕，吸附至左屏中心 */
+    @media (horizontal-viewport-segments: 2) {
+      left: calc(
+        env(safe-area-inset-left, 0px) +
+          (
+            env(viewport-segment-width 0 0, 50vw) - env(
+                safe-area-inset-left,
+                0px
+              )
+          ) /
+          2
+      );
+      max-width: calc(
+        env(viewport-segment-width 0 0, 50vw) - env(safe-area-inset-left, 0px) -
+          32px
+      );
+    }
+
+    /* 忽略安全区，强制按屏幕全宽物理居中 */
+    &-full {
+      left: 50%;
+      max-width: calc(100% - 32px);
+
+      @media (horizontal-viewport-segments: 2) {
+        left: 50%;
+        max-width: calc(100% - 32px);
+      }
+    }
+
+    /* 显式吸附至右屏中心 */
+    &-segment-right {
+      @media (horizontal-viewport-segments: 2) {
+        left: calc(
+          env(viewport-segment-left 1 0, 50vw) +
+            (
+              env(viewport-segment-width 1 0, 50vw) - env(
+                  safe-area-inset-right,
+                  0px
+                )
+            ) /
+            2
+        );
+        max-width: calc(
+          env(viewport-segment-width 1 0, 50vw) - env(
+              safe-area-inset-right,
+              0px
+            ) -
+            32px
+        );
+      }
+    }
+  }
+
+  &-transitioning {
+    filter: blur(4px) opacity(0.85);
   }
 
   &-bottom,
   &-top {
     max-height: 87%;
+    box-sizing: border-box;
   }
 
   &-bottom {
     bottom: 0;
     left: 0;
     width: 100%;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    @media (horizontal-viewport-segments: 2) {
+      /* 双屏展开态下收敛为单屏宽，靠左侧对齐展示，避免全宽拉裂 */
+      width: env(viewport-segment-width 0 0, 100%);
+    }
 
     &.nut-popup-round {
       border-radius: $popup-border-radius $popup-border-radius 0 0;
@@ -131,6 +213,12 @@
     top: 0;
     left: 0;
     width: 100%;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+
+    @media (horizontal-viewport-segments: 2) {
+      width: env(viewport-segment-width 0 0, 100%);
+    }
 
     &.nut-popup-round {
       border-radius: 0 0 $popup-border-radius $popup-border-radius;
