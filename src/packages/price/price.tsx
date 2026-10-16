@@ -70,6 +70,16 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
       : {}
   }, [isCustomPriceColor, color])
 
+  const replaceSpecialChar = (url: string) => {
+    url = url.replace(/&quot;/g, '"')
+    url = url.replace(/&amp;/g, '&')
+    url = url.replace(/&lt;/g, '<')
+    url = url.replace(/&gt;/g, '>')
+    url = url.replace(/&nbsp;/g, ' ')
+    url = url.replace(/&yen;/g, '¥')
+    return url
+  }
+
   const checkPoint = (price: string | number) => {
     return String(price).indexOf('.') > 0
   }
@@ -90,7 +100,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   }
 
   const formatDecimal = (decimalNum: any) => {
-    if (Number(decimalNum) === 0) {
+    if (Number(decimalNum) === 0 && !checkPoint(decimalNum)) {
       decimalNum = 0
     }
 
@@ -123,6 +133,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
           },
         ])}
         style={priceColorStyle}
+        aria-hidden
         dangerouslySetInnerHTML={{ __html: symbol || '' }}
       />
     )
@@ -138,6 +149,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
             line ? `${classPrefix}-line` : ''
           }`}
           style={priceColorStyle}
+          aria-hidden
         >
           {formatThousands(price)}
         </div>
@@ -149,6 +161,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
                   line ? `${classPrefix}-line` : ''
                 }`}
                 style={priceColorStyle}
+                aria-hidden
               >
                 .
               </div>
@@ -158,6 +171,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
                 line ? `${classPrefix}-line` : ''
               }`}
               style={priceColorStyle}
+              aria-hidden
             >
               {formatDecimal(price)}
             </div>
@@ -169,10 +183,21 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     )
   }
 
+  const accessiblePriceText = useMemo(() => {
+    const safeSymbol = symbol ? replaceSpecialChar(symbol) : ''
+    const numberText = isRenderPriceRaw ? `${originalPrice}` : `${price}`
+    return position === 'after'
+      ? `${numberText}${safeSymbol}`
+      : `${safeSymbol}${numberText}`
+  }, [symbol, price, position, originalPrice, isRenderPriceRaw])
+
   return (
     <div
       className={`${classPrefix} ${classPrefix}-${isCustomPriceColor ? 'custom' : color} ${className}`}
       style={style}
+      aria-label={accessiblePriceText}
+      // eslint-disable-next-line jsx-a11y/aria-role
+      role="text"
       {...rest}
     >
       {isRenderPriceRaw ? renderRawContent() : renderInner()}

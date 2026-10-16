@@ -58,14 +58,14 @@ test('props raw renders illegal string as-is', () => {
   expect(container.querySelector('.nut-price-integer')).toBeNull()
 })
 
-test('aria-label follows price symbol like taro', () => {
+test('aria-label matches taro accessible price text', () => {
   const { container } = render(<Price price={100} />)
   expect(container.querySelector('.nut-price')).toHaveAttribute(
     'aria-label',
     '¥100'
   )
+  expect(container.querySelector('.nut-price')).toHaveAttribute('role', 'text')
 })
-
 test('auto raw when digits separated by illegal chars', () => {
   const { container } = render(<Price price="1起2" />)
   expect(container.querySelector('.nut-price')?.textContent).toBe('1起2')
