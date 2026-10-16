@@ -1,0 +1,21 @@
+{
+  "features": [
+    {
+      "id": "F001",
+      "description": "为 Rate 组件新增自定义评分 demo，使用五个 28×28 自定义图标和对应文案，横向等宽排列。",
+      "steps": [
+        "新增 H5 与 Taro 自定义评分 demo 文件",
+        "在 Rate demo 入口注册并添加多语言标题",
+        "在 Rate 的中英文及 Taro 文档中加入示例引用",
+        "运行类型检查、Rate 单测和 lint 验证"
+      ],
+      "passes": true,
+      "verification": [
+        "H5 与 Taro TypeScript 类型检查通过",
+        "Rate 单测 11 项通过，已有 size 快照差异单独跳过",
+        "相关文件 ESLint 与 Prettier 检查通过",
+        "未发现 TEMP_PATCH"
+      ]
+    }
+  ]
+}
