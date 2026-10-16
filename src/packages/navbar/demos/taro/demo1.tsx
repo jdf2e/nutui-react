@@ -1,89 +1,106 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import { NavBar, pxTransform, harmony, Space } from '@nutui/nutui-react-taro'
+import { Image, Text, View } from '@tarojs/components'
+import { NavBar, Space } from '@nutui/nutui-react-taro'
 import { ArrowLeft, Close, More, Share } from '@nutui/icons-react-taro'
 
+const subBarData = [
+  {
+    icon: 'https://img10.360buyimg.com/img/jfs/t1/533282/19/6137/1741/6abb63a4F641617b0/027602e02e213bbf.png',
+    title: '会话',
+  },
+  {
+    icon: 'https://img12.360buyimg.com/img/jfs/t1/532014/35/7258/1619/6abb63e2Ff618d2b0/027603003099f9df.png',
+    title: '物流',
+  },
+  {
+    icon: 'https://img11.360buyimg.com/img/jfs/t1/528558/31/10904/1404/6abb63efF3c871ddf/0276030030ebce6d.png',
+    title: '提醒',
+  },
+  {
+    icon: 'https://img30.360buyimg.com/img/jfs/t1/531341/18/8252/1460/6abb63feF5c5123e0/027603003083f264.png',
+    title: '优惠',
+    active: true,
+  },
+  {
+    icon: 'https://img14.360buyimg.com/img/jfs/t1/525760/23/13203/2133/6abb6409Feea7d676/0276030030076299.png',
+    title: '互动',
+  },
+]
+
 const Demo1 = () => {
-  const styles = {
-    flexCenter: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    title: {
-      display: 'flex',
-      alignItems: 'center',
-      flex: 1,
-      fontSize: pxTransform(18),
-      fontWeight: 'bold',
-    },
-    description: {
-      fontSize: pxTransform(12),
-      fontWeight: 400,
-      color: 'rgba(0,0,0, 0.5)',
-      height: pxTransform(16),
-    },
-  }
   return (
     <Space direction="vertical">
       <NavBar
-        title="页面标题"
+        title={
+          <View className="navbar-title-twoline">
+            <Text>默认样式</Text>
+            <Text>背景透明</Text>
+          </View>
+        }
+        left={
+          <View className="navbar-android-button">
+            <ArrowLeft />
+            <Close />
+          </View>
+        }
+        right={
+          <View className="navbar-android-button">
+            <Share onClick={() => Taro.showToast({ title: 'icon' })} />
+          </View>
+        }
+        zIndex={0}
+      />
+      <NavBar
         back={
-          <>
-            <ArrowLeft style={harmony() ? { marginRight: 16 } : {}} />
-            返回
-          </>
-        }
-        right={<Share onClick={(e) => Taro.showToast({ title: 'icon' })} />}
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-      />
-      <NavBar
-        title="页面标题"
-        right={<Share onClick={(e) => Taro.showToast({ title: 'icon' })} />}
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-      />
-      <NavBar
-        title={
-          <View style={{ ...styles.flexCenter, flexDirection: 'column' }}>
-            <View
-              style={styles.title}
-              onClick={(e) => Taro.showToast({ title: '标题' })}
-            >
-              页面标题
-            </View>
-            <View style={styles.description}>副标题</View>
+          <View className="navbar-android-button">
+            <ArrowLeft />
           </View>
         }
         right={
-          <View onClick={(e) => Taro.showToast({ title: '清空' })}>清空</View>
-        }
-        left={<Close style={harmony() ? { marginRight: 16 } : {}} />}
-        back={<ArrowLeft />}
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-      />
-      <NavBar
-        back={<ArrowLeft />}
-        title={
-          <View
-            style={harmony() ? styles.title : {}}
-            onClick={(e) => Taro.showToast({ title: '页面标题' })}
-          >
-            页面标题
+          <View className="navbar-android-button">
+            <Share onClick={() => Taro.showToast({ title: 'icon' })} />
           </View>
         }
+        onBackClick={() => Taro.showToast({ title: '返回' })}
+        className="nut-navbar-sticky"
+        zIndex={0}
+      >
+        <View className="navbar-title-twoline">
+          <Text>吸顶样式</Text>
+          <Text>有背景色</Text>
+        </View>
+      </NavBar>
+      <NavBar
         right={
-          <>
-            <View
-              style={harmony() ? { marginRight: 16 } : {}}
-              onClick={(e) => Taro.showToast({ title: '编辑' })}
-            >
-              编辑
-            </View>
-            <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
-          </>
+          <View className="navbar-android-button">
+            <Text>清除未读</Text>
+            <More onClick={() => Taro.showToast({ title: 'icon' })} />
+          </View>
         }
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-      />
+        onBackClick={() => Taro.showToast({ title: '返回' })}
+        className="nut-navbar-sticky"
+        subBar={
+          <View className="navbar-subbar">
+            {subBarData.map((item) => (
+              <View
+                className={`navbar-subbar-item ${item.active ? 'navbar-subbar-item-active' : ''}`}
+                key={item.title}
+              >
+                <View>
+                  {item.icon && (
+                    <Image className="navbar-subbar-icon" src={item.icon} />
+                  )}
+                </View>
+                <Text>{item.title}</Text>
+              </View>
+            ))}
+          </View>
+        }
+        zIndex={0}
+      >
+        二级楼层
+      </NavBar>
     </Space>
   )
 }

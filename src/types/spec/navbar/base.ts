@@ -7,6 +7,7 @@ export interface BaseNavBar extends BaseProps {
   back: ReactNode
   right: ReactNode
   title: ReactNode
+  subBar: ReactNode
   fixed: boolean
   safeAreaInsetTop: boolean
   placeholder: boolean

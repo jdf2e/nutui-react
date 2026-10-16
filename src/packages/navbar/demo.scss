@@ -5,7 +5,135 @@
   }
 }
 .navbar-demo {
+  padding: 57px 0 0 0 !important;
+
+  .nut-tabs-horizontal
+    .nut-tabs-titles:not(.nut-tabs-titles-right)
+    .nut-tabs-titles-item:first-child {
+    padding-left: calc(
+      var(--nutui-tabs-titles-gap, calc(8px * var(--nut-scale-f, 1)))
+    );
+  }
+
   .nut-tabpane {
     display: none;
+  }
+
+  h3,
+  .h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-size: 13px;
+    font-weight: normal;
+    color: var(--nutui-color-title, rgba(144, 156, 164, 1));
+  }
+
+  .navbar-android-button {
+    display: flex;
+    align-items: center;
+    padding: 0 scale-px(8px);
+    gap: scale-px(16px);
+    background: $color-background-overlay;
+    border-radius: $radius-base;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    height: scale-px(36px);
+  }
+
+  .navbar-title-twoline {
+    display: flex;
+    flex-direction: column;
+
+    > :nth-child(1) {
+      line-height: scale-px(26px);
+    }
+
+    > :nth-child(2) {
+      line-height: scale-px(16px);
+      font-size: scale-font-px(11px);
+      font-weight: $font-weight;
+      color: $color-text-help;
+    }
+  }
+
+  .nut-navbar.nut-navbar-sticky {
+    --nutui-navbar-background: #{var(--nutui-gray-1, $white)};
+    --nutui-navbar-box-shadow: 0 1px 0 0 #{$color-border};
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    .navbar-android-button {
+      background: none;
+    }
+  }
+
+  .navbar-subbar {
+    display: flex;
+    padding: 0 8px;
+    justify-content: space-between;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & > :nth-child(1) {
+        width: scale-px(44px);
+        height: scale-px(44px);
+        border-radius: $radius-xxxl;
+        background: var(--nutui-color-background-component, #f0f2f7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > img,
+        & > .navbar-subbar-icon {
+          width: scale-px(24px);
+          height: scale-px(24px);
+        }
+      }
+
+      &-active > :nth-child(1) {
+        background: linear-gradient(
+          179deg,
+          rgba(255, 111, 79, 0.9) 0%,
+          rgba(255, 55, 11, 0.9) 100%
+        );
+      }
+
+      & > :nth-child(2) {
+        margin-top: 2px;
+        line-height: scale-px(22px);
+        font-size: $font-size-base;
+        color: $color-text;
+      }
+    }
+  }
+
+  .navbar-iOS26 {
+    --nutui-navbar-height: #{scale-px(54px)};
+    --nutui-navbar-padding: #{scale-px(7px) scale-px(8px)};
+    --nutui-navbar-side-maxwidth: #{scale-px(120px)};
+
+    &.nut-navbar.nut-navbar-sticky {
+      --nutui-navbar-background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+    }
+  }
+
+  .navbar-iOS26-button {
+    display: flex;
+    align-items: center;
+    padding: 0 scale-px(10px);
+    gap: scale-px(20px);
+    height: scale-px(40px);
+  }
+}
+
+.nut-theme-dark {
+  .navbar-iOS26.nut-navbar.nut-navbar-sticky {
+    --nutui-navbar-background: rgba(20, 23, 26, 0.9);
   }
 }
