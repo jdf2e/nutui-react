@@ -122,7 +122,7 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 
 `mode="ai"` 切换为 86px 双行布局：上方为输入及清除区域，下方通过 `leftIn`、`rightIn` 配置操作内容。智能模式开关、识图图标与搜索按钮由业务按需组合，组件不内置 AI 检索逻辑。默认 `normal` 保持单行布局。
 
-左侧内容在聚焦及输入时保持显示，需要隐藏默认搜索图标时设置 `leftIn={null}`；聚焦时隐藏占位提示。通过现有 `tag` 展示失焦后的关键词胶囊，通过 `onItemClick` 删除关键词。
+左侧内容在聚焦及输入时保持显示，需要隐藏默认搜索图标时设置 `leftIn={null}`；聚焦时隐藏占位提示。通过 `tag` 展示关键词胶囊。点击胶囊（包含 × 图标）会触发 `onItemClick`，需在回调中更新输入值以删除关键词，组件不会自动删除。
 
 :::demo
 
@@ -134,32 +134,36 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 
 ### Props
 
+未设置 `placeholder` 或传入空字符串时，使用 `ConfigProvider` 的 `locale.placeholder`，默认中文语言包为「请输入内容」。
+
+`BaseEventOrig`、`InputProps` 和 `ITouchEvent` 均来自 `@tarojs/components`。
+
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | value | 当前输入的值，受控 | `string` | `-` |
-| defaultValue | 当前默认值，支持通过','分割成多个 | `string` | `-` |
-| placeholder | 输入框默认暗纹 | `string` | `请输入` |
+| defaultValue | 非受控初始值；开启tag时，以逗号分隔多个关键词胶囊 | `string` | `-` |
+| placeholder | 占位提示，未设置时使用配置的locale.placeholder | `string` | `locale.placeholder` |
 | shape | 搜索框形状，可选值为 `round` | `string` | `square` |
 | mode | 布局模式；AI 模式的 leftIn/rightIn 位于底部操作区 | `'normal' \| 'ai'` | `normal` |
 | disabled | 是否禁用输入框 | `boolean` | `false` |
 | readOnly | 输入框只读 | `boolean` | `false` |
 | maxLength | 最大输入长度 | `number` | `9999` |
-| clearable | 是否展示清除按钮 | `boolean` | `true` |
-| tag | 失焦后以胶囊展示关键词 | `boolean` | `false` |
+| clearable | 有内容且未展示胶囊时，是否显示清除按钮 | `boolean` | `true` |
+| tag | 是否以胶囊展示关键词，聚焦时编辑、失焦后恢复 | `boolean` | `false` |
 | autoFocus | 是否自动聚焦 | `boolean` | `false` |
 | backable | 是否展示返回按钮 | `boolean` | `false` |
 | left | 搜索框左侧区域 | `ReactNode` | `-` |
-| right | 搜搜框右侧区域 | `ReactNode` | `-` |
+| right | 搜索框右侧区域 | `ReactNode` | `-` |
 | leftIn | 输入框内左侧区域 | `ReactNode` | `<Search />` |
 | rightIn | 输入框内右侧区域 | `ReactNode` | `-` |
 | inputProps | 扩展底层TaroInput组件属性，支持传入TaroInput组件的所有属性 | `Partial<InputProps>` | `-` |
-| onChange | 输入内容时触发 | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
-| onFocus | 聚焦时触发 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
-| onBlur | 失焦时触发 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
-| onClear | 点击清空时触发 | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
-| onSearch | 确定搜索时触发 | `(val: string) => void` | `-` |
-| onInputClick | 点击输入区域时触发 | `(event: MouseEvent<HTMLInputElement>) => void` | `-` |
-| onItemClick | 点击默认值的x号触发 | `(value: string) => void` | `-` |
+| onChange | 输入或清空时触发；清空时不传event | `(value: string, event?: BaseEventOrig<InputProps.inputEventDetail>) => void` | `-` |
+| onFocus | 聚焦时触发 | `(value: string, event: BaseEventOrig<InputProps.inputForceEventDetail>) => void` | `-` |
+| onBlur | 失焦时触发 | `(value: string, event: BaseEventOrig<InputProps.inputValueEventDetail>) => void` | `-` |
+| onClear | 点击清空时触发 | `(event: ITouchEvent) => void` | `-` |
+| onSearch | 键盘确认搜索时触发；rightIn自定义按钮需自行绑定 | `(val: string) => void` | `-` |
+| onInputClick | 点击输入区域时触发 | `(event: ITouchEvent) => void` | `-` |
+| onItemClick | 点击关键词胶囊（包含×）时触发，需自行更新值以删除 | `(value: string, event: any) => void` | `-` |
 
 ## 主题定制
 
@@ -174,15 +178,16 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 | \--nutui-searchbar-background | 搜索框背景色 | `$color-background-sunken` |
 | \--nutui-searchbar-color | 搜索框字色 | `$color-title` |
 | \--nutui-searchbar-gap | 搜索框外部/大间距 | `12px` |
-| \--nutui-searchbar-inner-gap | 搜索框内部元素间的间距 | `12px` |
+| \--nutui-searchbar-inner-gap | 搜索框内部元素间的间距 | `8px` |
 | \--nutui-searchbar-font-size | 搜索框字号 | `$font-size-base` |
 | \--nutui-searchbar-content-background | 搜索框中间内容区的背景色 | `$color-background-overlay` |
 | \--nutui-searchbar-content-border-radius | 搜索框内容区圆角 | `$radius-l` |
 | \--nutui-searchbar-content-round-border-radius | 搜索框内容区在round模式下的圆角 | `19px` |
 | \--nutui-searchbar-input-height | 搜索框输入区高度 | `36px` / AI `86px` |
-| \--nutui-searchbar-input-padding | 搜索框输入区padding | `0 0 0 8px` |
 | \--nutui-searchbar-input-text-color | 搜索框输入区字色 | `$color-title` |
-| \--nutui-searchbar-input-curror-color | 搜索框输入区输入色 | `$color-title` |
+| \--nutui-searchbar-input-curror-color | 输入框光标颜色 | `$color-primary` |
 | \--nutui-searchbar-input-text-align | 搜索框输入区对齐方式 | `left` |
+
+输入控件的内边距可通过 `inputProps.style.padding` 设置。
 
 <Contribution name="SearchBar" />
