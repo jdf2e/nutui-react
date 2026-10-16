@@ -896,6 +896,18 @@ $rate-label-color: var(--nutui-rate-label-color, $color-text-disabled) !default;
 
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, 46px) !default;
+$tabbar-material-height: var(--nutui-tabbar-height, 52px) !default;
+$tabbar-addon-before-source-size: var(--nutui-tabbar-addon-before-source-size, 52px) !default;
+$tabbar-addon-before-gap: var(--nutui-tabbar-addon-before-gap, 8px) !default;
+$tabbar-addon-before-outset: var(--nutui-tabbar-addon-before-outset, 16px) !default;
+$tabbar-content-height: var(--nutui-tabbar-content-height, 44px) !default;
+$tabbar-horizontal-padding: var(--nutui-tabbar-horizontal-padding, 12px) !default;
+$tabbar-content-padding: var(--nutui-tabbar-content-padding, 4px) !default;
+$tabbar-border-radius: var(--nutui-tabbar-border-radius, #{$tabbar-material-height}) !default;
+$tabbar-active-background: var(--nutui-tabbar-active-background,
+    var(--nutui-color-background-component, #ebedf2)) !default;
+$tabbar-active-border-radius: var(--nutui-tabbar-active-border-radius,
+    #{$tabbar-content-height}) !default;
 $tabbar-active-color: var(--nutui-tabbar-active-color, $color-primary) !default;
 $tabbar-inactive-color: var(--nutui-tabbar-inactive-color,
     $color-title) !default;
@@ -908,7 +920,7 @@ $tabbar-text-large-font-size: var(--nutui-tabbar-text-large-font-size,
     $font-size-l) !default;
 $tabbar-text-large-font-weight: var(--nutui-tabbar-text-large-font-weight,
     $font-weight) !default;
-$tabbar-text-line-height: var(--nutui-tabbar-text-line-height, 20px) !default;
+$tabbar-text-line-height: var(--nutui-tabbar-text-line-height, #{$tabbar-text-font-size}) !default;
 $tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 4px) !default;
 
 //pulltorefresh
