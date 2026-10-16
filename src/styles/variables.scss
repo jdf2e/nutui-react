@@ -2530,14 +2530,14 @@ $searchbar-content-background: var(
 ) !default;
 $searchbar-content-border-radius: var(
   --nutui-searchbar-content-border-radius,
-  scale-px(8px)
+  $radius-l
 ) !default;
 $searchbar-content-round-border-radius: var(
   --nutui-searchbar-content-round-border-radius,
   scale-px(19px)
 ) !default;
 $searchbar-icon-size: var(--nutui-searchbar-icon-size, scale-px(20px)) !default;
-$searchbar-input-height: var(--nutui-searchbar-input-height, scale-px(38px)) !default;
+$searchbar-input-height: var(--nutui-searchbar-input-height, scale-px(36px)) !default;
 $searchbar-input-padding: var(
   --nutui-searchbar-input-padding,
   0 0 0 scale-px(8px)

@@ -96,7 +96,37 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
+### 玻璃态搜索
 
+示例使用 MaterialView 组合玻璃效果，通过现有 CSS 变量配置 40px 搜索栏；搜索按钮由 `rightIn` 自定义。
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
+### 二级搜索
+
+通过现有 CSS 变量配置 36px 二级搜索及 32px 轻量搜索。
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
+### AI搜索
+
+`mode="ai"` 切换为 86px 双行布局：上方为输入及清除区域，下方通过 `leftIn`、`rightIn` 配置操作内容。智能模式开关、识图图标与搜索按钮由业务按需组合，组件不内置 AI 检索逻辑。默认 `normal` 保持单行布局。
+
+左侧内容在聚焦及输入时保持显示，需要隐藏默认搜索图标时设置 `leftIn={null}`；聚焦时隐藏占位提示。通过现有 `tag` 展示失焦后的关键词胶囊，通过 `onItemClick` 删除关键词。
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
 
 ## SearchBar
 
@@ -108,10 +138,12 @@ import { SearchBar } from '@nutui/nutui-react'
 | defaultValue | 当前默认值，支持通过','分割成多个 | `string` | `-` |
 | placeholder | 输入框默认暗纹 | `string` | `请输入` |
 | shape | 搜索框形状，可选值为 `round` | `string` | `square` |
+| mode | 布局模式；AI 模式的 leftIn/rightIn 位于底部操作区 | `'normal' \| 'ai'` | `normal` |
 | disabled | 是否禁用输入框 | `boolean` | `false` |
 | readOnly | 输入框只读 | `boolean` | `false` |
 | maxLength | 最大输入长度 | `number` | `9999` |
 | clearable | 是否展示清除按钮 | `boolean` | `true` |
+| tag | 失焦后以胶囊展示关键词 | `boolean` | `false` |
 | autoFocus | 是否自动聚焦 | `boolean` | `false` |
 | backable | 是否展示返回按钮 | `boolean` | `false` |
 | left | 搜索框左侧区域 | `ReactNode` | `-` |
@@ -143,9 +175,9 @@ import { SearchBar } from '@nutui/nutui-react'
 | \--nutui-searchbar-inner-gap | 搜索框内部元素间的间距 | `12px` |
 | \--nutui-searchbar-font-size | 搜索框字号 | `$font-size-base` |
 | \--nutui-searchbar-content-background | 搜索框中间内容区的背景色 | `$color-background-overlay` |
-| \--nutui-searchbar-content-border-radius | 搜索框内容区圆角 | `8px` |
+| \--nutui-searchbar-content-border-radius | 搜索框内容区圆角 | `$radius-l` |
 | \--nutui-searchbar-content-round-border-radius | 搜索框内容区在round模式下的圆角 | `19px` |
-| \--nutui-searchbar-input-height | 搜索框输入区高度 | `38px` |
+| \--nutui-searchbar-input-height | 搜索框输入区高度 | `36px` / AI `86px` |
 | \--nutui-searchbar-input-padding | 搜索框输入区padding | `0 0 0 8px` |
 | \--nutui-searchbar-input-text-color | 搜索框输入区字色 | `$color-title` |
 | \--nutui-searchbar-input-curror-color | 搜索框输入区输入色 | `$color-title` |

@@ -98,6 +98,38 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
+### 玻璃態搜索
+
+示例使用 MaterialView 组合玻璃效果，通过现有 CSS 变量配置 40px 搜索栏；搜索按钮由 `rightIn` 自定义。
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
+### 二級搜索
+
+通过现有 CSS 变量配置 36px 二级搜索及 32px 轻量搜索。
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
+### AI搜索
+
+`mode="ai"` 切換为 86px 雙行布局：上方为輸入及清除區域，下方通過 `leftIn`、`rightIn` 設定操作內容。智能模式開關、識圖圖標与搜索按鈕由業務按需组合，組件不內建 AI 检索邏輯。默認 `normal` 保持单行布局。
+
+左側內容在聚焦及輸入時保持顯示，需要隱藏默認搜索圖標時設定 `leftIn={null}`；聚焦時隱藏占位提示。通過現有 `tag` 展示失焦后的關鍵詞膠囊，通過 `onItemClick` 刪除關鍵詞。
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
+
 ## SearchBar
 
 ### Props
@@ -108,10 +140,12 @@ import { SearchBar } from '@nutui/nutui-react'
 | defaultValue | 當前默認值，支持通過','分割成多個 | `string` | `-` |
 | placeholder | 輸入框默認暗紋 | `string` | `請輸入` |
 | shape | 搜索框形狀，可選值為 `round` | `string` | `square` |
+| mode | 布局模式；AI 模式的 leftIn/rightIn 位於底部操作區 | `'normal' \| 'ai'` | `normal` |
 | disabled | 是否禁用輸入框 | `boolean` | `false` |
 | readOnly | 輸入框只讀 | `boolean` | `false` |
 | maxLength | 最大輸入長度 | `number` | `9999` |
 | clearable | 是否展示清除按鈕 | `boolean` | `true` |
+| tag | 失焦後以膠囊展示關鍵詞 | `boolean` | `false` |
 | autoFocus | 是否自動聚焦 | `boolean` | `false` |
 | backable | 是否展示返回按鈕 | `boolean` | `false` |
 | left | 搜索框左側區域 | `ReactNode` | `-` |
@@ -143,9 +177,9 @@ import { SearchBar } from '@nutui/nutui-react'
 | \--nutui-searchbar-inner-gap | 搜索框內部元素間的間距 | `12px` |
 | \--nutui-searchbar-font-size | 搜索框字號 | `$font-size-base` |
 | \--nutui-searchbar-content-background | 搜索框中間內容區的背景色 | `$color-background-overlay` |
-| \--nutui-searchbar-content-border-radius | 搜索框內容區圓角 | `8px` |
+| \--nutui-searchbar-content-border-radius | 搜索框內容區圓角 | `$radius-l` |
 | \--nutui-searchbar-content-round-border-radius | 搜索框內容區在round模式下的圓角 | `19px` |
-| \--nutui-searchbar-input-height | 搜索框輸入區高度 | `38px` |
+| \--nutui-searchbar-input-height | 搜索框輸入區高度 | `36px` / AI `86px` |
 | \--nutui-searchbar-input-padding | 搜索框輸入區padding | `0 0 0 8px` |
 | \--nutui-searchbar-input-text-color | 搜索框輸入區字色 | `$color-title` |
 | \--nutui-searchbar-input-curror-color | 搜索框輸入區輸入色 | `$color-title` |
