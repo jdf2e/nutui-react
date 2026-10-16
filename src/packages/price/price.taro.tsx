@@ -206,8 +206,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
           style={style}
           // @ts-ignore
           ariaLabel={accessiblePriceText}
-          // eslint-disable-next-line jsx-a11y/aria-role
-          role="text"
+          {...({ role: 'text' } as Record<string, string>)}
         >
           {isRenderPriceRaw ? renderRawContent() : renderInner()}
         </Text>

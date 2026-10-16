@@ -1,3 +1,15 @@
+# v4.0.0-beta.10
+
+`2026-10-16`
+
+- :sparkles: feat(Tabs): V16适配 (#3534)
+- :sparkles: Feat/searchbar v16 (#3548)
+- :sparkles: Feat tabbar v16 (#3544)
+- :sparkles: Feat（NavBar）：v16适配 (#3549)
+- :sparkles: feat(rate): 补充自定义评分示例 (#3551)
+- :sparkles: Feat/pulltorefresh v16 (#3543)
+- 🪵 refactor(Price): v16适配 (#3550)
+
 # v4.0.0-beta.8
 
 `2026-10-14`
