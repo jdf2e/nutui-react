@@ -26,6 +26,7 @@ const enUS: BaseLang = {
   },
   infiniteloading: {
     pullRefreshText: 'Pull Refresh',
+    pullUpText: 'Swipe up to load more',
     loadText: 'Loading',
     loadMoreText: "Oops, here's the bottom",
   },

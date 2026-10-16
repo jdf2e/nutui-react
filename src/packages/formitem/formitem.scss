@@ -62,6 +62,10 @@
         }
       }
 
+      .nut-input-native {
+        background-color: $color-background-overlay;
+      }
+
       .nut-input-text {
         font-size: $form-item-body-font-size;
         text-align: $form-item-body-input-text-align;

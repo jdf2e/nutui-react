@@ -26,6 +26,7 @@ const idID: BaseLang = {
   },
   infiniteloading: {
     pullRefreshText: 'Lepaskan untuk memperbarui',
+    pullUpText: 'Geser ke atas untuk memuat lebih banyak',
     loadText: 'Memuat',
     loadMoreText: 'Oops, sudah sampai bawah',
   },
