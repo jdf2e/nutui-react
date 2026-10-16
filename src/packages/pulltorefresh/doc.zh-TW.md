@@ -29,6 +29,8 @@ import { PullToRefresh } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | canReleaseText | 釋放的提示文案 | `ReactNode` | `松手刷新` |
+| completeText | 完成時的提示文案。**即將廢棄**：默認場景下加載完成後直接收起，僅在顯式傳入該字段時為兼容存量用法而展示完成態 | `ReactNode` | `刷新成功` |
+| completeDelay | 完成後延遲消失的時間，單位為 ms。**即將廢棄**：僅在傳入 `completeText` 時生效 | `number` | `500` |
 | disabled | 是否禁用下拉刷新 | `boolean` | `false` |
 | headHeight | 頭部提示內容區的高度，單位為 px | `number` | `40` |
 | pullingText | 下拉的提示文案 | `ReactNode` | `下拉刷新` |

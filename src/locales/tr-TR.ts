@@ -163,6 +163,7 @@ const trTR: BaseLang = {
     pullingText: 'yenilemek için aşağı çekin',
     canReleaseText: 'Yenilemek için bırakın',
     refreshingText: 'Yükleniyor...',
+    completeText: 'Yenileme başarılı',
   },
   tour: {
     prevStepText: 'Sonraki adım',

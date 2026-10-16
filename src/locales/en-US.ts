@@ -154,6 +154,7 @@ const enUS: BaseLang = {
     pullingText: 'Pulling',
     canReleaseText: 'Release to refresh',
     refreshingText: 'Loading...',
+    completeText: 'Refresh successful',
   },
   tour: {
     prevStepText: 'Previous',

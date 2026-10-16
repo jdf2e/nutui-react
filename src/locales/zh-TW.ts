@@ -157,6 +157,7 @@ const zhCN: BaseLang = {
     pullingText: '下拉刷新',
     canReleaseText: '松手刷新',
     refreshingText: '刷新中',
+    completeText: '刷新成功',
   },
   tour: {
     prevStepText: '上一步',

@@ -129,6 +129,63 @@ describe('PullToRefresh', () => {
     )
   })
 
+  test('falls back to legacy complete flow when completeText is passed (deprecated)', async () => {
+    // 兼容存量用法：传入 completeText 时仍走老的 complete 流程，
+    // 出现 complete 文案并停留 completeDelay 后再收起。
+    let finish: (value?: unknown) => void = () => {}
+    const onRefresh = vi.fn(
+      () =>
+        new Promise((resolve) => {
+          finish = resolve
+        })
+    )
+    const { container } = render(
+      <PullToRefresh
+        onRefresh={onRefresh}
+        completeText="刷新成功"
+        completeDelay={200}
+      >
+        <div data-testid="content">
+          <Cell>1</Cell>
+          <Cell>2</Cell>
+          <Cell>3</Cell>
+          <Cell>4</Cell>
+          <Cell>5</Cell>
+          <Cell>6</Cell>
+        </div>
+      </PullToRefresh>
+    )
+    const element: Element = container.querySelector(
+      '.nut-pulltorefresh'
+    ) as Element
+
+    act(() => {
+      fireEvent.mouseDown(element, { buttons: 1 })
+      fireEvent.mouseMove(element, { buttons: 1, clientY: 300 })
+    })
+    expect(screen.getByText('松手刷新')).toBeInTheDocument()
+
+    await act(async () => {
+      fireEvent.mouseUp(element, { buttons: 1, clientY: 300 })
+    })
+    expect(onRefresh).toHaveBeenCalledTimes(1)
+    expect(screen.getByText('刷新中')).toBeInTheDocument()
+
+    // resolve 后应进入 complete 态并展示 completeText
+    await act(async () => {
+      finish('done')
+    })
+    expect(screen.getByText('刷新成功')).toBeInTheDocument()
+
+    // completeDelay 之后收起，回到 pulling 文案
+    await waitFor(
+      () => {
+        expect(screen.getByText('下拉刷新')).toBeInTheDocument()
+      },
+      { timeout: 3000 }
+    )
+  })
+
   test('renders the built-in default icon without renderIcon', async () => {
     const { container } = render(
       <PullToRefresh>

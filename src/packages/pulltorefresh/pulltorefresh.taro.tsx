@@ -5,6 +5,7 @@ import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/hooks/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
+import { sleep } from '@/utils/sleep'
 import { ComponentDefaults, Timeout } from '@/utils/typings'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { getDeviceInfo } from '@/utils/taro/get-system-info'
@@ -40,6 +41,7 @@ export const PullToRefresh: FunctionComponent<
       pullingText: p.pullingText || locale.pullToRefresh.pullingText,
       canReleaseText: p.canReleaseText || locale.pullToRefresh.canReleaseText,
       refreshingText: p.refreshingText || locale.pullToRefresh.refreshingText,
+      completeText: p.completeText || locale.pullToRefresh.completeText,
     },
   }
 
@@ -54,6 +56,12 @@ export const PullToRefresh: FunctionComponent<
   const [status, setStatus] = useState<PullStatus>('pulling')
   const [height, setHeight] = useState(0)
   const timer = useRef<Timeout>()
+
+  // 是否走老的 complete 流程：仅当用户显式传入 completeText/completeDelay 时才启用，
+  // 默认场景下加载完成后直接收起。
+  const useLegacyComplete =
+    p.completeText !== undefined || p.completeDelay !== undefined
+  const completeDelay = props.completeDelay ?? 500
 
   // 内置图标：默认态与反白态各一套，使用方可通过 renderIcon 完全接管。
   // 两条分支都直接落在 .nut-pulltorefresh-status-icon 内，尺寸由该容器的样式统一约束。
@@ -78,6 +86,7 @@ export const PullToRefresh: FunctionComponent<
     if (status === 'pulling') return props.pullingText
     if (status === 'canRelease') return props.canReleaseText
     if (status === 'refreshing') return props.refreshingText
+    if (status === 'complete') return props.completeText
     return ''
   }
   const handleTouchStart: any = (e: ITouchEvent) => {
@@ -88,7 +97,7 @@ export const PullToRefresh: FunctionComponent<
     if (props.scrollTop > 0 || props.disabled) {
       return
     }
-    if (status === 'refreshing') return
+    if (status === 'refreshing' || status === 'complete') return
     // touch 的封装不好，比如在使用高度控制的时候，就很迷
     touch.move(e as any)
     if (touch.isVertical()) {
@@ -120,7 +129,12 @@ export const PullToRefresh: FunctionComponent<
       setStatus('pulling')
       throw e
     }
-    // 加载完成后无需展示完成态，直接收起
+    if (useLegacyComplete) {
+      setStatus('complete')
+      if (completeDelay > 0) {
+        await sleep(completeDelay)
+      }
+    }
     setHeight(0)
     setStatus('pulling')
   }

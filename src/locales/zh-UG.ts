@@ -153,6 +153,7 @@ const zhUG: BaseLang = {
     pullingText: 'تارتىپ يېڭىلاش',
     canReleaseText: 'قويۇپ بېرىڭ',
     refreshingText: 'يېڭىلىنىۋاتىدۇ...',
+    completeText: 'تامام',
   },
   tour: {
     prevStepText: 'ئالدىنقى',

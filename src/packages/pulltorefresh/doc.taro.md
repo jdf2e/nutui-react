@@ -39,6 +39,8 @@ import { PullToRefresh } from '@nutui/nutui-react-taro'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | canReleaseText | 释放的提示文案 | `ReactNode` | `松手刷新` |
+| completeText | 完成时的提示文案。**即将废弃**：默认场景下加载完成后直接收起，仅在显式传入该字段时为兼容存量用法而展示完成态 | `ReactNode` | `刷新成功` |
+| completeDelay | 完成后延迟消失的时间，单位为 ms。**即将废弃**：仅在传入 `completeText` 时生效 | `number` | `500` |
 | disabled | 是否禁用下拉刷新 | `boolean` | `false` |
 | headHeight | 头部提示内容区的高度，单位为 px | `number` | `40` |
 | scrollTop | 可滚动的父元素的 scrollTop | `number` | `0` |

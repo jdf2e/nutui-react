@@ -5,6 +5,7 @@ import { animated, useSpring } from '@react-spring/web'
 import { useConfig } from '@/packages/configprovider'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
+import { sleep } from '@/utils/sleep'
 import { passiveSupported } from '@/utils/supports-passive'
 import { ComponentDefaults } from '@/utils/typings'
 import { PullStatus, WebPullToRefreshProps } from '@/types'
@@ -36,6 +37,7 @@ export const PullToRefresh: FunctionComponent<
       pullingText: p.pullingText || locale.pullToRefresh.pullingText,
       canReleaseText: p.canReleaseText || locale.pullToRefresh.canReleaseText,
       refreshingText: p.refreshingText || locale.pullToRefresh.refreshingText,
+      completeText: p.completeText || locale.pullToRefresh.completeText,
     },
   }
 
@@ -72,6 +74,12 @@ export const PullToRefresh: FunctionComponent<
       },
     })
 
+  // 是否走老的 complete 流程：仅当用户显式传入 completeText/completeDelay 时才启用，
+  // 默认场景下加载完成后直接收起。
+  const useLegacyComplete =
+    p.completeText !== undefined || p.completeDelay !== undefined
+  const completeDelay = props.completeDelay ?? 500
+
   async function doRefresh() {
     api.start({ height: headHeight })
     setStatus('refreshing')
@@ -81,13 +89,18 @@ export const PullToRefresh: FunctionComponent<
       collapse()
       throw e
     }
-    // 加载完成后无需展示完成态，直接收起
+    if (useLegacyComplete) {
+      setStatus('complete')
+      if (completeDelay > 0) {
+        await sleep(completeDelay)
+      }
+    }
     collapse()
   }
 
   useDrag(
     (state) => {
-      if (status === 'refreshing') return
+      if (status === 'refreshing' || status === 'complete') return
       const { event } = state
 
       // 最后一个事件，检查是否可以刷新或是否是开始状态（第一个状态也是最后一个状态）
@@ -175,6 +188,7 @@ export const PullToRefresh: FunctionComponent<
     if (status === 'pulling') return props.pullingText
     if (status === 'canRelease') return props.canReleaseText
     if (status === 'refreshing') return props.refreshingText
+    if (status === 'complete') return props.completeText
     return ''
   }
 

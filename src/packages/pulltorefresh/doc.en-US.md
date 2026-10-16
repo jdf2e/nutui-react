@@ -29,6 +29,8 @@ The component ships with a built-in GIF icon for both the default and the revers
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | canReleaseText | Release prompt text | `ReactNode` | `Release immediate refresh` |
+| completeText | Prompt text when complete. **Deprecated soon**: by default the head collapses immediately after refresh; the legacy complete state only shows when this prop is explicitly passed for backward compatibility | `ReactNode` | `Refresh successful` |
+| completeDelay | Delay before the head collapses after completion, in ms. **Deprecated soon**: only takes effect when `completeText` is provided | `number` | `500` |
 | disabled | Whether to disable pull-to-refresh | `boolean` | `false` |
 | headHeight | The height of the head tip content area, in px | `number` | `40` |
 | pullingText | Pull down text | `ReactNode` | `Pull to refresh` |
