@@ -25,6 +25,7 @@ const defaultProps = {
   ...ComponentDefaults,
   placeholder: '',
   shape: 'square',
+  mode: 'normal',
   disabled: false,
   maxLength: 9999,
   clearable: true,
@@ -34,7 +35,16 @@ const defaultProps = {
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search />,
+  leftIn: (
+    <Search
+      style={{
+        width: 14,
+        height: 14,
+        fontSize: 14,
+        color: 'var(--nutui-color-text-help, #888b94)',
+      }}
+    />
+  ),
   tag: false,
 } as TaroSearchBarProps
 export const SearchBar: FunctionComponent<
@@ -53,6 +63,7 @@ export const SearchBar: FunctionComponent<
     style,
     placeholder,
     shape,
+    mode,
     className,
     disabled,
     maxLength,
@@ -85,6 +96,7 @@ export const SearchBar: FunctionComponent<
   })
 
   const [innerTag, setInnerTag] = useState(tag)
+  const [focused, setFocused] = useState(false)
 
   const forceFocus = useCallback(() => {
     searchInputRef.current?.focus()
@@ -103,16 +115,18 @@ export const SearchBar: FunctionComponent<
 
   const handleFocus = useCallback(
     (event: BaseEventOrig<InputProps.inputForceEventDetail>) => {
+      setFocused(true)
       onFocus && onFocus(event.detail?.value, event)
       if (tag) setInnerTag(false)
     },
-    [onFocus]
+    [onFocus, tag]
   )
 
   const [blurTimer, setBlurTimer] = useState<NodeJS.Timeout | null>(null)
 
   const handleBlur = useCallback(
     (event: BaseEventOrig<InputProps.inputValueEventDetail> | any) => {
+      setFocused(false)
       searchInputRef.current?.blur()
       onBlur && onBlur(event.detail?.value, event)
       if (tag) {
@@ -152,21 +166,20 @@ export const SearchBar: FunctionComponent<
         classPrefix,
         {
           [`${classPrefix}-disabled`]: disabled,
+          [`${classPrefix}-ai`]: mode === 'ai',
+          [`${classPrefix}-active`]: focused,
           [`${classPrefix}-focus`]: left || backable,
         },
         className
       ),
-    [disabled, backable, left, className]
+    [disabled, backable, left, className, mode, focused]
   )
 
   useEffect(() => {
     if (autoFocus) {
       forceFocus()
     }
-    if (tag && !innerTag) {
-      forceFocus()
-    }
-  }, [autoFocus, forceFocus, innerTag])
+  }, [autoFocus, forceFocus])
 
   const renderField = () => {
     const inputCls = classNames(`${classPrefix}-input`)
@@ -178,10 +191,11 @@ export const SearchBar: FunctionComponent<
             ref={searchInputRef}
             style={{
               ...style,
-              ...{ color: `${innerTag ? 'transparent' : '#333'}` },
+              color: innerTag && value ? 'transparent' : undefined,
             }}
             value={value}
             placeholder={placeholder || locale.placeholder}
+            placeholderStyle={focused ? 'color: transparent' : undefined}
             disabled={disabled || readOnly}
             maxlength={maxLength}
             autoFocus={autoFocus}
@@ -198,10 +212,11 @@ export const SearchBar: FunctionComponent<
             ref={searchInputRef}
             style={{
               ...style,
-              ...{ color: `${innerTag ? 'transparent' : '#333'}` },
+              color: innerTag && value ? 'transparent' : undefined,
             }}
             value={value}
             placeholder={placeholder || locale.placeholder}
+            placeholderStyle={focused ? 'color: transparent' : undefined}
             disabled={disabled || readOnly}
             maxlength={maxLength}
             focus={autoFocus}
@@ -219,12 +234,7 @@ export const SearchBar: FunctionComponent<
 
   const renderValueByTags = useCallback(() => {
     if (!innerTag) return null
-    if (!value) {
-      setTimeout(() => {
-        forceFocus()
-      }, 0)
-      return null
-    }
+    if (!value) return null
     const list = value.split(',')
     if (!list) return null
     return (
@@ -305,13 +315,30 @@ export const SearchBar: FunctionComponent<
       <View
         className={classNames(`${classPrefix}-content`, {
           [`${classPrefix}-round`]: shape === 'round',
+          [`${classPrefix}-content-tag`]: innerTag && !!value,
         })}
       >
-        {renderLeftIn()}
-        <View className="nut-searchbar-input-box">{renderField()}</View>
-        {renderValueByTags()}
-        {renderClear()}
-        {renderRightIn()}
+        {mode === 'ai' ? (
+          <>
+            <View className={`${classPrefix}-input-row`}>
+              <View className="nut-searchbar-input-box">{renderField()}</View>
+              {renderValueByTags()}
+              {renderClear()}
+            </View>
+            <View className={`${classPrefix}-actions`}>
+              {renderLeftIn()}
+              {renderRightIn()}
+            </View>
+          </>
+        ) : (
+          <>
+            {renderLeftIn()}
+            <View className="nut-searchbar-input-box">{renderField()}</View>
+            {renderValueByTags()}
+            {renderClear()}
+            {renderRightIn()}
+          </>
+        )}
       </View>
       {renderRight()}
     </View>

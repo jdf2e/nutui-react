@@ -18,6 +18,7 @@ const defaultProps = {
   ...ComponentDefaults,
   placeholder: '',
   shape: 'square',
+  mode: 'normal',
   disabled: false,
   maxLength: 9999,
   clearable: true,
@@ -27,7 +28,16 @@ const defaultProps = {
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search />,
+  leftIn: (
+    <Search
+      style={{
+        width: 14,
+        height: 14,
+        fontSize: 14,
+        color: 'var(--nutui-color-text-help, #888b94)',
+      }}
+    />
+  ),
   tag: false,
 } as WebSearchBarProps
 export const SearchBar: FunctionComponent<
@@ -46,6 +56,7 @@ export const SearchBar: FunctionComponent<
     style,
     placeholder,
     shape,
+    mode,
     className,
     disabled,
     maxLength,
@@ -78,6 +89,7 @@ export const SearchBar: FunctionComponent<
   })
 
   const [innerTag, setInnerTag] = useState(tag)
+  const [focused, setFocused] = useState(false)
 
   const forceFocus = useCallback(() => {
     searchInputRef.current?.focus()
@@ -101,6 +113,7 @@ export const SearchBar: FunctionComponent<
 
   const handleFocus = useCallback(
     (event: FocusEvent<HTMLInputElement>) => {
+      setFocused(true)
       onFocus && onFocus(event.target?.value, event)
       if (tag) setInnerTag(false)
     },
@@ -111,6 +124,7 @@ export const SearchBar: FunctionComponent<
 
   const handleBlur = useCallback(
     (event: FocusEvent<HTMLInputElement>) => {
+      setFocused(false)
       searchInputRef.current?.blur()
       onBlur && onBlur(event.target?.value, event)
       if (tag) {
@@ -159,11 +173,13 @@ export const SearchBar: FunctionComponent<
         classPrefix,
         {
           [`${classPrefix}-disabled`]: disabled,
+          [`${classPrefix}-ai`]: mode === 'ai',
+          [`${classPrefix}-active`]: focused,
           [`${classPrefix}-focus`]: left || backable,
         },
         className
       ),
-    [disabled, backable, left, className]
+    [disabled, backable, left, className, mode, focused]
   )
   useEffect(() => {
     if (autoFocus) {
@@ -194,12 +210,7 @@ export const SearchBar: FunctionComponent<
   }
 
   const renderValueByTags = useCallback(() => {
-    if (!value) {
-      setTimeout(() => {
-        forceFocus()
-      }, 0)
-      return null
-    }
+    if (!value) return null
     const list = value.split(',')
     if (!list) return null
     return (
@@ -216,7 +227,7 @@ export const SearchBar: FunctionComponent<
         ))}
       </div>
     )
-  }, [value, onItemClick, forceFocus])
+  }, [value, onItemClick])
 
   const renderLeftIn = useCallback(() => {
     if (!leftIn) return null
@@ -274,12 +285,28 @@ export const SearchBar: FunctionComponent<
       <div
         className={classNames(`${classPrefix}-content`, {
           [`${classPrefix}-round`]: shape === 'round',
+          [`${classPrefix}-content-tag`]: innerTag && !!value,
         })}
       >
-        {renderLeftIn()}
-        {renderField()}
-        {innerTag ? renderValueByTags() : renderClear()}
-        {renderRightIn()}
+        {mode === 'ai' ? (
+          <>
+            <div className={`${classPrefix}-input-row`}>
+              {renderField()}
+              {innerTag && value ? renderValueByTags() : renderClear()}
+            </div>
+            <div className={`${classPrefix}-actions`}>
+              {renderLeftIn()}
+              {renderRightIn()}
+            </div>
+          </>
+        ) : (
+          <>
+            {renderLeftIn()}
+            {renderField()}
+            {innerTag && value ? renderValueByTags() : renderClear()}
+            {renderRightIn()}
+          </>
+        )}
       </div>
       {renderRight()}
     </div>
