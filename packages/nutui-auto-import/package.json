@@ -95,8 +95,8 @@
   },
   "devDependencies": {
     "@nutui/nutui-react": "^2.7.15",
-    "@babel/core": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
+    "@babel/core": "^8.0.7",
+    "@babel/preset-react": "^8.0.1",
     "@rollup/plugin-babel": "^6.1.0",
     "@sxzz/eslint-config": "^4.6.0",
     "@sxzz/prettier-config": "^2.3.2",
