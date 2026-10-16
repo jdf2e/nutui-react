@@ -19,6 +19,7 @@ import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
 import Demo14 from './demos/taro/demo14'
 import Demo15 from './demos/taro/demo15'
+import Demo16 from './demos/taro/demo16'
 
 const RateDemo = () => {
   const [translated] = useTranslate({
@@ -38,6 +39,7 @@ const RateDemo = () => {
       verticalLayout: '上下布局',
       withLabel: '带标签',
       animation: '过渡动画',
+      customRating: '自定义评分',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -55,6 +57,7 @@ const RateDemo = () => {
       verticalLayout: '上下佈局',
       withLabel: '帶標籤',
       animation: '過渡動畫',
+      customRating: '自定義評分',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -72,6 +75,7 @@ const RateDemo = () => {
       verticalLayout: 'Vertical Layout',
       withLabel: 'With Label',
       animation: 'Transition Animation',
+      customRating: 'Custom Rating',
     },
   })
   const cellStyle: CSSProperties = {
@@ -159,6 +163,11 @@ const RateDemo = () => {
         <View className="h2">{translated.animation}</View>
         <Cell style={cellStyle}>
           <Demo15 />
+        </Cell>
+
+        <View className="h2">{translated.customRating}</View>
+        <Cell style={cellStyle}>
+          <Demo16 />
         </Cell>
       </ScrollView>
     </>
