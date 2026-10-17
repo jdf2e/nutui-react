@@ -7,7 +7,9 @@
   color: $color-title;
   padding: $sidebar-item-padding;
   box-sizing: border-box;
+  /* #ifndef dynamic*/
   overflow: auto;
+  /* #endif */
 
   &.inactive {
     overflow: visible;

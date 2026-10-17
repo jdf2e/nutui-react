@@ -82,15 +82,32 @@ import { Price } from '@nutui/nutui-react-taro'
 
 :::
 
+### 自定义颜色
+
+:::demo
+
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
+
+:::
+
+### 数据原样输出
+
+:::demo
+
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
+
+:::
+
 ## Price
 
 ### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type | 价格类型 | `primary` \| `gray` \| `darkgray` | `primary` |
+| color | 价格类型, 支持自定义颜色 | `primary` \| `gray` \| `darkgray` \| `string` | `primary` |
+| price | 价格数量 | `number` | `0` |
 | symbol | 符号类型 | `string` | `&yen;` |
-| digits | 小数位位数 | `number` | `2` |
+| digits | 小数位位数，传入`null`数据原样输出 | `number` \| `null` | `2` |
 | thousands | 是否按照千分号形式显示 | `boolean` | `false` |
 | position | 符号显示在价格前或者后，`before`、`after` | `string` | `before` |
 | size | 价格尺寸，`xlarge` \| `large` \| `normal` \| `small` | `string` | `normal` |
@@ -104,9 +121,9 @@ import { Price } from '@nutui/nutui-react-taro'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-price-primary-color | type为primary时文字颜色 | `#ff0f23` |
-| \--nutui-price-color | type为gray时文字颜色 | `#888b94` |
-| \--nutui-price-darkgray-color | type为darkgray时文字颜色 | `#1a1a1a` |
+| \--nutui-price-primary-color | color为primary时文字颜色 | `#ff0f23` |
+| \--nutui-price-color | color为gray时文字颜色 | `#888b94` |
+| \--nutui-price-darkgray-color | color为darkgray时文字颜色 | `#1a1a1a` |
 | \--nutui-price-line-color | 划线价颜色 | `#888b94` |
 | \--nutui-price-symbol-padding-right | 符号的右内边距 | `0px` |
 | \--nutui-price-symbol-xlarge-size | xlarge 尺寸符号字体大小 | `12px` |

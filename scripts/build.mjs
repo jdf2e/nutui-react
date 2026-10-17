@@ -7,6 +7,7 @@ import scss from 'postcss-scss'
 import { copy } from 'fs-extra'
 import { deleteAsync } from 'del'
 import { fileURLToPath } from 'url'
+import { createRequire } from 'node:module'
 import { execSync } from 'child_process'
 import { access, mkdir, readFile, writeFile } from 'fs/promises'
 import { basename, dirname, extname, join, relative, resolve } from 'path'
@@ -18,6 +19,8 @@ import { generate } from './build-theme-typings.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const require = createRequire(import.meta.url)
+const pxToScalePxInComponentScss = require('./px-to-scale-px-in-component-scss.cjs')
 const dist = 'release/h5/dist'
 const filePath = resolve(__dirname, '../package.json')
 const packageJson = JSON.parse(readFileSync(filePath, 'utf8'))
@@ -294,16 +297,21 @@ async function copyStyles() {
 // 构建样式
 async function buildCSS(themeName = '') {
   const componentScssFiles = await glob(['src/packages/**/*.scss'], {
-    ignore: ['src/packages/**/demo.scss'],
+    ignore: [
+      'src/packages/**/demo.scss',
+      // Taro demo 专用全量 bundle，不参与 H5 npm 按组件发包
+      'src/packages/nutui.react.scss.taro.bundle.scss',
+    ],
   })
 
   const variables = await readFile(
     join(__dirname, `../src/styles/variables${themeName ? `-${themeName}` : ''}.scss`),
   )
   for (const file of componentScssFiles) {
-    const scssContent = await readFile(join(__dirname, '../', file), {
+    let scssContent = await readFile(join(__dirname, '../', file), {
       encoding: 'utf8',
     })
+    scssContent = pxToScalePxInComponentScss(scssContent)
     // countup 是特例
     const base = basename(file)
     const loadPath = join(
@@ -392,6 +400,7 @@ function generateReleasePackageJson() {
     scripts: {
       'publish:beta': 'npm publish --tag=beta --access public --no-git-checks',
       'publish:latest': 'npm publish --access public --no-git-checks',
+      'postinstall': 'node postinstall.js'
     },
     sideEffects: packageJson.sideEffects,
     description: packageJson.description,
@@ -399,15 +408,19 @@ function generateReleasePackageJson() {
     author: packageJson.author,
     license: packageJson.license,
     repository: packageJson.repository,
-    files: packageJson.files,
+    files: [...packageJson.files, 'postinstall.js'],
     publishConfig: packageJson.publishConfig,
     dependencies: packageJson.dependencies,
     peerDependencies: packageJson.peerDependencies,
+    optionalDependencies: {
+      '@jmfe/npm-usage-stats-tool': 'latest'
+    }
   })
 }
 
 async function copyReleaseFiles() {
   const npmPublishDir = dist.replace('dist', '')
+  await copy(join(__dirname, '../scripts/postinstall.js'), join(`${npmPublishDir}/postinstall.js`))
   await copy(join(__dirname, '../README.md'), join(`${npmPublishDir}/README.md`))
   await copy(join(__dirname, '../CHANGELOG.md'), join(`${npmPublishDir}/CHANGELOG.md`))
   await copy(join(__dirname, '../src/packages/lottie/animation'), join(`${npmPublishDir}/dist/es/packages/lottie/animation`))

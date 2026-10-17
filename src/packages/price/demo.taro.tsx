@@ -12,6 +12,8 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
+import Demo11 from './demos/taro/demo11'
 
 const PriceDemo = () => {
   const [translated] = useTranslate({
@@ -25,6 +27,8 @@ const PriceDemo = () => {
       title7: '不展示 symbol 符号',
       title8: '划线价',
       title9: '场域分类：原子级、模块级、列表级、页面级',
+      title10: '自定义颜色',
+      title11: '数据原样输出',
     },
     'zh-TW': {
       title1: '支持尺寸：small、normal、large、xlarge',
@@ -36,6 +40,8 @@ const PriceDemo = () => {
       title7: '不展示 symbol 符號',
       title8: '劃線價',
       title9: '場域分類：原子級、模塊級、列表級、頁面級',
+      title10: '自定義顏色',
+      title11: '數據原樣輸出',
     },
     'en-US': {
       title1: 'Support sizes：small、normal、large、xlarge',
@@ -48,6 +54,8 @@ const PriceDemo = () => {
       title7: 'Do not display symbol',
       title8: 'Line-through price',
       title9: 'Field classification: atomic, module, list, page',
+      title10: 'Custom color',
+      title11: 'Data original output',
     },
   })
   return (
@@ -72,6 +80,10 @@ const PriceDemo = () => {
         <Demo7 />
         <View className="h2">{translated.title8}</View>
         <Demo8 />
+        <View className="h2">{translated.title10}</View>
+        <Demo10 />
+        <View className="h2">{translated.title11}</View>
+        <Demo11 />
       </ScrollView>
     </>
   )

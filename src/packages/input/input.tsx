@@ -56,6 +56,7 @@ export const Input = forwardRef(
       autoFocus,
       style,
       className,
+      inputStyle,
       onChange,
       onFocus,
       onClear,
@@ -162,7 +163,7 @@ export const Input = forwardRef(
           ref={inputRef}
           name={name}
           className="nut-input-native"
-          style={{ textAlign: getTextAlign() }}
+          style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
           type={getInputType(type)}
           maxLength={maxLength}
           placeholder={

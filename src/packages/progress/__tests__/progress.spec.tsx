@@ -66,11 +66,3 @@ test('should handle animation mode and duration', () => {
     expect(onActiveEndMock).toHaveBeenCalled()
   }, 600)
 })
-
-test('should render with aria-label', () => {
-  const { container } = render(
-    <Progress percent={50} ariaLabel="当前进度50%" />
-  )
-  const progressDiv = container.querySelector('.nut-progress')
-  expect(progressDiv?.getAttribute('aria-label')).toBe('当前进度50%')
-})

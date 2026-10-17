@@ -184,7 +184,6 @@ export const InputNumber: FunctionComponent<
     <View className={classes} style={style}>
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
         <Minus
-          size={10}
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-minus`,
             {
@@ -198,7 +197,7 @@ export const InputNumber: FunctionComponent<
         className={classNames(`${classPrefix}-input`, {
           [`${classPrefix}-input-disabled`]: disabled,
         })}
-        type={type}
+        type={formatter ? 'text' : type}
         ref={inputRef}
         inputMode={type === 'digit' ? 'decimal' : 'numeric'}
         disabled={disabled}
@@ -211,7 +210,6 @@ export const InputNumber: FunctionComponent<
 
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
-          size={10}
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-plus`,
             {

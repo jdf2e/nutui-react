@@ -13,7 +13,7 @@ import {
 } from '@/hooks/taro/use-custom-event'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { harmony } from '@/utils/taro/platform'
+import { harmony, td } from '@/utils/taro/platform'
 import { mergeProps } from '@/utils/merge-props'
 import { TaroToastProps } from '@/types'
 
@@ -147,9 +147,10 @@ export const Toast: FunctionComponent<
     'nut-toast-rtl': rtl,
   })
 
-  const styles = harmony()
-    ? { left: '50%', transform: 'translate(-50%, -50%)' }
-    : null
+  const styles =
+    harmony() || td()
+      ? { left: '50%', transform: 'translate(-50%, -50%)' }
+      : null
 
   return (
     <>
@@ -178,12 +179,17 @@ export const Toast: FunctionComponent<
                 }
               )}
               style={{ ...styles, ...contentStyle }}
+              ariaRole="alert"
+              ariaLabel={(title ?? '') + (content ?? '')}
             >
               {renderIcon()}
               {title && <Text className={`${classPrefix}-title`}>{title}</Text>}
-              {content && (
-                <Text className={`${classPrefix}-text`}>{content}</Text>
-              )}
+              {content &&
+                (td() ? (
+                  <Text className={`${classPrefix}-text`}>{content}</Text>
+                ) : (
+                  <View className={`${classPrefix}-text`}>{content}</View>
+                ))}
             </View>
           </View>
         </Overlay>

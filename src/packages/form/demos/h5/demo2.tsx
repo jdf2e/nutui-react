@@ -35,6 +35,7 @@ const Demo2 = () => {
       <Form
         divider
         labelPosition="left"
+        starPosition="right"
         onFinish={(values) => submitSucceed(values)}
         onFinishFailed={(values, errors) => submitFailed(errors)}
         footer={

@@ -19,6 +19,7 @@ export interface BaseDatePicker extends BaseProps {
     | 'datehour'
     | 'datetime'
     | 'hour-minutes'
+    | ''
   showChinese: boolean
   minuteStep: number
   startDate: Date

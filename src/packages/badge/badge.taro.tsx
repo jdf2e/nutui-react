@@ -38,6 +38,7 @@ export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
     fill,
     size,
     disabled,
+    ...rest
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-badge'
@@ -95,7 +96,7 @@ export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
   }
 
   return (
-    <View className={classes} style={style} ref={badgeRef}>
+    <View className={classes} style={style} ref={badgeRef} {...rest}>
       {isIcon() && (
         <View
           className={classNames(`${classPrefix}-content`, {

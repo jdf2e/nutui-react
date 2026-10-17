@@ -2,7 +2,9 @@
   display: block;
 
   &-title {
+    /* #ifndef dynamic*/
     display: inherit;
+    /* #endif */
     padding: $cell-group-title-padding;
     color: $cell-group-title-color;
     font-size: $cell-group-title-font-size;
@@ -12,7 +14,9 @@
   }
 
   &-description {
+    /* #ifndef dynamic*/
     display: inherit;
+    /* #endif */
     padding: $cell-group-description-padding;
     color: $cell-group-description-color;
     font-size: $cell-group-description-font-size;

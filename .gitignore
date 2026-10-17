@@ -47,6 +47,8 @@ pnpm-lock.*.yaml
 # Editor directories and files
 .idea
 .vscode
+.omx
+.omc
 *.suo
 *.ntvs*
 *.njsproj

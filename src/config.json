@@ -1394,6 +1394,19 @@
       "packages": [
         {
           "version": "2.0.0",
+          "name": "QuickEnter",
+          "type": "component",
+          "cName": "快捷入口",
+          "desc": "快捷入口",
+          "sort": 26,
+          "show": true,
+          "taro": true,
+          "v15": -1,
+          "author": "hanyuxinting",
+          "dd": false
+        },
+        {
+          "version": "2.0.0",
           "name": "AvatarCropper",
           "type": "component",
           "cName": "头像裁剪",

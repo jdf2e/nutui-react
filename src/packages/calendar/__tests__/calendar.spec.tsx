@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CalendarDay } from '@/packages/calendar/types'
+import { CalendarDay } from '@/types'
 
 import { Calendar } from '../calendar'
 

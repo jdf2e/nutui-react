@@ -22,7 +22,7 @@ const Demo1 = () => {
     setDateWeek(param[4])
   }
 
-  const select = (param: string) => {
+  const select = (param: string[]) => {
     console.log(param)
   }
 

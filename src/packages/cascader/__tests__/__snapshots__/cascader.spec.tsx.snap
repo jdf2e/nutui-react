@@ -107,11 +107,11 @@ exports[`Cascader > visible true 1`] = `
                     aria-labelledby="Check"
                     class="nut-icon nut-icon-Check nut-cascader-icon-check"
                     role="presentation"
-                    viewBox="0 0 49 48"
+                    viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M45.121 16.121 47.243 14 43 9.757l-2.121 2.122L19 33.757 7.121 21.88 5 19.757.757 24l2.122 2.121L14.757 38l2.122 2.121L19 42.243l2.121-2.122L23.243 38z"
+                      d="m942.94 336.9 44.34-44.33-88.67-88.67-44.32 44.35-457.23 457.2-248.25-248.2-44.32-44.37-88.67 88.67 44.35 44.33 248.22 248.24 44.35 44.33 44.32 44.34 44.33-44.34 44.34-44.33L942.92 336.9z"
                       fill="currentColor"
                     />
                   </svg>
@@ -136,11 +136,11 @@ exports[`Cascader > visible true 1`] = `
                     aria-labelledby="Check"
                     class="nut-icon nut-icon-Check nut-cascader-icon-check"
                     role="presentation"
-                    viewBox="0 0 49 48"
+                    viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M45.121 16.121 47.243 14 43 9.757l-2.121 2.122L19 33.757 7.121 21.88 5 19.757.757 24l2.122 2.121L14.757 38l2.122 2.121L19 42.243l2.121-2.122L23.243 38z"
+                      d="m942.94 336.9 44.34-44.33-88.67-88.67-44.32 44.35-457.23 457.2-248.25-248.2-44.32-44.37-88.67 88.67 44.35 44.33 248.22 248.24 44.35 44.33 44.32 44.34 44.33-44.34 44.34-44.33L942.92 336.9z"
                       fill="currentColor"
                     />
                   </svg>
@@ -165,11 +165,11 @@ exports[`Cascader > visible true 1`] = `
                     aria-labelledby="Check"
                     class="nut-icon nut-icon-Check nut-cascader-icon-check"
                     role="presentation"
-                    viewBox="0 0 49 48"
+                    viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M45.121 16.121 47.243 14 43 9.757l-2.121 2.122L19 33.757 7.121 21.88 5 19.757.757 24l2.122 2.121L14.757 38l2.122 2.121L19 42.243l2.121-2.122L23.243 38z"
+                      d="m942.94 336.9 44.34-44.33-88.67-88.67-44.32 44.35-457.23 457.2-248.25-248.2-44.32-44.37-88.67 88.67 44.35 44.33 248.22 248.24 44.35 44.33 44.32 44.34 44.33-44.34 44.34-44.33L942.92 336.9z"
                       fill="currentColor"
                     />
                   </svg>
@@ -206,11 +206,11 @@ exports[`Cascader > visible true 2`] = `
     aria-labelledby="Check"
     class="nut-icon nut-icon-Check nut-cascader-icon-check"
     role="presentation"
-    viewBox="0 0 49 48"
+    viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M45.121 16.121 47.243 14 43 9.757l-2.121 2.122L19 33.757 7.121 21.88 5 19.757.757 24l2.122 2.121L14.757 38l2.122 2.121L19 42.243l2.121-2.122L23.243 38z"
+      d="m942.94 336.9 44.34-44.33-88.67-88.67-44.32 44.35-457.23 457.2-248.25-248.2-44.32-44.37-88.67 88.67 44.35 44.33 248.22 248.24 44.35 44.33 44.32 44.34 44.33-44.34 44.34-44.33L942.92 336.9z"
       fill="currentColor"
     />
   </svg>

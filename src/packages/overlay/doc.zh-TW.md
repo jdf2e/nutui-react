@@ -82,7 +82,6 @@ import { Overlay } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-overlay-bg-color | 遮罩層背景顏色 | `$color-mask` |
-| \--nutui-overlay-zIndex | overlay 的 z-index | `1000` |
 | \--nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 | `$white` |
 | \--nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$color-title` |
 | \--nutui-overlay-animation-duration | 遮罩層動畫延時的時長 | `0.3s` |

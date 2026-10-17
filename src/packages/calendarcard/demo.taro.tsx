@@ -15,6 +15,8 @@ import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
+import Demo12 from './demos/taro/demo12'
+import Demo13 from './demos/taro/demo13'
 
 const CalendarDemo = () => {
   const [translated] = useTranslate({
@@ -32,6 +34,8 @@ const CalendarDemo = () => {
       select: '选择日期',
       confirm: '确定',
       ref: '使用 Ref 上的方法',
+      title: '搭配 Ref 使用自定义头',
+      customWeekdays: '自定义周几',
     },
     'zh-TW': {
       single: '選擇單個日期',
@@ -47,6 +51,8 @@ const CalendarDemo = () => {
       select: '選擇日期',
       confirm: '確定',
       ref: '使用 Ref 上的方法',
+      title: '搭配 Ref 使用自定義头',
+      customWeekdays: '自定義周几',
     },
     'en-US': {
       single: 'Select a single date',
@@ -62,6 +68,8 @@ const CalendarDemo = () => {
       select: 'Select',
       confirm: 'Confirm',
       ref: 'Use ref',
+      title: 'Custom title',
+      customWeekdays: 'Custom weekdays',
     },
   })
 
@@ -71,36 +79,30 @@ const CalendarDemo = () => {
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.single}</View>
         <Demo1 />
-
         <View className="h2">{translated.multiple}</View>
         <Demo2 />
-
         <View className="h2">{translated.range}</View>
         <Demo3 />
-
         <View className="h2">{translated.week}</View>
         <Demo4 />
-
         <View className="h2">{translated.control}</View>
         <Demo5 />
-
         <View className="h2">{translated.renderDay}</View>
         <Demo6 />
-
         <View className="h2">{translated.firstDay}</View>
         <Demo7 />
-
         <View className="h2">{translated.customRange}</View>
         <Demo8 />
-
         <View className="h2">{translated.disable}</View>
         <Demo9 />
-
         <View className="h2">{translated.popup}</View>
         <Demo10 />
-
         <View className="h2">{translated.ref}</View>
         <Demo11 />
+        <View className="h2">{translated.title}</View>
+        <Demo12 />
+        <View className="h2">{translated.customWeekdays}</View>
+        <Demo13 />
       </ScrollView>
     </>
   )

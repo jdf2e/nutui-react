@@ -18,19 +18,25 @@
     word-wrap: break-word;
     text-align: $form-item-label-text-align;
     line-height: unset;
-  }
 
-  &-label-required {
-    color: $form-item-required-color;
-    margin-right: $form-item-required-margin-right;
-    display: block;
-    position: absolute;
-    left: -10px;
+    &-left-required {
+      color: $form-item-required-color;
+      margin-right: $form-item-required-margin-right;
+      position: absolute;
+      left: -10px;
+    }
+
+    &-right-required {
+      color: $form-item-required-color;
+      margin-left: $form-item-required-margin-right;
+      position: absolute;
+      right: -10px;
+    }
   }
 
   .nut-form-item-labeltxt {
     position: relative;
-    font-size: 12px;
+    font-size: $form-item-label-font-size;
   }
 
   &-body {
@@ -136,13 +142,6 @@
   white-space: nowrap;
 }
 
-.nut-form-item-label-left-required {
-  display: block;
-  line-height: 1.5;
-  position: absolute;
-  left: 0.1em;
-}
-
 .nut-form-item-top {
   flex-direction: column;
   align-items: flex-start;
@@ -173,10 +172,10 @@
   padding-left: 0;
   padding-right: 12px;
 
-  .required {
-    left: auto;
-    right: 0.1em;
-  }
+  // .required {
+  //   left: auto;
+  //   right: 0.1em;
+  // }
 }
 
 [dir='rtl'] .form-layout-top .nut-form-item-label,

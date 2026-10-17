@@ -18,7 +18,7 @@
     color: $color-text-disabled;
     width: 14px;
     height: 14px;
-    font-size: 14px;
+    font-size: $font-size-base;
   }
   &-container {
     height: 38px;
@@ -31,9 +31,8 @@
 
 .nut-input-native {
   flex: 1;
-  color: $color-title;
+  color: $input-color;
   font-size: $input-font-size;
-  line-height: $input-lineheight;
   padding: 0;
   border: 0;
   outline: 0 none;

@@ -20,7 +20,14 @@ const Demo6 = () => {
             }}
             list={itemList}
           >
-            <div style={{ fontSize: '12px', width: '50px', display: 'flex' }}>
+            <div
+              style={{
+                fontSize: '12px',
+                width: '50px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
               更多
               <ArrowDown />
             </div>

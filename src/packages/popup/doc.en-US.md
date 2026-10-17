@@ -87,19 +87,26 @@ import { Popup } from '@nutui/nutui-react'
 | closeable | whether to show the close button | `boolean` | `false` |
 | closeIconPosition | close button position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | Custom Icon | `ReactNode` | `close` |
+| resizable | Enable vertical resizing of the popup | `boolean` | `false` |
+| minHeight | Minimum height of the popup | `string` | `26%` |
+| closeAriaLabel | The `aria-label` of the close icon | `string` | `-` |
 | left | The left of title | `ReactNode` | `-` |
 | title | The center of title | `ReactNode` | `-` |
+| top | The top of popup | `ReactNode` | `-` |
 | description | The subtitle/description | `ReactNode` | `-` |
 | destroyOnClose | Whether to close after the component is destroyed | `boolean` | `false` |
 | round | Whether to show rounded corners | `boolean` | `false` |
 | portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` \| null` | `null` |
+| afterShow | afterShow from `Overlay`, Fired when the mask opening animation ends | `event: HTMLElement` | `-` |
+| afterClose | afterClose from `Overlay`, Fired when the mask closing animation ends | `event: HTMLElement` | `-` |
 | onClick | Triggered when the popup is clicked | `event: MouseEvent` | `-` |
 | onCloseIconClick | Fired when the close icon is clicked | `event: MouseEvent` | `-` |
 | onOpen | Triggered when the popup is opened | `-` | `-` |
 | onClose | Fired when the popup is closed | `-` | `-` |
-| afterShow | afterShow from `Overlay`, Fired when the mask opening animation ends | `event: HTMLElement` | `-` |
-| afterClose | afterClose from `Overlay`, Fired when the mask closing animation ends | `event: HTMLElement` | `-` |
 | onOverlayClick | Click on the mask to trigger | `event: MouseEvent` | `-` |
+| onTouchStart | triggered when starting to touch | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | triggered while moving | `(height: number, event: TouchEvent<HTMLDivElement>, direction: 'up' \| 'down') => void` | `-` |
+| onTouchEnd | triggered when finishing to touch | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ## Theming
 
@@ -111,7 +118,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-popup-border-radius | popup's border radius | `24px` |
 | \--nutui-popup-icon-size | popup's title icon size | `18px` |
-| \--nutui-popup-title-padding | popup's title padding | `16px` |
+| \--nutui-popup-title-padding | popup's title padding | `11px` |
 | \--nutui-popup-title-font-size | popup's title font size | `18px` |
 | \--nutui-popup-description-font-size | popup's subtitle/description font size | `10px` |
 | \--nutui-popup-title-height | popup's title height | `50px` |

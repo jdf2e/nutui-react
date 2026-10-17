@@ -75,7 +75,12 @@
 
   &-left-icon,
   &-right-icon {
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
   }
 
   &-left-icon {
@@ -92,5 +97,10 @@
       height: 12px;
       width: 12px;
     }
+  }
+
+  &-close-icon {
+    height: $icon-size-12;
+    width: $icon-size-12;
   }
 }

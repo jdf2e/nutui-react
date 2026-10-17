@@ -169,7 +169,7 @@ test('form set required', () => {
     </Form>
   )
   expect(
-    container.querySelectorAll('.nut-form-item-label-required')
+    container.querySelectorAll('.nut-form-item-label-left-required')
   ).toHaveLength(1)
 })
 

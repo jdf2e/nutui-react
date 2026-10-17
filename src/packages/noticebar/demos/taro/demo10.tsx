@@ -1,13 +1,15 @@
-import React from 'react'
-import { NoticeBar } from '@nutui/nutui-react-taro'
+import React, { useState } from 'react'
+import { Button, NoticeBar, Space } from '@nutui/nutui-react-taro'
 
 const Demo10 = () => {
   const horseLamp3 = [
-    'NoticeBar 公告栏',
-    'Cascader 级联选择',
-    'DatePicker 日期选择器',
-    'CheckBox 复选按钮',
+    'NoticeBar 公告栏-公告栏公告栏公告栏公告栏',
+    'Cascader 级联选择-公告栏公告栏公告栏公告栏',
+    'DatePicker 日期选择器-公告栏公告栏公告栏公告栏公告栏',
+    'CheckBox 复选按钮-公告栏公告栏公告栏公告栏公告栏',
   ]
+
+  const [list, setList] = useState(horseLamp3)
 
   return (
     <>
@@ -15,17 +17,24 @@ const Demo10 = () => {
         direction="vertical"
         height={50}
         speed={10}
+        scrollable={false}
         duration={1000}
         closeable
         onClose={() => {
           console.log('close')
         }}
       >
-        {horseLamp3.map((item, index) => {
+        {list.map((item, index) => {
           return (
             <div
               className="custom-item"
-              style={{ height: '50px', lineHeight: '50px' }}
+              style={{
+                height: '50px',
+                lineHeight: '50px',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+              }}
               key={index}
               onClick={() => {
                 console.log('custom-inner', item)
@@ -36,6 +45,26 @@ const Demo10 = () => {
           )
         })}
       </NoticeBar>
+
+      <Space style={{ marginTop: '10px' }}>
+        <Button
+          size="small"
+          onClick={() => {
+            setList((prev) => [...prev, `${prev.length + 1}`])
+          }}
+        >
+          添加最后一项
+        </Button>
+
+        <Button
+          size="small"
+          onClick={() => {
+            setList((prev) => prev.slice(0, -1))
+          }}
+        >
+          删除最后一项
+        </Button>
+      </Space>
     </>
   )
 }

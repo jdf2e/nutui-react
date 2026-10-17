@@ -7,3 +7,12 @@
 package.json
 node_modules
 src/packages/nutui.react.build.rn.ts
+
+# 等比缩放 variables/theme：pre-commit 不跑 Prettier，避免单行被折回多行
+src/styles/variables.scss
+src/styles/variables-daojia.scss
+src/styles/variables-jmapp.scss
+src/styles/variables-jrkf.scss
+src/styles/theme-default.scss
+src/styles/theme-dark.scss
+src/styles/theme-dark-daojia.scss

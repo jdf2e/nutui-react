@@ -4,6 +4,11 @@ import { getRect, inBrowser } from '@/utils/get-rect'
 
 const lru = new MiniLru(10)
 
+const createScopedSelectorQuery = (scope?: any) => {
+  const query = createSelectorQuery()
+  return scope ? query.in(scope) : query
+}
+
 export interface Rect {
   dataset: Record<string, any>
   id: string
@@ -40,13 +45,36 @@ export const getRectInMultiPlatform = async (
         resolve(lru.get(element) as Rect)
         return
       }
-      createSelectorQuery()
+      createScopedSelectorQuery(element?._scope)
+        // https://taro.jd.com/docs/reference/config/page/
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {
           if (rects) {
             lru.set(element, rects)
           }
+          resolve(rects)
+        })
+    })
+  }
+  return Promise.resolve(makeRect(0, 0))
+}
+
+// 获取元素位置，不走缓存
+export const getRectInMultiPlatformWithoutCache = async (
+  element: any,
+  harmonyId = ''
+): Promise<Rect> => {
+  if (element) {
+    if (inBrowser) {
+      return Promise.resolve(getRect(element))
+    }
+    return new Promise((resolve, reject) => {
+      createScopedSelectorQuery(element?._scope)
+        // https://taro.jd.com/docs/reference/config/page/
+        .select(`#${harmonyId || element.uid}`)
+        .boundingClientRect()
+        .exec(([rects]) => {
           resolve(rects)
         })
     })

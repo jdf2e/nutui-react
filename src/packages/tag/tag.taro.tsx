@@ -105,7 +105,7 @@ export const Tag: FunctionComponent<Partial<TaroTagProps>> = (props) => {
               </View>
             ) : (
               <Close
-                size={8}
+                className={`${classPrefix}-close-icon`}
                 onClick={(e) => {
                   setVisible(false)
                   onClose && onClose(e as any)

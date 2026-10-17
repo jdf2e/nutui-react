@@ -78,6 +78,17 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
+
+### InputProps Extension Attributes
+
+`SearchBar`'s `inputProps` property can extend the attributes of the underlying input element, supporting all attributes of the native input element.
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### Data change monitoring
 
 `SearchBar`'s `onChange` You can get the input content.
@@ -87,6 +98,7 @@ import { SearchBar } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
+
 
 ## SearchBar
 
@@ -113,6 +125,7 @@ import { SearchBar } from '@nutui/nutui-react'
 | onClear | triggered when clicking clear | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onSearch | trigger when confirming search | `(val: string) => void` | `-` |
 | onInputClick | triggered when clicking the input area | `(event: MouseEvent<HTMLInputElement>) => void` | `-` |
+| inputProps | Extend the underlying input element attributes, supporting all attributes of the native input element | `Partial<InputHTMLAttributes<HTMLInputElement>>` | `-` |
 
 ## Theming
 

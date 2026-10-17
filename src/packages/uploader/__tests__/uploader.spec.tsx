@@ -93,6 +93,50 @@ test('should render base uploader other props', () => {
   expect(fileItemClick).toBeCalled()
 })
 
+test('should render no-image file uploader list', () => {
+  const App = () => {
+    const defaultFileList: FileItem[] = [
+      {
+        name: '文件1.txt',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'success',
+        message: '上传成功',
+        type: 'list',
+        uid: '123',
+      },
+      {
+        name: '文件2.ppt',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'error',
+        message: '上传失败',
+        type: 'list',
+        uid: '124',
+      },
+      {
+        name: '文件3.cpp',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'uploading',
+        message: '上传中...',
+        type: 'list',
+        uid: '125',
+      },
+    ]
+
+    return (
+      <Uploader
+        defaultValue={defaultFileList}
+        uploadIcon="dongdong"
+        previewType="list"
+      />
+    )
+  }
+
+  const { container } = render(<App />)
+  const toast1 = container.querySelectorAll('.list')
+  expect(toast1).toBeTruthy()
+  expect(toast1.length).toBe(3)
+})
+
 test('should render base uploader list', () => {
   const App = () => {
     const defaultFileList: FileItem[] = [

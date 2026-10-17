@@ -183,7 +183,7 @@ const InternalUploader: ForwardRefRenderFunction<
         name: file.name,
         type: file.type,
       }
-      if (preview && file.type?.includes('image')) {
+      if (preview) {
         const reader = new FileReader()
         reader.onload = (event: ProgressEvent<FileReader>) => {
           fileListRef.current = [

@@ -8,6 +8,12 @@ export interface BaseLang {
   select: string
   edit: string
   reset: string
+  close: string
+  back: string
+  clear: string
+  image: {
+    errorTip: string
+  }
   video: {
     errorTip: string
     clickRetry: string
@@ -39,6 +45,8 @@ export interface BaseLang {
     today: string
     loadPreviousMonth: string
     noEarlierMonth: string
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    dayAriaLabel?: Function
   }
   shortpassword: {
     title: string
@@ -139,5 +147,9 @@ export interface BaseLang {
   }
   watermark: {
     errorCanvasTips: string
+  }
+  mask: string
+  quickenter: {
+    title: string
   }
 }

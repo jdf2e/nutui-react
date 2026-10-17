@@ -28,7 +28,6 @@
       color: $color-title;
       font-weight: $font-weight-bold;
       font-size: $popup-title-font-size;
-      line-height: $popup-title-font-size;
     }
 
     &-description {
@@ -50,7 +49,9 @@
       position: absolute;
       top: $popup-title-padding;
       right: $popup-title-padding;
-
+      display: flex;
+      align-items: center;
+      justify-content: center;
       z-index: 1;
       width: $popup-icon-size;
       height: $popup-icon-size;
@@ -81,6 +82,8 @@
   &-center {
     top: 50%;
     left: 50%;
+    right: auto;
+    bottom: auto;
     min-height: 10%;
     max-width: 295px;
     transform: translate(-50%, -50%);
@@ -145,6 +148,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    top: auto;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -164,11 +168,17 @@
     &.nut-popup-round {
       border-radius: $popup-border-radius $popup-border-radius 0 0;
     }
+
+    &-top {
+      position: absolute;
+    }
   }
 
   &-right {
     top: 0;
     right: 0;
+    left: auto;
+    bottom: auto;
     width: 100px;
     height: 100%;
 
@@ -180,6 +190,8 @@
   &-left {
     top: 0;
     left: 0;
+    right: auto;
+    bottom: auto;
     width: 100px;
     height: 100%;
 
@@ -192,6 +204,7 @@
     top: 0;
     left: 0;
     right: 0;
+    bottom: auto;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -290,6 +303,9 @@
     }
 
     @keyframes popup-slide-top-exit {
+      from {
+        transform: translate3d(0, 0%, 0);
+      }
       to {
         transform: translate3d(0, -100%, 0);
       }
@@ -320,6 +336,9 @@
     }
 
     @keyframes popup-slide-right-exit {
+      from {
+        transform: translate3d(0%, 0, 0);
+      }
       to {
         transform: translate3d(100%, 0, 0);
       }
@@ -350,6 +369,9 @@
     }
 
     @keyframes slide-bottom-exit {
+      from {
+        transform: translate3d(0, 0%, 0);
+      }
       to {
         transform: translate3d(0, 100%, 0);
       }
@@ -380,6 +402,9 @@
     }
 
     @keyframes popup-slide-left-exit {
+      from {
+        transform: translate3d(0%, 0, 0);
+      }
       to {
         transform: translate3d(-100%, 0, 0);
       }

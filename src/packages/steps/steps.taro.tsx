@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { DataContext } from './context'
 import { ComponentDefaults } from '@/utils/typings'
 import { TaroStepsProps } from '@/types'
@@ -49,7 +50,7 @@ export const Steps: FunctionComponent<
   )
   return (
     <DataContext.Provider value={parentSteps}>
-      <div className={classes} {...restProps}>
+      <View className={classes}>
         {React.Children.map(children, (child, index) => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, {
@@ -61,7 +62,7 @@ export const Steps: FunctionComponent<
           }
           return child
         })}
-      </div>
+      </View>
     </DataContext.Provider>
   )
 }

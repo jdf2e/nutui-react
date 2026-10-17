@@ -1,10 +1,11 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import { Text, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { TaroPriceProps } from '@/types'
+import { TaroPriceProps, PriceColorEnum } from '@/types'
 import { harmony } from '@/utils/taro/platform'
+import { shouldRenderPriceAsRaw } from '@/utils/should-render-price-raw'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -20,7 +21,7 @@ const defaultProps = {
 export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   const {
     color,
-    price,
+    price: originalPrice,
     symbol,
     digits,
     thousands,
@@ -37,6 +38,31 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   const classPrefix = 'nut-price'
 
   const rtl = useRtl()
+
+  const isRenderPriceRaw = useMemo(
+    () =>
+      typeof originalPrice === 'string' &&
+      shouldRenderPriceAsRaw(originalPrice),
+    [originalPrice]
+  )
+
+  const price = useMemo(() => {
+    if (isRenderPriceRaw) return ''
+    return originalPrice.toString().replace(/[^\d.]/g, '')
+  }, [originalPrice, isRenderPriceRaw])
+
+  const isCustomPriceColor = useMemo(() => {
+    const specificPriceColor = Object.values(PriceColorEnum)
+    return !specificPriceColor.includes(color as PriceColorEnum)
+  }, [color])
+
+  const priceColorStyle = useMemo(() => {
+    return isCustomPriceColor
+      ? {
+          color,
+        }
+      : {}
+  }, [isCustomPriceColor, color])
 
   const replaceSpecialChar = (url: string) => {
     url = url.replace(/&quot;/g, '"')
@@ -56,9 +82,9 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
     if (Number(num) === 0) {
       num = 0
     }
-    num = num.toString()
 
     if (checkPoint(num)) {
+      num = num.toString()
       num =
         typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0]
     }
@@ -74,17 +100,20 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
     }
 
     if (checkPoint(decimalNum)) {
-      decimalNum = Number(decimalNum).toFixed(digits)
+      decimalNum = digits ? Number(decimalNum).toFixed(digits) : `${decimalNum}`
       decimalNum =
         typeof decimalNum.split('.') === 'string'
           ? 0
-          : decimalNum.split('.')[1] || 0
+          : decimalNum.split('.')[1] || ''
     } else {
-      decimalNum = 0
+      decimalNum = ''
     }
-    const result = `0.${decimalNum}`
-    const resultFixed = Number(result).toFixed(digits)
-    return String(resultFixed).substring(2, resultFixed.length)
+    if (digits) {
+      const result = `0.${decimalNum}`
+      const resultFixed = Number(result).toFixed(digits)
+      return String(resultFixed).substring(2, resultFixed.length)
+    }
+    return decimalNum
   }
 
   const renderSymbol = () => {
@@ -98,6 +127,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
             [`${classPrefix}-rtl`]: rtl,
           },
         ])}
+        style={priceColorStyle}
       >
         {symbol ? replaceSpecialChar(symbol) : ''}
       </Text>
@@ -111,22 +141,27 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
           className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
             line ? `${classPrefix}-line` : ''
           }`}
+          style={priceColorStyle}
         >
           {formatThousands(price)}
         </Text>
-        {digits ? (
+        {digits !== 0 ? (
           <>
+            {checkPoint(price) || digits ? (
+              <Text
+                className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+                  line ? `${classPrefix}-line` : ''
+                }`}
+                style={priceColorStyle}
+              >
+                .
+              </Text>
+            ) : null}
             <Text
               className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
                 line ? `${classPrefix}-line` : ''
               }`}
-            >
-              .
-            </Text>
-            <Text
-              className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
-                line ? `${classPrefix}-line` : ''
-              }`}
+              style={priceColorStyle}
             >
               {formatDecimal(price)}
             </Text>
@@ -138,21 +173,23 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
     )
   }
 
+  const renderRawContent = () => <>{originalPrice}</>
+
   return (
     <>
-      {harmony() ? (
+      {harmony() || process.env.TARO_ENV === 'dynamic' ? (
         <Text
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
         >
-          {renderInner()}
+          {isRenderPriceRaw ? renderRawContent() : renderInner()}
         </Text>
       ) : (
         <View
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
         >
-          {renderInner()}
+          {isRenderPriceRaw ? renderRawContent() : renderInner()}
         </View>
       )}
     </>

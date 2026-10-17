@@ -26,20 +26,25 @@
 
   &-icon {
     color: $color-text-disabled;
+    background-color: $white;
     transition-duration: 0.3s;
     transition-property: color, border-color, background-color;
     font-size: $radio-icon-font-size;
+    border-radius: 50%;
   }
 
   &-icon {
     &-checked {
       color: $color-primary;
+      background-color: $white;
       box-shadow: 0px 2px 4px 0px #ff0f2333;
       border-radius: 50%;
 
       &.nut-radio-icon-disabled {
         color: $color-primary-disabled-special;
+        background-color: $white;
         box-shadow: none;
+        border-radius: 50%;
       }
     }
 
@@ -49,7 +54,12 @@
   }
 
   &-button {
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     align-items: center;
     min-height: 30px;
     padding: $radio-button-padding;

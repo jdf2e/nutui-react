@@ -230,7 +230,7 @@ const InternalPicker: ForwardRefRenderFunction<
     <>
       {typeof children === 'function' && children(selectedDate)}
       <div className={cls} style={style} {...rest}>
-        {pickerOptions.length && (
+        {pickerOptions.length > 0 && (
           <Picker
             {...pickerProps}
             title={title}

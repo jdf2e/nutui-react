@@ -78,6 +78,16 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 
 :::
 
+### InputProps扩展属性
+
+`SearchBar` 的 `inputProps` 属性可以扩展底层TaroInput组件的属性，支持传入TaroInput组件的所有属性。
+
+:::demo
+
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
+
+:::
+
 ### 数据改变监听
 
 `SearchBar` 的 `onChange` 可获取输入的内容。
@@ -108,6 +118,7 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 | right | 搜搜框右侧区域 | `ReactNode` | `-` |
 | leftIn | 输入框内左侧区域 | `ReactNode` | `<Search />` |
 | rightIn | 输入框内右侧区域 | `ReactNode` | `-` |
+| inputProps | 扩展底层TaroInput组件属性，支持传入TaroInput组件的所有属性 | `Partial<InputProps>` | `-` |
 | onChange | 输入内容时触发 | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 聚焦时触发 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
 | onBlur | 失焦时触发 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |

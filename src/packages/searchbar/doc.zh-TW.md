@@ -78,6 +78,16 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
+### InputProps擴展屬性
+
+`SearchBar` 的 `inputProps` 屬性可以擴展底層輸入框的屬性，支持傳入原生input元素的所有屬性。
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### 數據改變監聽
 
 `SearchBar` 的 `onChange` 可獲取輸入的內容。
@@ -108,6 +118,7 @@ import { SearchBar } from '@nutui/nutui-react'
 | right | 搜搜框右側區域 | `ReactNode` | `-` |
 | leftIn | 輸入框內左側區域 | `ReactNode` | `<Search />` |
 | rightIn | 輸入框內右側區域 | `ReactNode` | `-` |
+| inputProps | 擴展底層輸入框屬性，支持傳入原生input元素的所有屬性 | `Partial<InputHTMLAttributes<HTMLInputElement>>` | `-` |
 | onChange | 輸入內容時觸發 | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 聚焦時觸發 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
 | onBlur | 失焦時觸發 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |

@@ -97,24 +97,31 @@
   }
 
   &-score {
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     align-items: center;
     color: $rate-font-color;
-    font-family: 'JD';
-    line-height: 1;
+    font-family: 'JDZH-Regular';
 
     &-normal {
       padding-left: $rate-item-margin;
       font-size: $rate-font-size;
+      line-height: $line-height-s;
     }
 
     &-large {
-      font-size: calc($rate-font-size + 6px);
+      font-size: $rate-font-size-large;
+      line-height: $line-height-xl;
       padding-left: calc($rate-item-margin * 2);
     }
 
     &-small {
-      font-size: calc($rate-font-size - 2px);
+      font-size: $rate-font-size-small;
+      line-height: $line-height-xxs;
       padding-left: calc($rate-item-margin / 2);
     }
 

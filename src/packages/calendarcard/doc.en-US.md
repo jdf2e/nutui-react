@@ -98,6 +98,14 @@ import { CalendarCard } from '@nutui/nutui-react'
 
 :::
 
+### Use ref and custom title
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
 ## CalendarCard
 
 ### Props
@@ -105,6 +113,7 @@ import { CalendarCard } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | type | Type, single date `single`, multiple dates `multiple`, date range `range`, week selection `week` | `string` | `single` |
+| title | Custom title | `ReactNode` | `-` |
 | defaultValue | Default value, choose string format for date, choose Array format for interval | `Date \| Date[]` | `-` |
 | startDate | Limit range start date | `Date` | `-` |
 | endDate | Limit range end date | `Date` | `-` |

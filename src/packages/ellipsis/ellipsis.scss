@@ -18,5 +18,7 @@
 }
 
 .nut-ellipsis-width {
+  /* #ifndef dynamic*/
   width: fit-content;
+  /* #endif */
 }

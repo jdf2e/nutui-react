@@ -137,17 +137,9 @@ export const Menu: FunctionComponent<Partial<TaroMenuProps>> & {
           if (titleIcon) return titleIcon
           if (icon) return icon
           return direction === 'up' ? (
-            <ArrowUp
-              className="nut-menu-title-icon"
-              width="12px"
-              height="12px"
-            />
+            <ArrowUp className="nut-menu-title-icon" />
           ) : (
-            <ArrowDown
-              className="nut-menu-title-icon"
-              width="12px"
-              height="12px"
-            />
+            <ArrowDown className="nut-menu-title-icon" />
           )
         }
         return (

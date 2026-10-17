@@ -5,6 +5,8 @@ import { BaseProps } from '../../base/props'
 export interface CalendarDay {
   day: SimpleValue
   type: string
+  month?: SimpleValue
+  year?: SimpleValue
 }
 
 export interface CalendarMonthInfo {
@@ -49,7 +51,7 @@ export interface BaseCalendar {
   renderDayBottom?: (date: CalendarDay) => string | JSX.Element
   onClose: () => void
   onConfirm: (param: string) => void
-  onDayClick: (data: string) => void
+  onDayClick: (data: string[]) => void
   onPageChange: (param: string) => void
 }
 

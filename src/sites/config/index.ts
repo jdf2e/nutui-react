@@ -50,9 +50,9 @@ const moreGuide = [
           },
           {
             name: 'NutUI-React',
-            link: '/h5/react/2x/#/zh-CN/guide/intro-react',
+            link: '/h5/react/4x/#/zh-CN/guide/intro-react',
             language: ['React18'],
-            app: 'App 10.0'
+            app: 'App 16.0'
           }
         ]
       },
@@ -70,9 +70,9 @@ const moreGuide = [
           },
           {
             name: 'NutUI-React',
-            link: '/taro/react/2x/#/zh-CN/guide/intro-react',
+            link: '/taro/react/4x/#/zh-CN/guide/intro-react',
             language: ['React18', 'Taro'],
-            app: 'App 10.0'
+            app: 'App 16.0'
           },
           {
             name: 'NutUI-Uni',
@@ -122,6 +122,12 @@ const reactGuide = [
     type: 'React',
     icon: 'https://img10.360buyimg.com/imagetools/jfs/t1/93992/33/35657/10303/63c0fddbFa8977e27/8d099681ad788fc8.png',
     data: [
+      {
+        name: '4x',
+        link: '/h5/react/4x/',
+        language: ['React18'],
+        app: 'App 16.0'
+      },
       {
         name: '3x',
         link: '/h5/react/3x/',

@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState, MouseEvent } from 'react'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
+import { CSSTransition } from 'react-transition-group'
 import Button from '@/packages/button/index.taro'
 import { TaroDialogProps } from '@/types'
 import { Content, defaultContentProps } from './content.taro'
@@ -26,6 +26,8 @@ const defaultProps = {
   content: '',
   header: '',
   footer: '',
+  cancelBadge: '',
+  confirmBadge: '',
   confirmText: '',
   cancelText: '',
   hideConfirmButton: false,
@@ -44,7 +46,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: () => {},
   onOverlayClick: () => true,
-}
+} as TaroDialogProps
 
 export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   open: typeof open
@@ -65,6 +67,8 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       footer,
       footerDirection,
       header,
+      cancelBadge,
+      confirmBadge,
       hideConfirmButton,
       hideCancelButton,
       lockScroll,
@@ -101,8 +105,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     const handleCancel = (e: ITouchEvent | MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
-      if (!beforeClose?.()) return
-      onClose()
       onCancel()
     }
 
@@ -137,14 +139,34 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     const renderCancel = () => {
       return (
         !hideCancelButton && (
-          <Button
-            type="default"
-            size="large"
-            className={`${classPrefix}-footer-cancel ${btnClass}`}
-            onClick={(e) => handleCancel(e)}
-          >
-            {cancelText || locale.cancel}
-          </Button>
+          <>
+            {cancelBadge ? (
+              <View className={`${classPrefix}-footer-cancel-container`}>
+                <Button
+                  type="default"
+                  size="large"
+                  className={`${classPrefix}-footer-cancel ${btnClass}`}
+                  onClick={(e) => handleCancel(e)}
+                >
+                  {cancelText || locale.cancel}
+                </Button>
+                {cancelBadge ? (
+                  <View className={`${classPrefix}-footer-cancel-badge`}>
+                    {cancelBadge}
+                  </View>
+                ) : null}
+              </View>
+            ) : (
+              <Button
+                type="default"
+                size="large"
+                className={`${classPrefix}-footer-cancel ${btnClass}`}
+                onClick={(e) => handleCancel(e)}
+              >
+                {cancelText || locale.cancel}
+              </Button>
+            )}
+          </>
         )
       )
     }
@@ -152,18 +174,45 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     const renderConfirm = () => {
       return (
         !hideConfirmButton && (
-          <Button
-            type="primary"
-            size="large"
-            className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
-              disabled: disableConfirmButton,
-            })}
-            disabled={disableConfirmButton}
-            onClick={(e) => handleOk(e)}
-            loading={loading}
-          >
-            {confirmText || locale.confirm}
-          </Button>
+          <>
+            {confirmBadge ? (
+              <View className={`${classPrefix}-footer-ok-container`}>
+                <Button
+                  type="primary"
+                  size="large"
+                  className={classNames(
+                    `${classPrefix}-footer-ok ${btnClass}`,
+                    {
+                      disabled: disableConfirmButton,
+                    }
+                  )}
+                  disabled={disableConfirmButton}
+                  onClick={(e) => handleOk(e)}
+                  loading={loading}
+                >
+                  {confirmText || locale.confirm}
+                </Button>
+                {confirmBadge ? (
+                  <View className={`${classPrefix}-footer-ok-badge`}>
+                    {confirmBadge}
+                  </View>
+                ) : null}
+              </View>
+            ) : (
+              <Button
+                type="primary"
+                size="large"
+                className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
+                  disabled: disableConfirmButton,
+                })}
+                disabled={disableConfirmButton}
+                onClick={(e) => handleOk(e)}
+                loading={loading}
+              >
+                {confirmText || locale.confirm}
+              </Button>
+            )}
+          </>
         )
       )
     }
@@ -189,11 +238,9 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
 
   const renderCloseIcon = () => {
     if (!closeIcon) return null
-    const handleCancel = () => {
-      if (!beforeCancel?.()) return
+    const handleClose = () => {
       if (!beforeClose?.()) return
       onClose()
-      onCancel()
     }
     const closeClasses = classNames({
       [`${classPrefix}-close`]: true,
@@ -201,7 +248,14 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     })
     const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
-      <View className={closeClasses} onClick={handleCancel}>
+      <View
+        className={closeClasses}
+        onClick={handleClose}
+        ariaRole="button"
+        ariaLabel={locale.close}
+        // @ts-ignore
+        tabIndex={0}
+      >
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </View>
     )
@@ -210,7 +264,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
-      closed && onClose()
       closed && onCancel()
     }
   }
@@ -227,7 +280,11 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       >
         <Content
           className={className}
-          style={{ zIndex: contentZIndex, ...style }}
+          style={{
+            zIndex: contentZIndex,
+            ...style,
+            // display: visible ? 'block' : 'none',
+          }}
           title={title}
           header={header}
           close={renderCloseIcon()}

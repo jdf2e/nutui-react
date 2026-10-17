@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 import { Align } from '../../base/atoms'
 import { BaseProps } from '../../base/props'
 
@@ -22,6 +22,7 @@ export interface BaseInput<INPUT_TYPE, CONFIRM_TYPE = InputConfirmType>
   autoFocus: boolean
   confirmType: CONFIRM_TYPE
   plain: boolean
+  inputStyle?: CSSProperties
   formatter?: (value: string) => string
   onChange?: (value: string) => void
   onBlur?: (value: string) => void

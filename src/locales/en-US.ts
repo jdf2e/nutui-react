@@ -10,6 +10,12 @@ const enUS: BaseLang = {
   select: 'Select',
   edit: 'Edit',
   reset: 'Reset',
+  close: 'Close',
+  back: 'Back',
+  clear: 'Clear',
+  image: {
+    errorTip: 'Image failed to load',
+  },
   video: {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry',
@@ -39,6 +45,24 @@ const enUS: BaseLang = {
     today: 'Today',
     loadPreviousMonth: 'Load Previous Month',
     noEarlierMonth: 'No Earlier Month',
+    dayAriaLabel: (
+      year: number,
+      month: number,
+      day: number,
+      today: boolean,
+      isActive: boolean,
+      isDisable: boolean
+    ) => {
+      const dateStr = `${year}-${month}-${day}`
+      let label = today ? `Today, ${dateStr}` : dateStr
+      if (isActive) {
+        label = `Selected ${label}`
+      }
+      if (isDisable) {
+        label = `${label} disabled`
+      }
+      return label
+    },
   },
   shortpassword: {
     title: 'Please input a password',
@@ -138,6 +162,10 @@ const enUS: BaseLang = {
   },
   watermark: {
     errorCanvasTips: 'Canvas is not supported in the current environment',
+  },
+  mask: 'Mask',
+  quickenter: {
+    title: 'Quick Enter',
   },
 }
 export default enUS

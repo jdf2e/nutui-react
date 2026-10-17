@@ -35,8 +35,11 @@ function getInstance(
 
 function notice(opts: any) {
   opts = { ...options, ...opts }
-  getInstance(opts, (notification: any) => {
-    messageInstance = notification
+  return new Promise<void>((resolve) => {
+    getInstance(opts, (notification: any) => {
+      messageInstance = notification
+      resolve()
+    })
   })
 }
 

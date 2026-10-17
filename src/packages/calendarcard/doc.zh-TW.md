@@ -98,6 +98,14 @@ import { CalendarCard } from '@nutui/nutui-react'
 
 :::
 
+### 搭配 Ref 使用自定義头
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
 ## CalendarCard
 
 ### Props
@@ -105,6 +113,7 @@ import { CalendarCard } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | type | 類型，單個日期 `single`，多個日期 `multiple`，日期範圍 `range`，周選擇 `week` | `string` | `single` |
+| title | 自定义标题 | `ReactNode` | `-` |
 | defaultValue | 默認值，單個日期 Date 格式，多個日期/範圍選擇 Date[] 格式 | `Date \| Date[]` | `-` |
 | startDate | 限製範圍開始日期 | `Date` | `-` |
 | endDate | 限製範圍結束日期 | `Date` | `-` |

@@ -264,69 +264,55 @@ export const handlePickerValueChange = (
 ) => {
   const rangeType = type.toLocaleLowerCase()
 
+  const formattedDate: PickerValue[] = []
+
+  selectedValue.forEach((item) => {
+    formattedDate.push(item)
+  })
+
+  if (rangeType === 'month-day' && formattedDate.length < 3) {
+    formattedDate.unshift(new Date(defaultDate).getFullYear())
+  }
+
+  if (rangeType === 'year-month' && formattedDate.length < 3) {
+    formattedDate.push(new Date(defaultDate).getDate())
+  }
+
+  const year = Number(formattedDate[0])
+  const month = Number(formattedDate[1]) - 1
+  const day = Math.min(
+    Number(formattedDate[2]),
+    getLastDayOfMonth(year, month + 1)
+  )
+
+  let date: Date | null = null
+
   if (
-    ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(
-      rangeType
-    )
+    rangeType === 'date' ||
+    rangeType === 'month-day' ||
+    rangeType === 'year-month'
   ) {
-    const formattedDate: PickerValue[] = []
-
-    selectedValue.forEach((item) => {
-      formattedDate.push(item)
-    })
-
-    if (rangeType === 'month-day' && formattedDate.length < 3) {
-      formattedDate.unshift(new Date(defaultDate).getFullYear())
-    }
-
-    if (rangeType === 'year-month' && formattedDate.length < 3) {
-      formattedDate.push(new Date(defaultDate).getDate())
-    }
-
-    const year = Number(formattedDate[0])
-    const month = Number(formattedDate[1]) - 1
-    const day = Math.min(
-      Number(formattedDate[2]),
-      getLastDayOfMonth(year, month + 1)
-    )
-
-    let date: Date | null = null
-
-    if (
-      rangeType === 'date' ||
-      rangeType === 'month-day' ||
-      rangeType === 'year-month'
-    ) {
-      date = new Date(year, month, day)
-    } else if (rangeType === 'datetime') {
-      date = new Date(
-        year,
-        month,
-        day,
-        Number(formattedDate[3]),
-        Number(formattedDate[4])
-      )
-    } else if (rangeType === 'datehour') {
-      date = new Date(year, month, day, Number(formattedDate[3]))
-    }
-
-    handleDateComparison(date, selectedOptions, index)
-  } else {
-    const [hour, minute, seconds] = selectedValue
-    const currentDate = new Date(defaultDate)
-    const year = currentDate.getFullYear()
-    const month = currentDate.getMonth()
-    const day = currentDate.getDate()
-
-    const date = new Date(
+    date = new Date(year, month, day)
+  } else if (rangeType === 'datetime') {
+    date = new Date(
       year,
       month,
       day,
-      Number(hour),
-      Number(minute),
-      rangeType === 'time' ? Number(seconds) : 0
+      Number(formattedDate[3]),
+      Number(formattedDate[4])
     )
-
-    handleDateComparison(date, selectedOptions, index)
+  } else if (rangeType === 'datehour') {
+    date = new Date(year, month, day, Number(formattedDate[3]))
+  } else {
+    date = new Date(
+      year,
+      month,
+      day,
+      Number(formattedDate[3]),
+      Number(formattedDate[4]),
+      Number(formattedDate[5])
+    )
   }
+
+  handleDateComparison(date, selectedOptions, index)
 }

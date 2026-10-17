@@ -65,6 +65,7 @@ export const SearchBar: FunctionComponent<
     leftIn,
     rightIn,
     tag,
+    inputProps,
     onChange,
     onFocus,
     onBlur,
@@ -189,6 +190,7 @@ export const SearchBar: FunctionComponent<
             onBlur={handleBlur}
             onClick={onInputClick}
             onConfirm={onConfirm}
+            {...inputProps}
           />
         ) : (
           <TaroInput
@@ -208,6 +210,7 @@ export const SearchBar: FunctionComponent<
             onBlur={handleBlur}
             onClick={onInputClick}
             onConfirm={onConfirm}
+            {...inputProps}
           />
         )}
       </>
@@ -286,7 +289,6 @@ export const SearchBar: FunctionComponent<
           visibility: `${!innerTag && value && clearable ? 'visible' : 'hidden'}`,
         }}
         onClick={clearaVal}
-        aria-label="清除"
       >
         <MaskClose />
       </View>

@@ -2,13 +2,19 @@ import { BaseProps } from '../../base/props'
 import { SimpleValue, UISize } from '../../base/atoms'
 
 export type PriceSize = Exclude<UISize, 'mini'>
-export type PriceColor = 'primary' | 'gray' | 'darkgray'
+export type SpecificPriceColor = 'primary' | 'gray' | 'darkgray'
+export type PriceColor = SpecificPriceColor | string
+export enum PriceColorEnum {
+  Primary = 'primary',
+  Gray = 'gray',
+  Darkgray = 'darkgray',
+}
 
 export interface BasePrice extends BaseProps {
   color: PriceColor
   price: SimpleValue
   symbol: string
-  digits: number
+  digits: number | null
   thousands: boolean
   position: string
   size: PriceSize

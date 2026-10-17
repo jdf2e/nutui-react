@@ -31,7 +31,7 @@ const defaultProps = {
   renderDayBottom: undefined,
   onClose: () => {},
   onConfirm: (param: string) => {},
-  onDayClick: (data: string) => {},
+  onDayClick: (data: string[]) => {},
   onPageChange: (param: string) => {},
 } as WebCalendarProps
 
@@ -87,7 +87,7 @@ export const Calendar = React.forwardRef<
     close()
   }
 
-  const select = (param: string) => {
+  const select = (param: string[]) => {
     onDayClick && onDayClick(param)
   }
 

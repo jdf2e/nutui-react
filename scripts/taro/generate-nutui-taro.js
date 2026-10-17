@@ -7,6 +7,7 @@ let importStr = ``
 let importRNStr = ``
 let importMarkdownStr = ``
 let importScssStr = `\n`
+let bundleScssStr = `@import '../styles/variables.scss';\n@import '../styles/theme-default.scss';\n`
 const packages = []
 const mds = []
 const raws = []
@@ -21,6 +22,7 @@ config.nav.map((item) => {
     importRNStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.${rn?'rn':'taro'}'\n`
     importRNStr += `export * from '@/packages/${name.toLowerCase()}/index.${rn?'rn':'taro'}'\n`
     importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss'\n`
+    bundleScssStr += `@import './${name.toLowerCase()}/${name.toLowerCase()}.scss';\n`
     packages.push(name)
 
     glob
@@ -99,12 +101,20 @@ fs.outputFile(
 //   }
 // )
 
-let taroScssfileStr = `
-${importScssStr}
+let taroScssfileStr = `import './nutui.react.scss.taro.bundle.scss'
 export default { "NutUI":"NutUI-Taro" };`
 fs.outputFile(
   path.resolve(__dirname, '../../src/packages/nutui.react.scss.taro.ts'),
   taroScssfileStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
+
+fs.outputFile(
+  path.resolve(__dirname, '../../src/packages/nutui.react.scss.taro.bundle.scss'),
+  bundleScssStr,
   'utf8',
   (error) => {
     if (error) throw error

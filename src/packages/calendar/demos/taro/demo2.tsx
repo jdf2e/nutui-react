@@ -17,7 +17,7 @@ const Demo2 = () => {
     setDate([...[param[0][3], param[1][3]]])
   }
 
-  const select = (param: string) => {
+  const select = (param: string[]) => {
     console.log(param)
   }
 

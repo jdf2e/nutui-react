@@ -36,7 +36,6 @@ const Demo2 = () => {
         ))}
       </Cell>
       <ImagePreview
-        autoPlay
         images={images}
         visible={showPreview}
         defaultValue={init}

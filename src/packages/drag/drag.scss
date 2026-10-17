@@ -7,9 +7,14 @@
   user-select: none;
   font-size: 0;
   &-inner {
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
     width: fit-content;
     height: fit-content;
+    /* #endif */
     touch-action: none;
   }
 }

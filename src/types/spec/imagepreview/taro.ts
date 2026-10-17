@@ -1,7 +1,9 @@
 import { BaseImagePreview } from './base'
+import { TaroSwiperProps } from '@/types'
 
-export interface TaroImagePreviewProps
-  extends Omit<BaseImagePreview, 'autoPlay'> {
+type props = Omit<BaseImagePreview, 'autoPlay'> &
+  Omit<TaroSwiperProps, 'autoPlay' | 'autoplay' | 'indicator'>
+export interface TaroImagePreviewProps extends props {
   autoPlay: boolean
   showMenuByLongpress: boolean
 }

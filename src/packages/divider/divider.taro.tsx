@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '../configprovider/configprovider.taro'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export type DividerContentPosition = 'left' | 'center' | 'right'
 export type DividerDirection = 'horizontal' | 'vertical'

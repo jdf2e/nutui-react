@@ -44,6 +44,7 @@ const Demo2 = () => {
         visible={showTop}
         destroyOnClose
         position="top"
+        resizable
         onClose={() => {
           setShowTop(false)
         }}

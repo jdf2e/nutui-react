@@ -4,6 +4,7 @@ import React, {
   useContext,
   useEffect,
   useState,
+  useMemo,
 } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/row/context'
@@ -27,19 +28,16 @@ export const Col: FunctionComponent<
       ...defaultProps,
       ...props,
     }
-  const [colName, setColName] = useState('')
-  const [colStyle, setColStyle] = useState({})
   const { gutter } = useContext(DataContext) as any
 
-  const classs = () => {
-    // 定义col的class类
+  const classs = useMemo(() => {
     const prefixCls = 'nut-col'
     return `${prefixCls} ${prefixCls}-${span} ${
       gutter ? `${prefixCls}-gutter` : ''
     } ${prefixCls}-offset-${offset}`
-  }
-  const getStyle = () => {
-    // 定义col的style类
+  }, [offset, span, gutter])
+
+  const getStyle = useMemo(() => {
     const style: CSSProperties = {}
     if (!isFirst) {
       style.paddingLeft = `${(gutter as number) / 2}px`
@@ -48,11 +46,15 @@ export const Col: FunctionComponent<
       style.paddingRight = `${(gutter as number) / 2}px`
     }
     return style
-  }
+  }, [isFirst, isLast, gutter])
+
+  const [colName, setColName] = useState(classs)
+  const [colStyle, setColStyle] = useState(getStyle)
+
   useEffect(() => {
     setColName(classs)
     setColStyle(getStyle)
-  }, [span, offset, gutter])
+  }, [classs, getStyle])
 
   return (
     <div

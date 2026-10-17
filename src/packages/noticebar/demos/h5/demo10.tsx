@@ -1,5 +1,5 @@
-import React from 'react'
-import { NoticeBar } from '@nutui/nutui-react'
+import React, { useState } from 'react'
+import { Button, NoticeBar, Space } from '@nutui/nutui-react'
 
 const Demo9 = () => {
   const horseLamp3 = [
@@ -8,6 +8,8 @@ const Demo9 = () => {
     'DatePicker 日期选择器',
     'CheckBox 复选按钮',
   ]
+
+  const [list, setList] = useState(horseLamp3)
 
   return (
     <>
@@ -21,7 +23,7 @@ const Demo9 = () => {
           console.log('close')
         }}
       >
-        {horseLamp3.map((item, index) => {
+        {list.map((item, index) => {
           return (
             <div
               className="custom-item"
@@ -36,6 +38,26 @@ const Demo9 = () => {
           )
         })}
       </NoticeBar>
+
+      <Space style={{ marginTop: '10px' }}>
+        <Button
+          size="small"
+          onClick={() => {
+            setList((prev) => [...prev, `${prev.length + 1}`])
+          }}
+        >
+          添加最后一项
+        </Button>
+
+        <Button
+          size="small"
+          onClick={() => {
+            setList((prev) => prev.slice(0, -1))
+          }}
+        >
+          删除最后一项
+        </Button>
+      </Space>
     </>
   )
 }

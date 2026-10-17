@@ -10,6 +10,12 @@ const zhCN: BaseLang = {
   select: '請選擇',
   edit: '編輯',
   reset: '重置',
+  close: '關閉',
+  back: '返回',
+  clear: '清除',
+  image: {
+    errorTip: '圖片加載失敗',
+  },
   video: {
     errorTip: '視頻加載失敗',
     clickRetry: '點擊重試',
@@ -41,6 +47,26 @@ const zhCN: BaseLang = {
     today: '今天',
     loadPreviousMonth: '加載上一個月',
     noEarlierMonth: '沒有更早月份',
+    dayAriaLabel: (
+      year: number,
+      month: number,
+      day: number,
+      today: boolean,
+      isActive: boolean,
+      isDisable: boolean
+    ) => {
+      if (isActive) {
+        return today
+          ? `已選定今日${month}月${day}號`
+          : `已選定${month}月${day}號`
+      }
+      if (isDisable) {
+        return today
+          ? `${month}月${day}號今日按鈕變暗`
+          : `${month}月${day}號按鈕變暗`
+      }
+      return today ? `${month}月${day}號今日` : `${month}月${day}號`
+    },
   },
   shortpassword: {
     title: '請輸入密碼',
@@ -139,6 +165,10 @@ const zhCN: BaseLang = {
   },
   watermark: {
     errorCanvasTips: '當前環境不支持Canvas',
+  },
+  mask: '蒙層',
+  quickenter: {
+    title: '快捷入口',
   },
 }
 export default zhCN

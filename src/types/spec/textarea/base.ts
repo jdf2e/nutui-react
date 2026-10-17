@@ -1,6 +1,7 @@
 import { BaseProps } from '../../base/props'
 
 export interface BaseTextArea<EVENT = any> extends BaseProps {
+  viewId: string
   value: string
   defaultValue: string
   showCount: boolean

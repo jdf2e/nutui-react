@@ -82,16 +82,32 @@ import { Price } from '@nutui/nutui-react'
 
 :::
 
+### 自定义颜色
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### 数据原样输出
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
 ## Price
 
 ### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| color | 价格类型 | `primary` \| `gray` \| `darkgray` | `primary` |
+| color | 价格类型, 支持自定义颜色 | `primary` \| `gray` \| `darkgray` \| `string` | `primary` |
 | price | 价格数量 | `number` | `0` |
 | symbol | 符号类型 | `string` | `&yen;` |
-| digits | 小数位位数 | `number` | `2` |
+| digits | 小数位位数，传入`null`数据原样输出 | `number` \| `null` | `2` |
 | thousands | 是否按照千分号形式显示 | `boolean` | `false` |
 | position | 符号显示在价格前或者后，`before`、`after` | `string` | `before` |
 | size | 价格尺寸，`xlarge` \| `large` \| `normal` \| `small` | `string` | `normal` |

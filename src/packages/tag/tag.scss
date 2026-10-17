@@ -62,7 +62,12 @@
   }
 
   &-custom-icon {
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     align-items: center;
     justify-content: center;
     font-size: $tag-font-size;
@@ -73,6 +78,11 @@
   &-plain {
     background-color: #fff;
     border: $tag-border-width solid $color-title;
+  }
+
+  &-close-icon {
+    width: $icon-size-8;
+    height: $icon-size-8;
   }
 }
 

@@ -1,7 +1,13 @@
 .nut-inputnumber {
+  /* #ifdef dynamic*/
+  display: flex;
+  /* #endif */
+  /* #ifndef dynamic*/
   display: inline-flex;
+  /* #endif */
   width: calc(
-    2 * #{$inputnumber-input-margin} + 2 * #{$inputnumber-button-width} + #{$inputnumber-input-width}
+    2 * #{$inputnumber-input-margin} + 2 * #{$inputnumber-button-width} +
+      #{$inputnumber-input-width}
   );
   flex-direction: row;
   align-items: center;
@@ -17,8 +23,8 @@
     height: $inputnumber-button-height;
     background-color: $inputnumber-button-background-color;
     .nut-icon {
-      --nut-icon-width: 10px;
-      --nut-icon-height: 10px;
+      width: 10px;
+      height: 10px;
     }
   }
 
@@ -60,12 +66,12 @@
   }
 
   &-icon-minus {
-    --nut-icon-width: 16px;
-    --nut-icon-height: 16px;
+    width: 16px;
+    height: 16px;
   }
 
   &-icon-plus {
-    --nut-icon-width: 16px;
-    --nut-icon-height: 16px;
+    width: 16px;
+    height: 16px;
   }
 }

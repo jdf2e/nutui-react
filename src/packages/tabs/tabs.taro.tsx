@@ -11,6 +11,7 @@ import raf from '@/utils/raf'
 import { useUuid } from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
 import { TabsTitle, TaroTabsProps } from '@/types'
+import { td } from '@/utils/taro/platform'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -47,6 +48,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   } = { ...defaultProps, ...props }
 
   const uuid = useUuid()
+  const tabsRef = useRef<any>(null)
 
   const [value, setValue] = usePropsValue<string | number>({
     value: outerValue,
@@ -102,7 +104,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
 
   const getRect = (selector: string) => {
     return new Promise((resolve) => {
-      createSelectorQuery()
+      const query = createSelectorQuery()
+      const scope = tabsRef.current?._scope
+      const scopedQuery = scope ? query.in(scope) : query
+      scopedQuery
         .select(selector)
         .boundingClientRect()
         .exec((rect = []) => {
@@ -112,7 +117,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   }
   const getAllRect = (selector: string) => {
     return new Promise((resolve) => {
-      createSelectorQuery()
+      const query = createSelectorQuery()
+      const scope = tabsRef.current?._scope
+      const scopedQuery = scope ? query.in(scope) : query
+      scopedQuery
         .selectAll(selector)
         .boundingClientRect()
         .exec((rect = []) => {
@@ -192,6 +200,17 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
       (t) => String(t.value) === String(value)
     )
     index = index < 0 ? 0 : index
+
+    // 适配 安卓 处理，临时方案，hack
+    if (td()) {
+      return {
+        transform:
+          direction === 'horizontal'
+            ? `translate3d(${rtl ? '' : '-'}${index * 50}%, 0, 0)`
+            : `translate3d( 0, -${index * 50}%, 0)`,
+        transitionDuration: `${duration}ms`,
+      }
+    }
     return {
       transform:
         direction === 'horizontal'
@@ -217,7 +236,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   }
 
   return (
-    <View className={classes} {...rest}>
+    <View className={classes} ref={tabsRef} {...rest}>
       <ScrollView
         enableFlex
         scrollX={direction === 'horizontal'}
@@ -263,7 +282,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                     )}
                     {activeType === 'smile' && (
                       <View className={`${classPrefix}-titles-item-smile`}>
-                        <JoySmile color={activeColor} />
+                        <JoySmile
+                          color={activeColor}
+                          className={`${classPrefix}-titles-item-smile-icon`}
+                        />
                       </View>
                     )}
                     <View

@@ -93,7 +93,13 @@ If your project uses these components, please read the documentation carefully a
 [//]: # '#### Icon'
 [//]: # '#### Image'
 [//]: # '#### Overlay'
-[//]: # '#### Popup'
+
+#### Popup
+
+- Added the resizable property for scrolling up and down when the bottom popup is active.
+- Added the minHeight property for setting the minimum height, which can be used with resizable.
+- Added a new attribute top to display user-defined content above the title.
+- Added the onTouchStart, onTouchMove, and onTouchEnd methods.
 
 ### Layout
 
