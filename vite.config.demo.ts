@@ -67,6 +67,10 @@ export default defineConfig(async (): Promise<UserConfig> => {
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         {
+          find: '@nutui/nutui-react/dist/es/locales/en-US',
+          replacement: resolve(__dirname, './src/locales/en-US.ts'),
+        },
+        {
           find: '@nutui/nutui-react-taro/dist/es/locales/en-US',
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },

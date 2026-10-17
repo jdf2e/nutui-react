@@ -111,6 +111,7 @@ export default class Notification extends React.PureComponent<
     })
     return (
       <Overlay
+        portal={null}
         visible={show}
         style={style}
         zIndex={zIndex}

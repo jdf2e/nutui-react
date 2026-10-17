@@ -6,6 +6,7 @@ export interface BaseOverlay extends BaseProps {
   visible: boolean
   lockScroll: boolean
   closeOnOverlayClick: boolean
+  portal?: HTMLElement | (() => HTMLElement) | null
 
   afterShow: () => void
   afterClose: () => void

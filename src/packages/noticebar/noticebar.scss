@@ -1,5 +1,74 @@
 .nut-noticebar {
   width: 100%;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  transition:
+    width 0.35s ease,
+    max-width 0.35s ease,
+    margin 0.35s ease;
+
+  /* 内屏竖屏时：居中展示 */
+  @media (vertical-viewport-segments: 2), (orientation: portrait) {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  /* 内横屏时：居中展示 */
+  @media (horizontal-viewport-segments: 2) {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  /* 横屏微弯时：居左屏展示，避开中轴折痕与安全区 (W3C 标准规范，仅在双屏宽屏 >= 768px 生效) */
+  @media (device-posture: folded) and (orientation: landscape) and (min-width: 768px),
+    (device-posture: folded) and (horizontal-viewport-segments: 2) {
+    width: 50vw;
+    max-width: 50vw;
+    margin-left: 0;
+    margin-right: auto;
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: 0;
+  }
+
+  /* 显式支持微弯态类名及全局微弯态属性居左屏展示 (仅在双屏宽屏 >= 768px 生效) */
+  &.nut-noticebar-micro-bent,
+  &-micro-bent,
+  :root[data-posture='folded'] &,
+  [data-posture='folded'] &,
+  :root[data-posture='micro-bent'] &,
+  [data-posture='micro-bent'] &,
+  .nut-posture-folded &,
+  .nut-posture-micro-bent & {
+    @media screen and (orientation: landscape) and (min-width: 768px),
+      screen and (horizontal-viewport-segments: 2) {
+      width: 50vw;
+      max-width: 50vw;
+      margin-left: 0;
+      margin-right: auto;
+      padding-left: env(safe-area-inset-left, 0px);
+      padding-right: 0;
+    }
+  }
+
+  /* 显式平整展开态：占满全宽 */
+  :root[data-posture='flat'] &,
+  [data-posture='flat'] &,
+  :root[data-posture='continuous'] &,
+  [data-posture='continuous'] & {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 
   .nut-noticebar-box {
     position: relative;

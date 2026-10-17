@@ -22,7 +22,12 @@ try {
 } catch (e) {}
 let href = ''
 
-if (!isMobile && pathname.includes('demo') && !pathname.includes('jmapp')) {
+if (
+  !import.meta.env.DEV &&
+  !isMobile &&
+  pathname.includes('demo') &&
+  !pathname.includes('jmapp')
+) {
   href = location.href.replace('demo.html', '')
   window.location.href = href
 }

@@ -12,6 +12,7 @@ import { Close } from '@nutui/icons-react'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
+import { useConfig } from '@/packages/configprovider'
 import { WebPopupProps } from '@/types'
 
 const defaultProps: WebPopupProps = {
@@ -207,11 +208,16 @@ export const Popup: FunctionComponent<
     )
   }
 
+  const config = useConfig()
+  const targetPortal =
+    props.portal !== undefined ? props.portal : config?.portal
+
   const renderNode = () => {
     return (
       <>
         {overlay && (
           <Overlay
+            portal={null}
             zIndex={index}
             style={overlayStyles}
             className={overlayClassName}
@@ -247,7 +253,7 @@ export const Popup: FunctionComponent<
     return node
   }
 
-  return <>{renderToContainer(portal as any, renderNode())}</>
+  return <>{renderToContainer(targetPortal as any, renderNode())}</>
 }
 
 Popup.displayName = 'NutPopup'

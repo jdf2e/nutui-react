@@ -17,10 +17,11 @@ export interface BaseContentProps extends BasicComponent {
   footer: ReactNode
   close: ReactNode
   footerDirection: DialogFooterDirection
+  segment?: 'left' | 'right' | 'center' | 'auto'
+  microBent?: boolean
 }
 export interface DialogWrapProps
-  extends WebOverlayProps,
-    Omit<BaseContentProps, 'onClick'> {
+  extends WebOverlayProps, Omit<BaseContentProps, 'onClick'> {
   visible: boolean
   overlay: boolean
   overlayStyle: CSSProperties
@@ -42,6 +43,8 @@ export interface BaseDialog extends DialogWrapProps {
   beforeClose: () => boolean
   beforeCancel: () => boolean
   onConfirm: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
+  segment?: 'left' | 'right' | 'center' | 'auto'
+  microBent?: boolean
 }
 
 export type DialogReturnProps = {
@@ -49,8 +52,9 @@ export type DialogReturnProps = {
   close: () => void
 }
 
-export interface DialogComponent
-  extends ForwardRefExoticComponent<PropsWithChildren<Partial<BaseDialog>>> {
+export interface DialogComponent extends ForwardRefExoticComponent<
+  PropsWithChildren<Partial<BaseDialog>>
+> {
   confirm: (props: Partial<BaseDialog>) => DialogReturnProps
   alert: (props: Partial<BaseDialog>) => DialogReturnProps
   config: (config: DialogConfigType) => void

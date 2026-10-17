@@ -1,7 +1,9 @@
 import { nav } from '@/config.json'
 
-const ua = navigator.userAgent.toLowerCase()
-const isMobile = /ios|iphone|ipod|ipad|android/.test(ua)
+const ua = typeof navigator !== 'undefined' ? navigator.userAgent.toLowerCase() : ''
+const isMobile =
+  /ios|iphone|ipod|ipad|android/.test(ua) ||
+  (typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0)
 
 const getComponentName = () => {
   const s = window.location.hash.split('/')

@@ -10,6 +10,8 @@ export const defaultContentProps = {
   close: '',
   footerDirection: 'horizontal',
   onClick: () => {},
+  segment: 'center' as const,
+  microBent: false,
 }
 
 export const Content: FunctionComponent<
@@ -27,6 +29,8 @@ export const Content: FunctionComponent<
     style,
     className,
     onClick,
+    segment,
+    microBent,
   } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
@@ -53,9 +57,20 @@ export const Content: FunctionComponent<
     onClick && onClick(e)
   }
 
+  const isMicroBent = microBent || segment === 'left'
+
   return (
     <div
-      className={classNames(`${classPrefix}-outer`, className)}
+      className={classNames(
+        `${classPrefix}-outer`,
+        {
+          [`${classPrefix}-outer-micro-bent`]: isMicroBent,
+          [`${classPrefix}-outer-segment-left`]: segment === 'left',
+          [`${classPrefix}-outer-segment-right`]: segment === 'right',
+          [`${classPrefix}-outer-segment-center`]: segment === 'center',
+        },
+        className
+      )}
       style={style}
       onClick={handleClick}
     >

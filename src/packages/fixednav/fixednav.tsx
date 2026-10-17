@@ -87,6 +87,7 @@ export const FixedNav: FunctionComponent<
     >
       {overlay && (
         <Overlay
+          portal={null}
           visible={visible}
           zIndex={zIndex}
           onClick={() => onChange(false)}

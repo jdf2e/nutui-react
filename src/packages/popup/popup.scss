@@ -80,60 +80,36 @@
 
   &-center {
     top: 50%;
-    /* 默认基于安全区域居中：避让右侧导航区和左侧圆角 */
-    left: calc(
-      env(safe-area-inset-left, 0px) +
-        (
-          100% - env(safe-area-inset-left, 0px) - env(
-              safe-area-inset-right,
-              0px
-            )
-        ) /
-        2
-    );
+    left: 50%;
     min-height: 10%;
-    max-width: calc(
-      100% - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
-        32px
-    );
+    max-width: 295px;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     transition:
       left 0.35s cubic-bezier(0.2, 0.9, 0.4, 1),
       transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1),
-      filter 0.25s ease-out,
-      max-width 0.35s ease;
+      filter 0.25s ease-out;
 
     &.nut-popup-round {
       border-radius: $popup-border-radius;
     }
 
-    /* 双屏展开/半折叠态：避开折痕，吸附至左屏中心 */
-    @media (horizontal-viewport-segments: 2) {
-      left: calc(
-        env(safe-area-inset-left, 0px) +
-          (
-            env(viewport-segment-width 0 0, 50vw) - env(
-                safe-area-inset-left,
-                0px
-              )
-          ) /
-          2
-      );
-      max-width: calc(
-        env(viewport-segment-width 0 0, 50vw) - env(safe-area-inset-left, 0px) -
-          32px
-      );
+    /* 无论横竖屏，Popup 居中展示，宽度保持不变 */
+    @media (horizontal-viewport-segments: 2),
+      (orientation: landscape),
+      (orientation: portrait) {
+      left: 50%;
+      max-width: 295px;
     }
 
-    /* 忽略安全区，强制按屏幕全宽物理居中 */
+    /* 显式物理全屏居中 */
     &-full {
       left: 50%;
-      max-width: calc(100% - 32px);
+      max-width: 295px;
 
       @media (horizontal-viewport-segments: 2) {
         left: 50%;
-        max-width: calc(100% - 32px);
+        max-width: 295px;
       }
     }
 
@@ -150,13 +126,7 @@
             ) /
             2
         );
-        max-width: calc(
-          env(viewport-segment-width 1 0, 50vw) - env(
-              safe-area-inset-right,
-              0px
-            ) -
-            32px
-        );
+        max-width: 295px;
       }
     }
   }
@@ -174,12 +144,21 @@
   &-bottom {
     bottom: 0;
     left: 0;
+    right: 0;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: env(safe-area-inset-bottom, 0px);
 
-    @media (horizontal-viewport-segments: 2) {
-      /* 双屏展开态下收敛为单屏宽，靠左侧对齐展示，避免全宽拉裂 */
-      width: env(viewport-segment-width 0 0, 100%);
+    @media screen and (orientation: landscape),
+      screen and (min-width: 768px),
+      screen and (horizontal-viewport-segments: 2) {
+      /* 双屏展开/横屏态下保持单屏宽度并水平居中，避免全宽拉裂变形，符合折叠屏设计规范 */
+      max-width: min(100vw, 466px);
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     &.nut-popup-round {
@@ -212,12 +191,22 @@
   &-top {
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
 
-    @media (horizontal-viewport-segments: 2) {
-      width: env(viewport-segment-width 0 0, 100%);
+    @media screen and (orientation: landscape),
+      screen and (min-width: 768px),
+      screen and (horizontal-viewport-segments: 2) {
+      /* 双屏展开/横屏态下保持单屏宽度并水平居中 */
+      max-width: min(100vw, 466px);
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     &.nut-popup-round {
