@@ -17,7 +17,43 @@ import {
 import { ArrowRight } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 
+// 标签栏：标签 68x30、列间距 8、行间距 12，最多 3 列 / 3 行
+// Checkbox.Group 默认 vertical（column），行内改为横向排列并自动换行
+const tagGroupStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignContent: 'flex-start',
+  gap: '12px 8px',
+  // 68 * 3 + 8 * 2 = 220px，一行最多 3 个
+  maxWidth: '220px',
+  // 30 * 3 + 12 * 2 = 114px，最多 3 行
+  maxHeight: '114px',
+  overflow: 'hidden',
+}
+
+// 根节点固定 68x30，内部按钮样式通过组件的 CSS 变量下发：
+// padding 0 9px + 文案宽度(12px * 4 字) + 边框 2px = 68px 撑满
+// 背景、选中态（浅红底 + 红边框 + 红字）走 Checkbox 默认主题样式
+const tagItemStyle = {
+  width: '68px',
+  height: '30px',
+  flex: 'none',
+  margin: 0,
+  display: 'flex',
+  alignItems: 'stretch',
+  '--nutui-checkbox-button-padding': '0 9px',
+  '--nutui-checkbox-button-border-radius': '6px',
+  '--nutui-checkbox-button-font-size': '12px',
+} as React.CSSProperties
+
 const Demo7 = () => {
+  const tagOptions = [
+    { value: 1, label: '标签名称' },
+    { value: 2, label: '标签名称' },
+    { value: 3, label: '标签名称' },
+  ]
+
   const pickerOptions = [
     { value: 1, label: 'BeiJing' },
     { value: 2, label: 'NanJing' },
@@ -70,6 +106,19 @@ const Demo7 = () => {
           <Checkbox.Group>
             <Checkbox labelPosition="right" label="Option 1" value={1} />
             <Checkbox labelPosition="right" label="Option 2" value={2} />
+          </Checkbox.Group>
+        </Form.Item>
+        <Form.Item label="Label item" name="label_item">
+          <Checkbox.Group style={tagGroupStyle}>
+            {tagOptions.map((tag) => (
+              <Checkbox
+                key={tag.value}
+                style={tagItemStyle}
+                shape="button"
+                label={tag.label}
+                value={tag.value}
+              />
+            ))}
           </Checkbox.Group>
         </Form.Item>
         <Form.Item label="Radio" name="radio">

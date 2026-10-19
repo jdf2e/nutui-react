@@ -1,6 +1,6 @@
 # Tabbar 标签栏
 
-底部导航常用场景
+Tabbar 用于底部导航。默认使用兼容原有配置和样式的普通材质；示例通过 `material="frosted"` 展示悬浮圆角毛玻璃背板。
 
 ## 引入
 
@@ -19,6 +19,8 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 :::
 
 ### 徽标提示
+
+通过 `dot` 或 `value` 可以在标签图标上展示红点、数字或文字徽标，普通图标使用组件默认定位，营销图片可通过业务样式调整徽标位置。
 
 :::demo
 
@@ -44,6 +46,8 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### 首坑品牌+营销态
 
+此示例展示营销图片上的红点、数字和文字徽标，通过 `title(active)` 控制图片下方的文案，并使用 `badge-demo.scss` 调整图片徽标的位置。
+
 :::demo
 
 <CodeBlock src='taro/demo5.tsx'></CodeBlock>
@@ -66,7 +70,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 焦点时点击（模拟双击）支持回调
+### 再次点击当前项支持回调
 
 :::demo
 
@@ -74,11 +78,51 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 固定底部
+### 固定底部与返顶
+
+`fixed` 用于固定底部导航，传入 `fixed` 或 `safeArea` 时会渲染底部安全区；普通材质的导航层默认高度为 46px（JMAPP/JRKF 主题为 50px），毛玻璃材质为 52px，安全区高度取 `env(safe-area-inset-bottom)`，并可通过 `--nutui-safe-area-multiple` 调整。
+
+返顶示例从 `ScrollView` 的 `onScroll` 读取滚动位置，在首页选中且滚动达到 160px 后切换图标，再次点击首页时通过 `scrollTop` 和 `scrollWithAnimation` 滚动同一容器；`icon(active)`、`onActiveClick` 和滚动状态由调用方组合，无需新增 Tabbar 属性。
 
 :::demo
 
 <CodeBlock src='taro/demo9.tsx'></CodeBlock>
+
+:::
+
+### addonBefore 前置入口
+
+通过 `addonBefore` 传入 Taro `Image` 或自定义节点，组件默认提供右侧两角为全圆角的 52×52px 定位容器，并裁切超出容器的内容。
+
+图片、外观和点击行为由调用方实现；`addonBefore` 不占用标签索引，点击时不会触发 `onSwitch`。
+
+:::demo
+
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
+
+:::
+
+### 毛玻璃材质
+
+设置 `material="frosted"` 后，Tabbar 使用 `MaterialView` 的 `bottom-bar` 场景作为导航背板，设置 3px 模糊和透明度为 80% 的叠加色；背板为全圆角，组件外层和底部安全区保持透明。不传 `material` 时沿用普通材质的铺满宽度背景、旧版布局类和主题变量。
+
+Taro 背板的明暗由 `MaterialView` 根据系统主题决定，页面背景建议延伸到安全区；实际模糊效果取决于目标运行环境。
+
+:::demo
+
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
+
+:::
+
+### 换肤背板
+
+传入 `skinBackground` 后，自定义内容优先于 `material`，替代内置背板；组件负责背板裁切、全圆角和导航项层级，图片及专属定位由调用方实现。
+
+可以通过 `icon(active)` 根据选中状态切换图标图片。
+
+:::demo
+
+<CodeBlock src='taro/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -90,10 +134,14 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 | --- | --- | --- | --- |
 | defaultValue | 默认选中的标签的索引值 | `number` | `0` |
 | value | 选中的标签的索引值 | `number` | `-` |
-| fixed | 是否固定在页面底部，为 true 时默认开启 safeArea | `boolean` | `false` |
-| activeColor | icon激活的颜色 | `string` | `#0073ff` |
-| inactiveColor | icon未激活的颜色 | `string` | `#7d7e80` |
+| fixed | 是否固定在页面底部，开启时会渲染底部安全区 | `boolean` | `false` |
+| activeColor | 选中项颜色，留空时由主题样式决定 | `string` | `''` |
+| inactiveColor | 未选中项颜色，留空时由主题样式决定 | `string` | `''` |
+| direction | 排列方向，恰好两个标签时可设为横向 | `'vertical' \| 'horizontal'` | `'vertical'` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false` |
+| material | 背板材质；普通材质保留旧版布局，毛玻璃使用悬浮圆角背板 | `'standard' \| 'frosted'` | `'standard'` |
+| skinBackground | 自定义换肤背板内容，传入时替代默认材质 | `ReactNode` | `-` |
+| addonBefore | 前置入口内容，图片与点击由调用方提供 | `ReactNode` | `-` |
 | onSwitch | 切换页签时触发事件 | `(value) => void` | `-` |
 
 ## Tabbar.Item
@@ -109,17 +157,26 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 | dot | 徽标是否为小点 | `boolean` | `false` |
 | top | 徽标的上下偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
 | right | 徽标的左右偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
-| onActiveClick | 用于处理当元素处于焦点时，再次点击时可增加自定义事件。 | `() => void` | `-` |
+| onActiveClick | 再次点击当前选中项时触发 | `() => void` | `-` |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。普通材质继续使用原有颜色、边框、阴影和高度变量；内容层、间距、圆角和选中项背景变量用于毛玻璃及换肤背板。
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 高度 | `46px` |
+| \--nutui-tabbar-height | 导航层高度 | 普通材质 `46px`（JMAPP/JRKF `50px`）；毛玻璃 `52px` |
+| \--nutui-tabbar-addon-before-source-size | `addonBefore` 定位容器尺寸 | `52px` |
+| \--nutui-tabbar-addon-before-gap | `addonBefore` 与导航背板间距 | `8px` |
+| \--nutui-tabbar-addon-before-outset | `addonBefore` 向外侧抽缩距离 | `16px` |
+| \--nutui-tabbar-content-height | 内容层高度 | `44px` |
+| \--nutui-tabbar-horizontal-padding | 导航层左右间距 | `12px` |
+| \--nutui-tabbar-content-padding | 导航背板内边距 | `4px` |
+| \--nutui-tabbar-border-radius | 导航背板圆角 | 全圆角（跟随导航高度） |
+| \--nutui-tabbar-active-background | 选中项背景 | `var(--nutui-color-background-component)` |
+| \--nutui-tabbar-active-border-radius | 子项圆角 | 全圆角（跟随子项高度） |
 | \--nutui-tabbar-active-color | 选中颜色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未选中颜色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
@@ -128,7 +185,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 | \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 无图标时标题字体粗细 | `$font-weight` |
-| \--nutui-tabbar-text-line-height | 字体行高 | `initial` |
+| \--nutui-tabbar-text-line-height | 字体行高 | 跟随标题字体大小 |
 | \--nutui-tabbar-text-margin-top | 标题上外边距 | `4px` |
 
 <Contribution name="Tabbar" />

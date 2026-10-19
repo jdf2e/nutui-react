@@ -12,7 +12,7 @@
   font-size: $navbar-font-size;
   color: $navbar-color;
   overflow: hidden;
-  padding: 0 16px;
+  padding: $navbar-padding;
 
   &-fixed {
     position: fixed;
@@ -25,6 +25,25 @@
   &-placeholder {
     display: inline-block;
     width: 100%;
+  }
+
+  &-has-subbar {
+    height: auto;
+    min-height: $navbar-height;
+    flex-wrap: wrap;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &-has-subbar > *:not(&-subbar) {
+    height: $navbar-height;
+  }
+
+  &-subbar {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    width: 100%;
+    padding: $navbar-subbar-padding;
   }
 
   &-safe-area-inset-top {
@@ -51,8 +70,14 @@
     white-space: nowrap;
 
     &-center {
-      max-width: 129px;
+      max-width: calc(
+        100% - 2 * #{$navbar-side-maxwidth} - 2 * #{$navbar-side-padding}
+      );
       justify-content: center;
+    }
+
+    &-padding-left {
+      padding-left: $navbar-side-padding;
     }
   }
 
@@ -65,7 +90,8 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    max-width: 124px;
+    box-sizing: border-box;
+    max-width: calc(#{$navbar-side-maxwidth} + #{$navbar-side-padding});
     height: 100%;
     cursor: pointer;
     /* #ifndef harmony jd h5 weapp*/
@@ -78,18 +104,18 @@
 
     /* #endif */
     &-maxwidth {
-      box-sizing: border-box;
-      width: calc(124px - 16px);
+      box-sizing: content-box;
+      width: $navbar-side-maxwidth;
     }
   }
 
   &-left {
-    padding-right: 16px;
+    padding-right: $navbar-side-padding;
     gap: 16px;
 
     &-rtl {
       padding-right: 0;
-      padding-left: 16px;
+      padding-left: $navbar-side-padding;
     }
 
     &-back {
@@ -107,12 +133,12 @@
   }
 
   &-right {
-    padding-left: 16px;
+    padding-left: $navbar-side-padding;
     justify-content: flex-end;
     gap: 16px;
 
     &-rtl {
-      padding-right: 16px;
+      padding-right: $navbar-side-padding;
       padding-left: 0;
     }
   }
@@ -120,6 +146,11 @@
   &-rtl {
     .nut-icon-ArrowLeft {
       transform: rotateY(180deg);
+    }
+
+    .nut-navbar-title-padding-left {
+      padding-left: 0;
+      padding-right: $navbar-side-padding;
     }
   }
 }

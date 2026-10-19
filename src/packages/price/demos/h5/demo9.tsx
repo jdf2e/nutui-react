@@ -22,6 +22,11 @@ const Demo9 = () => {
         <Price price={1080.68} color="gray" size="small" />
       </Cell>
       <Cell align="baseline">
+        <Price price={618.68} size="medium" />
+        <span style={{ ...priceStyles, ...colorStyles }}>优惠价</span>
+        <Price price={1080.68} color="gray" size="small" />
+      </Cell>
+      <Cell align="baseline">
         <Price price={618.68} size="normal" />
         <span style={{ ...priceStyles, ...colorStyles }}>粉丝到手价</span>
         <Price price={1080.68} color="gray" size="small" />

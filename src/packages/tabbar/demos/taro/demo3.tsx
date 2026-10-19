@@ -3,7 +3,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 import { Cart, Message, Hi, Home, User } from '@nutui/icons-react-taro'
 
 const Demo3 = () => (
-  <Tabbar>
+  <Tabbar material="frosted">
     <Tabbar.Item icon={<Home />} />
     <Tabbar.Item icon={<Hi />} />
     <Tabbar.Item icon={<Message />} />

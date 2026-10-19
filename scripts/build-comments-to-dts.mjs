@@ -152,7 +152,9 @@ function addJSDoc(propsJson, componentName, platform) {
     const ast = j(file.source)
     function addComment(item) {
       if (!item.key) return
-      const description = propsJson[componentName.toLowerCase()][item.key.name]
+      const componentProps = propsJson[componentName.toLowerCase()]
+      if (!componentProps) return
+      const description = componentProps[item.key.name]
       if (!description) return
       item['comments'] = [
         j.commentBlock(`*\n* ${description['desc']}\n`),

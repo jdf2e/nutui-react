@@ -2,7 +2,7 @@ import React from 'react'
 import { Tabbar } from '@nutui/nutui-react'
 
 const Demo = () => (
-  <Tabbar>
+  <Tabbar material="frosted">
     <Tabbar.Item title="首页" value={9} />
     <Tabbar.Item title="逛" />
     <Tabbar.Item title="消息" />

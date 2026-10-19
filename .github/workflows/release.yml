@@ -1,16 +1,18 @@
-name: Release 3.x
+name: Release
 
 on:
   push:
     tags:
       - v3.*
+      - v4.*
   workflow_dispatch:
 
 jobs:
-  release-3x:
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      # Required for npm Trusted Publishing (OIDC)
       id-token: write
 
     steps:
@@ -27,6 +29,10 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
+      # Trusted Publishing needs a recent npm CLI (OIDC exchange)
+      - name: Upgrade npm for Trusted Publishing
+        run: npm i -g npm@latest
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -42,14 +48,13 @@ jobs:
             exit 1
           fi
 
+      # No NPM_TOKEN: auth via GitHub OIDC + npm Trusted Publisher
       - name: Run Release @nutui/nutui-react
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: env.ABORT != 'true'
-        run: pnpm --dir ./release/h5 publish
+        working-directory: ./release/h5
+        run: npm publish --access public --provenance
 
       - name: Run Releases @nutui/nutui-react-taro
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: env.ABORT != 'true'
-        run: pnpm --dir ./release/taro publish
+        working-directory: ./release/taro
+        run: npm publish --access public --provenance

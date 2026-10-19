@@ -2,36 +2,44 @@ import React from 'react'
 import './demo.scss'
 import { useTranslate } from '@/sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
-import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo6 from './demos/h5/demo6'
 
 const NavBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基础用法',
-      title1: '标题位置',
-      title2: '多tab切换导航',
+      group1: 'iOS26以下/安卓鸿蒙',
+      group2: 'iOS26以上',
+      cat1: '标题型',
+      cat3: '导航型',
     },
     'zh-TW': {
-      basic: '基礎用法',
-      title1: '標題位置',
-      title2: '多tab切換導航',
+      group1: 'iOS26以下/安卓鴻蒙',
+      group2: 'iOS26以上',
+      cat1: '標題型',
+      cat3: '導航型',
     },
     'en-US': {
-      basic: 'Basic Usage',
-      title1: 'Title Align',
-      title2: 'Multi-tab Switching Navigation',
+      group1: 'iOS 26 and below / Android & HarmonyOS',
+      group2: 'iOS 26 and above',
+      cat1: 'Title',
+      cat3: 'Navigation',
     },
   })
   return (
     <>
       <div className="demo navbar-demo">
-        <h2>{translated.basic}</h2>
+        <h2>{translated.group1}</h2>
+        <h3>{translated.cat1}</h3>
         <Demo1 />
-        <h2>{translated.title1}</h2>
-        <Demo2 />
-        <h2>{translated.title2}</h2>
+        <h3>{translated.cat3}</h3>
         <Demo3 />
+        <h2>{translated.group2}</h2>
+        <h3>{translated.cat1}</h3>
+        <Demo4 />
+        <h3>{translated.cat3}</h3>
+        <Demo6 />
       </div>
     </>
   )

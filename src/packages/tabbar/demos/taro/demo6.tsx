@@ -5,6 +5,7 @@ import { Cart, Home, User } from '@nutui/icons-react-taro'
 const Demo7 = () => (
   <Space direction="vertical">
     <Tabbar
+      material="frosted"
       inactiveColor="#7d7e80"
       activeColor="var(--nutui-color-info, #0c82f7)"
     >
@@ -14,6 +15,7 @@ const Demo7 = () => (
     </Tabbar>
 
     <Tabbar
+      material="frosted"
       inactiveColor="#7d7e80"
       activeColor="var(--nutui-color-info, #0c82f7)"
     >
@@ -22,6 +24,7 @@ const Demo7 = () => (
     </Tabbar>
 
     <Tabbar
+      material="frosted"
       inactiveColor="#7d7e80"
       activeColor="var(--nutui-color-info, #0c82f7)"
       direction="horizontal"
