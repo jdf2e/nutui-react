@@ -1,0 +1,29 @@
+src/packages/dialog/use-fold-segment.ts
+  s_2a339e4fa895a6::t_b3ccb04b9c0b32 1-26
+src/packages/dialog/dialog.tsx
+  s_2a339e4fa895a6::t_f806896f93aaa4 18
+  s_2a339e4fa895a6::t_3a25a50ccfbbdc 90
+src/packages/dialog/dialog.taro.tsx
+  s_2a339e4fa895a6::t_4ce921a063c9bc 21
+  s_2a339e4fa895a6::t_bfc9032a7d3ff3 1
+  s_2a339e4fa895a6::t_e9ac0359462600 96
+src/utils/fold-screen.ts
+  s_2a339e4fa895a6::t_ace53b433ce427 16,49,88
+  s_2a339e4fa895a6::t_5bb1b81126c3f9 47-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "4d7356701b0f00ee249d5bf9a1e2d604b54ffac6",
+  "prompts": {},
+  "sessions": {
+    "s_2a339e4fa895a6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "274f4f33-ad8f-49e6-8b99-0267b3a4a1e4",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}

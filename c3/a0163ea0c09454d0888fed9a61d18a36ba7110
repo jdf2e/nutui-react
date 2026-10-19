@@ -1,7 +1,19 @@
+src/types/spec/dialog/base.ts
+  s_57e031e22d3702::t_7c9a45785e6662 38
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.5.7",
   "base_commit_sha": "c3a0163ea0c09454d0888fed9a61d18a36ba7110",
-  "prompts": {}
+  "prompts": {},
+  "sessions": {
+    "s_57e031e22d3702": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "171c67a7-9573-4647-9696-898c118c4d31",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
 }

@@ -1,0 +1,32 @@
+src/packages/dialog/content.tsx
+  s_2a339e4fa895a6::t_e9d18aa0d9a14e 14
+src/packages/dialog/doc.taro.md
+  s_2a339e4fa895a6::t_54973ef9380603 110
+src/packages/dialog/doc.zh-TW.md
+  s_2a339e4fa895a6::t_c561e4a5281a28 110
+src/types/spec/dialog/base.ts
+  s_2a339e4fa895a6::t_130624d5f24c21 20
+  s_2a339e4fa895a6::t_c368536ef0fa6d 49
+src/packages/dialog/doc.en-US.md
+  s_2a339e4fa895a6::t_43f42a1b17ae80 110
+src/packages/dialog/doc.md
+  s_2a339e4fa895a6::t_36bf4b6b37adc3 110
+src/packages/dialog/content.taro.tsx
+  s_2a339e4fa895a6::t_b1d870e1304e3f 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "fcc9a08ab8d366dfe9f8bd7c331598c0ea7ab053",
+  "prompts": {},
+  "sessions": {
+    "s_2a339e4fa895a6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "274f4f33-ad8f-49e6-8b99-0267b3a4a1e4",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
