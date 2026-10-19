@@ -11,7 +11,7 @@ const Demo7 = () => {
         flexWrap: 'nowrap',
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: '#ebedf2',
+        backgroundColor: '#f0f2f7',
       }}
     >
       <Input placeholder="受控下的清除" value={keyword} onChange={setKeyword} />

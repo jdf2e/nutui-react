@@ -11,7 +11,7 @@ const Demo13 = () => {
         flexWrap: 'nowrap',
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: '#ebedf2',
+        backgroundColor: '#f0f2f7',
       }}
     >
       <Tips style={{ marginLeft: pxTransform(10) }} />

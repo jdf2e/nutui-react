@@ -5,7 +5,7 @@ import Form from '@/packages/form'
 const Demo7 = () => {
   return (
     <Form>
-      <Form.Item label="文本" name="username" style={{ background: '#ebedf2' }}>
+      <Form.Item label="文本" name="username" style={{ background: '#f0f2f7' }}>
         <Input
           className="nut-input-text"
           placeholder="请输入文本"
@@ -13,6 +13,7 @@ const Demo7 = () => {
           onChange={(val) => {
             console.log('change value:', val)
           }}
+          inputStyle={{ background: '#f0f2f7' }}
         />
       </Form.Item>
     </Form>

@@ -9,7 +9,7 @@ const Demo9 = () => {
       style={{
         display: 'flex',
         alignItems: 'center',
-        background: '#ebedf2',
+        background: '#f0f2f7',
         padding: '0 10px',
       }}
     >
