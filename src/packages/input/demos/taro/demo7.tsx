@@ -1,33 +1,39 @@
 import React, { useState } from 'react'
 import { Text, View } from '@tarojs/components'
-import { Button, Input, pxTransform } from '@nutui/nutui-react-taro'
+import { Button, Input, pxTransform, Cell } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
   const [keyword, setKeyword] = useState('')
   return (
-    <View
-      style={{
-        display: 'flex',
-        flexWrap: 'nowrap',
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: '#f0f2f7',
-      }}
-    >
-      <Input placeholder="受控下的清除" value={keyword} onChange={setKeyword} />
-      <Button
-        type="primary"
-        size="small"
-        onClick={() => {
-          setKeyword('')
+    <Cell style={{ display: 'block' }}>
+      <View
+        style={{
+          display: 'flex',
+          flexWrap: 'nowrap',
+          alignItems: 'center',
+          flexDirection: 'row',
+          backgroundColor: '#f0f2f7',
         }}
-        style={{ marginRight: pxTransform(10) }}
       >
-        <Text style={{ color: '#ffffff', fontSize: pxTransform(12) }}>
-          点我清除
-        </Text>
-      </Button>
-    </View>
+        <Input
+          placeholder="受控下的清除"
+          value={keyword}
+          onChange={setKeyword}
+        />
+        <Button
+          type="primary"
+          size="small"
+          onClick={() => {
+            setKeyword('')
+          }}
+          style={{ marginRight: pxTransform(10) }}
+        >
+          <Text style={{ color: '#ffffff', fontSize: pxTransform(12) }}>
+            点我清除
+          </Text>
+        </Button>
+      </View>
+    </Cell>
   )
 }
 export default Demo7
