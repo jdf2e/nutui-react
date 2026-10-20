@@ -225,3 +225,19 @@ test('should disable animation when animated prop is false', () => {
   const overlay = container.querySelector('.nut-overlay') as HTMLElement
   expect(overlay).toBeTruthy()
 })
+
+test('should sync css animation duration with duration prop', () => {
+  const { container } = render(<Popup visible duration={1000} />)
+  const popup = container.querySelector('.nut-popup') as HTMLElement
+  expect(popup.style.getPropertyValue('--nutui-popup-animation-duration')).toBe(
+    '1000ms'
+  )
+})
+
+test('should not set css animation duration when using default duration', () => {
+  const { container } = render(<Popup visible />)
+  const popup = container.querySelector('.nut-popup') as HTMLElement
+  expect(popup.style.getPropertyValue('--nutui-popup-animation-duration')).toBe(
+    ''
+  )
+})

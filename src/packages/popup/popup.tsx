@@ -118,7 +118,18 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
   }
+  const durationMs = Number(duration)
+  // 动画时长与 duration 联动：仅在非默认值时写入 CSS 变量
+  const durationStyle =
+    Number.isFinite(durationMs) &&
+    durationMs >= 0 &&
+    durationMs !== defaultOverlayProps.duration
+      ? ({
+          '--nutui-popup-animation-duration': `${durationMs}ms`,
+        } as React.CSSProperties)
+      : {}
   const popStyles = {
+    ...durationStyle,
     ...style,
     zIndex: index,
     minHeight,
@@ -162,11 +173,6 @@ export const Popup: FunctionComponent<
   const close = () => {
     if (innerVisible) {
       setInnerVisible(false)
-      if (destroyOnClose) {
-        setTimeout(() => {
-          setShowChildren(false)
-        }, transitionDuration)
-      }
       onClose && onClose()
     }
   }
@@ -314,7 +320,12 @@ export const Popup: FunctionComponent<
         timeout={transitionDuration}
         in={innerVisible}
         onEntered={afterShow}
-        onExited={afterClose}
+        onExited={() => {
+          if (destroyOnClose) {
+            setShowChildren(false)
+          }
+          afterClose && afterClose()
+        }}
       >
         <div
           ref={nodeRef}

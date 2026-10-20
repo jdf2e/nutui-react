@@ -463,7 +463,12 @@ export const Popup: FunctionComponent<
         timeout={Number(transitionDuration)}
         in={innerVisible}
         onEntered={afterShow}
-        onExited={afterClose}
+        onExited={() => {
+          if (destroyOnClose) {
+            setShowChildren(false)
+          }
+          afterClose && afterClose()
+        }}
       >
         <View
           ref={nodeRef}
