@@ -80,6 +80,8 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    centerBase,
+    segment,
     resizable,
     minHeight,
     onOpen,
@@ -115,13 +117,32 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
   }
+  const durationMs = Number(duration)
+  // 动画时长与 duration 联动：仅在非默认值时写入 CSS 变量
+  const durationStyle =
+    Number.isFinite(durationMs) &&
+    durationMs >= 0 &&
+    durationMs !== defaultOverlayProps.duration
+      ? ({
+          '--nutui-popup-animation-duration': `${durationMs}ms`,
+        } as React.CSSProperties)
+      : {}
   const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
-  const popStyles = { zIndex: contentZIndex, minHeight, ...style }
+  const popStyles = {
+    ...durationStyle,
+    zIndex: contentZIndex,
+    minHeight,
+    ...style,
+  }
   const popClassName = classNames(
     classPrefix,
     {
       [`${classPrefix}-round`]: round || position === 'bottom',
       [`${classPrefix}-${position}`]: true,
+      [`${classPrefix}-center-full`]:
+        position === 'center' && centerBase === 'full',
+      [`${classPrefix}-center-segment-right`]:
+        position === 'center' && segment === 'right',
     },
     className
   )
@@ -175,11 +196,6 @@ export const Popup: FunctionComponent<
   const close = () => {
     if (innerVisible) {
       setInnerVisible(false)
-      if (destroyOnClose) {
-        setTimeout(() => {
-          setShowChildren(false)
-        }, Number(duration))
-      }
       onClose && onClose()
     }
   }
@@ -371,7 +387,12 @@ export const Popup: FunctionComponent<
         timeout={duration}
         in={innerVisible}
         onEntered={afterShow}
-        onExited={afterClose}
+        onExited={() => {
+          if (destroyOnClose) {
+            setShowChildren(false)
+          }
+          afterClose && afterClose()
+        }}
       >
         {renderContent()}
       </CSSTransition>

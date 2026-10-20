@@ -228,3 +228,19 @@ test('handles touch events correctly', () => {
   fireEvent.touchEnd(popup)
   expect(handleTouchEnd).toHaveBeenCalled()
 })
+
+test('should sync css animation duration with duration prop', () => {
+  const { container } = render(<Popup visible duration={1000} />)
+  const popup = container.querySelector('.nut-popup') as HTMLElement
+  expect(popup.style.getPropertyValue('--nutui-popup-animation-duration')).toBe(
+    '1000ms'
+  )
+})
+
+test('should not set css animation duration when using default duration', () => {
+  const { container } = render(<Popup visible />)
+  const popup = container.querySelector('.nut-popup') as HTMLElement
+  expect(popup.style.getPropertyValue('--nutui-popup-animation-duration')).toBe(
+    ''
+  )
+})
