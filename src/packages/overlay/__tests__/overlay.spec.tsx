@@ -57,3 +57,25 @@ test('content test', () => {
   )
   expect(container).toMatchSnapshot()
 })
+
+test('should sync css animation duration with duration prop', () => {
+  const { getByTestId } = render(
+    <Overlay data-testid="overlay-duration" visible duration={1000} />
+  )
+  expect(
+    getByTestId('overlay-duration').style.getPropertyValue(
+      '--nutui-overlay-animation-duration'
+    )
+  ).toBe('1000ms')
+})
+
+test('should not set css animation duration when using default duration', () => {
+  const { getByTestId } = render(
+    <Overlay data-testid="overlay-default-duration" visible />
+  )
+  expect(
+    getByTestId('overlay-default-duration').style.getPropertyValue(
+      '--nutui-overlay-animation-duration'
+    )
+  ).toBe('')
+})
