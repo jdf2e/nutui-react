@@ -1,11 +1,9 @@
 import Notification from './Notification'
 import { WebToastProps } from '@/types'
-import { defaultOverlayProps } from '@/packages/overlay/overlay'
 
 let messageInstance: any = null
 
 let defaultProps: WebToastProps = {
-  ...defaultOverlayProps,
   id: '',
   position: 'middle',
   title: '',
@@ -16,10 +14,15 @@ let defaultProps: WebToastProps = {
   contentStyle: {},
   wordBreak: 'break-all',
   duration: 2, // 时长,duration为0则一直展示
+  hasOverlay: true, // 是否有遮罩层，默认有；传 false 为非阻断式
+  overlayStyle: {},
+  overlayClassName: '',
   closeOnOverlayClick: false, // 是否点击遮罩可关闭
   lockScroll: false,
+  visible: true,
   zIndex: 1300,
   onClose: () => {},
+  onClick: () => {},
 }
 
 type ToastNativeProps = Partial<WebToastProps>
