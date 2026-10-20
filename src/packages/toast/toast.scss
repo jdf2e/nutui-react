@@ -1,5 +1,3 @@
-@import '../overlay/overlay.scss';
-
 @keyframes rotation {
   0% {
     -webkit-transform: rotate(0deg);
@@ -23,8 +21,19 @@
   pointer-events: none;
   z-index: 1300;
 
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1300;
+    background-color: var(--nutui-toast-overlay-bg-color, rgba(0, 0, 0, 0));
+    pointer-events: auto;
+  }
+
   &-overlay-default {
-    --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
+    --nutui-toast-overlay-bg-color: rgba(0, 0, 0, 0);
   }
 
   &-overlay-default-taro {
@@ -32,7 +41,7 @@
     background-color: rgba(0, 0, 0, 0);
     /* #endif */
     /* #ifndef harmony dynamic*/
-    --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
+    --nutui-toast-overlay-bg-color: rgba(0, 0, 0, 0);
     /* #endif */
   }
 
@@ -55,6 +64,8 @@
     background: $toast-inner-bg-color;
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
+    pointer-events: auto;
+    z-index: 1301;
 
     &-descrption {
       max-width: 68.2%;
