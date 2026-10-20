@@ -61,7 +61,18 @@ export const Overlay: FunctionComponent<
   const shouldLockScroll = !innerVisible ? false : lockScroll
   useLockScroll(nodeRef, shouldLockScroll)
   const classes = classNames(classPrefix, className)
+  const durationMs = Number(duration)
+  // 动画时长与 duration 联动：仅在非默认值时写入 CSS 变量
+  const durationStyle =
+    Number.isFinite(durationMs) &&
+    durationMs >= 0 &&
+    durationMs !== defaultOverlayProps.duration
+      ? ({
+          '--nutui-overlay-animation-duration': `${durationMs}ms`,
+        } as React.CSSProperties)
+      : {}
   const styles = {
+    ...durationStyle,
     ...style,
     zIndex,
   }
