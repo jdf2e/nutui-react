@@ -15,12 +15,12 @@ import { Close } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import type { ITouchEvent, CommonEventFunction } from '@tarojs/components'
 import ConfigurableCSSTransition from '@/utils/taro/ConfigurableCSSTransition'
+import { useDuoLayout } from '@/hooks/taro/use-duo-layout'
 import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroPopupProps } from '@/types'
-import { harmony } from '@/utils/taro/platform'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
@@ -48,6 +48,7 @@ const defaultProps: TaroPopupProps = {
   onTouchEnd: () => {},
   overlayProps: {},
   animated: true,
+  duoOverlayScope: 'window',
 }
 
 // 默认1000，参看variables
@@ -84,6 +85,9 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    centerBase,
+    segment,
+    duoOverlayScope,
     resizable,
     minHeight,
     onOpen,
@@ -130,13 +134,50 @@ export const Popup: FunctionComponent<
     return { ...overlayStyle }
   }, [overlayStyle])
 
+  const duoPopupKind =
+    position === 'center' ||
+    position === 'bottom' ||
+    position === 'top' ||
+    position === 'none'
+      ? position
+      : null
+  const duoLayout = useDuoLayout(
+    innerVisible && duoPopupKind != null,
+    duoPopupKind ?? 'center',
+    { overlayScope: duoOverlayScope }
+  )
+
   const contentZIndex = useMemo(() => {
-    return harmony() ? index + 1 : index // 解决harmony层级问题
+    return (Number(index) || _zIndex) + 1
   }, [index])
 
+  const durationMs = Number(duration)
+  const durationStyle = useMemo(() => {
+    return Number.isFinite(durationMs) &&
+      durationMs >= 0 &&
+      durationMs !== defaultOverlayProps.duration
+      ? ({
+          '--nutui-popup-animation-duration': `${durationMs}ms`,
+        } as React.CSSProperties)
+      : {}
+  }, [durationMs])
+
   const popStyles = useMemo(() => {
-    return { zIndex: contentZIndex, minHeight, ...style }
-  }, [contentZIndex, minHeight, style])
+    return {
+      ...durationStyle,
+      zIndex: contentZIndex,
+      minHeight,
+      ...(duoLayout.enabled ? duoLayout.contentStyle : {}),
+      ...style,
+    }
+  }, [
+    durationStyle,
+    contentZIndex,
+    minHeight,
+    duoLayout.enabled,
+    duoLayout.contentStyle,
+    style,
+  ])
 
   const popClassName = useMemo(() => {
     return classNames(
@@ -144,10 +185,15 @@ export const Popup: FunctionComponent<
       {
         [`${classPrefix}-round`]: round || position === 'bottom',
         [`${classPrefix}-${position}`]: true,
+        [`${classPrefix}-center-full`]:
+          position === 'center' && centerBase === 'full',
+        [`${classPrefix}-center-segment-right`]:
+          position === 'center' && segment === 'right',
+        [`${classPrefix}-duo`]: duoLayout.enabled,
       },
       className
     )
-  }, [round, position, className])
+  }, [round, position, centerBase, segment, duoLayout.enabled, className])
 
   const [popupHeight, setPopupHeight] = useState('')
   const [topBottom, setTopBottom] = useState('')
@@ -251,7 +297,11 @@ export const Popup: FunctionComponent<
         ariaRole="button"
         ariaLabel={closeAriaLabel || locale.close}
       >
-        {React.isValidElement(closeIcon) ? closeIcon : <Close ariaHidden />}
+        {React.isValidElement(closeIcon) ? (
+          closeIcon
+        ) : (
+          <Close {...({ ariaHidden: true } as any)} />
+        )}
       </View>
     )
   }, [
@@ -435,7 +485,12 @@ export const Popup: FunctionComponent<
         {overlay ? (
           <Overlay
             zIndex={index}
-            style={overlayStyles}
+            style={{
+              ...overlayStyles,
+              ...(duoLayout.enabled && duoOverlayScope === 'base'
+                ? duoLayout.baseMaskStyle
+                : {}),
+            }}
             className={overlayClassName}
             visible={innerVisible}
             closeOnOverlayClick={closeOnOverlayClick}

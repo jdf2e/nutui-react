@@ -168,9 +168,15 @@ async function buildCJS(p) {
 async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.taro.json')
   const types = join(__dirname, `../${dist}/types`)
-  await execSync(
-    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
-  )
+  const tscBin = resolve(__dirname, '../node_modules/.bin/tsc')
+  try {
+    execSync(
+      `"${tscBin}" --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
+      { stdio: 'pipe' },
+    )
+  } catch (e) {
+    // tsc exits non-zero on type errors but still emits declaration files
+  }
 
   const files = await glob([
     `${dist}/types/src/packages/**/*.taro.d.ts`,

@@ -15,8 +15,8 @@ import {
   useParams,
 } from '@/hooks/taro/use-custom-event'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
+import { useDuoLayout } from '@/hooks/taro/use-duo-layout'
 import { mergeProps } from '@/utils/merge-props'
-import { harmony } from '@/utils/taro/platform'
 
 const defaultProps = {
   ...defaultOverlayProps,
@@ -45,6 +45,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: () => {},
   onOverlayClick: () => true,
+  duoOverlayScope: 'window',
   // ariaLabel: 'dialog',
 } as TaroDialogProps
 
@@ -85,6 +86,9 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       onCancel,
       onConfirm,
       onOverlayClick,
+      segment,
+      microBent,
+      duoOverlayScope,
       // ariaLabel,
     },
     setParams,
@@ -92,6 +96,19 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+
+  const duoLayout = useDuoLayout(!!visible, 'center', {
+    overlayScope: duoOverlayScope ?? 'window',
+    centerMaxWidth: null,
+  })
+
+  const effectiveMicroBent = microBent ?? duoLayout.enabled
+  let effectiveSegment = segment || 'center'
+  if (segment && segment !== 'center') {
+    effectiveSegment = segment
+  } else if (duoLayout.enabled) {
+    effectiveSegment = 'left'
+  }
 
   useCustomEvent(
     id as string,
@@ -249,9 +266,9 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     })
     const systemIcon =
       closeIconPosition !== 'bottom' ? (
-        <Close ariaHidden />
+        <Close {...({ ariaHidden: true } as any)} />
       ) : (
-        <Failure ariaHidden />
+        <Failure {...({ ariaHidden: true } as any)} />
       )
     return (
       <View
@@ -275,21 +292,14 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   }
 
   const renderContent = () => {
-    const contentZIndex = harmony() ? zIndex + 1 : zIndex // 解决harmony层级问题
+    const contentZIndex = (Number(zIndex) || 1200) + 1
     return (
-      // <CSSTransition
-      //   in={visible}
-      //   timeout={300}
-      //   classNames="fadeDialog"
-      //   unmountOnExit
-      //   appear
-      // >
       <Content
         className={className}
         style={{
           zIndex: contentZIndex,
+          ...duoLayout.contentStyle,
           ...style,
-          display: visible ? 'block' : 'none',
         }}
         title={title}
         header={header}
@@ -297,10 +307,11 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         footer={renderFooter()}
         footerDirection={footerDirection}
         visible={visible}
+        segment={effectiveSegment}
+        microBent={effectiveMicroBent}
       >
         {content || children}
       </Content>
-      // </CSSTransition>
     )
   }
 
@@ -314,7 +325,10 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         <Overlay
           zIndex={zIndex}
           visible={visible}
-          style={overlayStyle}
+          style={{
+            ...overlayStyle,
+            ...(duoOverlayScope === 'base' ? duoLayout.baseMaskStyle : {}),
+          }}
           className={overlayClassName}
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}

@@ -17,6 +17,10 @@ export interface BaseContentProps extends BasicComponent {
   footer: ReactNode
   close: ReactNode
   footerDirection: DialogFooterDirection
+  segment?: 'left' | 'right' | 'center' | 'auto'
+  microBent?: boolean
+  duoOverlayScope?: 'window' | 'base'
+  ariaLabel?: string
 }
 export interface DialogWrapProps
   extends WebOverlayProps,
@@ -44,6 +48,9 @@ export interface BaseDialog extends DialogWrapProps {
   beforeClose: () => boolean
   beforeCancel: () => boolean
   onConfirm: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
+  segment?: 'left' | 'right' | 'center' | 'auto'
+  microBent?: boolean
+  duoOverlayScope?: 'window' | 'base'
   ariaLabel?: string
 }
 

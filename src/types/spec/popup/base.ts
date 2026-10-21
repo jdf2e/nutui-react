@@ -22,6 +22,8 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   destroyOnClose: boolean
   overlay: boolean
   round: boolean
+  centerBase?: 'safeArea' | 'full'
+  segment?: 'left' | 'right' | 'auto'
   resizable: boolean
   minHeight: string
   onOpen: () => void
@@ -32,6 +34,7 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   onTouchStart: (height: number, e: any) => void
   onTouchEnd: (height: number, e: any) => void
   closeAriaLabel?: string
+  duoOverlayScope?: 'window' | 'base'
   overlayProps?: any
   animated?: boolean
 }
