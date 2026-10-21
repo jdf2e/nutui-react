@@ -308,17 +308,6 @@ export function rectToOverlayStyle(rect: DuoRect): CSSProperties {
   }
 }
 
-export function rectToFixedStyle(rect: DuoRect): CSSProperties {
-  return {
-    top: rect.top,
-    left: rect.left,
-    width: rect.width,
-    height: rect.height,
-    right: 'auto',
-    bottom: 'auto',
-  }
-}
-
 export function resolveDuoOverlayLayout(
   info: SystemInfo,
   kind: DuoPopupKind,
@@ -395,6 +384,8 @@ function numericStyleDiffers(a: CSSProperties, b: CSSProperties): boolean {
 /**
  * 两次布局之间是否值得做过渡。
  * none 在「整窗」时 popupStyle 为空（无固定定位），与收进 base 之间无法插值，直接跳变。
+ * 闭合和平铺状态均要求直接居中展示，不需要动效滑动到居中状态；
+ * 仅在由居中形态切换到微弯形态（to.hingeX !== null）时允许平滑过渡到左侧屏。
  */
 export function shouldAnimateDuoLayout(
   from: DuoOverlayLayoutResult,
@@ -403,14 +394,19 @@ export function shouldAnimateDuoLayout(
   if (!from.enabled || !to.enabled) return false
   const isFromMicroBent = from.hingeX !== null
   const isToMicroBent = to.hingeX !== null
-  // 只有微弯（halfOpen）与平铺（fullyOpen）互相切换时才在左侧屏幕和中间移动；闭合到平铺等其它情况直接居中落位
-  const isBetweenMicroBentAndFlat =
-    (isFromMicroBent && !isToMicroBent) || (!isFromMicroBent && isToMicroBent)
-  if (!isBetweenMicroBentAndFlat) return false
-  return (
-    rectDiffers(from.baseRect, to.baseRect) ||
-    numericStyleDiffers(from.popupStyle, to.popupStyle)
-  )
+
+  // 目标状态为闭合或平铺（居中展示）时，直接展示居中，不需要动效滑动到居中状态
+  if (!isToMicroBent) return false
+
+  // 仅在从居中状态进入微弯状态时过渡
+  if (!isFromMicroBent) {
+    return (
+      rectDiffers(from.baseRect, to.baseRect) ||
+      numericStyleDiffers(from.popupStyle, to.popupStyle)
+    )
+  }
+
+  return false
 }
 
 /**
@@ -438,19 +434,4 @@ export function interpolateDuoLayout(
   }
   const popupStyle: CSSProperties = { ...to.popupStyle, ...lerped }
   return { ...to, baseRect, popupStyle }
-}
-
-/**
- * 锚点类浮层避开折叠中缝：浮层 [start, start+size] 不骑在中缝上。
- */
-export function avoidHingeSpan(
-  start: number,
-  size: number,
-  hingeX: number,
-  anchorCenterX: number
-): { start: number; shift: number } {
-  const end = start + size
-  if (hingeX <= start || hingeX >= end) return { start, shift: 0 }
-  const next = anchorCenterX < hingeX ? hingeX - size : hingeX
-  return { start: next, shift: next - start }
 }

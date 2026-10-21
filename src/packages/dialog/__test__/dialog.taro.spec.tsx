@@ -322,8 +322,12 @@ describe('Dialog Taro Duo Adaptation', () => {
     // 闭合 -> 平铺展开：不应该做插值滑动动画，直接居中落位
     expect(shouldAnimateDuoLayout(closedLayout, fullyOpenLayout)).toBe(false)
 
-    // 微弯（halfOpen）与平铺（fullyOpen）互相切换：允许插值滑动过渡
-    expect(shouldAnimateDuoLayout(halfOpenLayout, fullyOpenLayout)).toBe(true)
+    // 闭合和平铺状态，都需要直接展示居中，不需要动效滑动到居中状态
+    expect(shouldAnimateDuoLayout(halfOpenLayout, fullyOpenLayout)).toBe(false)
+    expect(shouldAnimateDuoLayout(halfOpenLayout, closedLayout)).toBe(false)
+
+    // 进入微弯（halfOpen）左屏允许平滑过渡
     expect(shouldAnimateDuoLayout(fullyOpenLayout, halfOpenLayout)).toBe(true)
+    expect(shouldAnimateDuoLayout(closedLayout, halfOpenLayout)).toBe(true)
   })
 })

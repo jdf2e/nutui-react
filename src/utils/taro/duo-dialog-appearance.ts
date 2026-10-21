@@ -88,31 +88,10 @@ export function resolveDuoMaskColor(
   )
 }
 
-type AppearanceApi = (options: {
-  active: boolean
-  viewBackgroundColor?: string | null
-}) => unknown
-
 function getGlobalRoot(): any {
   if (typeof window !== 'undefined') return window
   if (typeof globalThis !== 'undefined') return globalThis
   return undefined
-}
-
-export function getAppearanceApi(): AppearanceApi | null {
-  const root = getGlobalRoot()
-  const taroObj = (Taro as any) || root?.Taro
-  const nav =
-    taroObj?.JDNavigationBar ||
-    root?.JDNavigationBar ||
-    taroObj?.jdNavigationBar
-  if (nav && typeof nav.setIOSDialogAppearanceSync === 'function') {
-    return (options) => nav.setIOSDialogAppearanceSync(options)
-  }
-  if (typeof taroObj?.setIOSDialogAppearanceSync === 'function') {
-    return (options) => taroObj.setIOSDialogAppearanceSync(options)
-  }
-  return null
 }
 
 /**
@@ -131,42 +110,20 @@ export function callIOSDialogAppearanceSync(
       root?.JDNavigationBar ||
       taroObj?.jdNavigationBar
 
-    if (nav && typeof nav.setIOSDialogAppearanceSync === 'function') {
+    const fn =
+      nav?.setIOSDialogAppearanceSync || taroObj?.setIOSDialogAppearanceSync
+    if (typeof fn === 'function') {
       const payload = active
         ? {
             active: true,
             viewBackgroundColor: viewBackgroundColor || '#000000B3',
           }
         : { active: false }
-      const res = nav.setIOSDialogAppearanceSync(payload)
-      duoDebugLog('setIOSDialogAppearanceSync called', {
-        payload,
-        result: res,
-      })
+      const res = fn.call(nav || taroObj, payload)
       return res !== false
     }
-
-    if (typeof taroObj?.setIOSDialogAppearanceSync === 'function') {
-      const payload = active
-        ? {
-            active: true,
-            viewBackgroundColor: viewBackgroundColor || '#000000B3',
-          }
-        : { active: false }
-      const res = taroObj.setIOSDialogAppearanceSync(payload)
-      duoDebugLog('Taro.setIOSDialogAppearanceSync called', {
-        payload,
-        result: res,
-      })
-      return res !== false
-    }
-
-    duoDebugLog('setIOSDialogAppearanceSync not found on host', {
-      hasTaro: !!taroObj,
-      hasNav: !!nav,
-    })
-  } catch (err) {
-    duoDebugLog('callIOSDialogAppearanceSync error', err)
+  } catch {
+    // 忽略异常
   }
   return false
 }
@@ -195,64 +152,6 @@ const shared: SharedAppearanceState =
   globalStore[SHARED_KEY] ||
   (globalStore[SHARED_KEY] = { stack: [], seq: 0, applied: false })
 const stack = shared.stack
-
-/** 运行时调试开关：业务/开发者在入口执行 globalThis.__JD_DUO_DIALOG_DEBUG__ = true 打开日志 */
-const DEBUG_KEY = '__JD_DUO_DIALOG_DEBUG__'
-
-function isDebugEnabled(): boolean {
-  try {
-    return !!(globalStore as Record<string, unknown>)[DEBUG_KEY]
-  } catch {
-    return false
-  }
-}
-
-/**
- * 调试日志环形缓冲 key：无法查看 console 的动态化容器环境下，
- * 可通过 globalThis.__JD_DUO_DIALOG_LOGS__ 读取最近若干条日志字符串。
- */
-const DEBUG_BUFFER_KEY = '__JD_DUO_DIALOG_LOGS__'
-const DEBUG_BUFFER_MAX = 50
-
-/** 将任意参数序列化为可展示字符串（兼容循环引用等异常场景） */
-function safeStringify(value: unknown): string {
-  if (typeof value === 'string') return value
-  try {
-    return JSON.stringify(value)
-  } catch {
-    return String(value)
-  }
-}
-
-/** 将一条日志追加到 globalThis 环形缓冲，无视 console 可用性 */
-function appendDebugBuffer(line: string): void {
-  try {
-    const store = globalThis as unknown as Record<string, string[] | undefined>
-    const buffer = store[DEBUG_BUFFER_KEY] || (store[DEBUG_BUFFER_KEY] = [])
-    buffer.push(`${new Date().toISOString()} ${line}`)
-    if (buffer.length > DEBUG_BUFFER_MAX) buffer.shift()
-  } catch {
-    // 环境不支持时忽略
-  }
-}
-
-/** 运行时调试日志：同时写入 globalThis 缓冲并输出至 console */
-export function duoDebugLog(...args: unknown[]): void {
-  appendDebugBuffer(`[DuoDialog] ${args.map(safeStringify).join(' ')}`)
-  if (typeof console !== 'undefined' && typeof console.log === 'function') {
-    // eslint-disable-next-line no-console
-    console.log('[DuoDialog]', ...args)
-  }
-}
-
-/** 程序化开启/关闭调试日志（等价于设置 globalThis 开关） */
-export function setDuoDialogAppearanceDebug(enabled: boolean): void {
-  try {
-    ;(globalThis as unknown as Record<string, boolean>)[DEBUG_KEY] = !!enabled
-  } catch {
-    // 环境不支持时忽略
-  }
-}
 
 /** 只在原生覆盖成功时返回 true；供布局区分业务页宽与含侧栏的全窗宽。 */
 export function isDuoDialogAppearanceActive(): boolean {
@@ -289,25 +188,18 @@ function flush() {
   try {
     if (top) {
       const ok = callIOSDialogAppearanceSync(true, top.color)
-      duoDebugLog('enable', {
-        stackDepth: stack.length,
-        color: top.color,
-        success: ok,
-      })
       if (ok) {
         shared.applied = true
       }
     } else if (shared.applied) {
       const ok = callIOSDialogAppearanceSync(false)
-      duoDebugLog('restore', { success: ok })
       if (ok) {
         shared.applied = false
         shared.restoreAttempts = 0
       }
     }
-  } catch (err) {
+  } catch {
     // 接口异常不影响弹层本身；恢复失败仍保留真实状态，并有界重试。
-    duoDebugLog('flush error', err)
   }
   scheduleRestoreRetry()
 }
@@ -325,20 +217,17 @@ export function acquireDuoDialogAppearance(
   shared.restoreAttempts = 0
   const entry: StackEntry = { id: ++shared.seq, color }
   stack.push(entry)
-  duoDebugLog('acquire', { stackDepth: stack.length, color })
   flush()
   return {
     update(next) {
       if (entry.color === next || !stack.includes(entry)) return
       entry.color = next
-      duoDebugLog('update color', { color: next })
       flush()
     },
     release() {
       const index = stack.indexOf(entry)
       if (index < 0) return
       stack.splice(index, 1)
-      duoDebugLog('release', { stackDepth: stack.length })
       flush()
     },
   }

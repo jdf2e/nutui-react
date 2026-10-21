@@ -47,7 +47,6 @@ const defaultProps = {
   onConfirm: () => {},
   onOverlayClick: () => true,
   duoOverlayScope: 'window',
-  // ariaLabel: 'dialog',
 } as TaroDialogProps
 
 export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
@@ -90,7 +89,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       segment,
       microBent,
       duoOverlayScope,
-      // ariaLabel,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))

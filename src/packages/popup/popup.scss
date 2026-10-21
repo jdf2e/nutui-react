@@ -160,7 +160,7 @@
       screen and (min-width: 768px),
       screen and (horizontal-viewport-segments: 2) {
       /* 双屏展开/横屏态下保持面板居中并限制最大宽度 653px，符合折叠屏设计规范 */
-      max-width: min(100vw, 653px);
+      max-width: 653px;
       left: 0;
       right: 0;
       margin-left: auto;
@@ -217,7 +217,7 @@
       screen and (min-width: 768px),
       screen and (horizontal-viewport-segments: 2) {
       /* 双屏展开/横屏态下保持单屏宽度并水平居中，限制最大宽度 653px */
-      max-width: min(100vw, 653px);
+      max-width: 653px;
       left: 0;
       right: 0;
       margin-left: auto;
@@ -230,12 +230,24 @@
   }
 
   &-duo {
-    &.nut-popup-bottom,
-    &.nut-popup-top {
+    &.nut-popup-center {
+      width: auto;
+    }
+
+    &.nut-popup-bottom {
+      width: auto;
+      max-width: none;
+      left: auto;
       right: auto;
-      margin-left: 0;
-      margin-right: 0;
-      max-width: min(100vw, 653px);
+    }
+
+    &.nut-popup-top {
+      width: auto;
+      max-width: none;
+    }
+
+    &.nut-popup-none {
+      max-width: none;
     }
   }
 
