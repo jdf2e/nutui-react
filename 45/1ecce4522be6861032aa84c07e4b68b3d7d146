@@ -1,0 +1,59 @@
+src/packages/dialog/dialog.taro.tsx
+  s_2a339e4fa895a6::t_3260e5aa374036 105-108,116-125
+  s_2a339e4fa895a6::t_e107c806d664ae 30
+src/types/spec/dialog/base.ts
+  s_2a339e4fa895a6::t_2aeb4bd34dd214 20
+  s_2a339e4fa895a6::t_353bdc041dd7f4 49
+src/packages/dialog/content.tsx
+  s_2a339e4fa895a6::t_d7533ec59d4b70 20-21
+  s_2a339e4fa895a6::t_6c0cbf1a24ae86 1-7,10,43-48,74,78
+src/utils/fold-screen.ts
+  s_2a339e4fa895a6::t_633fadfc19fc30 101-116
+  s_2a339e4fa895a6::t_68013dc4bcff6f 34,36,38-40,74-75,82
+  s_2a339e4fa895a6::t_a2ac7cb5171535 2,13,21,91
+  s_2a339e4fa895a6::t_faf09785931a9f 3,92
+  s_2a339e4fa895a6::t_5f6e806ba67a14 5
+  s_2a339e4fa895a6::t_cbd5f4452ca972 6-12,14-20,22-33,35,37,41-48,50-73,76-81,84-90,93-98
+src/packages/dialog/doc.en-US.md
+  s_2a339e4fa895a6::t_2ec7b4bb382b74 110-112
+src/packages/dialog/content.taro.tsx
+  s_2a339e4fa895a6::t_8c31e4b43b02fa 1-6,10,43-44,46-53,79-83
+  s_2a339e4fa895a6::t_8079acb2b13274 85
+  s_2a339e4fa895a6::t_a88aa4d8360704 45
+  s_2a339e4fa895a6::t_a7e56823736767 20-21
+src/packages/dialog/dialog.tsx
+  s_2a339e4fa895a6::t_d0c6d0b9e96349 96-102,104,109-120
+  s_2a339e4fa895a6::t_75cff3ac1818b0 95,103,105-108
+  s_2a339e4fa895a6::t_a5801b73b04463 5,19-23
+  s_2a339e4fa895a6::t_f2c9cf745a71dc 310
+src/packages/dialog/__test__/dialog.spec.tsx
+  s_2a339e4fa895a6::t_18e7d9fb51b0f5 149
+src/packages/dialog/doc.md
+  s_2a339e4fa895a6::t_bd3ca7738af80a 110-112
+src/packages/dialog/doc.zh-TW.md
+  s_2a339e4fa895a6::t_8e6239cd2a8151 110-112
+src/packages/dialog/demos/h5/demo1.tsx
+  s_2a339e4fa895a6::t_c12d60da094933 1,8-11,13-16
+  s_2a339e4fa895a6::t_95f12859da01a3 12
+src/packages/dialog/dialog.scss
+  s_2a339e4fa895a6::t_57d23fadcf480a 85,92-93
+src/packages/dialog/doc.taro.md
+  s_2a339e4fa895a6::t_901b78a53262ba 121
+  s_2a339e4fa895a6::t_b17b34b5270725 110-112
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "451ecce4522be6861032aa84c07e4b68b3d7d146",
+  "prompts": {},
+  "sessions": {
+    "s_2a339e4fa895a6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "274f4f33-ad8f-49e6-8b99-0267b3a4a1e4",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
