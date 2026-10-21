@@ -24,7 +24,7 @@ import { NavBar } from '@nutui/nutui-react'
 
 :::demo
 
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -34,7 +34,7 @@ import { NavBar } from '@nutui/nutui-react'
 
 :::demo
 
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -42,7 +42,7 @@ import { NavBar } from '@nutui/nutui-react'
 
 :::demo
 
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

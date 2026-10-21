@@ -2,7 +2,7 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 import { Image, Text, View } from '@tarojs/components'
 import { NavBar, Space } from '@nutui/nutui-react-taro'
-import { ArrowLeft, Close, More, Share } from '@nutui/icons-react-taro'
+import { ArrowLeftI, CloseI, MoreI, ShareI } from '@nutui/icons-react-taro'
 
 const subBarData = [
   {
@@ -40,13 +40,13 @@ const Demo1 = () => {
         }
         left={
           <View className="navbar-android-button">
-            <ArrowLeft />
-            <Close />
+            <ArrowLeftI />
+            <CloseI />
           </View>
         }
         right={
           <View className="navbar-android-button">
-            <Share onClick={() => Taro.showToast({ title: 'icon' })} />
+            <ShareI onClick={() => Taro.showToast({ title: 'icon' })} />
           </View>
         }
         zIndex={0}
@@ -54,12 +54,12 @@ const Demo1 = () => {
       <NavBar
         back={
           <View className="navbar-android-button">
-            <ArrowLeft />
+            <ArrowLeftI />
           </View>
         }
         right={
           <View className="navbar-android-button">
-            <Share onClick={() => Taro.showToast({ title: 'icon' })} />
+            <ShareI onClick={() => Taro.showToast({ title: 'icon' })} />
           </View>
         }
         onBackClick={() => Taro.showToast({ title: '返回' })}
@@ -75,7 +75,7 @@ const Demo1 = () => {
         right={
           <View className="navbar-android-button">
             <Text>清除未读</Text>
-            <More onClick={() => Taro.showToast({ title: 'icon' })} />
+            <MoreI onClick={() => Taro.showToast({ title: 'icon' })} />
           </View>
         }
         onBackClick={() => Taro.showToast({ title: '返回' })}

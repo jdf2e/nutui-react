@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavBar, Toast, Space } from '@nutui/nutui-react'
-import { ArrowLeft, Close, More, Share } from '@nutui/icons-react'
+import { ArrowLeftI, CloseI, MoreI, ShareI } from '@nutui/icons-react'
 
 const subBarData = [
   {
@@ -38,13 +38,13 @@ const Demo1 = () => {
         }
         left={
           <div className="navbar-android-button">
-            <ArrowLeft />
-            <Close />
+            <ArrowLeftI />
+            <CloseI />
           </div>
         }
         right={
           <div className="navbar-android-button">
-            <Share onClick={(e) => Toast.show('icon')} />
+            <ShareI onClick={(e) => Toast.show('icon')} />
           </div>
         }
         zIndex={0}
@@ -52,12 +52,12 @@ const Demo1 = () => {
       <NavBar
         back={
           <div className="navbar-android-button">
-            <ArrowLeft />
+            <ArrowLeftI />
           </div>
         }
         right={
           <div className="navbar-android-button">
-            <Share onClick={(e) => Toast.show('icon')} />
+            <ShareI onClick={(e) => Toast.show('icon')} />
           </div>
         }
         onBackClick={(e) => Toast.show('返回')}
@@ -73,7 +73,7 @@ const Demo1 = () => {
         right={
           <div className="navbar-android-button">
             <span>清除未读</span>
-            <More onClick={(e) => Toast.show('icon')} />
+            <MoreI onClick={(e) => Toast.show('icon')} />
           </div>
         }
         onBackClick={(e) => Toast.show('返回')}

@@ -2,27 +2,25 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
 import { NavBar, TabPane, Tabs, Space } from '@nutui/nutui-react-taro'
-import { ArrowLeft, More } from '@nutui/icons-react-taro'
-import { MaterialView } from '../../../materialview/materialview.taro'
+import { ArrowLeftI, MoreI } from '@nutui/icons-react-taro'
 
-const Demo6 = () => {
+const Demo2 = () => {
   const [tab1value, setTab1value] = useState<string | number>('0')
   return (
     <Space direction="vertical">
       <NavBar
         back={
-          <MaterialView className="navbar-iOS26-button" scene="top-solid">
-            <ArrowLeft />
-          </MaterialView>
+          <View className="navbar-android-button">
+            <ArrowLeftI />
+          </View>
         }
         right={
-          <MaterialView className="navbar-iOS26-button" scene="top-solid">
+          <View className="navbar-android-button">
             <Text onClick={() => Taro.showToast({ title: '编辑' })}>编辑</Text>
-            <More onClick={() => Taro.showToast({ title: 'icon' })} />
-          </MaterialView>
+            <MoreI onClick={() => Taro.showToast({ title: 'icon' })} />
+          </View>
         }
         onBackClick={() => Taro.showToast({ title: '返回' })}
-        className="navbar-iOS26"
         zIndex={0}
       >
         <View style={{ width: '100%' }}>
@@ -46,4 +44,4 @@ const Demo6 = () => {
     </Space>
   )
 }
-export default Demo6
+export default Demo2

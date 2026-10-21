@@ -2,9 +2,9 @@ import React from 'react'
 import './demo.scss'
 import { useTranslate } from '@/sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
-import Demo6 from './demos/h5/demo6'
 
 const NavBarDemo = () => {
   const [translated] = useTranslate({
@@ -34,12 +34,12 @@ const NavBarDemo = () => {
         <h3>{translated.cat1}</h3>
         <Demo1 />
         <h3>{translated.cat3}</h3>
-        <Demo3 />
+        <Demo2 />
         <h2>{translated.group2}</h2>
         <h3>{translated.cat1}</h3>
-        <Demo4 />
+        <Demo3 />
         <h3>{translated.cat3}</h3>
-        <Demo6 />
+        <Demo4 />
       </div>
     </>
   )

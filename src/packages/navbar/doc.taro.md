@@ -24,7 +24,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo3.tsx'></CodeBlock>
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -34,7 +34,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -42,7 +42,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo6.tsx'></CodeBlock>
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
