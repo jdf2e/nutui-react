@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
 import { Image, View } from '@tarojs/components'
-import { Cart, Home, Message, Search, User } from '@nutui/icons-react-taro'
+import {
+  CartF,
+  CartI,
+  HomeF,
+  HomeI,
+  MessageF,
+  MessageI,
+  SearchF,
+  SearchI,
+  UserF,
+  UserI,
+} from '@nutui/icons-react-taro'
 import { Tabbar } from '@nutui/nutui-react-taro'
 import { addonBeforeDarkImage, addonBeforeImage } from '../addon-before-assets'
 import '../addon-before-demo.scss'
@@ -63,11 +74,26 @@ const Demo11 = () => {
           </View>
         }
       >
-        <Tabbar.Item title="首页" icon={<Home />} />
-        <Tabbar.Item title="消息" icon={<Message />} />
-        <Tabbar.Item title="发现" icon={<Search />} />
-        <Tabbar.Item title="购物车" icon={<Cart />} />
-        <Tabbar.Item title="我的" icon={<User />} />
+        <Tabbar.Item
+          title="首页"
+          icon={(active: boolean) => (active ? <HomeF /> : <HomeI />)}
+        />
+        <Tabbar.Item
+          title="消息"
+          icon={(active: boolean) => (active ? <MessageF /> : <MessageI />)}
+        />
+        <Tabbar.Item
+          title="发现"
+          icon={(active: boolean) => (active ? <SearchF /> : <SearchI />)}
+        />
+        <Tabbar.Item
+          title="购物车"
+          icon={(active: boolean) => (active ? <CartF /> : <CartI />)}
+        />
+        <Tabbar.Item
+          title="我的"
+          icon={(active: boolean) => (active ? <UserF /> : <UserI />)}
+        />
       </Tabbar>
     </View>
   )

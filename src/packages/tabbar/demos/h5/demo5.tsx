@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tabbar, Image } from '@nutui/nutui-react'
-import { Cart, Hi, Home, User } from '@nutui/icons-react'
+import { CartF, CartI, HiI, HomeI, UserF, UserI } from '@nutui/icons-react'
 import '../badge-demo.scss'
 
 const Demo = () => {
@@ -16,14 +16,14 @@ const Demo = () => {
           active ? (
             <Image src="https://storage.360buyimg.com/imgtools/ba40719add-025fcd20-0618-11f0-8bdb-aba55e067ea2.png" />
           ) : (
-            <Home />
+            <HomeI />
           )
         }
         dot
       />
       <Tabbar.Item
         className="image-when-inactive"
-        icon={(active: boolean) => (active ? <Hi /> : <Image src={image} />)}
+        icon={(active: boolean) => (active ? <HiI /> : <Image src={image} />)}
         title={(active: boolean) => (active ? '逛' : '')}
         value={8}
       />
@@ -33,8 +33,14 @@ const Demo = () => {
         icon={<Image src={image} />}
         value="最多四字"
       />
-      <Tabbar.Item title="购物车" icon={<Cart />} />
-      <Tabbar.Item title="我的" icon={<User />} />
+      <Tabbar.Item
+        title="购物车"
+        icon={(active: boolean) => (active ? <CartF /> : <CartI />)}
+      />
+      <Tabbar.Item
+        title="我的"
+        icon={(active: boolean) => (active ? <UserF /> : <UserI />)}
+      />
     </Tabbar>
   )
 }
