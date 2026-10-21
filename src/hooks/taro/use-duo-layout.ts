@@ -1,4 +1,11 @@
-import { CSSProperties, useCallback, useEffect, useState } from 'react'
+import {
+  CSSProperties,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import Taro from '@tarojs/taro'
 
 export type DuoPopupKind = 'center' | 'bottom' | 'top' | 'none'
@@ -7,6 +14,8 @@ export type DuoOverlayScope = 'window' | 'base'
 export interface DuoLayoutOptions {
   overlayScope?: DuoOverlayScope
   centerMaxWidth?: number | null
+  /** 从平铺切换到微弯时，居中保持时长（ms），默认 250ms */
+  holdCenterDuration?: number
 }
 
 export interface DuoRect {
@@ -29,10 +38,16 @@ export interface DuoLayoutResult {
   hingeX: number | null
   /** 半折叠横屏下的左半屏基准矩形 */
   baseRect: DuoRect
+  /** 视口全宽 */
+  windowWidth: number
+  /** 视口全高 */
+  windowHeight: number
   /** Duo 激活时应附加到内容浮层的行内样式；未激活时为空对象 {} */
   contentStyle: CSSProperties
   /** 当 overlayScope === 'base' 时应用于蒙层的半屏样式；未激活时为空对象 {} */
   baseMaskStyle: CSSProperties
+  /** 从平铺切换到微弯时是否处于「居中驻留」阶段（先保持居中，再滑向左侧） */
+  isHoldingCenter: boolean
 }
 
 const emptyRect: DuoRect = { left: 0, top: 0, width: 0, height: 0 }
@@ -93,8 +108,11 @@ export function getDuoSystemLayout(
         isLandscape,
         hingeX: null,
         baseRect: { left: 0, top: 0, width: windowWidth, height: windowHeight },
+        windowWidth,
+        windowHeight,
         contentStyle: {},
         baseMaskStyle: {},
+        isHoldingCenter: false,
       }
     }
 
@@ -152,8 +170,11 @@ export function getDuoSystemLayout(
       isLandscape,
       hingeX,
       baseRect,
+      windowWidth,
+      windowHeight,
       contentStyle,
       baseMaskStyle,
+      isHoldingCenter: false,
     }
   } catch {
     return {
@@ -162,8 +183,11 @@ export function getDuoSystemLayout(
       isLandscape: false,
       hingeX: null,
       baseRect: emptyRect,
+      windowWidth: 0,
+      windowHeight: 0,
       contentStyle: {},
       baseMaskStyle: {},
+      isHoldingCenter: false,
     }
   }
 }
@@ -181,8 +205,9 @@ export function useDuoLayout(
 ): DuoLayoutResult {
   const overlayScope = options.overlayScope
   const centerMaxWidth = options.centerMaxWidth
+  const holdCenterDuration = options.holdCenterDuration ?? 250
 
-  const [layout, setLayout] = useState<DuoLayoutResult>(() =>
+  const [rawLayout, setRawLayout] = useState<DuoLayoutResult>(() =>
     active
       ? getDuoSystemLayout(kind, { overlayScope, centerMaxWidth })
       : {
@@ -191,15 +216,55 @@ export function useDuoLayout(
           isLandscape: false,
           hingeX: null,
           baseRect: emptyRect,
+          windowWidth: 0,
+          windowHeight: 0,
           contentStyle: {},
           baseMaskStyle: {},
+          isHoldingCenter: false,
         }
   )
+
+  const [isHoldingCenter, setIsHoldingCenter] = useState(false)
+  const prevFoldStateRef = useRef<string | undefined>(rawLayout.foldState)
+  const holdTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const update = useCallback(() => {
     if (!active) return
     const next = getDuoSystemLayout(kind, { overlayScope, centerMaxWidth })
-    setLayout((prev) => {
+
+    const prevFold = prevFoldStateRef.current
+    const nextFold = next.foldState
+
+    // 探测是否从平铺（fullyOpen / flat）切换到微弯（halfOpen / folded）
+    const isFromFlatToMicroBent =
+      (prevFold === 'fullyOpen' || prevFold === 'flat') &&
+      (nextFold === 'halfOpen' || nextFold === 'folded') &&
+      next.enabled
+
+    if (isFromFlatToMicroBent) {
+      setIsHoldingCenter(true)
+      if (holdTimerRef.current) {
+        clearTimeout(holdTimerRef.current)
+      }
+      holdTimerRef.current = setTimeout(() => {
+        setIsHoldingCenter(false)
+        holdTimerRef.current = null
+      }, holdCenterDuration)
+    } else if (
+      nextFold === 'fullyOpen' ||
+      nextFold === 'flat' ||
+      !next.enabled
+    ) {
+      if (holdTimerRef.current) {
+        clearTimeout(holdTimerRef.current)
+        holdTimerRef.current = null
+      }
+      setIsHoldingCenter(false)
+    }
+
+    prevFoldStateRef.current = nextFold
+
+    setRawLayout((prev) => {
       if (
         prev.enabled === next.enabled &&
         prev.isLandscape === next.isLandscape &&
@@ -216,7 +281,7 @@ export function useDuoLayout(
       }
       return next
     })
-  }, [active, kind, overlayScope, centerMaxWidth])
+  }, [active, kind, overlayScope, centerMaxWidth, holdCenterDuration])
 
   useEffect(() => {
     if (!active) return
@@ -241,7 +306,7 @@ export function useDuoLayout(
 
     // 活跃期间仅在折叠屏设备上轮询探测微弯折痕变化（普通设备依靠 resize 事件即可，避免空转消耗）
     let timer: ReturnType<typeof setInterval> | null = null
-    if (layout.isDuo) {
+    if (rawLayout.isDuo) {
       timer = setInterval(() => {
         update()
       }, 300)
@@ -254,8 +319,55 @@ export function useDuoLayout(
       if (timer) {
         clearInterval(timer)
       }
+      if (holdTimerRef.current) {
+        clearTimeout(holdTimerRef.current)
+        holdTimerRef.current = null
+      }
     }
-  }, [active, update, layout.isDuo])
+  }, [active, update, rawLayout.isDuo])
+
+  // 当处于平铺到微弯的居中保持阶段时，样式先保持居中
+  const layout = useMemo<DuoLayoutResult>(() => {
+    if (!rawLayout.enabled || !isHoldingCenter) {
+      return {
+        ...rawLayout,
+        isHoldingCenter: false,
+      }
+    }
+
+    const resolvedKind = kind || 'center'
+    const fullWidth = rawLayout.windowWidth || rawLayout.baseRect.width * 2
+    let contentStyle: CSSProperties = { ...rawLayout.contentStyle }
+
+    if (resolvedKind === 'center') {
+      const fullCenterX = Math.floor(fullWidth / 2)
+      contentStyle = {
+        ...contentStyle,
+        left: `${fullCenterX}px`,
+        right: 'auto',
+        transform: 'translate(-50%, -50%)',
+        transition: 'left 0.45s cubic-bezier(0.25, 1, 0.5, 1)',
+      }
+    } else if (resolvedKind === 'bottom' || resolvedKind === 'top') {
+      const sheetWidth =
+        Number(rawLayout.contentStyle.width) ||
+        Math.min(rawLayout.baseRect.width, 653)
+      const fullLeft = Math.floor((fullWidth - sheetWidth) / 2)
+      contentStyle = {
+        ...contentStyle,
+        left: `${fullLeft}px`,
+        right: 'auto',
+        transition: 'left 0.45s cubic-bezier(0.25, 1, 0.5, 1)',
+      }
+    }
+
+    return {
+      ...rawLayout,
+      isHoldingCenter: true,
+      contentStyle,
+      baseMaskStyle: {}, // 居中保持期间蒙层保持全屏，暂不收缩到半屏
+    }
+  }, [rawLayout, isHoldingCenter, kind])
 
   return layout
 }

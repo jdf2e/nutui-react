@@ -189,11 +189,19 @@ export const Popup: FunctionComponent<
           position === 'center' && centerBase === 'full',
         [`${classPrefix}-center-segment-right`]:
           position === 'center' && segment === 'right',
-        [`${classPrefix}-duo`]: duoLayout.enabled,
+        [`${classPrefix}-duo`]: duoLayout.enabled && !duoLayout.isHoldingCenter,
       },
       className
     )
-  }, [round, position, centerBase, segment, duoLayout.enabled, className])
+  }, [
+    round,
+    position,
+    centerBase,
+    segment,
+    duoLayout.enabled,
+    duoLayout.isHoldingCenter,
+    className,
+  ])
 
   const [popupHeight, setPopupHeight] = useState('')
   const [topBottom, setTopBottom] = useState('')

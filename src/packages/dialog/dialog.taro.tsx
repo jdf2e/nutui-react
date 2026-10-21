@@ -102,11 +102,13 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     centerMaxWidth: null,
   })
 
-  const effectiveMicroBent = microBent ?? duoLayout.enabled
+  const effectiveMicroBent = duoLayout.isHoldingCenter
+    ? false
+    : (microBent ?? duoLayout.enabled)
   let effectiveSegment = segment || 'center'
   if (segment && segment !== 'center') {
     effectiveSegment = segment
-  } else if (duoLayout.enabled) {
+  } else if (duoLayout.enabled && !duoLayout.isHoldingCenter) {
     effectiveSegment = 'left'
   }
 

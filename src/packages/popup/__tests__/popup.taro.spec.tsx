@@ -1,6 +1,6 @@
 /* eslint-disable global-require, @typescript-eslint/no-var-requires */
 import * as React from 'react'
-import { render } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Taro from '@tarojs/taro'
 import { Popup } from '../popup.taro'
@@ -100,5 +100,50 @@ describe('Popup Taro Component & Duo Adaptation', () => {
     expect(popupEle).toBeInTheDocument()
     expect(popupEle.className).toContain('nut-popup-duo')
     expect(popupEle.style.left).toBe('237.5px')
+  })
+
+  test('should hold center first and then slide to left when transitioning from fullyOpen to halfOpen', () => {
+    vi.useFakeTimers()
+    ;(Taro as any).__setMockSystemInfo({
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+      windowWidth: 867,
+      windowHeight: 669,
+      screenWidth: 951,
+    })
+
+    const { container } = render(
+      <Popup visible position="center">
+        Duo 动态居中弹层
+      </Popup>
+    )
+
+    const popupEle = container.querySelector('.nut-popup') as HTMLElement
+    expect(popupEle).toBeInTheDocument()
+    expect(popupEle.className).not.toContain('nut-popup-duo')
+
+    // Bending device into halfOpen
+    ;(Taro as any).__setMockSystemInfo({
+      foldState: 'halfOpen',
+    })
+
+    // Advance 300ms: polling detects posture change, enters stage 1 (hold center)
+    act(() => {
+      vi.advanceTimersByTime(300)
+    })
+
+    // Stage 1: held centered (full width center)
+    expect(popupEle.className).not.toContain('nut-popup-duo')
+    expect(popupEle.style.left).toBe('433px')
+
+    // Stage 2: advance past 250ms hold duration -> slides to left
+    act(() => {
+      vi.advanceTimersByTime(300)
+    })
+
+    expect(popupEle.className).toContain('nut-popup-duo')
+    expect(popupEle.style.left).toBe('237.5px')
+
+    vi.useRealTimers()
   })
 })

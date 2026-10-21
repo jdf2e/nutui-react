@@ -163,7 +163,16 @@ describe('Dialog Taro Duo Adaptation', () => {
       foldState: 'halfOpen',
     })
 
-    // Advance timer past the 250ms polling interval
+    // Advance timer past the 300ms polling interval: posture detected, first holds center
+    act(() => {
+      vi.advanceTimersByTime(300)
+    })
+
+    // Stage 1: initially holds centered
+    expect(outerEle.className).toContain('nut-dialog-outer-segment-center')
+    expect(outerEle.className).not.toContain('nut-dialog-outer-micro-bent')
+
+    // Stage 2: advance past the 250ms center hold duration -> slides to left
     act(() => {
       vi.advanceTimersByTime(300)
     })
