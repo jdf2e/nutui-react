@@ -18,6 +18,7 @@ import {
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { mergeProps } from '@/utils/merge-props'
 import { harmony } from '@/utils/taro/platform'
+import { useFoldSegment } from './use-fold-segment'
 
 const defaultProps = {
   ...defaultOverlayProps,
@@ -85,12 +86,14 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       onCancel,
       onConfirm,
       onOverlayClick,
+      segment,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const resolvedSegment = useFoldSegment(segment)
 
   useCustomEvent(
     id as string,
@@ -291,6 +294,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
+          segment={resolvedSegment}
         >
           {content || children}
         </Content>

@@ -107,6 +107,9 @@ import { Dialog } from '@nutui/nutui-react-taro'
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
+| segment | 折叠屏展示位置：`left` / `right` / `center` 为固定位置；`auto` 在 iOS Hybrid 下跟随铰链姿态自动适配（微弯居左，展平居中） | `'left' \| 'right' \| 'center' \| 'auto'` | `auto` |
+
+> 折叠屏自动适配依赖容器提供的 `JDHybridScreenPlugin`（`listenFoldScreenChange` / `onFoldScreenChanged`）。显式设置 `segment` 为 `left` / `right` / `center` 时，不会被姿态变化覆盖。
 
 ### Methods
 
@@ -115,7 +118,7 @@ import { Dialog } from '@nutui/nutui-react-taro'
 | Dialog.open | 打开 Dialog | (id: string, options: DialogOptions) => void |
 | Dialog.close | 关闭 Dialog | (id: string) => void |
 
-DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, footer, confirmText, cancelText, overlay, closeOnOverlayClick, hideConfirmButton, hideCancelButton, disableConfirmButton, footerDirection, lockScroll, beforeCancel, beforeClose, onOverlayClick,
+DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, footer, confirmText, cancelText, overlay, closeOnOverlayClick, hideConfirmButton, hideCancelButton, disableConfirmButton, footerDirection, lockScroll, beforeCancel, beforeClose, onOverlayClick, segment,
 
 ## 主题定制
 

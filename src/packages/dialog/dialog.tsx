@@ -15,6 +15,7 @@ import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import { useConfig } from '@/packages/configprovider'
 import { WebDialogProps, DialogReturnProps, DialogComponent } from '@/types'
 import { mergeProps } from '@/utils/merge-props'
+import { useFoldSegment } from './use-fold-segment'
 
 const defaultProps = {
   ...defaultOverlayProps,
@@ -81,10 +82,12 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     onCancel,
     onConfirm,
     onOverlayClick,
+    segment,
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const resolvedSegment = useFoldSegment(segment)
 
   const renderFooter = () => {
     if (footer === null) return ''
@@ -274,6 +277,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
+          segment={resolvedSegment}
         >
           {content || children}
         </Content>
