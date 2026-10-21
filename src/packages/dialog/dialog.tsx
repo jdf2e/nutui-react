@@ -289,7 +289,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     <div style={{ display: visible ? 'block' : 'none' }}>
       {overlay && (
         <Overlay
-          portal={null}
           zIndex={zIndex}
           visible={visible}
           style={overlayStyle}

@@ -101,7 +101,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       setParams({ ...options, visible: status })
     }
   )
-
   const refObject = useLockScrollTaro(!!(visible && lockScroll))
   const renderFooter = () => {
     if (footer === null) return ''
