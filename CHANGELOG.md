@@ -1,3 +1,14 @@
+# v4.0.0-beta.11
+
+`2026-10-21`
+
+- :sparkles: feat(ActionSheet): 更新文档和示例，修改弹出位置描述及添加横向滚动功能 (#3553)
+- :sparkles: feat(Tag): 更新primary背景为 #ff0f23 (#3554)
+- :sparkles: feat(input): 优化demo
+- :bug: fix(Searchbar): 修复AI搜索demo样式
+- :bug: fix: 更新icon版本解决popover箭头异常问题
+- 🏡 chore: 更新MaterialView组件配置
+
 # v4.0.0-beta.10
 
 `2026-10-16`
