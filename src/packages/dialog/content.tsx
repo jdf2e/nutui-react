@@ -59,11 +59,9 @@ export const Content: FunctionComponent<
     <div
       className={classNames(
         `${classPrefix}-outer`,
-        {
-          [`${classPrefix}-outer-segment-left`]: segment === 'left',
-          [`${classPrefix}-outer-segment-right`]: segment === 'right',
-          [`${classPrefix}-outer-segment-center`]: segment === 'center',
-        },
+        segment &&
+          segment !== 'auto' &&
+          `${classPrefix}-outer-segment-${segment}`,
         className
       )}
       style={style}
