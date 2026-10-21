@@ -1,0 +1,19 @@
+src/config.json
+  s_72fedea1debe28::t_32557b96d7090b 1310-1323
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "583e39ca63eb9739e88c4d6bafa379daf8667b83",
+  "prompts": {},
+  "sessions": {
+    "s_72fedea1debe28": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "88799f1a-faab-46d1-9757-881cbbb166c7",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
