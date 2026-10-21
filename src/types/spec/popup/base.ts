@@ -23,7 +23,7 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   overlay: boolean
   round: boolean
   centerBase?: 'safeArea' | 'full'
-  segment?: 'left' | 'right' | 'auto'
+  segment?: 'left' | 'right' | 'center' | 'full' | 'auto'
   resizable: boolean
   minHeight: string
   onOpen: () => void

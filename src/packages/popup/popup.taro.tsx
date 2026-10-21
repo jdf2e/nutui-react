@@ -300,7 +300,7 @@ export const Popup: FunctionComponent<
         {React.isValidElement(closeIcon) ? (
           closeIcon
         ) : (
-          <Close {...({ ariaHidden: true } as any)} />
+          <Close {...({ 'aria-hidden': true } as any)} />
         )}
       </View>
     )

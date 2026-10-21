@@ -266,9 +266,9 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     })
     const systemIcon =
       closeIconPosition !== 'bottom' ? (
-        <Close {...({ ariaHidden: true } as any)} />
+        <Close {...({ 'aria-hidden': true } as any)} />
       ) : (
-        <Failure {...({ ariaHidden: true } as any)} />
+        <Failure {...({ 'aria-hidden': true } as any)} />
       )
     return (
       <View

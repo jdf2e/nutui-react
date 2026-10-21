@@ -207,7 +207,10 @@ export function useDuoLayout(
         prev.hingeX === next.hingeX &&
         prev.baseRect.width === next.baseRect.width &&
         prev.baseRect.height === next.baseRect.height &&
-        JSON.stringify(prev.contentStyle) === JSON.stringify(next.contentStyle)
+        JSON.stringify(prev.contentStyle) ===
+          JSON.stringify(next.contentStyle) &&
+        JSON.stringify(prev.baseMaskStyle) ===
+          JSON.stringify(next.baseMaskStyle)
       ) {
         return prev
       }
@@ -236,18 +239,23 @@ export function useDuoLayout(
       })
     }
 
-    // 活跃期间轮询探测折叠角度变化（因微弯与平铺切换时 windowWidth/Height 可能不产生 resize 事件）
-    const timer = setInterval(() => {
-      update()
-    }, 250)
+    // 活跃期间仅在折叠屏设备上轮询探测微弯折痕变化（普通设备依靠 resize 事件即可，避免空转消耗）
+    let timer: ReturnType<typeof setInterval> | null = null
+    if (layout.isDuo) {
+      timer = setInterval(() => {
+        update()
+      }, 300)
+    }
 
     return () => {
       Taro.offWindowResize?.(handleResize)
       // @ts-ignore
       Taro.offDeviceOrientationChange?.(handleResize)
-      clearInterval(timer)
+      if (timer) {
+        clearInterval(timer)
+      }
     }
-  }, [active, update])
+  }, [active, update, layout.isDuo])
 
   return layout
 }
