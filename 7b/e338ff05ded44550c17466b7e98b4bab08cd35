@@ -1,0 +1,20 @@
+src/packages/dialog/dialog.scss
+  s_2a339e4fa895a6::t_4de3112b85ae1f 24-27,41,43-44,48-49,53-55,59,66
+  s_2a339e4fa895a6::t_ff79fe34a64162 249-265
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "7be338ff05ded44550c17466b7e98b4bab08cd35",
+  "prompts": {},
+  "sessions": {
+    "s_2a339e4fa895a6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "274f4f33-ad8f-49e6-8b99-0267b3a4a1e4",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
