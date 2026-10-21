@@ -11,8 +11,7 @@ export const defaultContentProps = {
   close: '',
   footerDirection: 'horizontal',
   onClick: () => {},
-  // auto = 跟随折叠屏自动适配
-  segment: 'auto' as const,
+  segment: 'auto',
 }
 
 export const Content: FunctionComponent<
@@ -34,7 +33,6 @@ export const Content: FunctionComponent<
   } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
-  const isLeft = segment === 'left'
 
   const renderHeader = () => {
     return title && <View className={`${classPrefix}-header`}>{title}</View>
@@ -63,7 +61,7 @@ export const Content: FunctionComponent<
       className={classNames(
         `${classPrefix}-outer`,
         {
-          [`${classPrefix}-outer-segment-left`]: isLeft,
+          [`${classPrefix}-outer-segment-left`]: segment === 'left',
           [`${classPrefix}-outer-segment-right`]: segment === 'right',
           [`${classPrefix}-outer-segment-center`]: segment === 'center',
         },
