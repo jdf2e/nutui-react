@@ -40,10 +40,14 @@ jobs:
         if: contains( env.COMMIT_MESSAGE , '-beta')
         run: echo "RELEASE_TAG=beta" >> $GITHUB_ENV
 #
+      # Skip Node/pnpm setup when not a beta release commit — otherwise
+      # setup-node cache: pnpm fails in Post Run (store path never created).
       - name: Install pnpm
+        if: env.ABORT != 'true'
         run: npm i -g pnpm@10
 
       - uses: actions/setup-node@v7
+        if: env.ABORT != 'true'
         with:
           registry-url: 'https://registry.npmjs.org'
           # npm 12 requires Node ^22.22.2 || ^24.15.0 || >=26
