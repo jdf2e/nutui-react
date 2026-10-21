@@ -1,0 +1,21 @@
+src/packages/dialog/content.tsx
+  s_2a339e4fa895a6::t_e058dd41bed45e 1
+src/packages/dialog/content.taro.tsx
+  s_2a339e4fa895a6::t_8805460ddd06ec 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "6cc0b416da14fb6c992608886b95c701d49068bf",
+  "prompts": {},
+  "sessions": {
+    "s_2a339e4fa895a6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "274f4f33-ad8f-49e6-8b99-0267b3a4a1e4",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
