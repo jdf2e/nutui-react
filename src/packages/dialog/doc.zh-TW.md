@@ -107,6 +107,9 @@ import { Dialog } from '@nutui/nutui-react'
 | onClose | 關閉回調，任何情況關閉彈窗都會觸發 | `() => void` | `-` |
 | onClick | 點擊自身回調 | `() => void` | `-` |
 | onOverlayClick | 點擊蒙層觸發 | `() => void` | `-` |
+| segment | 折疊屏展示位置：`left` / `right` / `center` 為固定位置；`auto` 在 iOS Hybrid 下跟隨鉸鏈姿態自動適配（微彎居左，展平居中） | `'left' \| 'right' \| 'center' \| 'auto'` | `auto` |
+
+> 折疊屏自動適配依賴容器提供的 `JDHybridScreenPlugin`（`listenFoldScreenChange` / `onFoldScreenChanged`）。顯式設置 `segment` 為 `left` / `right` / `center` 時，不會被姿態變化覆蓋。
 
 對於**指令式**創建出來的 Dialog，**並不會感知父組件的重渲染和其中 state 的更新**，因此下面這種寫法是錯誤的：
 

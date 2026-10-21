@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useState, MouseEvent } from 'react'
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  MouseEvent,
+} from 'react'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
@@ -18,6 +23,11 @@ import {
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { mergeProps } from '@/utils/merge-props'
 import { harmony } from '@/utils/taro/platform'
+import {
+  resolveSegmentByFold,
+  subscribeFoldScreenChange,
+  getLastFoldScreenInfo,
+} from '@/utils/fold-screen'
 
 const defaultProps = {
   ...defaultOverlayProps,
@@ -85,12 +95,17 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       onCancel,
       onConfirm,
       onOverlayClick,
+      segment,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  // 折叠屏用 segment 驱动；显式 segment 时不覆盖
+  const [foldSegment, setFoldSegment] = useState<
+    'left' | 'center' | undefined
+  >()
 
   useCustomEvent(
     id as string,
@@ -98,6 +113,29 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       setParams({ ...options, visible: status })
     }
   )
+
+  useEffect(() => {
+    const userLocked =
+      segment === 'left' || segment === 'right' || segment === 'center'
+    if (userLocked) return
+
+    const applyFoldInfo = (
+      info: Parameters<typeof resolveSegmentByFold>[0]
+    ) => {
+      setFoldSegment(resolveSegmentByFold(info))
+    }
+
+    const cached = getLastFoldScreenInfo()
+    if (cached) applyFoldInfo(cached)
+
+    return subscribeFoldScreenChange(applyFoldInfo)
+  }, [segment])
+
+  const resolvedSegment =
+    segment === 'left' || segment === 'right' || segment === 'center'
+      ? segment
+      : foldSegment
+
   const refObject = useLockScrollTaro(!!(visible && lockScroll))
   const renderFooter = () => {
     if (footer === null) return ''
@@ -291,6 +329,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
+          segment={resolvedSegment}
         >
           {content || children}
         </Content>

@@ -19,18 +19,171 @@
     position: fixed;
     max-height: 100%;
     background-color: $dialog-background;
+    box-sizing: border-box;
     /* #ifndef dynamic*/
     transition:
-      transform 0.2s,
-      -webkit-transform 0.2s;
+      left 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+      transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+      -webkit-transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+      filter 0.25s ease-out,
+      max-width 0.45s cubic-bezier(0.25, 1, 0.5, 1);
     /* #endif */
     -webkit-overflow-scrolling: touch;
     top: 50%;
+    /* 闭合外屏时 / 展开平整内屏时 / 默认：纯正全屏居中展示 */
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    max-width: calc(
+      100vw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
+        32px
+    );
     border-radius: $dialog-border-radius;
     animation-duration: 0.3s;
+
+    /* 内横屏平整展开时：严格居中展示 */
+    @media (horizontal-viewport-segments: 2) {
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      max-width: calc(
+        100vw - env(safe-area-inset-left, 0px) - env(
+            safe-area-inset-right,
+            0px
+          ) -
+          32px
+      );
+    }
+
+    /* 竖屏模式（包括外屏竖屏、内屏竖屏）：严格居中展示 */
+    @media (orientation: portrait) {
+      &:not(.nut-dialog-segment-left):not(.nut-dialog-segment-right):not(
+          .nut-dialog-outer-segment-left
+        ):not(.nut-dialog-outer-segment-right) {
+        left: 50% !important;
+        -webkit-transform: translate(-50%, -50%) !important;
+        transform: translate(-50%, -50%) !important;
+      }
+    }
+
+    /* 横屏微弯时：居左屏展示，避开中轴折痕与安全区 (W3C 标准规范) */
+    @media (device-posture: folded) and (orientation: landscape),
+      (device-posture: folded) and (horizontal-viewport-segments: 2) {
+      left: 25vw !important;
+      left: calc(
+        env(safe-area-inset-left, 0px) +
+          (50vw - env(safe-area-inset-left, 0px)) / 2
+      ) !important;
+      max-width: calc(50vw - env(safe-area-inset-left, 0px) - 32px) !important;
+    }
+
+    /* 显式支持微弯态类名及 segment 居左屏展示 */
+    &.nut-dialog-micro-bent,
+    &-micro-bent,
+    &.nut-dialog-segment-left,
+    &-segment-left {
+      right: auto !important;
+      left: 25vw !important;
+      left: calc(
+        env(safe-area-inset-left, 0px) +
+          (50vw - env(safe-area-inset-left, 0px)) / 2
+      ) !important;
+      max-width: calc(50vw - env(safe-area-inset-left, 0px) - 32px) !important;
+      -webkit-transform: translate(-50%, -50%) !important;
+      transform: translate(-50%, -50%) !important;
+    }
+
+    /* 显式支持 segment 居右屏展示 */
+    &.nut-dialog-segment-right,
+    &-segment-right {
+      left: 75vw !important;
+      left: calc(
+        50vw + (50vw - env(safe-area-inset-right, 0px)) / 2
+      ) !important;
+      max-width: calc(50vw - env(safe-area-inset-right, 0px) - 32px) !important;
+    }
+
+    /* 显式支持 segment 居中展示 */
+    &.nut-dialog-segment-center,
+    &-segment-center {
+      left: 50% !important;
+      -webkit-transform: translate(-50%, -50%) !important;
+      transform: translate(-50%, -50%) !important;
+      max-width: calc(
+        100vw - env(safe-area-inset-left, 0px) - env(
+            safe-area-inset-right,
+            0px
+          ) -
+          32px
+      ) !important;
+    }
+
+    /* 响应根节点 / 全局微弯态属性：微弯下居左屏展示 */
+    :root[data-posture='folded'] &,
+    [data-posture='folded'] &,
+    :root[data-posture='micro-bent'] &,
+    [data-posture='micro-bent'] &,
+    .nut-posture-folded &,
+    .nut-posture-micro-bent & {
+      @media screen and (orientation: landscape),
+        screen and (horizontal-viewport-segments: 2) {
+        left: 25vw !important;
+        left: calc(
+          env(safe-area-inset-left, 0px) +
+            (50vw - env(safe-area-inset-left, 0px)) / 2
+        ) !important;
+        max-width: calc(
+          50vw - env(safe-area-inset-left, 0px) - 32px
+        ) !important;
+      }
+    }
+
+    /* 显式平整展开态：未指定 segment 时确保强制居中 */
+    :root[data-posture='flat']
+      &:not(.nut-dialog-segment-left):not(.nut-dialog-segment-right):not(
+        .nut-dialog-outer-segment-left
+      ):not(.nut-dialog-outer-segment-right),
+    [data-posture='flat']
+      &:not(.nut-dialog-segment-left):not(.nut-dialog-segment-right):not(
+        .nut-dialog-outer-segment-left
+      ):not(.nut-dialog-outer-segment-right),
+    :root[data-posture='continuous']
+      &:not(.nut-dialog-segment-left):not(.nut-dialog-segment-right):not(
+        .nut-dialog-outer-segment-left
+      ):not(.nut-dialog-outer-segment-right),
+    [data-posture='continuous']
+      &:not(.nut-dialog-segment-left):not(.nut-dialog-segment-right):not(
+        .nut-dialog-outer-segment-left
+      ):not(.nut-dialog-outer-segment-right),
+    .nut-posture-flat
+      &:not(.nut-dialog-segment-left):not(.nut-dialog-segment-right):not(
+        .nut-dialog-outer-segment-left
+      ):not(.nut-dialog-outer-segment-right),
+    .nut-posture-continuous
+      &:not(.nut-dialog-segment-left):not(.nut-dialog-segment-right):not(
+        .nut-dialog-outer-segment-left
+      ):not(.nut-dialog-outer-segment-right) {
+      left: 50% !important;
+      -webkit-transform: translate(-50%, -50%) !important;
+      transform: translate(-50%, -50%) !important;
+      max-width: calc(
+        100vw - env(safe-area-inset-left, 0px) - env(
+            safe-area-inset-right,
+            0px
+          ) -
+          32px
+      ) !important;
+    }
+
+    &-full {
+      left: 50% !important;
+      max-width: calc(100% - 32px) !important;
+
+      @media (horizontal-viewport-segments: 2) {
+        left: 50% !important;
+        max-width: calc(100% - 32px) !important;
+      }
+    }
   }
 
   &-close {
@@ -210,6 +363,22 @@
     right: 50%;
     -webkit-transform: translate(50%, -50%);
     transform: translate(50%, -50%);
+
+    &.nut-dialog-micro-bent,
+    &-micro-bent,
+    &.nut-dialog-segment-left,
+    &-segment-left {
+      @media screen and (orientation: landscape) and (min-width: 768px),
+        screen and (horizontal-viewport-segments: 2) {
+        left: auto !important;
+        right: 25vw !important;
+        right: calc(
+          env(safe-area-inset-right, 0px) +
+            (50vw - env(safe-area-inset-right, 0px)) / 2
+        ) !important;
+        transform: translate(50%, -50%) !important;
+      }
+    }
   }
 
   &-close {

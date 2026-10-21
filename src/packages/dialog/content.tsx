@@ -10,6 +10,8 @@ export const defaultContentProps = {
   close: '',
   footerDirection: 'horizontal',
   onClick: () => {},
+  // auto = 跟随折叠屏自动适配
+  segment: 'auto' as const,
 }
 
 export const Content: FunctionComponent<
@@ -27,9 +29,11 @@ export const Content: FunctionComponent<
     style,
     className,
     onClick,
+    segment,
   } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
+  const isLeft = segment === 'left'
 
   const renderHeader = () => {
     return title && <div className={`${classPrefix}-header`}>{title}</div>
@@ -55,7 +59,15 @@ export const Content: FunctionComponent<
 
   return (
     <div
-      className={classNames(`${classPrefix}-outer`, className)}
+      className={classNames(
+        `${classPrefix}-outer`,
+        {
+          [`${classPrefix}-outer-segment-left`]: isLeft,
+          [`${classPrefix}-outer-segment-right`]: segment === 'right',
+          [`${classPrefix}-outer-segment-center`]: segment === 'center',
+        },
+        className
+      )}
       style={style}
       onClick={handleClick}
     >

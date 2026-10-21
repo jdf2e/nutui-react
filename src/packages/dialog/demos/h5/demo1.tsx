@@ -7,10 +7,11 @@ const Demo1 = () => {
       <Cell
         title="基础弹框"
         onClick={() => {
-          Dialog.alert({
-            className: 'dialog-func',
+          Dialog.confirm({
             title: '基础弹框',
             content: '支持函数调用和组件调用两种方式。',
+            confirmText: '我知道了',
+            hideCancelButton: true,
           })
         }}
       />
