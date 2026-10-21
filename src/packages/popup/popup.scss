@@ -88,10 +88,8 @@
     max-width: 295px;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
-    transition:
-      left 0.45s cubic-bezier(0.25, 1, 0.5, 1),
-      transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
-      filter 0.25s ease-out;
+    // 与 @jdtaro/ui 保持一致：不使用 CSS transition 过渡 left，避免折叠屏切换时冲突
+    transition: filter 0.25s ease-out;
 
     &.nut-popup-round {
       border-radius: $popup-border-radius;
@@ -161,8 +159,8 @@
     @media screen and (orientation: landscape),
       screen and (min-width: 768px),
       screen and (horizontal-viewport-segments: 2) {
-      /* 双屏展开/横屏态下保持单屏宽度并水平居中，避免全宽拉裂变形，符合折叠屏设计规范 */
-      max-width: min(100vw, 466px);
+      /* 双屏展开/横屏态下保持面板居中并限制最大宽度 653px，符合折叠屏设计规范 */
+      max-width: min(100vw, 653px);
       left: 0;
       right: 0;
       margin-left: auto;
@@ -218,8 +216,8 @@
     @media screen and (orientation: landscape),
       screen and (min-width: 768px),
       screen and (horizontal-viewport-segments: 2) {
-      /* 双屏展开/横屏态下保持单屏宽度并水平居中 */
-      max-width: min(100vw, 466px);
+      /* 双屏展开/横屏态下保持单屏宽度并水平居中，限制最大宽度 653px */
+      max-width: min(100vw, 653px);
       left: 0;
       right: 0;
       margin-left: auto;
@@ -228,6 +226,16 @@
 
     &.nut-popup-round {
       border-radius: 0 0 $popup-border-radius $popup-border-radius;
+    }
+  }
+
+  &-duo {
+    &.nut-popup-bottom,
+    &.nut-popup-top {
+      right: auto;
+      margin-left: 0;
+      margin-right: 0;
+      max-width: min(100vw, 653px);
     }
   }
 

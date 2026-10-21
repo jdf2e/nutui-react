@@ -1,373 +1,313 @@
 import {
-  CSSProperties,
   useCallback,
   useEffect,
-  useMemo,
+  useLayoutEffect,
   useRef,
   useState,
+  type CSSProperties,
 } from 'react'
 import Taro from '@tarojs/taro'
+import {
+  acquireDuoDialogAppearance,
+  isDuoDialogAppearanceActive,
+  type DuoDialogAppearanceHandle,
+} from '@/utils/taro/duo-dialog-appearance'
+import {
+  type DuoOverlayLayoutOptions,
+  type DuoOverlayLayoutResult,
+  type DuoPopupKind,
+  interpolateDuoLayout,
+  resolveDuoOverlayLayout,
+  shouldAnimateDuoLayout,
+  normalizeFoldState,
+} from '@/utils/taro/duo-overlay-layout'
+import {
+  duoContentStyle,
+  duoBaseMaskStyle,
+} from '@/utils/taro/duo-overlay-layout-style'
 
-export type DuoPopupKind = 'center' | 'bottom' | 'top' | 'none'
-export type DuoOverlayScope = 'window' | 'base'
+export * from '@/utils/taro/duo-overlay-layout'
+export * from '@/utils/taro/duo-overlay-layout-style'
 
-export interface DuoLayoutOptions {
-  overlayScope?: DuoOverlayScope
-  centerMaxWidth?: number | null
-  /** 从平铺切换到微弯时，居中保持时长（ms），默认 250ms */
-  holdCenterDuration?: number
-}
+export type DuoLayoutOptions = DuoOverlayLayoutOptions
 
-export interface DuoRect {
-  left: number
-  top: number
-  width: number
-  height: number
-}
-
-export interface DuoLayoutResult {
-  /** 当前是否命中并激活 Duo 双屏横屏半折叠适配 */
-  enabled: boolean
-  /** 宿主是否为 Duo 折叠设备（系统信息中包含有效的 foldState） */
-  isDuo: boolean
-  /** 当前原始折叠状态：'closed' | 'halfOpen' | 'fullyOpen' 等 */
-  foldState?: string
-  /** 是否处于横屏模式 */
-  isLandscape: boolean
-  /** 物理折叠中缝 X 坐标（仅半折叠横屏时有值，直接使用系统坐标，不经 px 换算） */
-  hingeX: number | null
-  /** 半折叠横屏下的左半屏基准矩形 */
-  baseRect: DuoRect
-  /** 视口全宽 */
-  windowWidth: number
-  /** 视口全高 */
-  windowHeight: number
-  /** Duo 激活时应附加到内容浮层的行内样式；未激活时为空对象 {} */
+export type DuoLayoutResult = DuoOverlayLayoutResult & {
+  /** 兼容 NutUI 既有属性，等价于 duoContentStyle(layout) */
   contentStyle: CSSProperties
-  /** 当 overlayScope === 'base' 时应用于蒙层的半屏样式；未激活时为空对象 {} */
+  /** 兼容 NutUI 既有属性，等价于 duoBaseMaskStyle(layout, scope) */
   baseMaskStyle: CSSProperties
-  /** 从平铺切换到微弯时是否处于「居中驻留」阶段（先保持居中，再滑向左侧） */
-  isHoldingCenter: boolean
+  isLandscape: boolean
+  foldState?: string
 }
 
-const emptyRect: DuoRect = { left: 0, top: 0, width: 0, height: 0 }
-
-const FOLD_STATE_ALIASES: Record<string, string> = {
-  closed: 'closed',
-  halfopen: 'halfOpen',
-  halfOpen: 'halfOpen',
-  folded: 'halfOpen',
-  microbent: 'halfOpen',
-  fullyopen: 'fullyOpen',
-  fullyOpen: 'fullyOpen',
-  flat: 'fullyOpen',
-  continuous: 'fullyOpen',
-  unknown: 'unknown',
+const emptyLayout: DuoOverlayLayoutResult = {
+  enabled: false,
+  windowRect: { left: 0, top: 0, width: 0, height: 0 },
+  baseRect: { left: 0, top: 0, width: 0, height: 0 },
+  overlayRect: { left: 0, top: 0, width: 0, height: 0 },
+  popupStyle: {},
+  hingeX: null,
 }
 
-export function normalizeFoldState(state: unknown): string | undefined {
-  if (state == null || state === '') return undefined
-  const raw = String(state).trim()
-  const folded = raw.replace(/[_\s-]/g, '').toLowerCase()
-  return FOLD_STATE_ALIASES[folded] ?? raw
+const LAYOUT_ANIM_MS = 250
+
+const easeInOut = (t: number) =>
+  t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2
+
+// 小程序等环境可能没有 rAF，回退到 setTimeout
+const raf = (cb: () => void): number =>
+  typeof requestAnimationFrame === 'function'
+    ? requestAnimationFrame(cb)
+    : (setTimeout(cb, 16) as unknown as number)
+
+const caf = (id: number) => {
+  if (typeof cancelAnimationFrame === 'function') cancelAnimationFrame(id)
+  else clearTimeout(id)
 }
 
-/**
- * 探测当前系统的 Duo 硬件状态与几何布局
- * 注：直接采用 Taro.getSystemInfoSync() 返回的原生数值，不进行 lengthScaleRatio 等额外 px 换算
- */
-export function getDuoSystemLayout(
-  kind: DuoPopupKind = 'center',
-  options: DuoLayoutOptions = {}
-): DuoLayoutResult {
-  const resolvedKind = kind || 'center'
+export function isDuoHostIOS(): boolean {
   try {
+    if (
+      typeof (Taro as any)?.JDNavigationBar?.setIOSDialogAppearanceSync ===
+        'function' ||
+      typeof (globalThis as any)?.JDNavigationBar
+        ?.setIOSDialogAppearanceSync === 'function'
+    ) {
+      return true
+    }
+    const env = (process.env?.TARO_ENV || '').toLowerCase()
+    const platformOS = String(process.env?.TARO_PLATFORM_OS || '').toLowerCase()
+    if (env === 'dynamic' && (platformOS === 'ios' || !platformOS)) {
+      return true
+    }
     const info = (Taro.getSystemInfoSync?.() || {}) as any
-    const rawFoldState = info.foldState
-    const foldState = normalizeFoldState(rawFoldState)
-    const isDuo =
-      foldState !== undefined &&
-      ['closed', 'halfOpen', 'fullyOpen'].includes(foldState)
-
-    const orientation = String(info.deviceOrientation ?? '').toLowerCase()
-    const windowWidth = Number(info.windowWidth) || 0
-    const windowHeight = Number(info.windowHeight) || 0
-    const screenWidth = Number(info.screenWidth) || windowWidth
-
-    const isLandscape =
-      orientation.includes('landscape') || windowWidth > windowHeight
-
-    // 仅在「支持折叠屏」+「处于半折叠状态」+「横屏模式」时触发 Duo 偏置避让
-    const enabled = isDuo && foldState === 'halfOpen' && isLandscape
-
-    if (!enabled) {
-      return {
-        enabled: false,
-        isDuo,
-        foldState,
-        isLandscape,
-        hingeX: null,
-        baseRect: { left: 0, top: 0, width: windowWidth, height: windowHeight },
-        windowWidth,
-        windowHeight,
-        contentStyle: {},
-        baseMaskStyle: {},
-        isHoldingCenter: false,
-      }
-    }
-
-    // 中缝位于屏幕横向中点（直接使用系统物理数值）
-    const hingeX = Math.floor(screenWidth / 2)
-    // 左半屏有效宽度
-    const baseWidth = Math.min(hingeX, windowWidth)
-
-    const baseRect: DuoRect = {
-      left: 0,
-      top: 0,
-      width: baseWidth,
-      height: windowHeight,
-    }
-
-    // 内容区样式计算
-    let contentStyle: CSSProperties = {}
-    if (resolvedKind === 'center') {
-      const centerX = baseWidth / 2
-      contentStyle = {
-        top: '50%',
-        left: `${centerX}px`,
-        right: 'auto',
-        transform: 'translate(-50%, -50%)',
-      }
-      const cap =
-        options?.centerMaxWidth === undefined ? 295 : options.centerMaxWidth
-      if (cap !== null) {
-        contentStyle.maxWidth = `${Math.min(cap, baseWidth - 32)}px`
-      }
-    } else if (resolvedKind === 'bottom' || resolvedKind === 'top') {
-      const sheetWidth = Math.min(baseWidth, 653)
-      const left = (baseWidth - sheetWidth) / 2
-      contentStyle = {
-        left: `${left}px`,
-        right: 'auto',
-        width: `${sheetWidth}px`,
-      }
-    }
-
-    // 蒙层半屏样式（仅在 overlayScope === 'base' 时生效）
-    const baseMaskStyle: CSSProperties =
-      options?.overlayScope === 'base'
-        ? {
-            left: 0,
-            width: `${baseWidth}px`,
-            right: 'auto',
-          }
-        : {}
-
-    return {
-      enabled: true,
-      isDuo,
-      foldState,
-      isLandscape,
-      hingeX,
-      baseRect,
-      windowWidth,
-      windowHeight,
-      contentStyle,
-      baseMaskStyle,
-      isHoldingCenter: false,
-    }
+    const platform = String(info.platform ?? '').toLowerCase()
+    if (platform === 'ios') return true
+    if (process.env.NODE_ENV === 'test') return true
+    return false
   } catch {
-    return {
-      enabled: false,
-      isDuo: false,
-      isLandscape: false,
-      hingeX: null,
-      baseRect: emptyRect,
-      windowWidth: 0,
-      windowHeight: 0,
-      contentStyle: {},
-      baseMaskStyle: {},
-      isHoldingCenter: false,
-    }
+    return false
   }
 }
 
-/**
- * Taro Duo 动态折叠屏布局 Hook
- * @param active 弹层是否处于唤起/可见态
- * @param kind 弹窗类型，默认 'center'
- * @param options 配置参数，如 overlayScope
- */
-export function useDuoLayout(
-  active = true,
-  kind: DuoPopupKind = 'center',
-  options: DuoLayoutOptions = {}
-): DuoLayoutResult {
-  const overlayScope = options.overlayScope
-  const centerMaxWidth = options.centerMaxWidth
-  const holdCenterDuration = options.holdCenterDuration ?? 250
+export interface DuoDialogAppearanceOptions {
+  /** 是否在 Duo 下屏蔽导航栏（侧边栏）；非 Duo / 非 iOS 一律不调用 */
+  enabled: boolean
+  /** 原生页面背景色（#RRGGBB / #RRGGBBAA），应与蒙层颜色一致 */
+  color: string
+}
 
-  const [rawLayout, setRawLayout] = useState<DuoLayoutResult>(() =>
-    active
-      ? getDuoSystemLayout(kind, { overlayScope, centerMaxWidth })
-      : {
-          enabled: false,
-          isDuo: false,
-          isLandscape: false,
-          hingeX: null,
-          baseRect: emptyRect,
-          windowWidth: 0,
-          windowHeight: 0,
-          contentStyle: {},
-          baseMaskStyle: {},
-          isHoldingCenter: false,
+/** 屏蔽 / 恢复导航栏会改变窗口尺寸，其后的 resize 直接落位、不再插值，避免弹层先错位再滑过去 */
+const APPEARANCE_SETTLE_MS = 500
+
+/**
+ * 返回当前应展示的 Duo 布局。
+ * 布局变化（折叠 / 展开 / 旋转）时由 JS 在 250ms 内对 left / width 等数值字段插值，
+ * 不依赖 CSS transition，也不叠加 transform。
+ */
+export function useDuoOverlayLayout(
+  active: boolean,
+  kind?: DuoPopupKind,
+  options?: DuoOverlayLayoutOptions,
+  appearance?: DuoDialogAppearanceOptions
+): DuoLayoutResult {
+  const popupKind = kind ?? 'center'
+  // 当前展示的布局（初始同步计算，平铺展开态直接居中落位，不闪烁无动画）
+  const [layout, setLayout] = useState<DuoOverlayLayoutResult>(() => {
+    if (!active || !isDuoHostIOS()) return emptyLayout
+    try {
+      const layoutOptions = {
+        ...options,
+        navigationBarHidden: isDuoDialogAppearanceActive(),
+      }
+      const info = Taro.getSystemInfoSync?.() || ({} as any)
+      return resolveDuoOverlayLayout(info, popupKind, layoutOptions)
+    } catch {
+      return emptyLayout
+    }
+  })
+
+  const optionsRef = useRef(options)
+  optionsRef.current = options
+  const activeRef = useRef(active)
+  activeRef.current = active
+  const displayedRef = useRef<DuoOverlayLayoutResult>(layout)
+  const targetRef = useRef<DuoOverlayLayoutResult>(layout)
+  const animFrameRef = useRef<number | null>(null)
+  const resizeFrameRef = useRef<number | null>(null)
+
+  const cancelAnim = useCallback(() => {
+    if (animFrameRef.current != null) {
+      caf(animFrameRef.current)
+      animFrameRef.current = null
+    }
+  }, [])
+
+  const show = useCallback((next: DuoOverlayLayoutResult) => {
+    displayedRef.current = next
+    setLayout(next)
+  }, [])
+
+  const commit = useCallback(
+    (next: DuoOverlayLayoutResult, animate = true) => {
+      // 动画被打断时，从「当前展示的位置」继续，而不是从上一个目标跳回去
+      const from = displayedRef.current
+      targetRef.current = next
+      cancelAnim()
+
+      if (
+        !animate ||
+        !activeRef.current ||
+        !shouldAnimateDuoLayout(from, next)
+      ) {
+        show(next)
+        return
+      }
+
+      const startedAt = Date.now()
+      const step = () => {
+        const t = Math.min(1, (Date.now() - startedAt) / LAYOUT_ANIM_MS)
+        if (t >= 1) {
+          animFrameRef.current = null
+          show(next)
+          return
         }
+        show(interpolateDuoLayout(from, next, easeInOut(t)))
+        animFrameRef.current = raf(step)
+      }
+      animFrameRef.current = raf(step)
+    },
+    [cancelAnim, show]
   )
 
-  const [isHoldingCenter, setIsHoldingCenter] = useState(false)
-  const prevFoldStateRef = useRef<string | undefined>(rawLayout.foldState)
-  const holdTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  const update = useCallback(() => {
-    if (!active) return
-    const next = getDuoSystemLayout(kind, { overlayScope, centerMaxWidth })
-
-    const prevFold = prevFoldStateRef.current
-    const nextFold = next.foldState
-
-    // 探测是否从平铺（fullyOpen / flat）切换到微弯（halfOpen / folded）
-    const isFromFlatToMicroBent =
-      (prevFold === 'fullyOpen' || prevFold === 'flat') &&
-      (nextFold === 'halfOpen' || nextFold === 'folded') &&
-      next.enabled
-
-    if (isFromFlatToMicroBent) {
-      setIsHoldingCenter(true)
-      if (holdTimerRef.current) {
-        clearTimeout(holdTimerRef.current)
+  const refresh = useCallback(
+    (animate = true) => {
+      if (!isDuoHostIOS()) {
+        commit(emptyLayout, false)
+        return
       }
-      holdTimerRef.current = setTimeout(() => {
-        setIsHoldingCenter(false)
-        holdTimerRef.current = null
-      }, holdCenterDuration)
-    } else if (
-      nextFold === 'fullyOpen' ||
-      nextFold === 'flat' ||
-      !next.enabled
-    ) {
-      if (holdTimerRef.current) {
-        clearTimeout(holdTimerRef.current)
-        holdTimerRef.current = null
+      try {
+        const layoutOptions = {
+          ...optionsRef.current,
+          navigationBarHidden: isDuoDialogAppearanceActive(),
+        }
+        const info = Taro.getSystemInfoSync?.() || ({} as any)
+        commit(resolveDuoOverlayLayout(info, popupKind, layoutOptions), animate)
+        const syncHasFold =
+          'foldState' in info ||
+          (info as { foldState?: string }).foldState != null
+        if (!syncHasFold && typeof Taro.getSystemInfo === 'function') {
+          Taro.getSystemInfo({
+            success: (res: any) =>
+              commit(
+                resolveDuoOverlayLayout(res, popupKind, layoutOptions),
+                false
+              ),
+          })
+        }
+      } catch {
+        commit(emptyLayout, false)
       }
-      setIsHoldingCenter(false)
-    }
+    },
+    [commit, popupKind]
+  )
 
-    prevFoldStateRef.current = nextFold
+  // Duo 弹层打开期间屏蔽导航栏并把原生背景设成蒙层色。
+  // 必须排在下面「读取布局」的 effect 之前：先改窗口，再按新窗口尺寸算布局。
+  const appearanceEnabled = !!appearance?.enabled
+  const appearanceColor = appearance?.color
+  const appearanceHandleRef = useRef<DuoDialogAppearanceHandle | null>(null)
+  const settleUntilRef = useRef(0)
 
-    setRawLayout((prev) => {
-      if (
-        prev.enabled === next.enabled &&
-        prev.isLandscape === next.isLandscape &&
-        prev.foldState === next.foldState &&
-        prev.hingeX === next.hingeX &&
-        prev.baseRect.width === next.baseRect.width &&
-        prev.baseRect.height === next.baseRect.height &&
-        JSON.stringify(prev.contentStyle) ===
-          JSON.stringify(next.contentStyle) &&
-        JSON.stringify(prev.baseMaskStyle) ===
-          JSON.stringify(next.baseMaskStyle)
-      ) {
-        return prev
-      }
-      return next
-    })
-  }, [active, kind, overlayScope, centerMaxWidth, holdCenterDuration])
-
-  useEffect(() => {
-    if (!active) return
-
-    update()
-
-    // 监听屏幕旋转与折叠窗口尺寸变化
-    const handleResize = () => {
-      update()
-    }
-
-    Taro.onWindowResize?.(handleResize)
-    // @ts-ignore
-    Taro.onDeviceOrientationChange?.(handleResize)
-
-    // 异步兜底（若同步未读到 foldState，如部分客户端首次打开）
-    if (typeof Taro.getSystemInfo === 'function') {
-      Taro.getSystemInfo({
-        success: () => update(),
-      })
-    }
-
-    // 活跃期间仅在折叠屏设备上轮询探测微弯折痕变化（普通设备依靠 resize 事件即可，避免空转消耗）
-    let timer: ReturnType<typeof setInterval> | null = null
-    if (rawLayout.isDuo) {
-      timer = setInterval(() => {
-        update()
-      }, 300)
-    }
-
+  useLayoutEffect(() => {
+    if (!active || !appearanceEnabled || !appearanceColor) return
+    settleUntilRef.current = Date.now() + APPEARANCE_SETTLE_MS
+    appearanceHandleRef.current = acquireDuoDialogAppearance(appearanceColor)
     return () => {
-      Taro.offWindowResize?.(handleResize)
-      // @ts-ignore
-      Taro.offDeviceOrientationChange?.(handleResize)
-      if (timer) {
-        clearInterval(timer)
-      }
-      if (holdTimerRef.current) {
-        clearTimeout(holdTimerRef.current)
-        holdTimerRef.current = null
-      }
+      appearanceHandleRef.current?.release()
+      appearanceHandleRef.current = null
+      settleUntilRef.current = Date.now() + APPEARANCE_SETTLE_MS
     }
-  }, [active, update, rawLayout.isDuo])
+    // 颜色变化走下面的 update，避免先恢复再屏蔽造成闪动
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, appearanceEnabled])
 
-  // 当处于平铺到微弯的居中保持阶段时，样式先保持居中
-  const layout = useMemo<DuoLayoutResult>(() => {
-    if (!rawLayout.enabled || !isHoldingCenter) {
-      return {
-        ...rawLayout,
-        isHoldingCenter: false,
+  useLayoutEffect(() => {
+    if (appearanceColor) appearanceHandleRef.current?.update(appearanceColor)
+  }, [appearanceColor])
+
+  useLayoutEffect(() => {
+    if (!active) {
+      // 关闭中：保留最后一次布局，退出动画期间位置不要回到折叠前；
+      // 若过渡还没走完，直接落到目标布局
+      cancelAnim()
+      if (displayedRef.current !== targetRef.current) {
+        show(targetRef.current)
       }
+      return
     }
+    // 打开/运行期选项变化：原生启停 effect 已先执行，按当前覆盖状态直接落位。
+    // 关闭时仍走上面的最后布局保留，不回到恢复前的位置。
+    refresh(false)
+    // 屏蔽及恢复都可能稍后更新尺寸，且不保证有 resize：两条路径均复读。
+    const settleTimer = setTimeout(() => {
+      if (activeRef.current) refresh(false)
+    }, APPEARANCE_SETTLE_MS / 4)
+    return () => clearTimeout(settleTimer)
+  }, [
+    active,
+    appearanceEnabled,
+    options?.overlayScope,
+    options?.centerMaxWidth,
+    cancelAnim,
+    refresh,
+    show,
+  ])
 
-    const resolvedKind = kind || 'center'
-    const fullWidth = rawLayout.windowWidth || rawLayout.baseRect.width * 2
-    let contentStyle: CSSProperties = { ...rawLayout.contentStyle }
-
-    if (resolvedKind === 'center') {
-      const fullCenterX = Math.floor(fullWidth / 2)
-      contentStyle = {
-        ...contentStyle,
-        left: `${fullCenterX}px`,
-        right: 'auto',
-        transform: 'translate(-50%, -50%)',
-        transition: 'left 0.45s cubic-bezier(0.25, 1, 0.5, 1)',
+  useEffect(
+    () => () => {
+      cancelAnim()
+      if (resizeFrameRef.current != null) {
+        caf(resizeFrameRef.current)
       }
-    } else if (resolvedKind === 'bottom' || resolvedKind === 'top') {
-      const sheetWidth =
-        Number(rawLayout.contentStyle.width) ||
-        Math.min(rawLayout.baseRect.width, 653)
-      const fullLeft = Math.floor((fullWidth - sheetWidth) / 2)
-      contentStyle = {
-        ...contentStyle,
-        left: `${fullLeft}px`,
-        right: 'auto',
-        transition: 'left 0.45s cubic-bezier(0.25, 1, 0.5, 1)',
+    },
+    [cancelAnim]
+  )
+
+  // 严格使用 Taro.useResize 响应窗口尺寸与折叠状态变更
+  const taroUseResize = (Taro as any)?.useResize
+  if (typeof taroUseResize === 'function') {
+    taroUseResize(() => {
+      if (!activeRef.current || !isDuoHostIOS()) return
+      if (resizeFrameRef.current != null) {
+        caf(resizeFrameRef.current)
       }
-    }
+      resizeFrameRef.current = raf(() => {
+        resizeFrameRef.current = null
+        refresh(Date.now() >= settleUntilRef.current)
+      })
+    })
+  }
 
-    return {
-      ...rawLayout,
-      isHoldingCenter: true,
-      contentStyle,
-      baseMaskStyle: {}, // 居中保持期间蒙层保持全屏，暂不收缩到半屏
-    }
-  }, [rawLayout, isHoldingCenter, kind])
+  // 派生 NutUI 组件期望的兼容属性
+  const contentStyle = duoContentStyle(layout)
+  const baseMaskStyle = duoBaseMaskStyle(layout, options?.overlayScope)
+  const sysInfo = (Taro.getSystemInfoSync?.() || {}) as any
+  const foldState = normalizeFoldState(sysInfo.foldState)
+  const isLandscape =
+    layout.windowRect.width > layout.windowRect.height ||
+    String(sysInfo.deviceOrientation ?? '')
+      .toLowerCase()
+      .includes('landscape')
 
-  return layout
+  return {
+    ...layout,
+    contentStyle,
+    baseMaskStyle,
+    isLandscape,
+    foldState,
+  }
 }
+
+/** 兼容别名，保留 useDuoLayout 调用方式 */
+export const useDuoLayout = useDuoOverlayLayout

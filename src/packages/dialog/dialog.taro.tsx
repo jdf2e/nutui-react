@@ -16,6 +16,7 @@ import {
 } from '@/hooks/taro/use-custom-event'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { useDuoLayout } from '@/hooks/taro/use-duo-layout'
+import { resolveDuoMaskColor } from '@/utils/taro/duo-dialog-appearance'
 import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {
@@ -97,19 +98,33 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
 
-  const duoLayout = useDuoLayout(!!visible, 'center', {
-    overlayScope: duoOverlayScope ?? 'window',
-    centerMaxWidth: null,
-  })
+  const duoLayout = useDuoLayout(
+    !!visible,
+    'center',
+    {
+      overlayScope: duoOverlayScope ?? 'window',
+      centerMaxWidth: null,
+    },
+    {
+      // 仅在蒙层铺满整窗时屏蔽导航栏（盖住右侧安全区）；base 蒙层只盖内容区
+      enabled: !!overlay && (duoOverlayScope ?? 'window') !== 'base',
+      color: resolveDuoMaskColor(
+        (overlayStyle as React.CSSProperties | undefined)?.backgroundColor,
+        (props as any).theme
+      ),
+    }
+  )
 
-  const effectiveMicroBent = duoLayout.isHoldingCenter
-    ? false
-    : (microBent ?? duoLayout.enabled)
+  const isHalfOpenState = duoLayout.enabled && duoLayout.hingeX !== null
+
+  const effectiveMicroBent = microBent ?? isHalfOpenState
   let effectiveSegment = segment || 'center'
   if (segment && segment !== 'center') {
     effectiveSegment = segment
-  } else if (duoLayout.enabled && !duoLayout.isHoldingCenter) {
+  } else if (isHalfOpenState) {
     effectiveSegment = 'left'
+  } else {
+    effectiveSegment = 'center'
   }
 
   useCustomEvent(

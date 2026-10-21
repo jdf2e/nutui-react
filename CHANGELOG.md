@@ -1,3 +1,14 @@
+# v3.0.24-cpp-beta.1
+
+`2026-10-21`
+
+- 📱 feat(duo): 适配双屏折叠屏设备，支持微弯与平铺姿态自适应布局（useDuoLayout）
+- 🚀 feat(popup,dialog): 弹窗避开折叠屏物理中缝铰链，支持半屏蒙层与分屏展示
+- 🚀 feat(toast): 移除 Overlay 强依赖，支持非阻断式展示与内容区点击事件
+- 🚀 feat(overlay,popup): 支持动画时长通过 duration 联动 CSS 变量
+- 🐛 fix(dialog): 修复 Dialog 在 Duo 微弯下被 max-width 挤压变形与文字折行问题
+- 🐛 fix(popup,dialog): 修复 zIndex 层级问题，内容层严格高于遮罩层
+
 # v3.0.23-cpp
 
 `2026-09-03`

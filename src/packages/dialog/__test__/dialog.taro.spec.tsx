@@ -4,6 +4,10 @@ import { render, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Taro from '@tarojs/taro'
 import { BaseDialog as Dialog } from '../dialog.taro'
+import {
+  resolveDuoOverlayLayout,
+  shouldAnimateDuoLayout,
+} from '../../../utils/taro/duo-overlay-layout'
 
 const { MockView } = vi.hoisted(() => {
   const React = require('react')
@@ -47,15 +51,19 @@ vi.mock('@tarojs/taro', () => {
     },
   }
 
+  const resizeCallbacks: Array<() => void> = []
+
   const mocked = {
     eventCenter,
     getCurrentInstance: () => ({ router: { path: '/pages/index/index' } }),
     getSystemInfoSync: () => systemInfo,
     getSystemInfo: (opts: any) => opts?.success?.(systemInfo),
-    onWindowResize: vi.fn(),
-    offWindowResize: vi.fn(),
-    onDeviceOrientationChange: vi.fn(),
-    offDeviceOrientationChange: vi.fn(),
+    useResize: (cb: any) => {
+      resizeCallbacks.push(cb)
+    },
+    __triggerResize: () => {
+      resizeCallbacks.forEach((cb) => cb())
+    },
     getEnv: () => 'WEAPP',
     __setMockSystemInfo: (info: any) => {
       systemInfo = { ...systemInfo, ...info }
@@ -93,6 +101,97 @@ describe('Dialog Taro Duo Adaptation', () => {
     expect(outerEle.className).toContain('nut-dialog-outer-segment-center')
     expect(outerEle.className).not.toContain('nut-dialog-outer-micro-bent')
     expect(outerEle.className).not.toContain('nut-dialog-outer-segment-left')
+    // 平铺态居中：位于双屏中央（433.5px）
+    expect(outerEle.style.left).toBe('433.5px')
+    expect(outerEle.style.transform).toBe('translate(-50%, -50%)')
+  })
+
+  test('should render centered in closed (folded) posture', () => {
+    ;(Taro as any).__setMockSystemInfo({
+      foldState: 'closed',
+      deviceOrientation: 'portrait',
+      windowWidth: 390,
+      windowHeight: 844,
+      screenWidth: 390,
+    })
+
+    const { container } = render(
+      <Dialog title="Closed Test" visible>
+        闭合内容
+      </Dialog>
+    )
+
+    const outerEle = container.querySelector('.nut-dialog-outer') as HTMLElement
+    expect(outerEle).toBeInTheDocument()
+    expect(outerEle.className).toContain('nut-dialog-outer-segment-center')
+    expect(outerEle.className).not.toContain('nut-dialog-outer-micro-bent')
+    expect(outerEle.className).not.toContain('nut-dialog-outer-segment-left')
+    // 闭合态居中：以单屏宽度居中（390 / 2 = 195px）
+    expect(outerEle.style.left).toBe('195px')
+    expect(outerEle.style.transform).toBe('translate(-50%, -50%)')
+  })
+
+  test('should render centered by screenWidth in closed posture when safe area is covered', () => {
+    const setIOSDialogAppearanceSync = vi.fn(() => true)
+    ;(Taro as any).JDNavigationBar = {
+      setIOSDialogAppearanceSync,
+    }
+    ;(Taro as any).__setMockSystemInfo({
+      platform: 'ios',
+      foldState: 'closed',
+      deviceOrientation: 'landscape',
+      windowWidth: 391,
+      windowHeight: 844,
+      screenWidth: 475,
+    })
+
+    const { container } = render(
+      <Dialog title="Closed Safe Area Test" visible overlay>
+        闭合盖住安全区域内容
+      </Dialog>
+    )
+
+    const outerEle = container.querySelector('.nut-dialog-outer') as HTMLElement
+    expect(outerEle).toBeInTheDocument()
+    // 盖住安全区域时，居中以 screenWidth (475px / 2 = 237.5px) 为基准
+    expect(outerEle.style.left).toBe('237.5px')
+    expect(outerEle.style.transform).toBe('translate(-50%, -50%)')
+  })
+
+  test('should acquire and release iOS native navigation appearance to cover right safe area', () => {
+    const setIOSDialogAppearanceSync = vi.fn(() => true)
+    ;(Taro as any).JDNavigationBar = {
+      setIOSDialogAppearanceSync,
+    }
+    ;(Taro as any).__setMockSystemInfo({
+      platform: 'ios',
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+      windowWidth: 867,
+      windowHeight: 669,
+      screenWidth: 951,
+    })
+
+    const { unmount } = render(
+      <Dialog title="Appearance Test" visible overlay>
+        导航栏外观测试
+      </Dialog>
+    )
+
+    expect(setIOSDialogAppearanceSync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        active: true,
+        viewBackgroundColor: '#000000B3',
+      })
+    )
+
+    unmount()
+
+    expect(setIOSDialogAppearanceSync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        active: false,
+      })
+    )
   })
 
   test('should adapt to left half-screen in halfOpen (microBent) posture', () => {
@@ -162,17 +261,11 @@ describe('Dialog Taro Duo Adaptation', () => {
     ;(Taro as any).__setMockSystemInfo({
       foldState: 'halfOpen',
     })
-
-    // Advance timer past the 300ms polling interval: posture detected, first holds center
     act(() => {
-      vi.advanceTimersByTime(300)
+      ;(Taro as any).__triggerResize()
     })
 
-    // Stage 1: initially holds centered
-    expect(outerEle.className).toContain('nut-dialog-outer-segment-center')
-    expect(outerEle.className).not.toContain('nut-dialog-outer-micro-bent')
-
-    // Stage 2: advance past the 250ms center hold duration -> slides to left
+    // Layout animates via rAF
     act(() => {
       vi.advanceTimersByTime(300)
     })
@@ -185,6 +278,9 @@ describe('Dialog Taro Duo Adaptation', () => {
     ;(Taro as any).__setMockSystemInfo({
       foldState: 'fullyOpen',
     })
+    act(() => {
+      ;(Taro as any).__triggerResize()
+    })
 
     act(() => {
       vi.advanceTimersByTime(300)
@@ -194,5 +290,40 @@ describe('Dialog Taro Duo Adaptation', () => {
     expect(outerEle.className).not.toContain('nut-dialog-outer-micro-bent')
 
     vi.useRealTimers()
+  })
+
+  test('should directly render centered without animation when unfolding from closed to fullyOpen', () => {
+    const closedInfo = {
+      windowWidth: 390,
+      windowHeight: 844,
+      screenWidth: 390,
+      foldState: 'closed',
+      deviceOrientation: 'portrait',
+    }
+    const fullyOpenInfo = {
+      windowWidth: 867,
+      windowHeight: 669,
+      screenWidth: 951,
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+    }
+    const halfOpenInfo = {
+      windowWidth: 867,
+      windowHeight: 669,
+      screenWidth: 951,
+      foldState: 'halfOpen',
+      deviceOrientation: 'landscape',
+    }
+
+    const closedLayout = resolveDuoOverlayLayout(closedInfo, 'center')
+    const fullyOpenLayout = resolveDuoOverlayLayout(fullyOpenInfo, 'center')
+    const halfOpenLayout = resolveDuoOverlayLayout(halfOpenInfo, 'center')
+
+    // 闭合 -> 平铺展开：不应该做插值滑动动画，直接居中落位
+    expect(shouldAnimateDuoLayout(closedLayout, fullyOpenLayout)).toBe(false)
+
+    // 微弯（halfOpen）与平铺（fullyOpen）互相切换：允许插值滑动过渡
+    expect(shouldAnimateDuoLayout(halfOpenLayout, fullyOpenLayout)).toBe(true)
+    expect(shouldAnimateDuoLayout(fullyOpenLayout, halfOpenLayout)).toBe(true)
   })
 })

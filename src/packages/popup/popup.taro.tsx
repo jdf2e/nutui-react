@@ -16,6 +16,7 @@ import { View } from '@tarojs/components'
 import type { ITouchEvent, CommonEventFunction } from '@tarojs/components'
 import ConfigurableCSSTransition from '@/utils/taro/ConfigurableCSSTransition'
 import { useDuoLayout } from '@/hooks/taro/use-duo-layout'
+import { resolveDuoMaskColor } from '@/utils/taro/duo-dialog-appearance'
 import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -144,7 +145,15 @@ export const Popup: FunctionComponent<
   const duoLayout = useDuoLayout(
     innerVisible && duoPopupKind != null,
     duoPopupKind ?? 'center',
-    { overlayScope: duoOverlayScope }
+    { overlayScope: duoOverlayScope },
+    {
+      // 仅在蒙层铺满整窗时屏蔽导航栏；base 蒙层只盖内容区
+      enabled: !!overlay && duoOverlayScope !== 'base',
+      color: resolveDuoMaskColor(
+        (overlayStyle as any)?.backgroundColor,
+        (props as any).theme
+      ),
+    }
   )
 
   const contentZIndex = useMemo(() => {
@@ -179,6 +188,13 @@ export const Popup: FunctionComponent<
     style,
   ])
 
+  const isHalfOpenLandscape = duoLayout.enabled && duoLayout.hingeX !== null
+
+  const isDuoActive =
+    position === 'bottom' || position === 'top'
+      ? duoLayout.enabled
+      : isHalfOpenLandscape
+
   const popClassName = useMemo(() => {
     return classNames(
       classPrefix,
@@ -189,19 +205,11 @@ export const Popup: FunctionComponent<
           position === 'center' && centerBase === 'full',
         [`${classPrefix}-center-segment-right`]:
           position === 'center' && segment === 'right',
-        [`${classPrefix}-duo`]: duoLayout.enabled && !duoLayout.isHoldingCenter,
+        [`${classPrefix}-duo`]: isDuoActive,
       },
       className
     )
-  }, [
-    round,
-    position,
-    centerBase,
-    segment,
-    duoLayout.enabled,
-    duoLayout.isHoldingCenter,
-    className,
-  ])
+  }, [round, position, centerBase, segment, isDuoActive, className])
 
   const [popupHeight, setPopupHeight] = useState('')
   const [topBottom, setTopBottom] = useState('')

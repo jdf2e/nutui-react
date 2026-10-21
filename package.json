@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "3.0.23-cpp",
+  "version": "3.0.24-cpp-beta.1",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -70,6 +70,9 @@
     "dev:taro:jmapp": "JD=1 pnpm --dir ./packages/nutui-taro-demo dev:jmapp",
     "build": "node ./scripts/replace-css-var.js && npm run checked && node scripts/build.mjs",
     "build:taro": "node ./scripts/replace-css-var.js && npm run checked:taro && node scripts/build-taro.mjs",
+    "symlink:taro": "node scripts/nutui-symlink.mjs link",
+    "unsymlink:taro": "node scripts/nutui-symlink.mjs unlink",
+    "symlink:status": "node scripts/nutui-symlink.mjs status",
     "build:taro:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp node scripts/build-taro.mjs",
     "build:demo": "npm run checked && vite build --config vite.config.demo.ts",
     "build:demo:jmapp": "npm run checked && VITE_APP_PROJECT_ID=jmapp vite build --config vite.config.demo.ts",

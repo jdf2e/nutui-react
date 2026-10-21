@@ -23,14 +23,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* #ifndef dynamic*/
-    transition:
-      left 0.45s cubic-bezier(0.25, 1, 0.5, 1),
-      transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
-      -webkit-transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
-      filter 0.25s ease-out,
-      max-width 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-    /* #endif */
+    // 与 @jdtaro/ui 保持一致：不使用 CSS transition 过渡 left/transform，避免展开或初始挂载时产生滑动位移动画；
+    // Duo 折叠态变化时由 useDuoOverlayLayout 在 JS 侧精确 rAF 插值过渡。
     -webkit-overflow-scrolling: touch;
     top: 50%;
     /* 闭合外屏时 / 展开平整内屏时 / 默认：纯正全屏居中展示 */
@@ -72,23 +66,29 @@
     /* 横屏微弯时：居左屏展示，避开中轴折痕与安全区 (W3C 标准规范) */
     @media (device-posture: folded) and (orientation: landscape),
       (device-posture: folded) and (horizontal-viewport-segments: 2) {
-      left: 25vw;
-      left: calc(
-        env(safe-area-inset-left, 0px) +
-          (50vw - env(safe-area-inset-left, 0px)) / 2
-      );
-      max-width: calc(
-        100vw - env(safe-area-inset-left, 0px) - env(
-            safe-area-inset-right,
-            0px
-          ) -
-          32px
-      );
+      &:not(.nut-dialog-segment-center):not(.nut-dialog-outer-segment-center) {
+        left: 25vw;
+        left: calc(
+          env(safe-area-inset-left, 0px) +
+            (50vw - env(safe-area-inset-left, 0px)) / 2
+        );
+        max-width: calc(
+          100vw - env(safe-area-inset-left, 0px) - env(
+              safe-area-inset-right,
+              0px
+            ) -
+            32px
+        );
+      }
     }
 
     /* 显式支持微弯态类名及 segment 居左屏展示 */
-    &.nut-dialog-micro-bent,
-    &-micro-bent,
+    &.nut-dialog-micro-bent:not(.nut-dialog-segment-center):not(
+        .nut-dialog-outer-segment-center
+      ),
+    &-micro-bent:not(.nut-dialog-segment-center):not(
+        .nut-dialog-outer-segment-center
+      ),
     &.nut-dialog-segment-left,
     &-segment-left {
       left: 25vw;
@@ -119,7 +119,7 @@
       );
     }
 
-    /* 显式支持 segment 居中展示 */
+    /* 显式支持 segment 居中展示（闭合与展开平铺态默认居中） */
     &.nut-dialog-segment-center,
     &-segment-center {
       left: 50%;
@@ -134,13 +134,19 @@
       );
     }
 
-    /* 响应根节点 / 全局微弯态属性：微弯下居左屏展示 */
-    :root[data-posture='folded'] &,
-    [data-posture='folded'] &,
-    :root[data-posture='micro-bent'] &,
-    [data-posture='micro-bent'] &,
-    .nut-posture-folded &,
-    .nut-posture-micro-bent & {
+    /* 响应根节点 / 全局微弯态属性：微弯下居左屏展示（排除明确居中态） */
+    :root[data-posture='folded']
+      &:not(.nut-dialog-segment-center):not(.nut-dialog-outer-segment-center),
+    [data-posture='folded']
+      &:not(.nut-dialog-segment-center):not(.nut-dialog-outer-segment-center),
+    :root[data-posture='micro-bent']
+      &:not(.nut-dialog-segment-center):not(.nut-dialog-outer-segment-center),
+    [data-posture='micro-bent']
+      &:not(.nut-dialog-segment-center):not(.nut-dialog-outer-segment-center),
+    .nut-posture-folded
+      &:not(.nut-dialog-segment-center):not(.nut-dialog-outer-segment-center),
+    .nut-posture-micro-bent
+      &:not(.nut-dialog-segment-center):not(.nut-dialog-outer-segment-center) {
       @media screen and (orientation: landscape),
         screen and (horizontal-viewport-segments: 2) {
         left: 25vw;

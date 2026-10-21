@@ -14,13 +14,17 @@ vi.mock('@tarojs/taro', () => {
     deviceOrientation: 'landscape',
   }
 
+  const resizeCallbacks: Array<() => void> = []
+
   const mocked = {
     getSystemInfoSync: () => systemInfo,
     getSystemInfo: (opts: any) => opts?.success?.(systemInfo),
-    onWindowResize: vi.fn(),
-    offWindowResize: vi.fn(),
-    onDeviceOrientationChange: vi.fn(),
-    offDeviceOrientationChange: vi.fn(),
+    useResize: (cb: any) => {
+      resizeCallbacks.push(cb)
+    },
+    __triggerResize: () => {
+      resizeCallbacks.forEach((cb) => cb())
+    },
     getEnv: () => 'WEAPP',
     nextTick: (cb: any) => setTimeout(cb, 0),
     __setMockSystemInfo: (info: any) => {
@@ -102,7 +106,7 @@ describe('Popup Taro Component & Duo Adaptation', () => {
     expect(popupEle.style.left).toBe('237.5px')
   })
 
-  test('should hold center first and then slide to left when transitioning from fullyOpen to halfOpen', () => {
+  test('should smoothly transition from fullyOpen center to halfOpen left', () => {
     vi.useFakeTimers()
     ;(Taro as any).__setMockSystemInfo({
       foldState: 'fullyOpen',
@@ -121,22 +125,18 @@ describe('Popup Taro Component & Duo Adaptation', () => {
     const popupEle = container.querySelector('.nut-popup') as HTMLElement
     expect(popupEle).toBeInTheDocument()
     expect(popupEle.className).not.toContain('nut-popup-duo')
+    expect(popupEle.style.left).toBe('433.5px')
 
     // Bending device into halfOpen
     ;(Taro as any).__setMockSystemInfo({
       foldState: 'halfOpen',
     })
 
-    // Advance 300ms: polling detects posture change, enters stage 1 (hold center)
     act(() => {
-      vi.advanceTimersByTime(300)
+      ;(Taro as any).__triggerResize()
     })
 
-    // Stage 1: held centered (full width center)
-    expect(popupEle.className).not.toContain('nut-popup-duo')
-    expect(popupEle.style.left).toBe('433px')
-
-    // Stage 2: advance past 250ms hold duration -> slides to left
+    // Advance 300ms: rAF animation completes, reaching halfOpen left center
     act(() => {
       vi.advanceTimersByTime(300)
     })
@@ -145,5 +145,80 @@ describe('Popup Taro Component & Duo Adaptation', () => {
     expect(popupEle.style.left).toBe('237.5px')
 
     vi.useRealTimers()
+  })
+
+  test('should center bottom and top popup with max-width 653px on fullyOpen dual-screen', () => {
+    ;(Taro as any).__setMockSystemInfo({
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+      windowWidth: 933,
+      windowHeight: 669,
+      screenWidth: 933,
+    })
+
+    const { container: bottomContainer } = render(
+      <Popup visible position="bottom">
+        底部面板
+      </Popup>
+    )
+
+    const bottomEle = bottomContainer.querySelector('.nut-popup') as HTMLElement
+    expect(bottomEle).toBeInTheDocument()
+    expect(bottomEle.className).toContain('nut-popup-duo')
+    expect(bottomEle.className).toContain('nut-popup-bottom')
+    expect(bottomEle.style.width).toBe('653px')
+    expect(bottomEle.style.maxWidth).toBe('653px')
+    // (933 - 653) / 2 = 140
+    expect(bottomEle.style.left).toBe('140px')
+
+    const { container: topContainer } = render(
+      <Popup visible position="top">
+        顶部面板
+      </Popup>
+    )
+
+    const topEle = topContainer.querySelector('.nut-popup') as HTMLElement
+    expect(topEle).toBeInTheDocument()
+    expect(topEle.className).toContain('nut-popup-duo')
+    expect(topEle.className).toContain('nut-popup-top')
+    expect(topEle.style.width).toBe('653px')
+    expect(topEle.style.maxWidth).toBe('653px')
+    expect(topEle.style.left).toBe('140px')
+  })
+
+  test('should acquire and release iOS native navigation appearance for Popup with overlay', () => {
+    const setIOSDialogAppearanceSync = vi.fn(() => true)
+    ;(Taro as any).JDNavigationBar = {
+      setIOSDialogAppearanceSync,
+    }
+    ;(Taro as any).__setMockSystemInfo({
+      platform: 'ios',
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+      windowWidth: 867,
+      windowHeight: 669,
+      screenWidth: 951,
+    })
+
+    const { unmount } = render(
+      <Popup visible overlay position="bottom">
+        底部导航外观测试
+      </Popup>
+    )
+
+    expect(setIOSDialogAppearanceSync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        active: true,
+        viewBackgroundColor: '#000000B3',
+      })
+    )
+
+    unmount()
+
+    expect(setIOSDialogAppearanceSync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        active: false,
+      })
+    )
   })
 })
