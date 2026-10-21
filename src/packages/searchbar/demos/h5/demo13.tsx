@@ -12,7 +12,6 @@ const Demo13 = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            width: 90,
             height: 28,
             padding: '0 6px 0 10px',
             gap: 4,
@@ -22,7 +21,7 @@ const Demo13 = () => {
             borderRadius: 'var(--nutui-radius-base)',
           }}
         >
-          <span style={{ width: 48, fontSize: 12, flexShrink: 0 }}>
+          <span style={{ fontSize: 12, flexShrink: 0, whiteSpace: 'nowrap' }}>
             智能模式
           </span>
           <Switch
