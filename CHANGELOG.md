@@ -1,3 +1,13 @@
+# v3.0.24-cpp-beta.2
+
+`2026-10-22`
+
+- 📱 feat(duo): 适配 iOS Duo 屏蔽导航栏覆盖右侧安全区（callIOSDialogAppearanceSync）
+- 🐛 fix(dialog): 修复 Dialog 闭合与平铺状态下直接居中展示（不产生位移动画）
+- 🐛 fix(dialog): 修复 Dialog 在闭合盖住安全区域时以屏幕宽度居中
+- 🐛 fix(popup): 修复 Taro 小程序环境不支持 max-width: min(...) 导致的样式异常
+- 🧹 chore: 清理 Duo 调试冗余代码与死代码
+
 # v3.0.24-cpp-beta.1
 
 `2026-10-21`
