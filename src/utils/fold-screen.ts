@@ -10,10 +10,10 @@ const EVENT = 'onFoldScreenChanged'
 export type FoldScreenInfo = {
   isSlightBent?: number | string | boolean
   hingeAngle?: number | string
-  isLandscape?: number | string
-  foldState?: number | string
   [key: string]: unknown
 }
+
+export type FoldSegment = 'left' | 'center'
 
 type Listener = (info: FoldScreenInfo) => void
 
@@ -44,9 +44,9 @@ export const isFoldSlightBent = (info: FoldScreenInfo) =>
   info.isSlightBent === 1 ||
   info.isSlightBent === '1'
 
-export const resolveSegmentByFold = (
-  info: FoldScreenInfo
-): 'left' | 'center' => (isFoldSlightBent(info) ? 'left' : 'center')
+/** 微弯 → left，否则 center */
+export const resolveSegmentByFold = (info: FoldScreenInfo): FoldSegment =>
+  isFoldSlightBent(info) ? 'left' : 'center'
 
 export const getLastFoldScreenInfo = () => lastInfo
 
@@ -54,10 +54,6 @@ const emit = (raw: any) => {
   const info = unwrap(raw)
   if (info.isSlightBent === undefined && info.hingeAngle === undefined) return
   lastInfo = info
-  document.documentElement?.setAttribute?.(
-    'data-posture',
-    isFoldSlightBent(info) ? 'folded' : 'flat'
-  )
   listeners.forEach((fn) => fn(info))
 }
 
@@ -89,7 +85,7 @@ const startNative = () => {
   }
 }
 
-/** 订阅姿态；首次 callNative 开启监听 */
+/** 订阅姿态；首次 callNative 开启监听，并回放缓存 */
 export const subscribeFoldScreenChange = (fn: Listener) => {
   listeners.add(fn)
   startNative()

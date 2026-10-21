@@ -2,7 +2,6 @@ import React, {
   ForwardRefRenderFunction,
   forwardRef,
   useState,
-  useEffect,
   MouseEvent,
 } from 'react'
 import classNames from 'classnames'
@@ -16,11 +15,7 @@ import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import { useConfig } from '@/packages/configprovider'
 import { WebDialogProps, DialogReturnProps, DialogComponent } from '@/types'
 import { mergeProps } from '@/utils/merge-props'
-import {
-  resolveSegmentByFold,
-  subscribeFoldScreenChange,
-  getLastFoldScreenInfo,
-} from '@/utils/fold-screen'
+import { useFoldSegment } from './use-fold-segment'
 
 const defaultProps = {
   ...defaultOverlayProps,
@@ -92,32 +87,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
-  // 折叠屏用 segment 驱动；显式 segment 时不覆盖
-  const [foldSegment, setFoldSegment] = useState<
-    'left' | 'center' | undefined
-  >()
-
-  useEffect(() => {
-    const userLocked =
-      segment === 'left' || segment === 'right' || segment === 'center'
-    if (userLocked) return
-
-    const applyFoldInfo = (
-      info: Parameters<typeof resolveSegmentByFold>[0]
-    ) => {
-      setFoldSegment(resolveSegmentByFold(info))
-    }
-
-    const cached = getLastFoldScreenInfo()
-    if (cached) applyFoldInfo(cached)
-
-    return subscribeFoldScreenChange(applyFoldInfo)
-  }, [segment])
-
-  const resolvedSegment =
-    segment === 'left' || segment === 'right' || segment === 'center'
-      ? segment
-      : foldSegment
+  const resolvedSegment = useFoldSegment(segment)
 
   const renderFooter = () => {
     if (footer === null) return ''
