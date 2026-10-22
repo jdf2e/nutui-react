@@ -1,45 +1,71 @@
-import React, { useState } from 'react'
-import { NavBar, TabPane, Tabs, Toast, Space } from '@nutui/nutui-react'
-import { ArrowLeftI, MoreI } from '@nutui/icons-react'
+import React from 'react'
+import { NavBar, Space, Toast } from '@nutui/nutui-react'
+import { MoreI } from '@nutui/icons-react'
+import { MaterialView } from '../../../materialview/materialview'
+import { useAppTheme } from '@/sites/mobile/theme-context'
+
+const subBarData = [
+  {
+    icon: 'https://img10.360buyimg.com/img/jfs/t1/533282/19/6137/1741/6abb63a4F641617b0/027602e02e213bbf.png',
+    title: '会话',
+  },
+  {
+    icon: 'https://img12.360buyimg.com/img/jfs/t1/532014/35/7258/1619/6abb63e2Ff618d2b0/027603003099f9df.png',
+    title: '物流',
+  },
+  {
+    icon: 'https://img11.360buyimg.com/img/jfs/t1/528558/31/10904/1404/6abb63efF3c871ddf/0276030030ebce6d.png',
+    title: '提醒',
+  },
+  {
+    icon: 'https://img30.360buyimg.com/img/jfs/t1/531341/18/8252/1460/6abb63feF5c5123e0/027603003083f264.png',
+    title: '优惠',
+    active: true,
+  },
+  {
+    icon: 'https://img14.360buyimg.com/img/jfs/t1/525760/23/13203/2133/6abb6409Feea7d676/0276030030076299.png',
+    title: '互动',
+  },
+]
 
 const Demo2 = () => {
-  const [tab1value, setTab1value] = useState<string | number>('0')
+  const { darkMode } = useAppTheme()
   return (
     <Space direction="vertical">
       <NavBar
-        back={
-          <div className="navbar-android-button">
-            <ArrowLeftI />
-          </div>
-        }
         right={
-          <div className="navbar-android-button">
-            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
-            <MoreI onClick={(e) => Toast.show('icon')} />
+          <MaterialView
+            className="navbar-iOS26-button"
+            scene="top-plain"
+            darkMode={darkMode}
+          >
+            <span>清除未读</span>
+            <MoreI onClick={() => Toast.show('icon')} />
+          </MaterialView>
+        }
+        onBackClick={() => Toast.show('返回')}
+        className="navbar-iOS26 nut-navbar-white"
+        subBar={
+          <div className="navbar-subbar">
+            {subBarData.map((item) => (
+              <div
+                className={`navbar-subbar-item ${item.active ? 'navbar-subbar-item-active' : ''}`}
+                key={item.title}
+              >
+                <div>
+                  {item.icon && <img src={item.icon} alt={item.title} />}
+                </div>
+                <span>{item.title}</span>
+              </div>
+            ))}
           </div>
         }
-        onBackClick={(e) => Toast.show('返回')}
         zIndex={0}
       >
-        <div style={{ width: '100%' }}>
-          <Tabs
-            value={tab1value}
-            onChange={(paneKey) => {
-              setTab1value(paneKey)
-            }}
-            style={{
-              '--nutui-tabs-titles-background-color': 'transparent',
-              '--nutui-tabs-titles-item-active-font-size':
-                'calc(18px * var(--nut-scale-font, var(--nut-scale-f, 1)))',
-            }}
-            align="left"
-          >
-            <TabPane title="Tab 1"> Tab 1 </TabPane>
-            <TabPane title="Tab 2"> Tab 2 </TabPane>
-          </Tabs>
-        </div>
+        二级楼层
       </NavBar>
     </Space>
   )
 }
+
 export default Demo2

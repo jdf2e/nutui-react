@@ -10,9 +10,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 ## 示例代码
 
-### iOS26以下/安卓鸿蒙
-
-#### 标题型
+### 场景材质
 
 :::demo
 
@@ -20,7 +18,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 :::
 
-#### 导航型
+### 二级楼层
 
 :::demo
 
@@ -28,21 +26,11 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 :::
 
-### iOS26以上
-
-#### 标题型
+### 自定义内容
 
 :::demo
 
 <CodeBlock src='taro/demo3.tsx'></CodeBlock>
-
-:::
-
-#### 导航型
-
-:::demo
-
-<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 

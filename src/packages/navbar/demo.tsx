@@ -4,42 +4,34 @@ import { useTranslate } from '@/sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
-import Demo4 from './demos/h5/demo4'
 
 const NavBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      group1: 'iOS26以下/安卓鸿蒙',
-      group2: 'iOS26以上',
-      cat1: '标题型',
-      cat3: '导航型',
+      sceneMaterial: '场景材质',
+      subBar: '二级楼层',
+      customContent: '自定义内容',
     },
     'zh-TW': {
-      group1: 'iOS26以下/安卓鴻蒙',
-      group2: 'iOS26以上',
-      cat1: '標題型',
-      cat3: '導航型',
+      sceneMaterial: '場景材質',
+      subBar: '二級樓層',
+      customContent: '自定義內容',
     },
     'en-US': {
-      group1: 'iOS 26 and below / Android & HarmonyOS',
-      group2: 'iOS 26 and above',
-      cat1: 'Title',
-      cat3: 'Navigation',
+      sceneMaterial: 'Scene Materials',
+      subBar: 'Sub Bar',
+      customContent: 'Custom Content',
     },
   })
   return (
     <>
       <div className="demo navbar-demo">
-        <h2>{translated.group1}</h2>
-        <h3>{translated.cat1}</h3>
+        <h2>{translated.sceneMaterial}</h2>
         <Demo1 />
-        <h3>{translated.cat3}</h3>
+        <h2>{translated.subBar}</h2>
         <Demo2 />
-        <h2>{translated.group2}</h2>
-        <h3>{translated.cat1}</h3>
+        <h2>{translated.customContent}</h2>
         <Demo3 />
-        <h3>{translated.cat3}</h3>
-        <Demo4 />
       </div>
     </>
   )
