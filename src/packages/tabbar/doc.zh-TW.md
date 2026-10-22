@@ -175,7 +175,7 @@ H5 背板的明暗由 `.nut-theme-dark` 主題類控制，頁面背景建議延�
 | \--nutui-tabbar-horizontal-padding | 導航層左右間距 | `12px` |
 | \--nutui-tabbar-content-padding | 導航背板內邊距 | `4px` |
 | \--nutui-tabbar-border-radius | 導航背板圓角 | 全圓角（跟隨導航高度） |
-| \--nutui-tabbar-active-background | 選中項背景 | `var(--nutui-color-background-component)` |
+| \--nutui-tabbar-active-background | 選中項背景 | `var(--nutui-mask-2)` |
 | \--nutui-tabbar-active-border-radius | 子項圓角 | 全圓角（跟隨子項高度） |
 | \--nutui-tabbar-active-color | 選中顏色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未選中顏色 | `$color-title` |
