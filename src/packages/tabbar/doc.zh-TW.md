@@ -177,6 +177,9 @@ H5 背板的明暗由 `.nut-theme-dark` 主題類控制，頁面背景建議延�
 | \--nutui-tabbar-border-radius | 導航背板圓角 | 全圓角（跟隨導航高度） |
 | \--nutui-tabbar-active-background | 選中項背景 | `var(--nutui-mask-2)` |
 | \--nutui-tabbar-active-border-radius | 子項圓角 | 全圓角（跟隨子項高度） |
+| \--nutui-tabbar-active-background-duration | 選中背景滑動與回彈時長 | `300ms` |
+| \--nutui-tabbar-active-background-easing | 選中背景滑動緩動 | `cubic-bezier(0.38, 0, 0.24, 1)` |
+| \--nutui-tabbar-active-background-scale-easing | 選中背景回彈緩動 | `cubic-bezier(0.8, 0, 0.24, 1)` |
 | \--nutui-tabbar-active-color | 選中顏色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未選中顏色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上邊框 | `1px solid #eee` |
