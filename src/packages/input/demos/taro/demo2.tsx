@@ -1,11 +1,11 @@
 import React from 'react'
-import { Input } from '@nutui/nutui-react-taro'
+import { Input, Cell } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   return (
-    <>
+    <Cell style={{ display: 'block' }}>
       <Input defaultValue="NutUI React" placeholder="请输入文本" />
-    </>
+    </Cell>
   )
 }
 export default Demo2

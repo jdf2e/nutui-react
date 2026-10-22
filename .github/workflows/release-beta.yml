@@ -1,7 +1,6 @@
 name: Release Beta
 
 on:
-#  pull_request:
   push:
     branches:
       - feat_v3.x
@@ -20,38 +19,42 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-#          ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Get commit message
+      - name: Resolve whether to publish
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "ABORT=false" >> "$GITHUB_ENV"
+            echo "Manual dispatch: will publish"
+            exit 0
+          fi
           COMMIT_MESSAGE=$(git log --format=%s -n 1)
+          # Keep ASCII only for startsWith / contains checks
           FILTERED_MESSAGE="${COMMIT_MESSAGE//[^a-zA-Z0-9.()_:, -]/}"
-          echo "COMMIT_MESSAGE=${FILTERED_MESSAGE}" >> $GITHUB_ENV
-      - name: Show commit message
-        run: echo "$COMMIT_MESSAGE"
+          echo "COMMIT_MESSAGE=${FILTERED_MESSAGE}" >> "$GITHUB_ENV"
+          echo "Commit message: ${FILTERED_MESSAGE}"
+          if [[ "${FILTERED_MESSAGE}" == chore\(release\):* && "${FILTERED_MESSAGE}" == *-beta* ]]; then
+            echo "ABORT=false" >> "$GITHUB_ENV"
+            echo "Release commit detected: will publish"
+          else
+            echo "ABORT=true" >> "$GITHUB_ENV"
+            echo "Not a beta release commit: skip publish"
+          fi
 
-      - name: Commit message compliance verification
-        if: |
-          !startsWith( env.COMMIT_MESSAGE , 'chore(release):' ) ||
-          !contains( env.COMMIT_MESSAGE , '-beta' )
-        run: echo "ABORT=true" >> $GITHUB_ENV
-
-      - name: Get Tag message
-        if: contains( env.COMMIT_MESSAGE , '-beta')
-        run: echo "RELEASE_TAG=beta" >> $GITHUB_ENV
-#
       - name: Install pnpm
+        if: env.ABORT != 'true'
         run: npm i -g pnpm@10
 
+      # Do NOT set registry-url: empty NODE_AUTH_TOKEN would bypass OIDC and cause E404.
       - uses: actions/setup-node@v7
+        if: env.ABORT != 'true'
         with:
-          registry-url: 'https://registry.npmjs.org'
-          node-version: '20'
+          # npm 12 requires Node ^22.22.2 || ^24.15.0 || >=26
+          node-version: '22'
           cache: 'pnpm'
 
-      # Trusted Publishing needs a recent npm CLI (OIDC exchange)
       - name: Upgrade npm for Trusted Publishing
-        run: npm i -g npm@latest
+        if: env.ABORT != 'true'
+        run: npm i -g npm@12
 
       - name: Install dependencies
         if: env.ABORT != 'true'
@@ -69,13 +72,28 @@ jobs:
             exit 1
           fi
 
-      # No NPM_TOKEN: auth via GitHub OIDC + npm Trusted Publisher
-      - name: Run Release @nutui/nutui-react
+      # Auth via GitHub OIDC + npm Trusted Publisher (no NPM_TOKEN)
+      - name: Publish @nutui/nutui-react
         if: env.ABORT != 'true'
         working-directory: ./release/h5
         run: npm publish --tag beta --access public --provenance
 
-      - name: Run Releases @nutui/nutui-react-taro
+      - name: Publish @nutui/nutui-react-taro
         if: env.ABORT != 'true'
         working-directory: ./release/taro
         run: npm publish --tag beta --access public --provenance
+
+      - name: Create and push git tag
+        if: env.ABORT != 'true'
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="v${VERSION}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git rev-parse "${TAG}" >/dev/null 2>&1; then
+            echo "Tag ${TAG} already exists, skip"
+          else
+            git tag "${TAG}"
+            git push origin "${TAG}"
+            echo "Pushed tag ${TAG}"
+          fi
