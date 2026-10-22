@@ -1,9 +1,14 @@
 import React from 'react'
-import { Input } from '@nutui/nutui-react'
+import { Input, Cell } from '@nutui/nutui-react'
 
 const Demo15 = () => {
   return (
-    <Input placeholder="请输入文本" description="可添加描述性的辅助说明信息" />
+    <Cell style={{ display: 'block' }}>
+      <Input
+        placeholder="请输入文本"
+        description="可添加描述性的辅助说明信息"
+      />
+    </Cell>
   )
 }
 export default Demo15
