@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react-taro'
-import { SearchBar, Popover, Button } from '@nutui/nutui-react-taro'
+import { SearchBar, Popover, Button, Cell } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
   const itemList = [{ name: '搜秒送' }, { name: '搜全站' }]
@@ -9,49 +9,51 @@ const Demo6 = () => {
   const [scope, setScope] = useState('搜秒送')
   return (
     <>
-      <SearchBar
-        style={{
-          padding: '0 8px',
-          '--nutui-searchbar-input-height': '40px',
-        }}
-        inputProps={{ style: { padding: 0 } }}
-        backable
-        placeholder="搜搜感兴趣的商品吧"
-        leftIn={
-          <View
-            id="searchbar-demo6-scope"
-            onClick={() => setVisible(!visible)}
-            style={{
-              height: 40,
-              width: 66,
-              display: 'flex',
-              alignItems: 'center',
-              gap: 4,
-            }}
-          >
-            {scope}
-            {visible ? (
-              <ArrowUp style={{ width: 12, height: 12 }} />
-            ) : (
-              <ArrowDown style={{ width: 12, height: 12 }} />
-            )}
-          </View>
-        }
-        rightIn={
-          <Button
-            type="primary"
-            size="small"
-            style={{
-              height: 32,
-              padding: '0 12px',
-              borderRadius: 'var(--nutui-radius-l)',
-              marginRight: -8,
-            }}
-          >
-            搜索
-          </Button>
-        }
-      />
+      <Cell>
+        <SearchBar
+          style={{
+            padding: '0 8px',
+            '--nutui-searchbar-input-height': '40px',
+          }}
+          inputProps={{ style: { padding: 0 } }}
+          backable
+          placeholder="请输入内容"
+          leftIn={
+            <View
+              id="searchbar-demo6-scope"
+              onClick={() => setVisible(!visible)}
+              style={{
+                height: 40,
+                width: 66,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4,
+              }}
+            >
+              {scope}
+              {visible ? (
+                <ArrowUp style={{ width: 12, height: 12 }} />
+              ) : (
+                <ArrowDown style={{ width: 12, height: 12 }} />
+              )}
+            </View>
+          }
+          rightIn={
+            <Button
+              type="primary"
+              size="small"
+              style={{
+                height: 32,
+                padding: '0 12px',
+                borderRadius: 'var(--nutui-radius-l)',
+                marginRight: -8,
+              }}
+            >
+              搜索
+            </Button>
+          }
+        />
+      </Cell>
       <Popover
         targetId="searchbar-demo6-scope"
         visible={visible}

@@ -7,7 +7,12 @@ import {
   Share,
   More,
 } from '@nutui/icons-react-taro'
-import { SearchBar, Button, ConfigProvider } from '@nutui/nutui-react-taro'
+import {
+  SearchBar,
+  Button,
+  ConfigProvider,
+  Cell,
+} from '@nutui/nutui-react-taro'
 import { MaterialView } from '../../../materialview/materialview.taro'
 
 const Demo11 = () => {
@@ -46,73 +51,75 @@ const Demo11 = () => {
         nutuiSearchbarContentBackground: 'transparent',
       }}
     >
-      <View style={rowStyle}>
-        {back}
-        <MaterialView scene="top-plain" style={{ flex: 1, minWidth: 0 }}>
-          <SearchBar
-            style={searchStyle}
-            leftIn={null}
-            placeholder="搜搜感兴趣的商品吧"
-            rightIn={
-              <Button
-                type="primary"
-                size="mini"
-                style={{
-                  height: 32,
-                  padding: '0 12px',
-                  borderRadius: 'var(--nutui-radius-l)',
-                  marginRight: -8,
-                }}
-              >
-                搜索
-              </Button>
-            }
-          />
-        </MaterialView>
-      </View>
-      <View style={rowStyle}>
-        {back}
-        <MaterialView scene="top-plain" style={{ flex: 1, minWidth: 0 }}>
-          <SearchBar
-            style={searchStyle}
-            leftIn={null}
-            placeholder="搜搜感兴趣的商品吧"
-            rightIn={
-              <Photograph
-                color="var(--nutui-color-text-help)"
-                onClick={() => console.log('识图')}
-              />
-            }
-          />
-        </MaterialView>
-      </View>
-      <View style={rowStyle}>
-        {back}
-        <MaterialView scene="top-plain" style={{ flex: 1, minWidth: 0 }}>
-          <SearchBar
-            style={searchStyle}
-            leftIn={null}
-            placeholder="搜搜感兴趣的商品吧"
-          />
-        </MaterialView>
-        <MaterialView
-          scene="top-plain"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexShrink: 0,
-            width: 100,
-            height: 40,
-            padding: '0 10px',
-            boxSizing: 'border-box',
-          }}
-        >
-          <Star size={20} onClick={() => console.log('收藏')} />
-          <Share size={20} onClick={() => console.log('分享')} />
-          <More size={20} onClick={() => console.log('更多')} />
-        </MaterialView>
-      </View>
+      <Cell align="stretch" style={{ flexDirection: 'column' }}>
+        <View style={rowStyle}>
+          {back}
+          <MaterialView scene="top-plain" style={{ flex: 1, minWidth: 0 }}>
+            <SearchBar
+              style={searchStyle}
+              leftIn={null}
+              placeholder="搜搜感兴趣的商品吧"
+              rightIn={
+                <Button
+                  type="primary"
+                  size="mini"
+                  style={{
+                    height: 32,
+                    padding: '0 12px',
+                    borderRadius: 'var(--nutui-radius-l)',
+                    marginRight: -8,
+                  }}
+                >
+                  搜索
+                </Button>
+              }
+            />
+          </MaterialView>
+        </View>
+        <View style={rowStyle}>
+          {back}
+          <MaterialView scene="top-plain" style={{ flex: 1, minWidth: 0 }}>
+            <SearchBar
+              style={searchStyle}
+              leftIn={null}
+              placeholder="搜搜感兴趣的商品吧"
+              rightIn={
+                <Photograph
+                  color="var(--nutui-color-text-help)"
+                  onClick={() => console.log('识图')}
+                />
+              }
+            />
+          </MaterialView>
+        </View>
+        <View style={rowStyle}>
+          {back}
+          <MaterialView scene="top-plain" style={{ flex: 1, minWidth: 0 }}>
+            <SearchBar
+              style={searchStyle}
+              leftIn={null}
+              placeholder="搜搜感兴趣的商品吧"
+            />
+          </MaterialView>
+          <MaterialView
+            scene="top-plain"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexShrink: 0,
+              width: 100,
+              height: 40,
+              padding: '0 10px',
+              boxSizing: 'border-box',
+            }}
+          >
+            <Star size={20} onClick={() => console.log('收藏')} />
+            <Share size={20} onClick={() => console.log('分享')} />
+            <More size={20} onClick={() => console.log('更多')} />
+          </MaterialView>
+        </View>
+      </Cell>
     </ConfigProvider>
   )
 }
