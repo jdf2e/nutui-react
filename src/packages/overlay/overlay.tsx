@@ -1,14 +1,18 @@
 import React, {
   FunctionComponent,
   MouseEvent,
+  ReactElement,
+  ReactPortal,
   useEffect,
   useRef,
   useState,
 } from 'react'
+import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
+import { useConfig } from '@/packages/configprovider'
 import { WebOverlayProps } from '@/types'
 
 export const defaultOverlayProps: WebOverlayProps = {
@@ -18,6 +22,7 @@ export const defaultOverlayProps: WebOverlayProps = {
   closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
+  portal: null,
   onClick: () => {},
   afterShow: () => {},
   afterClose: () => {},
@@ -25,6 +30,7 @@ export const defaultOverlayProps: WebOverlayProps = {
 export const Overlay: FunctionComponent<
   Partial<WebOverlayProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const config = useConfig()
   const {
     children,
     zIndex,
@@ -34,11 +40,15 @@ export const Overlay: FunctionComponent<
     visible,
     lockScroll,
     style,
+    portal,
     afterShow,
     afterClose,
     onClick,
     ...rest
   } = { ...defaultOverlayProps, ...props }
+
+  const targetPortal =
+    props.portal !== undefined ? props.portal : config?.portal
 
   const classPrefix = 'nut-overlay'
   const [innerVisible, setInnerVisible] = useState(visible)
@@ -51,7 +61,18 @@ export const Overlay: FunctionComponent<
   const shouldLockScroll = !innerVisible ? false : lockScroll
   useLockScroll(nodeRef, shouldLockScroll)
   const classes = classNames(classPrefix, className)
+  const durationMs = Number(duration)
+  // 动画时长与 duration 联动：仅在非默认值时写入 CSS 变量
+  const durationStyle =
+    Number.isFinite(durationMs) &&
+    durationMs >= 0 &&
+    durationMs !== defaultOverlayProps.duration
+      ? ({
+          '--nutui-overlay-animation-duration': `${durationMs}ms`,
+        } as React.CSSProperties)
+      : {}
   const styles = {
+    ...durationStyle,
     ...style,
     zIndex,
   }
@@ -62,7 +83,19 @@ export const Overlay: FunctionComponent<
     }
   }
 
-  return (
+  const resolveContainer = (getContainer: any) =>
+    (typeof getContainer === 'function' ? getContainer() : getContainer) ||
+    document.body
+
+  const renderToContainer = (getContainer: any, node: ReactElement) => {
+    if (getContainer) {
+      const container = resolveContainer(getContainer)
+      return createPortal(node, container) as ReactPortal
+    }
+    return node
+  }
+
+  const renderNode = () => (
     <CSSTransition
       nodeRef={nodeRef}
       classNames={`${classPrefix}-slide`}
@@ -83,6 +116,8 @@ export const Overlay: FunctionComponent<
       </div>
     </CSSTransition>
   )
+
+  return <>{renderToContainer(targetPortal as any, renderNode())}</>
 }
 
 Overlay.displayName = 'NutOverlay'

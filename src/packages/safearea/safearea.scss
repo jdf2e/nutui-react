@@ -1,16 +1,57 @@
 .nut-safe-area {
   display: flex;
   width: 100%;
+  box-sizing: border-box;
 
   &-position-top {
     padding-top: calc(
-      env(safe-area-inset-top) * var(--nutui-safe-area-multiple, 1)
+      env(safe-area-inset-top, 0px) * var(--nutui-safe-area-multiple, 1)
     );
   }
 
   &-position-bottom {
     padding-bottom: calc(
-      env(safe-area-inset-bottom) * var(--nutui-safe-area-multiple, 1)
+      env(safe-area-inset-bottom, 0px) * var(--nutui-safe-area-multiple, 1)
+    );
+  }
+
+  &-position-left {
+    width: auto;
+    padding-left: calc(
+      env(safe-area-inset-left, 0px) * var(--nutui-safe-area-multiple, 1)
+    );
+  }
+
+  &-position-right {
+    width: auto;
+    padding-right: calc(
+      env(safe-area-inset-right, 0px) * var(--nutui-safe-area-multiple, 1)
+    );
+  }
+
+  &-position-horizontal {
+    width: 100%;
+    padding-left: calc(
+      env(safe-area-inset-left, 0px) * var(--nutui-safe-area-multiple, 1)
+    );
+    padding-right: calc(
+      env(safe-area-inset-right, 0px) * var(--nutui-safe-area-multiple, 1)
+    );
+  }
+
+  &-position-all {
+    width: 100%;
+    padding-top: calc(
+      env(safe-area-inset-top, 0px) * var(--nutui-safe-area-multiple, 1)
+    );
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) * var(--nutui-safe-area-multiple, 1)
+    );
+    padding-left: calc(
+      env(safe-area-inset-left, 0px) * var(--nutui-safe-area-multiple, 1)
+    );
+    padding-right: calc(
+      env(safe-area-inset-right, 0px) * var(--nutui-safe-area-multiple, 1)
     );
   }
 }

@@ -61,7 +61,6 @@ video {
     Hiragino Sans GB,
     SimSun,
     sans-serif;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* ios默认文本框阴影 */
@@ -126,6 +125,8 @@ html,
 body {
   height: 100%;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 #doc {
   overflow-x: hidden;

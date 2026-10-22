@@ -165,6 +165,7 @@ export const MenuItem = forwardRef((props: Partial<TaroMenuItemProps>, ref) => {
     <div className="nut-menu-container" ref={micRef}>
       {parent.overlay ? (
         <Overlay
+          portal={null}
           className="nut-menu-container-overlay"
           style={getPosition()}
           lockScroll={parent.lockScroll}

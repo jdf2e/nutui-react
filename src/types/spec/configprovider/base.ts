@@ -5,4 +5,5 @@ export interface BaseConfigProvider extends BaseProps {
   locale: BaseLang
   direction: PageDirection
   theme: Record<string, string>
+  portal?: HTMLElement | (() => HTMLElement) | null
 }

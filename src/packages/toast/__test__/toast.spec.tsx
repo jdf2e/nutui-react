@@ -136,3 +136,51 @@ test('event show-loading-toast', async () => {
     expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe('loading')
   })
 })
+
+test('toast without overlay and non-blocking mode test', async () => {
+  const { getByTestId } = render(
+    <Cell
+      data-testid="emit-click"
+      onClick={() =>
+        Toast.show({
+          content: '非阻断提示',
+          hasOverlay: false,
+        })
+      }
+    />
+  )
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe(
+      '非阻断提示'
+    )
+    expect(document.querySelector('.nut-overlay')).toBeNull()
+    expect(document.querySelector('.nut-toast-overlay')).toBeNull()
+  })
+})
+
+test('toast with overlay and onClick content event test', async () => {
+  const onClick = vi.fn()
+  const { getByTestId } = render(
+    <Cell
+      data-testid="emit-click"
+      onClick={() =>
+        Toast.show({
+          content: '可点击提示',
+          hasOverlay: true,
+          onClick,
+        })
+      }
+    />
+  )
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(document.querySelector('.nut-overlay')).toBeNull()
+    expect(document.querySelector('.nut-toast-overlay')).toBeTruthy()
+
+    const inner = document.querySelector('.nut-toast-inner') as HTMLElement
+    expect(inner).toBeTruthy()
+    fireEvent.click(inner)
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+})

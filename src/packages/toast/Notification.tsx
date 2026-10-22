@@ -2,7 +2,6 @@ import * as React from 'react'
 import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
-import Overlay from '@/packages/overlay/index'
 import { WebToastProps } from '@/types'
 
 export interface NotificationState {
@@ -97,29 +96,35 @@ export default class Notification extends React.PureComponent<
       position,
       size,
       closeOnOverlayClick,
-      lockScroll,
       style,
       className,
       contentClassName,
       contentStyle,
       wordBreak,
-      zIndex,
+      zIndex = 1300,
+      hasOverlay = true,
+      overlayStyle,
+      overlayClassName,
+      onClick,
     } = this.props
     const { show } = this.state
+    if (!show) return null
     const classes = classNames({
       'nut-toast-has-icon': icon,
     })
     return (
-      <Overlay
-        visible={show}
-        style={style}
-        zIndex={zIndex}
-        className={`${classPrefix}-overlay-default ${className}`}
-        onClick={() => this.clickCover()}
-        closeOnOverlayClick={closeOnOverlayClick}
-        lockScroll={lockScroll}
-      >
-        <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
+      <div className={`${classPrefix}-wrapper`} style={{ zIndex }}>
+        {hasOverlay && (
+          <div
+            className={classNames(`${classPrefix}-overlay`, overlayClassName)}
+            style={overlayStyle}
+            onClick={() => this.clickCover()}
+          />
+        )}
+        <div
+          className={classNames(classPrefix, classes, className)}
+          id={`toast-${id}`}
+        >
           <div
             className={classNames(
               `${classPrefix}-inner`,
@@ -132,10 +137,12 @@ export default class Notification extends React.PureComponent<
               }
             )}
             style={{
+              ...style,
               ...contentStyle,
             }}
             role="alert"
             aria-label={(title ?? '') + (content ?? '')}
+            onClick={onClick}
           >
             {this.renderIcon()}
             {title && <div className={`${classPrefix}-title`}>{title}</div>}
@@ -144,7 +151,7 @@ export default class Notification extends React.PureComponent<
             )}
           </div>
         </div>
-      </Overlay>
+      </div>
     )
   }
 }

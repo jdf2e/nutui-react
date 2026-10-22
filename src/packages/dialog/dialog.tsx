@@ -81,6 +81,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     onCancel,
     onConfirm,
     onOverlayClick,
+    segment,
+    microBent,
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
@@ -274,6 +276,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
+          segment={segment}
+          microBent={microBent}
         >
           {content || children}
         </Content>
@@ -285,6 +289,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     <div style={{ display: visible ? 'block' : 'none' }}>
       {overlay && (
         <Overlay
+          portal={null}
           zIndex={zIndex}
           visible={visible}
           style={overlayStyle}

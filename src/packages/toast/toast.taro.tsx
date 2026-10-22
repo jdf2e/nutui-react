@@ -2,8 +2,6 @@ import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
-import Overlay from '@/packages/overlay/index.taro'
-import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 
 import {
   customEvents,
@@ -18,7 +16,6 @@ import { mergeProps } from '@/utils/merge-props'
 import { TaroToastProps } from '@/types'
 
 const defaultProps: TaroToastProps = {
-  ...defaultOverlayProps,
   id: '',
   duration: 2, // 时长,duration为0则一直展示
   position: 'middle',
@@ -28,12 +25,16 @@ const defaultProps: TaroToastProps = {
   content: '',
   contentClassName: '',
   contentStyle: {},
+  hasOverlay: true,
+  overlayStyle: {},
+  overlayClassName: '',
   closeOnOverlayClick: false,
   lockScroll: false,
   visible: false,
   wordBreak: 'break-all',
   zIndex: 1300,
   onClose: () => {},
+  onClick: () => {},
 }
 
 export const Toast: FunctionComponent<
@@ -52,6 +53,9 @@ export const Toast: FunctionComponent<
       content,
       duration,
       title,
+      hasOverlay = true,
+      overlayStyle,
+      overlayClassName,
       closeOnOverlayClick,
       lockScroll,
       contentClassName,
@@ -60,8 +64,9 @@ export const Toast: FunctionComponent<
       className,
       style,
       wordBreak,
-      zIndex,
+      zIndex = 1300,
       onClose,
+      onClick,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
@@ -155,18 +160,18 @@ export const Toast: FunctionComponent<
   return (
     <>
       {innerVisible && (
-        <Overlay
-          visible={innerVisible}
-          style={style}
-          zIndex={zIndex}
-          className={`${classPrefix}-overlay-default-taro ${className}`}
-          closeOnOverlayClick={closeOnOverlayClick}
-          lockScroll={lockScroll}
-          onClick={() => {
-            clickCover()
-          }}
-        >
-          <View className={`${classPrefix} ${classes}`} id={id}>
+        <View className={`${classPrefix}-wrapper`} style={{ zIndex }}>
+          {hasOverlay && (
+            <View
+              className={classNames(`${classPrefix}-overlay`, overlayClassName)}
+              style={overlayStyle}
+              catchMove={lockScroll}
+              onClick={() => {
+                clickCover()
+              }}
+            />
+          )}
+          <View className={classNames(classPrefix, classes, className)} id={id}>
             <View
               className={classNames(
                 `${classPrefix}-inner`,
@@ -178,9 +183,10 @@ export const Toast: FunctionComponent<
                   [`${classPrefix}-inner-descrption`]: content,
                 }
               )}
-              style={{ ...styles, ...contentStyle }}
+              style={{ ...styles, ...style, ...contentStyle }}
               ariaRole="alert"
               ariaLabel={(title ?? '') + (content ?? '')}
+              onClick={onClick}
             >
               {renderIcon()}
               {title && <Text className={`${classPrefix}-title`}>{title}</Text>}
@@ -192,7 +198,7 @@ export const Toast: FunctionComponent<
                 ))}
             </View>
           </View>
-        </Overlay>
+        </View>
       )}
     </>
   )

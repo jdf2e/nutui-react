@@ -15,8 +15,8 @@ import { Close } from '@nutui/icons-react'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
-import { WebPopupProps } from '@/types'
 import { useConfig } from '@/packages/configprovider'
+import { WebPopupProps } from '@/types'
 
 const defaultProps: WebPopupProps = {
   ...defaultOverlayProps,
@@ -76,6 +76,8 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    centerBase,
+    segment,
     resizable,
     minHeight,
     onOpen,
@@ -112,7 +114,18 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
   }
+  const durationMs = Number(duration)
+  // 动画时长与 duration 联动：仅在非默认值时写入 CSS 变量
+  const durationStyle =
+    Number.isFinite(durationMs) &&
+    durationMs >= 0 &&
+    durationMs !== defaultOverlayProps.duration
+      ? ({
+          '--nutui-popup-animation-duration': `${durationMs}ms`,
+        } as React.CSSProperties)
+      : {}
   const popStyles = {
+    ...durationStyle,
     ...style,
     zIndex: index,
     minHeight,
@@ -123,6 +136,10 @@ export const Popup: FunctionComponent<
     {
       [`${classPrefix}-round`]: round || position === 'bottom',
       [`${classPrefix}-${position}`]: true,
+      [`${classPrefix}-center-full`]:
+        position === 'center' && centerBase === 'full',
+      [`${classPrefix}-center-segment-right`]:
+        position === 'center' && segment === 'right',
     },
     className
   )
@@ -156,11 +173,6 @@ export const Popup: FunctionComponent<
   const close = () => {
     if (innerVisible) {
       setInnerVisible(false)
-      if (destroyOnClose) {
-        setTimeout(() => {
-          setShowChildren(false)
-        }, Number(duration))
-      }
       onClose && onClose()
     }
   }
@@ -304,7 +316,12 @@ export const Popup: FunctionComponent<
         timeout={duration}
         in={innerVisible}
         onEntered={afterShow}
-        onExited={afterClose}
+        onExited={() => {
+          if (destroyOnClose) {
+            setShowChildren(false)
+          }
+          afterClose && afterClose()
+        }}
       >
         <div
           ref={nodeRef}
@@ -324,11 +341,16 @@ export const Popup: FunctionComponent<
     )
   }
 
+  const config = useConfig()
+  const targetPortal =
+    props.portal !== undefined ? props.portal : config?.portal
+
   const renderNode = () => {
     return (
       <>
         {overlay && (
           <Overlay
+            portal={null}
             zIndex={index}
             style={overlayStyles}
             className={overlayClassName}
@@ -364,7 +386,7 @@ export const Popup: FunctionComponent<
     return node
   }
 
-  return <>{renderToContainer(portal as any, renderNode())}</>
+  return <>{renderToContainer(targetPortal as any, renderNode())}</>
 }
 
 Popup.displayName = 'NutPopup'

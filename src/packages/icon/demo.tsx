@@ -11,16 +11,16 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 
 const style = `
-.nut-cell > .nutui-iconfont, .nut-icon {
+.icon-demo .nut-cell > .nutui-iconfont, .icon-demo .nut-icon {
   margin-right: 10px;
 }
-ul {
+.icon-demo ul {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   width: 100%;
 }
-ul li {
+.icon-demo ul li {
     flex: 0 0 25%;
     max-width: 25%;
     height: 60px;
@@ -30,9 +30,9 @@ ul li {
     justify-content: center;
 }
 
-[dir='rtl'] .nut-icon,
-.nut-rtl .nut-icon,[dir='rtl'] .nut-iconfont,
-.nut-rtl .nut-iconfont {
+[dir='rtl'] .icon-demo .nut-icon,
+.nut-rtl .icon-demo .nut-icon,[dir='rtl'] .icon-demo .nutui-iconfont,
+.nut-rtl .icon-demo .nutui-iconfont {
   transform: rotateY(180deg);
   margin-right: 0px;
   margin-left: 10px;
@@ -69,7 +69,7 @@ const IconDemo = () => {
   return (
     <>
       <style>{style}</style>
-      <div className="demo">
+      <div className="demo icon-demo">
         <h2>{translated.svg}</h2>
         <Cell>
           <Demo1 />

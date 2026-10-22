@@ -182,6 +182,18 @@ test('pop destroyOnClose', () => {
   expect(onClose).toBeCalled()
 })
 
+test('should render centerBase and segment classes for iPhone Duo', () => {
+  const { container, rerender } = render(
+    <Popup visible position="center" centerBase="full" />
+  )
+  expect(container.querySelector('.nut-popup-center-full')).toBeTruthy()
+
+  rerender(<Popup visible position="center" segment="right" />)
+  expect(
+    container.querySelector('.nut-popup-center-segment-right')
+  ).toBeTruthy()
+})
+
 test('handles touch events correctly', () => {
   const handleTouchStart = vi.fn()
   const handleTouchMove = vi.fn()
@@ -215,4 +227,20 @@ test('handles touch events correctly', () => {
 
   fireEvent.touchEnd(popup)
   expect(handleTouchEnd).toHaveBeenCalled()
+})
+
+test('should sync css animation duration with duration prop', () => {
+  const { container } = render(<Popup visible duration={1000} />)
+  const popup = container.querySelector('.nut-popup') as HTMLElement
+  expect(popup.style.getPropertyValue('--nutui-popup-animation-duration')).toBe(
+    '1000ms'
+  )
+})
+
+test('should not set css animation duration when using default duration', () => {
+  const { container } = render(<Popup visible />)
+  const popup = container.querySelector('.nut-popup') as HTMLElement
+  expect(popup.style.getPropertyValue('--nutui-popup-animation-duration')).toBe(
+    ''
+  )
 })

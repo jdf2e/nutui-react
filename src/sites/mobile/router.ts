@@ -10,6 +10,12 @@ for (const path in modulesPage) {
   })
 
   routes.push({
+    path: '/zh-TW/component/' + name.toLowerCase(),
+    component: modulesPage[path],
+    name,
+  })
+
+  routes.push({
     path: '/en-US/component/' + name.toLowerCase(),
     component: modulesPage[path],
     name,

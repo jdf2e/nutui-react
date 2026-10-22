@@ -12,7 +12,8 @@
   font-size: $navbar-font-size;
   color: $navbar-color;
   overflow: hidden;
-  padding: 0 16px;
+  padding: 0 calc(16px + env(safe-area-inset-right, 0px)) 0
+    calc(16px + env(safe-area-inset-left, 0px));
 
   &-fixed {
     position: fixed;
@@ -31,6 +32,7 @@
     /* #ifndef dynamic*/
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
+    height: calc(#{$navbar-height} + env(safe-area-inset-top, 0px));
     /* #endif */
   }
 
@@ -67,6 +69,7 @@
     flex-direction: row;
     max-width: 124px;
     height: 100%;
+    min-height: 48px;
     cursor: pointer;
     /* #ifndef harmony jd h5 weapp*/
     .nut-icon,
@@ -97,6 +100,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      min-height: 48px;
       gap: 16px;
     }
 

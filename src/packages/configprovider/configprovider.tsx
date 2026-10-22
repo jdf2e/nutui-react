@@ -13,6 +13,7 @@ export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang
   direction?: ConfigProviderDirection
   theme?: Record<string | NutCSSVariables, string>
+  portal?: HTMLElement | (() => HTMLElement) | null
 }
 
 export type ConfigProviderDirection = 'ltr' | 'rtl' | undefined
