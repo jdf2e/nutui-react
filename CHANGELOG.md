@@ -1,3 +1,13 @@
+# v4.0.0-beta.12
+
+`2026-10-23`
+
+- :sparkles: feat(Price): 增加切换动效 (#3558)
+- :bug: fix(SearchBar): 优化demo样式(#3562)
+- :bug: fix(Tabbar): 修复 V16 版本设计走查问题 (#3561)
+- :bug: fix(InputNumber): 修改步进器图标大小 (#3557)
+- :bug: fix: 修复 navbar V16 版本设计走查问题 (#3563)
+
 # v4.0.0-beta.11
 
 `2026-10-21`
