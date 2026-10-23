@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SearchBar, Toast } from '@nutui/nutui-react-taro'
+import { SearchBar, Toast, Cell } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => {
   const [show, SetShow] = useState(false)
@@ -8,7 +8,9 @@ const Demo4 = () => {
   }
   return (
     <>
-      <SearchBar left="文本" right="测试" onSearch={() => toastShow()} />
+      <Cell>
+        <SearchBar left="文本" right="测试" onSearch={() => toastShow()} />
+      </Cell>
       <Toast
         visible={show}
         content="search callback"

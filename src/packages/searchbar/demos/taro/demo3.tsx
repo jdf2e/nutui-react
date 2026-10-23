@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ConfigProvider, SearchBar, Toast } from '@nutui/nutui-react-taro'
+import { ConfigProvider, SearchBar, Toast, Cell } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const [show, SetShow] = useState(false)
@@ -15,7 +15,9 @@ const Demo3 = () => {
           nutuiSearchbarInputTextAlign: 'right',
         }}
       >
-        <SearchBar onSearch={() => toastShow()} />
+        <Cell>
+          <SearchBar onSearch={() => toastShow()} />
+        </Cell>
       </ConfigProvider>
       <Toast
         visible={show}
