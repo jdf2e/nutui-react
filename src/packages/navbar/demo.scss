@@ -19,28 +19,6 @@
     display: none;
   }
 
-  h3,
-  .h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 0 10px;
-    font-size: 13px;
-    font-weight: normal;
-    color: var(--nutui-color-title, rgba(144, 156, 164, 1));
-  }
-
-  .navbar-android-button {
-    display: flex;
-    align-items: center;
-    padding: 0 scale-px(8px);
-    gap: scale-px(16px);
-    background: $color-background-overlay;
-    border-radius: $radius-base;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    height: scale-px(36px);
-  }
-
   .navbar-title-twoline {
     display: flex;
     flex-direction: column;
@@ -54,17 +32,6 @@
       font-size: scale-font-px(11px);
       font-weight: $font-weight;
       color: $color-text-help;
-    }
-  }
-
-  .nut-navbar.nut-navbar-sticky {
-    --nutui-navbar-background: #{var(--nutui-gray-1, $white)};
-    --nutui-navbar-box-shadow: 0 1px 0 0 #{$color-border};
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    .navbar-android-button {
-      background: none;
     }
   }
 
@@ -116,11 +83,43 @@
     --nutui-navbar-padding: #{scale-px(7px) scale-px(8px)};
     --nutui-navbar-side-maxwidth: #{scale-px(120px)};
 
-    &.nut-navbar.nut-navbar-sticky {
-      --nutui-navbar-background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
+    &.nut-navbar-white {
+      --nutui-navbar-background: var(--nutui-gray-1, #fff);
     }
+
+    &.nut-navbar-sticky {
+      --nutui-navbar-background: rgba(255, 255, 255, 0.9);
+      --nutui-navbar-box-shadow: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 0;
+      position: sticky;
+      top: 0;
+    }
+  }
+
+  .navbar-iOS26-immersive {
+    --nutui-navbar-color: #e1e6eb;
+    --nutui-navbar-title-font-color: #e1e6eb;
+  }
+
+  .navbar-iOS26-skin-light {
+    --nutui-navbar-background: #fff9e0;
+  }
+
+  .navbar-iOS26-skin-deep {
+    --nutui-navbar-background: #00ac6b;
+    --nutui-navbar-color: #fff;
+    --nutui-navbar-title-font-color: #fff;
+  }
+
+  .navbar-topbar-wrapper {
+    height: scale-px(150px);
+    overflow: hidden;
+    background-image: url('https://img20.360buyimg.com/img/jfs/t1/551114/35/3331/277128/6ad9d6faFa5a090bb/02762ee24ecc6d46.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
   }
 
   .navbar-iOS26-button {
@@ -133,7 +132,7 @@
 }
 
 .nut-theme-dark {
-  .navbar-iOS26.nut-navbar.nut-navbar-sticky {
-    --nutui-navbar-background: rgba(20, 23, 26, 0.9);
+  .navbar-iOS26.nut-navbar-sticky {
+    --nutui-navbar-background: rgba(20, 23, 26, 0.8);
   }
 }

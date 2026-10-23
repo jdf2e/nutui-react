@@ -5,29 +5,25 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import './demo.scss'
 import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
-import Demo4 from './demos/taro/demo4'
-import Demo6 from './demos/taro/demo6'
 
 const NavBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      group1: 'iOS26以下/安卓鸿蒙',
-      group2: 'iOS26以上',
-      cat1: '标题型',
-      cat3: '导航型',
+      sceneMaterial: '场景材质',
+      subBar: '二级楼层',
+      customContent: '自定义内容',
     },
     'zh-TW': {
-      group1: 'iOS26以下/安卓鴻蒙',
-      group2: 'iOS26以上',
-      cat1: '標題型',
-      cat3: '導航型',
+      sceneMaterial: '場景材質',
+      subBar: '二級樓層',
+      customContent: '自定義內容',
     },
     'en-US': {
-      group1: 'iOS 26 and below / Android & HarmonyOS',
-      group2: 'iOS 26 and above',
-      cat1: 'Title',
-      cat3: 'Navigation',
+      sceneMaterial: 'Scene Materials',
+      subBar: 'Sub Bar',
+      customContent: 'Custom Content',
     },
   })
   return (
@@ -36,16 +32,12 @@ const NavBarDemo = () => {
       <ScrollView
         className={`demo navbar-demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
       >
-        <View className="h2">{translated.group1}</View>
-        <View className="h3">{translated.cat1}</View>
+        <View className="h2">{translated.sceneMaterial}</View>
         <Demo1 />
-        <View className="h3">{translated.cat3}</View>
+        <View className="h2">{translated.subBar}</View>
+        <Demo2 />
+        <View className="h2">{translated.customContent}</View>
         <Demo3 />
-        <View className="h2">{translated.group2}</View>
-        <View className="h3">{translated.cat1}</View>
-        <Demo4 />
-        <View className="h3">{translated.cat3}</View>
-        <Demo6 />
       </ScrollView>
     </>
   )
