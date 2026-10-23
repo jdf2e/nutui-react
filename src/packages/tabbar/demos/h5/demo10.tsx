@@ -1,5 +1,14 @@
 import React from 'react'
-import { Cart, Home, Message, User } from '@nutui/icons-react'
+import {
+  CartF,
+  CartI,
+  HomeF,
+  HomeI,
+  MessageF,
+  MessageI,
+  UserF,
+  UserI,
+} from '@nutui/icons-react'
 import { Tabbar } from '@nutui/nutui-react'
 import { addonBeforeDarkImage, addonBeforeImage } from '../addon-before-assets'
 import '../addon-before-demo.scss'
@@ -36,10 +45,22 @@ const Demo10 = () => (
       </button>
     }
   >
-    <Tabbar.Item title="首页" icon={<Home />} />
-    <Tabbar.Item title="消息" icon={<Message />} />
-    <Tabbar.Item title="购物车" icon={<Cart />} />
-    <Tabbar.Item title="我的" icon={<User />} />
+    <Tabbar.Item
+      title="首页"
+      icon={(active: boolean) => (active ? <HomeF /> : <HomeI />)}
+    />
+    <Tabbar.Item
+      title="消息"
+      icon={(active: boolean) => (active ? <MessageF /> : <MessageI />)}
+    />
+    <Tabbar.Item
+      title="购物车"
+      icon={(active: boolean) => (active ? <CartF /> : <CartI />)}
+    />
+    <Tabbar.Item
+      title="我的"
+      icon={(active: boolean) => (active ? <UserF /> : <UserI />)}
+    />
   </Tabbar>
 )
 
