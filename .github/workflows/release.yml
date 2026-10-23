@@ -10,8 +10,6 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Skip pre-release tags (e.g. v4.0.0-beta.11) created by Release Beta
-    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.ref_name, '-') }}
     permissions:
       contents: write
       # Required for npm Trusted Publishing (OIDC)
@@ -21,6 +19,17 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+
+      - name: Resolve npm dist-tag
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "${VERSION}" == *beta* ]]; then
+            echo "DIST_TAG=beta" >> "$GITHUB_ENV"
+          else
+            echo "DIST_TAG=latest" >> "$GITHUB_ENV"
+          fi
+          echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
+          echo "Publish ${VERSION} with dist-tag: $([[ "${VERSION}" == *beta* ]] && echo beta || echo latest)"
 
       - name: Install pnpm
         run: npm i -g pnpm@10
@@ -50,10 +59,25 @@ jobs:
           fi
 
       # Auth via GitHub OIDC + npm Trusted Publisher (no NPM_TOKEN)
+      # Skip if version already exists (e.g. H5 published but Taro failed mid-run)
       - name: Publish @nutui/nutui-react
         working-directory: ./release/h5
-        run: npm publish --access public --provenance
+        run: |
+          PKG=$(node -p "require('./package.json').name")
+          VER=$(node -p "require('./package.json').version")
+          if npm view "${PKG}@${VER}" version --registry https://registry.npmjs.org/ >/dev/null 2>&1; then
+            echo "${PKG}@${VER} already on npm, skip"
+          else
+            npm publish --access public --tag "${DIST_TAG}" --provenance
+          fi
 
       - name: Publish @nutui/nutui-react-taro
         working-directory: ./release/taro
-        run: npm publish --access public --provenance
+        run: |
+          PKG=$(node -p "require('./package.json').name")
+          VER=$(node -p "require('./package.json').version")
+          if npm view "${PKG}@${VER}" version --registry https://registry.npmjs.org/ >/dev/null 2>&1; then
+            echo "${PKG}@${VER} already on npm, skip"
+          else
+            npm publish --access public --tag "${DIST_TAG}" --provenance
+          fi

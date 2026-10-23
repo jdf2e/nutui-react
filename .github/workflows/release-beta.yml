@@ -73,15 +73,30 @@ jobs:
           fi
 
       # Auth via GitHub OIDC + npm Trusted Publisher (no NPM_TOKEN)
+      # Skip if version already exists (e.g. H5 published but Taro failed mid-run)
       - name: Publish @nutui/nutui-react
         if: env.ABORT != 'true'
         working-directory: ./release/h5
-        run: npm publish --tag beta --access public --provenance
+        run: |
+          PKG=$(node -p "require('./package.json').name")
+          VER=$(node -p "require('./package.json').version")
+          if npm view "${PKG}@${VER}" version --registry https://registry.npmjs.org/ >/dev/null 2>&1; then
+            echo "${PKG}@${VER} already on npm, skip"
+          else
+            npm publish --tag beta --access public --provenance
+          fi
 
       - name: Publish @nutui/nutui-react-taro
         if: env.ABORT != 'true'
         working-directory: ./release/taro
-        run: npm publish --tag beta --access public --provenance
+        run: |
+          PKG=$(node -p "require('./package.json').name")
+          VER=$(node -p "require('./package.json').version")
+          if npm view "${PKG}@${VER}" version --registry https://registry.npmjs.org/ >/dev/null 2>&1; then
+            echo "${PKG}@${VER} already on npm, skip"
+          else
+            npm publish --tag beta --access public --provenance
+          fi
 
       - name: Create and push git tag
         if: env.ABORT != 'true'
