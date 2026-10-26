@@ -1,0 +1,23 @@
+src/styles/variables-daojia.scss
+  s_eb86fd791f09c8::t_8b7826ec3f6dcb 2018-2021
+src/styles/variables-jmapp.scss
+  s_eb86fd791f09c8::t_8d65dd0433ed2d 3308-3311
+src/styles/variables-jrkf.scss
+  s_eb86fd791f09c8::t_f52a33dbab4c27 3330-3333
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "b6475aadf616fb5fa0f27e01dd93465d8a2ef0c7",
+  "prompts": {},
+  "sessions": {
+    "s_eb86fd791f09c8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c8bedfbd-b215-441a-859e-a30dc093fa24",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
