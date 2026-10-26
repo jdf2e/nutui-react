@@ -1,3 +1,24 @@
+# v4.0.0-beta.12
+
+`2026-10-23`
+
+- :sparkles: feat(Price): 增加切换动效 (#3558)
+- :bug: fix(SearchBar): 优化demo样式(#3562)
+- :bug: fix(Tabbar): 修复 V16 版本设计走查问题 (#3561)
+- :bug: fix(InputNumber): 修改步进器图标大小 (#3557)
+- :bug: fix: 修复 navbar V16 版本设计走查问题 (#3563)
+
+# v4.0.0-beta.11
+
+`2026-10-21`
+
+- :sparkles: feat(ActionSheet): 更新文档和示例，修改弹出位置描述及添加横向滚动功能 (#3553)
+- :sparkles: feat(Tag): 更新primary背景为 #ff0f23 (#3554)
+- :sparkles: feat(input): 优化demo
+- :bug: fix(Searchbar): 修复AI搜索demo样式
+- :bug: fix: 更新icon版本解决popover箭头异常问题
+- 🏡 chore: 更新MaterialView组件配置
+
 # v4.0.0-beta.10
 
 `2026-10-16`

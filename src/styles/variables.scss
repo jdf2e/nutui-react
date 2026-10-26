@@ -854,7 +854,7 @@ $inputnumber-icon-color: var(
   --nutui-inputnumber-icon-color,
   $color-text
 ) !default;
-$inputnumber-icon-size: var(--nutui-inputnumber-icon-size, scale-px(8px)) !default;
+$inputnumber-icon-size: var(--nutui-inputnumber-icon-size, scale-px(10px)) !default;
 $inputnumber-disabled-color: var(
   --nutui-inputnumber-disabled-color,
   $color-text-disabled
@@ -1414,7 +1414,7 @@ $tabbar-border-radius: var(
 ) !default;
 $tabbar-active-background: var(
   --nutui-tabbar-active-background,
-  var(--nutui-color-background-component, #ebedf2)
+  var(--nutui-mask-2, rgba(17, 20, 26, 0.08))
 ) !default;
 $tabbar-active-border-radius: var(
   --nutui-tabbar-active-border-radius,

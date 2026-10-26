@@ -3,8 +3,8 @@ name: Release
 on:
   push:
     tags:
-      - v3.*
-      - v4.*
+      - 'v3.*'
+      - 'v4.*'
   workflow_dispatch:
 
 jobs:
@@ -20,24 +20,34 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Resolve npm dist-tag
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "${VERSION}" == *beta* ]]; then
+            echo "DIST_TAG=beta" >> "$GITHUB_ENV"
+          else
+            echo "DIST_TAG=latest" >> "$GITHUB_ENV"
+          fi
+          echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
+          echo "Publish ${VERSION} with dist-tag: $([[ "${VERSION}" == *beta* ]] && echo beta || echo latest)"
+
       - name: Install pnpm
         run: npm i -g pnpm@10
 
+      # Do NOT set registry-url: empty NODE_AUTH_TOKEN would bypass OIDC and cause E404.
       - uses: actions/setup-node@v7
         with:
-          registry-url: 'https://registry.npmjs.org'
-          node-version: '20'
+          # npm 12 requires Node ^22.22.2 || ^24.15.0 || >=26
+          node-version: '22'
           cache: 'pnpm'
 
-      # Trusted Publishing needs a recent npm CLI (OIDC exchange)
       - name: Upgrade npm for Trusted Publishing
-        run: npm i -g npm@latest
+        run: npm i -g npm@12
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Run Build
-        if: env.ABORT != 'true'
         run: |
           if ! pnpm build; then
             echo "构建 nutui-react 失败"
@@ -48,13 +58,26 @@ jobs:
             exit 1
           fi
 
-      # No NPM_TOKEN: auth via GitHub OIDC + npm Trusted Publisher
-      - name: Run Release @nutui/nutui-react
-        if: env.ABORT != 'true'
+      # Auth via GitHub OIDC + npm Trusted Publisher (no NPM_TOKEN)
+      # Skip if version already exists (e.g. H5 published but Taro failed mid-run)
+      - name: Publish @nutui/nutui-react
         working-directory: ./release/h5
-        run: npm publish --access public --provenance
+        run: |
+          PKG=$(node -p "require('./package.json').name")
+          VER=$(node -p "require('./package.json').version")
+          if npm view "${PKG}@${VER}" version --registry https://registry.npmjs.org/ >/dev/null 2>&1; then
+            echo "${PKG}@${VER} already on npm, skip"
+          else
+            npm publish --access public --tag "${DIST_TAG}" --provenance
+          fi
 
-      - name: Run Releases @nutui/nutui-react-taro
-        if: env.ABORT != 'true'
+      - name: Publish @nutui/nutui-react-taro
         working-directory: ./release/taro
-        run: npm publish --access public --provenance
+        run: |
+          PKG=$(node -p "require('./package.json').name")
+          VER=$(node -p "require('./package.json').version")
+          if npm view "${PKG}@${VER}" version --registry https://registry.npmjs.org/ >/dev/null 2>&1; then
+            echo "${PKG}@${VER} already on npm, skip"
+          else
+            npm publish --access public --tag "${DIST_TAG}" --provenance
+          fi

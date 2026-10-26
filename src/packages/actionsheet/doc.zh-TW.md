@@ -62,9 +62,9 @@ import { ActionSheet } from '@nutui/nutui-react'
 
 :::
 
-### 頂部彈出
+### 彈出位置
 
-通過 `position="top"` 從頂部彈出，內容以網格形式展示，`options` 支持 `icon` 欄位（字串使用 `img` 渲染，也可傳入自定義節點）。網格佈局也可通過 `layout="grid"` 用於底部彈出；`columns` 僅支持 `4` 或 `5`，為 `4` 時左右間距更寬。
+通過 `position="top"` 從頂部彈出，內容以網格形式展示，`options` 支持 `icon` 欄位（字串使用 `img` 渲染，也可傳入自定義節點）。網格佈局也可通過 `layout="grid"` 用於底部彈出；`columns` 僅支持 `4` 或 `5`，為 `4` 時左右間距更寬。底部彈出還可通過 `children` 自定義面板內容，示例中放置了兩行互不影響的橫向滾動列表。
 
 :::demo
 

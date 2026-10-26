@@ -1,21 +1,37 @@
 import React from 'react'
 import { Tabbar } from '@nutui/nutui-react'
-import { Cart, Hi, Home, User, Heart, HeartFill } from '@nutui/icons-react'
+import {
+  CartF,
+  CartI,
+  HeartF,
+  HeartI,
+  HiI,
+  HomeF,
+  HomeI,
+  UserF,
+  UserI,
+} from '@nutui/icons-react'
 
 const Demo = () => (
   <Tabbar material="frosted">
-    <Tabbar.Item title="首页" icon={<Home />} />
-    <Tabbar.Item title="逛" icon={<Hi />} />
+    <Tabbar.Item
+      title="首页"
+      icon={(active: boolean) => (active ? <HomeF /> : <HomeI />)}
+    />
+    <Tabbar.Item title="逛" icon={<HiI />} />
     <Tabbar.Item
       title="收藏"
-      icon={(active: boolean) => (active ? <HeartFill /> : <Heart />)}
+      icon={(active: boolean) => (active ? <HeartF /> : <HeartI />)}
     />
     <Tabbar.Item
       title="焦点点击"
-      icon={<Cart />}
+      icon={(active: boolean) => (active ? <CartF /> : <CartI />)}
       onActiveClick={() => console.log('可以在这里写想要的事件')}
     />
-    <Tabbar.Item title="我的" icon={<User />} />
+    <Tabbar.Item
+      title="我的"
+      icon={(active: boolean) => (active ? <UserF /> : <UserI />)}
+    />
   </Tabbar>
 )
 
