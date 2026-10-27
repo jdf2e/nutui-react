@@ -3,7 +3,8 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 import {
   CartF,
   CartI,
-  HiI,
+  StoreF,
+  StoreI,
   HomeF,
   HomeI,
   MessageF,
@@ -19,7 +20,11 @@ const Demo5 = () => (
       title="首页"
       dot
     />
-    <Tabbar.Item title="逛一逛" icon={<HiI />} value="最多四字" />
+    <Tabbar.Item
+      title="逛一逛"
+      icon={(active: boolean) => (active ? <StoreF /> : <StoreI />)}
+      value="最多四字"
+    />
     <Tabbar.Item
       title="消息"
       icon={(active: boolean) => (active ? <MessageF /> : <MessageI />)}

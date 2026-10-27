@@ -3,7 +3,8 @@ import { Tabbar } from '@nutui/nutui-react'
 import {
   CartF,
   CartI,
-  HiI,
+  StoreF,
+  StoreI,
   HomeF,
   HomeI,
   MessageF,
@@ -23,7 +24,15 @@ const Demo = () => (
         )
       }
     />
-    <Tabbar.Item icon={<HiI width={24} height={24} />} />
+    <Tabbar.Item
+      icon={(active: boolean) =>
+        active ? (
+          <StoreF width={24} height={24} />
+        ) : (
+          <StoreI width={24} height={24} />
+        )
+      }
+    />
     <Tabbar.Item
       icon={(active: boolean) =>
         active ? (

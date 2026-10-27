@@ -3,7 +3,8 @@ import { Tabbar } from '@nutui/nutui-react'
 import {
   CartF,
   CartI,
-  HiI,
+  StoreF,
+  StoreI,
   HomeF,
   HomeI,
   MessageF,
@@ -44,7 +45,10 @@ const Demo = ({ scrollTop = 0, onBackToTop }: DemoProps) => {
           if (canBackToTop) onBackToTop?.()
         }}
       />
-      <Tabbar.Item title="逛" icon={<HiI />} />
+      <Tabbar.Item
+        title="逛"
+        icon={(active: boolean) => (active ? <StoreF /> : <StoreI />)}
+      />
       <Tabbar.Item
         title="消息"
         icon={(active: boolean) => (active ? <MessageF /> : <MessageI />)}
