@@ -18,7 +18,7 @@ import Demo11 from './demos/taro/demo11'
 const PriceDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      title1: '支持尺寸：small、normal、large、xlarge',
+      title1: '支持尺寸：small、medium、normal、large、xlarge',
       title2: '不保留小数',
       title3: '有人民币符号，无千位分隔',
       title4: '有人民币符号，有千位分隔，保留小数点后三位',
@@ -31,7 +31,7 @@ const PriceDemo = () => {
       title11: '数据原样输出',
     },
     'zh-TW': {
-      title1: '支持尺寸：small、normal、large、xlarge',
+      title1: '支持尺寸：small、medium、normal、large、xlarge',
       title2: '不保留小數',
       title3: '有人民幣符號，無千位分隔',
       title4: '有人民幣符號，有千位分隔，保留小數點後三位',
@@ -44,7 +44,7 @@ const PriceDemo = () => {
       title11: '數據原樣輸出',
     },
     'en-US': {
-      title1: 'Support sizes：small、normal、large、xlarge',
+      title1: 'Support sizes：small、medium、normal、large、xlarge',
       title2: 'No decimals',
       title3: 'With RMB symbol, no thousands separator',
       title4:

@@ -130,6 +130,14 @@ import { Rate } from '@nutui/nutui-react'
 
 :::
 
+### 自定义评分
+
+:::demo
+
+<CodeBlock src='h5/demo16.tsx'></CodeBlock>
+
+:::
+
 ## Rate
 
 ### Props

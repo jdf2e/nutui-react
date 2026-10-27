@@ -10,7 +10,7 @@ import { NavBar } from '@nutui/nutui-react'
 
 ## Code Example
 
-### Basic Usage
+### Scene Materials
 
 :::demo
 
@@ -18,7 +18,7 @@ import { NavBar } from '@nutui/nutui-react'
 
 :::
 
-### Title Align
+### Sub Bar
 
 :::demo
 
@@ -26,7 +26,7 @@ import { NavBar } from '@nutui/nutui-react'
 
 :::
 
-### Multi-tab Switching Navigation
+### Custom Content
 
 :::demo
 
@@ -44,6 +44,7 @@ import { NavBar } from '@nutui/nutui-react'
 | left | The left content, rendered to the right of the return area | `ReactNode` | `-` |
 | back | Returns the text of the area | `ReactNode` | `-` |
 | title | Title | `ReactNode` | `-` |
+| subBar | Second-level content, rendered below the title row | `ReactNode` | `-` |
 | fixed | Is it fixed | `boolean` | `false` |
 | safeAreaInsetTop | Whether it is suitable for the safe area | `boolean` | `false` |
 | placeholder | When fixed to the top, whether to generate a placeholder element of equal height at the label position | `boolean` | `false` |
@@ -60,13 +61,16 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-navbar-width | The width of the navbar | `100%` |
 | \--nutui-navbar-height | The height of the navbar | `44px` |
-| \--nutui-navbar-margin-bottom | Bottom margin of the navbar | `20px` |
-| \--nutui-navbar-background | The navbar's background color | `$white` |
-| \--nutui-navbar-box-shadow | Shadow of navbar | `0px 0px transparent` |
-| \--nutui-navbar-color | navbar font color | `$color-text` |
+| \--nutui-navbar-padding | The navbar's padding | `4px 8px` |
+| \--nutui-navbar-subbar-padding | Padding of the navbar's second-level content | `8px 0` |
+| \--nutui-navbar-side-maxwidth | Maximum width of the navbar's left/right content area | `108px` |
+| \--nutui-navbar-side-padding | Padding of the navbar's left/right content area | `8px` |
+| \--nutui-navbar-background | The navbar's background color | `transparent` |
+| \--nutui-navbar-box-shadow | Shadow of navbar | `none` |
+| \--nutui-navbar-color | navbar font color | `$color-title` |
 | \--nutui-navbar-font-size | navbar font size | `$font-size-base` |
-| \--nutui-navbar-title-font-size | The font size of the navbar's title | `$font-size-base` |
-| \--nutui-navbar-title-font-weight | The font weight of the navbar's title | `0` |
+| \--nutui-navbar-title-font-size | The font size of the navbar's title | `$font-size-xl` |
+| \--nutui-navbar-title-font-weight | The font weight of the navbar's title | `$font-weight-bold` |
 | \--nutui-navbar-title-font-color | The font color of the navbar's title | `$color-title` |
 
 <Contribution name="NavBar" />

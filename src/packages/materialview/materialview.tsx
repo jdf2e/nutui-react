@@ -13,7 +13,6 @@ import {
   GradientBlurConfig,
 } from './types'
 import { getFrostedPreset, getMaterialClassName } from './scene-presets'
-import './materialview.scss'
 
 const defaultProps = {
   ...ComponentDefaults,

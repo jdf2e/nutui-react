@@ -130,6 +130,14 @@ import { Rate } from '@nutui/nutui-react-taro'
 
 :::
 
+### 自定义评分
+
+:::demo
+
+<CodeBlock src='taro/demo16.tsx'></CodeBlock>
+
+:::
+
 ## Rate
 
 ### Props

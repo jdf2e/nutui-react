@@ -10,16 +10,20 @@ const defaultProps = {
   left: '',
   right: '',
   back: '',
+  subBar: '',
   fixed: false,
   safeAreaInsetTop: false,
   placeholder: false,
   zIndex: 10,
 } as WebNavBarProps
-export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
+export const NavBar: FunctionComponent<
+  Partial<WebNavBarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+> = (props) => {
   const {
     right,
     left,
     title,
+    subBar,
     className,
     style,
     back,
@@ -28,6 +32,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
     placeholder,
     zIndex,
     onBackClick,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -81,6 +86,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
         className={classNames({
           [`${classPrefix}-title`]: true,
           [`${classPrefix}-title-center`]: title,
+          [`${classPrefix}-title-padding-left`]: !left && !back && !title,
         })}
       >
         {title || children}
@@ -102,12 +108,19 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
     )
   }
 
+  const renderSubBar = () => {
+    return subBar ? (
+      <div className={`${classPrefix}-subbar`}>{subBar}</div>
+    ) : null
+  }
+
   const renderWrapper = () => {
     return (
-      <div className={cls} style={styles()}>
+      <div className={cls} style={styles()} {...rest}>
         {renderLeft()}
         {renderContent()}
         {renderRight()}
+        {renderSubBar()}
       </div>
     )
   }
@@ -120,6 +133,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
 
   const cls = classNames(classPrefix, classes, className, {
     [`${classPrefix}-title-wrapper`]: title,
+    [`${classPrefix}-has-subbar`]: subBar,
   })
 
   return (

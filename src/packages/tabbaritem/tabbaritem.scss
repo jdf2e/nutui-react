@@ -5,13 +5,13 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
-  padding: 6px 0 2px;
+  padding: scale-px(6px) 0 scale-px(2px);
   color: $tabbar-inactive-color;
   height: 100%;
 
   .nut-icon {
-    width: 24px;
-    height: 24px;
+    width: scale-px(24px);
+    height: scale-px(24px);
     font-size: $font-size-xxl;
     /* #ifdef harmony dynamic*/
     color: $tabbar-inactive-color;
@@ -21,19 +21,38 @@
     /* #endif*/
   }
 
+  &-visual {
+    position: relative;
+    display: inline-flex;
+
+    > .nut-badge {
+      position: absolute;
+    }
+
+    &-icon#{&}-dot > .nut-badge {
+      left: scale-px(18px);
+      bottom: scale-px(13px);
+    }
+
+    &-icon#{&}-text > .nut-badge {
+      left: scale-px(14px);
+      bottom: scale-px(13px);
+    }
+  }
+
   &-text {
     display: block;
     color: $color-text;
     font-size: $tabbar-text-font-size;
-    line-height: $tabbar-text-font-size;
+    line-height: $tabbar-text-line-height;
     margin-top: $tabbar-text-margin-top;
   }
 
   .nut-image {
     &-default {
-      width: 38px;
-      height: 38px;
-      border-radius: 38px;
+      width: scale-px(38px);
+      height: scale-px(38px);
+      border-radius: scale-px(38px);
     }
   }
 
@@ -44,7 +63,10 @@
     .nut-tabbar-item-text {
       font-size: $tabbar-text-large-font-size;
       margin-top: 0;
-      line-height: $tabbar-text-large-font-size;
+      line-height: var(
+        --nutui-tabbar-text-line-height,
+        #{$tabbar-text-large-font-size}
+      );
       font-weight: $tabbar-text-large-font-weight;
     }
   }
@@ -62,4 +84,70 @@
       /* #endif*/
     }
   }
+}
+
+.nut-tabbar-material-background .nut-tabbar-item {
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0;
+  height: $tabbar-content-height;
+  border-radius: $tabbar-active-border-radius;
+
+  .nut-badge-sup {
+    border-width: scale-px(1px);
+  }
+
+  .nut-badge-sup:not(.nut-badge-dot) {
+    box-sizing: border-box;
+    height: scale-px(14px);
+    min-width: scale-px(14px);
+    padding: 0 scale-px(3px);
+    border-radius: scale-px(8px);
+  }
+
+  .nut-badge-sup {
+    color: #fff;
+    font-family: 'PingFang SC', 'PingFang-SC', sans-serif;
+    font-size: scale-font-px(9px);
+    font-weight: 400;
+    line-height: scale-font-px(12px);
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .nut-badge-dot {
+    box-sizing: border-box;
+    width: scale-px(8px);
+    min-width: scale-px(8px);
+    height: scale-px(8px);
+  }
+
+  .nut-icon {
+    width: scale-px(20px);
+    height: scale-px(20px);
+    font-size: scale-px(20px);
+  }
+
+  &-active .nut-tabbar-item-text {
+    font-weight: $font-weight-bold;
+  }
+}
+
+.nut-tabbar-material-background
+  .nut-tabbar-wrap:not(.nut-tabbar-wrap-horizontal)
+  .nut-tabbar-item:not(.nut-tabbar-item-large)
+  .nut-tabbar-item-text {
+  font-size: var(--nutui-tabbar-text-font-size, #{$font-size-xxs});
+  line-height: var(
+    --nutui-tabbar-text-line-height,
+    var(--nutui-tabbar-text-font-size, #{$font-size-xxs})
+  );
+}
+
+.nut-tabbar-material-background
+  .nut-tabbar-wrap.nut-tabbar-wrap-skin:not(.nut-tabbar-wrap-horizontal)
+  .nut-tabbar-item-active {
+  background: $tabbar-active-background;
 }

@@ -34,14 +34,18 @@
   &-left {
     justify-content: flex-start;
     .nut-tabs-titles-item {
-      padding: 0 22px;
+      padding: 0 8px;
     }
   }
 
   &-right {
     justify-content: flex-end;
     .nut-tabs-titles-item {
-      padding: 0 22px;
+      padding: 0 8px;
+    }
+
+    .nut-tabs-list {
+      justify-content: flex-end;
     }
   }
 
@@ -56,6 +60,8 @@
     line-height: $tabs-titles-height;
     min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
+    font-family: $tabs-titles-item-font-family;
+    font-weight: $tabs-titles-item-font-weight;
     color: $tabs-titles-item-color;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -71,6 +77,7 @@
 
     &-text {
       color: $tabs-titles-item-color;
+      font-family: $tabs-titles-item-font-family;
     }
 
     &-smile,
@@ -100,8 +107,8 @@
     }
 
     &-smile-icon {
-      width: 40px;
-      height: 20px;
+      width: 12px;
+      height: 12px;
     }
 
     &-active {
@@ -111,6 +118,8 @@
 
       .nut-tabs-titles-item-text {
         color: $tabs-titles-item-active-color;
+        font-family: $tabs-titles-item-active-font-family;
+        font-size: $tabs-titles-item-active-font-size;
         font-weight: $tabs-titles-item-active-font-weight;
       }
 
@@ -128,8 +137,8 @@
         /* #ifndef dynamic*/
         overflow: unset;
         /* #endif */
-        width: 40px;
-        height: 20px;
+        width: 12px;
+        height: 12px;
 
         .nut-icon {
           color: $tabs-titles-item-active-color;
@@ -153,7 +162,7 @@
       &-active {
         .nut-tabs-titles-item-text,
         .nut-icon {
-          color: $color-title;
+          color: $tabs-titles-item-active-color;
           font-size: $tabs-titles-item-active-font-size;
         }
       }
@@ -162,17 +171,63 @@
 
   &-card {
     .nut-tabs-titles-item {
+      padding: 0 8px;
+      flex-direction: column;
+      justify-content: center;
+      line-height: initial;
+      background: transparent;
+
       &-active {
+        position: relative;
+        z-index: 1;
+        margin: 0 24px;
         font-weight: $font-weight-bold;
-        background-color: $white;
-        border-radius: $radius-base $radius-base 0 0;
+        background-color: $tabs-titles-item-active-background-color;
+
+        .nut-tabs-titles-item-shoulder-left,
+        .nut-tabs-titles-item-shoulder-right {
+          position: absolute;
+          bottom: 0;
+          width: 24px;
+          height: 100%;
+          display: block;
+          pointer-events: none;
+        }
+
+        .nut-tabs-titles-item-shoulder-left {
+          left: -24px;
+          // 左肩复用右肩图形,水平镜像即可,无需第二份资源
+          transform: scaleX(-1);
+        }
+
+        .nut-tabs-titles-item-shoulder-right {
+          right: -24px;
+        }
+
+        // 贴边端由 TSX 按可滑动性、对齐方式与书写方向(RTL)统一计算,
+        // 样式层只认这两个修饰类:贴边侧取消留白并回退成直角(隐藏对应肩部)
+        &.nut-tabs-titles-item-active--flush-left {
+          margin-left: 0;
+
+          .nut-tabs-titles-item-shoulder-left {
+            display: none;
+          }
+        }
+
+        &.nut-tabs-titles-item-active--flush-right {
+          margin-right: 0;
+
+          .nut-tabs-titles-item-shoulder-right {
+            display: none;
+          }
+        }
       }
     }
   }
 
   &-button {
     .nut-tabs-titles-item {
-      padding: 0 10px;
+      padding: 0 4px;
       .nut-tabs-titles-item-text {
         flex: 1;
         height: 28px;
@@ -180,16 +235,20 @@
         align-items: center;
         justify-content: center;
         padding: 0 8px;
+        background: $tabs-tab-button-background-color;
+        border-radius: $tabs-tab-button-border-radius;
+        font-size: $tabs-tab-button-font-size;
+        font-weight: $font-weight;
+        color: $color-text;
       }
     }
     .nut-tabs-titles-item-active {
       .nut-tabs-titles-item-text {
-        background: $color-default-light;
         color: $tabs-titles-item-active-color;
-        border-radius: $tabs-tab-button-border-radius;
-        font-weight: $font-weight-bold;
+        font-size: $tabs-tab-button-active-font-size;
+        font-weight: $tabs-tab-button-active-font-weight;
         background-color: $tabs-tab-button-active-background-color;
-        border: $tabs-tab-button-active-border;
+        box-shadow: $tabs-tab-button-active-border;
       }
     }
   }
@@ -216,6 +275,29 @@
           display: none;
         }
       }
+    }
+  }
+}
+
+// 标题栏边缘留白:该端 item 外侧 padding 翻倍,使边缘留白 = 相邻 tab 间距
+// 均分补首尾两端,左对齐仅补左端,右对齐仅补右端;水平方向生效
+.nut-tabs-horizontal {
+  .nut-tabs-titles:not(.nut-tabs-titles-right)
+    .nut-tabs-titles-item:first-child {
+    padding-left: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+    padding-right: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles-button {
+    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
+      padding-left: 8px;
+    }
+
+    &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+      padding-right: 8px;
     }
   }
 }
@@ -265,15 +347,15 @@
     &-active {
       background-color: $tabs-titles-item-active-background-color;
       .nut-tabs-titles-item-line {
-        left: 10px;
+        left: 8px;
         width: $tabs-vertical-tab-line-width;
         height: $tabs-vertical-tab-line-height;
         background: $tabs-vertical-tab-line-color;
       }
 
       .nut-tabs-titles-item-smile {
-        right: -12px;
-        bottom: -2%;
+        right: 3px;
+        bottom: 12%;
         left: auto;
         transform: rotate(320deg);
       }
@@ -311,7 +393,7 @@
       .nut-tabs-titles-item-smile {
         left: 50%;
         right: auto;
-        bottom: -3px;
+        bottom: 4%;
         transform: translate(-50%, 0) rotate(0deg);
       }
     }
@@ -360,6 +442,33 @@
   }
 }
 
+// RTL 边缘留白镜像:视觉左端=物理右侧、视觉右端=物理左侧,翻转补端方向
+[dir='rtl'] .nut-tabs-horizontal,
+.nut-rtl .nut-tabs-horizontal {
+  .nut-tabs-titles:not(.nut-tabs-titles-right)
+    .nut-tabs-titles-item:first-child {
+    padding-left: $tabs-titles-gap;
+    padding-right: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+    padding-right: $tabs-titles-gap;
+    padding-left: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles-button {
+    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
+      padding-left: 4px;
+      padding-right: 8px;
+    }
+
+    &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+      padding-right: 4px;
+      padding-left: 8px;
+    }
+  }
+}
+
 [dir='rtl'] .nut-tabs-vertical,
 .nut-rtl .nut-tabs-vertical {
   .nut-tabs-titles {
@@ -379,7 +488,7 @@
       }
 
       .nut-tabs-titles-item-smile {
-        left: -12px;
+        left: 3px;
         right: auto;
         transform: rotate(-320deg);
       }
