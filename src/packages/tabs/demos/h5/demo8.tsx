@@ -7,6 +7,11 @@ const Demo8 = () => {
     <>
       <Tabs
         value={tabvalue}
+        style={{
+          '--nutui-tabs-titles-height': 'calc(40px * var(--nut-scale-f, 1))',
+          '--nutui-tabs-titles-background-color':
+            'var(--nutui-color-background, #f2f3f5)',
+        }}
         activeType="card"
         align="left"
         onChange={(value) => {

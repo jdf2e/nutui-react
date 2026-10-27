@@ -78,7 +78,6 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
-
 ### InputProps Extension Attributes
 
 `SearchBar`'s `inputProps` property can extend the attributes of the underlying input element, supporting all attributes of the native input element.
@@ -99,32 +98,69 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
+### Glass search
+
+Combine MaterialView for glass effects. Existing CSS variables configure the 40px search bar; search buttons remain custom `rightIn` content.
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
+### Secondary search
+
+Configure 36px secondary and 32px lightweight search bars using existing CSS variables.
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
+### AI search
+
+`mode="ai"` uses an 86px two-row layout: the input and clear control are on top, with `leftIn` and `rightIn` in the bottom action row. Compose the smart-mode switch, image-search icon, and search button using these slots. The component does not provide AI search logic. `normal` remains the default single-row layout.
+
+Leading content remains visible while focusing and editing. Set `leftIn={null}` to hide the default search icon. Focus hides the placeholder. Use `tag` to display keyword capsules. Clicking a capsule (including its × icon) triggers `onItemClick`; update the value in that callback to remove the keyword. The component does not delete it automatically.
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
 
 ## SearchBar
 
 ### Props
 
+When `placeholder` is omitted or empty, the component uses `ConfigProvider`'s `locale.placeholder`. The default locale is zh-CN ("请输入内容"); the en-US locale provides "Placeholder".
+
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | value | current input value | `string` | `-` |
-| placeholder | input box default dark texture | `string` | `Please enter` |
+| defaultValue | Initial uncontrolled value; with `tag`, commas separate keyword capsules | `string` | `-` |
+| placeholder | Placeholder text; falls back to the configured `locale.placeholder` | `string` | `locale.placeholder` |
 | shape | search box shape, the optional value is 'round ' | `string` | `square` |
+| mode | Layout mode; AI places leftIn/rightIn in the bottom action row | `'normal' \| 'ai'` | `normal` |
 | disabled | whether to disable the input box | `boolean` | `false` |
 | readOnly | the input box is read-only | `boolean` | `false` |
 | maxLength | maximum input length | `number` | `9999` |
-| clearable | whether to display the clear button | `boolean` | `true` |
+| clearable | Show the clear control when the value is non-empty and capsules are not displayed | `boolean` | `true` |
+| tag | Display keyword capsules; focus to edit and restore capsules after blur | `boolean` | `false` |
 | autoFocus | auto focus | `boolean` | `false` |
 | backable | whether to display the back button | `boolean` | `false` |
-| leftIn | input box, left in area | `ReactNode` | `<Search width="12" height="12" />` |
+| leftIn | input box, left in area | `ReactNode` | `<Search />` |
 | rightIn | input box, right in area | `ReactNode` | `-` |
 | left | outside the input box, left | `ReactNode` | `-` |
 | right | outside the input box, right | `ReactNode` | `-` |
-| onChange | triggered when entering content | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
+| onChange | Triggered by input or clearing; clearing does not supply an event | `(value: string, event?: ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | triggered when focusing | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
 | onBlur | triggered when out of focus | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
 | onClear | triggered when clicking clear | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
-| onSearch | trigger when confirming search | `(val: string) => void` | `-` |
+| onSearch | Triggered by keyboard confirmation; bind custom rightIn buttons separately | `(val: string) => void` | `-` |
 | onInputClick | triggered when clicking the input area | `(event: MouseEvent<HTMLInputElement>) => void` | `-` |
+| onItemClick | Triggered when clicking a keyword capsule, including its × icon; update the value to remove the keyword | `(value: string, event: any) => void` | `-` |
 | inputProps | Extend the underlying input element attributes, supporting all attributes of the native input element | `Partial<InputHTMLAttributes<HTMLInputElement>>` | `-` |
 
 ## Theming
@@ -136,20 +172,20 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-searchbar-width | searchbar width | `100%` |
-| \--nutui-searchbar-padding | searchbar padding | `6px 16px` |
-| \--nutui-searchbar-background | searchbar background | `$color-background` |
+| \--nutui-searchbar-padding | searchbar padding | `1px 8px` |
+| \--nutui-searchbar-background | searchbar background | `$color-background-sunken` |
 | \--nutui-searchbar-color | searchbar font color | `$color-title` |
-| \--nutui-searchbar-gap | searchbar gap | `16px` |
+| \--nutui-searchbar-gap | searchbar gap | `12px` |
+| \--nutui-searchbar-inner-gap | gap between internal elements | `8px` |
 | \--nutui-searchbar-font-size | searchbar font size | `$font-size-base` |
-| \--nutui-searchbar-content-padding | searchbar content padding | `0px 12px` |
 | \--nutui-searchbar-content-background | searchbar content background | `$color-background-overlay` |
-| \--nutui-searchbar-content-border-radius | searchbar content border radius | `4px` |
-| \--nutui-searchbar-content-round-border-radius | searchbar content border radius when mode is round | `18px` |
-
-| \--nutui-searchbar-input-height | searchbar input height | `32px` |
-| \--nutui-searchbar-input-padding | searchbar input padding | `0 4px` |
+| \--nutui-searchbar-content-border-radius | searchbar content border radius | `$radius-l` |
+| \--nutui-searchbar-content-round-border-radius | searchbar content border radius when shape is round | `19px` |
+| \--nutui-searchbar-input-height | searchbar input height | `36px` / AI `86px` |
 | \--nutui-searchbar-input-text-color | searchbar input text color | `$color-title` |
-| \--nutui-searchbar-input-curror-color | searchbar input curror color | `$color-title` |
+| \--nutui-searchbar-input-curror-color | input caret color | `$color-primary` |
 | \--nutui-searchbar-input-text-align | searchbar input text align | `left` |
+
+Set the input element's padding through `inputProps.style.padding`.
 
 <Contribution name="SearchBar" />

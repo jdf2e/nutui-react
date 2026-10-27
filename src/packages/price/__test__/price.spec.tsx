@@ -51,3 +51,31 @@ test('props color', () => {
   const { container } = render(<Price price={1010} color="primary" />)
   expect(container.querySelector('.nut-price')).toHaveClass('nut-price-primary')
 })
+
+test('props raw renders illegal string as-is', () => {
+  const { container } = render(<Price price="¥99起" raw />)
+  expect(container.querySelector('.nut-price')?.textContent).toBe('¥99起')
+  expect(container.querySelector('.nut-price-integer')).toBeNull()
+})
+
+test('aria-label matches taro accessible price text', () => {
+  const { container } = render(<Price price={100} />)
+  expect(container.querySelector('.nut-price')).toHaveAttribute(
+    'aria-label',
+    '¥100'
+  )
+  expect(container.querySelector('.nut-price')).toHaveAttribute('role', 'text')
+})
+test('auto raw when digits separated by illegal chars', () => {
+  const { container } = render(<Price price="1起2" />)
+  expect(container.querySelector('.nut-price')?.textContent).toBe('1起2')
+  expect(container.querySelector('.nut-price-integer')).toBeNull()
+})
+
+test('formatDecimal keeps fraction when integer is 0', () => {
+  const { container } = render(<Price price={0.68} digits={2} />)
+  expect(container.querySelector('.nut-price-integer')?.innerHTML).toBe('0')
+  expect(container.querySelectorAll('.nut-price-decimal')[1]?.innerHTML).toBe(
+    '68'
+  )
+})

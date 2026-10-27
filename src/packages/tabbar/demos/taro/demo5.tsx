@@ -1,45 +1,57 @@
 import React from 'react'
 import { Tabbar, Image, harmony, pxTransform } from '@nutui/nutui-react-taro'
-import { Cart, Hi, Home, User, Message } from '@nutui/icons-react-taro'
+import { CartF, CartI, HiI, HomeI, UserF, UserI } from '@nutui/icons-react-taro'
+import '../badge-demo.scss'
 
-const Demo2 = () => {
+const Demo = () => {
+  const image =
+    'https://storage.360buyimg.com/imgtools/cadd649d79-8de544e0-0a11-11f0-9f55-9901c75f24a0.png'
+  const marketingImage = (src: string) => (
+    <Image
+      width={harmony() ? pxTransform(38) : '38px'}
+      height={harmony() ? pxTransform(38) : '38px'}
+      src={src}
+    />
+  )
+
   return (
-    <Tabbar>
+    <Tabbar material="frosted" className="tabbar-marketing-demo">
       <Tabbar.Item
+        className="image-when-active"
         title={(active: boolean) => (active ? '' : '首页')}
         icon={(active: boolean) =>
           active ? (
-            <Image
-              width={harmony() ? pxTransform(38) : '38px'}
-              height={harmony() ? pxTransform(38) : '38px'}
-              src="https://storage.360buyimg.com/imgtools/ba40719add-025fcd20-0618-11f0-8bdb-aba55e067ea2.png"
-            />
+            marketingImage(
+              'https://storage.360buyimg.com/imgtools/ba40719add-025fcd20-0618-11f0-8bdb-aba55e067ea2.png'
+            )
           ) : (
-            <Home />
+            <HomeI />
           )
         }
+        dot
       />
-
       <Tabbar.Item
-        icon={(active: boolean) =>
-          active ? (
-            <Hi />
-          ) : (
-            <Image
-              width={harmony() ? pxTransform(38) : '38px'}
-              height={harmony() ? pxTransform(38) : '38px'}
-              src="https://storage.360buyimg.com/imgtools/cadd649d79-8de544e0-0a11-11f0-9f55-9901c75f24a0.png"
-            />
-          )
-        }
+        className="image-when-inactive"
+        icon={(active: boolean) => (active ? <HiI /> : marketingImage(image))}
         title={(active: boolean) => (active ? '逛' : '')}
-        value="AI"
+        value={8}
       />
-      <Tabbar.Item title="消息" icon={<Message />} value={100} />
-      <Tabbar.Item title="购物车" icon={<Cart />} />
-      <Tabbar.Item title="我的" icon={<User />} />
+      <Tabbar.Item
+        className="image-always"
+        title=""
+        icon={marketingImage(image)}
+        value="最多四字"
+      />
+      <Tabbar.Item
+        title="购物车"
+        icon={(active: boolean) => (active ? <CartF /> : <CartI />)}
+      />
+      <Tabbar.Item
+        title="我的"
+        icon={(active: boolean) => (active ? <UserF /> : <UserI />)}
+      />
     </Tabbar>
   )
 }
 
-export default Demo2
+export default Demo

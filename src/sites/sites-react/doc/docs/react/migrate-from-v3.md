@@ -105,6 +105,20 @@ npm install @nutui/nutui-react-taro
   - `--nutui-popover-content-background-color` 默认值由 `#ffffff` 改为 `$color-mask`；`--nutui-popover-text-color` 由 `$color-mask` 改为 `$color-primary-text`。
   - `--nutui-popover-item-width` 默认值由 `160px` 改为 `240px`（等同状态型最大宽度）。
 
+### ResultPage (反馈类)
+
+> **v4 不提供 v3 兼容**：无 Props 别名。请按下表手动迁移。
+
+- **类型入口调整**：
+  - 移除 `src/packages/resultpage/types.ts`，统一从 `@/types` 引入 `ResultPageStatus`、`ResultPageAction`、`ResultPageProps`。
+- **视觉规格对齐 JD APP 16.0**：
+  - 描述文案默认居中；失败状态图标色值 H5 端对齐 `$color-primary`（`#ff2159`）。
+  - 图标与内容间距 4px；标题与描述间距 4px；描述与操作区间距 12px；操作按钮横向间距 12px（`margin: 0 6px`）。
+  - 标题：`$font-size-md` / 行高 24px；描述行高 22px。
+- **主题变量调整**：
+  - 新增 `--nutui-resultpage-title-line-height`。
+  - `--nutui-resultpage-icon-margin-bottom` 默认 `12px` → `4px`；`--nutui-resultpage-title-margin-bottom` `12px` → `4px`；`--nutui-resultpage-title-font-size` `$font-size-xl` → `$font-size-md`；`--nutui-resultpage-description-line-height` `20px` → `22px`；`--nutui-resultpage-actions-margin-top` `16px` → `12px`。
+
 ### Skeleton (反馈类)
 
 - **`size` 视觉规格对齐设计稿（兼容升级）**：
@@ -116,6 +130,36 @@ npm install @nutui/nutui-react-taro
   - `--nutui-skeleton-background` 默认回退值由 `$color-background-sunken` 改为 `$color-background`，暗黑模式下自动跟随 `color-background` 令牌。
 - **光晕视觉重做**：
   - 加载光晕由横向平移的深色叠加改为白色 30° 斜向光带（宽 80px，渐变透明度 0% → 50% → 0%），由左至右移动 400ms、停顿约 1s 后循环。
+
+### CountDown (展示类)
+
+- **视觉规格对齐 JD APP 16.0**：
+  - `type` 仍为 `default`（线性标）/ `primary`（面性标）/ `text`（文本标），**无 type 重命名 Breaking**。
+  - 线性标：白底红描边红字；面性标：红底白字圆角块；文本标：红字无底无边。分隔符均在数字块外。
+  - 数字块高度 `16px`、最小宽度 `16px`、`padding: 1px`、圆角 `2px`；描边沿用 `::after`，由半倍缩放改为 `scale(1/3)`，视觉约 0.33px（三分之一）。
+- **新增 format token `i`**：
+  - 百毫秒 1 位（0–9）；`ss.i` 同块渲染（如 `30.5`）；刷新仍由 `requestAnimationFrame` 驱动，仅在展示档变化时 `setState`。
+  - 旧 token（`DD`/`HH`/`mm`/`ss`/`S`/`SS`/`SSS`）与自定义 `format` 行为保持不变。
+- **结束回调行为**：
+  - 倒计时到 0 时仅触发 `onEnd`，不再顺带调用 `onPaused`。
+- **移除 `millisecond`（不兼容变更）**：
+  - 该属性此前已无实际作用；毫秒/百毫秒精度改由 `format` 中的 `i` / `S` / `SS` / `SSS` 决定（RAF 驱动，按展示档 `setState`）。请删除业务侧的 `millisecond` 传参。
+- **新增 `refreshInterval`（兼容）**：
+  - 传入固定毫秒步长后，按 `Math.floor(remainTime / refreshInterval)` 节流 `setState`；不传则仍按 `format` 最细单位取整。
+- **推荐格式（文档约定，组件不强制按时长自动切换）**：
+  - ≥1 天：`DD天HH:mm:ss`，建议 `type="text"`；1～24h：`HH:mm:ss` 或 `HH:mm:ss.i`；&lt;1h：`mm:ss` 或 `mm:ss.i`。
+  - 百毫秒仅建议 24h 内强促销场景使用。
+
+### Price (展示类)
+
+- **尺寸档位扩展与字号调整（兼容升级）**：
+  - 新增 `size="medium"`（羊角符 / 整数 / 小数：`12 / 14 / 12`）。
+  - `xlarge` 调整为 `16 / 24 / 16`，`large` 调整为 `14 / 18 / 14`；`normal`、`small` 字号不变。
+  - 字体：`xlarge` / `large` / `normal` 使用京东正黑 Bold；`medium` / `small` 使用京东正黑 Regular。
+- **颜色令牌对齐（兼容升级）**：
+  - `primary` → `#FF0F23`；`gray` → `#8D9199`；`darkgray` → `#11141A`。
+- **新增 `raw`（兼容）**：
+  - `raw={true}` 且 `price` 含非法字符时按原文展示；未开启时仍会自动识别无法安全格式化的字符串并原样输出。
 
 ### Range (数据录入)
 
@@ -149,3 +193,29 @@ npm install @nutui/nutui-react-taro
   - 通过 `position="top"` 从顶部弹出，内容以网格形式展示，`options` 支持 `icon` 字段（字符串使用 `img` 渲染，也可传入自定义节点），可通过 `columns` 设置列数（仅支持 `4` / `5`，默认 `5`）；`cancelText` 在顶部模式下渲染为「点击收起」按钮。网格布局也可通过 `layout="grid"` 用于底部弹出。
 - **头部样式与关闭能力（新增）**：
   - 新增 `titleAlign`（`left` / `center`，默认 `center`，仅 `center` 时 `description` 生效）、`headerLeft`、`headerRight` 自定义头部左右内容，以及 `closeable` / `closeIconPosition` 控制关闭按钮的显示与位置。以上均为纯新增能力，不影响原有用法。
+
+### NavBar (导航类)
+
+- **移除 CSS 变量 `--nutui-navbar-margin-bottom`（不兼容变更）**：
+  - 该变量此前只被声明、从未被组件消费，导航栏本身也没有任何 margin 生效。本次清理后，若你曾在主题里声明过它，该声明会静默失效，删除即可，无需替代变量。
+- **背景色默认值由白色改为透明（视觉变更）**：
+  - `--nutui-navbar-background` 的默认值由 `$white` 调整为 `transparent`。若你的页面依赖导航栏自带白底，请显式设置 `--nutui-navbar-background`，或为外层容器补充背景。
+- **内边距与左右内容区宽度变量化（新增）**：
+  - 新增 `--nutui-navbar-padding`（默认 `4px 8px`）、`--nutui-navbar-subbar-padding`（默认 `8px 0`，控制二级楼层的内边距）、`--nutui-navbar-side-maxwidth`（默认 `108px`）、`--nutui-navbar-side-padding`（默认 `8px`）。导航栏左右内边距由 `16px` 收紧为 `8px`，左右内容区最大宽度由 `124px` 调整为 `116px`。
+- **新增二级楼层 `subBar` 能力（新增）**：
+  - 新增 `subBar` 属性，用于在标题行下方渲染二级楼层内容；传入后根节点会自动换行排布（附加 `nut-navbar-has-subbar` 类）。属纯新增能力，不影响原有用法。
+- **标题字号在品牌间统一为 18px（视觉变更）**：
+  - `--nutui-navbar-title-font-size` 在 JMAPP 主题由 `20px`、JRKF 主题由 `16px` 统一为 `18px`（`$font-size-xl`）。
+
+### Cell (展示类)
+
+- **左侧区域类名由 `.nut-cell-left` 改为 `.nut-cell-body`（不兼容变更）**：
+  - 为承载新增的识别区（`leading`），原左侧内容区更名为主信息区。若此前通过 `.nut-cell-left` 覆盖过单元格样式，请改用 `.nut-cell-body`。
+- **单元格内边距调整为 `16px`（行为变更）**：
+  - `--nutui-cell-padding` 默认值由 `13px 16px` 调整为 `16px`，单元格整体高度会增加。若需维持原有间距，可显式设置 `--nutui-cell-padding: 13px 16px`。
+- **标题改为单行打点（行为变更）**：
+  - `title` 超长时不再换行，改为单行省略号截断。若需要多行标题，请在 `title` 中自行传入节点并覆盖截断样式。
+- **右侧区域不再参与拉伸（行为变更）**：
+  - `.nut-cell-extra` 由 `flex: 1` 改为按内容宽度自适应，并与主信息区保持 `24px` 最小间距（可通过 `--nutui-cell-extra-margin` 调整）。此前右侧内容较长时会与主信息区平分剩余空间，现在改为右侧优先占位、主信息区相应收窄，可能出现主标题被截断而右侧内容完整的观感变化。
+- **新增识别区与下挂插槽（新增）**：
+  - 新增 `leading` 属性用于渲染左侧识别区（图标或头像），组件只负责 `12px` 间距（`--nutui-cell-leading-margin`）与对齐，尺寸由使用方决定；新增 `content` 属性作为下挂通栏业务插槽，宽度撑满内容区并与主信息左边界对齐。传入 `content` 后，`description` 会由标题下方改为通栏展示。两项均为纯新增能力，不传时不影响原有用法。

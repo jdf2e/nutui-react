@@ -52,6 +52,26 @@ import { ResultPage } from '@nutui/nutui-react'
 
 :::
 
+### Inside Popup
+
+For half-sheet popup scenarios with vertically centered content.
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
+### Inside Dialog
+
+For dialog scenarios.
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ## ResultPage
 
 ### Props
@@ -61,8 +81,19 @@ import { ResultPage } from '@nutui/nutui-react'
 | title | title | `ReactNode` | `-` |
 | description | Description, up to two lines displayed | `ReactNode` | `-` |
 | status | Status type | `success` \| `error` \| `warning` \| `info` \| `waiting` | `info` |
-| icon | Custom `icon` | `ReactNode` | `-` |
-| actions | Actions of operation | `Array` | `[]` |
+| icon | Custom icon | `ReactNode` | `-` |
+| actions | Bottom action buttons | `ResultPageAction[]` | `[]` |
+
+### ResultPageAction
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| text | Button label | `ReactNode` | `-` |
+| type | Button type | `UIType` | `default` |
+| size | Button size | `UISize` | `large` |
+| fill | Fill mode | `UIFill` | `outline` |
+| disabled | Disabled state | `boolean` | `false` |
+| onClick | Click handler | `() => void` | `-` |
 
 ## Theming
 
@@ -73,14 +104,15 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-resultpage-width | Content area width | `240px` |
-| \--nutui-resultpage-icon-size | Width and height of icon | `36px` |
-| \--nutui-resultpage-icon-margin-bottom | margin-bottom value of the icon | `12px` |
-| \--resultpage-title-margin-bottom | The margin-top value of the title | `12px` |
-| \--nutui-resultpage-title-font-size | The font size of the title | `$font-size-xl` |
-| \---nutui-resultpage-title-color | The text color of the title | `$color-title` |
-| \--nutui-resultpage-description-font-size | Describe the font size | `$font-size-base` |
-| \--nutui-resultpage-description-color | Describe the text color | `$color-text` |
-| \--nutui-resultpage-description-line-height | Describe the line height | `20px` |
-| \--nutui-resultpage-actions-margin-topt | The margin-top value of the operation area | `16px` |
+| \--nutui-resultpage-icon-size | Icon size | `36px` |
+| \--nutui-resultpage-icon-margin-bottom | Space below icon | `4px` |
+| \--nutui-resultpage-title-margin-bottom | Space below title | `4px` |
+| \--nutui-resultpage-title-font-size | Title font size | `16px` |
+| \--nutui-resultpage-title-line-height | Title line height | `24px` |
+| \--nutui-resultpage-title-color | Title color | `$color-title` |
+| \--nutui-resultpage-description-font-size | Description font size | `14px` |
+| \--nutui-resultpage-description-color | Description color | `$color-text` |
+| \--nutui-resultpage-description-line-height | Description line height | `22px` |
+| \--nutui-resultpage-actions-margin-top | Space above actions | `12px` |
 
 <Contribution name="ResultPage" />

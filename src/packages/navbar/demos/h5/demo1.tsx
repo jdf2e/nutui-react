@@ -1,69 +1,172 @@
 import React from 'react'
-import { NavBar, Toast, Space } from '@nutui/nutui-react'
-import { ArrowLeft, Close, More, Share } from '@nutui/icons-react'
+import { NavBar, Space, Toast } from '@nutui/nutui-react'
+import { ArrowLeftI, CloseI, ShareI } from '@nutui/icons-react'
+import { MaterialView } from '../../../materialview/materialview'
+import { useAppTheme } from '@/sites/mobile/theme-context'
 
 const Demo1 = () => {
-  const styles = {
-    flexCenter: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    title: {
-      fontSize: '18px',
-      fontWeight: 'bold',
-      lineHeight: '26px',
-    },
-    description: {
-      fontSize: '12px',
-      fontWeight: 400,
-      color: 'rgba(0,0,0, 0.5)',
-      lineHeight: '16px',
-    },
-  }
+  const { darkMode } = useAppTheme()
   return (
-    <Space direction="vertical">
-      <NavBar
-        title="页面标题"
-        back={
-          <>
-            <ArrowLeft />
-            返回
-          </>
-        }
-        right={<Share onClick={(e) => Toast.show('icon')} />}
-        onBackClick={(e) => Toast.show('返回')}
-      />
-      <NavBar
-        title="页面标题"
-        right={<Share onClick={(e) => Toast.show('icon')} />}
-        onBackClick={(e) => Toast.show('返回')}
-      />
-      <NavBar
-        title={
-          <div style={{ ...styles.flexCenter, flexDirection: 'column' }}>
-            <span style={styles.title} onClick={(e) => Toast.show('标题')}>
-              页面标题
-            </span>
-            <span style={styles.description}>副标题</span>
-          </div>
-        }
-        right={<span onClick={(e) => Toast.show('清空')}>清空</span>}
-        left={<Close />}
-        back={<ArrowLeft />}
-        onBackClick={(e) => Toast.show('返回')}
-      />
-      <NavBar
-        back={<ArrowLeft />}
-        title={<span onClick={(e) => Toast.show('页面标题')}>页面标题</span>}
-        right={
-          <>
-            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
-            <More onClick={(e) => Toast.show('icon')} />
-          </>
-        }
-        onBackClick={(e) => Toast.show('返回')}
-      />
-    </Space>
+    <>
+      <Space direction="vertical">
+        <NavBar
+          title={
+            <div className="navbar-title-twoline">
+              <span>灰色背景</span>
+              <span>毛玻璃</span>
+            </div>
+          }
+          back={
+            <MaterialView
+              className="navbar-iOS26-button"
+              scene="top-solid"
+              darkMode={darkMode}
+            >
+              <ArrowLeftI />
+            </MaterialView>
+          }
+          right={
+            <MaterialView
+              className="navbar-iOS26-button"
+              scene="top-solid"
+              darkMode={darkMode}
+            >
+              <ShareI onClick={() => Toast.show('icon')} />
+            </MaterialView>
+          }
+          onBackClick={() => Toast.show('返回')}
+          className="navbar-iOS26"
+          zIndex={0}
+        />
+        <NavBar
+          title={
+            <div className="navbar-title-twoline">
+              <span>白色背景</span>
+              <span>高透</span>
+            </div>
+          }
+          back={
+            <MaterialView
+              className="navbar-iOS26-button"
+              scene="top-plain"
+              darkMode={darkMode}
+            >
+              <ArrowLeftI />
+            </MaterialView>
+          }
+          right={
+            <MaterialView
+              className="navbar-iOS26-button"
+              scene="top-plain"
+              darkMode={darkMode}
+            >
+              <ShareI onClick={() => Toast.show('icon')} />
+            </MaterialView>
+          }
+          onBackClick={() => Toast.show('返回')}
+          className="navbar-iOS26 nut-navbar-white"
+          zIndex={0}
+        />
+        <NavBar
+          title="浅色换肤"
+          back={
+            <MaterialView
+              className="navbar-iOS26-button"
+              scene="promotion-fair"
+            >
+              <ArrowLeftI />
+            </MaterialView>
+          }
+          right={
+            <MaterialView
+              className="navbar-iOS26-button"
+              scene="promotion-fair"
+            >
+              <ShareI onClick={() => Toast.show('icon')} />
+            </MaterialView>
+          }
+          onBackClick={() => Toast.show('返回')}
+          className="navbar-iOS26 navbar-iOS26-skin-light"
+          zIndex={0}
+        />
+        <NavBar
+          title="深色换肤"
+          back={
+            <MaterialView
+              className="navbar-iOS26-button"
+              scene="promotion-deep"
+            >
+              <ArrowLeftI />
+            </MaterialView>
+          }
+          right={
+            <MaterialView
+              className="navbar-iOS26-button"
+              scene="promotion-deep"
+            >
+              <ShareI onClick={() => Toast.show('icon')} />
+            </MaterialView>
+          }
+          onBackClick={() => Toast.show('返回')}
+          className="navbar-iOS26 navbar-iOS26-skin-deep"
+          zIndex={0}
+        />
+        <div className="navbar-topbar-wrapper">
+          <Space direction="vertical">
+            <NavBar
+              title="通栏吸顶"
+              back={
+                <MaterialView
+                  className="navbar-iOS26-button"
+                  scene="top-plain"
+                  darkMode={darkMode}
+                >
+                  <ArrowLeftI />
+                  <CloseI />
+                </MaterialView>
+              }
+              right={
+                <MaterialView
+                  className="navbar-iOS26-button"
+                  scene="top-plain"
+                  darkMode={darkMode}
+                >
+                  <ShareI onClick={() => Toast.show('icon')} />
+                </MaterialView>
+              }
+              onBackClick={() => Toast.show('返回')}
+              className="navbar-iOS26 nut-navbar-sticky"
+              zIndex={10}
+            />
+            <NavBar
+              title="沉浸式"
+              back={
+                <MaterialView
+                  className="navbar-iOS26-button"
+                  scene="immersive"
+                  darkMode
+                >
+                  <ArrowLeftI />
+                  <CloseI />
+                </MaterialView>
+              }
+              right={
+                <MaterialView
+                  className="navbar-iOS26-button"
+                  scene="immersive"
+                  darkMode
+                >
+                  <ShareI onClick={() => Toast.show('icon')} />
+                </MaterialView>
+              }
+              onBackClick={() => Toast.show('返回')}
+              className="navbar-iOS26 navbar-iOS26-immersive"
+              zIndex={0}
+            />
+          </Space>
+        </div>
+      </Space>
+    </>
   )
 }
 export default Demo1

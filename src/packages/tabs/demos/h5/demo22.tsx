@@ -11,7 +11,10 @@ const Demo22 = () => {
         onChange={(value) => {
           setTabvalue(value)
         }}
-        style={{ '--nutui-tabs-titles-font-size': '20px' }}
+        style={{
+          '--nutui-tabs-titles-font-size':
+            'calc(20px * var(--nut-scale-font, 1))',
+        }}
       >
         <Tabs.TabPane title="Tab longitem"> Tab longitem </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
@@ -22,7 +25,10 @@ const Demo22 = () => {
         onChange={(value) => {
           setTabvalue1(value)
         }}
-        style={{ '--nutui-tabs-titles-font-size': '12px' }}
+        style={{
+          '--nutui-tabs-titles-font-size':
+            'calc(12px * var(--nut-scale-font, 1))',
+        }}
       >
         <Tabs.TabPane title="Tab longitem"> Tab longitem </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>

@@ -1,12 +1,52 @@
 @import '../tabbaritem/tabbaritem.scss';
 
 .nut-tabbar {
+  --nutui-tabbar-active-background-duration: 300ms;
+  --nutui-tabbar-active-background-easing: cubic-bezier(0.38, 0, 0.24, 1);
+  --nutui-tabbar-active-background-scale-easing: cubic-bezier(0.8, 0, 0.24, 1);
+  // Keep item and addonBefore layers inside this Tabbar when another one is fixed.
+  position: relative;
+  z-index: 0;
   border: 0;
   box-shadow: $tabbar-box-shadow;
   border-bottom: $tabbar-border-bottom;
   border-top: $tabbar-border-top;
   width: 100%;
   background: $color-background-overlay;
+
+  &-material-background {
+    background: transparent;
+    --nut-tabbar-backdrop-tint: rgba(255, 255, 255, 0.8);
+
+    .nut-theme-dark &,
+    &.nut-theme-dark {
+      --nut-tabbar-backdrop-tint: rgba(20, 23, 26, 0.8);
+    }
+  }
+
+  &-main {
+    position: relative;
+    height: $tabbar-height;
+  }
+
+  &-material-background &-main {
+    height: $tabbar-material-height;
+  }
+
+  &-addon-before {
+    position: absolute;
+    bottom: 0;
+    left: calc(
+      #{$tabbar-addon-before-source-size} - #{$tabbar-addon-before-outset}
+    );
+    transform: translateX(-100%);
+    width: $tabbar-addon-before-source-size;
+    height: $tabbar-addon-before-source-size;
+    box-sizing: border-box;
+    border-radius: 0 50% 50% 0;
+    overflow: hidden;
+    z-index: 1;
+  }
 
   &-wrap {
     height: $tabbar-height;
@@ -18,6 +58,68 @@
 
     &-2 {
       padding: 0 scale-px(32px);
+    }
+
+    > .nut-tabbar-backdrop {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: $tabbar-border-radius !important;
+    }
+
+    > .nut-tabbar-skin-background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      border-radius: $tabbar-border-radius;
+
+      > * {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    > .nut-tabbar-active-background {
+      position: absolute;
+      top: $tabbar-content-padding;
+      bottom: $tabbar-content-padding;
+      left: $tabbar-content-padding;
+      width: calc(
+        (100% - #{$tabbar-content-padding} - #{$tabbar-content-padding}) /
+          var(--nutui-tabbar-item-count, 1)
+      );
+      border-radius: $tabbar-active-border-radius;
+      pointer-events: none;
+      transform: translateX(calc(var(--nutui-tabbar-select-index, 0) * 100%));
+      transition: transform var(--nutui-tabbar-active-background-duration)
+        var(--nutui-tabbar-active-background-easing);
+      will-change: transform;
+
+      > .nut-tabbar-active-background-inner {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background: $tabbar-active-background;
+        transform-origin: center;
+
+        &.nut-tabbar-active-background-inner-animating {
+          animation: nut-tabbar-active-background-scale
+            var(--nutui-tabbar-active-background-duration)
+            var(--nutui-tabbar-active-background-scale-easing);
+        }
+      }
     }
 
     &-horizontal {
@@ -32,14 +134,45 @@
         .nut-tabbar-item-text {
           margin: 0 scale-px(4px) 0 scale-px(6px);
           font-size: $font-size-base;
-        }
-        .nut-badge-sup {
-          &::after {
-            border: 0;
-          }
+          line-height: var(--nutui-tabbar-text-line-height, #{$font-size-base});
         }
       }
     }
+  }
+
+  &-material-background &-wrap {
+    position: relative;
+    height: $tabbar-material-height;
+    box-sizing: border-box;
+    margin-left: $tabbar-horizontal-padding;
+    margin-right: $tabbar-horizontal-padding;
+    padding: $tabbar-content-padding;
+    border-radius: $tabbar-border-radius;
+
+    > .nut-tabbar-item {
+      position: relative;
+    }
+
+    &-horizontal .nut-tabbar-item {
+      .nut-badge-sup:not(.nut-badge-dot) {
+        height: scale-px(14px);
+      }
+
+      .nut-badge-sup {
+        padding: scale-px(0.5px);
+
+        &::after {
+          border: 0;
+        }
+      }
+    }
+  }
+
+  &-has-addon-before &-wrap {
+    margin-left: calc(
+      #{$tabbar-addon-before-source-size} - #{$tabbar-addon-before-outset} +
+        #{$tabbar-addon-before-gap}
+    );
   }
 
   &-fixed {
@@ -59,5 +192,29 @@
   &-fixed {
     left: auto;
     right: 0;
+  }
+}
+
+@keyframes nut-tabbar-active-background-scale {
+  0% {
+    transform: scaleX(1);
+  }
+
+  26.667% {
+    transform: scaleX(1.2294);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nut-tabbar-wrap > .nut-tabbar-active-background {
+    transition: none;
+
+    > .nut-tabbar-active-background-inner.nut-tabbar-active-background-inner-animating {
+      animation: none;
+    }
   }
 }

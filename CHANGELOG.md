@@ -1,3 +1,71 @@
+# v4.0.0-beta.12
+
+`2026-10-23`
+
+- :sparkles: feat(Price): 增加切换动效 (#3558)
+- :bug: fix(SearchBar): 优化demo样式(#3562)
+- :bug: fix(Tabbar): 修复 V16 版本设计走查问题 (#3561)
+- :bug: fix(InputNumber): 修改步进器图标大小 (#3557)
+- :bug: fix: 修复 navbar V16 版本设计走查问题 (#3563)
+
+# v4.0.0-beta.11
+
+`2026-10-21`
+
+- :sparkles: feat(ActionSheet): 更新文档和示例，修改弹出位置描述及添加横向滚动功能 (#3553)
+- :sparkles: feat(Tag): 更新primary背景为 #ff0f23 (#3554)
+- :sparkles: feat(input): 优化demo
+- :bug: fix(Searchbar): 修复AI搜索demo样式
+- :bug: fix: 更新icon版本解决popover箭头异常问题
+- 🏡 chore: 更新MaterialView组件配置
+
+# v4.0.0-beta.10
+
+`2026-10-16`
+
+- :sparkles: feat(Tabs): V16适配 (#3534)
+- :sparkles: Feat/searchbar v16 (#3548)
+- :sparkles: Feat tabbar v16 (#3544)
+- :sparkles: Feat（NavBar）：v16适配 (#3549)
+- :sparkles: feat(rate): 补充自定义评分示例 (#3551)
+- :sparkles: Feat/pulltorefresh v16 (#3543)
+- 🪵 refactor(Price): v16适配 (#3550)
+
+# v4.0.0-beta.8
+
+`2026-10-14`
+
+- 📖 docs: 完善开源组件开发规范与PR自查清单
+- :sparkles: feat(Cell): v16适配 (#3537)
+- :sparkles: feat: 进度条progress组件视频进度条支持 (#3533)
+- :sparkles: feat(swipe): 适配16
+- :sparkles: feat(Steps): V16适配 (#3541)
+- :sparkles: feat(badge): v16适配 (#3539)
+- :sparkles: Feat text area 16.0 (#3538)
+- :sparkles: feat(icon): 升级
+- :sparkles: feat: 新增组件
+- :sparkles: feat(checkbox): 代码优化,等比适配,文档补充
+- :sparkles: feat(backtop): 等比适配
+- :sparkles: feat(hoverbutton): cr 问题修复
+- :sparkles: feat(backtop): 重构backtop,极简化组件实现
+- :sparkles: feat: 升级组件变更
+- :sparkles: feat: icon 升级到 16
+- :sparkles: feat(ActionSheet): V16适配 (#3526)
+- :sparkles: feat: nutui-react/taro Skill 优化 (#3509)
+- :sparkles: Feat input 16.0 (#3520)
+- :bug: Fix input demo (#3545)
+- :bug: fix: 修改表单样式 (#3540)
+- :bug: fix(checkbox): 类型修改
+- :bug: fix: 等比
+- :bug: fix(switch): 修复等比及异常时处理,并增加demo
+- :bug: fix(radio): cr 问题修复
+- :bug: fix(button): 修复cr问题
+- :bug: fix: 调整样式
+- :bug: fix: 添加Lottie形式loading新样式 (#3531)
+- 🪵 refactor(countdown): v16适配 (#3546)
+- 🪵 refactor(style): 优化等比缩放机制并还原组件SCSS裸px
+- 🪵 refactor(ResultPage): v16 适配 (#3493)
+
 # v4.0.0-beta.7
 
 `2026-08-31`

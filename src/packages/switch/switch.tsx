@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { Loading1 } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
@@ -44,6 +44,8 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
   })
 
   const [internalLoading, setInternalLoading] = useState(false)
+  const [stretching, setStretching] = useState(false)
+  const isFirstRender = useRef(true)
   const loading = propLoading !== undefined ? propLoading : internalLoading
 
   const setLoading = (val: boolean) => {
@@ -56,6 +58,15 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
 
   useEffect(() => {
     loading && setLoading(false)
+  }, [value])
+
+  // 与位移同步触发横向缩放，跳过首屏避免闪动
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+    setStretching(true)
   }, [value])
 
   const classes = () => {
@@ -106,8 +117,10 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
           {
             [`${classPrefix}-button-open-rtl`]: rtl && value,
             [`${classPrefix}-button-close-rtl`]: rtl && !value,
+            [`${classPrefix}-button-stretch`]: stretching,
           },
         ])}
+        onAnimationEnd={() => setStretching(false)}
       >
         {loading && loadingIcon ? (
           <>{loadingIcon}</>

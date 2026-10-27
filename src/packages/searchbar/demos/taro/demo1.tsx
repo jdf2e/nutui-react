@@ -1,28 +1,52 @@
 import React from 'react'
-import { SearchBar, Divider } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 import { Photograph, Scan } from '@nutui/icons-react-taro'
+import { SearchBar, Button, Cell } from '@nutui/nutui-react-taro'
 
-const Demo = () => {
+const Demo1 = () => {
   return (
     <>
-      <SearchBar placeholder="麻辣烫" rightIn="搜索" />
-      <SearchBar
-        leftIn={<Scan />}
-        placeholder="华为Mate 70"
-        rightIn={
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Photograph
-              color="var(--nutui-color-text-help, #999999)"
-              onClick={() => console.log('拍照购')}
-            />
-            <Divider direction="vertical" />
-            <span style={{ color: 'var(--nutui-color-primary, #ff0f23)' }}>
+      <Cell style={{ flexDirection: 'column' }}>
+        <SearchBar
+          placeholder="华为 Mate 70"
+          leftIn={<Scan />}
+          rightIn={
+            <View style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <Photograph color="var(--nutui-color-text-help)" />
+              <Button
+                type="primary"
+                size="mini"
+                style={{
+                  height: 28,
+                  padding: '0 12px',
+                  borderRadius: 'var(--nutui-radius-base)',
+                  marginRight: -8,
+                }}
+              >
+                搜索
+              </Button>
+            </View>
+          }
+        />
+        <SearchBar
+          placeholder="搜搜感兴趣的商品吧"
+          rightIn={
+            <Button
+              type="primary"
+              size="mini"
+              style={{
+                height: 28,
+                padding: '0 12px',
+                borderRadius: 'var(--nutui-radius-base)',
+                marginRight: -8,
+              }}
+            >
               搜索
-            </span>
-          </div>
-        }
-      />
+            </Button>
+          }
+        />
+      </Cell>
     </>
   )
 }
-export default Demo
+export default Demo1

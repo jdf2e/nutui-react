@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "4.0.0-beta.7",
+  "version": "4.0.0-beta.12",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -114,8 +114,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.29.7",
-    "@nutui/icons-react": "4.1.0-beta.2",
-    "@nutui/icons-react-taro": "4.1.0-beta.1",
+    "@nutui/icons-react": "4.1.0-beta.3",
+    "@nutui/icons-react-taro": "4.1.0-beta.3",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/lottie-miniprogram": "^1.0.2",
     "@nutui/touch-emulator": "^1.0.0",

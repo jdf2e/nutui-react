@@ -73,6 +73,10 @@ export const InputNumber: FunctionComponent<
     finalValue: 0,
   })
 
+  // 按钮与图标共享禁用边界，仅控制视觉反馈，保留超限点击回调。
+  const minusDisabled = Number(shadowValue) <= Number(min) || disabled
+  const plusDisabled = Number(shadowValue) >= Number(max) || disabled
+
   const format = (value: number | null | string): string => {
     if (value === null) return ''
     // 如果超过 min 或 max, 需要纠正
@@ -182,13 +186,20 @@ export const InputNumber: FunctionComponent<
 
   return (
     <View className={classes} style={style}>
-      <View className={`${classPrefix}-minus`} onClick={handleReduce}>
+      <View
+        className={classNames(`${classPrefix}-minus`, {
+          [`${classPrefix}-button-disabled`]: minusDisabled,
+        })}
+        hoverClass={minusDisabled ? 'none' : `${classPrefix}-button-pressed`}
+        hoverStartTime={0}
+        hoverStayTime={0}
+        onClick={handleReduce}
+      >
         <Minus
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-minus`,
             {
-              [`${classPrefix}-icon-disabled`]:
-                Number(shadowValue) <= Number(min) || disabled,
+              [`${classPrefix}-icon-disabled`]: minusDisabled,
             }
           )}
         />
@@ -209,13 +220,20 @@ export const InputNumber: FunctionComponent<
         onFocus={handleFocus}
       />
       <View className={`${classPrefix}-divider`} />
-      <View className={`${classPrefix}-add`} onClick={handlePlus}>
+      <View
+        className={classNames(`${classPrefix}-add`, {
+          [`${classPrefix}-button-disabled`]: plusDisabled,
+        })}
+        hoverClass={plusDisabled ? 'none' : `${classPrefix}-button-pressed`}
+        hoverStartTime={0}
+        hoverStayTime={0}
+        onClick={handlePlus}
+      >
         <Plus
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-plus`,
             {
-              [`${classPrefix}-icon-disabled`]:
-                Number(shadowValue) >= Number(max) || disabled,
+              [`${classPrefix}-icon-disabled`]: plusDisabled,
             }
           )}
         />
