@@ -145,7 +145,10 @@ export const Popup: FunctionComponent<
   const duoLayout = useDuoLayout(
     innerVisible && duoPopupKind != null,
     duoPopupKind ?? 'center',
-    { overlayScope: duoOverlayScope },
+    {
+      overlayScope: duoOverlayScope,
+      splitSide: (props as any).splitSide,
+    },
     {
       // 仅在蒙层铺满整窗时屏蔽导航栏；base 蒙层只盖内容区
       enabled: !!overlay && duoOverlayScope !== 'base',
