@@ -38,7 +38,7 @@
   "dependencies": {
     "@babel/cli": "^7.29.7",
     "@babel/core": "^7.29.7",
-    "@babel/generator": "^7.29.8",
+    "@babel/generator": "^7.29.12",
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-react": "^7.29.7",
     "@types/babel__core": "^7.20.5",
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@types/lodash.kebabcase": "^4.1.9",
     "@types/node": "^18.19.130",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.10",
     "rollup": "^2.80.0",
     "rollup-plugin-ts": "^3.4.5",
     "typescript": "^5.4.5"
