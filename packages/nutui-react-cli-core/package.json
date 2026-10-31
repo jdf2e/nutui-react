@@ -11,11 +11,11 @@
     "./scripts/prepare-data.mjs": "./scripts/prepare-data.mjs"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "yargs": "^17.7.3"
   },
   "devDependencies": {
-    "@types/node": "^22.20.1",
+    "@types/node": "^22.20.5",
     "@types/yargs": "^17.0.35",
     "typescript": "^5.6.2"
   }
