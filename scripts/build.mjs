@@ -156,7 +156,7 @@ async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.h5.json')
   const types = join(__dirname, `../${dist}/types`)
   await execSync(
-    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
+    `npx tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
   )
 
 

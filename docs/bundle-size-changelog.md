@@ -40,6 +40,9 @@
      - 外部单独引用 `Button` 的业务继续加载完整的 `style.css` (30.48KB) 与 `style.mini.css`。
 4. **周边构建与工具兼容**：
    - 调整 `scripts/replace-css-var.js`，支持连字符样式的组件内部拆分文件识别。
+5. **Sass 防重引入与层叠次序防御（修复 Demo / 全量 Bundle 场景）**：
+   - 在 `button-base.scss` 与 `button-variants.scss` 增加 `$nutui-button-base-imported` 和 `$nutui-button-variants-imported` 全局守护变量（Include Guard），彻底防止全局全量 bundle 下因 `Dialog` 等组件再次 `@import button-base.scss` 导致的 `.nut-button` 规则在 CSS 尾部重复展开。
+   - 在 `button-variants.scss` 末尾声明 `outline`、`dashed`、`none` 填充透明规则，确保修饰符层叠优先级始终高于实色变体背景。
 
 #### 2. 量化收益 (Metrics & Gains)
 
