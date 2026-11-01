@@ -1,4 +1,7 @@
 // ----------------------------------------------------
+// RTL 开关：默认为 true 保证开源国际化兼容；如无需 RTL，可在业务 Sass 配置中设为 false，编译时将不输出 RTL 规则
+$nutui-enable-rtl: true !default;
+
 // 缩放系数
 :root,
 page {

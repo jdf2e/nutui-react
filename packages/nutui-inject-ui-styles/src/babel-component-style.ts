@@ -132,7 +132,13 @@ function injectCSS(options: IOptions) {
               if (!absolutePath[0]) return
               // td 下如果不处理，会报异常并阻塞。
               if (dynamic() && !list.includes(name)) return
-              let importpath = `${absolutePath[0]}${realNamePackage}/dist/es/packages/${name}/style/${options.style === 'css' ? 'css' : 'index'}.js`
+              let styleType = 'index'
+              if (options.style === 'css') {
+                styleType = 'css'
+              } else if (options.style === 'mini') {
+                styleType = 'mini'
+              }
+              let importpath = `${absolutePath[0]}${realNamePackage}/dist/es/packages/${name}/style/${styleType}.js`
               if (harmony() || dynamic()) {
                 importpath = `${absolutePath[0]}${realNamePackage}/dist/es/packages/${name}/style/style.harmony.css`
               }
