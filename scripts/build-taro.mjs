@@ -277,7 +277,9 @@ async function buildAllCSS(themeName = '') {
       `@import './styles/mixins/index.scss';`,
       `@import './styles/animation/index.scss';`,
     ]
-    const scssFiles = await glob([`${dist}/es/packages/**/${themeStylePath}/*.scss`])
+    const scssFiles = await glob([`${dist}/es/packages/**/${themeStylePath}/*.scss`], {
+      ignore: [`${dist}/es/packages/**/${themeStylePath}/button-*.scss`],
+    })
     scssFiles.forEach((file) => {
       content.push(
         `@import '${relativePath('/' + file, `/${dist}/${themeStylePath}.scss`)}';`,
@@ -377,6 +379,8 @@ async function buildCSS(themeName = '') {
       'src/packages/**/demo.scss',
       // demo 专用全量 bundle，不参与 npm 按组件发包
       'src/packages/nutui.react.scss.taro.bundle.scss',
+      // button 内部拆分子文件，由 button 统一构建与导出
+      'src/packages/button/button-*.scss',
     ],
   })
 
@@ -409,6 +413,10 @@ async function buildCSS(themeName = '') {
               root.params = root.params.replace('../../', '../../../../')
               return
             }
+            // button 内部拆分子文件（./button-base.scss, ./button-variants.scss）保留编译，不作为外部依赖移除
+            if (base === 'button.scss' && (root.params.includes('./button-') || root.params.includes('./button-size'))) {
+              return
+            }
             if (root.params.indexOf('styles') === -1) {
               atRules.push(root.params)
               root.remove()
@@ -436,6 +444,48 @@ async function buildCSS(themeName = '') {
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.mini.css`), miniCssResult.css)
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/style.mini.css`), miniCssResult.css)
 
+    // 若当前为 button 组件，独立构建其 button-base 轻量样式产物供 Dialog/Empty 等调用
+    if (base === 'button.scss') {
+      const buttonBasePath = join(__dirname, '../src/packages/button/button-base.scss')
+      const buttonSizePath = join(__dirname, '../src/packages/button/button-size.scss')
+      const buttonVariantsPath = join(__dirname, '../src/packages/button/button-variants.scss')
+
+      let baseScssContent = await readFile(buttonBasePath, { encoding: 'utf8' })
+      baseScssContent = pxToScalePxInComponentScss(baseScssContent)
+
+      // 拷贝基础与变体 scss 源码
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/button-base.scss`), baseScssContent)
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/button-base.scss`), baseScssContent)
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/button-size.scss`), await readFile(buttonSizePath, { encoding: 'utf8' }))
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/button-size.scss`), await readFile(buttonSizePath, { encoding: 'utf8' }))
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/button-variants.scss`), await readFile(buttonVariantsPath, { encoding: 'utf8' }))
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/button-variants.scss`), await readFile(buttonVariantsPath, { encoding: 'utf8' }))
+
+      // 编译 base.css
+      const baseCode = sass.compileString(variables + '\n' + baseScssContent, {
+        loadPaths: [loadPath],
+      })
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/base.css`), baseCode.css)
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/base.css`), baseCode.css)
+
+      // 生成 base.mini.css
+      const baseMiniCssResult = await postcss([stripRtlPlugin]).process(baseCode.css, { from: undefined })
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/base.mini.css`), baseMiniCssResult.css)
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/base.mini.css`), baseMiniCssResult.css)
+
+      // base 独立入口 JS (供复合组件定向按需引用，节省~16.9KB)
+      const baseJs = `import './button-base.scss';\n`
+      const baseCssJs = `import './base.css';\n`
+      const baseMiniJs = `import './base.mini.css';\n`
+
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/base.js`), baseJs)
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/base.js`), baseJs)
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/base-css.js`), baseCssJs)
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/base-css.js`), baseCssJs)
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/base-mini.js`), baseMiniJs)
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/base-mini.js`), baseMiniJs)
+    }
+
     const jsContent = []
     const cssContent = []
     const miniContent = []
@@ -449,9 +499,15 @@ async function buildCSS(themeName = '') {
         const base = basename(rule)
         const ext = extname(base)
         const name = base.replace(ext, '')
-        jsContent.push(`import '../../${name}/${themeDir}';`)
-        cssContent.push(`import '../../${name}/${themeDir}/css';`)
-        miniContent.push(`import '../../${name}/${themeDir}/mini';`)
+        if (rule.includes('button/button-base') || base === 'button-base.scss') {
+          jsContent.push(`import '../../button/${themeDir}/base';`)
+          cssContent.push(`import '../../button/${themeDir}/base-css';`)
+          miniContent.push(`import '../../button/${themeDir}/base-mini';`)
+        } else {
+          jsContent.push(`import '../../${name}/${themeDir}';`)
+          cssContent.push(`import '../../${name}/${themeDir}/css';`)
+          miniContent.push(`import '../../${name}/${themeDir}/mini';`)
+        }
       }
     })
     jsContent.push(`import './${base}';`)
@@ -486,6 +542,7 @@ async function buildHarmonyCSS(themeName = '') {
     ignore: [
       'src/packages/**/demo.scss',
       'src/packages/nutui.react.scss.taro.bundle.scss',
+      'src/packages/button/button-*.scss',
     ],
   })
 
@@ -521,6 +578,10 @@ async function buildHarmonyCSS(themeName = '') {
               root.params = root.params.replace('../../', '../../../../')
               return
             }
+            // button 内部拆分子文件保留编译
+            if (base === 'button.scss' && (root.params.includes('./button-') || root.params.includes('./button-size'))) {
+              return
+            }
           }
         },
       },
@@ -544,6 +605,26 @@ async function buildHarmonyCSS(themeName = '') {
       await dest(
         join(`${dist}/cjs`, cssPath, `${themeDir}/style.harmony.css`),
         code.css,
+      )
+    }
+
+    if (base === 'button.scss') {
+      const buttonBasePath = join(__dirname, '../src/packages/button/button-base.scss')
+      let baseScssContent = await readFile(buttonBasePath, { encoding: 'utf8' })
+      baseScssContent = pxToScalePxInComponentScss(baseScssContent)
+      const baseCode = sass.compileString(
+        variables + '\n' + baseScssContent,
+        {
+          loadPaths: [loadPath],
+        },
+      )
+      await dest(
+        join(`${dist}/es`, cssPath, `${themeDir}/base.harmony.css`),
+        baseCode.css,
+      )
+      await dest(
+        join(`${dist}/cjs`, cssPath, `${themeDir}/base.harmony.css`),
+        baseCode.css,
       )
     }
   }

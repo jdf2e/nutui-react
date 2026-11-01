@@ -1,0 +1,30 @@
+@mixin button-size(
+  $height,
+  $padding,
+  $font-size,
+  $radius,
+  $text-icon-margin: null
+) {
+  height: $height;
+  padding: $padding;
+  font-size: $font-size;
+  border-radius: $radius;
+
+  @if $text-icon-margin {
+    .nut-button-text {
+      margin-left: $text-icon-margin;
+      &-right {
+        margin-right: $text-icon-margin;
+      }
+    }
+  }
+
+  .nut-icon {
+    font-size: $font-size;
+    width: $font-size;
+    height: $font-size;
+  }
+  &-children {
+    font-size: $font-size;
+  }
+}
