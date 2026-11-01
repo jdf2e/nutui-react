@@ -327,7 +327,13 @@ export function resolveDuoOverlayLayout(
       ? ({ ...info, windowWidth: screenWidth } as SystemInfo)
       : info
   const windowRect = windowRectFromInfo(layoutInfo)
-  const baseRect = enabled ? computeBaseRect(layoutInfo) : windowRect
+  // 闭合态半弹面板避开右侧安全区域，蒙层仍可覆盖整窗。
+  const baseInfo =
+    normalizeFoldState(info.foldState) === 'closed' &&
+    (kind === 'bottom' || kind === 'top')
+      ? info
+      : layoutInfo
+  const baseRect = enabled ? computeBaseRect(baseInfo) : windowRect
   const scope = options?.overlayScope ?? 'window'
   const overlayRect = enabled
     ? computeOverlayRect(windowRect, baseRect, scope)

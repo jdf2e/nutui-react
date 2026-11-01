@@ -59,6 +59,8 @@ vi.mock('@tarojs/components', () => ({
 describe('Popup Taro Component & Duo Adaptation', () => {
   afterEach(() => {
     vi.clearAllMocks()
+    delete (Taro as any).JDNavigationBar
+    vi.useRealTimers()
   })
 
   test('should render both overlay and popup content with correct zIndex', () => {
@@ -186,6 +188,64 @@ describe('Popup Taro Component & Duo Adaptation', () => {
     expect(topEle.style.left).toBe('140px')
   })
 
+  test.each(['bottom', 'top'] as const)(
+    'should keep a closed Duo %s popup out of the right safe area when navigation is covered',
+    (position) => {
+      vi.useFakeTimers()
+      const setIOSDialogAppearanceSync = vi.fn(() => true)
+      ;(Taro as any).JDNavigationBar = { setIOSDialogAppearanceSync }
+      ;(Taro as any).__setMockSystemInfo({
+        platform: 'ios',
+        foldState: 'closed',
+        deviceOrientation: 'portrait',
+        windowWidth: 375,
+        windowHeight: 669,
+        screenWidth: 459,
+        lengthScaleRatio: 0.9,
+      })
+
+      const { container, unmount } = render(
+        <Popup visible overlay position={position}>
+          闭合态面板
+        </Popup>
+      )
+      const popup = container.querySelector('.nut-popup') as HTMLElement
+      const overlay = container.querySelector('.nut-overlay') as HTMLElement
+
+      expect(setIOSDialogAppearanceSync).toHaveBeenCalledWith(
+        expect.objectContaining({ active: true })
+      )
+      expect(popup.style.left).toBe('0px')
+      expect(parseFloat(popup.style.width)).toBeCloseTo(375 / 0.9)
+      expect(overlay.style.width).toBe('')
+
+      // 展开后恢复整窗居中限宽，闭合后重新避开右侧安全区。
+      ;(Taro as any).__setMockSystemInfo({
+        foldState: 'fullyOpen',
+        deviceOrientation: 'landscape',
+        windowWidth: 867,
+        screenWidth: 951,
+        lengthScaleRatio: 1,
+      })
+      act(() => (Taro as any).__triggerResize())
+      act(() => vi.advanceTimersByTime(300))
+      expect(popup.style.width).toBe('653px')
+      expect(popup.style.left).toBe('149px')
+      ;(Taro as any).__setMockSystemInfo({
+        foldState: 'closed',
+        deviceOrientation: 'portrait',
+        windowWidth: 375,
+        screenWidth: 459,
+      })
+      act(() => (Taro as any).__triggerResize())
+      act(() => vi.advanceTimersByTime(300))
+      expect(popup.style.width).toBe('375px')
+      expect(popup.style.left).toBe('0px')
+
+      unmount()
+    }
+  )
+
   test('should acquire and release iOS native navigation appearance for Popup with overlay', () => {
     const setIOSDialogAppearanceSync = vi.fn(() => true)
     ;(Taro as any).JDNavigationBar = {
@@ -198,6 +258,7 @@ describe('Popup Taro Component & Duo Adaptation', () => {
       windowWidth: 867,
       windowHeight: 669,
       screenWidth: 951,
+      lengthScaleRatio: 1,
     })
 
     const { unmount } = render(
