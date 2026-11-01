@@ -512,7 +512,20 @@ async function buildHarmonyCSS(themeName = '') {
 }
 
 function generateReleasePackageJson() {
-  delete packageJson.dependencies['@nutui/icons-react']
+  const releaseDeps = { ...packageJson.dependencies }
+  const excludeList = [
+    '@nutui/icons-react',
+    '@nutui/jdesign-icons-react-taro',
+    '@nutui/touch-emulator',
+    '@react-spring/web',
+    '@use-gesture/react',
+    'lottie-react',
+    'codesandbox',
+    'rehype-highlight',
+    'lodash.kebabcase',
+  ]
+  excludeList.forEach((dep) => delete releaseDeps[dep])
+
   return JSON.stringify({
     name: '@nutui/nutui-react-taro',
     version: packageJson.version,
@@ -533,7 +546,7 @@ function generateReleasePackageJson() {
     repository: packageJson.repository,
     files: [...packageJson.files, 'postinstall.js'],
     publishConfig: packageJson.publishConfig,
-    dependencies: packageJson.dependencies,
+    dependencies: releaseDeps,
     peerDependencies: packageJson.peerDependencies,
     optionalDependencies: {
       '@jmfe/npm-usage-stats-tool': 'latest'
