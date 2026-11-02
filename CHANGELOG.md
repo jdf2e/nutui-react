@@ -1,3 +1,11 @@
+# v4.0.0-beta.13
+
+`2026-11-01`
+
+- :bug: fix(NavBar): 修复 v16 设计走查 (#3566)
+- :bug: fix(Form): 修改表单标签样式 (#3567)
+- :bug: fix(tabbar): align skin and browse icons (#3568)
+
 # v4.0.0-beta.12
 
 `2026-10-23`
