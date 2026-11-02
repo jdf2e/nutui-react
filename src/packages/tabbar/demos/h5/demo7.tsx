@@ -3,7 +3,8 @@ import { Tabbar } from '@nutui/nutui-react'
 import {
   CartF,
   CartI,
-  HiI,
+  StoreF,
+  StoreI,
   HomeF,
   HomeI,
   UserF,
@@ -24,7 +25,10 @@ const Demo = () => {
           title="首页"
           icon={(active: boolean) => (active ? <HomeF /> : <HomeI />)}
         />
-        <Tabbar.Item title="逛" icon={<HiI />} />
+        <Tabbar.Item
+          title="逛"
+          icon={(active: boolean) => (active ? <StoreF /> : <StoreI />)}
+        />
         <Tabbar.Item
           title="购物车"
           icon={(active: boolean) => (active ? <CartF /> : <CartI />)}

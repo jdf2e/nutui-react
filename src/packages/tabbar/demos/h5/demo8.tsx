@@ -5,7 +5,8 @@ import {
   CartI,
   HeartF,
   HeartI,
-  HiI,
+  StoreF,
+  StoreI,
   HomeF,
   HomeI,
   UserF,
@@ -18,7 +19,10 @@ const Demo = () => (
       title="首页"
       icon={(active: boolean) => (active ? <HomeF /> : <HomeI />)}
     />
-    <Tabbar.Item title="逛" icon={<HiI />} />
+    <Tabbar.Item
+      title="逛"
+      icon={(active: boolean) => (active ? <StoreF /> : <StoreI />)}
+    />
     <Tabbar.Item
       title="收藏"
       icon={(active: boolean) => (active ? <HeartF /> : <HeartI />)}

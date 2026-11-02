@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tabbar, Image } from '@nutui/nutui-react'
-import { CartF, CartI, HiI, HomeI, UserF, UserI } from '@nutui/icons-react'
+import { CartF, CartI, StoreF, HomeI, UserF, UserI } from '@nutui/icons-react'
 import '../badge-demo.scss'
 
 const Demo = () => {
@@ -23,7 +23,9 @@ const Demo = () => {
       />
       <Tabbar.Item
         className="image-when-inactive"
-        icon={(active: boolean) => (active ? <HiI /> : <Image src={image} />)}
+        icon={(active: boolean) =>
+          active ? <StoreF /> : <Image src={image} />
+        }
         title={(active: boolean) => (active ? '逛' : '')}
         value={8}
       />

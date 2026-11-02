@@ -1,6 +1,13 @@
 import React from 'react'
 import { Tabbar, Image, harmony, pxTransform } from '@nutui/nutui-react-taro'
-import { CartF, CartI, HiI, HomeI, UserF, UserI } from '@nutui/icons-react-taro'
+import {
+  CartF,
+  CartI,
+  StoreF,
+  HomeI,
+  UserF,
+  UserI,
+} from '@nutui/icons-react-taro'
 import '../badge-demo.scss'
 
 const Demo = () => {
@@ -32,7 +39,9 @@ const Demo = () => {
       />
       <Tabbar.Item
         className="image-when-inactive"
-        icon={(active: boolean) => (active ? <HiI /> : marketingImage(image))}
+        icon={(active: boolean) =>
+          active ? <StoreF /> : marketingImage(image)
+        }
         title={(active: boolean) => (active ? '逛' : '')}
         value={8}
       />

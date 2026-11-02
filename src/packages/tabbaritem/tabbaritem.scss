@@ -145,9 +145,3 @@
     var(--nutui-tabbar-text-font-size, #{$font-size-xxs})
   );
 }
-
-.nut-tabbar-material-background
-  .nut-tabbar-wrap.nut-tabbar-wrap-skin:not(.nut-tabbar-wrap-horizontal)
-  .nut-tabbar-item-active {
-  background: $tabbar-active-background;
-}
