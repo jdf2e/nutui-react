@@ -411,7 +411,7 @@
           "v15": 1,
           "author": "Alex.hxy",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -815,7 +815,7 @@
           "v15": 2,
           "author": "Ymm0008",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "2.0.0",
@@ -977,7 +977,7 @@
           "v15": 1,
           "author": "swag~jun",
           "dd": false,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -1048,7 +1048,7 @@
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -1062,7 +1062,7 @@
           "v15": 10,
           "author": "oasis",
           "dd": true,
-          "v16": false
+          "v16": true
         },
         {
           "version": "3.0.0",
@@ -1318,7 +1318,7 @@
           "v15": 1,
           "author": "hanyuxinting",
           "dd": false,
-          "v16": true
+          "v16": false
         },
         {
           "version": "3.0.0",
@@ -1432,7 +1432,7 @@
           "exportEmpty": true,
           "author": "hanyuxinting",
           "dd": true,
-          "v16": true
+          "v16": false
         },
         {
           "version": "2.0.0",
