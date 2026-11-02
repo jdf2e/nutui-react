@@ -1,0 +1,19 @@
+CHANGELOG.md
+  s_eb86fd791f09c8::t_e0bf8f7f79f2c3 3-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "868fc2714dc3713b79095f109f25aa9b79869afb",
+  "prompts": {},
+  "sessions": {
+    "s_eb86fd791f09c8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c8bedfbd-b215-441a-859e-a30dc093fa24",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
