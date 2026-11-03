@@ -5,9 +5,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  .nut-button {
-    width: 114px;
-  }
+
   &-icon {
     display: flex;
     margin-bottom: $resultpage-icon-margin-bottom;
@@ -46,8 +44,11 @@
     }
   }
   &-action {
-    width: 114px;
-    margin-left: 6px;
-    margin-right: 6px;
+    width: $resultpage-action-width;
+    margin-left: $resultpage-action-gap;
+    margin-right: $resultpage-action-gap;
+    .nut-button {
+      width: 100%;
+    }
   }
 }

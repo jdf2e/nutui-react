@@ -3269,6 +3269,14 @@ $resultpage-actions-margin-top: var(
   --nutui-resultpage-actions-margin-top,
   scale-px(12px)
 ) !default;
+$resultpage-action-width: var(
+  --nutui-resultpage-action-width,
+  scale-px(114px)
+) !default;
+$resultpage-action-gap: var(
+  --nutui-resultpage-action-gap,
+  scale-px(6px)
+) !default;
 
 // quickenter
 $quickenter-bg-color: var(--nutui-quickenter-bg-color, #f5f5f5) !default;

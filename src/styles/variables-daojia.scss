@@ -2013,6 +2013,8 @@ $resultpage-description-line-height: var(--nutui-resultpage-description-line-hei
     22px) !default;
 $resultpage-actions-margin-top: var(--nutui-resultpage-actions-margin-top,
     12px) !default;
+$resultpage-action-width: var(--nutui-resultpage-action-width, 114px) !default;
+$resultpage-action-gap: var(--nutui-resultpage-action-gap, 6px) !default;
 
 // quickenter
 $quickenter-bg-color: var(--nutui-quickenter-bg-color, #f5f5f5) !default;
