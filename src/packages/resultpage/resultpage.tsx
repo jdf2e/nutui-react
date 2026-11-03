@@ -60,11 +60,11 @@ export const ResultPage: FunctionComponent<
       {actions.length ? (
         <div className={`${classPrefix}-actions`}>
           {actions.map((action, index) => {
-            const { text, ...rest } = action
+            const { text, size = 'large', ...rest } = action
             return (
               <div className={`${classPrefix}-action`} key={index}>
-                <Button {...rest} size="large">
-                  {action?.text}
+                <Button {...rest} size={size}>
+                  {text}
                 </Button>
               </div>
             )

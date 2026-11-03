@@ -114,5 +114,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-resultpage-description-color | Description color | `$color-text` |
 | \--nutui-resultpage-description-line-height | Description line height | `22px` |
 | \--nutui-resultpage-actions-margin-top | Space above actions | `12px` |
+| \--nutui-resultpage-action-width | Action button width | `114px` |
+| \--nutui-resultpage-action-gap | Horizontal margin of each action button (12px gap in total) | `6px` |
+| \--nutui-resultpage-action-default-light-color | Negative action text color (`default` + `light`) | `$color-text` |
 
 <Contribution name="ResultPage" />
