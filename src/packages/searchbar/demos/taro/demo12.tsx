@@ -34,7 +34,7 @@ const Demo12 = () => {
               size="mini"
               style={{
                 padding: '0 12px',
-                borderRadius: 'var(--nutui-radius-l)',
+                borderRadius: 'var(--nutui-radius-base)',
                 marginRight: -6,
               }}
             >
