@@ -62,9 +62,9 @@ import { ActionSheet } from '@nutui/nutui-react-taro'
 
 :::
 
-### 顶部弹出
+### 弹出位置
 
-通过 `position="top"` 从顶部弹出，内容以网格形式展示，`options` 支持 `icon` 字段（字符串使用 `Image` 渲染，也可传入自定义节点）。网格布局也可通过 `layout="grid"` 用于底部弹出；`columns` 仅支持 `4` 或 `5`，为 `4` 时左右间距更宽。
+通过 `position="top"` 从顶部弹出，内容以网格形式展示，`options` 支持 `icon` 字段（字符串使用 `Image` 渲染，也可传入自定义节点）。网格布局也可通过 `layout="grid"` 用于底部弹出；`columns` 仅支持 `4` 或 `5`，为 `4` 时左右间距更宽。底部弹出还可通过 `children` 自定义面板内容，示例中放置了两行互不影响的横向滚动列表。
 
 :::demo
 

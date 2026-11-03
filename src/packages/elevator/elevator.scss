@@ -106,10 +106,10 @@
         /* #endif */
         align-items: center;
         justify-content: center;
-        height: scale-px(16px);
-        width: scale-px(16px);
+        height: 16px;
+        width: 16px;
         border-radius: 50%;
-        margin: scale-px(1px) 0;
+        margin: 1px 0;
         color: $elevator-bars-color;
         font-size: $elevator-bars-font-size;
         cursor: pointer;

@@ -6,26 +6,26 @@
 
   &-arrow {
     position: absolute;
-    width: scale-px(8px);
-    height: scale-px(8px);
+    width: 8px;
+    height: 8px;
 
     .nut-icon-ArrowRadius {
       position: absolute;
       color: $popover-content-background-color;
-      width: scale-px(8px);
-      height: scale-px(8px);
+      width: 8px;
+      height: 8px;
     }
 
     &-top {
-      bottom: scale-px(-8px);
+      bottom: -8px;
     }
 
     &-bottom {
-      top: scale-px(-8px);
+      top: -8px;
     }
 
     &-left {
-      right: scale-px(-8px);
+      right: -8px;
       transform-origin: center top;
 
       &.nut-popover-arrow-left {
@@ -34,12 +34,12 @@
       }
 
       &.nut-popover-arrow-left-top {
-        right: scale-px(-12px);
+        right: -12px;
         transform: rotate(90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-left-bottom {
-        right: scale-px(-12px);
+        right: -12px;
         transform: rotate(90deg) translateY(0%);
       }
     }
@@ -48,17 +48,17 @@
       transform-origin: center top;
       &.nut-popover-arrow-right {
         top: 50%;
-        left: scale-px(-8px);
+        left: -8px;
         transform: rotate(-90deg) translateY(-50%);
       }
 
       &.nut-popover-arrow-right-top {
-        left: scale-px(-12px);
+        left: -12px;
         transform: rotate(-90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-right-bottom {
-        left: scale-px(-12px);
+        left: -12px;
         transform: rotate(-90deg) translateY(0%);
       }
     }
@@ -87,7 +87,7 @@
       justify-content: center;
       min-height: $popover-height;
       padding: $popover-padding-vertical 0;
-      border-bottom: scale-px(1px) solid $popover-divider-color;
+      border-bottom: 1px solid $popover-divider-color;
       word-wrap: break-word;
 
       &:last-child {
@@ -358,5 +358,5 @@
 // Taro
 .nut-popover-content-copy {
   position: absolute;
-  top: scale-px(-99999px);
+  top: -99999px;
 }

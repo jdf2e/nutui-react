@@ -1,40 +1,39 @@
 import React from 'react'
-import { Cell, pxTransform } from '@nutui/nutui-react-taro'
-import { View, Text } from '@tarojs/components'
-import { User } from '@nutui/icons-react-taro'
+import { Text, View } from '@tarojs/components'
+import { Cell, Checkbox, pxTransform } from '@nutui/nutui-react-taro'
+import { ConfigI, TipsI } from '@nutui/icons-react-taro'
 
 const Demo3 = () => {
+  const titleNode = (
+    <View
+      style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+    >
+      <Text>标题文案</Text>
+      <TipsI size={pxTransform(12)} style={{ marginLeft: pxTransform(4) }} />
+    </View>
+  )
+
+  const descriptionNode = (
+    <View>
+      <View
+        style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+      >
+        <Text>二级信息</Text>
+        <TipsI size={pxTransform(12)} style={{ marginLeft: pxTransform(4) }} />
+      </View>
+    </View>
+  )
+
   return (
     <Cell
-      title={
-        <View
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'row',
-            height: pxTransform(20),
-          }}
-        >
-          <User size={16} />
-          <View style={{ marginLeft: pxTransform(5) }}>我是标题</View>
-        </View>
+      leading={<ConfigI />}
+      title={titleNode}
+      description={descriptionNode}
+      extra={
+        <Checkbox
+          style={{ marginRight: 'calc(-8px * var(--nut-scale-f, 1))' }}
+        />
       }
-      description={
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            fontSize: pxTransform(12),
-            color: 'var(--nutui-color-text, #1a1a1a)',
-            height: pxTransform(20),
-          }}
-        >
-          我是描述
-          <Text style={{ color: 'red', fontSize: pxTransform(12) }}>1</Text>
-        </View>
-      }
-      extra="描述文字"
     />
   )
 }

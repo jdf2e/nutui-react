@@ -8,6 +8,7 @@ import React, {
 import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 import { WebCountDownProps, CountDownTime } from '@/types'
+import { getDisplayBucket } from './utils'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -16,7 +17,6 @@ const defaultProps = {
   startTime: Date.now(),
   endTime: Date.now(),
   remainingTime: 0,
-  millisecond: false,
   format: 'HH:mm:ss',
   autoStart: true,
   time: 0,
@@ -33,8 +33,8 @@ const InternalCountDown: ForwardRefRenderFunction<
     startTime,
     endTime,
     remainingTime,
-    millisecond,
     format,
+    refreshInterval,
     autoStart,
     time,
     destroy,
@@ -59,6 +59,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     counting: !paused && autoStart, // 是否处于倒计时中
     handleEndTime: Date.now(), // 最终截止时间
     diffTime: 0, // 设置了 startTime 时，与 date.now() 的差异
+    lastBucket: -1, // 上一帧展示档，用于节流 setState
   })
 
   // 时间戳转换 或 获取当前时间的时间戳
@@ -78,6 +79,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
     }
     if (!stateRef.current.counting) stateRef.current.counting = true
+    stateRef.current.lastBucket = -1
     tick()
   }
 
@@ -91,17 +93,24 @@ const InternalCountDown: ForwardRefRenderFunction<
         )
 
         stateRef.current.restTime = remainTime
-        setRestTime(remainTime)
+        const bucket =
+          refreshInterval && refreshInterval > 0
+            ? Math.floor(remainTime / refreshInterval)
+            : getDisplayBucket(remainTime, format)
+        // 仅展示档变化时更新 UI；到 0 必刷并只触发 onEnd（不走 pause/onPaused）
+        if (bucket !== stateRef.current.lastBucket) {
+          stateRef.current.lastBucket = bucket
+          setRestTime(remainTime)
+        }
 
         if (!remainTime) {
           stateRef.current.counting = false
-          pause()
+          cancelAnimationFrame(stateRef.current.timer)
           onEnd && onEnd()
+          return
         }
 
-        if (remainTime > 0) {
-          tick()
-        }
+        tick()
       }
     })
   }
@@ -177,16 +186,23 @@ const InternalCountDown: ForwardRefRenderFunction<
         formatCache = formatCache.replace('S', msC.slice(0, 1))
       }
     }
-    const isTextDom =
-      type === 'text'
-        ? `<span class="nut-countdown-number-text">$1</span>`
-        : `<span class="nut-countdown-number">$1</span>`
-    formatCache = formatCache.replace(
-      /(\d+)/g,
-      type === 'primary'
-        ? `<span class="nut-countdown-number-primary">$1</span>`
-        : isTextDom
-    )
+
+    // 百毫秒 1 位；须在 S/SS/SSS 之后替换
+    if (formatCache.includes('i')) {
+      formatCache = formatCache.replace('i', String(Math.floor(ms / 100) % 10))
+    }
+
+    let numberClass = 'nut-countdown-number'
+    if (type === 'primary') {
+      numberClass = 'nut-countdown-number-primary'
+    } else if (type === 'text') {
+      numberClass = 'nut-countdown-number-text'
+    }
+    // ss.i（如 30.5）同块；带小数点的片段加 ssi 类
+    formatCache = formatCache.replace(/(\d+\.\d+|\d+)/g, (_, num: string) => {
+      const ssiClass = num.includes('.') ? ' nut-countdown-number-ssi' : ''
+      return `<span class="${numberClass}${ssiClass}">${num}</span>`
+    })
 
     return formatCache
   }
@@ -203,6 +219,7 @@ const InternalCountDown: ForwardRefRenderFunction<
         stateRef.current.counting = true
         stateRef.current.handleEndTime =
           Date.now() + Number(stateRef.current.restTime)
+        stateRef.current.lastBucket = -1
         tick()
         onRestart && onRestart(stateRef.current.restTime)
       }
@@ -240,6 +257,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           stateRef.current.counting = true
           stateRef.current.handleEndTime =
             Date.now() + Number(stateRef.current.restTime)
+          stateRef.current.lastBucket = -1
           tick()
         }
         onRestart && onRestart(stateRef.current.restTime)
@@ -280,7 +298,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     <>
       {children || (
         <div
-          className={`${classPrefix} ${className}`}
+          className={`${classPrefix} ${classPrefix}-${type} ${className}`}
           style={{ ...style }}
           {...rest}
           dangerouslySetInnerHTML={{

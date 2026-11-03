@@ -1,30 +1,89 @@
 import React from 'react'
-import { Swipe, harmony, pxTransform } from '@nutui/nutui-react-taro'
+import { Swipe, pxTransform } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
-import { Del } from '@nutui/icons-react-taro'
+import { Del, Heart, Search, Star, Top } from '@nutui/icons-react-taro'
 
-const ViewNode = (text: string, style: any) => {
+const BUTTON_WIDTH = 56
+const ICON_SIZE = 16
+
+interface ActionItem {
+  key: string
+  text: string
+  icon: React.ReactNode
+  background: string
+  color: string
+}
+
+const ActionNode = (item: ActionItem): React.ReactNode => {
   return (
     <View
+      key={item.key}
       style={{
         display: 'flex',
-        width: pxTransform(56),
-        height: pxTransform(96),
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        ...style,
+        width: pxTransform(BUTTON_WIDTH),
+        flex: '0 0 auto',
+        fontSize: pxTransform(12),
+        background: item.background,
+        color: item.color,
       }}
     >
-      {!harmony() ? <Del style={{ marginBottom: pxTransform(8) }} /> : null}
-      <Text style={{ fontSize: pxTransform(12), color: style.color }}>
-        {text}
-      </Text>
+      <View
+        style={{
+          display: 'flex',
+          width: pxTransform(ICON_SIZE),
+          height: pxTransform(ICON_SIZE),
+          marginBottom: pxTransform(6),
+        }}
+      >
+        {item.icon}
+      </View>
+      <Text>{item.text}</Text>
     </View>
   )
 }
 
 const App = () => {
+  const actions: ActionItem[] = [
+    {
+      key: 'top',
+      text: '置顶',
+      icon: <Top size={ICON_SIZE} />,
+      background: '#8c8c8c',
+      color: '#FFF',
+    },
+    {
+      key: 'alwaysBuy',
+      text: '加常买',
+      icon: <Star size={ICON_SIZE} />,
+      background: '#595959',
+      color: '#FFF',
+    },
+    {
+      key: 'collect',
+      text: '收藏',
+      icon: <Heart size={ICON_SIZE} />,
+      background: '#ffcc00',
+      color: '#FFF',
+    },
+    {
+      key: 'similar',
+      text: '看相似',
+      icon: <Search size={ICON_SIZE} />,
+      background: '#ff860d',
+      color: '#FFF',
+    },
+    {
+      key: 'delete',
+      text: '删除',
+      icon: <Del size={ICON_SIZE} />,
+      background: '#ff0f23',
+      color: '#FFF',
+    },
+  ]
+
   return (
     <>
       <Swipe
@@ -34,31 +93,10 @@ const App = () => {
             style={{
               display: 'flex',
               flexDirection: 'row',
-              width: pxTransform(224),
               height: pxTransform(96),
-              fontSize: pxTransform(12),
-              borderRadius: pxTransform(8),
-              overflow: 'hidden',
             }}
           >
-            <>
-              {ViewNode('加常买', {
-                background: '#fff4e8',
-                color: '#b5691a',
-              })}
-              {ViewNode('收藏', {
-                background: 'var(--nutui-color-warning, #ffaa00)',
-                color: '#FFF',
-              })}
-              {ViewNode('看相似', {
-                background: '#ff791a',
-                color: '#FFF',
-              })}
-              {ViewNode('删除', {
-                background: 'var(--nutui-color-primary, #ff0f23)',
-                color: '#FFF',
-              })}
-            </>
+            {actions.map((item) => ActionNode(item))}
           </View>
         }
       >

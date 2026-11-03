@@ -178,6 +178,10 @@ export * from './spec/lottie/base'
 export * from './spec/lottie/h5'
 export * from './spec/lottie/taro'
 
+export * from './spec/materialview/base'
+export * from './spec/materialview/h5'
+export * from './spec/materialview/taro'
+
 export * from './spec/navbar/base'
 export * from './spec/navbar/h5'
 export * from './spec/navbar/taro'

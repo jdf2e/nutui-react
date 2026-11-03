@@ -16,6 +16,7 @@ import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
 import Demo14 from './demos/h5/demo14'
 import Demo15 from './demos/h5/demo15'
+import Demo16 from './demos/h5/demo16'
 
 const RateDemo = () => {
   const [translated] = useTranslate({
@@ -35,6 +36,7 @@ const RateDemo = () => {
       verticalLayout: '上下布局',
       withLabel: '带标签',
       animation: '过渡动画',
+      customRating: '自定义评分',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -52,6 +54,7 @@ const RateDemo = () => {
       verticalLayout: '上下佈局',
       withLabel: '帶標籤',
       animation: '過渡動畫',
+      customRating: '自定義評分',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -69,6 +72,7 @@ const RateDemo = () => {
       verticalLayout: 'Vertical Layout',
       withLabel: 'With Label',
       animation: 'Transition Animation',
+      customRating: 'Custom Rating',
     },
   })
   const cellStyle: CSSProperties = {
@@ -152,6 +156,11 @@ const RateDemo = () => {
         <h2>{translated.animation}</h2>
         <Cell style={cellStyle}>
           <Demo15 />
+        </Cell>
+
+        <h2>{translated.customRating}</h2>
+        <Cell style={cellStyle}>
+          <Demo16 />
         </Cell>
       </div>
     </>

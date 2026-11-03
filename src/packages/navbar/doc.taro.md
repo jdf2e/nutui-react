@@ -10,7 +10,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 ## 示例代码
 
-### 基础用法
+### 场景材质
 
 :::demo
 
@@ -18,7 +18,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 标题位置
+### 二级楼层
 
 :::demo
 
@@ -26,7 +26,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 多tab切换导航
+### 自定义内容
 
 :::demo
 
@@ -44,6 +44,7 @@ import { NavBar } from '@nutui/nutui-react-taro'
 | left | 左侧内容，渲染在返回区域的右侧 | `ReactNode` | `-` |
 | back | 返回区域的文字 | `ReactNode` | `-` |
 | title | 标题 | `ReactNode` | `-` |
+| subBar | 二级楼层内容，渲染在标题行下方 | `ReactNode` | `-` |
 | fixed | 是否固定 | `boolean` | `false` |
 | safeAreaInsetTop | 是否适配安全区 | `boolean` | `false` |
 | placeholder | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | `boolean` | `false` |
@@ -60,13 +61,16 @@ import { NavBar } from '@nutui/nutui-react-taro'
 | --- | --- | --- |
 | \--nutui-navbar-width | 头部导航的宽度 | `100%` |
 | \--nutui-navbar-height | 头部导航的高度 | `44px` |
-| \--nutui-navbar-margin-bottom | 头部导航的下边距 | `20px` |
-| \--nutui-navbar-background | 头部导航的背景颜色 | `$white` |
-| \--nutui-navbar-box-shadow | 头部导航的阴影 | `0px 0px transparent` |
-| \--nutui-navbar-color | 头部导航的字体颜色 | `$color-text` |
+| \--nutui-navbar-padding | 头部导航的内边距 | `4px 8px` |
+| \--nutui-navbar-subbar-padding | 头部导航二级楼层的内边距 | `8px 0` |
+| \--nutui-navbar-side-maxwidth | 头部导航左右内容区的宽度 | `108px` |
+| \--nutui-navbar-side-padding | 头部导航左右内容区的内边距 | `8px` |
+| \--nutui-navbar-background | 头部导航的背景颜色 | `transparent` |
+| \--nutui-navbar-box-shadow | 头部导航的阴影 | `none` |
+| \--nutui-navbar-color | 头部导航的字体颜色 | `$color-title` |
 | \--nutui-navbar-font-size | 头部导航的字体大小 | `$font-size-base` |
-| \--nutui-navbar-title-font-size | 头部导航标题的字体大小 | `$font-size-base` |
-| \--nutui-navbar-title-font-weight | 头部导航标题的字体粗细 | `0` |
+| \--nutui-navbar-title-font-size | 头部导航标题的字体大小 | `$font-size-xl` |
+| \--nutui-navbar-title-font-weight | 头部导航标题的字体粗细 | `$font-weight-bold` |
 | \--nutui-navbar-title-font-color | 头部导航标题的字体颜色 | `$color-title` |
 
 <Contribution name="NavBar" />

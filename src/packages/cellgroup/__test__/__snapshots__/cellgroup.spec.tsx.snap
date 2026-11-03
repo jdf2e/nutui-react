@@ -18,7 +18,7 @@ exports[`prop title description extra 1`] = `
         style="border-radius: 6px; align-items: flex-start;"
       >
         <div
-          class="nut-cell-left"
+          class="nut-cell-body"
         >
           <div
             class="nut-cell-title"
@@ -39,7 +39,7 @@ exports[`prop title description extra 1`] = `
         style="border-radius: 6px; align-items: flex-start;"
       >
         <div
-          class="nut-cell-left"
+          class="nut-cell-body"
         >
           <div
             class="nut-cell-title"

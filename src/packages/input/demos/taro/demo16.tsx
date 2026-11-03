@@ -1,23 +1,16 @@
 import React from 'react'
-import { Search } from '@nutui/icons-react-taro'
-import { Divider, Input } from '@nutui/nutui-react-taro'
+import { Input, Cell } from '@nutui/nutui-react-taro'
 
 const Demo16 = () => {
   return (
-    <>
+    <Cell style={{ display: 'block' }}>
       <Input
-        defaultValue="京东多快好省京东多快好省京东多快好省"
-        clearable
-        rightIcon={<Search />}
+        status="error"
+        placeholder="请输入用户名"
+        description="请输入用户名"
       />
-      <Divider />
-      <Input
-        defaultValue="京东多快好省多快好省"
-        clearable
-        rightIcon={<Search />}
-        plain
-      />
-    </>
+    </Cell>
   )
 }
+
 export default Demo16

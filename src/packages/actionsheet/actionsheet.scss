@@ -34,7 +34,7 @@
     }
 
     &-description {
-      margin-top: scale-px(2px);
+      margin-top: 2px;
       color: $actionsheet-description-color;
       font-size: $actionsheet-description-font-size;
       line-height: $line-height-base;
@@ -67,8 +67,8 @@
   }
 
   &-grid-cols-4 {
-    padding-right: scale-px(32px);
-    padding-left: scale-px(32px);
+    padding-right: 32px;
+    padding-left: 32px;
   }
 
   &-grid-item {
@@ -87,14 +87,14 @@
   }
 
   &-grid-icon-img {
-    width: scale-px(48px);
-    height: scale-px(48px);
+    width: 48px;
+    height: 48px;
     object-fit: contain;
   }
 
   &-grid-name {
-    margin-top: scale-px(8px);
-    margin-bottom: scale-px(2px);
+    margin-top: 8px;
+    margin-bottom: 2px;
     color: $actionsheet-grid-text-color;
     font-size: $actionsheet-grid-text-font-size;
     line-height: $actionsheet-grid-text-line-height;
@@ -105,7 +105,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: scale-px(8px) 0 scale-px(12px);
+    padding: 8px 0 12px;
     color: $color-title;
     font-size: $font-size-base;
     cursor: pointer;
@@ -113,12 +113,12 @@
     &-arrow {
       display: inline-block;
       box-sizing: border-box;
-      width: scale-px(7px);
-      height: scale-px(7px);
-      margin-left: scale-px(10.5px);
-      margin-top: scale-px(1px);
-      border-top: scale-px(1px) solid $color-title;
-      border-left: scale-px(1px) solid $color-title;
+      width: 7px;
+      height: 7px;
+      margin-left: 10.5px;
+      margin-top: 1px;
+      border-top: 1px solid $color-title;
+      border-left: 1px solid $color-title;
       transform: rotate(45deg);
     }
   }
@@ -126,7 +126,7 @@
   &-list {
     display: block;
     list-style: none;
-    padding: 0 scale-px(16px);
+    padding: 0 16px;
     margin: 0;
     border-radius: $actionsheet-border-radius;
   }
@@ -136,7 +136,7 @@
       display: flex;
       align-items: center;
       box-sizing: border-box;
-      height: scale-px(48px);
+      height: 48px;
       padding: 0;
       text-align: left;
     }
@@ -160,9 +160,9 @@
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: scale-px(14px);
-    height: scale-px(14px);
-    margin-right: scale-px(6px);
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
   }
 
   &-item-icon-img {
@@ -174,12 +174,12 @@
   &-cancel,
   &-item {
     display: block;
-    padding: scale-px(13px) 0;
+    padding: 13px 0;
     text-align: $actionsheet-item-text-align;
     font-size: $font-size-base;
     color: $actionsheet-item-color;
     cursor: pointer;
-    border-bottom: scale-px(1px) solid $actionsheet-item-border-bottom;
+    border-bottom: 1px solid $actionsheet-item-border-bottom;
     &:last-child {
       border-bottom: none;
     }
@@ -210,7 +210,7 @@
   &-cancel {
     padding-top: 0;
     border-radius: $actionsheet-border-radius;
-    line-height: scale-px(40px);
+    line-height: 40px;
     font-size: $font-size-md;
   }
 
@@ -244,12 +244,12 @@
   }
 
   .nut-actionsheet-collapse-arrow {
-    margin-right: scale-px(10.5px);
+    margin-right: 10.5px;
     margin-left: 0;
   }
 
   .nut-actionsheet-item-icon {
     margin-right: 0;
-    margin-left: scale-px(6px);
+    margin-left: 6px;
   }
 }

@@ -44,8 +44,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: var(--nutui-toast-inner-min-width, scale-px(88px));
-    max-width: var(--nutui-toast-inner-max-width, scale-px(200px));
+    min-width: var(--nutui-toast-inner-min-width, 88px);
+    max-width: var(--nutui-toast-inner-max-width, 200px);
     box-sizing: border-box;
     font-size: $toast-text-font-size;
     text-align: $toast-inner-text-align;
@@ -56,8 +56,8 @@
     color: $toast-font-color;
 
     .nut-toast-has-icon & {
-      min-width: var(--nutui-toast-inner-has-icon-min-width, scale-px(97px));
-      max-width: var(--nutui-toast-inner-has-icon-max-width, scale-px(225px));
+      min-width: var(--nutui-toast-inner-has-icon-min-width, 97px);
+      max-width: var(--nutui-toast-inner-has-icon-max-width, 225px);
     }
 
     &-normal {
@@ -99,7 +99,7 @@
     line-height: normal;
     /* #endif */
     /* #ifndef harmony dynamic*/
-    line-height: scale-px(20px);
+    line-height: 20px;
     /* #endif */
     height: auto;
   }
@@ -113,13 +113,13 @@
     line-height: normal;
     /* #endif */
     /* #ifndef harmony dynamic*/
-    line-height: scale-px(22px);
+    line-height: 22px;
     /* #endif */
   }
 
   .nut-icon {
-    width: scale-px(20px);
-    height: scale-px(20px);
+    width: 20px;
+    height: 20px;
     color: var(
       --nutui-toast-icon-color,
       var(--nutui-toast-font-color, var(--nutui-white, #ffffff))
@@ -132,15 +132,15 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding: scale-px(10px) 0;
+    padding: 10px 0;
     color: var(
       --nutui-toast-icon-color,
       var(--nutui-toast-font-color, var(--nutui-white, #ffffff))
     );
 
     &-icon {
-      width: scale-px(20px);
-      height: scale-px(20px);
+      width: 20px;
+      height: 20px;
     }
   }
 

@@ -26,6 +26,7 @@ const trTR: BaseLang = {
   },
   infiniteloading: {
     pullRefreshText: 'yenile',
+    pullUpText: 'Daha fazlasını yüklemek için yukarı kaydırın',
     loadText: 'yükleniyor...',
     loadMoreText: 'Oops, işte şimdi ayfanın sonuna geldiniz',
   },

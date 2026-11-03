@@ -34,7 +34,7 @@ import { CountDown } from '@nutui/nutui-react'
 
 :::
 
-### 毫秒級渲染
+### 百毫秒 / 毫秒級渲染
 
 :::demo
 
@@ -96,7 +96,7 @@ import { CountDown } from '@nutui/nutui-react'
 | remainingTime | 剩余時間，單位是毫秒 | `number` | `0` |
 | paused | 是否暫停 | `boolean` | `false` |
 | format | 時間格式 | `string` | `HH:mm:ss` |
-| millisecond | 是否開啟毫秒級渲染 | `boolean` | `false` |
+| refreshInterval | 刷新步長（毫秒）；傳入則依該值取整節流，不傳則依 format 最細單位 | `number` | `-` |
 | autoStart | 是否自動開始倒計時 | `boolean` | `true` |
 | time | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | `number` | `0` |
 | destroy | 銷毀實例 | `boolean` | `false` |
@@ -113,9 +113,22 @@ import { CountDown } from '@nutui/nutui-react'
 | HH | 小時 |
 | mm | 分鐘 |
 | ss | 秒數 |
+| i | 百毫秒（1位，0–9）；與 `ss` 連寫如 `ss.i` 時同塊展示（如 `30.5`） |
 | S | 毫秒（1位） |
 | SS | 毫秒（2位） |
 | SSS | 毫秒（3位） |
+
+### 推薦格式（文檔約定，組件不強制按時長自動切換）
+
+`format` 仍完全自定義。以下為設計規範推薦，按剩餘時長自行選擇：
+
+| 剩餘時長 | 推薦 format | 說明 |
+| --- | --- | --- |
+| ≥ 1 天 | `DD天HH:mm:ss` | 建議 `type="text"`（文本標） |
+| 1～24 小時 | `HH:mm:ss` 或 `HH:mm:ss.i` | 面性/線性標均可 |
+| < 1 小時 | `mm:ss` 或 `mm:ss.i` | 面性/線性標均可 |
+
+百毫秒（`i`）僅建議在 24 小時內、強促銷等場景使用；展示為 1 位數字（由 RAF 驅動刷新）。
 
 ### Ref
 
@@ -135,16 +148,19 @@ import { CountDown } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-countdown-display | 倒計時的佈局方式 | `flex` |
 | \--nutui-countdown-color | 倒計時的文字顏色 | `$color-primary` |
-| \--nutui-countdown-font-size | 倒計時的字體大小 | `11px` |
+| \--nutui-countdown-font-size | 倒計時字體大小（非 text） | `11px` |
+| \--nutui-countdown-font-size-text | `type="text"` 時字體大小 | `10px` |
 | \--nutui-countdown-font-weight | 倒計時的字體粗細 | `400` |
-| \--nutui-countdown-width | 倒計時的時間區域寬度 | `16px` |
-| \--nutui-countdown-height | 倒計時的時間區域高度 | `16px` |
-| \--nutui-countdown-number-padding | 倒計時的時間區域padding | `0 0` |
+| \--nutui-countdown-width | 倒計時的時間區域最小寬度 | `16px` |
+| \--nutui-countdown-number-ssi-min-width | `ss.i` 同塊（含百毫秒）最小寬度；僅 default / primary，text 不限制 | `25px` |
+| \--nutui-countdown-height | 倒計時的時間區域高度（含邊框） | `16px` |
+| \--nutui-countdown-number-padding | 倒計時的時間區域 padding | `1px` |
+| \--nutui-countdown-number-border-width | 數字塊 `::after` 物理描邊寬度（再 `scale(1/3)`，視覺約 0.33px） | `1px` |
 | \--nutui-countdown-number-margin | 倒計時的時間區域margin | `0 1px` |
 | \--nutui-countdown-number-border-radius | 倒計時的時間區域圓角大小 | `2px` |
 | \--nutui-countdown-number-color | 倒計時的時間區域的文字顏色 | `$color-primary` |
 | \--nutui-countdown-background-color | 倒計時的時間區域的背景顏色 | `$color-background-overlay` |
-| \--nutui-countdown-border-color | 倒計時的時間區域的邊框顏色顏色 | `$color-primary-light-pressed` |
+| \--nutui-countdown-number-border-color | 空心（線性）數字塊邊框色 | `$color-primary-disabled-special` |
 | \--nutui-countdown-number-primary-color | type爲`primary`時，倒計時的時間區域的文字顏色 | `$color-primary-text` |
 | \--nutui-countdown-primary-background-color | type爲`primary`時，倒計時的時間區域的背景顏色 | `$color-primary` |
 | \--nutui-countdown-primary-border-color | type爲`primary`時，倒計時的時間區域的邊框顏色顏色 | `$color-primary` |

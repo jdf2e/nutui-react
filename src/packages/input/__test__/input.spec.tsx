@@ -283,20 +283,31 @@ test('applies description typography, color and spacing styles', () => {
   expect(descriptionStyles).toContain('font-weight: $font-weight')
 })
 
-test('right icon takes precedence over clear button', () => {
+test('custom clear icon keeps clear behavior and action spacing', () => {
+  const onClear = vi.fn()
+  const onChange = vi.fn()
   const { container, getByTestId } = render(
     <Input
       defaultValue="京东多快好省"
       clearable
-      rightIcon={<span data-testid="right-icon">辅助功能</span>}
+      clearIcon={<span data-testid="custom-clear-icon">清除</span>}
+      onClear={onClear}
+      onChange={onChange}
     />
   )
-  const input = container.querySelector('.nut-input-native') as HTMLElement
+  const input = container.querySelector('.nut-input-native') as HTMLInputElement
 
+  expect(container.querySelector('.nut-input-action')).not.toBeInTheDocument()
   fireEvent.focus(input)
-
-  expect(getByTestId('right-icon')).toBeInTheDocument()
+  expect(getByTestId('custom-clear-icon').parentElement).toHaveClass(
+    'nut-input-action'
+  )
   expect(container.querySelector('.nut-input-clear')).not.toBeInTheDocument()
+  fireEvent.click(getByTestId('custom-clear-icon'))
+  expect(input.value).toBe('')
+  expect(onChange).toHaveBeenCalledWith('')
+  expect(onClear).toHaveBeenCalledWith('')
+  expect(container.querySelector('.nut-input-action')).not.toBeInTheDocument()
 })
 
 test('applies right action spacing and text ellipsis styles', () => {

@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { useDrag } from '@use-gesture/react'
 import { animated, useSpring } from '@react-spring/web'
-import { Loading, More } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
@@ -10,6 +9,10 @@ import { sleep } from '@/utils/sleep'
 import { passiveSupported } from '@/utils/supports-passive'
 import { ComponentDefaults } from '@/utils/typings'
 import { PullStatus, WebPullToRefreshProps } from '@/types'
+import {
+  PULL_TO_REFRESH_DEFAULT_ICON,
+  PULL_TO_REFRESH_PRIMARY_ICON,
+} from './images'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -17,8 +20,6 @@ const defaultProps = {
   pullingText: '',
   canReleaseText: '',
   refreshingText: '',
-  completeText: '',
-  completeDelay: 500,
   disabled: false,
   headHeight: 80,
   threshold: 60,
@@ -65,31 +66,36 @@ export const PullToRefresh: FunctionComponent<
     elementRef.current?.addEventListener('touchmove', () => {})
   }, [])
 
-  async function doRefresh() {
-    api.start({ height: headHeight })
-    setStatus('refreshing')
-    try {
-      await props.onRefresh()
-      setStatus('complete')
-    } catch (e) {
-      api.start({
-        to: async (next) => {
-          await next({ height: 0 })
-          setStatus('pulling')
-        },
-      })
-
-      throw e
-    }
-    if (props.completeDelay > 0) {
-      await sleep(props.completeDelay)
-    }
+  const collapse = () =>
     api.start({
       to: async (next) => {
         await next({ height: 0 })
         setStatus('pulling')
       },
     })
+
+  // 是否走老的 complete 流程：仅当用户显式传入 completeText/completeDelay 时才启用，
+  // 默认场景下加载完成后直接收起。
+  const useLegacyComplete =
+    p.completeText !== undefined || p.completeDelay !== undefined
+  const completeDelay = props.completeDelay ?? 500
+
+  async function doRefresh() {
+    api.start({ height: headHeight })
+    setStatus('refreshing')
+    try {
+      await props.onRefresh()
+    } catch (e) {
+      collapse()
+      throw e
+    }
+    if (useLegacyComplete) {
+      setStatus('complete')
+      if (completeDelay > 0) {
+        await sleep(completeDelay)
+      }
+    }
+    collapse()
   }
 
   useDrag(
@@ -158,22 +164,21 @@ export const PullToRefresh: FunctionComponent<
     }
   )
 
-  const renderIcons = (status: string) => {
-    return (
-      <>
-        <i className={`${classPrefix}-head-content-icons`}>
-          {(status === 'pulling' || status === 'complete') && <Loading />}
-          {(status === 'canRelease' || status === 'refreshing') && <More />}
-        </i>
-      </>
-    )
-  }
-
+  // 内置图标：默认态与反白态各一套，使用方可通过 renderIcon 完全接管。
+  // 两条分支都直接落在 .nut-pulltorefresh-status-icon 内，尺寸由该容器的样式统一约束。
   const renderStatusIcon = () => {
     if (props.renderIcon) {
       return props.renderIcon?.(status)
     }
-    return renderIcons(status)
+    const icon =
+      props.type === 'primary'
+        ? PULL_TO_REFRESH_PRIMARY_ICON
+        : PULL_TO_REFRESH_DEFAULT_ICON
+    return (
+      <i className={`${classPrefix}-head-content-icons`}>
+        <img alt="" src={icon} />
+      </i>
+    )
   }
 
   const renderStatusText = () => {

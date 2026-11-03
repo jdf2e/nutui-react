@@ -1167,7 +1167,7 @@
 | remainingTime | 剩余时间，单位是毫秒 | `number` | 0 |
 | paused | 是否暂停 | `boolean` | false |
 | format | 时间格式 | `string` | HH:mm:ss |
-| millisecond | 是否开启毫秒级渲染 | `boolean` | false |
+| refreshInterval | 刷新步长（毫秒）；传入则按该值取整节流，不传则按 format 最细单位 | `number` | `-` |
 | autoStart | 是否自动开始倒计时 | `boolean` | true |
 | time | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | `number` | 0 |
 | destroy | 销毁实例 | `boolean` | false |
@@ -1248,8 +1248,9 @@
 | digits | 小数位位数 | `number` | 2 |
 | thousands | 是否按照千分号形式显示 | `boolean` | false |
 | position | 符号显示在价格前或者后，`before`、`after` | `string` | before |
-| size | 价格尺寸，`large`、`normal`、`small` | `string` | large |
+| size | 价格尺寸，`xlarge` \| `large` \| `normal` \| `medium` \| `small` | `string` | `normal` |
 | line | 是否划线价 | `boolean` | false |
+| raw | 开启后，当 price 包含非法字符时，原样展示，不做格式化处理 | `boolean` | false |
 
 ### <Progress />
 

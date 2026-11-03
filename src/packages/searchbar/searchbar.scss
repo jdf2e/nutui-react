@@ -18,6 +18,7 @@
   &-content {
     position: relative;
     flex: 1;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +26,7 @@
     height: $searchbar-input-height;
     background: $searchbar-content-background;
     border-radius: $searchbar-content-border-radius;
-    border: scale-px(1px) solid $color-primary;
+    border: 1px solid $color-primary;
   }
 
   &-icon {
@@ -95,19 +96,19 @@
     flex-direction: row;
     z-index: 2;
     background-color: $searchbar-content-background;
-    top: scale-px(9px);
-    left: scale-px(6px);
+    top: 9px;
+    left: 6px;
     font-size: $font-size-s;
-    line-height: scale-px(12px);
+    line-height: 12px;
 
     .nut-searchbar-value {
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding: scale-px(4px) scale-px(8px);
+      padding: 4px 8px;
       background-color: $color-background-sunken;
-      border-radius: scale-px(4px);
-      margin-right: scale-px(2px);
+      border-radius: 4px;
+      margin-right: 2px;
     }
 
     .nut-icon {
@@ -115,7 +116,7 @@
       height: $icon-size-6;
       font-size: $icon-size-6;
       color: $color-text-disabled;
-      margin-left: scale-px(4px);
+      margin-left: 4px;
     }
   }
 
@@ -130,8 +131,8 @@
     align-items: center;
 
     &.nut-icon {
-      width: scale-px(20px);
-      height: scale-px(20px);
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -193,10 +194,62 @@
   }
 
   &-focus {
-    padding: scale-px(5px) $searchbar-gap;
+    padding: 5px $searchbar-gap;
 
     .nut-searchbar-content {
-      border: scale-px(0.5px) solid $color-primary;
+      border: 0.5px solid $color-primary;
+    }
+  }
+
+  &-active .nut-searchbar-input::placeholder {
+    color: transparent;
+  }
+
+  &-content-tag .nut-searchbar-input {
+    color: transparent;
+  }
+
+  &-ai {
+    .nut-searchbar-content {
+      flex-direction: column;
+      justify-content: space-between;
+      height: var(--nutui-searchbar-input-height, 86px);
+      padding: 8px;
+    }
+
+    .nut-searchbar-input-row,
+    .nut-searchbar-actions {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .nut-searchbar-input-row {
+      position: relative;
+      min-width: 0;
+    }
+
+    .nut-searchbar-input-box,
+    .nut-searchbar-input {
+      min-width: 0;
+    }
+
+    .nut-searchbar-actions {
+      height: 28px;
+    }
+
+    .nut-searchbar-rightin {
+      margin-left: auto;
+    }
+
+    .nut-searchbar-clear .nut-icon {
+      margin-right: 0;
+    }
+
+    .nut-searchbar-values {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
     }
   }
 }

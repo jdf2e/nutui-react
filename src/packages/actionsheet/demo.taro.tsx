@@ -19,21 +19,21 @@ const ActionSheetDemo = () => {
       c3a08064: '选项状态',
       c3a08065: '自定义内容',
       c3a08066: '自定义key',
-      c3a08067: '顶部弹出',
+      c3a08067: '弹出位置',
     },
     'zh-TW': {
       '74fc5d8a': '基礎用法',
       c3a08064: '選項狀態',
       c3a08065: '自定義內容',
       c3a08066: '自定義key',
-      c3a08067: '頂部彈出',
+      c3a08067: '彈出位置',
     },
     'en-US': {
       '74fc5d8a': 'Basic Usage',
       c3a08064: 'Option Status',
       c3a08065: 'Custom content',
       c3a08066: 'Custom key',
-      c3a08067: 'Top Popup',
+      c3a08067: 'Popup Position',
     },
   })
 

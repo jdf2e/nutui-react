@@ -1,39 +1,41 @@
 import React, { useState } from 'react'
 import { View, Text } from '@tarojs/components'
-import { Input, pxTransform } from '@nutui/nutui-react-taro'
+import { Input, pxTransform, Cell } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   const [currentLength, setCurrentLength] = useState(0)
   return (
-    <View
-      style={{
-        display: 'flex',
-        flexWrap: 'nowrap',
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: '#ffffff',
-      }}
-    >
-      <Input
-        type="text"
-        maxLength={20}
-        onChange={(val) => setCurrentLength(val.length)}
-      />
+    <Cell style={{ display: 'block' }}>
       <View
         style={{
-          marginRight: pxTransform(10),
+          display: 'flex',
+          flexWrap: 'nowrap',
+          alignItems: 'center',
+          flexDirection: 'row',
+          backgroundColor: '#f0f2f7',
         }}
       >
-        <Text
+        <Input
+          type="text"
+          maxLength={20}
+          onChange={(val) => setCurrentLength(val.length)}
+        />
+        <View
           style={{
-            width: pxTransform(40),
-            fontSize: pxTransform(12),
+            marginRight: pxTransform(10),
           }}
         >
-          {currentLength} / 20
-        </Text>
+          <Text
+            style={{
+              width: pxTransform(40),
+              fontSize: pxTransform(12),
+            }}
+          >
+            {currentLength} / 20
+          </Text>
+        </View>
       </View>
-    </View>
+    </Cell>
   )
 }
 export default Demo8

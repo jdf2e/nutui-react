@@ -1,5 +1,5 @@
 import React from 'react'
-import { SearchBar } from '@nutui/nutui-react-taro'
+import { SearchBar, Cell } from '@nutui/nutui-react-taro'
 import {
   ArrowLeft,
   Close,
@@ -11,31 +11,33 @@ import {
 const Demo5 = () => {
   return (
     <>
-      <SearchBar
-        left={
-          <>
-            <ArrowLeft />
-            <Close />
-          </>
-        }
-        right={
-          <>
-            <Star
-              style={{
-                color: 'var(--nutui-color-primary)',
+      <Cell>
+        <SearchBar
+          left={
+            <>
+              <ArrowLeft />
+              <Close />
+            </>
+          }
+          right={
+            <>
+              <Star
+                style={{
+                  color: 'var(--nutui-color-primary)',
+                }}
+              />
+              <More />
+            </>
+          }
+          rightIn={
+            <Photograph
+              onClick={() => {
+                console.log('Photograph right in')
               }}
             />
-            <More />
-          </>
-        }
-        rightIn={
-          <Photograph
-            onClick={() => {
-              console.log('Photograph right in')
-            }}
-          />
-        }
-      />
+          }
+        />
+      </Cell>
     </>
   )
 }

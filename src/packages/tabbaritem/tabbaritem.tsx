@@ -41,24 +41,51 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     ...props,
   }
   const active = index === ctx?.selectIndex
+  // 图标、标题和徽标可随 active 变化，布局判断要使用求值后的内容
+  const renderNodeWithActive = (
+    node: ReactNode | ((active: boolean) => ReactNode)
+  ) => {
+    return typeof node === 'function' ? node(active) : node
+  }
+  const renderedIcon = renderNodeWithActive(icon)
+  const hasIcon =
+    renderedIcon !== null &&
+    renderedIcon !== undefined &&
+    renderedIcon !== false &&
+    renderedIcon !== ''
+  const renderedTitle = renderNodeWithActive(title)
+  const renderedValue = renderNodeWithActive(value)
+  // 红点、非零数字和非空文字有对应的图标旁定位样式；自定义节点没有
+  const hasDotOrLabelBadge =
+    dot ||
+    (typeof renderedValue === 'number' && renderedValue !== 0) ||
+    (typeof renderedValue === 'string' && renderedValue !== '')
+  // 只在材质背板的竖向图标上使用新定位，standard 沿用原有徽标样式
+  const shouldUseIconBadgeLayout =
+    !!ctx?.hasMaterialBackground &&
+    direction !== 'horizontal' &&
+    hasIcon &&
+    hasDotOrLabelBadge &&
+    props.top === undefined &&
+    props.right === undefined
+  // 空标题不占位，纯图标或图片内容按单内容布局居中
+  const hasTitle =
+    renderedTitle !== '' &&
+    renderedTitle !== null &&
+    renderedTitle !== undefined &&
+    renderedTitle !== false
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
-      [`${classPrefix}-large`]: !icon || !title,
+      [`${classPrefix}-large`]: !hasIcon || !hasTitle,
     },
     className
   )
 
-  const renderNodeWithActive = (
-    node: ReactNode | ((active: boolean) => ReactNode)
-  ) => {
-    return node && typeof node === 'function' ? node(active) : node
-  }
-
   const badgeProps = {
-    value: renderNodeWithActive(value),
+    value: renderedValue,
     dot,
     max,
     top,
@@ -68,9 +95,14 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
 
   const renderTitleText = () => {
     return (
-      title && (
-        <div className={`${classPrefix}-text`}>
-          {renderNodeWithActive(title)}
+      hasTitle && (
+        <div
+          className={`${classPrefix}-text`}
+          style={{
+            color: active ? undefined : (style?.color ?? ctx?.inactiveColor),
+          }}
+        >
+          {renderedTitle}
         </div>
       )
     )
@@ -84,16 +116,28 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     )
   }
 
-  const renderIcon = () => {
-    return renderNodeWithActive(icon)
-  }
+  const renderIcon = () => renderedIcon
 
   const renderIconAndTitle = () => {
     return (
       <>
-        <Badge size="normal" {...badgeProps} top={3}>
-          {renderIcon()}
-        </Badge>
+        {shouldUseIconBadgeLayout ? (
+          <div
+            className={classNames(
+              `${classPrefix}-visual`,
+              `${classPrefix}-visual-icon`,
+              // dot 为 true 时 Badge 显示红点；红点与数字/文字标签尺寸不同，需使用各自的定位偏移数值
+              `${classPrefix}-visual-${dot ? 'dot' : 'text'}`
+            )}
+          >
+            {renderIcon()}
+            <Badge size="normal" {...badgeProps} />
+          </div>
+        ) : (
+          <Badge size="normal" {...badgeProps} top={3}>
+            {renderIcon()}
+          </Badge>
+        )}
         {renderTitleText()}
       </>
     )
@@ -122,11 +166,10 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
       {direction === 'horizontal' && !dot ? (
         renderDualItem()
       ) : (
-        <>
-          {icon && renderIconAndTitle()}
-          {!icon && renderTitle()}
-        </>
+        <>{hasIcon ? renderIconAndTitle() : renderTitle()}</>
       )}
     </div>
   )
 }
+
+TabbarItem.displayName = 'NutTabbarItem'

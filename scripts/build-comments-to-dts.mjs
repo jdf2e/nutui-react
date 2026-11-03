@@ -152,7 +152,9 @@ function addJSDoc(propsJson, componentName, platform) {
     const ast = j(file.source)
     function addComment(item) {
       if (!item.key) return
-      const description = propsJson[componentName.toLowerCase()][item.key.name]
+      const componentProps = propsJson[componentName.toLowerCase()]
+      if (!componentProps) return
+      const description = componentProps[item.key.name]
       if (!description) return
       item['comments'] = [
         j.commentBlock(`*\n* ${description['desc']}\n`),
@@ -183,6 +185,8 @@ function addJSDoc(propsJson, componentName, platform) {
       return ast.toSource()
   }
   const baseType = path.join(__dirname, `../release/${platform || 'h5'}/dist/es/types/spec/${componentName.toLowerCase()}/base.d.ts`)
+  // config.json 中新增组件若尚未补齐 types/spec，跳过以免构建 ENOENT
+  if (!fse.pathExistsSync(baseType)) return
   const source = fse.readFileSync(baseType, { encoding: 'utf8' })
   const result = transform({ source }, { jscodeshift: j })
   fse.writeFileSync(baseType, result)

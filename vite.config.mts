@@ -5,7 +5,11 @@ import { join, resolve } from 'path'
 // @ts-ignore
 import atImport from 'postcss-import'
 import { readFileSync } from 'node:fs'
+import { createRequire } from 'node:module'
 import rehypeHighlight from 'rehype-highlight'
+
+const require = createRequire(import.meta.url)
+const pxToScalePxInComponentScss = require('./scripts/px-to-scale-px-in-component-scss.cjs')
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
@@ -116,17 +120,27 @@ export default defineConfig(async (): Promise<UserConfig> => {
         }),
       },
       {
-        name: 'test',
+        name: 'nutui-dev-scale-px',
         apply: 'serve',
         async load(id: string) {
           if (id.endsWith('.scss')) {
             // 移除 @import 语句
             const filePath = resolve(process.cwd(), id)
             const scssCode = await readFileSync(filePath, 'utf-8')
-            const modifiedCode = scssCode.replace(
+            let modifiedCode = scssCode.replace(
               /@import\s+['"](\.{2}?\/)[^'".]+(.s?css)['"];/g,
               ''
             )
+            const normalizedId = id.replaceAll('\\', '/')
+            const isPackageScss =
+              normalizedId.includes('/src/packages/') &&
+              !normalizedId.endsWith('demo.scss') &&
+              !normalizedId.includes('/demos/') &&
+              !normalizedId.includes('.bundle.scss')
+
+            if (isPackageScss) {
+              modifiedCode = pxToScalePxInComponentScss(modifiedCode)
+            }
             return modifiedCode
           }
         },

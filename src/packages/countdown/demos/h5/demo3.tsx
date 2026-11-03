@@ -3,22 +3,35 @@ import { Cell, CountDown } from '@nutui/nutui-react'
 
 const Demo3 = () => {
   const stateRef = useRef({
-    endTime: Date.now() + 60 * 1000,
-    endDay: Date.now() + 60 * 1000 * 60 * 25,
+    // < 1 小时
+    endHour: Date.now() + 9 * 60 * 1000 + 14 * 1000,
+    // ≥ 1 天
+    endDay: Date.now() + 25 * 60 * 60 * 1000 + 22 * 60 * 1000 + 23 * 1000,
   })
   return (
     <>
-      <Cell>
-        <CountDown endTime={stateRef.current.endTime} format="mm:ss" />
-      </Cell>
-      <Cell>
-        <CountDown endTime={stateRef.current.endTime} format="ss" />
-      </Cell>
       <Cell>
         <CountDown
           type="text"
           endTime={stateRef.current.endDay}
           format="DD天HH:mm:ss"
+        />
+      </Cell>
+      <Cell>
+        <CountDown
+          type="primary"
+          endTime={stateRef.current.endHour}
+          format="mm:ss"
+        />
+      </Cell>
+      <Cell>
+        <CountDown endTime={stateRef.current.endHour} format="mm:ss" />
+      </Cell>
+      <Cell>
+        <CountDown
+          type="text"
+          endTime={stateRef.current.endHour}
+          format="mm:ss"
         />
       </Cell>
     </>

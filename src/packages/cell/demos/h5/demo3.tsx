@@ -1,22 +1,34 @@
 import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-import { User } from '@nutui/icons-react'
+import { Cell, Checkbox } from '@nutui/nutui-react'
+import { ConfigI, TipsI } from '@nutui/icons-react'
 
 const Demo3 = () => {
+  const titleNode = (
+    <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+      <span>标题文案</span>
+      <TipsI width={12} height={12} style={{ marginLeft: 4 }} />
+    </div>
+  )
+
+  const descriptionNode = (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <span>二级信息</span>
+        <TipsI width={12} height={12} style={{ marginLeft: 4 }} />
+      </div>
+    </div>
+  )
+
   return (
     <Cell
-      title={
-        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <User />
-          <span style={{ marginLeft: 5 }}>我是标题</span>
-        </div>
+      leading={<ConfigI />}
+      title={titleNode}
+      description={descriptionNode}
+      extra={
+        <Checkbox
+          style={{ marginRight: 'calc(-8px * var(--nut-scale-f, 1))' }}
+        />
       }
-      description={
-        <span>
-          我是描述<b style={{ color: 'red' }}>1</b>
-        </span>
-      }
-      extra="描述文字"
     />
   )
 }

@@ -19,17 +19,17 @@
     flex-direction: row;
     justify-content: center;
     position: absolute;
-    height: scale-px(4px);
+    height: 4px;
     width: 100%;
     top: 89.33%;
     z-index: 10;
   }
 
   &-indicator-vertical {
-    width: scale-px(8px);
+    width: 8px;
     height: 100%;
     top: 0;
-    left: scale-px(12px);
+    left: 12px;
     flex-direction: column;
     justify-content: center;
     z-index: 1;
@@ -68,6 +68,6 @@
 
   &-indicator-vertical {
     left: auto;
-    right: scale-px(12px);
+    right: 12px;
   }
 }

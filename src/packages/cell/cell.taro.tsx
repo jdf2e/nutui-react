@@ -1,14 +1,14 @@
 import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, View } from '@tarojs/components'
+import { ITouchEvent, View, ViewProps } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { pxTransform } from '@/utils/taro/px-transform'
-import { CellProps } from './types'
+import { TaroCellProps } from '@/types'
 
-interface CellTaroProps extends CellProps {
+interface CellTaroProps extends TaroCellProps {
   onClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => void
@@ -19,6 +19,8 @@ const defaultProps = {
   title: null,
   description: null,
   extra: null,
+  leading: null,
+  content: null,
   radius: '6px',
   align: 'flex-start',
   clickable: false,
@@ -31,7 +33,7 @@ const defaultProps = {
 const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
-  Partial<CellTaroProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<CellTaroProps> & Omit<ViewProps, 'title' | 'content' | 'onClick'>
 > & { Group: typeof CellGroup } = (props) => {
   const ctx = useContext(CellGroupContext)
   const {
@@ -40,12 +42,15 @@ export const Cell: FunctionComponent<
     title,
     description,
     extra,
+    leading,
+    content,
     radius,
     align,
     isLast,
     className,
     style,
     clickable,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -70,37 +75,63 @@ export const Cell: FunctionComponent<
   return (
     <>
       <View
-        hoverStyle={{ opacity: clickable ? 0.7 : 1 }}
-        className={`${classNames(
-          [
-            classPrefix,
-            className,
-            {
-              [`${classPrefix}-group-item`]: ctx?.group,
-            },
-          ],
-          clickable ? `${classPrefix}-clickable` : ''
-        )}`}
+        hoverStyle={clickable ? { opacity: 0.7 } : undefined}
+        className={classNames(classPrefix, className, {
+          [`${classPrefix}-group-item`]: ctx?.group,
+          [`${classPrefix}-clickable`]: clickable,
+        })}
         onClick={(event) => handleClick(event)}
         style={baseStyle}
+        {...rest}
       >
         {children || (
           <>
-            {title || description ? (
-              <View className={`${classPrefix}-left`}>
-                {title ? (
-                  <View className={`${classPrefix}-title`}>{title}</View>
+            {leading ? (
+              <View className={`${classPrefix}-leading`}>{leading}</View>
+            ) : null}
+            {content ? (
+              // 有 content 时说明文案与业务插槽需要通栏，改用 header + 通栏子块的结构
+              <View className={`${classPrefix}-body`}>
+                {title || extra ? (
+                  // 结构 B 中标题与右侧区同行，纵向对齐需与根节点保持一致
+                  <View
+                    className={`${classPrefix}-header`}
+                    style={{ alignItems: align }}
+                  >
+                    {title ? (
+                      <View className={`${classPrefix}-title`}>{title}</View>
+                    ) : null}
+                    {extra ? (
+                      <View className={`${classPrefix}-extra`}>{extra}</View>
+                    ) : null}
+                  </View>
                 ) : null}
                 {description ? (
                   <View className={`${classPrefix}-description`}>
                     {description}
                   </View>
                 ) : null}
+                <View className={`${classPrefix}-content`}>{content}</View>
               </View>
-            ) : null}
-            {extra ? (
-              <View className={`${classPrefix}-extra`}>{extra}</View>
-            ) : null}
+            ) : (
+              <>
+                {title || description ? (
+                  <View className={`${classPrefix}-body`}>
+                    {title ? (
+                      <View className={`${classPrefix}-title`}>{title}</View>
+                    ) : null}
+                    {description ? (
+                      <View className={`${classPrefix}-description`}>
+                        {description}
+                      </View>
+                    ) : null}
+                  </View>
+                ) : null}
+                {extra ? (
+                  <View className={`${classPrefix}-extra`}>{extra}</View>
+                ) : null}
+              </>
+            )}
           </>
         )}
       </View>

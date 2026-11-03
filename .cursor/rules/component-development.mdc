@@ -1,0 +1,37 @@
+---
+description: NutUI-React component development and upgrade rules (proportional scaling, backward compatibility, prop abstraction, bundle size, usability)
+globs: src/packages/**/*
+alwaysApply: false
+---
+
+# NutUI-React Component Development & Upgrade Rules
+
+When developing new components or refactoring/upgrading existing components in NutUI-React, always follow these rules:
+
+## 1. Proportional Scaling Rules (等比缩放规范)
+- **Author SCSS with bare `px`**: Write normal design `px` in `src/packages/*/*.scss` (e.g. `padding: 12px;`).
+- **Do NOT manually wrap `scale-px()`** in component private SCSS. Build tools (`build.mjs`) and dev server (`vite.config.mts`) automatically transform bare `px` to `scale-px(Npx)` in memory via PostCSS AST.
+- **Physical pixel protection**: Borders and outlines with `≤ 1px` (e.g., `1px`, `0.5px`) must NOT be scaled to prevent sub-pixel blurring on Retina screens.
+- **Zero dimension rule**: Always write literal `0` (e.g., `margin: 0;`). Never write `scale-px(0px)`.
+- **Variable defaults**: Defaults in `src/styles/variables.scss` MUST explicitly use `scale-px(Npx)`.
+- **Scene-specific scaling**: Use `scale-font-px` / `--nutui-font-size-*` for text and `scale-icon-px` / `--nut-icon-*` for icons to support large text / elderly mode ratios.
+
+## 2. Backward Compatibility (向前兼容性)
+- Never directly delete or rename existing public Props or CSS variables (`--nutui-*`).
+- Deprecated properties must be marked with `@deprecated` JSDoc, provided with fallback bridges (`props.newValue ?? props.oldValue`), and warn in dev mode.
+- Keep DOM structure stable to prevent breaking downstream CSS deep selectors.
+
+## 3. Prop Design & Abstraction (属性抽象合理性)
+- Follow standard React conventions: controlled/uncontrolled (`value`/`defaultValue`/`onChange`), states (`visible`/`open`, `disabled`, `loading`).
+- Avoid prop bloat: aggregate related configurations into objects or use CSS variables.
+- Dual-platform parity: H5 (`.tsx`) and Taro (`.taro.tsx`) must share the exact same `types.ts` interface definition.
+
+## 4. Bundle Size Impact (包体大小控制)
+- Zero heavy dependencies: never introduce libraries like full lodash, moment, etc. Reuse utilities in `src/utils/*`.
+- Ensure Tree-shaking friendliness: no top-level side effects, clean component exports.
+- Style reuse: use SCSS mixins for shared style patterns.
+
+## 5. Usability & Developer Experience (易用性保障)
+- Provide sensible default props for out-of-the-box usage.
+- Strict TypeScript types with complete bilingual JSDoc comments on every public prop.
+- Provide comprehensive demos covering basic, controlled, and advanced customized scenarios.

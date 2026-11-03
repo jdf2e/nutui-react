@@ -13,7 +13,13 @@
 const postcss = require('postcss')
 const postcssScss = require('postcss-scss')
 
-const PROP_SKIP = new Set(['font-size', 'font'])
+const PROP_SKIP = new Set([
+  'font-size',
+  'font',
+  'letter-spacing',
+  'word-spacing',
+  'stroke-width',
+])
 
 function matchingCloseParen(str, openParenIdx) {
   let depth = 1
@@ -79,33 +85,41 @@ function restoreCalcs(value, saved) {
   return out
 }
 
-function wrapBarePxInSegment(seg) {
+function wrapBarePxInSegment(seg, prop = '') {
   return seg.replace(
     /(-?\d*\.?\d+)px\b(?!\s*\*\s*var\(\s*--nut-scale-f)/g,
     (full, numStr) => {
       const n = parseFloat(numStr)
       if (!Number.isFinite(n) || n === 0) return '0'
+      // 细边框物理像素保护：border / outline 上的 <=1px (如 1px, 0.5px) 不缩放，防止 Retina 屏亚像素模糊
+      const isBorder = prop.includes('border') || prop.includes('outline')
+      if (isBorder && Math.abs(n) <= 1) {
+        return full
+      }
       return `scale-px(${numStr}px)`
     },
   )
 }
 
 /** 在非 scale-px(...) 段内包裸 px */
-function transformScalePxChunks(chunk) {
-  return chunk.split(/(\bscale-px\s*\([^)]*\))/g).map((part, i) => {
-    if (i % 2 === 1) return part
-    return wrapBarePxInSegment(part)
-  }).join('')
+function transformScalePxChunks(chunk, prop = '') {
+  return chunk
+    .split(/(\bscale-px\s*\([^)]*\))/g)
+    .map((part, i) => {
+      if (i % 2 === 1) return part
+      return wrapBarePxInSegment(part, prop)
+    })
+    .join('')
 }
 
-function transformDeclValue(value) {
+function transformDeclValue(value, prop = '') {
   if (value == null || !/[\d.]+\s*px/i.test(value)) return value
   const { value: v1, saved } = protectCalcsForPxPass(value)
   let out = v1
     .split(/(\bscale-(?:font|icon)-px\s*\([^)]*\))/g)
     .map((outer, oi) => {
       if (oi % 2 === 1) return outer
-      return transformScalePxChunks(outer)
+      return transformScalePxChunks(outer, prop)
     })
     .join('')
   return restoreCalcs(out, saved)
@@ -119,7 +133,7 @@ function pxToScalePxInComponentScssPlugin() {
         const prop = decl.prop.toLowerCase()
         if (PROP_SKIP.has(prop)) return
         if (decl.prop.startsWith('--')) return
-        decl.value = transformDeclValue(decl.value)
+        decl.value = transformDeclValue(decl.value, prop)
       })
     },
   }

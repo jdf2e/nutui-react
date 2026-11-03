@@ -1,5 +1,5 @@
 import React from 'react'
-import { SearchBar, ConfigProvider, Toast } from '@nutui/nutui-react'
+import { SearchBar, ConfigProvider, Toast, Cell } from '@nutui/nutui-react'
 
 const Demo3 = () => {
   return (
@@ -11,7 +11,9 @@ const Demo3 = () => {
           nutuiSearchbarInputTextAlign: 'right',
         }}
       >
-        <SearchBar onSearch={(value) => Toast.show(value)} />
+        <Cell>
+          <SearchBar onSearch={(value) => Toast.show(value)} />
+        </Cell>
       </ConfigProvider>
     </>
   )

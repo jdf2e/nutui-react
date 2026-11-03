@@ -10,12 +10,18 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo10 from './demos/h5/demo10'
+import Demo11 from './demos/h5/demo11'
+import Demo12 from './demos/h5/demo12'
+import Demo13 from './demos/h5/demo13'
 
 const SearchBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       title1: '基础用法',
       title10: '默认值、受控',
+      title11: '玻璃态搜索',
+      title12: '二级搜索',
+      title13: 'AI搜索',
       title2: '搜索框形状及最大长度',
       title3: '搜索框内外背景设置',
       title4: '搜索框文本设置',
@@ -27,6 +33,9 @@ const SearchBarDemo = () => {
     'zh-TW': {
       title1: '基礎用法',
       title10: '默認值、受控',
+      title11: '玻璃態搜索',
+      title12: '二級搜索',
+      title13: 'AI搜索',
       title2: '蒐索框形狀及最大長度',
       title3: '蒐索框內外背景設定',
       title4: '蒐索框文字設定',
@@ -38,6 +47,9 @@ const SearchBarDemo = () => {
     'en-US': {
       title1: 'Basic Usage',
       title10: 'DefaultValue and controlled mode',
+      title11: 'Glass search',
+      title12: 'Secondary search',
+      title13: 'AI search',
       title2: 'Search Box Shape And Maximum Length',
       title3: 'Background Settings Inside And Outside The Search Box',
       title4: 'Search Box Text Settings',
@@ -69,6 +81,12 @@ const SearchBarDemo = () => {
         <Demo8 />
         <h2>{translated.title6}</h2>
         <Demo7 />
+        <h2>{translated.title11}</h2>
+        <Demo11 />
+        <h2>{translated.title12}</h2>
+        <Demo12 />
+        <h2>{translated.title13}</h2>
+        <Demo13 />
       </div>
     </>
   )

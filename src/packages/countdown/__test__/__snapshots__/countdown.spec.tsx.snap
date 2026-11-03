@@ -3,7 +3,7 @@
 exports[`Countdown > type props primary 1`] = `
 <div>
   <div
-    class="nut-countdown "
+    class="nut-countdown nut-countdown-primary "
   >
     <span
       class="nut-countdown-number-primary"
@@ -29,7 +29,7 @@ exports[`Countdown > type props primary 1`] = `
 exports[`Countdown > type props text 1`] = `
 <div>
   <div
-    class="nut-countdown "
+    class="nut-countdown nut-countdown-text "
   >
     <span
       class="nut-countdown-number-text"

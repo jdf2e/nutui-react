@@ -11,6 +11,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 import { web } from '@/utils/taro/platform'
 import { TaroCountDownProps, CountDownTime } from '@/types'
+import { getDisplayBucket } from './utils'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -19,7 +20,6 @@ const defaultProps = {
   startTime: Date.now(),
   endTime: Date.now(),
   remainingTime: 0,
-  millisecond: false,
   format: 'HH:mm:ss',
   autoStart: true,
   time: 0,
@@ -36,8 +36,8 @@ const InternalCountDown: ForwardRefRenderFunction<
     startTime,
     endTime,
     remainingTime,
-    millisecond,
     format,
+    refreshInterval,
     autoStart,
     time,
     destroy,
@@ -62,6 +62,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     counting: !paused && autoStart, // 是否处于倒计时中
     handleEndTime: Date.now(), // 最终截止时间
     diffTime: 0, // 设置了 startTime 时，与 date.now() 的差异
+    lastBucket: -1, // 上一帧展示档，用于节流 setState
   })
 
   // 时间戳转换 或 获取当前时间的时间戳
@@ -83,6 +84,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       }
     }
     if (!stateRef.current.counting) stateRef.current.counting = true
+    stateRef.current.lastBucket = -1
     tick()
   }
 
@@ -96,17 +98,24 @@ const InternalCountDown: ForwardRefRenderFunction<
         )
 
         stateRef.current.restTime = remainTime
-        setRestTime(remainTime)
+        const bucket =
+          refreshInterval && refreshInterval > 0
+            ? Math.floor(remainTime / refreshInterval)
+            : getDisplayBucket(remainTime, format)
+        // 仅展示档变化时更新 UI；到 0 必刷并只触发 onEnd（不走 pause/onPaused）
+        if (bucket !== stateRef.current.lastBucket) {
+          stateRef.current.lastBucket = bucket
+          setRestTime(remainTime)
+        }
 
         if (!remainTime) {
           stateRef.current.counting = false
-          pause()
+          cancelAnimationFrame(stateRef.current.timer)
           onEnd && onEnd()
+          return
         }
 
-        if (remainTime > 0) {
-          tick()
-        }
+        tick()
       }
     })
   }
@@ -177,6 +186,10 @@ const InternalCountDown: ForwardRefRenderFunction<
       }
     }
 
+    if (formatCache.includes('i')) {
+      formatCache = formatCache.replace('i', String(Math.floor(ms / 100) % 10))
+    }
+
     return formatCache
   }
   const pause = () => {
@@ -191,6 +204,7 @@ const InternalCountDown: ForwardRefRenderFunction<
         stateRef.current.counting = true
         stateRef.current.handleEndTime =
           Date.now() + Number(stateRef.current.restTime)
+        stateRef.current.lastBucket = -1
         tick()
         onRestart && onRestart(stateRef.current.restTime)
       }
@@ -227,6 +241,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           stateRef.current.counting = true
           stateRef.current.handleEndTime =
             Date.now() + Number(stateRef.current.restTime)
+          stateRef.current.lastBucket = -1
           tick()
         }
         onRestart && onRestart(stateRef.current.restTime)
@@ -260,10 +275,16 @@ const InternalCountDown: ForwardRefRenderFunction<
   }
 
   const getUnit = (unit: string) => {
-    const formatArr = format.split(/(DD|HH|mm|ss|S)/)
+    const formatArr = format.split(/(DD|HH|mm|ss|SSS|SS|S|i)/)
     const index = formatArr.indexOf(unit)
     return index > -1 ? formatArr[index + 1] : ':'
   }
+
+  const numberClassName = classNames({
+    [`${classPrefix}-number`]: type === 'default',
+    [`${classPrefix}-number-primary`]: type === 'primary',
+    [`${classPrefix}-number-text`]: type === 'text',
+  })
 
   const renderTimeItem = (
     formatUnit: string,
@@ -274,13 +295,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       <>
         {format.includes(formatUnit) ? (
           <>
-            <View
-              className={classNames({
-                [`${classPrefix}-number`]: type === 'default',
-                [`${classPrefix}-number-primary`]: type === 'primary',
-                [`${classPrefix}-number-text`]: type === 'text',
-              })}
-            >
+            <View className={numberClassName}>
               {(unit && unit !== 'DD') || (!unit && formatUnit === 'ss')
                 ? padZero(time)
                 : time}
@@ -298,25 +313,41 @@ const InternalCountDown: ForwardRefRenderFunction<
     const formatCache = formatRemainTime(stateRef.current.restTime, 'custom')
     const { d, h, m, s, ms } = formatCache as CountDownTime
     const digit = format.match(/S/g)?.length
-    // format可能是DD天HH时mm分SSS秒或者DD天HH时mm分S秒或是DD：HH：mm：ss
+    const withHundredMs = format.includes('i')
+    const hundredMs = Math.floor(ms / 100) % 10
+    // format可能是DD天HH时mm分SSS秒或者DD天HH时mm分S秒或是DD：HH：mm：ss / mm:ss.i
 
     return (
       <>
         {renderTimeItem('DD', d, 'DD')}
         {renderTimeItem('HH', h, 'HH')}
         {renderTimeItem('mm', m, 'mm')}
-        {renderTimeItem('ss', s)}
-        {(format.includes('S') || getUnit('ss') !== ':') && (
+        {format.includes('ss') ? (
           <>
-            <View className={`${classPrefix}-unit`}>{getUnit('ss')}</View>
+            <View
+              className={classNames(numberClassName, {
+                [`${classPrefix}-number-ssi`]: withHundredMs,
+              })}
+            >
+              {padZero(s)}
+              {withHundredMs ? `.${hundredMs}` : ''}
+            </View>
+            {!withHundredMs &&
+              (format.includes('S') || getUnit('ss') !== ':') && (
+                <View className={`${classPrefix}-unit`}>{getUnit('ss')}</View>
+              )}
           </>
-        )}
-        {renderTimeItem(
-          'S',
-          padZero(ms, 3)
-            .toString()
-            .slice(0, digit || 1)
-        )}
+        ) : null}
+        {!withHundredMs &&
+          renderTimeItem(
+            'S',
+            padZero(ms, 3)
+              .toString()
+              .slice(0, digit || 1)
+          )}
+        {withHundredMs && !format.includes('ss') ? (
+          <View className={numberClassName}>{hundredMs}</View>
+        ) : null}
       </>
     )
   }
@@ -325,7 +356,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     <>
       {children || (
         <View
-          className={`${classPrefix} ${className}`}
+          className={`${classPrefix} ${classPrefix}-${type} ${className}`}
           style={{ ...style }}
           {...rest}
         >

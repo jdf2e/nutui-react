@@ -1,48 +1,52 @@
 import React, { useState } from 'react'
-import { Text, View } from '@tarojs/components'
-import { Lottie, PullToRefresh, pxTransform } from '@nutui/nutui-react-taro'
-import Taro from '@tarojs/taro'
-import lightPull from '@/packages/lottie/animation/light/pulltorefresh.json'
+import { ScrollView } from '@tarojs/components'
+import { PullToRefresh, Cell, Toast } from '@nutui/nutui-react-taro'
 
-const Demo1 = () => {
+const Demo4 = () => {
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
+  }
+  const [scrollTop, setScrollTop] = useState(0)
   return (
     <>
-      <PullToRefresh
-        type="primary"
-        onRefresh={() =>
-          new Promise((resolve) => {
-            Taro.showToast({
-              title: '😊',
-              icon: 'none',
-            })
-            resolve('done')
-          })
-        }
-        renderIcon={(status) => {
-          return (
-            <>
-              <Lottie source={lightPull} style={{ width: 132, height: 26 }} />
-            </>
-          )
+      <ScrollView
+        style={{ height: '150px' }}
+        scrollY
+        onScrollEnd={(e) => {
+          // scrollTop > 0, PullToRefresh 不触发 touchmove 事件。
+          if (e.detail?.scrollTop) {
+            setScrollTop(e.detail?.scrollTop)
+          }
         }}
       >
-        {list.map((item) => (
-          <View
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: pxTransform(50),
-            }}
-            key={item}
-          >
-            <Text style={{ color: '#ffffff' }}>{item}</Text>
-          </View>
-        ))}
-      </PullToRefresh>
+        <PullToRefresh
+          scrollTop={scrollTop}
+          onRefresh={() =>
+            new Promise((resolve) => {
+              toastShow('😊')
+              resolve('done')
+            })
+          }
+          disabled
+        >
+          {list.map((item) => (
+            <Cell key={item}>{item}</Cell>
+          ))}
+        </PullToRefresh>
+      </ScrollView>
+      <Toast
+        visible={show}
+        content={toastMsg}
+        onClose={() => {
+          SetShow(false)
+        }}
+      />
     </>
   )
 }
 
-export default Demo1
+export default Demo4

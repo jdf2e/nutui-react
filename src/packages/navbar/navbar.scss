@@ -12,7 +12,7 @@
   font-size: $navbar-font-size;
   color: $navbar-color;
   overflow: hidden;
-  padding: 0 scale-px(16px);
+  padding: $navbar-padding;
 
   &-fixed {
     position: fixed;
@@ -25,6 +25,25 @@
   &-placeholder {
     display: inline-block;
     width: 100%;
+  }
+
+  &-has-subbar {
+    height: auto;
+    min-height: $navbar-height;
+    flex-wrap: wrap;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &-has-subbar > *:not(&-subbar) {
+    height: $navbar-height;
+  }
+
+  &-subbar {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    width: 100%;
+    padding: $navbar-subbar-padding;
   }
 
   &-safe-area-inset-top {
@@ -40,6 +59,7 @@
 
   &-title {
     height: 100%;
+    min-width: 0;
     text-align: center;
     display: flex;
     flex: 1;
@@ -51,8 +71,14 @@
     white-space: nowrap;
 
     &-center {
-      max-width: scale-px(129px);
+      max-width: calc(
+        100% - 2 * #{$navbar-side-maxwidth} - 2 * #{$navbar-side-padding}
+      );
       justify-content: center;
+    }
+
+    &-padding-left {
+      padding-left: $navbar-side-padding;
     }
   }
 
@@ -65,31 +91,34 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    max-width: scale-px(124px);
+    box-sizing: border-box;
+    max-width: calc(100% - #{$navbar-side-maxwidth});
     height: 100%;
+    white-space: nowrap;
     cursor: pointer;
     /* #ifndef harmony jd h5 weapp*/
     .nut-icon,
     .nutui-iconfont {
-      width: scale-px(20px);
-      height: scale-px(20px);
+      width: 20px;
+      height: 20px;
       font-size: $font-size-2xl;
     }
 
     /* #endif */
     &-maxwidth {
-      box-sizing: border-box;
-      width: calc(scale-px(124px) - scale-px(16px));
+      box-sizing: content-box;
+      min-width: $navbar-side-maxwidth;
+      width: auto;
     }
   }
 
   &-left {
-    padding-right: scale-px(16px);
-    gap: scale-px(16px);
+    padding-right: $navbar-side-padding;
+    gap: 16px;
 
     &-rtl {
       padding-right: 0;
-      padding-left: scale-px(16px);
+      padding-left: $navbar-side-padding;
     }
 
     &-back {
@@ -97,7 +126,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      gap: scale-px(16px);
+      gap: 16px;
     }
 
     &-hidden {
@@ -107,12 +136,12 @@
   }
 
   &-right {
-    padding-left: scale-px(16px);
+    padding-left: $navbar-side-padding;
     justify-content: flex-end;
-    gap: scale-px(16px);
+    gap: 16px;
 
     &-rtl {
-      padding-right: scale-px(16px);
+      padding-right: $navbar-side-padding;
       padding-left: 0;
     }
   }
@@ -120,6 +149,11 @@
   &-rtl {
     .nut-icon-ArrowLeft {
       transform: rotateY(180deg);
+    }
+
+    .nut-navbar-title-padding-left {
+      padding-left: 0;
+      padding-right: $navbar-side-padding;
     }
   }
 }

@@ -25,7 +25,6 @@ const defaultProps = {
   maxLength: 9999,
   clearable: false,
   clearIcon: null,
-  rightIcon: null,
   description: null,
   formatTrigger: 'onChange',
   autoFocus: false,
@@ -55,7 +54,6 @@ export const Input = forwardRef(
       maxLength,
       clearable,
       clearIcon,
-      rightIcon,
       description,
       formatTrigger,
       autoFocus,
@@ -196,10 +194,7 @@ export const Input = forwardRef(
               onCompositionEnd?.(e)
             }}
           />
-          {rightIcon ? (
-            <span className="nut-input-action">{rightIcon}</span>
-          ) : (
-            clearable &&
+          {clearable &&
             !disabled &&
             !readOnly &&
             active &&
@@ -215,8 +210,7 @@ export const Input = forwardRef(
               >
                 {clearIcon || <MaskClose className="nut-input-clear" />}
               </span>
-            )
-          )}
+            )}
         </div>
         {description !== null && description !== undefined && (
           <div className="nut-input-description">{description}</div>
