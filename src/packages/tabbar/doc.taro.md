@@ -175,8 +175,11 @@ Taro 背板的明暗由 `MaterialView` 根据系统主题决定，页面背景�
 | \--nutui-tabbar-horizontal-padding | 导航层左右间距 | `12px` |
 | \--nutui-tabbar-content-padding | 导航背板内边距 | `4px` |
 | \--nutui-tabbar-border-radius | 导航背板圆角 | 全圆角（跟随导航高度） |
-| \--nutui-tabbar-active-background | 选中项背景 | `var(--nutui-color-background-component)` |
+| \--nutui-tabbar-active-background | 选中项背景 | `var(--nutui-mask-2)` |
 | \--nutui-tabbar-active-border-radius | 子项圆角 | 全圆角（跟随子项高度） |
+| \--nutui-tabbar-active-background-duration | 选中背景滑动与回弹时长 | `300ms` |
+| \--nutui-tabbar-active-background-easing | 选中背景滑动缓动 | `cubic-bezier(0.38, 0, 0.24, 1)` |
+| \--nutui-tabbar-active-background-scale-easing | 选中背景回弹缓动 | `cubic-bezier(0.8, 0, 0.24, 1)` |
 | \--nutui-tabbar-active-color | 选中颜色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未选中颜色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上边框 | `1px solid #eee` |

@@ -10,9 +10,7 @@ import { NavBar } from '@nutui/nutui-react'
 
 ## Code Example
 
-### iOS 26 and below / Android & HarmonyOS
-
-#### Title
+### Scene Materials
 
 :::demo
 
@@ -20,29 +18,19 @@ import { NavBar } from '@nutui/nutui-react'
 
 :::
 
-#### Navigation
+### Sub Bar
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
+
+### Custom Content
 
 :::demo
 
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
-
-:::
-
-### iOS 26 and above
-
-#### Title
-
-:::demo
-
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
-
-:::
-
-#### Navigation
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

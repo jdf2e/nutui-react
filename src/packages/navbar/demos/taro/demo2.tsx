@@ -2,7 +2,7 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 import { Image, Text, View } from '@tarojs/components'
 import { NavBar, Space } from '@nutui/nutui-react-taro'
-import { ArrowLeft, Close, More, Share } from '@nutui/icons-react-taro'
+import { MoreI } from '@nutui/icons-react-taro'
 import { MaterialView } from '../../../materialview/materialview.taro'
 
 const subBarData = [
@@ -29,59 +29,18 @@ const subBarData = [
   },
 ]
 
-const Demo4 = () => {
+const Demo2 = () => {
   return (
     <Space direction="vertical">
       <NavBar
-        title={
-          <View className="navbar-title-twoline">
-            <Text>默认样式</Text>
-            <Text>背景透明</Text>
-          </View>
-        }
-        left={
-          <MaterialView className="navbar-iOS26-button" scene="top-solid">
-            <ArrowLeft />
-            <Close />
-          </MaterialView>
-        }
         right={
-          <MaterialView className="navbar-iOS26-button" scene="top-solid">
-            <Share onClick={() => Taro.showToast({ title: 'icon' })} />
-          </MaterialView>
-        }
-        className="navbar-iOS26"
-        zIndex={0}
-      />
-      <NavBar
-        back={
-          <MaterialView className="navbar-iOS26-button" scene="top-solid">
-            <ArrowLeft />
-          </MaterialView>
-        }
-        right={
-          <MaterialView className="navbar-iOS26-button" scene="top-solid">
-            <Share onClick={() => Taro.showToast({ title: 'icon' })} />
-          </MaterialView>
-        }
-        onBackClick={() => Taro.showToast({ title: '返回' })}
-        className="navbar-iOS26 nut-navbar-sticky"
-        zIndex={0}
-      >
-        <View className="navbar-title-twoline">
-          <Text>吸顶样式</Text>
-          <Text>有背景色</Text>
-        </View>
-      </NavBar>
-      <NavBar
-        right={
-          <MaterialView className="navbar-iOS26-button" scene="top-solid">
+          <MaterialView className="navbar-iOS26-button" scene="top-plain">
             <Text>清除未读</Text>
-            <More onClick={() => Taro.showToast({ title: 'icon' })} />
+            <MoreI onClick={() => Taro.showToast({ title: 'icon' })} />
           </MaterialView>
         }
         onBackClick={() => Taro.showToast({ title: '返回' })}
-        className="navbar-iOS26 nut-navbar-sticky"
+        className="navbar-iOS26 nut-navbar-white"
         subBar={
           <View className="navbar-subbar">
             {subBarData.map((item) => (
@@ -107,4 +66,4 @@ const Demo4 = () => {
   )
 }
 
-export default Demo4
+export default Demo2

@@ -273,7 +273,7 @@ $button-default-background-color: var(
 ) !default;
 $button-default-border-color: var(
   --nutui-button-default-border-color,
-  $color-text-disabled
+  transparent
 ) !default;
 $button-default-disabled: var(
   --nutui-button-default-disabled,
@@ -285,6 +285,19 @@ $button-default-disabled-color: var(
 ) !default;
 $button-default-pressed: var(
   --nutui-button-default-pressed,
+  $color-default-pressed
+) !default;
+// 次要操作（灰色）按钮：灰底 + 深灰字
+$button-default-light-background-color: var(
+  --nutui-button-default-light-background-color,
+  var(--nutui-color-background-component, $color-background-sunken)
+) !default;
+$button-default-light-color: var(
+  --nutui-button-default-light-color,
+  $color-title
+) !default;
+$button-default-light-pressed: var(
+  --nutui-button-default-light-pressed,
   $color-default-pressed
 ) !default;
 $button-default-padding: var(--nutui-button-default-padding, 0px scale-px(12px)) !default;
@@ -854,7 +867,7 @@ $inputnumber-icon-color: var(
   --nutui-inputnumber-icon-color,
   $color-text
 ) !default;
-$inputnumber-icon-size: var(--nutui-inputnumber-icon-size, scale-px(8px)) !default;
+$inputnumber-icon-size: var(--nutui-inputnumber-icon-size, scale-px(10px)) !default;
 $inputnumber-disabled-color: var(
   --nutui-inputnumber-disabled-color,
   $color-text-disabled
@@ -1414,7 +1427,7 @@ $tabbar-border-radius: var(
 ) !default;
 $tabbar-active-background: var(
   --nutui-tabbar-active-background,
-  var(--nutui-color-background-component, #ebedf2)
+  var(--nutui-mask-2, rgba(17, 20, 26, 0.08))
 ) !default;
 $tabbar-active-border-radius: var(
   --nutui-tabbar-active-border-radius,

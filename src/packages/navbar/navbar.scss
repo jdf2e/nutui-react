@@ -59,6 +59,7 @@
 
   &-title {
     height: 100%;
+    min-width: 0;
     text-align: center;
     display: flex;
     flex: 1;
@@ -91,8 +92,9 @@
     align-items: center;
     flex-direction: row;
     box-sizing: border-box;
-    max-width: calc(#{$navbar-side-maxwidth} + #{$navbar-side-padding});
+    max-width: calc(100% - #{$navbar-side-maxwidth});
     height: 100%;
+    white-space: nowrap;
     cursor: pointer;
     /* #ifndef harmony jd h5 weapp*/
     .nut-icon,
@@ -105,7 +107,8 @@
     /* #endif */
     &-maxwidth {
       box-sizing: content-box;
-      width: $navbar-side-maxwidth;
+      min-width: $navbar-side-maxwidth;
+      width: auto;
     }
   }
 

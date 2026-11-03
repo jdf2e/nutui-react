@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -61,6 +61,15 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
     finalValue: 0,
     onChange: onSwitch,
   })
+  const previousSelectIndex = useRef(selectIndex)
+  const [activeBackgroundAnimationKey, setActiveBackgroundAnimationKey] =
+    useState(0)
+
+  useEffect(() => {
+    if (previousSelectIndex.current === selectIndex) return
+    previousSelectIndex.current = selectIndex
+    setActiveBackgroundAnimationKey((key) => key + 1)
+  }, [selectIndex])
 
   const itemDirection =
     items.length === 2 && direction !== 'vertical' ? direction : undefined
@@ -87,17 +96,17 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
     })
   )
 
-  const navigation = (
-    <div
-      className={classNames(`${classPrefix}-wrap`, sizeCls, directionCls, {
-        [`${classPrefix}-wrap-skin`]: hasSkin,
-      })}
-    >
-      {hasSkin ? (
+  const renderNavigationBackground = () => {
+    if (hasSkin) {
+      return (
         <div className={`${classPrefix}-skin-background`} aria-hidden="true">
           {skinBackground}
         </div>
-      ) : isFrostedMaterial ? (
+      )
+    }
+
+    if (isFrostedMaterial) {
+      return (
         <MaterialView
           scene="bottom-bar"
           className={`${classPrefix}-backdrop`}
@@ -107,7 +116,41 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
           }}
           aria-hidden="true"
         />
-      ) : null}
+      )
+    }
+
+    return null
+  }
+
+  const navigation = (
+    <div
+      className={classNames(`${classPrefix}-wrap`, sizeCls, directionCls, {
+        [`${classPrefix}-wrap-skin`]: hasSkin,
+      })}
+    >
+      {renderNavigationBackground()}
+      {items.length > 0 &&
+        isFrostedMaterial &&
+        itemDirection !== 'horizontal' && (
+          <div
+            className={`${classPrefix}-active-background`}
+            style={
+              {
+                '--nutui-tabbar-select-index': selectIndex,
+                '--nutui-tabbar-item-count': items.length,
+              } as React.CSSProperties
+            }
+            aria-hidden="true"
+          >
+            <span
+              key={activeBackgroundAnimationKey}
+              className={classNames(`${classPrefix}-active-background-inner`, {
+                [`${classPrefix}-active-background-inner-animating`]:
+                  activeBackgroundAnimationKey > 0,
+              })}
+            />
+          </div>
+        )}
       <TabbarContext.Provider value={contextValue}>
         {renderedItems}
       </TabbarContext.Provider>

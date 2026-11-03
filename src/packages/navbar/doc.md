@@ -10,9 +10,7 @@ import { NavBar } from '@nutui/nutui-react'
 
 ## 示例代码
 
-### iOS26以下/安卓鸿蒙
-
-#### 标题型
+### 场景材质
 
 :::demo
 
@@ -20,29 +18,19 @@ import { NavBar } from '@nutui/nutui-react'
 
 :::
 
-#### 导航型
+### 二级楼层
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
+
+### 自定义内容
 
 :::demo
 
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
-
-:::
-
-### iOS26以上
-
-#### 标题型
-
-:::demo
-
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
-
-:::
-
-#### 导航型
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

@@ -1,6 +1,9 @@
 @import '../tabbaritem/tabbaritem.scss';
 
 .nut-tabbar {
+  --nutui-tabbar-active-background-duration: 300ms;
+  --nutui-tabbar-active-background-easing: cubic-bezier(0.38, 0, 0.24, 1);
+  --nutui-tabbar-active-background-scale-easing: cubic-bezier(0.8, 0, 0.24, 1);
   // Keep item and addonBefore layers inside this Tabbar when another one is fixed.
   position: relative;
   z-index: 0;
@@ -87,6 +90,38 @@
       }
     }
 
+    > .nut-tabbar-active-background {
+      position: absolute;
+      top: $tabbar-content-padding;
+      bottom: $tabbar-content-padding;
+      left: $tabbar-content-padding;
+      width: calc(
+        (100% - #{$tabbar-content-padding} - #{$tabbar-content-padding}) /
+          var(--nutui-tabbar-item-count, 1)
+      );
+      border-radius: $tabbar-active-border-radius;
+      pointer-events: none;
+      transform: translateX(calc(var(--nutui-tabbar-select-index, 0) * 100%));
+      transition: transform var(--nutui-tabbar-active-background-duration)
+        var(--nutui-tabbar-active-background-easing);
+      will-change: transform;
+
+      > .nut-tabbar-active-background-inner {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background: $tabbar-active-background;
+        transform-origin: center;
+
+        &.nut-tabbar-active-background-inner-animating {
+          animation: nut-tabbar-active-background-scale
+            var(--nutui-tabbar-active-background-duration)
+            var(--nutui-tabbar-active-background-scale-easing);
+        }
+      }
+    }
+
     &-horizontal {
       align-items: center;
       .nut-tabbar-item {
@@ -157,5 +192,29 @@
   &-fixed {
     left: auto;
     right: 0;
+  }
+}
+
+@keyframes nut-tabbar-active-background-scale {
+  0% {
+    transform: scaleX(1);
+  }
+
+  26.667% {
+    transform: scaleX(1.2294);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nut-tabbar-wrap > .nut-tabbar-active-background {
+    transition: none;
+
+    > .nut-tabbar-active-background-inner.nut-tabbar-active-background-inner-animating {
+      animation: none;
+    }
   }
 }

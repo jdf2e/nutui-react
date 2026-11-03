@@ -1,5 +1,5 @@
 export const addonBeforeImage =
-  'https://img11.360buyimg.com/img/jfs/t1/535270/25/4911/39037/6abb699eF4fefba06/02760f00f05076ee.png'
+  'https://img11.360buyimg.com/imagetools/jfs/t1/542933/5/11980/17950/6ad97ef6F5aaaf81a/03e6104104ce7298.png'
 
 export const addonBeforeDarkImage =
-  'https://img12.360buyimg.com/img/jfs/t1/539581/32/10307/41808/6acf7be2F6345c983/02760f00f07c134e.png'
+  'https://img11.360buyimg.com/imagetools/jfs/t1/550464/34/3607/18576/6ad97ef6F28cacc0f/03e610410466d7f7.png'

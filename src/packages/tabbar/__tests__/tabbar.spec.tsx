@@ -49,6 +49,40 @@ test('defaults to the standard surface and opts into frosted material', () => {
   expect(container.querySelectorAll('.nut-tabbar-item')).toHaveLength(2)
 })
 
+test('slides and scales the frosted active background when switching', async () => {
+  const { container } = render(
+    <Tabbar material="frosted">
+      <Tabbar.Item title="首页" icon={<Home />} />
+      <Tabbar.Item title="我的" icon={<User />} />
+    </Tabbar>
+  )
+  const activeBackground = container.querySelector<HTMLElement>(
+    '.nut-tabbar-active-background'
+  )
+
+  expect(activeBackground).toBeInTheDocument()
+  expect(
+    activeBackground?.style.getPropertyValue('--nutui-tabbar-select-index')
+  ).toBe('0')
+  expect(
+    activeBackground?.style.getPropertyValue('--nutui-tabbar-item-count')
+  ).toBe('2')
+  expect(
+    activeBackground?.querySelector('.nut-tabbar-active-background-inner')
+  ).not.toHaveClass('nut-tabbar-active-background-inner-animating')
+
+  fireEvent.click(container.querySelectorAll('.nut-tabbar-item')[1])
+
+  await waitFor(() => {
+    expect(
+      activeBackground?.style.getPropertyValue('--nutui-tabbar-select-index')
+    ).toBe('1')
+    expect(
+      activeBackground?.querySelector('.nut-tabbar-active-background-inner')
+    ).toHaveClass('nut-tabbar-active-background-inner-animating')
+  })
+})
+
 test('should render tabbar when default', () => {
   const { container } = render(
     <Tabbar>
