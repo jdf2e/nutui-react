@@ -116,5 +116,6 @@ import { ResultPage } from '@nutui/nutui-react'
 | \--nutui-resultpage-actions-margin-top | 描述與操作區間距 | `12px` |
 | \--nutui-resultpage-action-width | 操作按鈕寬度 | `114px` |
 | \--nutui-resultpage-action-gap | 操作按鈕左右外邊距（合計間距 12px） | `6px` |
+| \--nutui-resultpage-action-default-light-color | 負向操作按鈕文字色（`default` + `light`） | `$color-text` |
 
 <Contribution name="ResultPage" />
