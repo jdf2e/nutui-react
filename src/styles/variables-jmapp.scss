@@ -3305,6 +3305,10 @@ $resultpage-action-width: var(
   114px
 ) !default;
 $resultpage-action-gap: var(--nutui-resultpage-action-gap, 6px) !default;
+$resultpage-action-default-light-color: var(
+  --nutui-resultpage-action-default-light-color,
+  $color-text
+) !default;
 
 // quickenter
 $quickenter-bg-color: var(--nutui-quickenter-bg-color, #f5f5f5) !default;
