@@ -106,13 +106,14 @@ $nutui-button-base-imported: false !default;
 
       // 不带色彩的纯灰禁用 (配合 className 使用)
       &.nut-button-disabled-gray {
-        background: var(--nutui-button-disabled-background-color, #ccc);
-        color: #fff;
-        border-color: var(--nutui-button-disabled-background-color, #ccc);
+        background: $color-text-disabled;
+        color: $color-primary-text;
+        border-color: $color-text-disabled;
         opacity: 1;
 
         .nut-button-desc {
-          color: rgba(255, 255, 255, 0.8);
+          color: $color-primary-text;
+          opacity: 0.8;
         }
       }
     }
@@ -129,6 +130,7 @@ $nutui-button-base-imported: false !default;
     &-default {
       padding: $button-default-padding;
       border-style: solid;
+      // 默认(实心)态不展示描边，描边仅在 outline/dashed 下生效
       border-color: $button-default-border-color;
 
       &-disabled,
@@ -146,6 +148,8 @@ $nutui-button-base-imported: false !default;
 
       &-outline,
       &-dashed {
+        border-color: $color-text-disabled;
+
         &-disabled {
           background: transparent;
           color: $button-default-disabled;
@@ -155,6 +159,31 @@ $nutui-button-base-imported: false !default;
 
       &:active:not(.nut-button-disabled):not(.nut-button-loading) {
         background: $button-default-pressed;
+      }
+
+      // 次要操作（灰色）：灰底 + 深灰字
+      &-light {
+        color: $button-default-light-color;
+        background: $button-default-light-background-color;
+        border-color: transparent;
+
+        .nut-button-default-children {
+          color: $button-default-light-color;
+        }
+
+        &-disabled {
+          color: $color-text-disabled;
+          background: $button-default-light-background-color;
+          border-color: transparent;
+
+          .nut-button-default-children {
+            color: $color-text-disabled;
+          }
+        }
+
+        &:active:not(.nut-button-disabled):not(.nut-button-loading) {
+          background: $button-default-light-pressed;
+        }
       }
     }
 
@@ -197,7 +226,7 @@ $nutui-button-base-imported: false !default;
 
       &-disabled,
       &-solid-disabled {
-        color: $button-primary-disabled;
+        color: $button-primary-color;
         background: $button-primary-disabled;
         border-color: $button-primary-disabled;
       }

@@ -22,9 +22,15 @@
     width: $inputnumber-button-width;
     height: $inputnumber-button-height;
     background-color: $inputnumber-button-background-color;
+    // 按下反馈覆盖整个点击区域；禁用或达到对应边界时不变色。
+    &:active:not(.nut-inputnumber-button-disabled),
+    &.nut-inputnumber-button-pressed:not(.nut-inputnumber-button-disabled) {
+      background-color: $color-default-pressed;
+    }
     .nut-icon {
-      width: 10px;
-      height: 10px;
+      // 复用尺寸变量，默认 10px × 10px（随全局缩放），并允许业务通过主题覆盖。
+      width: $inputnumber-icon-size;
+      height: $inputnumber-icon-size;
     }
   }
 
@@ -69,15 +75,5 @@
 
   &-input-disabled {
     color: $color-text-disabled;
-  }
-
-  &-icon-minus {
-    width: 16px;
-    height: 16px;
-  }
-
-  &-icon-plus {
-    width: 16px;
-    height: 16px;
   }
 }

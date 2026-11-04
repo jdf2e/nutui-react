@@ -1,4 +1,11 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
@@ -7,6 +14,12 @@ import raf from '@/utils/raf'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import { useRtl } from '../configprovider'
+import { CardShoulder } from './icon'
+import {
+  getCardActiveMarginTotal,
+  getCardFlushSides,
+  isContentScrollable,
+} from './utils'
 import { TabsTitle, WebTabsProps } from '@/types'
 
 const defaultProps = {
@@ -49,8 +62,49 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     onChange,
   })
 
-  const titleItemsRef = useRef<HTMLDivElement[]>([])
   const navRef = useRef<HTMLDivElement>(null)
+
+  // 卡片模式下,标题栏可横向滑动时激活卡片贴合两端边缘;不可滑动时(全部 tab 放得下)
+  // 贴边端直角、留白端恢复双肩,依赖该标记切换样式
+  const [isScrollable, setIsScrollable] = useState(!align)
+  const measureScrollable = useCallback(() => {
+    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
+    const nav = navRef.current
+    if (!nav) return
+    const items = nav.querySelectorAll<HTMLElement>(
+      `.${classPrefix}-titles-item`
+    )
+    // 与 Taro 端保持同一口径:各项宽度之和 + 激活卡片预留外边距 vs 容器可视宽度
+    const totalWidth = Array.from(items).reduce(
+      (sum, item) => sum + item.getBoundingClientRect().width,
+      0
+    )
+    // 布局未就绪(宽度为 0)时不判定,保留初始状态
+    if (totalWidth <= 0) return
+    setIsScrollable(
+      isContentScrollable(
+        totalWidth + getCardActiveMarginTotal(),
+        nav.clientWidth
+      )
+    )
+  }, [activeType, direction, align])
+
+  // 挂载后立即测量,避免首帧样式闪变
+  useLayoutEffect(() => {
+    measureScrollable()
+  }, [measureScrollable])
+
+  // 标题/内容变化后重新布局,再测一次;窗口尺寸变化时也重测
+  useEffect(() => {
+    raf(measureScrollable)
+  }, [children, measureScrollable])
+  useEffect(() => {
+    // 仅卡片模式需要按可用宽度重测;其余模式提前返回,避免挂无用的 resize 监听
+    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
+    const onResize = () => raf(measureScrollable)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [activeType, direction, align, measureScrollable])
 
   const scrollDirection = (
     nav: HTMLDivElement,
@@ -71,13 +125,16 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
 
   const scrollIntoView = (index: number, immediate?: boolean) => {
     const nav = navRef.current
-    const titleItem = titleItemsRef.current
-    const titlesLength = titles.current.length
-    const itemLength = titleItem.length
-    if (!nav || !titleItem || !titleItem[itemLength - titlesLength + index]) {
+    if (!nav) {
       return
     }
-    const title = titleItem[itemLength - titlesLength + index]
+    const titleItems = nav.querySelectorAll<HTMLElement>(
+      `.${classPrefix}-titles-item`
+    )
+    const title = titleItems[index]
+    if (!title) {
+      return
+    }
     let to = 0
     if (direction === 'vertical') {
       const runTop = title.offsetTop - nav.offsetTop + 10
@@ -128,6 +185,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
+    // @deprecated 兼容旧版恒定的可滑动类名,保留以确保业务侧既有样式覆盖不失效,后续版本移除
     [`${classPrefix}-titles-scrollable`]: true,
     [`${classPrefix}-titles-${align}`]: align,
   })
@@ -162,19 +220,41 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
       <div className={classesTitle} style={tabStyle} ref={navRef}>
         {!!title && typeof title === 'function'
           ? title()
-          : titles.current.map((item) => {
+          : titles.current.map((item, index) => {
+              const isActive =
+                !item.disabled && String(item.value) === String(value)
+              const flush =
+                isActive && activeType === 'card' && direction === 'horizontal'
+                  ? getCardFlushSides(index, titles.current.length, {
+                      scrollable: isScrollable,
+                      rtl,
+                      align,
+                    })
+                  : { left: false, right: false }
               return (
                 <div
                   key={item.value}
-                  ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
                   onClick={() => tabChange(item)}
                   className={classNames(`${classPrefix}-titles-item`, {
-                    [`nut-tabs-titles-item-active`]:
-                      !item.disabled && String(item.value) === String(value),
+                    [`nut-tabs-titles-item-active`]: isActive,
                     [`nut-tabs-titles-item-disabled`]: item.disabled,
                     [`nut-tabs-titles-item-${align}`]: align,
+                    [`${classPrefix}-titles-item-active--flush-left`]:
+                      flush.left,
+                    [`${classPrefix}-titles-item-active--flush-right`]:
+                      flush.right,
                   })}
                 >
+                  {activeType === 'card' && isActive && (
+                    <>
+                      <CardShoulder
+                        className={`${classPrefix}-titles-item-shoulder-left`}
+                      />
+                      <CardShoulder
+                        className={`${classPrefix}-titles-item-shoulder-right`}
+                      />
+                    </>
+                  )}
                   {activeType === 'line' && (
                     <div
                       className={classNames(

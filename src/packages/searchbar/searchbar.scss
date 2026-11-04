@@ -18,6 +18,7 @@
   &-content {
     position: relative;
     flex: 1;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,6 +198,58 @@
 
     .nut-searchbar-content {
       border: 0.5px solid $color-primary;
+    }
+  }
+
+  &-active .nut-searchbar-input::placeholder {
+    color: transparent;
+  }
+
+  &-content-tag .nut-searchbar-input {
+    color: transparent;
+  }
+
+  &-ai {
+    .nut-searchbar-content {
+      flex-direction: column;
+      justify-content: space-between;
+      height: var(--nutui-searchbar-input-height, 86px);
+      padding: 8px;
+    }
+
+    .nut-searchbar-input-row,
+    .nut-searchbar-actions {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .nut-searchbar-input-row {
+      position: relative;
+      min-width: 0;
+    }
+
+    .nut-searchbar-input-box,
+    .nut-searchbar-input {
+      min-width: 0;
+    }
+
+    .nut-searchbar-actions {
+      height: 28px;
+    }
+
+    .nut-searchbar-rightin {
+      margin-left: auto;
+    }
+
+    .nut-searchbar-clear .nut-icon {
+      margin-right: 0;
+    }
+
+    .nut-searchbar-values {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
     }
   }
 }

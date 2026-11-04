@@ -1,37 +1,41 @@
 import React, { useState } from 'react'
-import { Input, pxTransform } from '@nutui/nutui-react-taro'
+import { Input, pxTransform, Cell } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import { Eye, Marshalling } from '@nutui/icons-react-taro'
 
 const Demo9 = () => {
   const [inputType, setInputType] = useState('password')
   return (
-    <View
-      style={{
-        display: 'flex',
-        flexWrap: 'nowrap',
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: '#ebedf2',
-      }}
-    >
-      <Input type={inputType} placeholder="请输入密码" />
+    <Cell style={{ display: 'block' }}>
       <View
         style={{
           display: 'flex',
-          marginRight: pxTransform(10),
+          flexWrap: 'nowrap',
           alignItems: 'center',
+          flexDirection: 'row',
+          backgroundColor: '#f0f2f7',
         }}
-        onClick={() => setInputType(inputType === 'text' ? 'password' : 'text')}
       >
-        {/* eslint-disable-next-line no-nested-ternary */}
-        {inputType === 'text' ? (
-          <Eye color="var(--nutui-gray-7)" />
-        ) : (
-          <Marshalling color="var(--nutui-gray-7)" />
-        )}
+        <Input type={inputType} placeholder="请输入密码" />
+        <View
+          style={{
+            display: 'flex',
+            marginRight: pxTransform(10),
+            alignItems: 'center',
+          }}
+          onClick={() =>
+            setInputType(inputType === 'text' ? 'password' : 'text')
+          }
+        >
+          {/* eslint-disable-next-line no-nested-ternary */}
+          {inputType === 'text' ? (
+            <Eye color="var(--nutui-gray-7)" />
+          ) : (
+            <Marshalling color="var(--nutui-gray-7)" />
+          )}
+        </View>
       </View>
-    </View>
+    </Cell>
   )
 }
 export default Demo9

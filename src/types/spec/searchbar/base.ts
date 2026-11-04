@@ -7,6 +7,8 @@ export interface BaseSearchBar extends BaseProps {
   defaultValue: string
   placeholder: string
   shape: UIRound
+  /** AI 模式为双行布局，leftIn/rightIn 位于底部操作区 */
+  mode: 'normal' | 'ai'
   disabled: boolean
   maxLength: number
   clearable: boolean

@@ -150,6 +150,17 @@ npm install @nutui/nutui-react-taro
   - ≥1 天：`DD天HH:mm:ss`，建议 `type="text"`；1～24h：`HH:mm:ss` 或 `HH:mm:ss.i`；&lt;1h：`mm:ss` 或 `mm:ss.i`。
   - 百毫秒仅建议 24h 内强促销场景使用。
 
+### Price (展示类)
+
+- **尺寸档位扩展与字号调整（兼容升级）**：
+  - 新增 `size="medium"`（羊角符 / 整数 / 小数：`12 / 14 / 12`）。
+  - `xlarge` 调整为 `16 / 24 / 16`，`large` 调整为 `14 / 18 / 14`；`normal`、`small` 字号不变。
+  - 字体：`xlarge` / `large` / `normal` 使用京东正黑 Bold；`medium` / `small` 使用京东正黑 Regular。
+- **颜色令牌对齐（兼容升级）**：
+  - `primary` → `#FF0F23`；`gray` → `#8D9199`；`darkgray` → `#11141A`。
+- **新增 `raw`（兼容）**：
+  - `raw={true}` 且 `price` 含非法字符时按原文展示；未开启时仍会自动识别无法安全格式化的字符串并原样输出。
+
 ### Range (数据录入)
 
 - **游标视觉规格调整（兼容升级）**：
@@ -182,6 +193,19 @@ npm install @nutui/nutui-react-taro
   - 通过 `position="top"` 从顶部弹出，内容以网格形式展示，`options` 支持 `icon` 字段（字符串使用 `img` 渲染，也可传入自定义节点），可通过 `columns` 设置列数（仅支持 `4` / `5`，默认 `5`）；`cancelText` 在顶部模式下渲染为「点击收起」按钮。网格布局也可通过 `layout="grid"` 用于底部弹出。
 - **头部样式与关闭能力（新增）**：
   - 新增 `titleAlign`（`left` / `center`，默认 `center`，仅 `center` 时 `description` 生效）、`headerLeft`、`headerRight` 自定义头部左右内容，以及 `closeable` / `closeIconPosition` 控制关闭按钮的显示与位置。以上均为纯新增能力，不影响原有用法。
+
+### NavBar (导航类)
+
+- **移除 CSS 变量 `--nutui-navbar-margin-bottom`（不兼容变更）**：
+  - 该变量此前只被声明、从未被组件消费，导航栏本身也没有任何 margin 生效。本次清理后，若你曾在主题里声明过它，该声明会静默失效，删除即可，无需替代变量。
+- **背景色默认值由白色改为透明（视觉变更）**：
+  - `--nutui-navbar-background` 的默认值由 `$white` 调整为 `transparent`。若你的页面依赖导航栏自带白底，请显式设置 `--nutui-navbar-background`，或为外层容器补充背景。
+- **内边距与左右内容区宽度变量化（新增）**：
+  - 新增 `--nutui-navbar-padding`（默认 `4px 8px`）、`--nutui-navbar-subbar-padding`（默认 `8px 0`，控制二级楼层的内边距）、`--nutui-navbar-side-maxwidth`（默认 `108px`）、`--nutui-navbar-side-padding`（默认 `8px`）。导航栏左右内边距由 `16px` 收紧为 `8px`，左右内容区最大宽度由 `124px` 调整为 `116px`。
+- **新增二级楼层 `subBar` 能力（新增）**：
+  - 新增 `subBar` 属性，用于在标题行下方渲染二级楼层内容；传入后根节点会自动换行排布（附加 `nut-navbar-has-subbar` 类）。属纯新增能力，不影响原有用法。
+- **标题字号在品牌间统一为 18px（视觉变更）**：
+  - `--nutui-navbar-title-font-size` 在 JMAPP 主题由 `20px`、JRKF 主题由 `16px` 统一为 `18px`（`$font-size-xl`）。
 
 ### Cell (展示类)
 

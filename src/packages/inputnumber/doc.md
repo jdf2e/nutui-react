@@ -152,7 +152,7 @@ import { InputNumber } from '@nutui/nutui-react'
 | \--nutui-inputnumber-button-height | 数字输入框左右按钮的高度 | `28px` |
 | \--nutui-inputnumber-button-background-color | 数字输入框左右按钮的背景色 | `$color-background` |
 | \--nutui-inputnumber-icon-color | 数字输入框中icon的颜色 | `$color-text` |
-| \--nutui-inputnumber-icon-size | 数字输入框中icon的大小 | `8px` |
+| \--nutui-inputnumber-icon-size | 数字输入框中icon的大小 | `10px` |
 | \--nutui-inputnumber-disabled-color | 数字输入框禁用色 | `$color-text-disabled` |
 
 <Contribution name="InputNumber" />

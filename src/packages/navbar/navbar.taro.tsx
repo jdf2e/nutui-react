@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, ViewProps } from '@tarojs/components'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import SafeArea from '@/packages/safearea/index.taro'
@@ -11,16 +11,20 @@ const defaultProps = {
   left: '',
   right: '',
   back: '',
+  subBar: '',
   fixed: false,
   safeAreaInsetTop: false,
   placeholder: false,
   zIndex: 10,
 } as TaroNavBarProps
-export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
+export const NavBar: FunctionComponent<Partial<TaroNavBarProps> & ViewProps> = (
+  props
+) => {
   const {
     right,
     left,
     title,
+    subBar,
     className,
     style,
     back,
@@ -29,6 +33,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
     placeholder,
     zIndex,
     onBackClick,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -82,6 +87,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
         className={classNames({
           [`${classPrefix}-title`]: true,
           [`${classPrefix}-title-center`]: title,
+          [`${classPrefix}-title-padding-left`]: !left && !back && !title,
         })}
       >
         {title || children}
@@ -103,12 +109,19 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
     )
   }
 
+  const renderSubBar = () => {
+    return subBar ? (
+      <View className={`${classPrefix}-subbar`}>{subBar}</View>
+    ) : null
+  }
+
   const renderWrapper = () => {
     return (
-      <View className={cls} style={styles()}>
+      <View className={cls} style={styles()} {...rest}>
         {renderLeft()}
         {renderContent()}
         {renderRight()}
+        {renderSubBar()}
       </View>
     )
   }
@@ -121,6 +134,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
 
   const cls = classNames(classPrefix, classes, className, {
     [`${classPrefix}-title-wrapper`]: title,
+    [`${classPrefix}-has-subbar`]: subBar,
   })
 
   return (

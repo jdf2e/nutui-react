@@ -88,6 +88,18 @@
           font: inherit;
           text-align: $form-item-body-input-text-align;
         }
+
+        &.nut-textarea-container-gray .nut-textarea-main {
+          background-color: var(--nutui-color-background-component, #f0f2f7);
+        }
+      }
+
+      .nut-inputnumber {
+        background-color: var(--nutui-color-background-component, #f0f2f7);
+
+        .nut-inputnumber-input {
+          background-color: var(--nutui-color-background-component, #f0f2f7);
+        }
       }
     }
 

@@ -5,6 +5,7 @@ export interface TabbarContext {
   inactiveColor: string
   activeColor: string
   handleClick: (value: number) => void
+  hasMaterialBackground: boolean
 }
 
 export default React.createContext<TabbarContext | null>(null)
