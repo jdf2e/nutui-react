@@ -128,7 +128,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-fixednav,
 .nut-rtl .nut-fixednav {
@@ -207,6 +208,8 @@
     }
   }
 }
+}
+
 
 .nut-drag .nut-fixednav {
   position: relative;

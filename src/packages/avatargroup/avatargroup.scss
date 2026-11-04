@@ -11,7 +11,8 @@
       margin-left: -8px;
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-avatar-group,
 .nut-rtl .nut-avatar-group {
@@ -22,3 +23,5 @@
     }
   }
 }
+}
+

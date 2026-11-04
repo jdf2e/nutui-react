@@ -108,7 +108,8 @@
       border-radius: 50%;
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-avatar-cropper,
 .nut-rtl .nut-avatar-cropper {
@@ -147,3 +148,5 @@
     }
   }
 }
+}
+

@@ -24,9 +24,12 @@
       font-weight: $font-weight-bold;
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-timedetail,
 .nut-rtl .nut-timedetail {
   padding: 0 12px 50px 0;
 }
+}
+

@@ -209,7 +209,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-indicator,
 .nut-rtl .nut-indicator {
@@ -230,3 +231,5 @@
     right: $indicator-placement-gap;
   }
 }
+}
+

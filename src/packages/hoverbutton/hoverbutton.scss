@@ -11,10 +11,13 @@
     bottom: $hoverbutton-position-bottom;
     z-index: 10;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-hoverbutton-container,
 .nut-hoverbutton-container-rtl {
   right: auto;
   left: $hoverbutton-position-right;
 }
+}
+

@@ -43,7 +43,8 @@
     background: $color-background;
     background-size: 100% 100%;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-image,
 .nut-rtl .nut-image {
@@ -57,3 +58,5 @@
     right: 0;
   }
 }
+}
+

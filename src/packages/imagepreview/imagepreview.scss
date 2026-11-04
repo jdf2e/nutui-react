@@ -96,7 +96,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-imagepreview,
 .nut-rtl .nut-imagepreview {
@@ -119,3 +120,5 @@
     }
   }
 }
+}
+

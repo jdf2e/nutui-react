@@ -23,7 +23,8 @@
     color: $circleprogress-text-color;
     font-size: $circleprogress-text-size;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-circleprogress,
 .nut-rtl .nut-circleprogress {
@@ -32,3 +33,5 @@
     right: 0;
   }
 }
+}
+

@@ -222,7 +222,8 @@
     padding-bottom: env(safe-area-inset-bottom);
     /* #endif */
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-actionsheet,
 .nut-rtl .nut-actionsheet {
@@ -253,3 +254,5 @@
     margin-left: 6px;
   }
 }
+}
+

@@ -180,7 +180,8 @@
     bottom: 0;
     left: 0;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-tabbar,
 .nut-rtl .nut-tabbar {
@@ -194,6 +195,8 @@
     right: 0;
   }
 }
+}
+
 
 @keyframes nut-tabbar-active-background-scale {
   0% {

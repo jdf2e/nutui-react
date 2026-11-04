@@ -140,6 +140,13 @@ function injectCSS(options: IOptions) {
               }
               let importpath = `${absolutePath[0]}${realNamePackage}/dist/es/packages/${name}/style/${styleType}.js`
               if (harmony() || dynamic()) {
+                // 鸿蒙/动态化平台不支持 CSS 变量，强制使用 style.harmony.css。
+                // style: 'mini' 在这两个平台上不生效（mini 产物基于 CSS 变量），此处显式告警避免静默降级。
+                if (options.style === 'mini') {
+                  console.log(
+                    `warn: @nutui/inject-ui-styles - "style: 'mini'" 在 harmony/dynamic 平台不生效，${name} 将回退加载 style.harmony.css`
+                  )
+                }
                 importpath = `${absolutePath[0]}${realNamePackage}/dist/es/packages/${name}/style/style.harmony.css`
               }
               try {

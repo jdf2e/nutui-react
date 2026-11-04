@@ -420,7 +420,8 @@
   &-wrap {
     overflow: hidden;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-tabs-titles,
 .nut-rtl .nut-tabs-titles {
@@ -441,6 +442,8 @@
     }
   }
 }
+}
+
 
 // RTL 边缘留白镜像:视觉左端=物理右侧、视觉右端=物理左侧,翻转补端方向
 [dir='rtl'] .nut-tabs-horizontal,
@@ -467,7 +470,8 @@
       padding-left: 8px;
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-tabs-vertical,
 .nut-rtl .nut-tabs-vertical {
@@ -511,3 +515,5 @@
     }
   }
 }
+}
+

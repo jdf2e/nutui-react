@@ -159,7 +159,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-address,
 .nut-rtl .nut-address {
@@ -172,3 +173,5 @@
     }
   }
 }
+}
+

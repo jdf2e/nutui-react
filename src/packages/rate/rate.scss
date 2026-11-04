@@ -273,7 +273,8 @@
   100% {
     transform: scale(1);
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-rate,
 .nut-rtl .nut-rate {
@@ -357,3 +358,5 @@
     }
   }
 }
+}
+

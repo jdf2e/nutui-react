@@ -252,7 +252,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-popover,
 .nut-rtl .nut-popover {
@@ -320,6 +321,8 @@
     }
   }
 }
+}
+
 
 .nut-popover-enter-from,
 .nut-popover-leave-active {
@@ -343,13 +346,16 @@
   left: 0;
   background: transparent;
   z-index: 999;
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-popover-content-bg,
 .nut-rtl .nut-popover-content-bg {
   left: auto;
   right: 0;
 }
+}
+
 
 .nut-popover-wrapper {
   display: inline-block;

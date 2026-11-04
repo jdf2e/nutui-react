@@ -227,7 +227,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-dialog,
 .nut-rtl .nut-dialog {
@@ -261,3 +262,5 @@
     text-align: var(--nutui-dialog-content-text-align, right);
   }
 }
+}
+

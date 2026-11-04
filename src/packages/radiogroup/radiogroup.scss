@@ -57,7 +57,8 @@
     color: $white;
     border: 1px solid $color-text-disabled;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-radiogroup,
 .nut-rtl .nut-radiogroup {
@@ -66,3 +67,5 @@
     margin-right: 0;
   }
 }
+}
+

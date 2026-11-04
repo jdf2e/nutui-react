@@ -87,7 +87,8 @@
       /* #endif */
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 [dir='rtl'] .nut-space,
 .nut-rtl .nut-space {
   &-horizontal {
@@ -102,3 +103,5 @@
     }
   }
 }
+}
+

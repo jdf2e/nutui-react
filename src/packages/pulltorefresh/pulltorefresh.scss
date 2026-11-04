@@ -49,7 +49,8 @@
       color: $white;
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-pulltorefresh,
 .nut-rtl .nut-pulltorefresh {
@@ -60,3 +61,5 @@
     }
   }
 }
+}
+

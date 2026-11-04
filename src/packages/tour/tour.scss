@@ -84,7 +84,8 @@
     left: 0;
     background: transparent;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-tour,
 .nut-rtl .nut-tour {
@@ -104,3 +105,5 @@
     right: 0;
   }
 }
+}
+

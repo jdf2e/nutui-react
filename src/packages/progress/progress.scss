@@ -166,7 +166,8 @@
     justify-content: center;
     color: #ffffff;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-progress,
 .nut-rtl .nut-progress {
@@ -174,3 +175,5 @@
     transform: translate(50%);
   }
 }
+}
+

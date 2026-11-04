@@ -360,7 +360,8 @@
   .nut-overflow-hidden {
     overflow: hidden;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-popup,
 .nut-rtl .nut-popup {
@@ -411,3 +412,5 @@
     right: 0;
   }
 }
+}
+

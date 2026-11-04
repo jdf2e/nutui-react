@@ -90,7 +90,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-grid,
 .nut-rtl .nut-grid {
@@ -128,3 +129,5 @@
     }
   }
 }
+}
+

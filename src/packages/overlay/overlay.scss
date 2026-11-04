@@ -50,10 +50,13 @@
     animation-name: nut-fade-out;
     animation-duration: $overlay-animation-duration;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-overlay,
 .nut-rtl .nut-overlay {
   left: auto;
   right: 0;
 }
+}
+

@@ -21,7 +21,8 @@
   .nut-icon {
     vertical-align: middle;
   }
-}
+}@if $nutui-enable-rtl {
+
 [dir='rtl'] .nut-trendarrow,
 .nut-rtl .nut-trendarrow {
   &-icon-before {
@@ -34,3 +35,5 @@
     margin-right: $trendarrow-icon-margin;
   }
 }
+}
+

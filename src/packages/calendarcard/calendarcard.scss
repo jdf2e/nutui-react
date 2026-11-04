@@ -142,7 +142,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-calendarcard,
 .nut-rtl .nut-calendarcard {
@@ -184,3 +185,5 @@
     }
   }
 }
+}
+

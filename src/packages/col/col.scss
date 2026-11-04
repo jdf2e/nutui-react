@@ -3,7 +3,8 @@
   box-sizing: border-box;
   word-break: break-all;
   margin-bottom: $col-default-margin-bottom;
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-col,
 .nut-rtl .nut-col {
@@ -21,6 +22,8 @@
     }
   }
 }
+}
+
 
 // dart-sass: math.div -> round & *
 @for $i from 1 through 24 {

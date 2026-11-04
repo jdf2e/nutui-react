@@ -284,7 +284,8 @@
       transform: translateY($noticebar-height);
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-noticebar,
 .nut-rtl .nut-noticebar {
@@ -347,3 +348,5 @@
     }
   }
 }
+}
+

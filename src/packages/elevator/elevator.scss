@@ -150,7 +150,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-elevator,
 .nut-rtl .nut-elevator {
@@ -171,3 +172,5 @@
     left: $elevator-bars-right;
   }
 }
+}
+

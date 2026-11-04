@@ -216,7 +216,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-uploader,
 .nut-rtl .nut-uploader {
@@ -252,3 +253,5 @@
     }
   }
 }
+}
+

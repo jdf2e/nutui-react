@@ -191,7 +191,8 @@
     position: relative;
     z-index: 5;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-table,
 .nut-rtl .nut-table {
@@ -246,3 +247,5 @@
     border-left: none;
   }
 }
+}
+

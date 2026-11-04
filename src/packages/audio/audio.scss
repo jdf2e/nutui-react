@@ -82,7 +82,8 @@
       align-items: center;
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-audio,
 .nut-rtl .nut-audio {
@@ -97,3 +98,5 @@
     }
   }
 }
+}
+

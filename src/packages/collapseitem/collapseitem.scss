@@ -120,7 +120,8 @@
       padding: $collapse-wrapper-content-padding;
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-collapse-item,
 .nut-rtl .nut-collapse-item {
@@ -129,3 +130,5 @@
     right: 5px;
   }
 }
+}
+

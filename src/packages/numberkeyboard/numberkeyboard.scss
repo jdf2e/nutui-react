@@ -120,7 +120,8 @@
       }
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-popup,
 .nut-rtl .nut-popup {
@@ -155,3 +156,5 @@
     }
   }
 }
+}
+

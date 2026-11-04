@@ -65,7 +65,8 @@
     overflow: hidden;
     margin: $list-item-margin;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-horizontal-items,
 .nut-rtl .nut-horizontal-items {
@@ -77,3 +78,5 @@
     margin-left: 20px;
   }
 }
+}
+

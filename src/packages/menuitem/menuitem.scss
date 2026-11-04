@@ -117,7 +117,8 @@
 .nut-menu-container-up-exit-done {
   opacity: 0;
   transition: all 100ms;
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-menu-container,
 .nut-rtl .nut-menu-container {
@@ -132,3 +133,5 @@
     transform: rotateY(180deg);
   }
 }
+}
+

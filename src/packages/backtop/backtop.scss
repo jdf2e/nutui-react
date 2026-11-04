@@ -36,10 +36,13 @@
     width: $backtop-icon-size;
     height: $backtop-icon-size;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-backtop,
 .nut-backtop-rtl {
   right: auto;
   left: $backtop-right;
 }
+}
+

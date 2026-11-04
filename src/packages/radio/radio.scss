@@ -93,7 +93,8 @@
     color: $white;
     border: 1px solid $color-text-disabled;
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-radio,
 .nut-rtl .nut-radio {
@@ -114,3 +115,5 @@
     margin-right: $radio-label-margin-left;
   }
 }
+}
+

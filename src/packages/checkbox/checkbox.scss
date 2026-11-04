@@ -172,7 +172,8 @@
       flex: none;
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-checkbox,
 .nut-rtl .nut-checkbox {
@@ -210,3 +211,5 @@
     }
   }
 }
+}
+

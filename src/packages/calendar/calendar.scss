@@ -251,7 +251,8 @@
 
 .nut-calendar-popup .nut-popup-title-right {
   top: 7px !important;
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-calendar,
 .nut-rtl .nut-calendar {
@@ -275,3 +276,5 @@
     }
   }
 }
+}
+

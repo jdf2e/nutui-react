@@ -252,7 +252,8 @@
       transform: translateY(-50%);
     }
   }
-}
+}@if $nutui-enable-rtl {
+
 
 [dir='rtl'] .nut-searchbar,
 .nut-rtl .nut-searchbar {
@@ -316,3 +317,5 @@
     text-align: var(--nutui-searchbar-input-text-align, right);
   }
 }
+}
+

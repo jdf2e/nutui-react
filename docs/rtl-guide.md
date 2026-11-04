@@ -177,6 +177,8 @@ plugins: [
 ]
 ```
 
+> **注意**：`mini` 产物基于 CSS 变量实现，在 **harmony / dynamic（动态化）平台**下不生效。这两个平台会强制回退加载 `style.harmony.css`（鸿蒙不支持 CSS 变量），插件会输出警告日志提示。如需在这类平台精简 RTL，请改用「方式一：Sass 宏开关」。
+
 ---
 
 ## 三、各配置方式对比与推荐
@@ -186,4 +188,4 @@ plugins: [
 | **默认状态** | 海外项目 / 需要阿拉伯语等 RTL 场景 | 默认无需任何配置 | 0 (全量功能) | 100% |
 | **Sass 宏开关 (`$nutui-enable-rtl: false`)** | 使用 SCSS 源码编译的小程序 / Web 项目 | 增加 1 行 SCSS 配置 | **−6.3 KB** | 100% |
 | **`style.mini.css` / `style/mini`** | 使用编译后 CSS / babel-plugin-import 项目 | 调整样式引入路径 | **−6.3 KB** | 100% |
-| **`inject-ui-styles` (`style: 'mini'`)** | Taro 小程序 dynamic/harmony 平台工程 | 更改插件 options | **−6.3 KB** | 100% |
+| **`inject-ui-styles` (`style: 'mini'`)** | Taro 普通小程序工程（**不适用于 harmony/dynamic 平台，会自动回退 style.harmony.css**） | 更改插件 options | **−6.3 KB** | 100% |
