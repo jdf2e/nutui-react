@@ -380,7 +380,7 @@ async function buildCSS(themeName = '') {
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/${base}`), postcssRes.css)
 
     const code = sass.compileString(variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
-      loadPaths: [loadPath],
+      loadPaths: [loadPath, join(__dirname, '../src/styles')],
     })
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.css`), code.css)
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/style.css`), code.css)
@@ -409,7 +409,7 @@ async function buildCSS(themeName = '') {
 
       // 编译 base.css
       const baseCode = sass.compileString(variables + '\n' + baseScssContent, {
-        loadPaths: [loadPath],
+        loadPaths: [loadPath, join(__dirname, '../src/styles')],
       })
       await dest(join(`${dist}/es`, cssPath, `${themeDir}/base.css`), baseCode.css)
       await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/base.css`), baseCode.css)

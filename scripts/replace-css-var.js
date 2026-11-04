@@ -81,7 +81,11 @@ components.forEach((component) => {
   const res = sass.compileString(
     theme + variables + componentSplitScss.join('\n') + content,
     {
-      loadPaths: [path.join(__dirname, `../src/packages/${componentName}`)],
+      url: new URL(`file://${path.join(__dirname, '../src/styles/variables.scss')}`),
+      loadPaths: [
+        path.join(__dirname, `../src/packages/${componentName}`),
+        path.join(__dirname, '../src/styles'),
+      ],
     }
   )
   postcss([
