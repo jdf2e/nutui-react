@@ -104,14 +104,6 @@ const Demo11 = () => {
           size="48"
           type="service"
           description="辅助描述"
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button
-          size="48"
-          type="service"
-          description="辅助描述"
           disabled
           style={marginStyle}
         >
@@ -185,36 +177,6 @@ const Demo11 = () => {
           disabled
           style={marginStyle}
         >
-          操作按钮
-        </Button>
-        <Button size="44" type="default" fill="light" style={marginStyle}>
-          操作按钮
-        </Button>
-        <Button
-          size="44"
-          type="default"
-          fill="light"
-          disabled
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button size="44" type="default" fill="none" style={marginStyle}>
-          操作按钮
-        </Button>
-        <Button
-          size="44"
-          type="default"
-          fill="none"
-          disabled
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button size="44" type="service" style={marginStyle}>
-          操作按钮
-        </Button>
-        <Button size="44" type="service" disabled style={marginStyle}>
           操作按钮
         </Button>
       </Cell>
