@@ -10,6 +10,7 @@
     "dist/es/**/style{,-jmapp,-jrkf}/*",
     "dist/cjs/**/style{,-jmapp,-jrkf}/*",
     "dist/style{,-jmapp,-jrkf}.css",
+    "dist/style{,-jmapp,-jrkf}.mini.css",
     "dist/styles/**/*",
     "dist/styles/font{,-jmapp,-jrkf}/*"
   ],

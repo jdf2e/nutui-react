@@ -402,10 +402,12 @@ async function buildCSS(themeName = '') {
       // 拷贝基础与变体 scss 源码
       await dest(join(`${dist}/es`, cssPath, `${themeDir}/button-base.scss`), baseScssContent)
       await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/button-base.scss`), baseScssContent)
-      await dest(join(`${dist}/es`, cssPath, `${themeDir}/button-size.scss`), await readFile(buttonSizePath, { encoding: 'utf8' }))
-      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/button-size.scss`), await readFile(buttonSizePath, { encoding: 'utf8' }))
-      await dest(join(`${dist}/es`, cssPath, `${themeDir}/button-variants.scss`), await readFile(buttonVariantsPath, { encoding: 'utf8' }))
-      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/button-variants.scss`), await readFile(buttonVariantsPath, { encoding: 'utf8' }))
+      const buttonSizeContent = pxToScalePxInComponentScss(await readFile(buttonSizePath, { encoding: 'utf8' }))
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/button-size.scss`), buttonSizeContent)
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/button-size.scss`), buttonSizeContent)
+      const buttonVariantsContent = pxToScalePxInComponentScss(await readFile(buttonVariantsPath, { encoding: 'utf8' }))
+      await dest(join(`${dist}/es`, cssPath, `${themeDir}/button-variants.scss`), buttonVariantsContent)
+      await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/button-variants.scss`), buttonVariantsContent)
 
       // 编译 base.css
       const baseCode = sass.compileString(variables + '\n' + baseScssContent, {

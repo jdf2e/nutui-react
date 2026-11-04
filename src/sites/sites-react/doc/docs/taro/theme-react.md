@@ -70,6 +70,11 @@ export default defineConfig({
 
 NutUI-React (Taro 版) 将核心设计系统变量独立抽离为 `variables-core.scss`（~260 行，相较于全量 3300+ 行的 `variables.scss` **精简 92%**）。
 
+> [!WARNING] 关键注意事项：请检查你的组件样式引入方式
+>
+> - **如果引入的是 CSS 产物（推荐，如 `style: 'css'` 或全量引入 `style.css`）**：组件样式发包前已由官方预编译完成，业务在 `sass.resource` / `additionalData` 中注入 `variables-core.scss` 供业务自身样式使用，**完全安全且体积大幅精简**。
+> - **如果引入的是 SCSS 源码按需编译（如配置了 `style: true` 或直接 import 组件 `.scss` 源码）**：组件 SCSS 源码内部依赖各组件特定的私有变量（如 `$tabs-titles-height`、`$button-default-height`），**此时必须全局注入全量的 `variables.scss`**，不能替换为 `variables-core.scss`，否则编译组件源码时会报 `Undefined variable` 错误。
+
 #### 包含内容
 
 - 全局响应式缩放函数（`scale-px`、`scale-font-px`、`scale-icon-px`）
@@ -143,11 +148,11 @@ export default defineConfig({
 
 #### 选型建议
 
-| 需求场景 | 推荐文件 | 优势 |
+| 需求与样式引入方式 | 推荐文件 | 优势与说明 |
 | --- | --- | --- |
-| **小程序业务全局样式 / 自研业务组件库 / 全局 sass.resource** | `variables-core.scss` (⭐推荐) | 仅 ~260 行，精简 92%，避免小程序 WXSS 膨胀与编译超时 |
+| **引入组件 CSS 产物 + 业务自身写样式 / 全局 sass.resource** | `variables-core.scss` (⭐推荐) | 仅 ~260 行，精简 92%，避免小程序 WXSS 膨胀与编译超时 |
 | **覆盖品牌主色、通用圆角、基础间距等全局设计规范** | `variables-core.scss` (⭐推荐) | 涵盖核心 Design Tokens，轻装上阵 |
-| **微调特定组件内部私有样式**（如 `$button-default-height`） | `variables.scss` | 包含全部 100+ 组件私有样式控制变量 |
+| **本地现场编译组件 SCSS 源码（`style: true`）或微调组件私有变量** | `variables.scss` (⚠️必选) | 包含全部 100+ 组件私有样式控制变量，保障组件 SCSS 正常编译 |
 
 ## 暗黑模式
 

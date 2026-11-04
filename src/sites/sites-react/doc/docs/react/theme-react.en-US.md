@@ -73,6 +73,11 @@ export default defineConfig({
 
 NutUI-React extracts core design system variables into `variables-core.scss` (~260 lines, **92% lighter** than the full 3300+ lines `variables.scss`).
 
+> [!WARNING] Important Note: Check how component styles are imported
+>
+> - **Precompiled CSS (Recommended, e.g. `style: 'css'` or `import 'style.css'`)**: Component styles are precompiled by the official build. Injecting `variables-core.scss` into `additionalData` for your own styles is **completely safe and significantly faster**.
+> - **On-demand SCSS Source Compilation (e.g. `style: true` or directly importing component `.scss` source)**: NutUI component SCSS sources rely on component-private variables (e.g. `$tabs-titles-height`, `$button-default-height`). In this mode, **you MUST inject the full `variables.scss`**, not `variables-core.scss`, otherwise compilation fails with `Undefined variable`.
+
 #### What's Included
 
 - Global scale functions (`scale-px`, `scale-font-px`, `scale-icon-px`)
@@ -144,11 +149,11 @@ export default defineConfig({
 
 #### Comparison
 
-| Scenario | Recommended File | Advantage |
+| Scenario & Style Import Method | Recommended File | Advantage & Notes |
 | --- | --- | --- |
-| **Business global styles / in-house components / global additionalData** | `variables-core.scss` (⭐Recommended) | ~260 lines, 92% lighter, fastest build, zero dead variables |
+| **Using Precompiled CSS + Authoring App Styles / In-house Components** | `variables-core.scss` (⭐Recommended) | ~260 lines, 92% lighter, fastest build, zero dead variables |
 | **Customizing brand color, border-radius, spacing tokens** | `variables-core.scss` (⭐Recommended) | Complete core Design Tokens included |
-| **Fine-tuning specific component-private styles** (e.g. `$button-default-height`) | `variables.scss` | Includes private variables for all 100+ components |
+| **Compiling Component SCSS locally (`style: true`) or fine-tuning component-private styles** | `variables.scss` (⚠️Required) | Includes private variables for all 100+ components to ensure SCSS compilation |
 
 ## Dark Mode
 
