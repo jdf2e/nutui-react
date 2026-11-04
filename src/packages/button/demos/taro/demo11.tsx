@@ -24,6 +24,12 @@ const Demo11 = () => {
         >
           操作按钮
         </Button>
+        <Button size="48" type="service" style={marginStyle}>
+          操作按钮
+        </Button>
+        <Button size="48" type="service" disabled style={marginStyle}>
+          操作按钮
+        </Button>
         <Button size="48" type="primary" fill="light" style={marginStyle}>
           操作按钮
         </Button>
@@ -70,25 +76,25 @@ const Demo11 = () => {
         </Button>
         <Button
           size="48"
+          type="service"
+          description="辅助描述"
+          style={marginStyle}
+        >
+          操作按钮
+        </Button>
+        <Button
+          size="48"
+          type="primary"
+          fill="light"
+          description="辅助描述"
+          style={marginStyle}
+        >
+          操作按钮
+        </Button>
+        <Button
+          size="48"
           description="辅助描述"
           className="nut-button-disabled-gray"
-          disabled
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button
-          size="48"
-          type="service"
-          description="辅助描述"
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button
-          size="48"
-          type="service"
-          description="辅助描述"
           disabled
           style={marginStyle}
         >
@@ -120,6 +126,12 @@ const Demo11 = () => {
           disabled
           style={marginStyle}
         >
+          操作按钮
+        </Button>
+        <Button size="44" type="service" style={marginStyle}>
+          操作按钮
+        </Button>
+        <Button size="44" type="service" disabled style={marginStyle}>
           操作按钮
         </Button>
         <Button size="44" type="primary" fill="light" style={marginStyle}>
@@ -158,12 +170,6 @@ const Demo11 = () => {
         >
           操作按钮
         </Button>
-        <Button size="44" type="service" style={marginStyle}>
-          操作按钮
-        </Button>
-        <Button size="44" type="service" disabled style={marginStyle}>
-          操作按钮
-        </Button>
       </Cell>
 
       <View className="h2">区块 40</View>
@@ -180,6 +186,12 @@ const Demo11 = () => {
           disabled
           style={marginStyle}
         >
+          操作按钮
+        </Button>
+        <Button size="40" type="service" style={marginStyle}>
+          操作按钮
+        </Button>
+        <Button size="40" type="service" disabled style={marginStyle}>
           操作按钮
         </Button>
         <Button size="40" type="primary" fill="light" style={marginStyle}>
@@ -218,12 +230,6 @@ const Demo11 = () => {
         >
           操作按钮
         </Button>
-        <Button size="40" type="service" style={marginStyle}>
-          操作按钮
-        </Button>
-        <Button size="40" type="service" disabled style={marginStyle}>
-          操作按钮
-        </Button>
       </Cell>
 
       <View className="h2">常规 36</View>
@@ -240,6 +246,12 @@ const Demo11 = () => {
           disabled
           style={marginStyle}
         >
+          操作按钮
+        </Button>
+        <Button size="36" type="service" style={marginStyle}>
+          操作按钮
+        </Button>
+        <Button size="36" type="service" disabled style={marginStyle}>
           操作按钮
         </Button>
         <Button size="36" type="primary" fill="light" style={marginStyle}>
@@ -294,6 +306,12 @@ const Demo11 = () => {
           disabled
           style={marginStyle}
         >
+          操作按钮
+        </Button>
+        <Button size="32" type="service" style={marginStyle}>
+          操作按钮
+        </Button>
+        <Button size="32" type="service" disabled style={marginStyle}>
           操作按钮
         </Button>
         <Button size="32" type="primary" fill="light" style={marginStyle}>
@@ -353,6 +371,12 @@ const Demo11 = () => {
         >
           操作按钮
         </Button>
+        <Button size="28" type="service" style={marginStyle}>
+          操作按钮
+        </Button>
+        <Button size="28" type="service" disabled style={marginStyle}>
+          操作按钮
+        </Button>
         <Button size="28" type="primary" fill="light" style={marginStyle}>
           操作按钮
         </Button>
@@ -405,6 +429,12 @@ const Demo11 = () => {
           disabled
           style={marginStyle}
         >
+          操作按钮
+        </Button>
+        <Button size="24" type="service" style={marginStyle}>
+          操作按钮
+        </Button>
+        <Button size="24" type="service" disabled style={marginStyle}>
           操作按钮
         </Button>
         <Button size="24" type="primary" fill="light" style={marginStyle}>
