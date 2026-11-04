@@ -72,9 +72,32 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const nextFrameRef = useRef<number | null>(null)
-  const isFirstRender = useRef(true)
   const statusRef = useRef<TransitionStatus>(status)
   statusRef.current = status
+
+  // 轮次版本号：防止过期异步任务误覆盖最新状态或误卸载
+  const transitionIdRef = useRef(0)
+  // 记录上一次的 inProp 与挂载状态，防 React 18 StrictMode 双次挂载产生额外入场
+  const prevInPropRef = useRef(inProp)
+  const isMountedRef = useRef(false)
+
+  // 始终保持最新回调引用，避免闭包过期
+  const callbacksRef = useRef({
+    onEnter,
+    onEntering,
+    onEntered,
+    onExit,
+    onExiting,
+    onExited,
+  })
+  callbacksRef.current = {
+    onEnter,
+    onEntering,
+    onEntered,
+    onExit,
+    onExiting,
+    onExited,
+  }
 
   const clearTimers = () => {
     if (timerRef.current) {
@@ -89,76 +112,92 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
 
   useEffect(() => {
     return () => {
+      transitionIdRef.current += 1
       clearTimers()
     }
   }, [])
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
+    // 首次挂载处理
+    if (!isMountedRef.current) {
+      isMountedRef.current = true
       if (inProp && appear) {
-        onEnter?.()
-        onEntering?.()
+        const currentId = ++transitionIdRef.current
+        callbacksRef.current.onEnter?.()
+        callbacksRef.current.onEntering?.()
         timerRef.current = setTimeout(() => {
+          if (transitionIdRef.current !== currentId) return
           setStatus('entered')
           setAnimationClass(
             transitionName ? `${transitionName}-enter-done` : ''
           )
-          onEntered?.()
+          callbacksRef.current.onEntered?.()
         }, enterTimeout)
       }
       return
     }
 
+    // 状态无变化时（例如 StrictMode 重新执行 effect 或其他 props 更新），直接跳过
+    if (prevInPropRef.current === inProp) {
+      return
+    }
+    prevInPropRef.current = inProp
+
+    const currentId = ++transitionIdRef.current
     clearTimers()
 
     if (inProp) {
       // 进入阶段
       setStatus('entering')
-      onEnter?.()
+      callbacksRef.current.onEnter?.()
       setAnimationClass(transitionName ? `${transitionName}-enter` : '')
 
       nextFrameRef.current = requestAniFrame(() => {
+        if (transitionIdRef.current !== currentId) return
         setAnimationClass(
           transitionName
             ? `${transitionName}-enter ${transitionName}-enter-active`
             : ''
         )
-        onEntering?.()
+        callbacksRef.current.onEntering?.()
 
         timerRef.current = setTimeout(() => {
+          if (transitionIdRef.current !== currentId) return
           setStatus('entered')
           setAnimationClass(
             transitionName ? `${transitionName}-enter-done` : ''
           )
-          onEntered?.()
+          callbacksRef.current.onEntered?.()
         }, enterTimeout)
       })
     } else {
       // 离开阶段
-      if (statusRef.current === 'unmounted' || statusRef.current === 'exited')
+      if (statusRef.current === 'unmounted' || statusRef.current === 'exited') {
         return
+      }
 
       setStatus('exiting')
-      onExit?.()
+      callbacksRef.current.onExit?.()
       setAnimationClass(transitionName ? `${transitionName}-exit` : '')
 
       nextFrameRef.current = requestAniFrame(() => {
+        if (transitionIdRef.current !== currentId) return
         setAnimationClass(
           transitionName
             ? `${transitionName}-exit ${transitionName}-exit-active`
             : ''
         )
-        onExiting?.()
+        callbacksRef.current.onExiting?.()
 
         timerRef.current = setTimeout(() => {
+          if (transitionIdRef.current !== currentId) return
           setStatus(unmountOnExit ? 'unmounted' : 'exited')
           setAnimationClass(transitionName ? `${transitionName}-exit-done` : '')
-          onExited?.()
+          callbacksRef.current.onExited?.()
         }, exitTimeout)
       })
     }
-  }, [inProp])
+  }, [inProp, appear, enterTimeout, exitTimeout, transitionName, unmountOnExit])
 
   if (status === 'unmounted') {
     return null

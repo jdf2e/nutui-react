@@ -280,6 +280,30 @@ $nutui-button-base-imported: false !default;
         }
       }
 
+      &-light {
+        color: $button-primary-light-color;
+        background: $button-primary-light-background-color;
+        border-color: $button-primary-light-border-color;
+
+        .nut-button-primary-children {
+          color: $button-primary-light-color;
+        }
+
+        &-disabled {
+          opacity: 0.5;
+
+          .nut-button-primary-children {
+            color: $button-primary-light-color;
+          }
+        }
+
+        &:active:not(.nut-button-disabled):not(.nut-button-loading):not(
+            .nut-button-outline
+          ):not(.nut-button-dashed) {
+          background: $color-primary-light-pressed;
+        }
+      }
+
       &.nut-button-solid.nut-button-normal {
         font-weight: $font-weight-bold;
       }

@@ -6,6 +6,7 @@ $color-primary-stop-1: var(--nutui-color-primary) !default;
 $color-primary-stop-2: var(--nutui-color-primary) !default;
 $color-primary-pressed: var(--nutui-color-primary-pressed) !default;
 $color-primary-disabled-special: var(--nutui-color-primary-disabled) !default;
+$color-primary-light: var(--nutui-color-primary-light) !default;
 $color-primary-light-pressed: var(--nutui-color-primary-light-pressed) !default;
 $color-primary-gradient-1: linear-gradient(
   135deg,
@@ -520,11 +521,11 @@ $button-service-pressed: var(
 
 $button-primary-light-color: var(
   --nutui-button-primary-light-color,
-  $button-primary-background-color
+  $color-primary
 ) !default;
 $button-primary-light-background-color: var(
   --nutui-button-primary-light-background-color,
-  rgba(250, 44, 25, 0.1)
+  $color-primary-light
 ) !default;
 $button-primary-light-border-color: var(
   --nutui-button-primary-light-border-color,

@@ -7,13 +7,13 @@ function requestAniFrame() {
     return (
       _window.requestAnimationFrame ||
       _window.webkitRequestAnimationFrame ||
-      function (callback: any) {
-        _window.setTimeout(callback, 1000 / 60)
+      function rafFallback(callback: any) {
+        return _window.setTimeout(callback, 1000 / 60)
       }
     )
   }
   return (callback: any) => {
-    setTimeout(callback, 1000 / 60)
+    return setTimeout(callback, 1000 / 60)
   }
 }
 

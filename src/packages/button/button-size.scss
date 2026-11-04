@@ -17,6 +17,21 @@
         margin-right: $text-icon-margin;
       }
     }
+
+    @if $nutui-enable-rtl {
+      [dir='rtl'] &,
+      .nut-rtl & {
+        .nut-button-text {
+          margin-left: 0;
+          margin-right: $text-icon-margin;
+
+          &-right {
+            margin-right: 0;
+            margin-left: $text-icon-margin;
+          }
+        }
+      }
+    }
   }
 
   .nut-icon {

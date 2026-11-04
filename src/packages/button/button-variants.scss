@@ -226,30 +226,6 @@ $nutui-button-variants-imported: false !default;
       }
     }
 
-    &-primary-light {
-      color: $button-primary-light-color;
-      background: $button-primary-light-background-color;
-      border-color: $button-primary-light-border-color;
-
-      .nut-button-primary-children {
-        color: $button-primary-light-color;
-      }
-
-      &-disabled {
-        opacity: 0.5;
-
-        .nut-button-primary-children {
-          color: $button-primary-light-color;
-        }
-      }
-
-      &:active:not(.nut-button-disabled):not(.nut-button-loading):not(
-          .nut-button-outline
-        ):not(.nut-button-dashed) {
-        background: $color-primary-light-pressed;
-      }
-    }
-
     &-golden {
       color: $color-service-text;
       background: $color-service-btn-bg;
@@ -307,11 +283,5 @@ $nutui-button-variants-imported: false !default;
     &-square {
       border-radius: $button-square-border-radius;
     }
-  }
-
-  .nut-theme-dark {
-    --nutui-button-primary-light-color: var(--nutui-color-primary);
-    --nutui-button-primary-light-background-color: rgba(250, 44, 25, 0.15);
-    --nutui-button-primary-light-border-color: transparent;
   }
 }

@@ -379,7 +379,18 @@ async function buildCSS(themeName = '') {
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/${base}`), postcssRes.css)
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/${base}`), postcssRes.css)
 
-    const code = sass.compileString(variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
+    let compileContent = postcssRes.css.replaceAll('../../../../', '../../')
+    // button 拆分子文件时，编译聚合 style.css 前将子文件源码经由 pxToScalePxInComponentScss 转换后内联编译，
+    // 确保大按钮 84px 等尺寸转换成完整的 scale-px 缩放公式，防止退化为固定 px
+    if (base === 'button.scss') {
+      const buttonBasePath = join(__dirname, '../src/packages/button/button-base.scss')
+      const buttonVariantsPath = join(__dirname, '../src/packages/button/button-variants.scss')
+      const baseScss = pxToScalePxInComponentScss(await readFile(buttonBasePath, { encoding: 'utf8' }))
+      const variantsScss = pxToScalePxInComponentScss(await readFile(buttonVariantsPath, { encoding: 'utf8' }))
+      compileContent = `${baseScss}\n${variantsScss}`
+    }
+
+    const code = sass.compileString(variables + '\n' + compileContent, {
       loadPaths: [loadPath, join(__dirname, '../src/styles')],
     })
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.css`), code.css)
