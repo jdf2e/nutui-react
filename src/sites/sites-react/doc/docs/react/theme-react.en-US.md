@@ -69,6 +69,87 @@ export default defineConfig({
 }
 ```
 
+### Recommended: Use Lightweight Core Tokens (`variables-core.scss`)
+
+NutUI-React extracts core design system variables into `variables-core.scss` (~260 lines, **92% lighter** than the full 3300+ lines `variables.scss`).
+
+#### What's Included
+
+- Global scale functions (`scale-px`, `scale-font-px`, `scale-icon-px`)
+- Basic color system (primary color `$color-primary`, functional colors, text/bg/border/mask neutrals)
+- Font size hierarchy (`$font-size-...`), line-height, and font-weight
+- Common spacing (`$spacing-...`), radius (`$radius-...`), shadows, and z-index
+- Animation timing and easing functions (`$animation-...`)
+
+#### Use Cases
+
+1. **Global Injection (Recommended)**: For business applications or in-house UI components, only generic Design Tokens are needed, avoiding injecting thousands of lines of unused component-private variables and significantly speeding up Sass builds.
+2. **Minimal Theme Overrides**: Perfect when only customizing brand colors, common border radii, and global tokens.
+
+#### Configuration Examples
+
+##### Vite
+
+```javascript
+// vite.config.ts
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Recommended: inject only core tokens (92% smaller, faster build)
+        additionalData: `@import "@nutui/nutui-react/dist/styles/variables-core.scss";@import "./your/custom_theme.scss";`,
+      },
+    },
+  },
+})
+```
+
+##### Webpack
+
+```javascript
+{
+  test: /\.(sa|sc)ss$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        additionalData: `@import "@nutui/nutui-react/dist/styles/variables-core.scss";@import "./assets/custom_theme.scss";`,
+      },
+    },
+  ],
+}
+```
+
+##### Direct Import in Business SCSS
+
+```scss
+// In your page or component SCSS
+@import '@nutui/nutui-react/dist/styles/variables-core.scss';
+
+.my-business-card {
+  padding: $spacing-base;
+  border-radius: $radius-base;
+  color: $color-title;
+  background-color: $color-background;
+
+  .primary-action {
+    color: $color-primary;
+    font-size: $font-size-l;
+    font-weight: $font-weight-bold;
+  }
+}
+```
+
+#### Comparison
+
+| Scenario | Recommended File | Advantage |
+| --- | --- | --- |
+| **Business global styles / in-house components / global additionalData** | `variables-core.scss` (⭐Recommended) | ~260 lines, 92% lighter, fastest build, zero dead variables |
+| **Customizing brand color, border-radius, spacing tokens** | `variables-core.scss` (⭐Recommended) | Complete core Design Tokens included |
+| **Fine-tuning specific component-private styles** (e.g. `$button-default-height`) | `variables.scss` | Includes private variables for all 100+ components |
+
 ## Dark Mode
 
 NutUI-React natively supports dark mode. The component library uses a set of independently tuned color variables in dark mode.

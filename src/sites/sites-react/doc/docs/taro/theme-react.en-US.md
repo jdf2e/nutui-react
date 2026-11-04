@@ -69,6 +69,89 @@ export default defineConfig({
 }
 ```
 
+### Recommended: Use Lightweight Core Tokens (`variables-core.scss`)
+
+NutUI-React (Taro version) extracts core design system variables into `variables-core.scss` (~260 lines, **92% lighter** than the full 3300+ lines `variables.scss`).
+
+#### What's Included
+
+- Global scale functions (`scale-px`, `scale-font-px`, `scale-icon-px`)
+- Basic color system (primary color `$color-primary`, functional colors, text/bg/border/mask neutrals)
+- Font size hierarchy (`$font-size-...`), line-height, and font-weight
+- Common spacing (`$spacing-...`), radius (`$radius-...`), shadows, and z-index
+- Animation timing and easing functions (`$animation-...`)
+
+#### Use Cases
+
+1. **Mini-Program Global Injection (Recommended)**: For business applications or in-house UI components, only generic Design Tokens are needed, avoiding injecting thousands of lines of unused component-private variables and preventing mini-program WXSS bloat / compilation timeouts.
+2. **Minimal Theme Overrides**: Perfect when only customizing brand colors, common border radii, and global tokens.
+
+#### Configuration Examples
+
+##### Taro `config/index.js` (Recommended)
+
+```javascript
+// config/index.js
+const path = require('path')
+
+module.exports = {
+  // ...
+  sass: {
+    resource: [
+      // Recommended: inject only core tokens (92% smaller, faster build)
+      path.resolve(
+        __dirname,
+        'node_modules/@nutui/nutui-react-taro/dist/styles/variables-core.scss'
+      ),
+      // Local custom theme variables
+      path.resolve(__dirname, 'src/styles/custom_theme.scss'),
+    ],
+  },
+}
+```
+
+##### Vite (Taro H5 / Harmony Vite mode)
+
+```javascript
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@nutui/nutui-react-taro/dist/styles/variables-core.scss";@import "./your/custom_theme.scss";`,
+      },
+    },
+  },
+})
+```
+
+##### Direct Import in Business SCSS
+
+```scss
+// In your page or component SCSS
+@import '@nutui/nutui-react-taro/dist/styles/variables-core.scss';
+
+.my-business-card {
+  padding: $spacing-base;
+  border-radius: $radius-base;
+  color: $color-title;
+  background-color: $color-background;
+
+  .primary-action {
+    color: $color-primary;
+    font-size: $font-size-l;
+    font-weight: $font-weight-bold;
+  }
+}
+```
+
+#### Comparison
+
+| Scenario | Recommended File | Advantage |
+| --- | --- | --- |
+| **Mini-program global styles / in-house components / global sass.resource** | `variables-core.scss` (⭐Recommended) | ~260 lines, 92% lighter, avoids WXSS bloat and timeouts |
+| **Customizing brand color, border-radius, spacing tokens** | `variables-core.scss` (⭐Recommended) | Complete core Design Tokens included |
+| **Fine-tuning specific component-private styles** (e.g. `$button-default-height`) | `variables.scss` | Includes private variables for all 100+ components |
+
 ## Dark Mode
 
 NutUI-React (Taro version) natively supports dark mode. The component library uses a set of independently tuned color variables in dark mode.
