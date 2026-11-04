@@ -50,7 +50,16 @@ const Demo = () => {
                 color="var(--nutui-color-text, #1a1a1a)"
                 style={{ marginRight: '12px' }}
               />
-              <Button type="primary" size="mini">
+              <Button
+                type="primary"
+                size="mini"
+                style={{
+                  height: 28,
+                  padding: '0 12px',
+                  borderRadius: 'var(--nutui-radius-base)',
+                  marginRight: -8,
+                }}
+              >
                 搜索
               </Button>
             </div>

@@ -1,3 +1,13 @@
+# v4.0.0-beta.14
+
+`2026-11-03`
+
+- :sparkles: feat(actionsheet): add top horizontal swipe demo (#3571)
+- :bug: fix(searchbar): 修复走查问题，调整demo样式 (#3573)
+- :bug: fix(resultPage): 更新按钮样式 (#3574)
+- :bug: fix(button): 更新按钮状态样式 (#3572)
+- 📖 docs: 更新 v16 组件 new 标识
+
 # v4.0.0-beta.13
 
 `2026-11-01`

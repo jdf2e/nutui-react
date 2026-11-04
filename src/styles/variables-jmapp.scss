@@ -294,6 +294,19 @@ $button-default-pressed: var(
   --nutui-button-default-pressed,
   $color-default-pressed
 ) !default;
+// 次要操作（灰色）按钮：灰底 + 深灰字
+$button-default-light-background-color: var(
+  --nutui-button-default-light-background-color,
+  var(--nutui-color-background-component, $color-background-sunken)
+) !default;
+$button-default-light-color: var(
+  --nutui-button-default-light-color,
+  $color-title
+) !default;
+$button-default-light-pressed: var(
+  --nutui-button-default-light-pressed,
+  $color-default-pressed
+) !default;
 $button-default-padding: var(
   --nutui-button-default-padding,
   0px $space-xl
@@ -3286,6 +3299,15 @@ $resultpage-description-line-height: var(
 $resultpage-actions-margin-top: var(
   --nutui-resultpage-actions-margin-top,
   21px
+) !default;
+$resultpage-action-width: var(
+  --nutui-resultpage-action-width,
+  114px
+) !default;
+$resultpage-action-gap: var(--nutui-resultpage-action-gap, 6px) !default;
+$resultpage-action-default-light-color: var(
+  --nutui-resultpage-action-default-light-color,
+  $color-text
 ) !default;
 
 // quickenter
