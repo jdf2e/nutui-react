@@ -273,90 +273,89 @@
   100% {
     transform: scale(1);
   }
-}@if $nutui-enable-rtl {
+}
 
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-rate,
+  .nut-rtl .nut-rate {
+    &-horizontal {
+      .nut-rate-item {
+        margin-left: 0;
+        margin-right: $rate-item-margin;
 
-[dir='rtl'] .nut-rate,
-.nut-rtl .nut-rate {
-  &-horizontal {
-    .nut-rate-item {
-      margin-left: 0;
-      margin-right: $rate-item-margin;
+        &:first-child {
+          margin-right: 0;
+        }
+      }
 
-      &:first-child {
+      .nut-rate-item-small {
+        margin-left: 0;
+        margin-right: 2px;
+
+        &:first-child {
+          margin-right: 0;
+        }
+      }
+
+      .nut-rate-label {
         margin-right: 0;
+      }
+
+      .nut-rate-label-small {
+        margin-left: 4px;
+      }
+
+      .nut-rate-label-normal {
+        margin-left: 12px;
+      }
+
+      .nut-rate-label-large {
+        margin-left: 12px;
+      }
+
+      .nut-rate-score {
+        padding-left: 0;
+      }
+
+      .nut-rate-score-small {
+        padding-right: 4px;
+      }
+
+      .nut-rate-score-normal {
+        padding-right: 12px;
+      }
+
+      .nut-rate-score-large {
+        padding-right: 12px;
       }
     }
 
-    .nut-rate-item-small {
-      margin-left: 0;
-      margin-right: 2px;
+    &-vertical {
+      .nut-rate-item {
+        margin-left: 0;
+        margin-right: $rate-item-margin;
 
-      &:first-child {
-        margin-right: 0;
+        &:first-child {
+          margin-right: 0;
+        }
       }
     }
 
-    .nut-rate-label {
-      margin-right: 0;
-    }
-
-    .nut-rate-label-small {
-      margin-left: 4px;
-    }
-
-    .nut-rate-label-normal {
-      margin-left: 12px;
-    }
-
-    .nut-rate-label-large {
-      margin-left: 12px;
-    }
-
-    .nut-rate-score {
-      padding-left: 0;
-    }
-
-    .nut-rate-score-small {
-      padding-right: 4px;
-    }
-
-    .nut-rate-score-normal {
-      padding-right: 12px;
-    }
-
-    .nut-rate-score-large {
-      padding-right: 12px;
-    }
-  }
-
-  &-vertical {
-    .nut-rate-item {
-      margin-left: 0;
-      margin-right: $rate-item-margin;
-
-      &:first-child {
-        margin-right: 0;
-      }
-    }
-  }
-
-  &-item-half {
-    left: auto;
-    right: 0;
-  }
-
-  &-item-icon {
-    &.nut-rate-item-icon.nut-rate-item-icon-half {
+    &-item-half {
       left: auto;
       right: 0;
     }
 
-    &.nut-rate-item-icon::before {
-      left: auto;
-      right: auto;
+    &-item-icon {
+      &.nut-rate-item-icon.nut-rate-item-icon-half {
+        left: auto;
+        right: 0;
+      }
+
+      &.nut-rate-item-icon::before {
+        left: auto;
+        right: auto;
+      }
     }
   }
 }
-}
-

@@ -166,14 +166,13 @@
     justify-content: center;
     color: #ffffff;
   }
-}@if $nutui-enable-rtl {
+}
 
-
-[dir='rtl'] .nut-progress,
-.nut-rtl .nut-progress {
-  &-text {
-    transform: translate(50%);
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-progress,
+  .nut-rtl .nut-progress {
+    &-text {
+      transform: translate(50%);
+    }
   }
 }
-}
-

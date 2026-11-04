@@ -172,44 +172,43 @@
       flex: none;
     }
   }
-}@if $nutui-enable-rtl {
+}
 
-
-[dir='rtl'] .nut-checkbox,
-.nut-rtl .nut-checkbox {
-  &-label {
-    margin-left: 0;
-    margin-right: $checkbox-label-margin-left;
-  }
-
-  &-reverse {
-    .nut-checkbox-label {
-      margin-left: $checkbox-label-margin-left;
-      margin-right: 0;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-checkbox,
+  .nut-rtl .nut-checkbox {
+    &-label {
+      margin-left: 0;
+      margin-right: $checkbox-label-margin-left;
     }
-  }
 
-  &-button {
-    &-icon {
-      right: auto;
-      left: 0;
-      border-right: $icon-size-10 solid transparent;
-      border-left: $icon-size-10 solid $color-primary;
-
-      &-checked {
-        left: auto;
-        right: 50%;
-        transform: translate(3px, -3px);
+    &-reverse {
+      .nut-checkbox-label {
+        margin-left: $checkbox-label-margin-left;
+        margin-right: 0;
       }
+    }
 
-      .nut-icon {
-        &:before {
-          margin-left: 0;
-          margin-right: 6px;
+    &-button {
+      &-icon {
+        right: auto;
+        left: 0;
+        border-right: $icon-size-10 solid transparent;
+        border-left: $icon-size-10 solid $color-primary;
+
+        &-checked {
+          left: auto;
+          right: 50%;
+          transform: translate(3px, -3px);
+        }
+
+        .nut-icon {
+          &:before {
+            margin-left: 0;
+            margin-right: 6px;
+          }
         }
       }
     }
   }
 }
-}
-

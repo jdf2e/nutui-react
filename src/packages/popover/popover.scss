@@ -252,77 +252,76 @@
       }
     }
   }
-}@if $nutui-enable-rtl {
+}
 
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-popover,
+  .nut-rtl .nut-popover {
+    .nut-popover-content {
+      .nut-popover-item {
+        &-icon {
+          margin-right: 0;
+          margin-left: $spacing-xxs;
+        }
 
-[dir='rtl'] .nut-popover,
-.nut-rtl .nut-popover {
-  .nut-popover-content {
-    .nut-popover-item {
-      &-icon {
-        margin-right: 0;
-        margin-left: $spacing-xxs;
+        &-action-icon {
+          margin-left: 0;
+          margin-right: $spacing-xxs;
+        }
       }
-
-      &-action-icon {
-        margin-left: 0;
-        margin-right: $spacing-xxs;
+      &-top {
+        .nut-popover-arrow-top {
+          left: auto;
+          right: 50%;
+          transform: translateX(50%);
+        }
       }
-    }
-    &-top {
-      .nut-popover-arrow-top {
-        left: auto;
-        right: 50%;
-        transform: translateX(50%);
-      }
-    }
-    &-top-right {
-      right: auto;
-      left: 0;
-
-      .nut-popover-arrow-top-right {
+      &-top-right {
         right: auto;
+        left: 0;
+
+        .nut-popover-arrow-top-right {
+          right: auto;
+        }
       }
-    }
 
-    &-top-left {
-      left: auto;
-      right: 0;
-
-      .nut-popover-arrow-top-left {
+      &-top-left {
         left: auto;
+        right: 0;
+
+        .nut-popover-arrow-top-left {
+          left: auto;
+        }
       }
-    }
 
-    &-bottom {
-      .nut-popover-arrow-bottom {
-        left: auto;
-        right: 50%;
-        transform: translateX(50%);
+      &-bottom {
+        .nut-popover-arrow-bottom {
+          left: auto;
+          right: 50%;
+          transform: translateX(50%);
+        }
       }
-    }
-    &-bottom-right {
-      right: auto;
-
-      left: 0;
-
-      .nut-popover-arrow-bottom-right {
+      &-bottom-right {
         right: auto;
+
+        left: 0;
+
+        .nut-popover-arrow-bottom-right {
+          right: auto;
+        }
       }
-    }
 
-    &-bottom-left {
-      left: auto;
-      right: 0;
-
-      .nut-popover-arrow-bottom-left {
+      &-bottom-left {
         left: auto;
+        right: 0;
+
+        .nut-popover-arrow-bottom-left {
+          left: auto;
+        }
       }
     }
   }
 }
-}
-
 
 .nut-popover-enter-from,
 .nut-popover-leave-active {
@@ -346,16 +345,15 @@
   left: 0;
   background: transparent;
   z-index: 999;
-}@if $nutui-enable-rtl {
-
-
-[dir='rtl'] .nut-popover-content-bg,
-.nut-rtl .nut-popover-content-bg {
-  left: auto;
-  right: 0;
-}
 }
 
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-popover-content-bg,
+  .nut-rtl .nut-popover-content-bg {
+    left: auto;
+    right: 0;
+  }
+}
 
 .nut-popover-wrapper {
   display: inline-block;

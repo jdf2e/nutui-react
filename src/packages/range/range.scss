@@ -311,53 +311,20 @@
   }
 }
 
-[dir='rtl'] .nut-range,
-.rtl-nut-range {
-  &-button {
-    &-wrapper,
-    &-wrapper-right {
-      left: 0;
-      /* #ifndef dynamic*/
-      right: initial;
-      /* #endif */
-      // transform: translate3d(-50%, -50%, 0);
-    }
-    &-wrapper-left {
-      right: 0;
-      /* #ifndef dynamic*/
-      left: initial;
-      /* #endif */
-      // transform: translate3d(50%, -50%, 0);
-    }
-  }
-
-  &-tick {
-    left: auto;
-    right: 0;
-    /* #ifndef dynamic*/
-    /* #endif */
-    transform: translate(50%, -50%);
-  }
-
-  &-mark-text {
-    left: auto;
-    right: 50%;
-    transform: translateX(50%);
-  }
-
-  &-vertical {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-range,
+  .rtl-nut-range {
     &-button {
       &-wrapper,
       &-wrapper-right {
-        right: 50%;
+        left: 0;
         /* #ifndef dynamic*/
-        left: initial;
+        right: initial;
         /* #endif */
-        // transform: translate3d(50%, 50%, 0);
+        // transform: translate3d(-50%, -50%, 0);
       }
-
       &-wrapper-left {
-        right: 50%;
+        right: 0;
         /* #ifndef dynamic*/
         left: initial;
         /* #endif */
@@ -365,25 +332,60 @@
       }
     }
 
-    &-mark {
-      right: auto;
-      left: 50%;
-    }
-
     &-tick {
-      right: auto;
-      left: 0;
-      transform: translate(-50%, -50%);
+      left: auto;
+      right: 0;
+      /* #ifndef dynamic*/
+      /* #endif */
+      transform: translate(50%, -50%);
     }
 
     &-mark-text {
-      right: auto;
-      left: 16px;
-      text-align: left;
+      left: auto;
+      right: 50%;
+      transform: translateX(50%);
     }
 
-    &-mark-text-wrapper {
-      transform: translateY(-50%);
+    &-vertical {
+      &-button {
+        &-wrapper,
+        &-wrapper-right {
+          right: 50%;
+          /* #ifndef dynamic*/
+          left: initial;
+          /* #endif */
+          // transform: translate3d(50%, 50%, 0);
+        }
+
+        &-wrapper-left {
+          right: 50%;
+          /* #ifndef dynamic*/
+          left: initial;
+          /* #endif */
+          // transform: translate3d(50%, -50%, 0);
+        }
+      }
+
+      &-mark {
+        right: auto;
+        left: 50%;
+      }
+
+      &-tick {
+        right: auto;
+        left: 0;
+        transform: translate(-50%, -50%);
+      }
+
+      &-mark-text {
+        right: auto;
+        left: 16px;
+        text-align: left;
+      }
+
+      &-mark-text-wrapper {
+        transform: translateY(-50%);
+      }
     }
   }
 }

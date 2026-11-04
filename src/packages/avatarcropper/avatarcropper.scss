@@ -108,45 +108,44 @@
       border-radius: 50%;
     }
   }
-}@if $nutui-enable-rtl {
+}
 
-
-[dir='rtl'] .nut-avatar-cropper,
-.nut-rtl .nut-avatar-cropper {
-  &-edit-text {
-    left: auto;
-    right: 0;
-  }
-
-  &-input {
-    left: auto;
-    right: 0;
-  }
-  &-popup {
-    left: auto;
-    right: 0;
-
-    &-canvas,
-    &-cut-canvas {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-avatar-cropper,
+  .nut-rtl .nut-avatar-cropper {
+    &-edit-text {
       left: auto;
       right: 0;
     }
 
-    &-toolbar {
+    &-input {
       left: auto;
       right: 0;
     }
-
-    &-highlight {
+    &-popup {
       left: auto;
       right: 0;
-      .highlight {
+
+      &-canvas,
+      &-cut-canvas {
         left: auto;
-        right: 50%;
-        transform: translate(50%, -50%);
+        right: 0;
+      }
+
+      &-toolbar {
+        left: auto;
+        right: 0;
+      }
+
+      &-highlight {
+        left: auto;
+        right: 0;
+        .highlight {
+          left: auto;
+          right: 50%;
+          transform: translate(50%, -50%);
+        }
       }
     }
   }
 }
-}
-

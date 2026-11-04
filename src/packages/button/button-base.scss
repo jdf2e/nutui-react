@@ -306,21 +306,23 @@ $nutui-button-base-imported: false !default;
     }
   }
 
-  [dir='rtl'] .nut-button,
-  .nut-rtl .nut-button {
-    &-text {
-      margin-left: 0;
-      margin-right: $button-text-icon-margin;
+  @if $nutui-enable-rtl {
+    [dir='rtl'] .nut-button,
+    .nut-rtl .nut-button {
+      &-text {
+        margin-left: 0;
+        margin-right: $button-text-icon-margin;
 
-      &.right {
-        margin-left: $button-text-icon-margin;
+        &.right {
+          margin-left: $button-text-icon-margin;
+        }
       }
-    }
 
-    &::before {
-      left: auto;
-      right: 50%;
-      transform: translate(50%, -50%);
+      &::before {
+        left: auto;
+        right: 50%;
+        transform: translate(50%, -50%);
+      }
     }
   }
 }

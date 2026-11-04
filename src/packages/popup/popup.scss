@@ -360,57 +360,56 @@
   .nut-overflow-hidden {
     overflow: hidden;
   }
-}@if $nutui-enable-rtl {
+}
 
-
-[dir='rtl'] .nut-popup,
-.nut-rtl .nut-popup {
-  &-title {
-    &-left {
-      left: auto;
-      right: $popup-title-padding;
-    }
-
-    &-right {
-      right: auto;
-      left: $popup-title-padding;
-
-      &-top-left {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-popup,
+  .nut-rtl .nut-popup {
+    &-title {
+      &-left {
         left: auto;
         right: $popup-title-padding;
       }
 
-      &-bottom-left {
-        left: auto;
-        right: $popup-title-padding;
-      }
-
-      &-bottom-right {
+      &-right {
         right: auto;
         left: $popup-title-padding;
+
+        &-top-left {
+          left: auto;
+          right: $popup-title-padding;
+        }
+
+        &-bottom-left {
+          left: auto;
+          right: $popup-title-padding;
+        }
+
+        &-bottom-right {
+          right: auto;
+          left: $popup-title-padding;
+        }
+      }
+
+      .nut-icon-ArrowLeft {
+        transform: rotate(180deg);
       }
     }
 
-    .nut-icon-ArrowLeft {
-      transform: rotate(180deg);
+    &-center {
+      left: auto;
+      right: 50%;
+      transform: translate(50%, -50%);
+    }
+
+    &-bottom {
+      left: auto;
+      right: 0;
+    }
+
+    &-top {
+      left: auto;
+      right: 0;
     }
   }
-
-  &-center {
-    left: auto;
-    right: 50%;
-    transform: translate(50%, -50%);
-  }
-
-  &-bottom {
-    left: auto;
-    right: 0;
-  }
-
-  &-top {
-    left: auto;
-    right: 0;
-  }
 }
-}
-

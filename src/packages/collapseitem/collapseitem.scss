@@ -120,15 +120,14 @@
       padding: $collapse-wrapper-content-padding;
     }
   }
-}@if $nutui-enable-rtl {
+}
 
-
-[dir='rtl'] .nut-collapse-item,
-.nut-rtl .nut-collapse-item {
-  &-icon {
-    left: auto;
-    right: 5px;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-collapse-item,
+  .nut-rtl .nut-collapse-item {
+    &-icon {
+      left: auto;
+      right: 5px;
+    }
   }
 }
-}
-

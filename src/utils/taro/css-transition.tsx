@@ -8,6 +8,7 @@ import React, {
   FunctionComponent,
 } from 'react'
 import classNames from 'classnames'
+import requestAniFrame, { cancelRaf } from '@/utils/raf'
 
 export interface CSSTransitionProps {
   in?: boolean
@@ -72,6 +73,8 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const nextFrameRef = useRef<number | null>(null)
   const isFirstRender = useRef(true)
+  const statusRef = useRef<TransitionStatus>(status)
+  statusRef.current = status
 
   const clearTimers = () => {
     if (timerRef.current) {
@@ -79,7 +82,7 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
       timerRef.current = null
     }
     if (nextFrameRef.current) {
-      cancelAnimationFrame(nextFrameRef.current)
+      cancelRaf(nextFrameRef.current)
       nextFrameRef.current = null
     }
   }
@@ -115,7 +118,7 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
       onEnter?.()
       setAnimationClass(transitionName ? `${transitionName}-enter` : '')
 
-      nextFrameRef.current = requestAnimationFrame(() => {
+      nextFrameRef.current = requestAniFrame(() => {
         setAnimationClass(
           transitionName
             ? `${transitionName}-enter ${transitionName}-enter-active`
@@ -133,13 +136,14 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
       })
     } else {
       // 离开阶段
-      if (status === 'unmounted' || status === 'exited') return
+      if (statusRef.current === 'unmounted' || statusRef.current === 'exited')
+        return
 
       setStatus('exiting')
       onExit?.()
       setAnimationClass(transitionName ? `${transitionName}-exit` : '')
 
-      nextFrameRef.current = requestAnimationFrame(() => {
+      nextFrameRef.current = requestAniFrame(() => {
         setAnimationClass(
           transitionName
             ? `${transitionName}-exit ${transitionName}-exit-active`

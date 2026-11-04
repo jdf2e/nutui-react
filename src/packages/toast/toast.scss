@@ -153,21 +153,20 @@
       right: 50%;
     }
   }
-}@if $nutui-enable-rtl {
+}
 
-
-[dir='rtl'] .nut-toast,
-.nut-rtl .nut-toast {
-  left: auto;
-  right: 0;
-
-  &-inner {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-toast,
+  .nut-rtl .nut-toast {
     left: auto;
-    right: 50%;
+    right: 0;
+
+    &-inner {
+      left: auto;
+      right: 50%;
+    }
   }
 }
-}
-
 
 .toast-fade-enter-active {
   transition: opacity 0.3s;

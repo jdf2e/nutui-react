@@ -222,37 +222,36 @@
     padding-bottom: env(safe-area-inset-bottom);
     /* #endif */
   }
-}@if $nutui-enable-rtl {
-
-
-[dir='rtl'] .nut-actionsheet,
-.nut-rtl .nut-actionsheet {
-  .nut-actionsheet-header {
-    &-left {
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    &-slot-left {
-      right: $actionsheet-header-padding;
-      left: auto;
-    }
-
-    &-slot-right {
-      left: $actionsheet-header-padding;
-      right: auto;
-    }
-  }
-
-  .nut-actionsheet-collapse-arrow {
-    margin-right: 10.5px;
-    margin-left: 0;
-  }
-
-  .nut-actionsheet-item-icon {
-    margin-right: 0;
-    margin-left: 6px;
-  }
-}
 }
 
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-actionsheet,
+  .nut-rtl .nut-actionsheet {
+    .nut-actionsheet-header {
+      &-left {
+        align-items: flex-end;
+        text-align: right;
+      }
+
+      &-slot-left {
+        right: $actionsheet-header-padding;
+        left: auto;
+      }
+
+      &-slot-right {
+        left: $actionsheet-header-padding;
+        right: auto;
+      }
+    }
+
+    .nut-actionsheet-collapse-arrow {
+      margin-right: 10.5px;
+      margin-left: 0;
+    }
+
+    .nut-actionsheet-item-icon {
+      margin-right: 0;
+      margin-left: 6px;
+    }
+  }
+}

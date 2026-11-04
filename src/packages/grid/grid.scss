@@ -11,15 +11,14 @@
     border-top-width: $grid-border-width;
     border-left-width: $grid-border-width;
   }
-}@if $nutui-enable-rtl {
+}
 
-
-[dir='rtl'] .nut-grid,
-.nut-rtl .nut-grid {
-  &-border {
-    border-left-width: 0;
-    border-right-width: 1px;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-grid,
+  .nut-rtl .nut-grid {
+    &-border {
+      border-left-width: 0;
+      border-right-width: 1px;
+    }
   }
 }
-}
-

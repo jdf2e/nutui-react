@@ -71,14 +71,14 @@
     margin-left: $cascader-icon-checklist-marginLeft;
     visibility: hidden;
   }
-}@if $nutui-enable-rtl {
+}
 
-[dir='rtl'] .nut-cascader,
-.nut-rtl .nut-cascader {
-  .nut-icon-checklist {
-    margin-left: 0;
-    margin-right: $cascader-icon-checklist-marginLeft;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-cascader,
+  .nut-rtl .nut-cascader {
+    .nut-icon-checklist {
+      margin-left: 0;
+      margin-right: $cascader-icon-checklist-marginLeft;
+    }
   }
 }
-}
-

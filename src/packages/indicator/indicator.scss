@@ -209,27 +209,26 @@
       }
     }
   }
-}@if $nutui-enable-rtl {
+}
 
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-indicator,
+  .nut-rtl .nut-indicator {
+    &-dot {
+      &-0 {
+        margin-right: $indicator-dot-margin;
+        margin-left: 0;
+      }
+    }
 
-[dir='rtl'] .nut-indicator,
-.nut-rtl .nut-indicator {
-  &-dot {
-    &-0 {
-      margin-right: $indicator-dot-margin;
-      margin-left: 0;
+    &-inside-top-right {
+      right: auto;
+      left: $indicator-placement-gap;
+    }
+
+    &-inside-bottom-left {
+      left: auto;
+      right: $indicator-placement-gap;
     }
   }
-
-  &-inside-top-right {
-    right: auto;
-    left: $indicator-placement-gap;
-  }
-
-  &-inside-bottom-left {
-    left: auto;
-    right: $indicator-placement-gap;
-  }
 }
-}
-

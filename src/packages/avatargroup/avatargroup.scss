@@ -11,17 +11,16 @@
       margin-left: -8px;
     }
   }
-}@if $nutui-enable-rtl {
+}
 
-
-[dir='rtl'] .nut-avatar-group,
-.nut-rtl .nut-avatar-group {
-  .nut-avatar {
-    &:not(:first-of-type) {
-      margin-left: 0;
-      margin-right: -8px;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-avatar-group,
+  .nut-rtl .nut-avatar-group {
+    .nut-avatar {
+      &:not(:first-of-type) {
+        margin-left: 0;
+        margin-right: -8px;
+      }
     }
   }
 }
-}
-

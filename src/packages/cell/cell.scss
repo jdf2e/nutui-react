@@ -138,20 +138,19 @@
       padding-right: $cell-divider-left;
     }
   }
-}@if $nutui-enable-rtl {
-
-
-[dir='rtl'] .nut-cell,
-.nut-rtl .nut-cell {
-  .nut-cell-leading {
-    margin-right: 0;
-    margin-left: $cell-leading-margin;
-  }
-  .nut-cell-body + .nut-cell-extra,
-  .nut-cell-header > .nut-cell-title + .nut-cell-extra {
-    margin-left: 0;
-    margin-right: $cell-extra-margin;
-  }
-}
 }
 
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-cell,
+  .nut-rtl .nut-cell {
+    .nut-cell-leading {
+      margin-right: 0;
+      margin-left: $cell-leading-margin;
+    }
+    .nut-cell-body + .nut-cell-extra,
+    .nut-cell-header > .nut-cell-title + .nut-cell-extra {
+      margin-left: 0;
+      margin-right: $cell-extra-margin;
+    }
+  }
+}

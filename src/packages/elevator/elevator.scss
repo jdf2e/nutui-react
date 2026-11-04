@@ -150,27 +150,26 @@
       }
     }
   }
-}@if $nutui-enable-rtl {
+}
 
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-elevator,
+  .nut-rtl .nut-elevator {
+    &-list {
+      &-fixed {
+        left: auto;
+        right: 0;
+      }
+    }
 
-[dir='rtl'] .nut-elevator,
-.nut-rtl .nut-elevator {
-  &-list {
-    &-fixed {
-      left: auto;
-      right: 0;
+    &-code-current {
+      right: auto;
+      left: $elevator-list-item-code-current-right;
+    }
+
+    &-bars {
+      right: auto;
+      left: $elevator-bars-right;
     }
   }
-
-  &-code-current {
-    right: auto;
-    left: $elevator-list-item-code-current-right;
-  }
-
-  &-bars {
-    right: auto;
-    left: $elevator-bars-right;
-  }
 }
-}
-

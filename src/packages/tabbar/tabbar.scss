@@ -180,23 +180,22 @@
     bottom: 0;
     left: 0;
   }
-}@if $nutui-enable-rtl {
-
-
-[dir='rtl'] .nut-tabbar,
-.nut-rtl .nut-tabbar {
-  &:last-child {
-    border-right: none;
-    border-left: 0;
-  }
-
-  &-fixed {
-    left: auto;
-    right: 0;
-  }
-}
 }
 
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-tabbar,
+  .nut-rtl .nut-tabbar {
+    &:last-child {
+      border-right: none;
+      border-left: 0;
+    }
+
+    &-fixed {
+      left: auto;
+      right: 0;
+    }
+  }
+}
 
 @keyframes nut-tabbar-active-background-scale {
   0% {
