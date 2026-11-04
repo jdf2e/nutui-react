@@ -1,0 +1,42 @@
+src/styles/variables-jmapp.scss
+  s_eb86fd791f09c8::t_8d65dd0433ed2d 3309-3312
+.github/workflows/release-beta.yml
+  s_72fedea1debe28::t_7ec1d35b726be3 1,7,11
+  s_72fedea1debe28::t_505715927c07e1 15,23,25-29,31,33-41,44,47,49,51-52,55-58,75-77,79-87,89,91
+src/styles/variables-daojia.scss
+  s_eb86fd791f09c8::t_8b7826ec3f6dcb 2019-2022
+src/config.json
+  s_72fedea1debe28::t_32557b96d7090b 1310-1322
+CHANGELOG.md
+  s_eb86fd791f09c8::t_37a80c753edf1f 3-9
+  s_eb86fd791f09c8::t_e0bf8f7f79f2c3 13-17
+src/styles/variables-jrkf.scss
+  s_eb86fd791f09c8::t_f52a33dbab4c27 3331-3334
+.github/workflows/release.yml
+  s_72fedea1debe28::t_4ef958cf37fc5b 1,6-7,11
+  s_72fedea1debe28::t_7c7f22140d7b03 15,23-33,37,40-41,44-46,61-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "1b0bb5b72b9eac07cf9d3bc6c7a4eb02cacf8b50",
+  "prompts": {},
+  "sessions": {
+    "s_72fedea1debe28": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "88799f1a-faab-46d1-9757-881cbbb166c7",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    },
+    "s_eb86fd791f09c8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c8bedfbd-b215-441a-859e-a30dc093fa24",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
