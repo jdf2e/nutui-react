@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ActionSheet, Cell, pxTransform } from '@nutui/nutui-react-taro'
+import { ActionSheet, Cell, Swiper, pxTransform } from '@nutui/nutui-react-taro'
 import { Image, ScrollView, View } from '@tarojs/components'
 
 const icon =
@@ -7,6 +7,11 @@ const icon =
 
 const firstRow = Array.from({ length: 10 }, () => ({ name: '素材名称', icon }))
 const secondRow = Array.from({ length: 7 }, () => ({ name: '素材名称', icon }))
+const swipeOptions = Array.from({ length: 20 }, () => ({
+  name: '素材名称',
+  icon,
+}))
+const swipePages = [swipeOptions.slice(0, 10), swipeOptions.slice(10)]
 
 const scrollListStyle: React.CSSProperties = {
   display: 'inline-flex',
@@ -37,8 +42,14 @@ const scrollNameStyle: React.CSSProperties = {
   whiteSpace: 'nowrap',
 }
 
+const swipeGridStyle: React.CSSProperties = {
+  columnGap:
+    'calc((100% - 5 * var(--nutui-actionsheet-grid-item-width, calc(50px * var(--nut-scale-f, 1)))) / 4)',
+}
+
 const Demo7 = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [isSwipeTop, setIsSwipeTop] = useState(false)
   const [isGridBottom, setIsGridBottom] = useState(false)
   const [isScrollBottom, setIsScrollBottom] = useState(false)
   const [scrollVal, setScrollVal] = useState('')
@@ -64,6 +75,23 @@ const Demo7 = () => {
     { name: '素材名称', icon },
     { name: '素材名称', icon },
   ]
+
+  const renderSwipeGrid = (list: { name: string; icon: string }[]) => (
+    <View className="nut-actionsheet-grid" style={swipeGridStyle}>
+      {list.map((item, index) => (
+        <View
+          className="nut-actionsheet-grid-item"
+          key={index}
+          onClick={() => setIsSwipeTop(false)}
+        >
+          <View className="nut-actionsheet-grid-icon">
+            <Image className="nut-actionsheet-grid-icon-img" src={item.icon} />
+          </View>
+          <View className="nut-actionsheet-grid-name">{item.name}</View>
+        </View>
+      ))}
+    </View>
+  )
 
   const renderScrollRow = (list: { name: string; icon: string }[]) => (
     <ScrollView scrollX enableFlex showScrollbar={false}>
@@ -98,6 +126,21 @@ const Demo7 = () => {
         onSelect={() => setIsVisible(false)}
         onCancel={() => setIsVisible(false)}
       />
+      <Cell onClick={() => setIsSwipeTop(!isSwipeTop)}>
+        <View>顶部弹出+横向滑动</View>
+      </Cell>
+      <ActionSheet
+        visible={isSwipeTop}
+        position="top"
+        cancelText="点击收起"
+        onCancel={() => setIsSwipeTop(false)}
+      >
+        <Swiper indicator={false} loop={false} height={pxTransform(200)}>
+          {swipePages.map((page, index) => (
+            <Swiper.Item key={index}>{renderSwipeGrid(page)}</Swiper.Item>
+          ))}
+        </Swiper>
+      </ActionSheet>
       <Cell onClick={() => setIsGridBottom(!isGridBottom)}>
         <View>底部弹出+网格布局</View>
       </Cell>

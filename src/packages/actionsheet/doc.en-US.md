@@ -64,7 +64,7 @@ Customize the panel content via `children`. Here `Checkbox` is reused to build a
 
 ### Popup Position
 
-Pop up from the top via `position="top"`. Content is displayed as a grid, and `options` support an `icon` field (a string is rendered with `img`, or a custom node can be passed). The grid layout can also be used for bottom popups via `layout="grid"`; `columns` only supports `4` or `5`, and `4` gives wider horizontal spacing. Bottom popups can also customize the panel content through `children`, and the example places two horizontally scrollable rows that scroll independently.
+Pop up from the top via `position="top"`. Content is displayed as a grid, and `options` support an `icon` field (a string is rendered with `img`, or a custom node can be passed). The grid layout can also be used for bottom popups via `layout="grid"`; `columns` only supports `4` or `5`, and `4` gives wider horizontal spacing. Top popups can also use `children` with `Swiper` for horizontally paginated sliding with indicators and looping disabled. Bottom popups can also customize the panel content through `children`, and the example places two horizontally scrollable rows that scroll independently.
 
 :::demo
 

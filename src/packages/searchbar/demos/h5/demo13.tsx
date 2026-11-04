@@ -49,7 +49,7 @@ const Demo13 = () => {
               style={{
                 height: 28,
                 padding: '0 12px',
-                borderRadius: 'var(--nutui-radius-l)',
+                borderRadius: 'var(--nutui-radius-base)',
               }}
             >
               搜索

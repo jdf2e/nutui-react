@@ -11,6 +11,8 @@ const Demo2 = () => {
         actions={[
           {
             text: '负向操作',
+            type: 'default',
+            fill: 'light',
           },
           {
             text: '建议操作',
