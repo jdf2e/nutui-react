@@ -86,21 +86,23 @@
   }
 }
 
-[dir='rtl'] .nut-tour,
-.nut-rtl .nut-tour {
-  &-content {
-    &-bottom {
-      &-operate {
-        &-btn {
-          margin-left: 0;
-          margin-right: $tour-content-bottom-btn-margin-left;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-tour,
+  .nut-rtl .nut-tour {
+    &-content {
+      &-bottom {
+        &-operate {
+          &-btn {
+            margin-left: 0;
+            margin-right: $tour-content-bottom-btn-margin-left;
+          }
         }
       }
     }
-  }
 
-  &-masked {
-    left: auto;
-    right: 0;
+    &-masked {
+      left: auto;
+      right: 0;
+    }
   }
 }

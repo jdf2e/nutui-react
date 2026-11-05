@@ -69,6 +69,92 @@ export default defineConfig({
 }
 ```
 
+### Recommended: Use Lightweight Core Tokens (`variables-core.scss`)
+
+NutUI-React extracts core design system variables into `variables-core.scss` (~260 lines, **92% lighter** than the full 3300+ lines `variables.scss`).
+
+> [!WARNING] Important Note: Check how component styles are imported
+>
+> - **Precompiled CSS (Recommended, e.g. `style: 'css'` or `import 'style.css'`)**: Component styles are precompiled by the official build. Injecting `variables-core.scss` into `additionalData` for your own styles is **completely safe and significantly faster**.
+> - **On-demand SCSS Source Compilation (e.g. `style: true` or directly importing component `.scss` source)**: NutUI component SCSS sources rely on component-private variables (e.g. `$tabs-titles-height`, `$button-default-height`). In this mode, **you MUST inject the full `variables.scss`**, not `variables-core.scss`, otherwise compilation fails with `Undefined variable`.
+
+#### What's Included
+
+- Global scale functions (`scale-px`, `scale-font-px`, `scale-icon-px`)
+- Basic color system (primary color `$color-primary`, functional colors, text/bg/border/mask neutrals)
+- Font size hierarchy (`$font-size-...`), line-height, and font-weight
+- Common spacing (`$spacing-...`), radius (`$radius-...`), shadows, and z-index
+- Animation timing and easing functions (`$animation-...`)
+
+#### Use Cases
+
+1. **Global Injection (Recommended)**: For business applications or in-house UI components, only generic Design Tokens are needed, avoiding injecting thousands of lines of unused component-private variables and significantly speeding up Sass builds.
+2. **Minimal Theme Overrides**: Perfect when only customizing brand colors, common border radii, and global tokens.
+
+#### Configuration Examples
+
+##### Vite
+
+```javascript
+// vite.config.ts
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Recommended: inject only core tokens (92% smaller, faster build)
+        additionalData: `@import "@nutui/nutui-react/dist/styles/variables-core.scss";@import "./your/custom_theme.scss";`,
+      },
+    },
+  },
+})
+```
+
+##### Webpack
+
+```javascript
+{
+  test: /\.(sa|sc)ss$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        additionalData: `@import "@nutui/nutui-react/dist/styles/variables-core.scss";@import "./assets/custom_theme.scss";`,
+      },
+    },
+  ],
+}
+```
+
+##### Direct Import in Business SCSS
+
+```scss
+// In your page or component SCSS
+@import '@nutui/nutui-react/dist/styles/variables-core.scss';
+
+.my-business-card {
+  padding: $spacing-base;
+  border-radius: $radius-base;
+  color: $color-title;
+  background-color: $color-background;
+
+  .primary-action {
+    color: $color-primary;
+    font-size: $font-size-l;
+    font-weight: $font-weight-bold;
+  }
+}
+```
+
+#### Comparison
+
+| Scenario & Style Import Method | Recommended File | Advantage & Notes |
+| --- | --- | --- |
+| **Using Precompiled CSS + Authoring App Styles / In-house Components** | `variables-core.scss` (⭐Recommended) | ~260 lines, 92% lighter, fastest build, zero dead variables |
+| **Customizing brand color, border-radius, spacing tokens** | `variables-core.scss` (⭐Recommended) | Complete core Design Tokens included |
+| **Compiling Component SCSS locally (`style: true`) or fine-tuning component-private styles** | `variables.scss` (⚠️Required) | Includes private variables for all 100+ components to ensure SCSS compilation |
+
 ## Dark Mode
 
 NutUI-React natively supports dark mode. The component library uses a set of independently tuned color variables in dark mode.

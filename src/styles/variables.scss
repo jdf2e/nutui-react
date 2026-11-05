@@ -1,4 +1,8 @@
 // ----------------------------------------------------
+// RTL 开关：默认为 true 保证开源国际化兼容；如无需 RTL，可在业务 Sass 配置中设为 false，编译时将不输出 RTL 规则
+$nutui-enable-rtl: true !default;
+@import './scale.scss';
+
 // 缩放系数
 :root,
 page {
@@ -11,15 +15,6 @@ page {
   --nut-icon-width: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
   --nut-icon-line-height: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
 }
-@function scale-px($size) {
-  @return calc(#{$size} * var(--nut-scale-f, 1));
-}
-@function scale-font-px($size) {
-  @return calc(#{$size} * var(--nut-scale-font, var(--nut-scale-f, 1)));
-}
-@function scale-icon-px($size) {
-  @return calc(#{$size} * var(--nut-scale-icon, var(--nut-scale-f, 1)));
-}
 // 主色调 // done
 $color-primary: var(--nutui-color-primary, #ff0f23) !default;
 $color-primary-stop-1: var(--nutui-color-primary-stop-1, #ff475d) !default;
@@ -29,6 +24,10 @@ $color-primary-disabled: var(--nutui-color-primary-disabled, #c2c4cc) !default;
 $color-primary-disabled-special: var(
   --nutui-color-primary-disabled-special,
   #ff91a5
+) !default;
+$color-primary-light: var(
+  --nutui-color-primary-light,
+  rgba(250, 44, 25, 0.1)
 ) !default;
 $color-primary-light-pressed: var(
   --nutui-color-primary-light-pressed,
@@ -510,24 +509,11 @@ $button-service-pressed: var(
 
 $button-primary-light-color: var(
   --nutui-button-primary-light-color,
-  $button-primary-background-color
+  $color-primary
 ) !default;
 $button-primary-light-background-color: var(
   --nutui-button-primary-light-background-color,
-  rgba(250, 44, 25, 0.1)
-) !default;
-$button-primary-light-border-color: var(
-  --nutui-button-primary-light-border-color,
-  transparent
-) !default;
-
-$button-primary-light-color: var(
-  --nutui-button-primary-light-color,
-  $button-primary-background-color
-) !default;
-$button-primary-light-background-color: var(
-  --nutui-button-primary-light-background-color,
-  rgba(250, 44, 25, 0.1)
+  $color-primary-light
 ) !default;
 $button-primary-light-border-color: var(
   --nutui-button-primary-light-border-color,
