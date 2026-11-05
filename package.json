@@ -174,7 +174,7 @@
     "autoprefixer": "^10.5.4",
     "axios": "^1.19.0",
     "cypress": "^13.17.0",
-    "del": "^8.0.1",
+    "del": "^9.0.1",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.2",
