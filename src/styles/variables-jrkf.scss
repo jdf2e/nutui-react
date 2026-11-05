@@ -1,5 +1,6 @@
 // ----------------------------------------------------
 $nutui-enable-rtl: true !default;
+@import './scale.scss';
 // 主色调
 $color-primary: var(--nutui-color-primary, #ff6666) !default;
 $color-primary-stop-1: var(--nutui-color-primary-stop-1, #ff9999) !default;

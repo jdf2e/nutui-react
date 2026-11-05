@@ -31,6 +31,27 @@ export interface CSSTransitionProps {
 export type TransitionStatus =
   'unmounted' | 'exited' | 'entering' | 'entered' | 'exiting'
 
+type AnimationStage =
+  | 'appear-active'
+  | 'appear-done'
+  | 'enter'
+  | 'enter-active'
+  | 'enter-done'
+  | 'exit'
+  | 'exit-active'
+  | 'exit-done'
+
+function getAnimationClass(name: string, stage: AnimationStage) {
+  if (!name) return ''
+  if (stage === 'appear-done') {
+    return `${name}-appear-done ${name}-enter-done`
+  }
+  if (stage.endsWith('-active')) {
+    return `${name}-${stage.slice(0, -7)} ${name}-${stage}`
+  }
+  return `${name}-${stage}`
+}
+
 export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
   in: inProp = false,
   timeout = 300,
@@ -51,6 +72,8 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
     typeof timeout === 'object' ? (timeout.enter ?? 300) : timeout
   const exitTimeout =
     typeof timeout === 'object' ? (timeout.exit ?? 300) : timeout
+  const appearTimeout =
+    typeof timeout === 'object' ? (timeout.appear ?? enterTimeout) : timeout
 
   const getInitialStatus = (): TransitionStatus => {
     if (inProp) {
@@ -60,20 +83,20 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
   }
 
   const [status, setStatus] = useState<TransitionStatus>(getInitialStatus)
-  const [animationClass, setAnimationClass] = useState<string>(() => {
-    if (!transitionName) return ''
+  const [animationStage, setAnimationStage] = useState<AnimationStage>(() => {
     if (inProp) {
-      return appear
-        ? `${transitionName}-appear ${transitionName}-appear-active`
-        : `${transitionName}-enter-done`
+      return appear ? 'appear-active' : 'enter-done'
     }
-    return `${transitionName}-exit-done`
+    return 'exit-done'
   })
+  const animationClass = getAnimationClass(transitionName, animationStage)
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const nextFrameRef = useRef<number | null>(null)
+  const nextFrameRef = useRef<ReturnType<typeof requestAniFrame> | null>(null)
   const statusRef = useRef<TransitionStatus>(status)
   statusRef.current = status
+  const unmountOnExitRef = useRef(unmountOnExit)
+  unmountOnExitRef.current = unmountOnExit
 
   // 轮次版本号：防止过期异步任务误覆盖最新状态或误卸载
   const transitionIdRef = useRef(0)
@@ -100,11 +123,11 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
   }
 
   const clearTimers = () => {
-    if (timerRef.current) {
+    if (timerRef.current !== null) {
       clearTimeout(timerRef.current)
       timerRef.current = null
     }
-    if (nextFrameRef.current) {
+    if (nextFrameRef.current !== null) {
       cancelRaf(nextFrameRef.current)
       nextFrameRef.current = null
     }
@@ -114,6 +137,8 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
     return () => {
       transitionIdRef.current += 1
       clearTimers()
+      // StrictMode 的 effect 重放需要恢复首次 appear 的任务。
+      isMountedRef.current = false
     }
   }, [])
 
@@ -121,24 +146,27 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
     // 首次挂载处理
     if (!isMountedRef.current) {
       isMountedRef.current = true
+      prevInPropRef.current = inProp
       if (inProp && appear) {
         const currentId = ++transitionIdRef.current
         callbacksRef.current.onEnter?.()
         callbacksRef.current.onEntering?.()
         timerRef.current = setTimeout(() => {
           if (transitionIdRef.current !== currentId) return
+          timerRef.current = null
           setStatus('entered')
-          setAnimationClass(
-            transitionName ? `${transitionName}-enter-done` : ''
-          )
+          setAnimationStage('appear-done')
           callbacksRef.current.onEntered?.()
-        }, enterTimeout)
+        }, appearTimeout)
       }
       return
     }
 
-    // 状态无变化时（例如 StrictMode 重新执行 effect 或其他 props 更新），直接跳过
+    // 配置更新不重启动画；已退出的内容仍需响应最新销毁配置。
     if (prevInPropRef.current === inProp) {
+      if (!inProp && unmountOnExit && statusRef.current === 'exited') {
+        setStatus('unmounted')
+      }
       return
     }
     prevInPropRef.current = inProp
@@ -150,23 +178,19 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
       // 进入阶段
       setStatus('entering')
       callbacksRef.current.onEnter?.()
-      setAnimationClass(transitionName ? `${transitionName}-enter` : '')
+      setAnimationStage('enter')
 
       nextFrameRef.current = requestAniFrame(() => {
         if (transitionIdRef.current !== currentId) return
-        setAnimationClass(
-          transitionName
-            ? `${transitionName}-enter ${transitionName}-enter-active`
-            : ''
-        )
+        nextFrameRef.current = null
+        setAnimationStage('enter-active')
         callbacksRef.current.onEntering?.()
 
         timerRef.current = setTimeout(() => {
           if (transitionIdRef.current !== currentId) return
+          timerRef.current = null
           setStatus('entered')
-          setAnimationClass(
-            transitionName ? `${transitionName}-enter-done` : ''
-          )
+          setAnimationStage('enter-done')
           callbacksRef.current.onEntered?.()
         }, enterTimeout)
       })
@@ -178,26 +202,24 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
 
       setStatus('exiting')
       callbacksRef.current.onExit?.()
-      setAnimationClass(transitionName ? `${transitionName}-exit` : '')
+      setAnimationStage('exit')
 
       nextFrameRef.current = requestAniFrame(() => {
         if (transitionIdRef.current !== currentId) return
-        setAnimationClass(
-          transitionName
-            ? `${transitionName}-exit ${transitionName}-exit-active`
-            : ''
-        )
+        nextFrameRef.current = null
+        setAnimationStage('exit-active')
         callbacksRef.current.onExiting?.()
 
         timerRef.current = setTimeout(() => {
           if (transitionIdRef.current !== currentId) return
-          setStatus(unmountOnExit ? 'unmounted' : 'exited')
-          setAnimationClass(transitionName ? `${transitionName}-exit-done` : '')
+          timerRef.current = null
+          setStatus(unmountOnExitRef.current ? 'unmounted' : 'exited')
+          setAnimationStage('exit-done')
           callbacksRef.current.onExited?.()
         }, exitTimeout)
       })
     }
-  }, [inProp, appear, enterTimeout, exitTimeout, transitionName, unmountOnExit])
+  }, [inProp, appear, appearTimeout, enterTimeout, exitTimeout, unmountOnExit])
 
   if (status === 'unmounted') {
     return null

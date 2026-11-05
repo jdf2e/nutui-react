@@ -10,14 +10,48 @@
 | 治理阶段 | 累计 JS 节省 | 累计 CSS 节省 | npm 依赖精简 | 主要优化组件 / 模块 | 状态 |
 | --- | --- | --- | --- | --- | --- |
 | **P0 阶段** | **4.2 KB** | — | 剔除 5 个非必要依赖，Taro/H5 彻底解耦 | `ConfigProvider`, 构建发布脚本 | **已完成** ✅ |
-| **P1 阶段** | — | **23.2 KB** | — | RTL 配置化 (~6.3KB) + Button 样式解耦 (~16.9KB) | **已完成** ✅ |
-| **P2 阶段** | — | **按需解耦** | — | 主题变量分域 (核心 Design Tokens `variables-core.scss`) | **已完成** ✅ |
+| **P1 阶段** | — | **26.0 KB** | — | RTL 配置化 (~6.3KB) + 复合组件样式解耦 (~19.7KB) | **已完成** ✅ |
+| **P2 阶段** | — | **按需解耦** | — | 主题变量分域 + 公共语义 Token `$color-primary-light` | **已完成** ✅ |
 | **P3 阶段** | **~14 KB** | — | Taro 端剔除 `react-transition-group` 及其子依赖 | `Popup`, `Dialog`, `Notify`, `MenuItem`, `Overlay` | **已完成** ✅ |
-| **总计当前** | **~18.2 KB** | **23.2 KB** | **Taro 端彻底剔除 6 个外部依赖，保持 0 破坏性** | **全端组件生态** | **已完成** ✅ |
+| **增固阶段** | **构建纯净化** | **0 硬编码补丁** | 彻底阻断测试文件泄漏，修复 scale/rtl 缩放与层叠 | 全端构建流水线、调度器、过渡状态机 | **已完成** ✅ |
+| **总计当前** | **~18.2 KB** | **~26.0 KB** | **Taro 端彻底剔除 6 个外部依赖，发布包纯净度提升** | **全端组件生态** | **已完成** ✅ |
 
 ---
 
 ## 📝 详细更新日志 (Changelog)
+
+### [2026-11-05] 治理增固: 复合组件坚守减重、成对调度器重构、构建排除与设计系统变量归位
+
+- **关联分支**：`perf/bundle-size`
+- **影响平台**：Web H5 (`@nutui/nutui-react`) + Taro 全端 (`@nutui/nutui-react-taro`)
+
+#### 1. 改动内容 (Changes)
+
+1. **复合组件坚守减重底线与测试闭环**：
+   - `Empty` (`empty.scss`) 与 `ResultPage` (`resultpage.scss`) 坚决保持 `@import '../button/button-base.scss'`，阻断 19.7KB 全量按钮扩展变体拉取。
+   - `EmptyAction` 与 `ResultPageAction` 补充标准注释，规范操作按钮主次形态（原生支持全部 5 种 `fill` 模式与常用尺寸）。
+   - 新增 `src/utils/__test__/build-styles.spec.ts` 自动化回归套件，断言三大复合组件仅拉取 `base-mini`，打包产物严格阻断 `.nut-button-xlarge` 与 `.nut-button-success`。
+2. **设计系统正本清源（消除硬编码补丁）**：
+   - 彻底删除此前在组件和主题尾部临时硬编码的 `.nut-theme-dark` 补丁规则。
+   - 补全公共语义 Token `$color-primary-light`，四套主题变量完全对齐，暗黑模式由全局 CSS 变量自然流转生效。
+   - 提取 `src/styles/scale.scss`，统一维护 `scale-px` 缩放函数，消除主题变量文件重复定义。
+3. **动画调度器与过渡状态机工业级升级**：
+   - `src/utils/raf.ts` 重构为 `createFrameScheduler`，严格校验 `request` 与 `cancel` 原生 API 成对可用，否则降级为定时器，消除环境 Mock 导致无法打断的缺陷。
+   - `css-transition.tsx` 抽象 `AnimationStage`，支持独立 `appearTimeout`，修复 StrictMode 下 initial appear 回放与非动画属性平滑动态响应。
+4. **构建流水线与发布包纯净化**：
+   - 将 `strip-rtl.mjs` 独立模块化，增强对无引号属性（Dart Sass 输出）和独立 RTL 类名的识别清洗能力。
+   - 修复 `mini.js` 误写入未编译 `.scss` 导致无 Sass 环境报错的问题。
+   - 构建 `buildES` 与 `tsconfig` 全面排除 `*.spec.ts`, `*.test.ts`, `__test__` 测试用例，杜绝测试代码与依赖泄漏至 npm 发布包。
+
+#### 2. 量化收益 (Metrics & Gains)
+
+- **减重成果完整保住**：
+  - `Empty` 与 `ResultPage` 保持减重，单组件按需引入节省 **~16KB ~ 19.7KB** CSS。
+  - 全库暗黑补丁代码归零，产物更紧凑。
+- **质量与可靠性提升**：
+  - 62 项严苛自动化单测（涵盖 VM 编译、esbuild 打包集成测试）全部通过。
+
+---
 
 ### [2026-11-04] P3: Taro 小程序端弹层动画解耦（彻底移除 react-transition-group，节省 ~14KB JS）
 

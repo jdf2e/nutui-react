@@ -16,28 +16,13 @@ import { readFileSync } from 'fs'
 import { relativePath } from './relative-path.mjs'
 import { codeShift } from './build-comments-to-dts.mjs'
 import { generate } from './build-theme-typings.mjs'
+import stripRtlPlugin from './strip-rtl.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const require = createRequire(import.meta.url)
 const pxToScalePxInComponentScss = require('./px-to-scale-px-in-component-scss.cjs')
 
-// PostCSS 插件：剥离 RTL 选择器，输出轻量无 RTL 产物 (style.mini.css)
-const stripRtlPlugin = {
-  postcssPlugin: 'strip-rtl',
-  Rule(rule) {
-    if (!rule.selector) return
-    const selectors = rule.selectors || rule.selector.split(',').map((s) => s.trim())
-    const nonRtlSelectors = selectors.filter(
-      (s) => !s.includes('.nut-rtl') && !s.includes("[dir='rtl']") && !s.includes('[dir="rtl"]')
-    )
-    if (nonRtlSelectors.length === 0) {
-      rule.remove()
-    } else if (nonRtlSelectors.length < selectors.length) {
-      rule.selectors = nonRtlSelectors
-    }
-  },
-}
 const dist = 'release/taro/dist'
 const filePath = resolve(__dirname, '../package.json')
 const packageJson = JSON.parse(readFileSync(filePath, 'utf8'))
@@ -115,7 +100,8 @@ async function buildES(p) {
       ignore: [
         'src/packages/**/demo.{ts,tsx}',
         'src/packages/**/demo.taro.{ts,tsx}',
-        'src/packages/**/*.spec.tsx',
+        'src/**/*.{spec,test}.{ts,tsx}',
+        'src/**/{__test__,__tests__}/**/*',
         'src/packages/**/demos/**/*',
       ],
     },
@@ -455,7 +441,7 @@ async function buildCSS(themeName = '') {
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.mini.css`), miniCssResult.css)
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/style.mini.css`), miniCssResult.css)
 
-    // 若当前为 button 组件，独立构建其 button-base 轻量样式产物供 Dialog/Empty 等调用
+    // 若当前为 button 组件，独立构建其 button-base 轻量样式产物供 Dialog/Empty/ResultPage 等复合组件调用
     if (base === 'button.scss') {
       const buttonBasePath = join(__dirname, '../src/packages/button/button-base.scss')
       const buttonSizePath = join(__dirname, '../src/packages/button/button-size.scss')
@@ -507,7 +493,6 @@ async function buildCSS(themeName = '') {
       if (rule.indexOf('../styles/') > -1) {
         const ext = extname(rule)
         jsContent.push(`import '../../${rule}${ext ? '' : '.scss'}';`)
-        miniContent.push(`import '../../${rule}${ext ? '' : '.scss'}';`)
       } else if (rule.startsWith('../') || rule.startsWith('./')) {
         const base = basename(rule)
         const ext = extname(base)

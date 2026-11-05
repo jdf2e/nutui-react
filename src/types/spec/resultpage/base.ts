@@ -6,12 +6,13 @@ export type ResultPageStatusOptions = {
   [key: string]: React.ReactNode
 }
 export type ResultPageStatus =
-  | 'success'
-  | 'error'
-  | 'warning'
-  | 'info'
-  | 'waiting'
+  'success' | 'error' | 'warning' | 'info' | 'waiting'
 
+/**
+ * ResultPage 操作按钮配置项。
+ * 复合组件按需引入轻量基础按钮样式（button-base，节省 ~19.7KB），原生支持 default / primary 核心类型及全部 5 种 fill 填充形态；
+ * 如需在 actions 中使用 success/danger/golden 等扩展按钮变体，请在页面中另行显式引入 Button 组件样式。
+ */
 export type ResultPageAction = {
   text: ReactNode
   type?: UIType

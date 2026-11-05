@@ -1,24 +1,6 @@
 import postcss from 'postcss'
-
-const stripRtlPlugin = {
-  postcssPlugin: 'strip-rtl',
-  Rule(rule: any) {
-    if (!rule.selector) return
-    const selectors =
-      rule.selectors || rule.selector.split(',').map((s: string) => s.trim())
-    const nonRtlSelectors = selectors.filter(
-      (s: string) =>
-        !s.includes('.nut-rtl') &&
-        !s.includes("[dir='rtl']") &&
-        !s.includes('[dir="rtl"]')
-    )
-    if (nonRtlSelectors.length === 0) {
-      rule.remove()
-    } else if (nonRtlSelectors.length < selectors.length) {
-      rule.selectors = nonRtlSelectors
-    }
-  },
-}
+import * as sass from 'sass'
+import stripRtlPlugin from '../../../../scripts/strip-rtl.mjs'
 
 describe('RTL strip plugin and configuration', () => {
   test('should completely strip pure RTL selectors', async () => {
@@ -71,5 +53,54 @@ describe('RTL strip plugin and configuration', () => {
     expect(result.css).toContain('.nut-tabs-titles { display: flex; }')
     expect(result.css).not.toContain('row-reverse')
     expect(result.css).not.toContain('nut-col-offset-1')
+  })
+
+  test('strips the unquoted dir attribute emitted by Sass', async () => {
+    const css = sass.compileString(`
+      .nut-button { padding: 4px; }
+      [dir='rtl'] .nut-button { padding-right: 8px; }
+    `).css
+    expect(css).toContain('[dir=rtl]')
+    const result = await postcss([stripRtlPlugin]).process(css, {
+      from: undefined,
+    })
+    expect(result.css).toContain('.nut-button')
+    expect(result.css).not.toContain('[dir=rtl]')
+    expect(result.css).not.toContain('padding-right')
+  })
+
+  test('strips standalone RTL aliases and their dedicated keyframes', async () => {
+    const result = await postcss([stripRtlPlugin]).process(
+      `
+      .rtl-nut-range-tick { right: 0; }
+      .nut-backtop-rtl { left: 10px; }
+      .nut-hoverbutton-container-rtl { right: 10px; }
+      @keyframes moving { to { transform: translateX(100%); } }
+      @keyframes moving-rtl { to { transform: translateX(-100%); } }
+      @-webkit-keyframes moving-rtl { to { transform: translateX(-100%); } }
+    `,
+      { from: undefined }
+    )
+    expect(result.css).not.toContain('.rtl-nut-range')
+    expect(result.css).not.toContain('.nut-backtop-rtl')
+    expect(result.css).not.toContain('.nut-hoverbutton-container-rtl')
+    expect(result.css).not.toContain('moving-rtl')
+    expect(result.css).toContain('@keyframes moving')
+  })
+
+  test('preserves nested component modifiers and unrelated attributes', async () => {
+    const css = `
+      .nut-range .nut-range-rtl { direction: rtl; }
+      .nut-rtl-toggle, [data-dir=rtl] { color: red; }
+      .nut-button:is(.primary, .default), [dir="rtl"] .nut-button { padding: 4px; }
+    `
+    const result = await postcss([stripRtlPlugin]).process(css, {
+      from: undefined,
+    })
+    expect(result.css).toContain('.nut-range .nut-range-rtl')
+    expect(result.css).toContain('.nut-rtl-toggle')
+    expect(result.css).toContain('[data-dir=rtl]')
+    expect(result.css).toContain('.nut-button:is(.primary, .default)')
+    expect(result.css).not.toContain('[dir="rtl"]')
   })
 })

@@ -1,6 +1,7 @@
 // ----------------------------------------------------
 // RTL 开关：默认为 true 保证开源国际化兼容；如无需 RTL，可在业务 Sass 配置中设为 false，编译时将不输出 RTL 规则
 $nutui-enable-rtl: true !default;
+@import './scale.scss';
 
 // 缩放系数
 :root,
@@ -13,15 +14,6 @@ page {
   --nut-icon-height: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
   --nut-icon-width: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
   --nut-icon-line-height: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
-}
-@function scale-px($size) {
-  @return calc(#{$size} * var(--nut-scale-f, 1));
-}
-@function scale-font-px($size) {
-  @return calc(#{$size} * var(--nut-scale-font, var(--nut-scale-f, 1)));
-}
-@function scale-icon-px($size) {
-  @return calc(#{$size} * var(--nut-scale-icon, var(--nut-scale-f, 1)));
 }
 // 主色调 // done
 $color-primary: var(--nutui-color-primary, #ff0f23) !default;
