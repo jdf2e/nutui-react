@@ -8,15 +8,26 @@
   "author": "jdcfe",
   "exports": {
     ".": "./src/index.ts",
-    "./scripts/prepare-data.mjs": "./scripts/prepare-data.mjs"
+    "./scripts/prepare-data.mjs": "./scripts/prepare-data.mjs",
+    "./scripts/sync.mjs": "./scripts/sync.mjs",
+    "./scripts/build-meta.mjs": "./scripts/build-meta.mjs",
+    "./scripts/create-properties.mjs": "./scripts/create-properties.mjs"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
+    "semver": "^7.8.0",
     "yargs": "^17.7.3"
   },
   "devDependencies": {
     "@types/node": "^22.20.1",
+    "@types/semver": "^7.7.1",
     "@types/yargs": "^17.0.35",
-    "typescript": "^5.6.2"
+    "markdown-it": "^14.2.0",
+    "typescript": "^5.6.2",
+    "vitest": "^3.2.7"
   }
 }

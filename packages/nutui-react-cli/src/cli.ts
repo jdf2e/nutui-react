@@ -12,6 +12,7 @@ const dataDir = fileURLToPath(new URL('../data/', import.meta.url))
 const config: CliConfig = {
   binName: 'nutui-react',
   cliPkgName: '@nutui/nutui-react-cli',
+  npmPackageName: '@nutui/nutui-react',
   platform: 'h5',
   libLabel: 'NutUI React（H5）',
   demoLabel: 'H5',
