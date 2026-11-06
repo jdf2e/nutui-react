@@ -1,3 +1,11 @@
+# v3.0.24-cpp-beta.5
+
+`2026-11-06`
+
+- 🐛 fix(dialog): 优化 iPhone Duo 分屏识别逻辑，修复分屏左侧弹窗靠右贴中缝问题，严格基于单屏视口水平居中
+- 🐛 fix(popup): 适配 iPhone Duo 分屏模式，分屏左侧自适应铺满单屏，分屏右侧自动避让 84px 侧边栏安全区
+- 📱 feat(duo): 完善多姿态及分屏单侧屏幕宽度（resolveDuoSplitScreenMetrics）与左右侧分屏判断机制
+
 # v3.0.24-cpp-beta.3
 
 `2026-10-29`

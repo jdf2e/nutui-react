@@ -282,4 +282,103 @@ describe('Popup Taro Component & Duo Adaptation', () => {
       })
     )
   })
+
+  test('should adapt Popup to split-screen mode for both left and right split', () => {
+    const setIOSDialogAppearanceSync = vi.fn(() => true)
+    ;(Taro as any).JDNavigationBar = {
+      setIOSDialogAppearanceSync,
+    }
+
+    // 1. 左侧分屏：Popup center 严格以 50% 居中，Popup bottom 铺满单屏宽度（466px）
+    ;(Taro as any).__setMockSystemInfo({
+      platform: 'ios',
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+      windowWidth: 466,
+      windowHeight: 844,
+      screenWidth: 951,
+      screenHeight: 844,
+      splitSide: 'left',
+      avoidAreas: [{ x: 466, y: 0, width: 9, height: 844 }],
+    })
+
+    const { container: leftCenterContainer, unmount: unmountLeftCenter } =
+      render(
+        <Popup visible overlay position="center">
+          左侧分屏居中
+        </Popup>
+      )
+    const leftCenterPopup = leftCenterContainer.querySelector(
+      '.nut-popup'
+    ) as HTMLElement
+    expect(leftCenterPopup.style.left).toBe('50%')
+    expect(leftCenterPopup.style.transform).toBe('translate(-50%, -50%)')
+    unmountLeftCenter()
+
+    const { container: leftBottomContainer, unmount: unmountLeftBottom } =
+      render(
+        <Popup visible overlay position="bottom">
+          左侧分屏底部
+        </Popup>
+      )
+    const leftBottomPopup = leftBottomContainer.querySelector(
+      '.nut-popup'
+    ) as HTMLElement
+    expect(leftBottomPopup.style.left).toBe('0px')
+    expect(leftBottomPopup.style.width).toBe('466px')
+    unmountLeftBottom()
+
+    // 2. 右侧分屏（覆盖安全区）：Popup center 居中于 237.5px，Popup bottom 避开右侧安全区（382px）
+    ;(Taro as any).__setMockSystemInfo({
+      platform: 'ios',
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+      windowWidth: 382,
+      windowHeight: 844,
+      screenWidth: 951,
+      screenHeight: 844,
+      splitSide: 'right',
+      avoidAreas: [{ x: 382, y: 0, width: 84, height: 844 }],
+    })
+
+    const { container: rightCenterContainer, unmount: unmountRightCenter } =
+      render(
+        <Popup visible overlay position="center">
+          右侧分屏居中
+        </Popup>
+      )
+    const rightCenterPopup = rightCenterContainer.querySelector(
+      '.nut-popup'
+    ) as HTMLElement
+    expect(rightCenterPopup.style.left).toBe('237.5px')
+    unmountRightCenter()
+
+    const {
+      container: rightCenterSafeAreaContainer,
+      unmount: unmountRightCenterSafeArea,
+    } = render(
+      <Popup visible overlay position="center" centerBase="safeArea">
+        右侧分屏安全区居中
+      </Popup>
+    )
+    const rightCenterSafeAreaPopup = rightCenterSafeAreaContainer.querySelector(
+      '.nut-popup'
+    ) as HTMLElement
+    expect(rightCenterSafeAreaPopup.style.left).toBe('191px')
+    unmountRightCenterSafeArea()
+
+    const { container: rightBottomContainer, unmount: unmountRightBottom } =
+      render(
+        <Popup visible overlay position="bottom">
+          右侧分屏底部
+        </Popup>
+      )
+    const rightBottomPopup = rightBottomContainer.querySelector(
+      '.nut-popup'
+    ) as HTMLElement
+    expect(rightBottomPopup.style.left).toBe('0px')
+    // 避开右侧安全区（84px 侧边栏），面板宽度对齐业务窗宽 382px，蒙层覆盖整窗
+    expect(rightBottomPopup.style.width).toBe('382px')
+    unmountRightBottom()
+  })
 })

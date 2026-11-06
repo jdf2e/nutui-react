@@ -19,6 +19,15 @@ import { useDuoLayout } from '@/hooks/taro/use-duo-layout'
 import { resolveDuoMaskColor } from '@/utils/taro/duo-dialog-appearance'
 import { mergeProps } from '@/utils/merge-props'
 
+const resolveSegmentSide = (
+  segment: TaroDialogProps['segment']
+): 'left' | 'right' | undefined => {
+  if (segment === 'left' || segment === 'right') {
+    return segment
+  }
+  return undefined
+}
+
 const defaultProps = {
   ...defaultOverlayProps,
   ...defaultContentProps,
@@ -102,6 +111,8 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     {
       overlayScope: duoOverlayScope ?? 'window',
       centerMaxWidth: null,
+      splitSide: (props as any).splitSide ?? resolveSegmentSide(segment),
+      segment,
     },
     {
       // 仅在蒙层铺满整窗时屏蔽导航栏（盖住右侧安全区）；base 蒙层只盖内容区
