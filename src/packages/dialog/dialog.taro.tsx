@@ -113,6 +113,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       centerMaxWidth: null,
       splitSide: (props as any).splitSide ?? resolveSegmentSide(segment),
       segment,
+      centerBase: (props as any).centerBase ?? 'full',
     },
     {
       // 仅在蒙层铺满整窗时屏蔽导航栏（盖住右侧安全区）；base 蒙层只盖内容区

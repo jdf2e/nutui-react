@@ -19,6 +19,7 @@ export interface BaseContentProps extends BasicComponent {
   footerDirection: DialogFooterDirection
   segment?: 'left' | 'right' | 'center' | 'auto'
   splitSide?: 'left' | 'right'
+  centerBase?: 'safeArea' | 'full'
   microBent?: boolean
   duoOverlayScope?: 'window' | 'base'
   ariaLabel?: string
@@ -50,6 +51,7 @@ export interface BaseDialog extends DialogWrapProps {
   onConfirm: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
   segment?: 'left' | 'right' | 'center' | 'auto'
   splitSide?: 'left' | 'right'
+  centerBase?: 'safeArea' | 'full'
   microBent?: boolean
   duoOverlayScope?: 'window' | 'base'
   ariaLabel?: string

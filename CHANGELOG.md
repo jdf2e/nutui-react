@@ -1,3 +1,10 @@
+# v3.0.24-cpp-beta.6
+
+`2026-11-06`
+
+- 🐛 fix(dialog): 优化 iPhone Duo 左右屏及分屏模式下的 Dialog 居中逻辑，将安全区域包含在基准宽度内严格居中；Popup 继续保持避让右侧安全区策略
+- 🔧 feat(dialog): BaseDialog 新增 `centerBase?: 'safeArea' | 'full'` 属性，支持按需指定弹框居中基准
+
 # v3.0.24-cpp-beta.5
 
 `2026-11-06`

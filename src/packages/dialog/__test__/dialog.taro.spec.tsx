@@ -527,7 +527,7 @@ describe('Dialog Taro Duo Adaptation', () => {
     expect(leftLayoutWithCover.baseRect.left).toBe(0)
     expect(leftLayoutWithCover.popupStyle.left).toBe('50%')
 
-    // 2. 左侧分屏存在左侧 avoidAreas 时，弹层仍严格在左屏视口内居中
+    // 2. 左侧分屏存在左侧 avoidAreas 时，包含左侧安全区（84px），单屏总宽为 475px（475/2 - 84 = 153.5px）
     const leftSplitAvoidAreaInfo = {
       windowWidth: 391,
       windowHeight: 844,
@@ -540,8 +540,8 @@ describe('Dialog Taro Duo Adaptation', () => {
     expect(detectDuoSplitSide(leftSplitAvoidAreaInfo)).toBe('left')
     const avoidMetrics = resolveDuoSplitScreenMetrics(leftSplitAvoidAreaInfo)
     expect(avoidMetrics.splitSide).toBe('left')
-    expect(avoidMetrics.leftInset).toBe(0)
-    expect(avoidMetrics.splitScreenWidth).toBe(391)
+    expect(avoidMetrics.leftInset).toBe(84)
+    expect(avoidMetrics.splitScreenWidth).toBe(475)
 
     const leftAvoidLayout = resolveDuoOverlayLayout(
       leftSplitAvoidAreaInfo,
@@ -550,9 +550,20 @@ describe('Dialog Taro Duo Adaptation', () => {
         navigationBarHidden: true,
       }
     )
-    expect(leftAvoidLayout.popupStyle.left).toBe('50%')
+    expect(leftAvoidLayout.popupStyle.left).toBe(153.5)
 
-    // 3. 左侧分屏通过 safeArea.left 判定为左屏时，弹层严格居中
+    // Popup (centerBase === 'safeArea') 避让左侧安全区，以业务窗宽居中（50%）
+    const leftAvoidLayoutPopup = resolveDuoOverlayLayout(
+      leftSplitAvoidAreaInfo,
+      'center',
+      {
+        navigationBarHidden: true,
+        centerBase: 'safeArea',
+      }
+    )
+    expect(leftAvoidLayoutPopup.popupStyle.left).toBe('50%')
+
+    // 3. 左侧分屏通过 safeArea.left 判定为左屏时，Dialog 把安全区加进去居中（153.5px）
     const leftSplitSafeAreaInfo = {
       windowWidth: 391,
       windowHeight: 844,
@@ -577,7 +588,7 @@ describe('Dialog Taro Duo Adaptation', () => {
         navigationBarHidden: true,
       }
     )
-    expect(safeAreaLayout.popupStyle.left).toBe('50%')
+    expect(safeAreaLayout.popupStyle.left).toBe(153.5)
 
     // 4. DOM 渲染验证：左侧分屏覆盖安全区时，Dialog 正确应用居中定位（left: 50%）
     const setIOSDialogAppearanceSync = vi.fn(() => true)
@@ -689,5 +700,95 @@ describe('Dialog Taro Duo Adaptation', () => {
       deviceOrientation: 'portrait',
     }
     expect(isDuoSplitScreen(closedInfo)).toBe(false)
+  })
+
+  test('should include safe area for Dialog centering in split-screen and dual-screen right segment', () => {
+    // 1. 分屏模式右屏：Dialog 把安全区域加进去，以单屏全宽 475px 居中（left = 237.5px）
+    const rightSplitInfo = {
+      windowWidth: 391,
+      windowHeight: 844,
+      screenWidth: 951,
+      screenHeight: 844,
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+      splitSide: 'right' as const,
+      safeArea: {
+        left: 0,
+        top: 0,
+        right: 391,
+        bottom: 844,
+        width: 391,
+        height: 844,
+      },
+    }
+    const dialogSplitRightLayout = resolveDuoOverlayLayout(
+      rightSplitInfo,
+      'center',
+      {
+        navigationBarHidden: true,
+        centerBase: 'full',
+      }
+    )
+    expect(dialogSplitRightLayout.popupStyle.left).toBe(237.5)
+
+    // 2. 双屏模式下 segment="right"：Dialog 把安全区域加进去，以右屏全宽为基准居中（left = 712.5px）
+    const fullDuoInfo = {
+      windowWidth: 951,
+      windowHeight: 844,
+      screenWidth: 951,
+      screenHeight: 844,
+      foldState: 'fullyOpen',
+      deviceOrientation: 'landscape',
+      avoidAreas: [{ x: 867, y: 0, width: 84, height: 844 }],
+    }
+    const dialogSegmentRightLayout = resolveDuoOverlayLayout(
+      fullDuoInfo,
+      'center',
+      {
+        segment: 'right',
+        centerBase: 'full',
+      }
+    )
+    expect(dialogSegmentRightLayout.popupStyle.left).toBe(713)
+
+    // 3. 对比 Popup：保留避让安全区处理（剔除 84px 安全区）
+    const popupSegmentRightLayout = resolveDuoOverlayLayout(
+      fullDuoInfo,
+      'center',
+      {
+        segment: 'right',
+        centerBase: 'safeArea',
+      }
+    )
+    // Popup 避让右侧 84px：baseWidth = 951 - 475 - 84 = 392, center = 475 + 392 / 2 = 671
+    expect(popupSegmentRightLayout.popupStyle.left).toBe(671)
+
+    // 4. 用户真机实测案例（横屏右侧分屏，avoidAreas 为空，windowWidth=385，screenWidth=951）：
+    // 通过尺寸差自动识别为右侧分屏，将 90px 安全区加回单屏全宽 475px，居中于 237.5px
+    const userRealInfo = {
+      windowWidth: 385,
+      windowHeight: 669,
+      screenWidth: 951,
+      screenHeight: 669,
+      foldState: 'fullyOpen',
+      safeArea: {
+        left: 0,
+        right: 385,
+        top: 24,
+        bottom: 635,
+        width: 385,
+        height: 611,
+      },
+      avoidAreas: [],
+    }
+    const dialogRealLayout = resolveDuoOverlayLayout(userRealInfo, 'center', {
+      centerBase: 'full',
+    })
+    expect(dialogRealLayout.popupStyle.left).toBe(237.5)
+    // 对比 Popup：保留避让安全区
+    const popupRealLayout = resolveDuoOverlayLayout(userRealInfo, 'center', {
+      centerBase: 'safeArea',
+    })
+    expect(popupRealLayout.popupStyle.left).toBeUndefined()
   })
 })

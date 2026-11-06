@@ -63,15 +63,11 @@
       }
     }
 
-    /* 横屏微弯时：居左屏展示，避开中轴折痕与安全区 (W3C 标准规范) */
+    /* 横屏微弯时：居左屏展示 (W3C 标准规范) */
     @media (device-posture: folded) and (orientation: landscape),
       (device-posture: folded) and (horizontal-viewport-segments: 2) {
       &:not(.nut-dialog-segment-center):not(.nut-dialog-outer-segment-center) {
         left: 25vw;
-        left: calc(
-          env(safe-area-inset-left, 0px) +
-            (50vw - env(safe-area-inset-left, 0px)) / 2
-        );
         max-width: calc(
           100vw - env(safe-area-inset-left, 0px) - env(
               safe-area-inset-right,
@@ -82,7 +78,7 @@
       }
     }
 
-    /* 显式支持微弯态类名及 segment 居左屏展示 */
+    /* 显式支持微弯态类名及 segment 居左屏展示：把安全区域加进去，以左屏全宽为基准居中（25vw） */
     &.nut-dialog-micro-bent:not(.nut-dialog-segment-center):not(
         .nut-dialog-outer-segment-center
       ),
@@ -92,10 +88,6 @@
     &.nut-dialog-segment-left,
     &-segment-left {
       left: 25vw;
-      left: calc(
-        env(safe-area-inset-left, 0px) +
-          (50vw - env(safe-area-inset-left, 0px)) / 2
-      );
       max-width: calc(
         100vw - env(safe-area-inset-left, 0px) - env(
             safe-area-inset-right,
@@ -105,11 +97,10 @@
       );
     }
 
-    /* 显式支持 segment 居右屏展示 */
+    /* 显式支持 segment 居右屏展示：把安全区域加进去，以包含安全区的右屏全宽为基准居中（75vw） */
     &.nut-dialog-segment-right,
     &-segment-right {
       left: 75vw;
-      left: calc(50vw + (50vw - env(safe-area-inset-right, 0px)) / 2);
       max-width: calc(
         100vw - env(safe-area-inset-left, 0px) - env(
             safe-area-inset-right,
@@ -150,10 +141,6 @@
       @media screen and (orientation: landscape),
         screen and (horizontal-viewport-segments: 2) {
         left: 25vw;
-        left: calc(
-          env(safe-area-inset-left, 0px) +
-            (50vw - env(safe-area-inset-left, 0px)) / 2
-        );
         max-width: calc(
           100vw - env(safe-area-inset-left, 0px) - env(
               safe-area-inset-right,
