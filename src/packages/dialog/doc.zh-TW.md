@@ -105,6 +105,7 @@ import { Dialog } from '@nutui/nutui-react'
 | onConfirm | 確定按鈕回調 | `(e?: MouseEvent) => Promise \| void` | `-` |
 | onCancel | 取消按鈕回調 | `() => void` | `-` |
 | onClose | 關閉回調，任何情況關閉彈窗都會觸發 | `() => void` | `-` |
+| afterClose | 退場動畫結束後觸發 | `() => void` | `-` |
 | onClick | 點擊自身回調 | `() => void` | `-` |
 | onOverlayClick | 點擊蒙層觸發 | `() => void` | `-` |
 

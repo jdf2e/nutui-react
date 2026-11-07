@@ -3,6 +3,40 @@ import { render, fireEvent, waitFor, act, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Dialog } from '../dialog'
 
+test('keeps the dialog visible until the exit transition finishes', () => {
+  vi.useFakeTimers()
+  try {
+    const afterClose = vi.fn()
+    const { container, rerender } = render(
+      <Dialog visible overlay={false} afterClose={afterClose}>
+        content
+      </Dialog>
+    )
+
+    rerender(
+      <Dialog visible={false} overlay={false} afterClose={afterClose}>
+        content
+      </Dialog>
+    )
+
+    const content = screen.getByText('content')
+    expect(content).toBeVisible()
+    expect(container.querySelector('.nut-dialog-outer')).toHaveClass(
+      'fadeDialog-exit-active'
+    )
+    expect(afterClose).not.toHaveBeenCalled()
+
+    act(() => {
+      vi.advanceTimersByTime(300)
+    })
+
+    expect(content).not.toBeInTheDocument()
+    expect(afterClose).toHaveBeenCalledTimes(1)
+  } finally {
+    vi.useRealTimers()
+  }
+})
+
 test('show dialog base info display ', async () => {
   const onCancel = vi.fn()
   const { container } = render(

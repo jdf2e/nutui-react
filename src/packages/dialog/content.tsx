@@ -16,10 +16,13 @@ export const defaultContentProps = {
 
 export const Content: FunctionComponent<
   Partial<WebContentProps> &
-    Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'>
+    Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> & {
+      nodeRef?: React.Ref<HTMLDivElement>
+    }
 > = (props) => {
   const {
     visible,
+    nodeRef,
     title,
     subtitle,
     titleIcon,
@@ -74,6 +77,7 @@ export const Content: FunctionComponent<
 
   return (
     <div
+      ref={nodeRef}
       className={classNames(`${classPrefix}-outer`, className)}
       style={style}
       onClick={handleClick}
