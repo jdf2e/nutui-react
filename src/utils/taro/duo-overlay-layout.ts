@@ -136,6 +136,17 @@ export function isDuoSplitScreen(info: SystemInfo): boolean {
     return true
   }
 
+  // 3. 展开态单侧分屏：在折叠机展开态下，若应用窗口宽度仅占单侧屏幕（<= 500px），
+  // 无论系统汇报的 screenWidth 为整机全宽（951px）还是单侧屏宽（466px），均属于单侧分屏模式！
+  if (
+    windowWidth <= 500 &&
+    (normalizeFoldState(info.foldState) === 'fullyOpen' ||
+      normalizeFoldState(info.foldState) === 'halfOpen' ||
+      (info as any).isFoldable === true)
+  ) {
+    return true
+  }
+
   return false
 }
 
@@ -741,25 +752,10 @@ export function resolveDuoOverlayLayout(
           ? computePopupStyle(kind, layoutInfo, baseRect, options)
           : {}
       if (kind === 'center') {
-        if (options?.centerBase !== 'safeArea') {
-          // 默认全屏蒙层或 Dialog：将安全区域加进去，在整屏物理视口（完整分屏宽度）内严格居中
-          if (splitMetrics.splitSide === 'left') {
-            popupStyle.left =
-              splitMetrics.leftInset > 0
-                ? splitMetrics.splitScreenWidth / 2 - splitMetrics.leftInset
-                : '50%'
-          } else {
-            popupStyle.left = splitMetrics.splitScreenWidth / 2
-          }
-        } else if (
-          splitMetrics.splitSide === 'right' &&
-          isMaskCoveringSafeArea
-        ) {
-          // Popup (centerBase === 'safeArea')：面板避让安全区，以业务窗口为基准水平居中
-          popupStyle.left = windowWidth / 2
-        } else {
-          popupStyle.left = '50%'
-        }
+        // 分屏模式（应用仅占单侧屏幕）：
+        // 按照用户需求，分屏模式下弹窗必须在当前分屏窗口内严格左右居中展示（即红框区域，left: '50%'），
+        // 保证两侧边距完全对称，不偏向物理中缝，也不偏向外侧边框。
+        popupStyle.left = '50%'
       }
       return {
         enabled: true,

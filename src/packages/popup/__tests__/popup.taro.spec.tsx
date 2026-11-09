@@ -350,7 +350,7 @@ describe('Popup Taro Component & Duo Adaptation', () => {
     const rightCenterPopup = rightCenterContainer.querySelector(
       '.nut-popup'
     ) as HTMLElement
-    expect(rightCenterPopup.style.left).toBe('237.5px')
+    expect(rightCenterPopup.style.left).toBe('50%')
     unmountRightCenter()
 
     const {
@@ -364,7 +364,7 @@ describe('Popup Taro Component & Duo Adaptation', () => {
     const rightCenterSafeAreaPopup = rightCenterSafeAreaContainer.querySelector(
       '.nut-popup'
     ) as HTMLElement
-    expect(rightCenterSafeAreaPopup.style.left).toBe('191px')
+    expect(rightCenterSafeAreaPopup.style.left).toBe('50%')
     unmountRightCenterSafeArea()
 
     const { container: rightBottomContainer, unmount: unmountRightBottom } =
