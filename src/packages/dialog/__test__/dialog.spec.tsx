@@ -146,6 +146,18 @@ test('should display loading when onConfirm returns a promise', async () => {
   expect(mockOnConfirm).toHaveBeenCalled()
 })
 
+test('should render segment classes for posture adaptation', () => {
+  const { container, rerender } = render(
+    <Dialog visible segment="left" title="Left Dialog" />
+  )
+  expect(container.querySelector('.nut-dialog-outer-segment-left')).toBeTruthy()
+
+  rerender(<Dialog visible segment="right" title="Right Dialog" />)
+  expect(
+    container.querySelector('.nut-dialog-outer-segment-right')
+  ).toBeTruthy()
+})
+
 test('show dialog header ', async () => {
   const { container } = render(
     <Dialog header={<div className="custom-header">header</div>} visible>

@@ -21,16 +21,50 @@
     background-color: $dialog-background;
     /* #ifndef dynamic*/
     transition:
-      transform 0.2s,
-      -webkit-transform 0.2s;
+      left 0.3s ease,
+      transform 0.3s ease,
+      -webkit-transform 0.3s ease,
+      max-width 0.3s ease;
     /* #endif */
     -webkit-overflow-scrolling: touch;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    max-width: calc(
+      100vw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
+        32px
+    );
     border-radius: $dialog-border-radius;
     animation-duration: 0.3s;
+
+    /* iPhone Duo：segment 驱动分区展示 */
+    &-segment-left {
+      right: auto;
+      left: 25vw;
+      left: calc(
+        env(safe-area-inset-left, 0px) +
+          (50vw - env(safe-area-inset-left, 0px)) / 2
+      );
+      max-width: calc(50vw - env(safe-area-inset-left, 0px) - 32px);
+    }
+
+    &-segment-right {
+      left: 75vw;
+      left: calc(50vw + (50vw - env(safe-area-inset-right, 0px)) / 2);
+      max-width: calc(50vw - env(safe-area-inset-right, 0px) - 32px);
+    }
+
+    &-segment-center {
+      left: 50%;
+      max-width: calc(
+        100vw - env(safe-area-inset-left, 0px) - env(
+            safe-area-inset-right,
+            0px
+          ) -
+          32px
+      );
+    }
   }
 
   &-close {
@@ -210,6 +244,26 @@
     right: 50%;
     -webkit-transform: translate(50%, -50%);
     transform: translate(50%, -50%);
+
+    &-segment-left {
+      left: auto;
+      right: 25vw;
+      right: calc(
+        env(safe-area-inset-right, 0px) +
+          (50vw - env(safe-area-inset-right, 0px)) / 2
+      );
+      max-width: calc(50vw - env(safe-area-inset-right, 0px) - 32px);
+    }
+
+    &-segment-right {
+      right: auto;
+      left: 25vw;
+      left: calc(
+        env(safe-area-inset-left, 0px) +
+          (50vw - env(safe-area-inset-left, 0px)) / 2
+      );
+      max-width: calc(50vw - env(safe-area-inset-left, 0px) - 32px);
+    }
   }
 
   &-close {
