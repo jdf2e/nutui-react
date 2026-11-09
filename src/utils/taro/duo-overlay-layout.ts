@@ -548,10 +548,25 @@ export function detectDuoSplitSide(
     }
   }
 
-  // 6. 默认回退：
-  // 在分屏模式下，右侧分屏始终具备原生侧边栏或左侧中缝等明确信号（避让区/safeArea）；
-  // 若未检测到任何右侧分屏正向信号，必须严格判定为左侧分屏（'left'）居中展示，
-  // 绝不能仅凭 windowWidth < halfScreen 随意判定为右屏导致偏向中缝！
+  // 6. 尺寸特征判断：
+  // 在 iPhone Duo 等横屏双屏设备上，原生侧边状态栏（80px~90px）恒位于整机右边缘。
+  // 右侧分屏时：窗口宽度 windowWidth 被压缩至 ~385px，而物理单屏宽度为 ~466px~475px，
+  // 差值 (singleScreenWidth - windowWidth) >= 40px，且 safeArea.left === 0（左侧无避让）。
+  // 满足此特征时，可精准判定为【右侧分屏】！
+  const singleScreenWidth = screenWidth > 600 ? halfScreen : screenWidth
+  if (
+    singleScreenWidth > 0 &&
+    singleScreenWidth - windowWidth >= 40 &&
+    (!info.safeArea ||
+      typeof info.safeArea !== 'object' ||
+      toCssPx(info, (info.safeArea as any).left ?? 0) < 30)
+  ) {
+    return 'right'
+  }
+
+  // 7. 默认回退：
+  // 在分屏模式下，如果无法检测到右侧分屏正向信号，
+  // 保持判定为左侧分屏（'left'）展示。
   return 'left'
 }
 
@@ -579,7 +594,9 @@ export function resolveDuoSplitScreenMetrics(
     typeof info.screenWidth === 'number' && info.screenWidth > 0
       ? toCssPx(info, info.screenWidth)
       : windowWidth
-  const halfScreen = Math.floor(screenWidth / 2)
+  const singleScreenWidth =
+    screenWidth > 600 ? Math.floor(screenWidth / 2) : screenWidth
+  const halfScreen = singleScreenWidth
   const splitSide = detectDuoSplitSide(info, options)
 
   let splitScreenWidth = windowWidth
@@ -617,19 +634,19 @@ export function resolveDuoSplitScreenMetrics(
 
     if (detectedLeftInset != null) {
       leftInset = detectedLeftInset
-      splitScreenWidth = Math.max(halfScreen, windowWidth + leftInset)
-    } else if (halfScreen > 0 && halfScreen - windowWidth >= 30) {
-      // Dialog 将安全区域加进去，按完整的分屏宽度（halfScreen ~475px）居中
-      splitScreenWidth = halfScreen
+      splitScreenWidth = Math.max(singleScreenWidth, windowWidth + leftInset)
+    } else if (singleScreenWidth > 0 && singleScreenWidth - windowWidth >= 30) {
+      // Dialog 将安全区域加进去，按完整的分屏宽度（singleScreenWidth ~475px）居中
+      splitScreenWidth = singleScreenWidth
       leftInset = splitScreenWidth - windowWidth
     } else {
       splitScreenWidth = windowWidth
       leftInset = 0
     }
 
-    // 防御上限：单侧分屏全宽绝不能超过 halfScreen（全机宽度的一半）
-    if (halfScreen > 0 && splitScreenWidth > halfScreen + 20) {
-      splitScreenWidth = halfScreen
+    // 防御上限：单侧分屏全宽绝不能超过 singleScreenWidth（单屏全机宽度的一半）
+    if (singleScreenWidth > 0 && splitScreenWidth > singleScreenWidth + 20) {
+      splitScreenWidth = singleScreenWidth
       leftInset = Math.max(0, splitScreenWidth - windowWidth)
     }
     rightInset = 0
@@ -656,18 +673,18 @@ export function resolveDuoSplitScreenMetrics(
 
     if (detectedRightInset != null) {
       rightInset = detectedRightInset
-      splitScreenWidth = Math.max(halfScreen, windowWidth + rightInset)
-    } else if (halfScreen > 0 && halfScreen > windowWidth) {
-      splitScreenWidth = halfScreen
+      splitScreenWidth = Math.max(singleScreenWidth, windowWidth + rightInset)
+    } else if (singleScreenWidth > 0 && singleScreenWidth > windowWidth) {
+      splitScreenWidth = singleScreenWidth
       rightInset = splitScreenWidth - windowWidth
     } else {
       splitScreenWidth = windowWidth
       rightInset = 0
     }
 
-    // 防御上限：单侧分屏全宽绝不能超过 halfScreen（全机宽度的一半）
-    if (halfScreen > 0 && splitScreenWidth > halfScreen + 20) {
-      splitScreenWidth = halfScreen
+    // 防御上限：单侧分屏全宽绝不能超过 singleScreenWidth（单屏全机宽度的一半）
+    if (singleScreenWidth > 0 && splitScreenWidth > singleScreenWidth + 20) {
+      splitScreenWidth = singleScreenWidth
       rightInset = Math.max(0, splitScreenWidth - windowWidth)
     }
     leftInset = 0
@@ -752,10 +769,21 @@ export function resolveDuoOverlayLayout(
           ? computePopupStyle(kind, layoutInfo, baseRect, options)
           : {}
       if (kind === 'center') {
-        // 分屏模式（应用仅占单侧屏幕）：
-        // 按照用户需求，分屏模式下弹窗必须在当前分屏窗口内严格左右居中展示（即红框区域，left: '50%'），
-        // 保证两侧边距完全对称，不偏向物理中缝，也不偏向外侧边框。
-        popupStyle.left = '50%'
+        if (options?.centerBase !== 'safeArea') {
+          // Dialog (centerBase === 'full' 或默认)：包含安全区域，按整块分屏物理全宽严格左右对称居中（对齐红框基准）
+          if (splitMetrics.splitSide === 'left') {
+            popupStyle.left =
+              splitMetrics.leftInset > 0
+                ? splitMetrics.splitScreenWidth / 2 - splitMetrics.leftInset
+                : '50%'
+          } else {
+            // 右侧分屏：单屏物理中心在 Webview 视口中的坐标为 splitScreenWidth / 2 (即 windowWidth / 2 + rightInset / 2)
+            popupStyle.left = splitMetrics.splitScreenWidth / 2
+          }
+        } else {
+          // Popup (centerBase === 'safeArea')：避让安全区，以业务窗口为基准水平居中
+          popupStyle.left = '50%'
+        }
       }
       return {
         enabled: true,

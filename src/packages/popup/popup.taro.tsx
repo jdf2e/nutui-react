@@ -49,6 +49,7 @@ const defaultProps: TaroPopupProps = {
   onTouchEnd: () => {},
   overlayProps: {},
   animated: true,
+  centerBase: 'safeArea',
   duoOverlayScope: 'window',
 }
 
