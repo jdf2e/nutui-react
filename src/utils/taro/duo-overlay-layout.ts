@@ -537,17 +537,10 @@ export function detectDuoSplitSide(
     }
   }
 
-  // 6. 尺寸特征判断：
-  // 在 iPhone Duo 等横屏双屏设备上，左屏无侧边栏（窗口宽接近半屏 ~475px）；
-  // 右屏附着 84px 原生侧边栏（窗口宽 = 半屏 - 84px ≈ 385px~391px）。
-  // 当半屏宽度明显大于当前窗口宽度（差值 >= 40px）时，表明右侧受侧边栏挤压，属于【右侧分屏】！
-  if (halfScreen > 0 && halfScreen - windowWidth >= 40) {
-    return 'right'
-  }
-
-  // 7. 默认回退：
-  // 在分屏模式下，如果无法明确识别为右侧分屏（无右侧避让区/侧边栏等正向信号），
-  // 必须严格判定为左侧分屏（'left'）居中展示，绝不能仅凭窗口尺寸随意猜测为右屏导致偏向中缝！
+  // 6. 默认回退：
+  // 在分屏模式下，右侧分屏始终具备原生侧边栏或左侧中缝等明确信号（避让区/safeArea）；
+  // 若未检测到任何右侧分屏正向信号，必须严格判定为左侧分屏（'left'）居中展示，
+  // 绝不能仅凭 windowWidth < halfScreen 随意判定为右屏导致偏向中缝！
   return 'left'
 }
 
@@ -615,6 +608,7 @@ export function resolveDuoSplitScreenMetrics(
       leftInset = detectedLeftInset
       splitScreenWidth = Math.max(halfScreen, windowWidth + leftInset)
     } else if (halfScreen > 0 && halfScreen - windowWidth >= 30) {
+      // Dialog 将安全区域加进去，按完整的分屏宽度（halfScreen ~475px）居中
       splitScreenWidth = halfScreen
       leftInset = splitScreenWidth - windowWidth
     } else {
@@ -748,7 +742,7 @@ export function resolveDuoOverlayLayout(
           : {}
       if (kind === 'center') {
         if (options?.centerBase !== 'safeArea') {
-          // 默认全屏蒙层或 Dialog：将安全区域加进去，在整屏物理视口内严格居中
+          // 默认全屏蒙层或 Dialog：将安全区域加进去，在整屏物理视口（完整分屏宽度）内严格居中
           if (splitMetrics.splitSide === 'left') {
             popupStyle.left =
               splitMetrics.leftInset > 0
@@ -761,7 +755,7 @@ export function resolveDuoOverlayLayout(
           splitMetrics.splitSide === 'right' &&
           isMaskCoveringSafeArea
         ) {
-          // centerBase === 'safeArea'：面板避让安全区，以业务窗口为基准水平居中
+          // Popup (centerBase === 'safeArea')：面板避让安全区，以业务窗口为基准水平居中
           popupStyle.left = windowWidth / 2
         } else {
           popupStyle.left = '50%'

@@ -763,13 +763,14 @@ describe('Dialog Taro Duo Adaptation', () => {
     // Popup 避让右侧 84px：baseWidth = 951 - 475 - 84 = 392, center = 475 + 392 / 2 = 671
     expect(popupSegmentRightLayout.popupStyle.left).toBe(671)
 
-    // 4. 用户真机实测案例（横屏右侧分屏，avoidAreas 为空，windowWidth=385，screenWidth=951）：
-    // 通过尺寸差自动识别为右侧分屏，将 90px 安全区加回单屏全宽 475px，居中于 237.5px
+    // 4. 用户真机实测案例（横屏右侧分屏，明确标明 splitSide 或通过 windowLeft 识别）：
+    // 将 90px 安全区加回单屏全宽 475px，居中于 237.5px
     const userRealInfo = {
       windowWidth: 385,
       windowHeight: 669,
       screenWidth: 951,
       screenHeight: 669,
+      splitSide: 'right' as const,
       foldState: 'fullyOpen',
       safeArea: {
         left: 0,
@@ -790,5 +791,32 @@ describe('Dialog Taro Duo Adaptation', () => {
       centerBase: 'safeArea',
     })
     expect(popupRealLayout.popupStyle.left).toBeUndefined()
+    // 5. 用户真机实测案例（横屏左侧分屏，windowWidth=385，screenWidth=951，无右侧特征）：
+    // 自动识别为左侧分屏，将安全区（90px）加进去按完整分屏宽度（475px）居中，落位在 147.5px（475/2 - 90），
+    // 使得弹窗在物理屏幕上距左边框 90px、距右侧中缝 90px，绝对物理居中
+    const userLeftRealInfo = {
+      windowWidth: 385,
+      windowHeight: 669,
+      screenWidth: 951,
+      screenHeight: 669,
+      foldState: 'fullyOpen',
+      safeArea: {
+        left: 0,
+        right: 385,
+        top: 24,
+        bottom: 635,
+        width: 385,
+        height: 611,
+      },
+      avoidAreas: [],
+    }
+    const dialogLeftLayout = resolveDuoOverlayLayout(
+      userLeftRealInfo,
+      'center',
+      {
+        centerBase: 'full',
+      }
+    )
+    expect(dialogLeftLayout.popupStyle.left).toBe(147.5)
   })
 })
