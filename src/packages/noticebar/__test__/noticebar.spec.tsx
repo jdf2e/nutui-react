@@ -169,7 +169,7 @@ test('vertical test move', async () => {
   await act(() => {
     expect(
       container.querySelector('.nut-noticebar-box-horseLamp-list')
-    ).toHaveAttribute('style', 'transition: all 0.8s; margin-top: -30px;')
+    ).not.toHaveAttribute('style')
   })
 })
 
@@ -253,7 +253,6 @@ test('vertical container height calculation with children', async () => {
         // 验证容器高度应该是 (childCount + 1) * height
         // childCount = 4, height = 50, 所以期望高度是 (4 + 1) * 50 = 250px
         const expectedHeight = `${(horseLamp1.length + 1) * height}px`
-        console.log(wrapElement, 'wrapElement')
         expect(wrapElement).toHaveStyle(`height: ${expectedHeight}`)
       }
     },
@@ -349,6 +348,126 @@ test('dynamic children update test', async () => {
     items.forEach((item) => {
       expect(item).toHaveStyle(`height: ${height}px`)
       expect(item).toHaveStyle(`line-height: ${height}px`)
+    })
+  })
+})
+
+describe('NoticeBar Vertical Scrolling with refined timing logic', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  // 测试 list Prop 模式下的时间和动画
+  test('list mode: should correctly display items based on scrollList and style', async () => {
+    const listData = ['公告1', '公告2', '公告3']
+    const itemHeight = 30
+    const animationSpeed = 15
+    const calculatedAnimationTime = (30 / 15 / 4) * 1000
+    const pauseDuration = 2000
+
+    const { container } = render(
+      <NoticeBar
+        list={listData}
+        direction="vertical"
+        height={itemHeight}
+        speed={animationSpeed}
+        duration={pauseDuration}
+      />
+    )
+
+    const listElement = container.querySelector<HTMLElement>(
+      '.nut-noticebar-box-horseLamp-list'
+    )
+    expect(listElement).toBeInTheDocument()
+    let items = listElement?.querySelectorAll(
+      '.nut-noticebar-box-horseLamp-list-item'
+    )
+
+    // 初始状态，显示第一项 "公告1"
+    expect(items?.[0]).toHaveTextContent('公告1')
+
+    // 第一次滚动
+    act(() => {
+      vi.advanceTimersByTime(pauseDuration + 1)
+    })
+    await waitFor(() => {
+      expect(listElement).toHaveStyle(`margin-top: -${itemHeight}px`)
+      expect(listElement).toHaveStyle(
+        `transition: all ${calculatedAnimationTime}ms`
+      )
+    })
+
+    // 动画结束并且开始下一轮
+    act(() => {
+      vi.advanceTimersByTime(calculatedAnimationTime - 1)
+    })
+    await waitFor(() => {
+      expect(listElement).not.toHaveStyle(`margin-top: -${itemHeight}px`)
+      items = listElement?.querySelectorAll(
+        '.nut-noticebar-box-horseLamp-list-item'
+      )
+      // 内部 scrollList.current 变为 ['公告2', '公告3', '公告1']
+      expect(items?.[0]).toHaveTextContent('公告2')
+      expect(items?.[1]).toHaveTextContent('公告3')
+      expect(items?.[2]).toHaveTextContent('公告1')
+    })
+  })
+
+  // 测试 children Prop 模式下的时间和动画
+  test('children mode: should use duration as pause, speed/height for animation', async () => {
+    const itemHeight = 30
+    const animationSpeed = 15
+    const calculatedAnimationTime = (30 / 15 / 4) * 1000
+    const pauseDuration = 2000
+
+    const { container } = render(
+      <NoticeBar
+        direction="vertical"
+        height={itemHeight}
+        speed={animationSpeed}
+        duration={pauseDuration}
+      >
+        <div className="child-item">公告1</div>
+        <div className="child-item">公告2</div>
+        <div className="child-item">公告3</div>
+      </NoticeBar>
+    )
+
+    const listElement = container.querySelector<HTMLElement>(
+      '.nut-noticebar-box-wrap'
+    )
+    expect(listElement).toBeInTheDocument()
+
+    // 第一次滚动
+    act(() => {
+      vi.advanceTimersByTime(pauseDuration + 1)
+    })
+
+    await waitFor(() => {
+      expect(listElement).toHaveStyle(
+        `transition-duration: ${calculatedAnimationTime}ms`
+      )
+      expect(listElement).toHaveStyle(
+        `transform: translate3D(0,-${itemHeight}px,0)`
+      )
+    })
+
+    // 开始下一轮滚动
+    act(() => {
+      vi.advanceTimersByTime(calculatedAnimationTime + pauseDuration)
+    })
+
+    await waitFor(() => {
+      expect(listElement).toHaveStyle(
+        `transition-duration: ${calculatedAnimationTime}ms`
+      )
+      expect(listElement).toHaveStyle(
+        `transform: translate3D(0,-${2 * itemHeight}px,0)`
+      )
     })
   })
 })
