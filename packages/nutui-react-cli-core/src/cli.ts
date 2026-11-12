@@ -5,6 +5,8 @@ import { runInfo } from './commands/info.js'
 import { runDoc } from './commands/doc.js'
 import { runDemo } from './commands/demo.js'
 import { runToken } from './commands/token.js'
+import { runMigrate } from './commands/migrate.js'
+import { runDiff } from './commands/diff.js'
 import { runMcp } from './commands/mcp.js'
 import type { CliConfig } from './config.js'
 import type { Lang, OutputFormat } from './types.js'
@@ -25,6 +27,13 @@ export function runCli(config: CliConfig, argv: string[]): void {
       default: 'text' as OutputFormat,
       global: true,
     })
+    .option('nutui-version', {
+      alias: 'nv',
+      type: 'string',
+      describe:
+        '目标 NutUI 版本（如 3、3.1.0、4.0.0-beta.7）；省略则从 node_modules / package.json 自动检测',
+      global: true,
+    })
     .command(
       ['list', 'ls'],
       '列出全部组件（按分类）',
@@ -39,6 +48,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           config,
           category: a.category,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(
@@ -55,6 +65,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           config,
           component: a.component as string,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(
@@ -82,6 +93,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           component: a.component as string,
           lang: (a.lang as Lang) ?? config.defaultLang,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(
@@ -104,6 +116,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           component: a.component as string,
           name: a.name as string | undefined,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(
@@ -117,6 +130,67 @@ export function runCli(config: CliConfig, argv: string[]): void {
       (a) =>
         runToken({
           config,
+          component: a.component as string | undefined,
+          format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
+        })
+    )
+    .command(
+      'migrate [from] [to]',
+      '输出 vN→vM 迁移指南（默认 3 4）；--component 看单组件，--apply <dir> 扫描项目生成迁移提示',
+      (y) =>
+        y
+          .positional('from', {
+            type: 'string',
+            describe: '起始大版本（如 3），默认 3',
+          })
+          .positional('to', {
+            type: 'string',
+            describe: '目标大版本（如 4），默认 from+1',
+          })
+          .option('component', {
+            alias: 'c',
+            type: 'string',
+            describe: '只输出该组件的迁移说明（大小写不敏感）',
+          })
+          .option('apply', {
+            type: 'string',
+            describe: '扫描该目录，只输出项目用到组件的迁移步骤并生成给 Agent 的提示',
+          }),
+      (a) =>
+        runMigrate({
+          config,
+          from: a.from as string | undefined,
+          to: a.to as string | undefined,
+          component: a.component as string | undefined,
+          apply: a.apply as string | undefined,
+          format: a.format as OutputFormat,
+        })
+    )
+    .command(
+      'diff <v1> <v2> [component]',
+      '跨版本 Props 差异比对（新增 / 移除 / 类型或默认值变更）',
+      (y) =>
+        y
+          .positional('v1', {
+            type: 'string',
+            describe: '起始版本（如 3、3.1.0）',
+            demandOption: true,
+          })
+          .positional('v2', {
+            type: 'string',
+            describe: '目标版本（如 4、4.0.0-beta.7）',
+            demandOption: true,
+          })
+          .positional('component', {
+            type: 'string',
+            describe: '只比对该组件（大小写不敏感）；省略则比对全部',
+          }),
+      (a) =>
+        runDiff({
+          config,
+          v1: a.v1 as string,
+          v2: a.v2 as string,
           component: a.component as string | undefined,
           format: a.format as OutputFormat,
         })

@@ -14,6 +14,7 @@ export default defineConfig({
   // core 为 workspace 内 private 包（不发布），必须一并 bundle 进产物。
   noExternal: [
     'yargs',
+    'semver',
     '@modelcontextprotocol/sdk',
     '@nutui/nutui-react-cli-core',
   ],
