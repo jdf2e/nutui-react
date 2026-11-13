@@ -95,12 +95,14 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     onCancel,
     onConfirm,
     onOverlayClick,
+    afterClose,
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
   const [countdown, setCountdown] = useState(0)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const onCloseRef = useRef(onClose)
   onCloseRef.current = onClose
 
@@ -319,10 +321,13 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
         in={visible}
         timeout={300}
         classNames="fadeDialog"
+        nodeRef={contentRef}
+        onExited={afterClose}
         unmountOnExit
         appear
       >
         <Content
+          nodeRef={contentRef}
           className={className}
           style={{ zIndex, ...style }}
           title={title}
@@ -332,7 +337,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           close={renderCloseIcon()}
           footer={renderFooter()}
           footerDirection={footerDirection}
-          visible={visible}
+          visible
         >
           {content || children}
         </Content>
@@ -341,7 +346,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
   }
 
   return (
-    <div style={{ display: visible ? 'block' : 'none' }}>
+    <div>
       {overlay && (
         <Overlay
           zIndex={zIndex}
