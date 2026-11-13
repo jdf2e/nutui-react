@@ -1,5 +1,6 @@
 import React, {
   useEffect,
+  useLayoutEffect,
   useState,
   useRef,
   cloneElement,
@@ -113,14 +114,16 @@ export const CSSTransition: FunctionComponent<CSSTransitionProps> = ({
     onExiting,
     onExited,
   })
-  callbacksRef.current = {
-    onEnter,
-    onEntering,
-    onEntered,
-    onExit,
-    onExiting,
-    onExited,
-  }
+  useLayoutEffect(() => {
+    callbacksRef.current = {
+      onEnter,
+      onEntering,
+      onEntered,
+      onExit,
+      onExiting,
+      onExited,
+    }
+  })
 
   const clearTimers = () => {
     if (timerRef.current !== null) {

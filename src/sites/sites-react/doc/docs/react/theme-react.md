@@ -70,10 +70,23 @@ export default defineConfig({
 
 NutUI-React 将核心设计系统变量独立抽离为 `variables-core.scss`（~260 行，相较于全量 3300+ 行的 `variables.scss` **精简 92%**）。
 
-> [!WARNING] 关键注意事项：请检查你的组件样式引入方式
+#### 解决了什么问题？
+
+过去的 `variables.scss`（3300+ 行）混杂了**全局设计规范（~8%）**与**组件私有实现变量（~92%）**。当业务工程在 `additionalData` 中全局注入以便在业务页面使用 `scale-px()` 或 `$color-title` 时，Sass 编译器会在每一个业务 SCSS 文件顶部重复拼接这 3300 多行，导致数万乃至数十万行无用 AST 解析，造成严重的构建卡顿与性能开销。
+`variables-core.scss` 抽离了纯净的全局 Design Tokens，单次注入开销降低 90%，大幅提速 Sass 编译与热更新。
+
+#### 核心使用边界与准则
+
+> [!WARNING] 边界一：必须配合“预编译 CSS 产物”使用
 >
-> - **如果引入的是 CSS 产物（推荐，如 `style: 'css'` 或引入 `style.css`）**：组件样式发包前已由官方预编译完成，业务在 `additionalData` 中注入 `variables-core.scss` 供业务自身样式使用，**完全安全且体积大幅精简**。
-> - **如果引入的是 SCSS 源码按需编译（如配置了 `style: true` 或直接 import 组件 `.scss` 源码）**：组件 SCSS 源码内部依赖各组件特定的私有变量（如 `$tabs-titles-height`、`$button-default-height`），**此时必须全局注入全量的 `variables.scss`**，不能替换为 `variables-core.scss`，否则本地编译组件源码时会报 `Undefined variable` 错误。
+> - **引入 CSS 产物（推荐，如 `style: 'css'` 或引入 `style.css`）**：组件样式在官方发包前已预编译完毕，业务在 `additionalData` 中注入 `variables-core.scss` 供业务自身样式使用，**完全安全且体积大幅精简**。
+> - **组件 SCSS 源码编译模式（如 `style: true`）**：组件 SCSS 源码依赖私有变量（如 `$button-default-height`、`$tabs-titles-height`），**此时必须全局注入全量 `variables.scss`**，不能替换为 `variables-core.scss`，否则本地编译组件源码时会报 `Undefined variable` 错误。
+
+> [!NOTE] 边界二：Sass 变量覆盖不等于预编译组件运行时换色
+> 引入预编译组件 CSS 时，组件已被编译为读取运行时 CSS 变量 `var(--nutui-color-primary, #ff0f23)`。在业务 SCSS 中覆盖 `$color-primary` **只会改变业务自建样式的取色，不会改变 NutUI 预编译组件的颜色**。要定制预编译组件品牌色，必须覆盖 CSS 变量 `--nutui-color-primary`（参考方式一）或通过 `<ConfigProvider theme={...}>` 定制。
+
+> [!CAUTION] 边界三：多主题隔离原则
+> `variables-core.scss` 仅代表官方**默认主题**的核心规范。定制业务主题（如到家 `daojia`、京东 APP `jmapp`、金融客服 `jrkf`）拥有各自专属的色彩规范与品牌色。**严禁在定制主题工程中引入 `variables-core.scss`**，否则 Sass 的 `!default` 规则会导致默认主题的红色系变量抢占定义，引发业务定制品牌色被污染失效。定制主题请直接引入对应的 `variables-${theme}.scss`。
 
 #### 包含内容
 
@@ -86,7 +99,7 @@ NutUI-React 将核心设计系统变量独立抽离为 `variables-core.scss`（~
 #### 适用场景
 
 1. **业务全局注入（推荐）**：项目引入组件预编译 CSS，同时业务页面或自研业务组件需要使用通用 Design Tokens 编写业务样式。无需为每个 SCSS 文件注入上千行组件私有变量，大幅加快 Sass 编译速度。
-2. **极简主题覆盖**：只需定制品牌色、通用圆角等全局视觉，配合 `variables-core.scss` 最轻量。
+2. **极简主题覆盖**：只需定制通用圆角、间距等全局设计规范，配合 `variables-core.scss` 最轻量。注意：使用预编译组件 CSS 时，仅在业务 SCSS 中覆盖 `$color-primary` 不会改变组件品牌色；修改预编译组件品牌色请配合覆盖 CSS 变量 `--nutui-color-primary`（参考方式一）或使用 ConfigProvider 主题定制。
 
 #### 配置示例
 

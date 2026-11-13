@@ -14,7 +14,7 @@
 | **P2 阶段** | — | **按需解耦** | — | 主题变量分域 + 公共语义 Token `$color-primary-light` | **已完成** ✅ |
 | **P3 阶段** | **~14 KB** | — | Taro 端剔除 `react-transition-group` 及其子依赖 | `Popup`, `Dialog`, `Notify`, `MenuItem`, `Overlay` | **已完成** ✅ |
 | **增固阶段** | **构建纯净化** | **0 硬编码补丁** | 彻底阻断测试文件泄漏，修复 scale/rtl 缩放与层叠 | 全端构建流水线、调度器、过渡状态机 | **已完成** ✅ |
-| **总计当前** | **~18.2 KB** | **~26.0 KB** | **Taro 端彻底剔除 6 个外部依赖，发布包纯净度提升** | **全端组件生态** | **已完成** ✅ |
+| **总计当前** | **~18.2 KB** | **~26.0 KB** | **Taro 端运行时剔除 5 个外部依赖（保留 lottie-react 供 H5 端），发布包纯净化** | **全端组件生态** | **已完成** ✅ |
 
 ---
 
@@ -29,7 +29,8 @@
 
 1. **复合组件坚守减重底线与测试闭环**：
    - `Empty` (`empty.scss`) 与 `ResultPage` (`resultpage.scss`) 坚决保持 `@import '../button/button-base.scss'`，阻断 19.7KB 全量按钮扩展变体拉取。
-   - `EmptyAction` 与 `ResultPageAction` 补充标准注释，规范操作按钮主次形态（原生支持全部 5 种 `fill` 模式与常用尺寸）。
+   - `EmptyAction` 与 `ResultPageAction` 补充标准注释，规范操作按钮主次形态（原生支持 default/primary 类型、常用尺寸 normal/large/small 与全部 5 种 `fill` 模式）。
+   - **升级指南与补救说明**：若业务在 `Empty`/`ResultPage`/`Dialog` 中使用了扩展变体（`danger`/`success`/`warning`/`info` 等）或扩展尺寸（`mini`/`xlarge`），请在页面中显式引入 Button 组件样式补齐规则（`import '@nutui/nutui-react/dist/es/packages/button/style'` 或对应 Taro 路径）。
    - 新增 `src/utils/__test__/build-styles.spec.ts` 自动化回归套件，断言三大复合组件仅拉取 `base-mini`，打包产物严格阻断 `.nut-button-xlarge` 与 `.nut-button-success`。
 2. **设计系统正本清源（消除硬编码补丁）**：
    - 彻底删除此前在组件和主题尾部临时硬编码的 `.nut-theme-dark` 补丁规则。
@@ -241,7 +242,7 @@
 2. **发布依赖隔离与清洗**：
    - 改造 `scripts/build.mjs` 与 `scripts/build-taro.mjs` 中的 `generateReleasePackageJson()`。
    - **两端发布包剔除**：`codesandbox`、`rehype-highlight`（官网开发依赖，移至根 devDependencies）、`@nutui/touch-emulator`（纯本地 Demo 手势调试）、`lodash.kebabcase`（已内联）、`@nutui/jdesign-icons-react-taro`（纯内部 Demo 替换图标库，组件源码 0 引用）。
-   - **Taro 发布包额外剔除 Web 专属库**：`@react-spring/web`、`@use-gesture/react`、`lottie-react`、`@nutui/icons-react`（Taro 链路走 `@tarojs/components` 原生手势与 `@nutui/icons-react-taro`，无需这些 Web 动画库）。
+   - **Taro 发布包额外剔除 Web 专属库**：`@react-spring/web`、`@use-gesture/react`、`@nutui/icons-react`（Taro 链路走 `@tarojs/components` 原生手势与 `@nutui/icons-react-taro`，无需这些 Web 动画库；注意 `lottie-react` 因 Taro H5 实现 `lottieweb.taro.tsx` 依赖而按需保留在发布依赖中）。
 
 #### 2. 量化收益 (Metrics & Gains)
 
@@ -276,19 +277,19 @@
 
 ## 🔮 规划中里程碑 (Roadmap)
 
-### [待推进] P1.2: Button 样式结构解耦 (Base vs Variants)
+### [已完成] P1.2: Button 样式结构解耦 (Base vs Variants)
 
 - **计划内容**：
   - `Button` 样式按 Base / Variants 分层，`Dialog` 与 `Empty` 切换至只引入 `button-base`。
 - **预期收益**：**CSS −16.9 KB**（去除未使用的语义色与小尺寸按钮变体）。
 
-### [待推进] P2: 主题变量核心域拆分
+### [已完成] P2: 主题变量核心域拆分
 
 - **计划内容**：
   - 抽取 `src/styles/variables-core.scss`，组件专属变量私有化声明，根入口保持聚合向下兼容。
 - **预期收益**：**CSS −4.4 KB**（消除 115 个未用死 CSS 变量）。
 
-### [待推进] P3: 小程序端弹层动画轻量化
+### [已完成] P3: 小程序端弹层动画轻量化
 
 - **计划内容**：
   - 针对 Taro 小程序端实现轻量 CSS 状态机 Hook，降级/移除对 `react-transition-group` 的强制依赖。

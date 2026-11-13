@@ -151,6 +151,7 @@ module.exports = {
       {
         libraryName: '@nutui/nutui-react-taro',
         libraryDirectory: 'dist/es/packages',
+        camel2DashComponentName: false,
         // 自动加载无 RTL 的轻量 CSS 样式
         customStyleName: (name) =>
           `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/mini`,

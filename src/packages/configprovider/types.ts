@@ -1117,4 +1117,5 @@ export type NutCSSVariables =
   | 'nutuiSafeAreaMultiple'
   | 'nutuiIndicatorCurrent'
   | 'nutuiIndicatorTotal'
+  | 'nutuiButtonDisabledBackgroundColor'
   | 'nutuiBlack1'

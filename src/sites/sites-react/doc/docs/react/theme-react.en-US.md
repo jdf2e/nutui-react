@@ -73,10 +73,23 @@ export default defineConfig({
 
 NutUI-React extracts core design system variables into `variables-core.scss` (~260 lines, **92% lighter** than the full 3300+ lines `variables.scss`).
 
-> [!WARNING] Important Note: Check how component styles are imported
+#### What Problem Does It Solve?
+
+The full `variables.scss` (3300+ lines) bundled **global design tokens (~8%)** together with **component-private implementation variables (~92%)**. When injected via `additionalData` so that application pages can use `scale-px()` or `$color-title`, the Sass compiler repeatedly prepends all 3300+ lines to every single application SCSS file, resulting in hundreds of thousands of lines of redundant AST parsing and sluggish builds.
+`variables-core.scss` decouples the pure Design Tokens from component implementation details, cutting injection overhead by 90% and speeding up compilation and HMR.
+
+#### Core Usage Boundaries & Criteria
+
+> [!WARNING] Boundary 1: Must be used with precompiled CSS products
 >
 > - **Precompiled CSS (Recommended, e.g. `style: 'css'` or `import 'style.css'`)**: Component styles are precompiled by the official build. Injecting `variables-core.scss` into `additionalData` for your own styles is **completely safe and significantly faster**.
-> - **On-demand SCSS Source Compilation (e.g. `style: true` or directly importing component `.scss` source)**: NutUI component SCSS sources rely on component-private variables (e.g. `$tabs-titles-height`, `$button-default-height`). In this mode, **you MUST inject the full `variables.scss`**, not `variables-core.scss`, otherwise compilation fails with `Undefined variable`.
+> - **SCSS Source Compilation (e.g. `style: true`)**: NutUI component SCSS sources rely on component-private variables (e.g. `$button-default-height`, `$tabs-titles-height`). In this mode, **you MUST inject the full `variables.scss`**, not `variables-core.scss`, otherwise compilation fails with `Undefined variable`.
+
+> [!NOTE] Boundary 2: Sass variable override is not runtime theme color switching
+> When using precompiled CSS, components are already built to read CSS custom properties: `var(--nutui-color-primary, #ff0f23)`. Overriding `$color-primary` in application SCSS **only affects your own styles, not precompiled NutUI components**. To customize component brand colors, override `--nutui-color-primary` (see Method 1) or use `<ConfigProvider theme={...}>`.
+
+> [!CAUTION] Boundary 3: Multi-Theme Isolation Rule
+> `variables-core.scss` represents the **default theme** only. Specialized themes (`daojia`, `jmapp`, `jrkf`) have their own palettes and color ramps. **NEVER import `variables-core.scss` in custom theme projects**, as Sass `!default` rules will cause default red variables to take precedence and corrupt custom brand colors. Custom themes should import their respective `variables-${theme}.scss`.
 
 #### What's Included
 
@@ -89,7 +102,7 @@ NutUI-React extracts core design system variables into `variables-core.scss` (~2
 #### Use Cases
 
 1. **Global Injection (Recommended)**: For business applications or in-house UI components, only generic Design Tokens are needed, avoiding injecting thousands of lines of unused component-private variables and significantly speeding up Sass builds.
-2. **Minimal Theme Overrides**: Perfect when only customizing brand colors, common border radii, and global tokens.
+2. **Minimal Theme Overrides**: Perfect when customizing common border radii, spacing, and design tokens for application styles. Note: when using precompiled component CSS, overriding `$color-primary` in business SCSS only affects your own styles; to customize precompiled component brand colors, override CSS variable `--nutui-color-primary` (see Method 1) or use ConfigProvider theme.
 
 #### Configuration Examples
 
