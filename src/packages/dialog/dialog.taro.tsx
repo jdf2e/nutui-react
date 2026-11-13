@@ -8,7 +8,7 @@ import React, {
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
-import { CSSTransition } from 'react-transition-group'
+import { CSSTransition } from '@/utils/taro/css-transition'
 import Button from '@/packages/button/index.taro'
 import { TaroDialogProps } from '@/types'
 import { Content, defaultContentProps } from './content.taro'

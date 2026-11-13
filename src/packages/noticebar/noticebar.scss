@@ -286,64 +286,70 @@
   }
 }
 
-[dir='rtl'] .nut-noticebar,
-.nut-rtl .nut-noticebar {
-  .nut-noticebar-box {
-    &-left-icon {
-      margin-right: 0;
-      margin-left: $noticebar-icon-gap;
-    }
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-noticebar,
+  .nut-rtl .nut-noticebar {
+    .nut-noticebar-box {
+      &-left-icon {
+        margin-right: 0;
+        margin-left: $noticebar-icon-gap;
+      }
 
-    &-right-icon {
-      margin-left: 0;
-      margin-right: $noticebar-action-gap;
-    }
+      &-right-icon {
+        margin-left: 0;
+        margin-right: $noticebar-action-gap;
+      }
 
-    &-tag {
-      margin-left: 0;
-      margin-right: $noticebar-tag-gap;
-    }
+      &-tag {
+        margin-left: 0;
+        margin-right: $noticebar-tag-gap;
+      }
 
-    &-action {
-      margin-left: 0;
-      margin-right: $noticebar-action-gap;
-    }
+      &-action {
+        margin-left: 0;
+        margin-right: $noticebar-action-gap;
+      }
 
-    .play {
-      animation: nut-notice-bar-play-rtl linear both running;
-    }
+      .play {
+        animation: nut-notice-bar-play-rtl linear both running;
+      }
 
-    .play-infinite {
-      animation: nut-notice-bar-play-infinite-rtl linear infinite both running;
-    }
+      .play-infinite {
+        animation: nut-notice-bar-play-infinite-rtl
+          linear
+          infinite
+          both
+          running;
+      }
 
-    @keyframes nut-notice-bar-play-rtl {
-      to {
-        transform: translate3d(100%, 0, 0);
+      @keyframes nut-notice-bar-play-rtl {
+        to {
+          transform: translate3d(100%, 0, 0);
+        }
+      }
+
+      @keyframes nut-notice-bar-play-infinite-rtl {
+        to {
+          transform: translate3d(100%, 0, 0);
+        }
       }
     }
 
-    @keyframes nut-notice-bar-play-infinite-rtl {
-      to {
-        transform: translate3d(100%, 0, 0);
+    .nut-noticebar-vertical {
+      .nut-noticebar-box-right-icon {
+        margin-left: 0;
+        margin-right: $noticebar-icon-gap;
       }
-    }
-  }
 
-  .nut-noticebar-vertical {
-    .nut-noticebar-box-right-icon {
-      margin-left: 0;
-      margin-right: $noticebar-icon-gap;
-    }
+      .nut-noticebar-box-tag {
+        margin-left: 0;
+        margin-right: $noticebar-tag-gap;
+      }
 
-    .nut-noticebar-box-tag {
-      margin-left: 0;
-      margin-right: $noticebar-tag-gap;
-    }
-
-    .nut-noticebar-box-action {
-      margin-left: 0;
-      margin-right: $noticebar-action-gap;
+      .nut-noticebar-box-action {
+        margin-left: 0;
+        margin-right: $noticebar-action-gap;
+      }
     }
   }
 }

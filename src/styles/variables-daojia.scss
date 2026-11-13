@@ -1,4 +1,6 @@
 // ----------------------------------------------------
+$nutui-enable-rtl: true !default;
+@import './scale.scss';
 // 主色调 // done
 $color-primary: var(--nutui-color-primary, #1ed145) !default;
 $color-primary-stop-1: var(--nutui-color-primary-stop-1, #23d94b) !default;
@@ -7,6 +9,8 @@ $color-primary-pressed: var(--nutui-color-primary-pressed, #16c73d) !default;
 $color-primary-disabled: var(--nutui-color-primary-disabled, #c2c4cc) !default;
 $color-primary-disabled-special: var(--nutui-color-primary-disabled-special,
     #72e88c) !default;
+$color-primary-light: var(--nutui-color-primary-light,
+    rgba(30, 209, 69, 0.1)) !default;
 $color-primary-light-pressed: var(--nutui-color-primary-light-pressed,
     #d5fbd5) !default;
 $color-primary-gradient-1: linear-gradient(135deg,
@@ -342,9 +346,9 @@ $button-service-pressed: var(--nutui-button-service-pressed,
     $color-service-btn-bg-pressed) !default;
 
 $button-primary-light-color: var(--nutui-button-primary-light-color,
-    $button-primary-background-color) !default;
+    $color-primary) !default;
 $button-primary-light-background-color: var(--nutui-button-primary-light-background-color,
-    rgba(250, 44, 25, 0.1)) !default;
+    $color-primary-light) !default;
 $button-primary-light-border-color: var(--nutui-button-primary-light-border-color,
     transparent) !default;
 

@@ -88,38 +88,40 @@
   }
 }
 
-[dir='rtl'] .nut-skeleton,
-.nut-rtl .nut-skeleton {
-  &-animation {
-    left: 0;
-    right: auto;
-    background-position: right center;
-    transform: translateX(80px) skewX(30deg);
-    animation-name: nut-skeleton-rtl;
-  }
-
-  @keyframes nut-skeleton-rtl {
-    0% {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-skeleton,
+  .nut-rtl .nut-skeleton {
+    &-animation {
+      left: 0;
+      right: auto;
+      background-position: right center;
       transform: translateX(80px) skewX(30deg);
-      opacity: 0;
+      animation-name: nut-skeleton-rtl;
     }
 
-    1.5% {
-      opacity: 1;
-    }
+    @keyframes nut-skeleton-rtl {
+      0% {
+        transform: translateX(80px) skewX(30deg);
+        opacity: 0;
+      }
 
-    27% {
-      opacity: 1;
-    }
+      1.5% {
+        opacity: 1;
+      }
 
-    28.5% {
-      transform: translateX(-100%) skewX(30deg);
-      opacity: 0;
-    }
+      27% {
+        opacity: 1;
+      }
 
-    100% {
-      transform: translateX(-100%) skewX(30deg);
-      opacity: 0;
+      28.5% {
+        transform: translateX(-100%) skewX(30deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(-100%) skewX(30deg);
+        opacity: 0;
+      }
     }
   }
 }

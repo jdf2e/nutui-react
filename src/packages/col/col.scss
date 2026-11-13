@@ -5,19 +5,21 @@
   margin-bottom: $col-default-margin-bottom;
 }
 
-[dir='rtl'] .nut-col,
-.nut-rtl .nut-col {
-  float: right;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-col,
+  .nut-rtl .nut-col {
+    float: right;
 
-  &.nut-col-gutter {
-    &:last-child {
-      padding-right: 0 !important;
-      padding-left: 0 !important;
-    }
+    &.nut-col-gutter {
+      &:last-child {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+      }
 
-    &:first-child {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
+      &:first-child {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
     }
   }
 }
@@ -28,10 +30,12 @@
     margin-left: #{$i * 4.166666666} + '%';
   }
 
-  [dir='rtl'] .nut-col-offset-#{$i},
-  .nut-rtl .nut-col-offset-#{$i} {
-    margin-left: 0;
-    margin-right: #{$i * 4.166666666} + '%';
+  @if $nutui-enable-rtl {
+    [dir='rtl'] .nut-col-offset-#{$i},
+    .nut-rtl .nut-col-offset-#{$i} {
+      margin-left: 0;
+      margin-right: #{$i * 4.166666666} + '%';
+    }
   }
 
   .nut-col-#{$i} {

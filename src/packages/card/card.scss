@@ -78,22 +78,24 @@
   }
 }
 
-[dir='rtl'] .nut-card,
-.nut-rtl .nut-card {
-  &-right {
-    &-price {
-      &-origin {
-        &.nut-price {
-          margin-left: 0;
-          margin-right: 2px;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-card,
+  .nut-rtl .nut-card {
+    &-right {
+      &-price {
+        &-origin {
+          &.nut-price {
+            margin-left: 0;
+            margin-right: 2px;
+          }
         }
       }
-    }
 
-    &-other {
-      .nut-tag {
-        margin-right: 0;
-        margin-left: 5px;
+      &-other {
+        .nut-tag {
+          margin-right: 0;
+          margin-left: 5px;
+        }
       }
     }
   }

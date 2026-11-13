@@ -38,8 +38,10 @@
   }
 }
 
-[dir='rtl'] .nut-backtop,
-.nut-backtop-rtl {
-  right: auto;
-  left: $backtop-right;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-backtop,
+  .nut-backtop-rtl {
+    right: auto;
+    left: $backtop-right;
+  }
 }

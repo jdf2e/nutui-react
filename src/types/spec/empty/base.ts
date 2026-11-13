@@ -2,6 +2,11 @@ import { ReactNode } from 'react'
 import { BaseProps } from '../../base/props'
 import { SimpleValue, UIFill, UISize, UIType } from '../../base/atoms'
 
+/**
+ * Empty 操作按钮配置项。
+ * 复合组件按需引入轻量基础按钮样式（button-base，节省 ~19.7KB），原生支持 default / primary 核心类型、常用尺寸（normal/large/small）及全部 5 种 fill 填充形态；
+ * 如需在 actions 中使用 success/danger/golden/warning/info 等扩展按钮变体或 mini/xlarge 等扩展尺寸，请在页面中另行显式引入 Button 组件样式（如 import '@nutui/nutui-react/dist/es/packages/button/style' 或对应 Taro 样式）。
+ */
 export interface EmptyAction {
   text: ReactNode
   type?: UIType

@@ -86,10 +86,12 @@
   }
 }
 
-[dir='rtl'] .nut-tag,
-.nut-rtl .nut-tag {
-  .nut-icon {
-    margin-left: 0;
-    margin-right: 4px;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-tag,
+  .nut-rtl .nut-tag {
+    .nut-icon {
+      margin-left: 0;
+      margin-right: 4px;
+    }
   }
 }

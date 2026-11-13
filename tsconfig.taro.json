@@ -11,7 +11,12 @@
     "src/sites",
     "**/demo.tsx",
     "**/demo.taro.tsx",
+    "**/*.spec.ts",
     "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/__test__/**",
+    "**/__tests__/**",
     "**/demos"
   ]
 }
