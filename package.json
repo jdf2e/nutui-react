@@ -174,7 +174,7 @@
     "axios": "^1.19.0",
     "cypress": "^13.17.0",
     "del": "^8.0.1",
-    "eslint": "^8.57.1",
+    "eslint": "^10.15.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.2",
     "eslint-plugin-import": "^2.32.0",
