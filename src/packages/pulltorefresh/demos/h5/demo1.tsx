@@ -76,7 +76,7 @@ const Demo1 = () => {
               textAlign: 'center',
               height: '50px',
               lineHeight: '50px',
-              color: isPrimary ? 'white' : undefined,
+              color: isPrimary ? 'white' : 'var(--nutui-color-title)',
             }}
             key={item}
           >

@@ -9,7 +9,9 @@ const Demo7 = () => {
         <Form.Item
           label="文本"
           name="username"
-          style={{ background: '#f0f2f7' }}
+          style={{
+            background: 'var(--nutui-color-background-component, #f0f2f7)',
+          }}
         >
           <Input
             className="nut-input-text"
@@ -18,7 +20,9 @@ const Demo7 = () => {
             onChange={(val) => {
               console.log('change value:', val)
             }}
-            inputStyle={{ background: '#f0f2f7' }}
+            inputStyle={{
+              background: 'var(--nutui-color-background-component, #f0f2f7)',
+            }}
           />
         </Form.Item>
       </Form>

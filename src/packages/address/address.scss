@@ -122,12 +122,12 @@
     .nut-elevator-list {
       &-item {
         position: relative;
-        padding-left: 20px;
+        padding-left: 36px;
       }
       &-item-code {
         display: inline;
         position: absolute;
-        left: 0;
+        left: 16px;
         top: 0;
         height: 30px;
         line-height: 30px;
@@ -169,6 +169,18 @@
         &-info {
           margin-left: 0;
           margin-right: 9px;
+        }
+      }
+    }
+    &-elevator {
+      .nut-elevator-list {
+        &-item {
+          padding-left: 0;
+          padding-right: 36px;
+        }
+        &-item-code {
+          left: auto;
+          right: 16px;
         }
       }
     }

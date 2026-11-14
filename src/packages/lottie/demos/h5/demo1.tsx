@@ -13,7 +13,9 @@ const Demo1 = () => {
       <Cell style={{ background: 'rgba(0, 0, 0, 0.06)' }}>
         <Lottie source={lightGlobal} style={{ width: 56, height: 56 }} />
       </Cell>
-      <Cell style={{ background: '#fff' }}>
+      <Cell
+        style={{ background: 'var(--nutui-color-background-overlay, #fff)' }}
+      >
         <Lottie source={lightPull} style={{ width: 132, height: 26 }} />
       </Cell>
     </>

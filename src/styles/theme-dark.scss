@@ -393,4 +393,16 @@ page,
 
   // skeleton 加载光影：暗黑下背景近黑，白色光影对比过强，降低透明度
   --nutui-skeleton-animation-color: var(--nutui-black-3);
+
+  // layout demo 暗黑背景
+  --row-content-bg-color: #5f2b34;
+  --row-content-light-bg-color: #3d2128;
+
+  // segmented 暗黑背景与高亮
+  --nutui-segmented-background: var(--nutui-color-background-component);
+  --nutui-segmented-active-background: var(--nutui-gray-4);
+
+  .nut-fixednav-list-image {
+    filter: brightness(0) invert(0.9);
+  }
 }

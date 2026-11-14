@@ -20,7 +20,9 @@ function generateRandomTextArray(count: number) {
 const Demo1 = () => {
   return (
     <ScrollView>
-      <Text>{generateRandomTextArray(900).join(' ')}</Text>
+      <Text style={{ color: 'var(--nutui-color-text)' }}>
+        {generateRandomTextArray(900).join(' ')}
+      </Text>
       <SafeArea position="bottom" />
     </ScrollView>
   )

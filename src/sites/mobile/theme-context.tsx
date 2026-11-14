@@ -98,8 +98,8 @@ export const darkTheme: Record<string, string> = {
   boxShadow: '0px 1px 7px 0px #14171a',
   pickerMaskBgImg:
     'linear-gradient(180deg,rgba(31, 31, 31, 1),rgba(31, 31, 31, 0.4)),linear-gradient(0deg, rgba(31, 31, 31, 1), rgba(31, 31, 31, 0.4))',
-  rowContentBgColor: '#14171a',
-  rowContentLightBgColor: 'rgba(20, 20, 20, 0.4)',
+  rowContentBgColor: '#5f2b34',
+  rowContentLightBgColor: '#3d2128',
 }
 
 export interface AppThemeContextValue {

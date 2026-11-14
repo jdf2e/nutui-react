@@ -10,7 +10,7 @@
   padding: $segmented-padding;
   align-items: center;
   border-radius: $segmented-border-radius;
-  background: $color-mask-part;
+  background: $segmented-background;
   box-sizing: border-box;
 }
 
@@ -29,6 +29,8 @@
 
 .nut-segmented-item-active {
   background: $segmented-active-background;
+  color: $color-title;
+  font-weight: 500;
 }
 
 .nut-segmented-icon {

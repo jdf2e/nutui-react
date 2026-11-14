@@ -19,7 +19,9 @@ function generateRandomTextArray(count: number) {
 const Demo1 = () => {
   return (
     <>
-      <div>{generateRandomTextArray(900).join(' ')}</div>
+      <div style={{ color: 'var(--nutui-color-text)' }}>
+        {generateRandomTextArray(900).join(' ')}
+      </div>
       <SafeArea position="bottom" />
     </>
   )

@@ -54,6 +54,7 @@
   border-radius: $notify-border-radius;
   box-shadow: $notify-box-shadow;
   background-color: $notify-background-color;
+  color: $notify-text-color;
 
   &-content {
     flex: 1;

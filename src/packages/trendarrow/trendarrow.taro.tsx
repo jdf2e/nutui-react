@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent } from 'react'
 import { TriangleDown, TriangleUp } from '@nutui/icons-react-taro'
 import { Text, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
@@ -24,24 +24,24 @@ export const TrendArrow: FunctionComponent<
   Partial<TaroTrendArrowProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
-    value,
-    digits,
-    symbol,
-    zero,
-    left,
-    sync,
-    color,
-    riseColor,
-    dropColor,
-    riseIcon,
-    dropIcon,
+    value = 0,
+    digits = 2,
+    symbol = false,
+    zero = false,
+    left = false,
+    sync = true,
+    color = '#333',
+    riseColor = harmony() ? '#ff0f23' : 'var(--nutui-brand-6)',
+    dropColor = harmony() ? '#14cc33' : 'var(--nutui-secondary-1)',
+    riseIcon = null,
+    dropIcon = null,
     className,
     style,
     children,
     ...rest
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-trendarrow'
-  const rateTrend = useRef(value > 0)
+  const isRise = Number(value) > 0
 
   const myFixed = (num: any, digit = 2) => {
     if (Object.is(parseFloat(num), NaN)) {
@@ -54,34 +54,28 @@ export const TrendArrow: FunctionComponent<
   }
 
   const calcStyle = (() => {
-    const arrowColor = rateTrend.current ? riseColor : dropColor
+    const arrowColor = isRise ? riseColor : dropColor
     const textEquArrowColor = sync ? arrowColor : color
-    const style = {
-      color: value === 0 ? color : textEquArrowColor,
+    return {
+      color: Number(value) === 0 ? color : textEquArrowColor,
     }
-    return style
   })()
 
   const calcRate = (() => {
-    rateTrend.current = value > 0
-    const absRate = Math.abs(value)
-    if (!zero && value === 0) {
+    const absRate = Math.abs(Number(value))
+    if (!zero && Number(value) === 0) {
       return '--'
     }
-    const resultRate = `${
-      // eslint-disable-next-line no-nested-ternary
-      symbol && value !== 0 ? (rateTrend.current ? '+' : '-') : ''
-    }${myFixed(Number(absRate), digits)}%`
-
-    return resultRate
-  })()
-
-  const calcIconProps = (() => {
-    const iconProps = {
-      color: rateTrend.current ? riseColor : dropColor,
+    let prefix = ''
+    if (symbol && Number(value) !== 0) {
+      prefix = isRise ? '+' : '-'
     }
-    return iconProps
+    return `${prefix}${myFixed(Number(absRate), digits)}%`
   })()
+
+  const calcIconProps = {
+    color: isRise ? riseColor : dropColor,
+  }
 
   const renderContent = (left: boolean) => {
     const classNameSuffix = !left ? 'icon-after' : 'icon-before'
@@ -103,7 +97,7 @@ export const TrendArrow: FunctionComponent<
       {!left && renderContent(!left)}
       {Number(value) !== 0 && (
         <>
-          {rateTrend.current ? (
+          {isRise ? (
             <>{riseIcon || <TriangleUp color={calcIconProps.color} />}</>
           ) : (
             <>{dropIcon || <TriangleDown color={calcIconProps.color} />}</>
