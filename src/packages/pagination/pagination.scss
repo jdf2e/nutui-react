@@ -17,7 +17,7 @@
   justify-content: center;
   font-size: $pagination-font-size;
   color: $pagination-color;
-  background: $white;
+  background: $pagination-item-background-color;
   border-radius: $pagination-item-border-radius;
   border: $pagination-item-border-width solid $pagination-item-border-color;
   cursor: pointer;
@@ -39,7 +39,7 @@
 }
 
 .nut-pagination-item-active {
-  color: $white;
+  color: $color-primary-text;
   border-width: 0;
   background-color: $pagination-active-background-color;
 }

@@ -9,7 +9,7 @@ const Demo8 = () => {
         style={{
           display: 'flex',
           alignItems: 'center',
-          background: '#f0f2f7',
+          background: 'var(--nutui-color-background-component, #f0f2f7)',
           padding: '0 10px',
         }}
       >
