@@ -219,7 +219,7 @@ page,
 
   // 线颜色值 语义化
   // 间隔线或容错线
-   --nutui-color-border: var(--nutui-mask-2);
+  --nutui-color-border: var(--nutui-mask-2);
   // 组件边框禁用色
   --nutui-color-border-disabled: var(--nutui-gray-4);
 
@@ -275,6 +275,7 @@ page,
   --nutui-font-weight-light: 300;
   // 常规内容
   --nutui-font-weight: 400;
+  --nutui-font-weight-medium: 500;
   // 强化内容
   --nutui-font-weight-bold: 600;
 
@@ -389,4 +390,7 @@ page,
 
   // indicator 圆角（不随 radius-xxs 归零）
   --nutui-indicator-border-radius: var(--nutui-radius-2);
+
+  // skeleton 加载光影：暗黑下背景近黑，白色光影对比过强，降低透明度
+  --nutui-skeleton-animation-color: var(--nutui-black-3);
 }

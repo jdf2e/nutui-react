@@ -76,7 +76,7 @@
   }
 
   &-plain {
-    background-color: #fff;
+    background-color: $tag-plain-background-color;
     border: $tag-border-width solid $color-title;
   }
 

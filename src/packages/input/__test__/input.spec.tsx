@@ -206,10 +206,17 @@ test('defines the complete error color token chain', () => {
   ]
 
   variableFiles.forEach((file) => {
-    const variables = readFileSync(
+    let variables = readFileSync(
       resolve(process.cwd(), `src/styles/${file}`),
       'utf8'
     )
+    if (file === 'variables.scss') {
+      const coreVariables = readFileSync(
+        resolve(process.cwd(), 'src/styles/variables-core.scss'),
+        'utf8'
+      )
+      variables = `${coreVariables}\n${variables}`
+    }
     const errorColor = variables.match(/\$input-error-color:[^;]+;/)?.[0]
 
     expect(variables).toContain('$color-error: var(--nutui-color-error')
@@ -411,7 +418,7 @@ test('defines the updated default gray-2 value', () => {
     'utf8'
   )
 
-  expect(defaultTheme).toContain('--nutui-gray-2: #ebedf2')
+  expect(defaultTheme).toContain('--nutui-gray-2: #f0f2f7')
   expect(defaultTheme).toContain(
     '--nutui-color-background-component: var(--nutui-gray-2)'
   )

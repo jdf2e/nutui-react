@@ -9,7 +9,7 @@
       display: flex;
       width: 150px;
       height: 150px;
-      background: #fff;
+      background: var(--nutui-color-background-overlay, #fff);
       border-radius: 8px;
       align-items: center;
       justify-content: center;

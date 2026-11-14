@@ -4,7 +4,8 @@
   flex: 0 0 auto; // 防止被压缩
   &-avatar,
   .nut-avatar {
-    border: 1px solid #fff;
+    border: 1px solid
+      var(--nutui-avatargroup-border-color, $color-background-overlay);
     margin-left: -8px;
 
     &:not(:first-of-type) {

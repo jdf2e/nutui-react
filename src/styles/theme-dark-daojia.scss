@@ -278,6 +278,7 @@ page {
   --nutui-font-weight-light: 300;
   // 常规内容
   --nutui-font-weight: 400;
+  --nutui-font-weight-medium: 500;
   // 强化内容
   --nutui-font-weight-bold: 600;
 
@@ -377,4 +378,7 @@ page {
   --nutui-line-tag: var(--nutui-line-1);
   // 间隔线/组件边框
   --nutui-line-component: var(--nutui-line-2);
+
+  // skeleton 加载光影：暗黑下背景近黑，白色光影对比过强，降低透明度
+  --nutui-skeleton-animation-color: var(--nutui-black-3);
 }

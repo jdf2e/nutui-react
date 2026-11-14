@@ -139,6 +139,11 @@ $color-background-sunken: var(
   --nutui-color-background-sunken,
   #f7f8fc
 ) !default;
+// 组件背景色
+$color-background-component: var(
+  --nutui-color-background-component,
+  #f0f2f7
+) !default;
 
 // 蒙层颜色
 // 页面全局蒙层

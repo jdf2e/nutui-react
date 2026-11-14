@@ -755,7 +755,7 @@ $numberkeyboard-key-confirm-font-size: var(
 ) !default;
 $numberkeyboard-key-confirm-color: var(
   --nutui-numberkeyboard-key-confirm-color,
-  #fff
+  $color-primary-text
 ) !default;
 $numberkeyboard-key-confirm-background-color: var(
   --nutui-numberkeyboard-key-confirm-background-color,
@@ -1122,7 +1122,10 @@ $notify-box-shadow: var(
 $notify-z-index: var(--nutui-notify-z-index, 1000) !default;
 $notify-text-color: var(--nutui-notify-text-color, $color-title) !default;
 $notify-font-size: var(--nutui-notify-font-size, $font-size-base) !default;
-$notify-background-color: var(--nutui-notify-background-color, $white) !default;
+$notify-background-color: var(
+  --nutui-notify-background-color,
+  $color-background-overlay
+) !default;
 
 // rate（✅）
 $rate-item-margin: var(--nutui-rate-item-margin, scale-px(4px)) !default;
@@ -1249,7 +1252,10 @@ $address-tab-line-background: linear-gradient(
 ) !default;
 
 //steps（✅）
-$steps-background-color: var(--nutui-steps-background-color, $white) !default;
+$steps-background-color: var(
+  --nutui-steps-background-color,
+  $color-background-overlay
+) !default;
 $steps-base-head-height: var(--nutui-steps-base-head-height, scale-px(14px)) !default;
 $steps-base-head-background-color: var(
   --nutui-steps-base-head-background-color,
@@ -1318,15 +1324,14 @@ $steps-process-head-border-color: var(
   --nutui-steps-base-head-border-color,
   $color-border
 ) !default;
-$steps-process-head-border-color: var(
-  --nutui-steps-base-head-border-color,
-  $color-border
-) !default;
 $steps-process-head-background-color: var(
   --nutui-steps-process-head-background-color,
   $color-primary
 ) !default;
-$steps-process-color: var(--nutui-steps-process-color, $white) !default;
+$steps-process-color: var(
+  --nutui-steps-process-color,
+  $color-primary-text
+) !default;
 $steps-process-title-color: var(
   --nutui-steps-process-title-color,
   $color-primary
@@ -1572,11 +1577,11 @@ $dialog-auto-close-margin-top: var(
 // checkbox（✅）
 $checkbox-label-disable-color: var(
   --nutui-checkbox-label-disable-color,
-  #999
+  $color-text-disabled
 ) !default;
 $checkbox-icon-disable-color: var(
   --nutui-checkbox-icon-disable-color,
-  #d6d6d6
+  $color-border-disabled
 ) !default;
 $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
@@ -1621,7 +1626,7 @@ $checkbox-button-disabled-active-color: var(
 ) !default;
 $checkbox-list-background-color: var(
   --nutui-checkbox-list-background-color,
-  $white
+  $color-background-overlay
 ) !default;
 $checkbox-list-item-border: var(
   --nutui-checkbox-list-item-border,
@@ -1711,9 +1716,9 @@ $signature-font-size: var(
 //fixednav（✅）
 $fixednav-background-color: var(
   --nutui-fixednav-background-color,
-  $white
+  $color-background-overlay
 ) !default;
-$fixednav-color: var(--nutui-fixednav-color, #1a1a1a) !default;
+$fixednav-color: var(--nutui-fixednav-color, $color-title) !default;
 $fixednav-index: var(--nutui-fixednav-index, 900) !default;
 $fixednav-button-background: var(
   --nutui-fixednav-button-background,
@@ -1834,6 +1839,10 @@ $tag-border-radius: var(--nutui-tag-border-radius, scale-px(2px)) !default;
 $tag-height: var(--nutui-tag-height, scale-px(14px)) !default;
 $tag-color: var(--nutui-tag-color, #ffffff) !default;
 $tag-border-width: var(--nutui-tag-border-width, scale-px(1px)) !default;
+$tag-plain-background-color: var(
+  --nutui-tag-plain-background-color,
+  $color-background-overlay
+) !default;
 $tag-background-color: var(--nutui-tag-background-color, $color-title) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
@@ -2093,7 +2102,7 @@ $pagination-disable-color: var(
 ) !default;
 $pagination-disable-background-color: var(
   --nutui-pagination-disable-background-color,
-  #f7f8fa
+  $color-background-sunken
 ) !default;
 $pagination-item-border-width: var(
   --nutui-pagination-item-border-width,
@@ -2286,7 +2295,7 @@ $tabs-titles-item-smile-bottom: var(
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, scale-px(24px) scale-px(20px)) !default;
 $tabs-tabpane-background-color: var(
   --nutui-tabs-tabpane-background-color,
-  #fff
+  $color-background-overlay
 ) !default;
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color, $color-primary) !default;
@@ -2669,7 +2678,10 @@ $table-tr-even-bg-color: var(
   --nutui-table-tr-even-bg-color,
   $color-background
 ) !default;
-$table-tr-odd-bg-color: var(--nutui-table-tr-odd-bg-color, $white) !default;
+$table-tr-odd-bg-color: var(
+  --nutui-table-tr-odd-bg-color,
+  $color-background-overlay
+) !default;
 $table-sticky-left-shadow: var(
   --nutui-table-sticky-left-shadow,
   scale-px(4px) 0 scale-px(8px) 0 rgba(0, 0, 0, 0.1)
@@ -2737,11 +2749,17 @@ $sidebar-active-color: var(
   --nutui-sidebar-active-color,
   $color-primary
 ) !default;
-$sidebar-item-background: var(--nutui-sidebar-item-background, $white) !default;
+$sidebar-item-background: var(
+  --nutui-sidebar-item-background,
+  $color-background-overlay
+) !default;
 $sidebar-item-padding: var(--nutui-sidebar-item-padding, scale-px(24px) scale-px(20px)) !default;
 
 // elevator（✅）
-$elevator-list-bg-color: var(--nutui-elevator-list-bg-color, $white) !default;
+$elevator-list-bg-color: var(
+  --nutui-elevator-list-bg-color,
+  $color-background-overlay
+) !default;
 $elevator-list-font-size: var(
   --nutui-elevator-list-font-size,
   $font-size-base
@@ -2836,20 +2854,20 @@ $elevator-list-fixed-color: var(
 ) !default;
 $elevator-list-fixed-bg-color: var(
   --nutui-elevator-list-fixed-bg-color,
-  $white
+  $color-background-overlay
 ) !default;
 $elevator-list-fixed-box-shadow: var(
   --nutui-elevator-list-fixed-box-shadow,
-  0 0 scale-px(10px) #eee
+  0 0 scale-px(10px) rgba(0, 0, 0, 0.08)
 ) !default;
 
 // list（✅）
 $list-item-margin: var(--nutui-list-item-margin, 0 0 scale-px(10px) 0) !default;
 
 //addresslist
-$addresslist-bg: var(--nutui-addresslist-bg, #fff) !default;
-$addresslist-border: var(--nutui-addresslist-border, #f0f0f0) !default;
-$addresslist-font-color: var(--nutui-addresslist-font-color, #333333) !default;
+$addresslist-bg: var(--nutui-addresslist-bg, $color-background-overlay) !default;
+$addresslist-border: var(--nutui-addresslist-border, $color-border) !default;
+$addresslist-font-color: var(--nutui-addresslist-font-color, $color-title) !default;
 $addresslist-font-size: var(--nutui-addresslist-font-size, $font-size-md) !default;
 $addresslist-mask-bg: var(
   --nutui-addresslist-mask-bg,
@@ -2857,7 +2875,7 @@ $addresslist-mask-bg: var(
 ) !default;
 $addresslist-addr-font-color: var(
   --nutui-addresslist-addr-font-color,
-  #666666
+  $color-text-help
 ) !default;
 $addresslist-addr-font-size: var(
   --nutui-addresslist-addr-font-size,
@@ -3018,7 +3036,10 @@ $resultpage-action-default-light-color: var(
 ) !default;
 
 // quickenter
-$quickenter-bg-color: var(--nutui-quickenter-bg-color, #f5f5f5) !default;
+$quickenter-bg-color: var(
+  --nutui-quickenter-bg-color,
+  $color-background-sunken
+) !default;
 $quickenter-max-height: var(--nutui-quickenter-max-height, scale-px(256px)) !default;
 $quickenter-title-font-size: var(
   --nutui-quickenter-title-font-size,
@@ -3038,7 +3059,7 @@ $quickenter-item-title-color: var(
 ) !default;
 $quickenter-item-icon-bg-color: var(
   --nutui-quickenter-item-icon-bg-color,
-  $white
+  $color-background-overlay
 ) !default;
 $quickenter-item-icon-color: var(
   --nutui-quickenter-item-icon-color,
@@ -3050,7 +3071,7 @@ $quickenter-close-icon-size: var(
 ) !default;
 $quickenter-close-icon-color: var(
   --nutui-quickenter-close-icon-color,
-  #808080
+  $color-text-help
 ) !default;
 $quickenter-box-shadow: var(
   --nutui-quickenter-box-shadow,

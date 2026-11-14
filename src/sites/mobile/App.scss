@@ -114,7 +114,7 @@ body {
 }
 
 .nut-theme-dark .demo {
-  background: #000 !important;
+  background: var(--nutui-color-background, #14171a) !important;
 }
 
 [dir='rtl'] #app,

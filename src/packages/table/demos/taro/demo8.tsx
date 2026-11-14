@@ -45,6 +45,12 @@ const Demo8 = () => {
     setData(data1)
   }, 5000)
 
-  return <Table columns={columns} data={data} style={{ background: '#fff' }} />
+  return (
+    <Table
+      columns={columns}
+      data={data}
+      style={{ background: 'var(--nutui-color-background-overlay)' }}
+    />
+  )
 }
 export default Demo8

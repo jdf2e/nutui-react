@@ -156,6 +156,11 @@ $color-background-overlay: var(
 ) !default; // 卡片、内容容器背景色
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
 $color-background-sunken: var(--nutui-gray-2, #f8f8f8) !default;
+// 组件背景色
+$color-background-component: var(
+  --nutui-color-background-component,
+  #f8f8f8
+) !default;
 
 // 蒙层颜色
 // 页面全局蒙层
@@ -2119,6 +2124,10 @@ $tag-border-radius: var(--nutui-tag-border-radius, $radius-xs) !default;
 $tag-height: var(--nutui-tag-height, 20px) !default;
 $tag-color: var(--nutui-tag-color, $color-text-dark) !default;
 $tag-border-width: var(--nutui-tag-border-width, 1px) !default;
+$tag-plain-background-color: var(
+  --nutui-tag-plain-background-color,
+  $color-background-overlay
+) !default;
 $tag-background-color: var(--nutui-tag-background-color, $color-title) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
