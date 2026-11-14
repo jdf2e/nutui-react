@@ -37,9 +37,9 @@
   },
   "dependencies": {
     "@babel/cli": "^7.29.7",
-    "@babel/core": "^7.29.7",
-    "@babel/generator": "^7.29.8",
-    "@babel/preset-env": "^7.29.7",
+    "@babel/core": "^7.29.13",
+    "@babel/generator": "^7.29.14",
+    "@babel/preset-env": "^7.29.14",
     "@babel/preset-react": "^7.29.7",
     "@types/babel__core": "^7.20.5",
     "@types/babel__generator": "^7.27.0",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.19.130",
-    "prettier": "^3.9.6",
+    "prettier": "^3.10.1",
     "rollup": "^2.80.0",
     "rollup-plugin-ts": "^3.4.5",
     "typescript": "^5.4.5"
