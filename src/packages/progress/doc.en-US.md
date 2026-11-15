@@ -5,7 +5,7 @@ Used to show the current progress of the operation.
 ## Import
 
 ```tsx
-import { Progress } from '@nutui/nutui-react'
+import { Progress, VideoProgress } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -80,11 +80,15 @@ import { Progress } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo9.tsx'></CodeBlock>
 :::
 
-### Video Progress
+### Video Progress (VideoProgress)
 
-For video-player-like immersive scenarios. Default colors: track `rgba(255,255,255,0.2)`, fill `rgba(255,255,255,0.7)`, thumb `#FFFFFF`. The demo covers three states: static (dimmed), paused (medium intensity, paired with a play icon), and drag (highlighted, enlarged thumb).
+For video-player-like immersive scenarios. Decoupled as an independent lightweight component `VideoProgress` (or subcomponent `<Progress.Video>`). Default colors: track `rgba(255,255,255,0.2)`, fill `rgba(255,255,255,0.7)`, thumb `#FFFFFF`. The demo covers:
 
-> Tip: In addition to `<Progress mode="video" ... />`, you can also use `<Progress.Video ... />` or import named export `import { VideoProgress } from '@nutui/nutui-react'`.
+- **Static Mode**: default playing state with dimmed bar;
+- **Paused Mode**: medium intensity, supports custom center play icon via `pausedIcon`;
+- **Interactive Dragging**: smooth seeking with gesture drag via `draggable`;
+- **Subcomponent Syntax**: convenient call via `<Progress.Video>`;
+- **Backward Compatibility**: backward-compatible support for `<Progress mode="video" ... />`.
 
 :::demo
 
@@ -112,18 +116,38 @@ For video-player-like immersive scenarios. Default colors: track `rgba(255,255,2
 | duration | Animation completion time (in milliseconds) | `number` | `30` |
 | ariaLabel | AccessibilityLabel | `string` | `-` |
 | onActiveEnd | Callback function after animation is completed | `() => void` | `-` |
-| mode | Progress bar form; `video` enables the video-player style | `default \| video` | `default` |
-| status | External state in video mode (`static` / `paused`); drag state is derived internally | `static \| paused` | `static` |
-| draggable | Whether users can drag to seek in video mode | `boolean` | `false` |
-| showThumb | Whether the draggable thumb is visible in video mode | `boolean` | `true` |
-| pausedIcon | Icon rendered when `status='paused'` | `ReactNode` | `-` |
+| mode | Progress bar form; `video` enables the video-player style (recommended: use decoupled `VideoProgress` or `<Progress.Video>`) | `default \| video` | `default` |
+
+## VideoProgress (Progress.Video)
+
+Dedicated video player progress bar, decoupled for minimal bundle size and tree-shaking.
+
+### Import
+
+```tsx
+import { VideoProgress } from '@nutui/nutui-react'
+// Or as a subcomponent
+import { Progress } from '@nutui/nutui-react'
+// <Progress.Video ... />
+```
+
+### Props
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| percent | Progress percentage (0-100) | `number` | `0` |
+| status | External playback state (`static` dimmed / `paused` paused); dragging state is derived internally | `static \| paused` | `static` |
+| draggable | Whether users can drag thumb to seek | `boolean` | `false` |
+| showThumb | Whether the draggable thumb is visible | `boolean` | `true` |
+| pausedIcon | Icon rendered when `status=paused` | `ReactNode` | `-` |
 | min | Minimum progress value | `number` | `0` |
 | max | Maximum progress value | `number` | `100` |
 | step | Step size for drag / keyboard | `number` | `-` |
-| onChange | Fires when the progress value changes | `(value: number) => void` | `-` |
+| onChange | Fires when progress value changes | `(value: number) => void` | `-` |
 | onDragStart | Fires on drag start | `(value: number) => void` | `-` |
 | onDragging | Fires while dragging | `(value: number) => void` | `-` |
 | onDragEnd | Fires on drag end | `(value: number) => void` | `-` |
+| ariaLabel | AccessibilityLabel | `string` | `-` |
 
 > Note: when `mode='video'`, `color / background / strokeWidth` are ignored. Customize the look via the CSS variables below or via the `pausedIcon` slot.
 

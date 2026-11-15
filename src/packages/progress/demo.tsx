@@ -23,7 +23,7 @@ const ProgressDemo = () => {
       dynamicChange: '动态改变',
       lazy: '延迟加载数据',
       activeMode: '设置动画时长与播放方式',
-      videoBasic: '视频进度条',
+      videoBasic: '视频进度条 (VideoProgress)',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -35,7 +35,7 @@ const ProgressDemo = () => {
       dynamicChange: '動態改變',
       lazy: '延遲加載數據',
       activeMode: '設置動畫時長與播放方式',
-      videoBasic: '視頻進度條',
+      videoBasic: '視頻進度條 (VideoProgress)',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -47,7 +47,7 @@ const ProgressDemo = () => {
       dynamicChange: 'Dynamic Change',
       lazy: 'Delay Time',
       activeMode: 'Duration And Animation Mode',
-      videoBasic: 'Video Progress',
+      videoBasic: 'Video Progress (VideoProgress)',
     },
   })
 

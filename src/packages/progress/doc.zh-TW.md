@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { Progress } from '@nutui/nutui-react'
+import { Progress, VideoProgress } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -80,11 +80,15 @@ import { Progress } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo9.tsx'></CodeBlock>
 :::
 
-### 視頻進度條
+### 視頻進度條 (VideoProgress)
 
-用於視頻播放器等沉浸式場景。默認色值：軌道 `rgba(255,255,255,0.2)`、已填充 `rgba(255,255,255,0.7)`、滑塊 `#FFFFFF`。演示包含三種狀態：默認（靜態，弱化顯示）、視頻暫停（中等強度，配合播放 icon）、拖動（突出显示、滑塊變大）。
+用於視頻播放器等沉浸式場景。解耦後的全新獨立組件 `VideoProgress`（或子組件 `<Progress.Video>`）支援按需引入，包體更小。默認色值：軌道 `rgba(255,255,255,0.2)`、已填充 `rgba(255,255,255,0.7)`、滑塊 `#FFFFFF`。演示包含：
 
-> 提示：除了通過 `<Progress mode="video" ... />` 使用，也支援直接使用子元件 `<Progress.Video ... />` 或通過命名匯出 `import { VideoProgress } from '@nutui/nutui-react'` 按需引入。
+- **靜態模式**：默認播放狀態，弱化顯示；
+- **暫停模式**：中等強度，支援通過 `pausedIcon` 定制中心播放圖標；
+- **手勢交互**：支援通過 `draggable` 進行平滑滑塊拖拽交互；
+- **子組件形式**：通過 `<Progress.Video>` 統一調用；
+- **兼容模式**：向後兼容 `<Progress mode="video" ... />` 調用。
 
 :::demo
 
@@ -112,18 +116,38 @@ import { Progress } from '@nutui/nutui-react'
 | duration | 動畫完成時間（單位：毫秒） | `number` | `30` |
 | ariaLabel | 無障礙標簽 | `string` | `-` |
 | onActiveEnd | 動畫完成後的回調函數 | `() => void` | `-` |
-| mode | 進度條形態，`video` 時啟用視頻播放器樣式 | `default \| video` | `default` |
-| status | 視頻模式下的外部狀態（`static` 靜態 / `paused` 暫停），拖動態由組件內部推導 | `static \| paused` | `static` |
-| draggable | 視頻模式下是否允許拖動改變進度 | `boolean` | `false` |
-| showThumb | 視頻模式下是否顯示可拖動滑塊 | `boolean` | `true` |
+| mode | 進度條形態，`video` 時啟用視頻播放器樣式（推薦使用解耦組件 `VideoProgress` 或 `<Progress.Video>`） | `default \| video` | `default` |
+
+## VideoProgress (Progress.Video)
+
+視頻播放器專屬進度條，已獨立解耦支援按需打包。
+
+### 引入
+
+```tsx
+import { VideoProgress } from '@nutui/nutui-react'
+// 或作為子組件
+import { Progress } from '@nutui/nutui-react'
+// <Progress.Video ... />
+```
+
+### Props
+
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| percent | 進度條百分比（0-100） | `number` | `0` |
+| status | 外部播放狀態（`static` 靜態弱化 / `paused` 暫停態），拖動態由組件內部推導 | `static \| paused` | `static` |
+| draggable | 是否允許通過手指拖動滑塊改變進度 | `boolean` | `false` |
+| showThumb | 是否顯示可拖動滑塊 | `boolean` | `true` |
 | pausedIcon | `status='paused'` 時展示的播放/暫停圖標 | `ReactNode` | `-` |
 | min | 進度值最小值 | `number` | `0` |
 | max | 進度值最大值 | `number` | `100` |
-| step | 拖動步長 | `number` | `-` |
+| step | 拖動步長，未設置時連續平滑變化 | `number` | `-` |
 | onChange | 拖動/點擊/鍵盤改變進度回調 | `(value: number) => void` | `-` |
 | onDragStart | 拖動開始回調 | `(value: number) => void` | `-` |
 | onDragging | 拖動進行中回調 | `(value: number) => void` | `-` |
 | onDragEnd | 拖動結束回調 | `(value: number) => void` | `-` |
+| ariaLabel | 無障礙標簽 | `string` | `-` |
 
 > 註：`mode='video'` 時 `color / background / strokeWidth` 屬性不生效，請通過下方的 CSS 變量或 `pausedIcon` 插槽定制外觀。
 

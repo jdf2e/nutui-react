@@ -10665,43 +10665,53 @@
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "mode",
-    "第二列": "进度条形态，`video` 时启用视频播放器样式",
+    "第二列": "进度条形态，`video` 时启用视频播放器样式（推荐使用解耦组件 `VideoProgress` 或 `<Progress.Video>`）",
     "第三列": "`default | video`",
     "第四列": "default"
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
+    "版本号": "3.0.0",
+    "表格名": "Props",
+    "第一列": "percent",
+    "第二列": "进度条百分比（0-100）",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件分类": "展示组件",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "status",
-    "第二列": "视频模式下的外部状态（`static` 静态 / `paused` 暂停）",
+    "第二列": "外部播放状态（`static` 静态弱化 / `paused` 暂停态），拖动态由组件内部推导",
     "第三列": "`static | paused`",
     "第四列": "static"
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "draggable",
-    "第二列": "视频模式下是否允许拖动改变进度",
+    "第二列": "是否允许通过手指拖动滑块改变进度",
     "第三列": "`boolean`",
     "第四列": "false"
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "showThumb",
-    "第二列": "视频模式下是否显示可拖动滑块",
+    "第二列": "是否显示可拖动滑块",
     "第三列": "`boolean`",
     "第四列": "true"
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "pausedIcon",
@@ -10711,7 +10721,7 @@
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "min",
@@ -10721,7 +10731,7 @@
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "max",
@@ -10731,17 +10741,17 @@
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "step",
-    "第二列": "拖动步长",
+    "第二列": "拖动步长，未设置时连续平滑变化",
     "第三列": "`number`",
     "第四列": "-"
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "onChange",
@@ -10751,7 +10761,7 @@
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "onDragStart",
@@ -10761,7 +10771,7 @@
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "onDragging",
@@ -10771,12 +10781,22 @@
   },
   {
     "组件分类": "展示组件",
-    "组件名": "Progress",
+    "组件名": "VideoProgress (Progress.Video)",
     "版本号": "3.0.0",
     "表格名": "Props",
     "第一列": "onDragEnd",
     "第二列": "拖动结束回调",
     "第三列": "`(value: number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件分类": "展示组件",
+    "组件名": "VideoProgress (Progress.Video)",
+    "版本号": "3.0.0",
+    "表格名": "Props",
+    "第一列": "ariaLabel",
+    "第二列": "无障碍标签",
+    "第三列": "`string`",
     "第四列": "-"
   },
   {
