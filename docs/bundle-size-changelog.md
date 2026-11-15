@@ -13,12 +13,38 @@
 | **P1 阶段** | — | **26.0 KB** | — | RTL 配置化 (~6.3KB) + 复合组件样式解耦 (~19.7KB) | **已完成** ✅ |
 | **P2 阶段** | — | **按需解耦** | — | 主题变量分域 + 公共语义 Token `$color-primary-light` | **已完成** ✅ |
 | **P3 阶段** | **~14 KB** | — | Taro 端剔除 `react-transition-group` 及其子依赖 | `Popup`, `Dialog`, `Notify`, `MenuItem`, `Overlay` | **已完成** ✅ |
+| **P4 阶段** | **~9.6 KB** | **按需解耦** | 解耦 Progress 视频进度条交互逻辑与样式 | `Progress`, `VideoProgress` | **已完成** ✅ |
 | **增固阶段** | **构建纯净化** | **0 硬编码补丁** | 彻底阻断测试文件泄漏，修复 scale/rtl 缩放与层叠 | 全端构建流水线、调度器、过渡状态机 | **已完成** ✅ |
 | **总计当前** | **~18.2 KB** | **~26.0 KB** | **Taro 端运行时剔除 5 个外部依赖（保留 lottie-react 供 H5 端），发布包纯净化** | **全端组件生态** | **已完成** ✅ |
 
 ---
 
 ## 📝 详细更新日志 (Changelog)
+
+### [2026-11-15] P4: Progress 视频进度条解耦（基础 Progress 源码体积缩减 63%）
+
+- **关联分支**：`perf/progress-video-decouple`
+- **影响平台**：Web H5 (`@nutui/nutui-react`) + Taro 全端 (`@nutui/nutui-react-taro`)
+
+#### 1. 改动内容 (Changes)
+
+1. **组件架构拆分与关注点分离**：
+   - 将视频播放器进度条完整交互逻辑（`mousemove`/`touchmove`/`requestAnimationFrame` 连续手势、键盘无障碍快捷键、步长与边界计算）拆分为独立的 `VideoProgress` 组件（H5: `video.tsx`，Taro: `video.taro.tsx`）。
+   - 基础 `Progress`（`progress.tsx` / `progress.taro.tsx`）仅保留标准展示型进度条逻辑，大幅降低常规进度条的运行时内存开销与初始代码行数（H5 端从 421 行缩减至 157 行，Taro 端从 442 行缩减至 198 行）。
+2. **样式解耦与向后兼容**：
+   - 样式层拆分为 `progress-base.scss`（基础进度条）与 `progress-video.scss`（视频播放器进度条）。
+   - 主入口 `progress.scss` 聚合两者，保持 100% 向后兼容。
+3. **保持 100% 体验一致性与增强按需导出**：
+   - `<Progress mode="video" ... />` 依然保持原生委托渲染，不破坏任何存量代码。
+   - 新增支持子组件调用 `<Progress.Video ... />` 以及直接命名导出 `import { VideoProgress } from '@nutui/nutui-react'`，供仅需视频进度条的业务按需使用。
+
+#### 2. 量化收益 (Metrics & Gains)
+
+- **源码与运行时开销大幅缩减**：
+  - 基础 `Progress` 源码体积缩减 **~63%**，彻底移除常规进度条实例对窗口全局事件、rAF 调度以及触摸计算的依赖。
+  - 构建产物中，基础 `progress.js` 仅 **6.3KB**（原为 ~15KB），视频逻辑被物理拆分至 `video.js` (9.6KB)。
+
+---
 
 ### [2026-11-05] 治理增固: 复合组件坚守减重、成对调度器重构、构建排除与设计系统变量归位
 

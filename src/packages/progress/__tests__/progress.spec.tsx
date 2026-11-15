@@ -2,7 +2,7 @@ import * as React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Progress } from '../progress'
+import { Progress, VideoProgress } from '../index'
 
 test('should render progress when use props', async () => {
   const { asFragment, container } = render(<Progress percent={100} />)
@@ -165,5 +165,13 @@ describe('Progress video mode', () => {
     expect(onChange).toHaveBeenCalledWith(0)
     fireEvent.keyDown(root, { key: 'End' })
     expect(onChange).toHaveBeenCalledWith(100)
+  })
+
+  test('supports Progress.Video subcomponent and VideoProgress export', () => {
+    const { container: c1 } = render(<Progress.Video percent={40} />)
+    expect(c1.querySelector('.nut-progress--video')).toBeTruthy()
+
+    const { container: c2 } = render(<VideoProgress percent={60} />)
+    expect(c2.querySelector('.nut-progress--video')).toBeTruthy()
   })
 })

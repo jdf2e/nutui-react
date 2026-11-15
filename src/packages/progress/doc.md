@@ -84,6 +84,8 @@ import { Progress } from '@nutui/nutui-react'
 
 用于视频播放器等沉浸式场景。默认色值：轨道 `rgba(255,255,255,0.2)`、已填充 `rgba(255,255,255,0.7)`、滑块 `#FFFFFF`。演示包含三种状态：默认（静态，弱化显示）、视频暂停（中等强度，配合播放 icon）、拖动（突出显示、滑块变大）。
 
+> 提示：除了通过 `<Progress mode="video" ... />` 使用，也支持直接使用子组件 `<Progress.Video ... />` 或通过命名导出 `import { VideoProgress } from '@nutui/nutui-react'` 按需引入。
+
 :::demo
 
 <CodeBlock src='h5/demo10.tsx'></CodeBlock>
