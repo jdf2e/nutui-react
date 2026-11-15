@@ -781,6 +781,7 @@ export type NutCSSVariables =
   | 'nutuiProgressVideoOpacityPaused'
   | 'nutuiProgressVideoContainerHeight'
   | 'nutuiPaginationColor'
+  | 'nutuiPaginationItemBackgroundColor'
   | 'nutuiPaginationLiteColor'
   | 'nutuiPaginationFontSize'
   | 'nutuiPaginationItemBorderColor'
@@ -1121,4 +1122,3 @@ export type NutCSSVariables =
   | 'nutuiIndicatorTotal'
   | 'nutuiBlack1'
   | 'nutuiAvatargroupBorderColor'
-  | 'nutuiButtonDisabledBackgroundColor'
