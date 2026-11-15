@@ -41,6 +41,14 @@ const Demo10 = () => {
           style={progressStyle}
         />
       </View>
+      <View style={cardStyle}>
+        <Progress.Video
+          percent={percent}
+          draggable
+          onChange={(p) => setPercent(p)}
+          style={progressStyle}
+        />
+      </View>
     </>
   )
 }

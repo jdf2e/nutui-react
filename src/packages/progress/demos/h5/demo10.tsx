@@ -41,6 +41,14 @@ const Demo10 = () => {
           style={progressStyle}
         />
       </Cell>
+      <Cell style={cardStyle}>
+        <Progress.Video
+          percent={percent}
+          draggable
+          onChange={(p) => setPercent(p)}
+          style={progressStyle}
+        />
+      </Cell>
     </Cell.Group>
   )
 }

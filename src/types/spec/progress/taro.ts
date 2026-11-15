@@ -6,3 +6,4 @@ export interface TaroProgressProps extends BaseProgress {
   backgroundColor: string
   active: boolean
 }
+export type TaroVideoProgressProps = TaroProgressProps
