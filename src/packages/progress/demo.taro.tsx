@@ -1,5 +1,8 @@
 import React from 'react'
+import { ScrollView, View } from '@tarojs/components'
+import { harmony, web } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -49,26 +52,32 @@ const ProgressDemo = () => {
 
   return (
     <>
-      <div className="demo">
-        <h2>{translated.basic}</h2>
+      <Header />
+      <ScrollView className={`demo ${web() ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.customStyle}</h2>
+        <View className="h2">{translated.customStyle}</View>
         <Demo2 />
-        <h2>{translated.noShowPercentage}</h2>
+        <View className="h2">{translated.noShowPercentage}</View>
         <Demo3 />
-        <h2>{translated.customContent}</h2>
+        <View className="h2">{translated.customContent}</View>
         <Demo4 />
-        <h2>{translated.customSize}</h2>
+        <View className="h2">{translated.customSize}</View>
         <Demo5 />
-        <h2>{translated.statusDisplay}</h2>
+        <View className="h2">{translated.statusDisplay}</View>
         <Demo6 />
-        <h2>{translated.dynamicChange}</h2>
+
+        <View className="h2">{translated.dynamicChange}</View>
         <Demo7 />
-        <h2>{translated.lazy}</h2>
-        <Demo8 />
-        <h2>{translated.activeMode}</h2>
+        {!harmony() && (
+          <>
+            <View className="h2">{translated.lazy}</View>
+            <Demo8 />
+          </>
+        )}
+        <View className="h2">{translated.activeMode}</View>
         <Demo9 />
-      </div>
+      </ScrollView>
     </>
   )
 }

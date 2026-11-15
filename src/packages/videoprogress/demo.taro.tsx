@@ -1,5 +1,8 @@
 import React from 'react'
+import { ScrollView, View } from '@tarojs/components'
+import { web } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
 import Cell from '@/packages/cell/index.taro'
 import './demo.scss'
 import Demo1 from './demos/taro/demo1'
@@ -27,20 +30,21 @@ const VideoProgressDemo = () => {
 
   return (
     <>
-      <div className="demo demo-videoprogress">
-        <h2>{translated.basic}</h2>
+      <Header />
+      <ScrollView className={`demo ${web() ? 'web' : ''} demo-videoprogress`}>
+        <View className="h2">{translated.basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{translated.paused}</h2>
+        <View className="h2">{translated.paused}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.draggable}</h2>
+        <View className="h2">{translated.draggable}</View>
         <Cell>
           <Demo3 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }
