@@ -82,7 +82,7 @@ const Demo1 = () => {
             {isPrimary ? (
               <Text style={{ color: '#ffffff' }}>{item}</Text>
             ) : (
-              item
+              <Text style={{ color: 'var(--nutui-color-title)' }}>{item}</Text>
             )}
           </View>
         ))}

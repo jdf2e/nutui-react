@@ -66,7 +66,7 @@ const Demo9 = () => {
       columns={columns}
       data={data}
       onSort={handleSorter}
-      style={{ background: '#fff' }}
+      style={{ background: 'var(--nutui-color-background-overlay)' }}
     />
   )
 }

@@ -156,6 +156,11 @@ $color-background-overlay: var(
 ) !default; // 卡片、内容容器背景色
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
 $color-background-sunken: var(--nutui-gray-2, #f8f8f8) !default;
+// 组件背景色
+$color-background-component: var(
+  --nutui-color-background-component,
+  #f8f8f8
+) !default;
 
 // 蒙层颜色
 // 页面全局蒙层
@@ -2119,6 +2124,10 @@ $tag-border-radius: var(--nutui-tag-border-radius, $radius-xs) !default;
 $tag-height: var(--nutui-tag-height, 20px) !default;
 $tag-color: var(--nutui-tag-color, $color-text-dark) !default;
 $tag-border-width: var(--nutui-tag-border-width, 1px) !default;
+$tag-plain-background-color: var(
+  --nutui-tag-plain-background-color,
+  $color-background-overlay
+) !default;
 $tag-background-color: var(--nutui-tag-background-color, $color-title) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
@@ -2335,6 +2344,10 @@ $progress-video-container-height: var(
 
 //pagination（✅）
 $pagination-color: var(--nutui-pagination-color, $color-primary) !default;
+$pagination-item-background-color: var(
+  --nutui-pagination-item-background-color,
+  $color-background-overlay
+) !default;
 $pagination-lite-color: var(--nutui-pagination-lite-color, $white) !default;
 $pagination-font-size: var(
   --nutui-pagination-font-size,
@@ -2728,7 +2741,7 @@ $segmented-padding: var(--nutui-segmented-padding, $spacing-xxxs) !default;
 $segmented-border-radius: var(--nutui-segmented-radius, $radius-xs) !default;
 $segmented-background: var(
   --nutui-segmented-background,
-  $color-mask-part
+  $color-background-component
 ) !default;
 $segmented-item-height: var(--nutui-segmented-height, 20px) !default;
 $segmented-item-padding: var(
@@ -2742,11 +2755,11 @@ $segmented-item-fontsize: var(
 ) !default;
 $segmented-item-color: var(
   --nutui-segmented-item-color,
-  $color-primary-text
+  $color-text
 ) !default;
 $segmented-active-background: var(
   --nutui-segmented-active-background,
-  $color-mask-part
+  $color-background-overlay
 ) !default;
 $segmented-icon-margin-right: var(
   --nutui-segmented-icon-margin-right,

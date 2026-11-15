@@ -10,10 +10,10 @@ const Demo2 = () => {
       <Cell style={{ background: 'rgba(20, 20, 20, 0.4)' }}>
         <Lottie source={darkLoading} style={{ width: 56, height: 56 }} />
       </Cell>
-      <Cell style={{ background: '#fff' }}>
+      <Cell style={{ background: 'rgba(20, 20, 20, 0.4)' }}>
         <Lottie source={darkGlobal} style={{ width: 56, height: 56 }} />
       </Cell>
-      <Cell style={{ background: '#fff' }}>
+      <Cell style={{ background: 'rgba(20, 20, 20, 0.4)' }}>
         <Lottie source={darkPull} style={{ width: 132, height: 26 }} />
       </Cell>
     </>

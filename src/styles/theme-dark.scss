@@ -219,7 +219,7 @@ page,
 
   // 线颜色值 语义化
   // 间隔线或容错线
-   --nutui-color-border: var(--nutui-mask-2);
+  --nutui-color-border: var(--nutui-mask-2);
   // 组件边框禁用色
   --nutui-color-border-disabled: var(--nutui-gray-4);
 
@@ -275,6 +275,7 @@ page,
   --nutui-font-weight-light: 300;
   // 常规内容
   --nutui-font-weight: 400;
+  --nutui-font-weight-medium: 500;
   // 强化内容
   --nutui-font-weight-bold: 600;
 
@@ -387,6 +388,11 @@ page,
   // 间隔线/组件边框
   --nutui-line-component: var(--nutui-line-2);
 
-  // indicator 圆角（不随 radius-xxs 归零）
-  --nutui-indicator-border-radius: var(--nutui-radius-2);
+  // --------------------------------------------------------------------------
+  // 【规范约束】核心设计系统规范文件 (Core Design Tokens)
+  // 严禁在此文件添加任何组件级别（如 --nutui-xxx-*、.nut-xxx-*）或 Demo 维度的样式与变量！
+  // 1. 全局设计规范仅定义 Brand / Color / Radius / Spacing / Line / Font / Mask 等核心 Token；
+  // 2. 组件暗黑适配通过 Token 映射（如 $color-title、$color-background-* 等）在 variables.scss 中驱动；
+  // 3. Demo 专属样式必须严格收敛在 sites 目录或 demo.scss 中，禁止污染全局核心设计规范。
+  // --------------------------------------------------------------------------
 }

@@ -2,6 +2,7 @@
 // NutUI 核心变量域 (Core Design Tokens)
 // 包含全局缩放函数、基础色彩规范、背景边框蒙层、字号行高字重、圆角间距阴影、全局 z-index 与动画时间等核心设计系统变量
 // 业务定制基础主题或在 Sass 配置中 additionalData 注入时，推荐仅引入本文件，体积精简 92%
+// 【架构约束规则】严禁在此处及各 theme-*.scss 中添加任何组件级别（如 $button-*、$segmented-* 等）或 Demo 专属定义！
 // ----------------------------------------------------
 
 // RTL 开关：默认为 true 保证开源国际化兼容；如无需 RTL，可在业务 Sass 配置中设为 false，编译时将不输出 RTL 规则
@@ -138,6 +139,11 @@ $color-background-overlay: var(
 $color-background-sunken: var(
   --nutui-color-background-sunken,
   #f7f8fc
+) !default;
+// 组件背景色
+$color-background-component: var(
+  --nutui-color-background-component,
+  #f0f2f7
 ) !default;
 
 // 蒙层颜色
