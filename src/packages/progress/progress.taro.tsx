@@ -2,11 +2,12 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import Taro, { PageInstance } from '@tarojs/taro'
 import { View } from '@tarojs/components'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { ComponentDefaults } from '@/utils/typings'
-import { TaroProgressProps } from '@/types'
-import { harmony, web } from '@/utils/taro/platform'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { useUuid } from '@/hooks/use-uuid'
+import { harmony, web } from '@/utils/taro/platform'
+import { TaroProgressProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -18,8 +19,7 @@ const defaultProps = {
 } as TaroProgressProps
 
 export const Progress: FunctionComponent<
-  Partial<TaroProgressProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<TaroProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const rtl = useRtl()
   const {
@@ -30,16 +30,20 @@ export const Progress: FunctionComponent<
     color,
     strokeWidth,
     showText,
-    borderRadius,
-    fontSize,
-    children,
     animated,
+    children,
     lazy,
     delay,
+    // tc
+    showInfo,
+    borderRadius,
+    fontSize,
+    activeColor,
+    backgroundColor,
+    active,
     activeMode,
     duration,
     onActiveEnd,
-    mode,
     ariaLabel,
     ...rest
   } = {
@@ -47,53 +51,89 @@ export const Progress: FunctionComponent<
     ...props,
   }
 
-  if (process.env.NODE_ENV !== 'production' && mode === 'video') {
-    console.warn(
-      '[NutUI] Progress: mode="video" has been moved to <VideoProgress> component in NutUI 4.x. Please import VideoProgress instead.'
-    )
-  }
-
   const classPrefix = 'nut-progress'
-  const selector = useUuid()
-  const [dispalyPercent, setDispalyPercent] = useState(percent)
-
-  const effectiveColor = color
-  const effectiveShowText = showText
-
-  const stylesInner: React.CSSProperties = {
-    width: `${dispalyPercent}%`,
-    background: effectiveColor || 'var(--nutui-color-primary, #ff0f23)',
-    borderRadius: borderRadius && parseInt(borderRadius.toString()),
-    transition: `width ${duration || 300}ms ease-in-out`,
-  }
-
-  const stylesOuter = {
-    height: strokeWidth && `${strokeWidth}px`,
-    borderRadius: borderRadius && parseInt(borderRadius.toString()),
-    background,
-  }
-
-  const classesInner = classNames(`${classPrefix}-inner`, {
-    [`${classPrefix}-active`]: animated,
+  const effectiveShowText = props.showText ?? showInfo ?? defaultProps.showText
+  const effectiveColor = props.color ?? activeColor ?? defaultProps.color
+  const effectiveBgColor =
+    props.background ?? backgroundColor ?? defaultProps.background
+  const effectiveAnimated = props.animated ?? active ?? defaultProps.animated
+  const classesInner = classNames({
+    [`${classPrefix}-inner`]: true,
+    [`${classPrefix}-active`]: effectiveAnimated,
   })
 
-  const [intersecting, setIntersecting] = useState(false)
-  const progressRef = useRef<any>(null)
-  const webObserver: any = useRef(null)
+  const [displayPercent, setDisplayPercent] = useState(percent)
+  const getStyles = () => {
+    // 基础样式
+    const baseStyles = {
+      height: strokeWidth && pxTransform(Number(strokeWidth)),
+      borderRadius:
+        borderRadius && pxTransform(parseInt(borderRadius.toString())),
+    }
+    const transitionStyle = {
+      transition: `width ${duration || 300}ms ease-in-out`,
+    }
+
+    return {
+      outer: {
+        width: '100%',
+        backgroundColor: effectiveBgColor,
+        ...baseStyles,
+      },
+      inner: {
+        width: `${displayPercent}%`,
+        background: effectiveColor || 'var(--nutui-color-primary, #ff0f23)',
+        ...baseStyles,
+        ...transitionStyle,
+      },
+    }
+  }
+
+  const { outer: stylesOuter, inner: stylesInner } = getStyles()
 
   const handlePercent = () => {
     let timer: any = null
     if (delay) {
-      setDispalyPercent(0.01)
+      setDisplayPercent(0)
       timer = setTimeout(() => {
-        setDispalyPercent(percent)
+        setDisplayPercent(percent)
       }, delay)
-    } else {
-      setDispalyPercent(percent)
     }
+
     return () => {
+      lazy && resetObserver()
       timer && clearTimeout(timer)
-      webObserver.current && webObserver.current.disconnect()
+    }
+  }
+
+  useEffect(() => {
+    let timer: any = null
+    if (activeMode === 'backwards') {
+      setDisplayPercent(0)
+      timer = setTimeout(() => {
+        setDisplayPercent(percent)
+      }, duration || 300)
+    } else {
+      setDisplayPercent(percent)
+    }
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [percent, activeMode, duration])
+
+  const [intersecting, setIntersecting] = useState(false)
+  const progressRef = useRef(null)
+  const webObserver: any = useRef(null)
+  const uuid = useUuid()
+  const selector = `${classPrefix}-lazy-${uuid}`
+  const resetObserver = (observer: any = null) => {
+    if (web()) {
+      webObserver.current?.disconnect?.()
+    } else {
+      observer?.disconnect?.()
     }
   }
 
@@ -101,9 +141,9 @@ export const Progress: FunctionComponent<
     if (lazy) {
       setTimeout(() => {
         if (intersecting) {
-          setDispalyPercent(percent)
+          setDisplayPercent(percent)
         } else {
-          setDispalyPercent(0.01)
+          setDisplayPercent(0.01)
         }
       }, delay)
     }
@@ -162,15 +202,14 @@ export const Progress: FunctionComponent<
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
+      aria-label={ariaLabel}
       {...(rest as any)}
     >
       <View className={`${classPrefix}-outer`} style={stylesOuter}>
         <View
           className={classesInner}
-          style={stylesInner}
-          onTransitionEnd={() => {
-            onActiveEnd?.()
-          }}
+          style={{ ...stylesInner, position: 'relative' }}
+          onTransitionEnd={onActiveEnd}
         />
       </View>
       {effectiveShowText && (
@@ -178,7 +217,7 @@ export const Progress: FunctionComponent<
           className={`${classPrefix}-text`}
           style={{ fontSize: fontSize && parseInt(fontSize.toString()) }}
         >
-          {children || `${dispalyPercent}%`}
+          {children || `${displayPercent}%`}
         </View>
       )}
     </View>

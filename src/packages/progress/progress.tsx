@@ -14,8 +14,7 @@ const defaultProps = {
 } as WebProgressProps
 
 export const Progress: FunctionComponent<
-  Partial<WebProgressProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<WebProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const rtl = useRtl()
   const {
@@ -35,7 +34,6 @@ export const Progress: FunctionComponent<
     activeMode,
     duration,
     onActiveEnd,
-    mode,
     ariaLabel,
     ...rest
   } = {
@@ -43,32 +41,45 @@ export const Progress: FunctionComponent<
     ...props,
   }
 
-  if (process.env.NODE_ENV !== 'production' && mode === 'video') {
-    console.warn(
-      '[NutUI] Progress: mode="video" has been moved to <VideoProgress> component in NutUI 4.x. Please import VideoProgress instead.'
-    )
-  }
-
   const classPrefix = 'nut-progress'
 
-  const [dispalyPercent, setDispalyPercent] = useState(percent)
+  const classesInner = classNames({
+    [`${classPrefix}-inner`]: true,
+    [`${classPrefix}-active`]: animated,
+  })
 
-  const stylesInner: React.CSSProperties = {
-    width: `${dispalyPercent}%`,
-    background: color || 'var(--nutui-color-primary, #ff0f23)',
-    borderRadius: borderRadius && parseInt(borderRadius.toString()),
-    transition: `width ${duration || 300}ms ease-in-out`,
-  }
-
-  const stylesOuter = {
+  const stylesOuter: React.CSSProperties = {
     height: strokeWidth && `${strokeWidth}px`,
     borderRadius: borderRadius && parseInt(borderRadius.toString()),
     background,
   }
 
-  const classesInner = classNames(`${classPrefix}-inner`, {
-    [`${classPrefix}-active`]: animated,
-  })
+  const [displayPercent, setDisplayPercent] = useState(percent)
+
+  const stylesInner: React.CSSProperties = {
+    width: `${displayPercent}%`,
+    background: color || 'var(--nutui-color-primary, #ff0f23)',
+    borderRadius: borderRadius && parseInt(borderRadius.toString()),
+    transition: `width ${duration || 300}ms ease-in-out`,
+  }
+
+  useEffect(() => {
+    let timer: any = null
+    if (activeMode === 'backwards') {
+      setDisplayPercent(0)
+      timer = setTimeout(() => {
+        setDisplayPercent(percent)
+      }, duration || 300)
+    } else {
+      setDisplayPercent(percent)
+    }
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [percent, activeMode, duration])
 
   const [intersecting, setIntersecting] = useState(false)
 
@@ -97,9 +108,9 @@ export const Progress: FunctionComponent<
     if (lazy) {
       setTimeout(() => {
         if (intersecting) {
-          setDispalyPercent(percent)
+          setDisplayPercent(percent)
         } else {
-          setDispalyPercent(0)
+          setDisplayPercent(0)
         }
       }, delay)
     }
@@ -109,9 +120,9 @@ export const Progress: FunctionComponent<
     lazy && initObserver()
     let timer: any = null
     if (delay) {
-      setDispalyPercent(0)
+      setDisplayPercent(0)
       timer = setTimeout(() => {
-        setDispalyPercent(percent)
+        setDisplayPercent(percent)
       }, delay)
     }
 
@@ -126,6 +137,7 @@ export const Progress: FunctionComponent<
       ref={progressRef}
       className={classNames(classPrefix, className)}
       style={style}
+      aria-label={ariaLabel}
       {...rest}
     >
       <div className={`${classPrefix}-outer`} style={stylesOuter}>

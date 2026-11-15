@@ -68,14 +68,3 @@ test('should handle animation mode and duration', () => {
     expect(onActiveEndMock).toHaveBeenCalled()
   }, 600)
 })
-
-test('warns when mode="video" is used in Progress', () => {
-  const spy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-  render(<Progress mode="video" percent={50} />)
-  expect(spy).toHaveBeenCalledWith(
-    expect.stringContaining(
-      '[NutUI] Progress: mode="video" has been moved to <VideoProgress>'
-    )
-  )
-  spy.mockRestore()
-})

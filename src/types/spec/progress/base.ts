@@ -1,7 +1,5 @@
 import { BaseProps } from '../../base/props'
 
-export type ProgressMode = 'default' | 'video'
-
 export interface BaseProgress extends BaseProps {
   /** 百分比 / Percentage */
   percent: number
@@ -31,9 +29,4 @@ export interface BaseProgress extends BaseProps {
   ariaLabel: string
   /** 动画完成后的回调函数 / Callback after animation completes */
   onActiveEnd: () => void
-
-  /**
-   * @deprecated 在 NutUI 4.x 中已废弃，视频进度条请直接使用 <VideoProgress> 独立组件
-   */
-  mode?: ProgressMode
 }
