@@ -130,6 +130,10 @@ export * from './spec/progress/base'
 export * from './spec/progress/h5'
 export * from './spec/progress/taro'
 
+export * from './spec/videoprogress/base'
+export * from './spec/videoprogress/h5'
+export * from './spec/videoprogress/taro'
+
 export * from './spec/price/base'
 export * from './spec/price/h5'
 export * from './spec/price/taro'
