@@ -29,7 +29,7 @@
 
 .nut-segmented-item-active {
   background: $segmented-active-background;
-  color: $color-title;
+  color: var(--nutui-segmented-item-color, $color-title);
   font-weight: 500;
 }
 

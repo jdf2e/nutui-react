@@ -848,6 +848,7 @@ export type NutCSSVariables =
   | 'nutuiIndicatorDotSize'
   | 'nutuiIndicatorDotActiveSize'
   | 'nutuiIndicatorBorderRadius'
+  | 'nutuiRadius2'
   | 'nutuiIndicatorDotMargin'
   | 'nutuiIndicatorDotBorder'
   | 'nutuiIndicatorDotInactiveColor'
