@@ -1,8 +1,5 @@
 import React from 'react'
-import { ScrollView, View } from '@tarojs/components'
-import { harmony, web } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -12,7 +9,6 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
-import Demo10 from './demos/taro/demo10'
 
 const ProgressDemo = () => {
   const [translated] = useTranslate({
@@ -26,7 +22,6 @@ const ProgressDemo = () => {
       dynamicChange: '动态改变',
       lazy: '延迟加载数据',
       activeMode: '设置动画时长与播放方式',
-      videoBasic: '视频进度条 (VideoProgress)',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -38,7 +33,6 @@ const ProgressDemo = () => {
       dynamicChange: '動態改變',
       lazy: '延遲加載數據',
       activeMode: '設置動畫時長與播放方式',
-      videoBasic: '視頻進度條 (VideoProgress)',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -50,40 +44,31 @@ const ProgressDemo = () => {
       dynamicChange: 'Dynamic Change',
       lazy: 'Delay Time',
       activeMode: 'Duration And Animation Mode',
-      videoBasic: 'Video Progress (VideoProgress)',
     },
   })
 
   return (
     <>
-      <Header />
-      <ScrollView className={`demo ${web() ? 'web' : ''}`}>
-        <View className="h2">{translated.basic}</View>
+      <div className="demo">
+        <h2>{translated.basic}</h2>
         <Demo1 />
-        <View className="h2">{translated.customStyle}</View>
+        <h2>{translated.customStyle}</h2>
         <Demo2 />
-        <View className="h2">{translated.noShowPercentage}</View>
+        <h2>{translated.noShowPercentage}</h2>
         <Demo3 />
-        <View className="h2">{translated.customContent}</View>
+        <h2>{translated.customContent}</h2>
         <Demo4 />
-        <View className="h2">{translated.customSize}</View>
+        <h2>{translated.customSize}</h2>
         <Demo5 />
-        <View className="h2">{translated.statusDisplay}</View>
+        <h2>{translated.statusDisplay}</h2>
         <Demo6 />
-
-        <View className="h2">{translated.dynamicChange}</View>
+        <h2>{translated.dynamicChange}</h2>
         <Demo7 />
-        {!harmony() && (
-          <>
-            <View className="h2">{translated.lazy}</View>
-            <Demo8 />
-          </>
-        )}
-        <View className="h2">{translated.activeMode}</View>
+        <h2>{translated.lazy}</h2>
+        <Demo8 />
+        <h2>{translated.activeMode}</h2>
         <Demo9 />
-        <View className="h2">{translated.videoBasic}</View>
-        <Demo10 />
-      </ScrollView>
+      </div>
     </>
   )
 }

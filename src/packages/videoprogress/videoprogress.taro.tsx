@@ -10,19 +10,24 @@ import { ITouchEvent, View } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { useUuid } from '@/hooks/use-uuid'
 import { web } from '@/utils/taro/platform'
-import { TaroProgressProps } from '@/types'
+import { TaroVideoProgressProps } from '@/types'
 
 type RectLike = { left: number; width: number }
 
+export type VideoProgressProps = Partial<TaroVideoProgressProps> &
+  Omit<
+    React.HTMLAttributes<HTMLDivElement>,
+    'onChange' | 'onDragStart' | 'onDragEnd'
+  >
+
 const defaultProps = {
   percent: 0,
-  mode: 'video',
   status: 'static',
   draggable: false,
   showThumb: true,
   min: 0,
   max: 100,
-} as TaroProgressProps
+} as TaroVideoProgressProps
 
 const clamp = (val: number, min: number, max: number) => {
   if (Number.isNaN(val)) return min
@@ -31,10 +36,7 @@ const clamp = (val: number, min: number, max: number) => {
   return val
 }
 
-export const VideoProgress: FunctionComponent<
-  Partial<TaroProgressProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> = (props) => {
+export const VideoProgress: FunctionComponent<VideoProgressProps> = (props) => {
   const {
     className,
     style,
@@ -57,7 +59,7 @@ export const VideoProgress: FunctionComponent<
     ...props,
   }
 
-  const classPrefix = 'nut-progress'
+  const classPrefix = 'nut-videoprogress'
   const selector = useUuid()
   const progressRef = useRef<any>(null)
 
@@ -98,20 +100,18 @@ export const VideoProgress: FunctionComponent<
       }
       createSelectorQuery()
         .select(`#${selector}`)
-        .boundingClientRect()
-        .exec((res: any) => {
-          const r = res && res[0]
-          if (r) {
-            resolve({ left: r.left, width: r.width })
+        .boundingClientRect((res: any) => {
+          if (res && res.width) {
+            resolve({ left: res.left, width: res.width })
           } else {
             resolve(null)
           }
         })
+        .exec()
     })
   }
 
-  const percentFromClientX = (clientX: number): number => {
-    const rect = rectRef.current
+  const percentFromClientX = (clientX: number, rect: RectLike | null) => {
     if (!rect || rect.width === 0) return normalized
     const raw = ((clientX - rect.left) / rect.width) * 100
     return clamp(applyStep(raw), 0, 100)
@@ -123,56 +123,52 @@ export const VideoProgress: FunctionComponent<
     onChange?.(value)
   }
 
-  const handleTouchStart = useCallback(
-    async (e: ITouchEvent) => {
-      if (!draggable) return
-      if (!e.touches || e.touches.length === 0) return
-      const clientX = e.touches[0].clientX
-      draggingRef.current = true
-      lastClientXRef.current = clientX
-      setDragging(true)
-      const rect = await measureRect()
-      if (!draggingRef.current) return
-      rectRef.current = rect
-      const pct = percentFromClientX(lastClientXRef.current)
-      setPreviewPercent(pct)
-      onDragStart?.(minVal + (pct / 100) * range)
-      emitChange(pct)
-    },
-    [draggable, minVal, range, step]
-  )
+  const handleTouchStart = async (e: ITouchEvent) => {
+    if (!draggable) return
+    const touch = e.touches[0] || (e as any).changedTouches?.[0]
+    if (!touch) return
+    const rect = await measureRect()
+    rectRef.current = rect
+    draggingRef.current = true
+    lastClientXRef.current = touch.clientX
+    setDragging(true)
+    const pct = percentFromClientX(touch.clientX, rect)
+    setPreviewPercent(pct)
+    onDragStart?.(minVal + (pct / 100) * range)
+    emitChange(pct)
+  }
 
   const handleTouchMove = useCallback(
     (e: ITouchEvent) => {
-      if (!draggingRef.current) return
-      if (!e.touches || e.touches.length === 0) return
-      const clientX = e.touches[0].clientX
-      lastClientXRef.current = clientX
-      if (!rectRef.current) return
-      const pct = percentFromClientX(clientX)
+      if (!draggable || !draggingRef.current) return
+      const touch = e.touches[0]
+      if (!touch) return
+      lastClientXRef.current = touch.clientX
+      const pct = percentFromClientX(touch.clientX, rectRef.current)
       setPreviewPercent(pct)
       onDragging?.(minVal + (pct / 100) * range)
       emitChange(pct)
     },
-    [minVal, range, step, onDragging]
+    [draggable, minVal, range, step, onDragging, onChange]
   )
 
   const handleTouchEnd = useCallback(
     (e: ITouchEvent) => {
-      if (!draggingRef.current) return
-      const touch = e.changedTouches && e.changedTouches[0]
-      const pct = touch ? percentFromClientX(touch.clientX) : previewPercent
+      if (!draggable || !draggingRef.current) return
+      const touch = (e as any).changedTouches?.[0]
+      const clientX = touch ? touch.clientX : lastClientXRef.current
+      const pct = percentFromClientX(clientX, rectRef.current)
       draggingRef.current = false
       setDragging(false)
       rectRef.current = null
       onDragEnd?.(minVal + (pct / 100) * range)
     },
-    [minVal, range, step, previewPercent, onDragEnd]
+    [draggable, minVal, range, step, onDragEnd]
   )
 
   const rootCls = classNames(
     classPrefix,
-    `${classPrefix}--video`,
+    'nut-progress--video',
     `is-${state}`,
     {
       'is-draggable': draggable,
@@ -181,6 +177,7 @@ export const VideoProgress: FunctionComponent<
     className
   )
   const displayValue = dragging ? previewPercent : normalized
+
   return (
     <View
       ref={progressRef}
@@ -195,16 +192,18 @@ export const VideoProgress: FunctionComponent<
       {...(rest as any)}
     >
       {status === 'paused' && pausedIcon && (
-        <View className={`${classPrefix}-icon`}>{pausedIcon}</View>
+        <View className={`${classPrefix}-icon nut-progress-icon`}>
+          {pausedIcon}
+        </View>
       )}
-      <View className={`${classPrefix}-track`}>
+      <View className={`${classPrefix}-track nut-progress-track`}>
         <View
-          className={`${classPrefix}-fill`}
+          className={`${classPrefix}-fill nut-progress-fill`}
           style={{ width: `${displayValue}%` }}
         />
         {showThumb && (
           <View
-            className={`${classPrefix}-thumb`}
+            className={`${classPrefix}-thumb nut-progress-thumb`}
             style={{ left: `${displayValue}%` }}
           />
         )}

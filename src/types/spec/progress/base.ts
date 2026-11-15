@@ -1,8 +1,6 @@
-import { ReactNode } from 'react'
 import { BaseProps } from '../../base/props'
 
 export type ProgressMode = 'default' | 'video'
-export type ProgressStatus = 'static' | 'paused'
 
 export interface BaseProgress extends BaseProps {
   /** 百分比 / Percentage */
@@ -34,28 +32,8 @@ export interface BaseProgress extends BaseProps {
   /** 动画完成后的回调函数 / Callback after animation completes */
   onActiveEnd: () => void
 
-  /** 进度条展示模式:default 普通进度条,video 视频风格进度条 / Display mode */
+  /**
+   * @deprecated 在 NutUI 4.x 中已废弃，视频进度条请直接使用 <VideoProgress> 独立组件
+   */
   mode?: ProgressMode
-  /** video 模式下的播放状态:static 播放中,paused 暂停 / Playback status in video mode */
-  status?: ProgressStatus
-  /** video 模式下是否允许拖动滑块调整进度 / Whether thumb is draggable in video mode */
-  draggable?: boolean
-  /** video 模式下是否显示滑块 / Whether to show thumb in video mode */
-  showThumb?: boolean
-  /** video 模式下 paused 状态时滑块中央展示的图标 / Icon displayed in thumb when paused */
-  pausedIcon?: ReactNode
-  /** 进度值最小值 / Minimum value */
-  min?: number
-  /** 进度值最大值 / Maximum value */
-  max?: number
-  /** 拖动时的步长,未设置时按像素连续变化 / Drag step */
-  step?: number
-  /** 进度值变化的回调，拖动过程中连续触发 / Callback on percent change */
-  onChange?: (percent: number) => void
-  /** 拖动开始时的回调 / Callback on drag start */
-  onDragStart?: (percent: number) => void
-  /** 拖动过程中的回调 / Callback during dragging */
-  onDragging?: (percent: number) => void
-  /** 拖动结束时的回调 / Callback on drag end */
-  onDragEnd?: (percent: number) => void
 }

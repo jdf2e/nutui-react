@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { Progress, VideoProgress } from '@nutui/nutui-react-taro'
+import { Progress } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -80,25 +80,6 @@ import { Progress, VideoProgress } from '@nutui/nutui-react-taro'
 <CodeBlock src='taro/demo9.tsx'></CodeBlock>
 :::
 
-### 视频进度条 (VideoProgress)
-
-用于视频播放器等沉浸式场景。解耦后的全新独立组件 `VideoProgress`（或子组件 `<Progress.Video>`）支持按需引入，包体更小。默认色值：轨道 `rgba(255,255,255,0.2)`、已填充 `rgba(255,255,255,0.7)`、滑块 `#FFFFFF`。演示包含：
-
-- **静态模式**：默认播放状态，弱化细轨显示（`status="static"`）；
-- **暂停模式**：中等强度，支持通过 `pausedIcon` 定制中心播放图标（`status="paused"`）；
-- **手势交互**：支持通过 `draggable` 进行平滑滑块拖拽交互，同时支持 `<Progress.Video>` 形式统一调用。
-
-:::demo
-
-<CodeBlock src='taro/demo10.tsx'></CodeBlock>
-
-:::
-
-> Taro 端注意事项：
->
-> - 小程序端仅支持 touch 事件驱动交互。
-> - 所有尺寸走 `rpx`，可通过 [ConfigProvider](#/zh-CN/component/configprovider) 缩放。
-
 ## Progress
 
 ### Props
@@ -119,40 +100,6 @@ import { Progress, VideoProgress } from '@nutui/nutui-react-taro'
 | duration | 动画完成时间（单位：毫秒） | `number` | `30` |
 | ariaLabel | 无障碍标签 | `string` | `-` |
 | onActiveEnd | 动画完成后的回调函数 | `() => void` | `-` |
-| mode | 进度条形态，`video` 时启用视频播放器样式（推荐使用解耦组件 `VideoProgress` 或 `<Progress.Video>`） | `default \| video` | `default` |
-
-## VideoProgress (Progress.Video)
-
-视频播放器专属进度条，已独立解耦支持按需打包。
-
-### 引入
-
-```tsx
-import { VideoProgress } from '@nutui/nutui-react-taro'
-// 或作为子组件
-import { Progress } from '@nutui/nutui-react-taro'
-// <Progress.Video ... />
-```
-
-### Props
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| percent | 进度条百分比（0-100） | `number` | `0` |
-| status | 外部播放状态（`static` 静态弱化 / `paused` 暂停态），拖动态由组件内部推导 | `static \| paused` | `static` |
-| draggable | 是否允许通过手指拖动滑块改变进度 | `boolean` | `false` |
-| showThumb | 是否显示可拖动滑块 | `boolean` | `true` |
-| pausedIcon | `status='paused'` 时展示的播放/暂停图标 | `ReactNode` | `-` |
-| min | 进度值最小值 | `number` | `0` |
-| max | 进度值最大值 | `number` | `100` |
-| step | 拖动步长，未设置时连续平滑变化 | `number` | `-` |
-| onChange | 拖动/点击改变进度回调 | `(value: number) => void` | `-` |
-| onDragStart | 拖动开始回调 | `(value: number) => void` | `-` |
-| onDragging | 拖动进行中回调 | `(value: number) => void` | `-` |
-| onDragEnd | 拖动结束回调 | `(value: number) => void` | `-` |
-| ariaLabel | 无障碍标签 | `string` | `-` |
-
-> 注：`mode='video'` 时 `color / background / strokeWidth` 属性不生效，请通过下方的 CSS 变量或 `pausedIcon` 插槽定制外观。
 
 ## 主题定制
 
@@ -173,22 +120,5 @@ import { Progress } from '@nutui/nutui-react-taro'
 | \--nutui-progress-text-position-bottom | 文本定位 bottom | `-4px` |
 | \--nutui-progress-text-border-radius | 文本边框圆角 | `5px` |
 | \--nutui-progress-text-background | 文本背景颜色 | `$progress-color` |
-| \--nutui-progress-video-track-color | 视频模式轨道底色 | `rgba(255, 255, 255, 0.2)` |
-| \--nutui-progress-video-fill-color | 视频模式已填充色 | `rgba(255, 255, 255, 0.7)` |
-| \--nutui-progress-video-thumb-color | 视频模式滑块颜色 | `#ffffff` |
-| \--nutui-progress-video-height | 视频模式轨道高度 | `1px` |
-| \--nutui-progress-video-active-height | 拖动态轨道高度 | `8px` |
-| \--nutui-progress-video-paused-height | 暂停态轨道高度 | `3px` |
-| \--nutui-progress-video-thumb-width | 视频模式滑块宽度 | `2px` |
-| \--nutui-progress-video-thumb-height | 视频模式滑块高度 | `1px` |
-| \--nutui-progress-video-thumb-radius | 视频模式滑块圆角 | `0.5px` |
-| \--nutui-progress-video-thumb-active-width | 拖动态滑块宽度 | `6px` |
-| \--nutui-progress-video-thumb-active-height | 拖动态滑块高度 | `12px` |
-| \--nutui-progress-video-thumb-active-radius | 拖动态滑块圆角 | `3px` |
-| \--nutui-progress-video-thumb-paused-width | 暂停态滑块宽度 | `6px` |
-| \--nutui-progress-video-thumb-paused-height | 暂停态滑块高度 | `3px` |
-| \--nutui-progress-video-thumb-paused-radius | 暂停态滑块圆角 | `1.5px` |
-| \--nutui-progress-video-opacity-static | 默认（静态）态整体透明度 | `0.6` |
-| \--nutui-progress-video-opacity-paused | 暂停态整体透明度 | `0.85` |
 
 <Contribution name="Progress" />

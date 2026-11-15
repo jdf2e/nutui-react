@@ -9,17 +9,22 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import { WebProgressProps } from '@/types'
+import { WebVideoProgressProps } from '@/types'
+
+export type VideoProgressProps = Partial<WebVideoProgressProps> &
+  Omit<
+    React.HTMLAttributes<HTMLDivElement>,
+    'onChange' | 'onDragStart' | 'onDragEnd'
+  >
 
 const defaultProps = {
   percent: 0,
-  mode: 'video',
   status: 'static',
   draggable: false,
   showThumb: true,
   min: 0,
   max: 100,
-} as WebProgressProps
+} as WebVideoProgressProps
 
 const clamp = (val: number, min: number, max: number) => {
   if (Number.isNaN(val)) return min
@@ -28,10 +33,7 @@ const clamp = (val: number, min: number, max: number) => {
   return val
 }
 
-export const VideoProgress: FunctionComponent<
-  Partial<WebProgressProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> = (props) => {
+export const VideoProgress: FunctionComponent<VideoProgressProps> = (props) => {
   const {
     className,
     style,
@@ -54,7 +56,7 @@ export const VideoProgress: FunctionComponent<
     ...props,
   }
 
-  const classPrefix = 'nut-progress'
+  const classPrefix = 'nut-videoprogress'
   const minVal = min ?? 0
   const maxVal = max ?? 100
   const range = Math.max(maxVal - minVal, 1)
@@ -227,7 +229,7 @@ export const VideoProgress: FunctionComponent<
 
   const rootCls = classNames(
     classPrefix,
-    `${classPrefix}--video`,
+    'nut-progress--video',
     `is-${state}`,
     {
       'is-draggable': draggable,
@@ -257,16 +259,18 @@ export const VideoProgress: FunctionComponent<
       {...rest}
     >
       {status === 'paused' && pausedIcon && (
-        <div className={`${classPrefix}-icon`}>{pausedIcon}</div>
+        <div className={`${classPrefix}-icon nut-progress-icon`}>
+          {pausedIcon}
+        </div>
       )}
-      <div className={`${classPrefix}-track`}>
+      <div className={`${classPrefix}-track nut-progress-track`}>
         <div
-          className={`${classPrefix}-fill`}
+          className={`${classPrefix}-fill nut-progress-fill`}
           style={{ width: `${displayValue}%` }}
         />
         {showThumb && (
           <div
-            className={`${classPrefix}-thumb`}
+            className={`${classPrefix}-thumb nut-progress-thumb`}
             style={{ left: `${displayValue}%` }}
           />
         )}

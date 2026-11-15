@@ -7,7 +7,6 @@ import { TaroProgressProps } from '@/types'
 import { harmony, web } from '@/utils/taro/platform'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { useUuid } from '@/hooks/use-uuid'
-import { VideoProgress } from './video.taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -16,10 +15,9 @@ const defaultProps = {
   animated: false,
   lazy: false,
   delay: 0,
-  mode: 'default',
 } as TaroProgressProps
 
-const BaseProgress: FunctionComponent<
+export const Progress: FunctionComponent<
   Partial<TaroProgressProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
@@ -42,22 +40,17 @@ const BaseProgress: FunctionComponent<
     duration,
     onActiveEnd,
     mode,
-    status,
-    draggable,
-    showThumb,
-    pausedIcon,
-    min,
-    max,
-    step,
-    onChange,
-    onDragStart,
-    onDragging,
-    onDragEnd,
     ariaLabel,
     ...rest
   } = {
     ...defaultProps,
     ...props,
+  }
+
+  if (process.env.NODE_ENV !== 'production' && mode === 'video') {
+    console.warn(
+      '[NutUI] Progress: mode="video" has been moved to <VideoProgress> component in NutUI 4.x. Please import VideoProgress instead.'
+    )
   }
 
   const classPrefix = 'nut-progress'
@@ -174,8 +167,10 @@ const BaseProgress: FunctionComponent<
       <View className={`${classPrefix}-outer`} style={stylesOuter}>
         <View
           className={classesInner}
-          style={{ ...stylesInner, position: 'relative' }}
-          onTransitionEnd={onActiveEnd}
+          style={stylesInner}
+          onTransitionEnd={() => {
+            onActiveEnd?.()
+          }}
         />
       </View>
       {effectiveShowText && (
@@ -183,24 +178,11 @@ const BaseProgress: FunctionComponent<
           className={`${classPrefix}-text`}
           style={{ fontSize: fontSize && parseInt(fontSize.toString()) }}
         >
-          {children || `${percent}%`}
+          {children || `${dispalyPercent}%`}
         </View>
       )}
     </View>
   )
 }
 
-export const Progress: FunctionComponent<
-  Partial<TaroProgressProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> & {
-  Video: typeof VideoProgress
-} = (props) => {
-  if (props.mode === 'video') {
-    return <VideoProgress {...props} />
-  }
-  return <BaseProgress {...props} />
-}
-
-Progress.Video = VideoProgress
 Progress.displayName = 'NutProgress'

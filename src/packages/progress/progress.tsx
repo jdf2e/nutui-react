@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider'
 import { WebProgressProps } from '@/types'
-import { VideoProgress } from './video'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -12,10 +11,9 @@ const defaultProps = {
   animated: false,
   lazy: false,
   delay: 0,
-  mode: 'default',
 } as WebProgressProps
 
-const BaseProgress: FunctionComponent<
+export const Progress: FunctionComponent<
   Partial<WebProgressProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
@@ -38,22 +36,17 @@ const BaseProgress: FunctionComponent<
     duration,
     onActiveEnd,
     mode,
-    status,
-    draggable,
-    showThumb,
-    pausedIcon,
-    min,
-    max,
-    step,
-    onChange,
-    onDragStart,
-    onDragging,
-    onDragEnd,
     ariaLabel,
     ...rest
   } = {
     ...defaultProps,
     ...props,
+  }
+
+  if (process.env.NODE_ENV !== 'production' && mode === 'video') {
+    console.warn(
+      '[NutUI] Progress: mode="video" has been moved to <VideoProgress> component in NutUI 4.x. Please import VideoProgress instead.'
+    )
   }
 
   const classPrefix = 'nut-progress'
@@ -156,17 +149,4 @@ const BaseProgress: FunctionComponent<
   )
 }
 
-export const Progress: FunctionComponent<
-  Partial<WebProgressProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> & {
-  Video: typeof VideoProgress
-} = (props) => {
-  if (props.mode === 'video') {
-    return <VideoProgress {...props} />
-  }
-  return <BaseProgress {...props} />
-}
-
-Progress.Video = VideoProgress
 Progress.displayName = 'NutProgress'
