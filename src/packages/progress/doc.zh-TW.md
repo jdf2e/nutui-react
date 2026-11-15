@@ -84,11 +84,9 @@ import { Progress, VideoProgress } from '@nutui/nutui-react'
 
 用於視頻播放器等沉浸式場景。解耦後的全新獨立組件 `VideoProgress`（或子組件 `<Progress.Video>`）支援按需引入，包體更小。默認色值：軌道 `rgba(255,255,255,0.2)`、已填充 `rgba(255,255,255,0.7)`、滑塊 `#FFFFFF`。演示包含：
 
-- **靜態模式**：默認播放狀態，弱化顯示；
-- **暫停模式**：中等強度，支援通過 `pausedIcon` 定制中心播放圖標；
-- **手勢交互**：支援通過 `draggable` 進行平滑滑塊拖拽交互；
-- **子組件形式**：通過 `<Progress.Video>` 統一調用；
-- **兼容模式**：向後兼容 `<Progress mode="video" ... />` 調用。
+- **靜態模式**：默認播放狀態，弱化細軌顯示（`status="static"`）；
+- **暫停模式**：中等強度，支援通過 `pausedIcon` 定制中心播放圖標（`status="paused"`）；
+- **手勢交互**：支援通過 `draggable` 進行平滑滑塊拖拽交互，同時支援 `<Progress.Video>` 形式統一調用。
 
 :::demo
 

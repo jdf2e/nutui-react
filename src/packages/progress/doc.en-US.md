@@ -84,11 +84,9 @@ import { Progress, VideoProgress } from '@nutui/nutui-react'
 
 For video-player-like immersive scenarios. Decoupled as an independent lightweight component `VideoProgress` (or subcomponent `<Progress.Video>`). Default colors: track `rgba(255,255,255,0.2)`, fill `rgba(255,255,255,0.7)`, thumb `#FFFFFF`. The demo covers:
 
-- **Static Mode**: default playing state with dimmed bar;
-- **Paused Mode**: medium intensity, supports custom center play icon via `pausedIcon`;
-- **Interactive Dragging**: smooth seeking with gesture drag via `draggable`;
-- **Subcomponent Syntax**: convenient call via `<Progress.Video>`;
-- **Backward Compatibility**: backward-compatible support for `<Progress mode="video" ... />`.
+- **Static Mode**: default playing state with dimmed thin track (`status="static"`);
+- **Paused Mode**: medium intensity, supports custom center play icon via `pausedIcon` (`status="paused"`);
+- **Interactive Dragging**: smooth seeking with gesture drag via `<Progress.Video draggable />`.
 
 :::demo
 

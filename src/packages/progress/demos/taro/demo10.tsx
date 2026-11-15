@@ -27,15 +27,15 @@ const Demo10 = () => {
 
   return (
     <Cell.Group>
-      {/* 1. status="static" */}
+      {/* 1. 静态播放状态 */}
       <View style={cardStyle}>
         <View style={labelStyle}>
-          1. 静态播放中状态：status=&apos;static&apos;（弱化细轨展示）
+          1. 静态播放状态：status=&apos;static&apos;（弱化细轨展示）
         </View>
         <VideoProgress status="static" percent={30} style={progressStyle} />
       </View>
 
-      {/* 2. status="paused" + pausedIcon */}
+      {/* 2. 暂停状态与自定义图标 */}
       <View style={cardStyle}>
         <View style={labelStyle}>
           2. 暂停状态：status=&apos;paused&apos; +
@@ -51,41 +51,15 @@ const Demo10 = () => {
         </View>
       </View>
 
-      {/* 3. draggable + onChange */}
+      {/* 3. 交互拖拽寻道（同时展示 Progress.Video 子组件形式） */}
       <View style={cardStyle}>
         <View style={labelStyle}>
-          {`3. 手势拖拽受控交互：draggable + onChange（当前: ${percent}%）`}
-        </View>
-        <VideoProgress
-          percent={percent}
-          draggable
-          onChange={(p) => setPercent(p)}
-          style={progressStyle}
-        />
-      </View>
-
-      {/* 4. 子组件调用 Progress.Video */}
-      <View style={cardStyle}>
-        <View style={labelStyle}>
-          {'4. 子组件调用形式：<Progress.Video />'}
+          {`3. 手势拖拽受控交互：<Progress.Video draggable />（当前: ${percent}%）`}
         </View>
         <Progress.Video
           percent={percent}
           draggable
           onChange={(p) => setPercent(p)}
-          style={progressStyle}
-        />
-      </View>
-
-      {/* 5. 向下兼容 mode="video" */}
-      <View style={cardStyle}>
-        <View style={labelStyle}>
-          {'5. 向下兼容旧写法：<Progress mode="video" />'}
-        </View>
-        <Progress
-          mode="video"
-          status="static"
-          percent={60}
           style={progressStyle}
         />
       </View>
