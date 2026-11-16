@@ -76,7 +76,7 @@
   }
 
   &-plain {
-    background-color: #fff;
+    background-color: $tag-plain-background-color;
     border: $tag-border-width solid $color-title;
   }
 
@@ -86,10 +86,12 @@
   }
 }
 
-[dir='rtl'] .nut-tag,
-.nut-rtl .nut-tag {
-  .nut-icon {
-    margin-left: 0;
-    margin-right: 4px;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-tag,
+  .nut-rtl .nut-tag {
+    .nut-icon {
+      margin-left: 0;
+      margin-right: 4px;
+    }
   }
 }

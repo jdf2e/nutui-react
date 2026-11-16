@@ -51,7 +51,7 @@ export default defineConfig({
 
 #### Webpack 方式
 
-````javascript
+```javascript
 {
   test: /\.(sa|sc)ss$/,
   use: [
@@ -64,6 +64,106 @@ export default defineConfig({
     }
   ]
 }
+```
+
+### 推荐实践：使用轻量级核心 Tokens (`variables-core.scss`)
+
+NutUI-React 将核心设计系统变量独立抽离为 `variables-core.scss`（~260 行，相较于全量 3300+ 行的 `variables.scss` **精简 92%**）。
+
+#### 解决了什么问题？
+
+过去的 `variables.scss`（3300+ 行）混杂了**全局设计规范（~8%）**与**组件私有实现变量（~92%）**。当业务工程在 `additionalData` 中全局注入以便在业务页面使用 `scale-px()` 或 `$color-title` 时，Sass 编译器会在每一个业务 SCSS 文件顶部重复拼接这 3300 多行，导致数万乃至数十万行无用 AST 解析，造成严重的构建卡顿与性能开销。
+`variables-core.scss` 抽离了纯净的全局 Design Tokens，单次注入开销降低 90%，大幅提速 Sass 编译与热更新。
+
+#### 核心使用边界与准则
+
+> [!WARNING] 边界一：必须配合“预编译 CSS 产物”使用
+>
+> - **引入 CSS 产物（推荐，如 `style: 'css'` 或引入 `style.css`）**：组件样式在官方发包前已预编译完毕，业务在 `additionalData` 中注入 `variables-core.scss` 供业务自身样式使用，**完全安全且体积大幅精简**。
+> - **组件 SCSS 源码编译模式（如 `style: true`）**：组件 SCSS 源码依赖私有变量（如 `$button-default-height`、`$tabs-titles-height`），**此时必须全局注入全量 `variables.scss`**，不能替换为 `variables-core.scss`，否则本地编译组件源码时会报 `Undefined variable` 错误。
+
+> [!NOTE] 边界二：Sass 变量覆盖不等于预编译组件运行时换色
+> 引入预编译组件 CSS 时，组件已被编译为读取运行时 CSS 变量 `var(--nutui-color-primary, #ff0f23)`。在业务 SCSS 中覆盖 `$color-primary` **只会改变业务自建样式的取色，不会改变 NutUI 预编译组件的颜色**。要定制预编译组件品牌色，必须覆盖 CSS 变量 `--nutui-color-primary`（参考方式一）或通过 `<ConfigProvider theme={...}>` 定制。
+
+> [!CAUTION] 边界三：多主题隔离原则
+> `variables-core.scss` 仅代表官方**默认主题**的核心规范。定制业务主题（如到家 `daojia`、京东 APP `jmapp`、金融客服 `jrkf`）拥有各自专属的色彩规范与品牌色。**严禁在定制主题工程中引入 `variables-core.scss`**，否则 Sass 的 `!default` 规则会导致默认主题的红色系变量抢占定义，引发业务定制品牌色被污染失效。定制主题请直接引入对应的 `variables-${theme}.scss`。
+
+#### 包含内容
+
+- 全局缩放函数（`scale-px`、`scale-font-px`、`scale-icon-px`）
+- 基础色彩系统（主色 `$color-primary`、次色、功能状态色、文本/背景/边框/蒙层中性色）
+- 基础阶梯字号（`$font-size-...`）、行高与字重
+- 常用基础间距（`$spacing-...`）、圆角（`$radius-...`）、阴影与层级
+- 基础动画时间与贝塞尔函数（`$animation-...`）
+
+#### 适用场景
+
+1. **业务全局注入（推荐）**：项目引入组件预编译 CSS，同时业务页面或自研业务组件需要使用通用 Design Tokens 编写业务样式。无需为每个 SCSS 文件注入上千行组件私有变量，大幅加快 Sass 编译速度。
+2. **极简主题覆盖**：只需定制通用圆角、间距等全局设计规范，配合 `variables-core.scss` 最轻量。注意：使用预编译组件 CSS 时，仅在业务 SCSS 中覆盖 `$color-primary` 不会改变组件品牌色；修改预编译组件品牌色请配合覆盖 CSS 变量 `--nutui-color-primary`（参考方式一）或使用 ConfigProvider 主题定制。
+
+#### 配置示例
+
+##### Vite 方式
+
+```javascript
+// vite.config.ts
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // 推荐：引入组件 CSS 产物时，业务样式仅注入核心变量，体积精简 92%，编译更高效
+        additionalData: `@import "@nutui/nutui-react/dist/styles/variables-core.scss";@import "./your/custom_theme.scss";`,
+      },
+    },
+  },
+})
+```
+
+##### Webpack 方式
+
+```javascript
+{
+  test: /\.(sa|sc)ss$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        additionalData: `@import "@nutui/nutui-react/dist/styles/variables-core.scss";@import "./assets/custom_theme.scss";`,
+      },
+    },
+  ],
+}
+```
+
+##### 业务样式中直接引用
+
+```scss
+// 在业务页面或业务组件的 SCSS 中
+@import '@nutui/nutui-react/dist/styles/variables-core.scss';
+
+.my-business-card {
+  padding: $spacing-base;
+  border-radius: $radius-base;
+  color: $color-title;
+  background-color: $color-background;
+
+  .primary-action {
+    color: $color-primary;
+    font-size: $font-size-l;
+    font-weight: $font-weight-bold;
+  }
+}
+```
+
+#### 选型建议
+
+| 需求与样式引入方式 | 推荐文件 | 优势与说明 |
+| --- | --- | --- |
+| **引入组件 CSS 产物 + 业务自身写样式 / 自研业务组件库** | `variables-core.scss` (⭐推荐) | 仅 ~260 行，精简 92%，编译极快，无死变量污染 |
+| **覆盖品牌主色、通用圆角、基础间距等全局设计规范** | `variables-core.scss` (⭐推荐) | 涵盖核心 Design Tokens，轻装上阵 |
+| **本地现场编译组件 SCSS 源码（`style: true`）或微调组件私有变量** | `variables.scss` (⚠️必选) | 包含全部 100+ 组件私有样式控制变量，保障组件 SCSS 正常编译 |
 
 ## 暗黑模式
 
@@ -80,7 +180,6 @@ NutUI-React 原生支持暗黑模式。组件库在暗黑模式下使用一套�
 ##### 引入 CSS 样式（适用于普通 JS/TS 项目）：
 
 参考方式二。
-
 
 ##### 引入 SCSS 样式（适用于配置了 Sass 预处理器的项目）：
 
@@ -107,7 +206,7 @@ function App() {
     </div>
   )
 }
-````
+```
 
 #### 3. 配合 ConfigProvider 进行定制
 

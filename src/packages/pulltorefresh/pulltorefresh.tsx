@@ -229,7 +229,7 @@ export const PullToRefresh: FunctionComponent<
       <div
         className={classNames({
           [`${classPrefix}-content`]: true,
-          [`${classPrefix}-primary-content}`]: props.type === 'primary',
+          [`${classPrefix}-primary-content`]: props.type === 'primary',
         })}
       >
         {props.children}

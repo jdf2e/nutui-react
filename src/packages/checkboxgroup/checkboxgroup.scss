@@ -71,26 +71,28 @@
   }
 }
 
-[dir='rtl'] .nut-checkboxgroup,
-.nut-rtl .nut-checkboxgroup {
-  .nut-checkbox {
-    &-label {
-      margin-right: 5px;
-    }
-  }
-
-  &-vertical {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-checkboxgroup,
+  .nut-rtl .nut-checkboxgroup {
     .nut-checkbox {
       &-label {
         margin-right: 5px;
       }
     }
-  }
 
-  &-horizontal {
-    .nut-checkbox {
-      margin-right: 0;
-      margin-left: $checkboxgroup-checkbox-margin;
+    &-vertical {
+      .nut-checkbox {
+        &-label {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &-horizontal {
+      .nut-checkbox {
+        margin-right: 0;
+        margin-left: $checkboxgroup-checkbox-margin;
+      }
     }
   }
 }

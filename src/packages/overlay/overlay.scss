@@ -52,8 +52,10 @@
   }
 }
 
-[dir='rtl'] .nut-overlay,
-.nut-rtl .nut-overlay {
-  left: auto;
-  right: 0;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-overlay,
+  .nut-rtl .nut-overlay {
+    left: auto;
+    right: 0;
+  }
 }

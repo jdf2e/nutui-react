@@ -1,0 +1,11 @@
+@function scale-px($size) {
+  @return calc(#{$size} * var(--nut-scale-f, 1));
+}
+
+@function scale-font-px($size) {
+  @return calc(#{$size} * var(--nut-scale-font, var(--nut-scale-f, 1)));
+}
+
+@function scale-icon-px($size) {
+  @return calc(#{$size} * var(--nut-scale-icon, var(--nut-scale-f, 1)));
+}

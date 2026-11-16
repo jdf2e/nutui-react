@@ -8,6 +8,22 @@
 import { Button } from '@nutui/nutui-react'
 ```
 
+### 樣式引入與包體優化
+
+Button 組件支援基礎樣式與變體樣式的按需分層：
+
+- **常規使用（完整樣式）**：
+  若使用了彩色變體（`danger`、`warning`、`info`、`success`、`service`）或豐富形態尺寸，直接引入完整樣式（按需加載插件默認行為）：
+  ```tsx
+  import '@nutui/nutui-react/dist/es/packages/button/style'
+  ```
+- **極簡模式（輕量基礎樣式）**：
+  若業務僅使用最常用的 `default`（默認）或 `primary`（主色）按鈕，無需加載其他彩色及擴展變體樣式，可顯式引入輕量基礎樣式（CSS 體積從 ~31KB 降至 ~11KB，直接減少約 19.7KB）：
+  ```tsx
+  import '@nutui/nutui-react/dist/es/packages/button/style/base-css'
+  ```
+> 提示：複合組件（如 `Dialog`、`Empty`、`ResultPage` 等）已預設自動按需依賴輕量基礎樣式，無需額外配置即可享受體積優化收益。
+
 ## 示例代碼
 
 ### 按鈕類型

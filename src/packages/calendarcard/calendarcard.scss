@@ -144,43 +144,45 @@
   }
 }
 
-[dir='rtl'] .nut-calendarcard,
-.nut-rtl .nut-calendarcard {
-  &-header {
-    &-left,
-    &-right {
-      .left {
-        margin-left: 0;
-        margin-right: 8px;
-      }
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-calendarcard,
+  .nut-rtl .nut-calendarcard {
+    &-header {
+      &-left,
+      &-right {
+        .left {
+          margin-left: 0;
+          margin-right: 8px;
+        }
 
-      .right {
-        margin-right: 0;
-        margin-left: 8px;
-      }
+        .right {
+          margin-right: 0;
+          margin-left: 8px;
+        }
 
-      .nut-icon-ArrowLeft,
-      .nut-icon-ArrowRight,
-      svg {
-        transform: rotate(180deg);
+        .nut-icon-ArrowLeft,
+        .nut-icon-ArrowRight,
+        svg {
+          transform: rotate(180deg);
+        }
       }
     }
-  }
 
-  &-day {
-    &.start,
-    &.end {
-      border-radius: 0;
-    }
+    &-day {
+      &.start,
+      &.end {
+        border-radius: 0;
+      }
 
-    &.start {
-      border-top-right-radius: $calendar-day-active-border-radius;
-      border-bottom-right-radius: $calendar-day-active-border-radius;
-    }
+      &.start {
+        border-top-right-radius: $calendar-day-active-border-radius;
+        border-bottom-right-radius: $calendar-day-active-border-radius;
+      }
 
-    &.end {
-      border-top-left-radius: $calendar-day-active-border-radius;
-      border-bottom-left-radius: $calendar-day-active-border-radius;
+      &.end {
+        border-top-left-radius: $calendar-day-active-border-radius;
+        border-bottom-left-radius: $calendar-day-active-border-radius;
+      }
     }
   }
 }

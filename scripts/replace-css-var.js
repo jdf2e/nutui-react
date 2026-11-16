@@ -57,7 +57,7 @@ components.forEach((component) => {
         } else {
           // 组件内的样式拆分
           content = content.replace(m, '')
-          const splitScssName = m.match(/\'\.\/([a-z]+)\.scss/)
+          const splitScssName = m.match(/\'\.\/([a-z0-9_-]+)\.scss/)
           if (splitScssName && splitScssName.length == 2) {
             componentSplitScss.push(
               pxToScalePxInComponentScss(
@@ -78,7 +78,16 @@ components.forEach((component) => {
     })
   }
 
-  const res = sass.compileString(theme + variables + componentSplitScss.join('\n') + content)
+  const res = sass.compileString(
+    theme + variables + componentSplitScss.join('\n') + content,
+    {
+      url: new URL(`file://${path.join(__dirname, '../src/styles/variables.scss')}`),
+      loadPaths: [
+        path.join(__dirname, `../src/packages/${componentName}`),
+        path.join(__dirname, '../src/styles'),
+      ],
+    }
+  )
   postcss([
     cssvariables(/*options*/),
   ])

@@ -33,12 +33,10 @@
   },
   "dependencies": {
     "@tarojs/service": "^4.0.0",
-    "lodash.kebabcase": "^4.1.1",
     "tslib": "^2.8.1",
     "webpack-chain": "^6.5.1"
   },
   "devDependencies": {
-    "@types/lodash.kebabcase": "^4.1.9",
     "@types/node": "^18.19.130",
     "prettier": "^3.9.6",
     "rollup": "^2.80.0",

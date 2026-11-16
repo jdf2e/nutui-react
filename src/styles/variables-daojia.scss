@@ -1,4 +1,6 @@
 // ----------------------------------------------------
+$nutui-enable-rtl: true !default;
+@import './scale.scss';
 // 主色调 // done
 $color-primary: var(--nutui-color-primary, #1ed145) !default;
 $color-primary-stop-1: var(--nutui-color-primary-stop-1, #23d94b) !default;
@@ -7,6 +9,8 @@ $color-primary-pressed: var(--nutui-color-primary-pressed, #16c73d) !default;
 $color-primary-disabled: var(--nutui-color-primary-disabled, #c2c4cc) !default;
 $color-primary-disabled-special: var(--nutui-color-primary-disabled-special,
     #72e88c) !default;
+$color-primary-light: var(--nutui-color-primary-light,
+    rgba(30, 209, 69, 0.1)) !default;
 $color-primary-light-pressed: var(--nutui-color-primary-light-pressed,
     #d5fbd5) !default;
 $color-primary-gradient-1: linear-gradient(135deg,
@@ -84,6 +88,11 @@ $color-background-overlay: var(--nutui-color-background-overlay,
 // 卡片内嵌背景色
 $color-background-sunken: var(--nutui-color-background-sunken,
     #f7f8fc) !default;
+// 组件背景色
+$color-background-component: var(
+  --nutui-color-background-component,
+  #f0f2f7
+) !default;
 
 // 蒙层颜色
 // 页面全局蒙层
@@ -175,7 +184,7 @@ $radius-xxxs: var(--nutui-radius-xxxs,
 $radius-xxs: var(--nutui-radius-xxs, 2px) !default; // 标签
 $radius-xs: var(--nutui-radius-xs, 4px) !default; // 单行高度20、24、28的组件
 $radius-s: var(--nutui-radius-s, 6px) !default; // 单行高度32、36的组件
-$radius-base: var(--nutui-radius-base, 8px) !default; // 单行高度40及以上的组件
+$radius-base: var(--nutui-radius-base, scale-px(8px)) !default; // 单行高度40及以上的组件
 $radius-l: var(--nutui-radius-l, 8px) !default; // 入口型非通栏卡片
 $radius-xl: var(--nutui-radius-xl,
     12px) !default; // 结构分割、通栏卡片、临时操作层组件等场景
@@ -342,9 +351,9 @@ $button-service-pressed: var(--nutui-button-service-pressed,
     $color-service-btn-bg-pressed) !default;
 
 $button-primary-light-color: var(--nutui-button-primary-light-color,
-    $button-primary-background-color) !default;
+    $color-primary) !default;
 $button-primary-light-background-color: var(--nutui-button-primary-light-background-color,
-    rgba(250, 44, 25, 0.1)) !default;
+    $color-primary-light) !default;
 $button-primary-light-border-color: var(--nutui-button-primary-light-border-color,
     transparent) !default;
 
@@ -386,7 +395,7 @@ $cell-divider-border-bottom: var(--nutui-cell-divider-border-bottom,
 $cell-background-color: var(--nutui-cell-background-color,
     $color-background-overlay) !default;
 $cell-box-shadow: var(--nutui-cell-box-shadow,
-    0px 1px 7px 0px rgba(237, 238, 241, 1)) !default;
+    0px scale-px(1px) scale-px(7px) 0px var(--nutui-black-2, rgba(237, 238, 241, 1))) !default;
 
 // cell-group（✅）
 $cell-group-title-padding: var(--nutui-cell-group-title-padding,
@@ -960,6 +969,16 @@ $range-button-border: var(--nutui-range-button-border,
     1px solid $color-border) !default;
 $range-tick-size: var(--nutui-range-tick-size, 8px) !default;
 
+// swipe（✅）
+$swipe-background-color: var(
+  --nutui-swipe-background-color,
+  transparent
+) !default;
+$swipe-action-radius: var(
+  --nutui-swipe-action-radius,
+  $radius-base
+) !default;
+
 //swiper（✅）
 $swiper-indicator-bottom: var(--nutui-swiper-indicator-bottom, 12px);
 
@@ -1275,6 +1294,10 @@ $tag-border-radius: var(--nutui-tag-border-radius, 2px) !default;
 $tag-height: var(--nutui-tag-height, 14px) !default;
 $tag-color: var(--nutui-tag-color, #ffffff) !default;
 $tag-border-width: var(--nutui-tag-border-width, 1px) !default;
+$tag-plain-background-color: var(
+  --nutui-tag-plain-background-color,
+  $color-background-overlay
+) !default;
 $tag-background-color: var(--nutui-tag-background-color, $color-title) !default;
 $tag-primary-background-color: var(--nutui-tag-primary-background-color,
     $color-primary-gradient-1) !default;
@@ -1422,6 +1445,10 @@ $progress-video-container-height: var(--nutui-progress-video-container-height,
 
 //pagination（✅）
 $pagination-color: var(--nutui-pagination-color, $color-primary) !default;
+$pagination-item-background-color: var(
+  --nutui-pagination-item-background-color,
+  $color-background-overlay
+) !default;
 $pagination-lite-color: var(--nutui-pagination-lite-color, $white) !default;
 $pagination-font-size: var(--nutui-pagination-font-size,
     $font-size-base) !default;
@@ -1681,7 +1708,7 @@ $segmented-height: var(--nutui-segmented-height, 24px) !default;
 $segmented-padding: var(--nutui-segmented-padding, $spacing-xxxs) !default;
 $segmented-border-radius: var(--nutui-segmented-radius, $radius-xs) !default;
 $segmented-background: var(--nutui-segmented-background,
-    $color-mask-part) !default;
+    $color-background-component) !default;
 $segmented-item-height: var(--nutui-segmented-height, 20px) !default;
 $segmented-item-padding: var(--nutui-segmented-item-padding,
     0 $spacing-xs) !default;
@@ -1689,9 +1716,9 @@ $segmented-item-radius: var(--nutui-segmented-item-radius, $radius-xs) !default;
 $segmented-item-fontsize: var(--nutui-segmented-item-fontsize,
     $font-size-s) !default;
 $segmented-item-color: var(--nutui-segmented-item-color,
-    $color-primary-text) !default;
+    $color-text) !default;
 $segmented-active-background: var(--nutui-segmented-active-background,
-    $color-mask-part) !default;
+    $color-background-overlay) !default;
 $segmented-icon-margin-right: var(--nutui-segmented-icon-margin-right,
     $spacing-xxxs) !default;
 

@@ -59,15 +59,17 @@
   height: 100%;
 }
 
-[dir='rtl'] .nut-swiper,
-.nut-rtl .nut-swiper {
-  &-indicator {
-    left: auto;
-    right: 50%;
-  }
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-swiper,
+  .nut-rtl .nut-swiper {
+    &-indicator {
+      left: auto;
+      right: 50%;
+    }
 
-  &-indicator-vertical {
-    left: auto;
-    right: 12px;
+    &-indicator-vertical {
+      left: auto;
+      right: 12px;
+    }
   }
 }

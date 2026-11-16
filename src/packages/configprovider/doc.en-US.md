@@ -91,13 +91,24 @@ NutUI-React provides a ConfigProvider component for global configuration of inte
 
 :::
 
-### RTL
+### RTL & Bundle Size Optimization
+
+NutUI supports Right-to-Left text and mirrored layout by setting `direction="rtl"` on `ConfigProvider`.
 
 :::demo
 
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
+
+#### Bundle Size Optimization (Disabling RTL)
+
+If your project does not need RTL support (e.g. domestic Chinese applications), you can strip RTL styles (~6.3 KB) via:
+
+1. **Sass Macro**: Set `$nutui-enable-rtl: false;` in your Sass preprocessor configuration (`additionalData` / `sass.resource`).
+2. **Lightweight CSS Entries**: Import `style.mini.css` instead of `style.css`, or configure `babel-plugin-import` with `customStyleName: (name) => .../style/mini`.
+
+> See full documentation: [NutUI RTL Guide](../../../docs/rtl-guide.md).
 
 ### Add language packs
 
@@ -111,5 +122,6 @@ If you can't find the language pack you need, you are welcome to create a new la
 | --- | --- | --- | --- |
 | locale | set the language | `BaseLang` | `zhCN` |
 | theme | set the theme | `Record<string, string>` | `-` |
+| direction | layout direction, optional `ltr` or `rtl` | `ltr` \| `rtl` | `ltr` |
 
 <Contribution name="ConfigProvider" />

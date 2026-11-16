@@ -108,6 +108,8 @@ const list = [
   'avatarcropper',
 ]
 
+const warnedPackages = new Set<string>()
+
 function injectCSS(options: IOptions) {
   return ({ types: t }) => {
     const { cName, pName } = options
@@ -132,8 +134,25 @@ function injectCSS(options: IOptions) {
               if (!absolutePath[0]) return
               // td 下如果不处理，会报异常并阻塞。
               if (dynamic() && !list.includes(name)) return
-              let importpath = `${absolutePath[0]}${realNamePackage}/dist/es/packages/${name}/style/${options.style === 'css' ? 'css' : 'index'}.js`
+              let styleType = 'index'
+              if (options.style === 'css') {
+                styleType = 'css'
+              } else if (options.style === 'mini') {
+                styleType = 'mini'
+              }
+              let importpath = `${absolutePath[0]}${realNamePackage}/dist/es/packages/${name}/style/${styleType}.js`
               if (harmony() || dynamic()) {
+                // 鸿蒙/动态化平台不支持 CSS 变量，强制使用 style.harmony.css。
+                // style: 'mini' 在这两个平台上不生效（mini 产物基于 CSS 变量），此处显式告警避免静默降级（单包仅告警一次，避免刷屏）。
+                if (
+                  options.style === 'mini' &&
+                  !warnedPackages.has(realNamePackage)
+                ) {
+                  warnedPackages.add(realNamePackage)
+                  console.log(
+                    `warn: @nutui/inject-ui-styles - "style: 'mini'" 在 harmony/dynamic 平台不生效，将回退加载 style.harmony.css`
+                  )
+                }
                 importpath = `${absolutePath[0]}${realNamePackage}/dist/es/packages/${name}/style/style.harmony.css`
               }
               try {
@@ -158,11 +177,17 @@ function injectCSS(options: IOptions) {
 }
 
 function harmony() {
-  return (process.env.TARO_ENV as any).indexOf('harmony') > -1
+  return Boolean(
+    process.env.TARO_ENV &&
+    (process.env.TARO_ENV as any).indexOf('harmony') > -1
+  )
 }
 
 function dynamic() {
-  return (process.env.TARO_ENV as any).indexOf('dynamic') > -1
+  return Boolean(
+    process.env.TARO_ENV &&
+    (process.env.TARO_ENV as any).indexOf('dynamic') > -1
+  )
 }
 
 export function babelComponentStyle(

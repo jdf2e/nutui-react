@@ -1,0 +1,352 @@
+@import './button-size.scss';
+
+$nutui-button-base-imported: false !default;
+
+@if not $nutui-button-base-imported {
+  $nutui-button-base-imported: true !global;
+
+  .nut-button {
+    position: relative;
+    display: inline-block;
+    /* #ifdef harmony dynamic*/
+    width: 80px;
+    /* #endif */
+    /* #ifndef harmony dynamic*/
+    width: auto;
+    /* #endif */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: $button-default-height;
+    font-size: $button-default-font-size;
+    font-weight: $font-weight;
+    text-align: center;
+    cursor: pointer;
+    transition: $button-transition;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: $button-default-color;
+    background: $button-default-background-color;
+    border-width: $button-border-width;
+
+    &-text {
+      margin-left: $button-text-icon-margin;
+      &-right {
+        margin-right: $button-text-icon-margin;
+      }
+    }
+
+    &-children {
+      display: flex;
+      flex-direction: row;
+      background: transparent;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      background-color: $color-mask;
+      border: inherit;
+      border-color: $color-mask;
+      border-radius: inherit;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      content: ' ';
+      /* #ifdef dynamic*/
+      pointer-events: none;
+      /* #endif */
+      /* #ifndef dynamic*/
+      pointer-events: auto;
+      /* #endif */
+    }
+
+    &::after {
+      border: none;
+    }
+
+    &:active::before {
+      opacity: 0.1;
+    }
+
+    &-wrap {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      /* #ifndef harmony dynamic*/
+      background: initial;
+      /* #endif */
+      .nut-icon {
+        font-size: $button-default-font-size;
+        width: $button-default-font-size;
+        height: $button-default-font-size;
+      }
+    }
+
+    &-loading,
+    &-disabled {
+      &::before {
+        display: none;
+      }
+    }
+
+    &.nut-button-disabled {
+      cursor: not-allowed;
+
+      // 不带色彩的纯灰禁用 (配合 className 使用)
+      &.nut-button-disabled-gray {
+        background: $color-text-disabled;
+        color: $color-primary-text;
+        border-color: $color-text-disabled;
+        opacity: 1;
+
+        .nut-button-desc {
+          color: $color-primary-text;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    &-round {
+      border-radius: $button-border-radius;
+    }
+
+    &-block {
+      display: block;
+      width: 100%;
+    }
+
+    &-default {
+      padding: $button-default-padding;
+      border-style: solid;
+      // 默认(实心)态不展示描边，描边仅在 outline/dashed 下生效
+      border-color: $button-default-border-color;
+
+      &-disabled,
+      &-solid-disabled {
+        color: $button-primary-color;
+        background: $button-default-disabled;
+        border-color: $button-default-disabled;
+      }
+
+      &-none {
+        &-disabled {
+          color: $button-default-disabled-color;
+        }
+      }
+
+      &-outline,
+      &-dashed {
+        border-color: $color-text-disabled;
+
+        &-disabled {
+          background: transparent;
+          color: $button-default-disabled;
+          border-color: $button-default-disabled;
+        }
+      }
+
+      &:active:not(.nut-button-disabled):not(.nut-button-loading) {
+        background: $button-default-pressed;
+      }
+
+      // 次要操作（灰色）：灰底 + 深灰字
+      &-light {
+        color: $button-default-light-color;
+        background: $button-default-light-background-color;
+        border-color: transparent;
+
+        .nut-button-default-children {
+          color: $button-default-light-color;
+        }
+
+        &-disabled {
+          color: $color-text-disabled;
+          background: $button-default-light-background-color;
+          border-color: transparent;
+
+          .nut-button-default-children {
+            color: $color-text-disabled;
+          }
+        }
+
+        &:active:not(.nut-button-disabled):not(.nut-button-loading) {
+          background: $button-default-light-pressed;
+        }
+      }
+    }
+
+    &-normal {
+      padding: $button-normal-padding;
+      min-width: 60px;
+    }
+
+    &-large {
+      @include button-size(
+        $button-large-height,
+        $button-large-padding,
+        $button-large-font-size,
+        $button-large-border-radius,
+        $button-xlarge-text-icon-margin
+      );
+      min-width: 84px;
+    }
+
+    &-small {
+      @include button-size(
+        $button-small-height,
+        $button-small-padding,
+        $button-small-font-size,
+        $button-small-border-radius
+      );
+      min-width: 52px;
+      font-weight: $font-weight;
+    }
+
+    &-primary {
+      color: $button-primary-color;
+      background: $button-primary-background-color;
+      background-origin: border-box;
+      border-color: transparent;
+
+      &-children {
+        color: $button-primary-color;
+      }
+
+      &-disabled,
+      &-solid-disabled {
+        color: $button-primary-color;
+        background: $button-primary-disabled;
+        border-color: $button-primary-disabled;
+      }
+
+      &-outline,
+      &-dashed {
+        color: $button-primary-border-color;
+        border-color: $button-primary-border-color;
+
+        .nut-button-primary-children {
+          color: $button-primary-border-color;
+        }
+
+        &-disabled {
+          color: $button-primary-disabled;
+          border-color: $button-primary-disabled;
+
+          .nut-button-primary-children {
+            color: $button-primary-disabled;
+          }
+        }
+      }
+
+      &-none {
+        color: $button-primary-border-color;
+
+        .nut-button-primary-children {
+          color: $button-primary-border-color;
+        }
+
+        &-disabled {
+          color: $button-primary-disabled;
+
+          .nut-button-primary-children {
+            color: $button-primary-disabled;
+          }
+        }
+      }
+
+      &:active:not(.nut-button-disabled):not(.nut-button-loading):not(
+          .nut-button-outline
+        ):not(.nut-button-dashed) {
+        background: $button-primary-pressed;
+      }
+
+      &-solid {
+        font-weight: $font-weight-bold;
+        &.nut-button-small,
+        &.nut-button-mini {
+          font-weight: $font-weight;
+        }
+      }
+
+      &-light {
+        color: $button-primary-light-color;
+        background: $button-primary-light-background-color;
+        border-color: $button-primary-light-border-color;
+
+        .nut-button-primary-children {
+          color: $button-primary-light-color;
+        }
+
+        &-disabled {
+          opacity: 0.5;
+
+          .nut-button-primary-children {
+            color: $button-primary-light-color;
+          }
+        }
+
+        &:active:not(.nut-button-disabled):not(.nut-button-loading):not(
+            .nut-button-outline
+          ):not(.nut-button-dashed) {
+          background: $color-primary-light-pressed;
+        }
+      }
+
+      &.nut-button-solid.nut-button-normal {
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    &-outline {
+      background: transparent;
+      border-style: solid;
+    }
+
+    &-dashed {
+      background: transparent;
+      border-style: dashed;
+    }
+
+    &-none {
+      background: transparent;
+      border-color: transparent;
+    }
+
+    &-loading {
+      cursor: default;
+      opacity: 0.9;
+    }
+  }
+
+  @if $nutui-enable-rtl {
+    [dir='rtl'] .nut-button,
+    .nut-rtl .nut-button {
+      &-text {
+        margin-left: 0;
+        margin-right: $button-text-icon-margin;
+
+        &.right {
+          margin-left: $button-text-icon-margin;
+        }
+      }
+
+      &::before {
+        left: auto;
+        right: 50%;
+        transform: translate(50%, -50%);
+      }
+    }
+  }
+}

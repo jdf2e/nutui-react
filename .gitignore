@@ -65,9 +65,14 @@ pnpm-lock.*.yaml
 .cursor/skills/nutui-component-v4-upgrade/
 .claude/commands/nutui-v4-upgrade.md
 .claude/nutui-*.json
-.claude
+.claude/*
+!.claude/commands/
 
 # Harmony CSS files
 src/packages/**/*.harmony.css
+
+# AI Review report temporary file
+pr-review-report.md
+pr-review-status.json
 
 .playwright-cli/

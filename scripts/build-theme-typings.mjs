@@ -147,6 +147,7 @@ function camelCase(input, options) {
 
 export async function generate() {
   const files = [
+    './src/styles/variables-core.scss',
     !projectID
       ? './src/styles/variables.scss'
       : `./src/styles/variables-${projectID}.scss`,

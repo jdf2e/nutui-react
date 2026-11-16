@@ -422,91 +422,94 @@
   }
 }
 
-[dir='rtl'] .nut-tabs-titles,
-.nut-rtl .nut-tabs-titles {
-  &-item {
-    &-smile,
-    &-line {
-      left: auto;
-      right: 50%;
-      transform: translate(50%, 0);
-    }
-  }
-  &-divider {
-    .nut-tabs-titles-item {
-      &::after {
-        right: auto;
-        left: 0;
-      }
-    }
-  }
-}
-
-// RTL 边缘留白镜像:视觉左端=物理右侧、视觉右端=物理左侧,翻转补端方向
-[dir='rtl'] .nut-tabs-horizontal,
-.nut-rtl .nut-tabs-horizontal {
-  .nut-tabs-titles:not(.nut-tabs-titles-right)
-    .nut-tabs-titles-item:first-child {
-    padding-left: $tabs-titles-gap;
-    padding-right: calc(#{$tabs-titles-gap} * 2);
-  }
-
-  .nut-tabs-titles:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
-    padding-right: $tabs-titles-gap;
-    padding-left: calc(#{$tabs-titles-gap} * 2);
-  }
-
-  .nut-tabs-titles-button {
-    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
-      padding-left: 4px;
-      padding-right: 8px;
-    }
-
-    &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
-      padding-right: 4px;
-      padding-left: 8px;
-    }
-  }
-}
-
-[dir='rtl'] .nut-tabs-vertical,
-.nut-rtl .nut-tabs-vertical {
-  .nut-tabs-titles {
-    &-line {
-      .nut-tabs-titles-item {
-        padding-left: 0;
-        padding-right: 14px;
-      }
-    }
-  }
-
-  .nut-tabs-titles-item {
-    &-active {
-      .nut-tabs-titles-item-line {
-        left: auto;
-        right: 10px;
-      }
-
-      .nut-tabs-titles-item-smile {
-        left: 3px;
-        right: auto;
-        transform: rotate(-320deg);
-      }
-    }
-  }
-
-  .nut-tabs-horizontal {
-    .nut-tabs-titles-item-active {
-      .nut-tabs-titles-item-line {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-tabs-titles,
+  .nut-rtl .nut-tabs-titles {
+    &-item {
+      &-smile,
+      &-line {
         left: auto;
         right: 50%;
         transform: translate(50%, 0);
       }
+    }
+    &-divider {
+      .nut-tabs-titles-item {
+        &::after {
+          right: auto;
+          left: 0;
+        }
+      }
+    }
+  }
 
-      .nut-tabs-titles-item-smile {
-        right: 50%;
-        left: auto;
-        transform: translate(50%, 0) rotate(0deg);
+  // RTL 边缘留白镜像:视觉左端=物理右侧、视觉右端=物理左侧,翻转补端方向
+  [dir='rtl'] .nut-tabs-horizontal,
+  .nut-rtl .nut-tabs-horizontal {
+    .nut-tabs-titles:not(.nut-tabs-titles-right)
+      .nut-tabs-titles-item:first-child {
+      padding-left: $tabs-titles-gap;
+      padding-right: calc(#{$tabs-titles-gap} * 2);
+    }
+
+    .nut-tabs-titles:not(.nut-tabs-titles-left)
+      .nut-tabs-titles-item:last-child {
+      padding-right: $tabs-titles-gap;
+      padding-left: calc(#{$tabs-titles-gap} * 2);
+    }
+
+    .nut-tabs-titles-button {
+      &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
+        padding-left: 4px;
+        padding-right: 8px;
+      }
+
+      &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+        padding-right: 4px;
+        padding-left: 8px;
+      }
+    }
+  }
+
+  [dir='rtl'] .nut-tabs-vertical,
+  .nut-rtl .nut-tabs-vertical {
+    .nut-tabs-titles {
+      &-line {
+        .nut-tabs-titles-item {
+          padding-left: 0;
+          padding-right: 14px;
+        }
+      }
+    }
+
+    .nut-tabs-titles-item {
+      &-active {
+        .nut-tabs-titles-item-line {
+          left: auto;
+          right: 10px;
+        }
+
+        .nut-tabs-titles-item-smile {
+          left: 3px;
+          right: auto;
+          transform: rotate(-320deg);
+        }
+      }
+    }
+
+    .nut-tabs-horizontal {
+      .nut-tabs-titles-item-active {
+        .nut-tabs-titles-item-line {
+          left: auto;
+          right: 50%;
+          transform: translate(50%, 0);
+        }
+
+        .nut-tabs-titles-item-smile {
+          right: 50%;
+          left: auto;
+          transform: translate(50%, 0) rotate(0deg);
+        }
       }
     }
   }

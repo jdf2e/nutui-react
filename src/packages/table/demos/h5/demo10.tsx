@@ -66,7 +66,7 @@ const Demo10 = () => {
       columns={columns}
       data={data}
       onSort={handleSorter}
-      style={{ background: '#fff' }}
+      style={{ background: 'var(--nutui-color-background-overlay)' }}
       sorterIcon={<TriangleDown width="12px" height="12px" />}
     />
   )

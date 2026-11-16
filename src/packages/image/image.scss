@@ -45,15 +45,17 @@
   }
 }
 
-[dir='rtl'] .nut-image,
-.nut-rtl .nut-image {
-  .nut-img-loading {
-    left: auto;
-    right: 0;
-  }
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-image,
+  .nut-rtl .nut-image {
+    .nut-img-loading {
+      left: auto;
+      right: 0;
+    }
 
-  .nut-img-error {
-    left: auto;
-    right: 0;
+    .nut-img-error {
+      left: auto;
+      right: 0;
+    }
   }
 }

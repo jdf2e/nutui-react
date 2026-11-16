@@ -59,10 +59,12 @@
   }
 }
 
-[dir='rtl'] .nut-radiogroup,
-.nut-rtl .nut-radiogroup {
-  .nut-radio {
-    margin-left: $radiogroup-radio-margin;
-    margin-right: 0;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-radiogroup,
+  .nut-rtl .nut-radiogroup {
+    .nut-radio {
+      margin-left: $radiogroup-radio-margin;
+      margin-right: 0;
+    }
   }
 }

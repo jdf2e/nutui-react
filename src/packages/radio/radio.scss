@@ -95,22 +95,24 @@
   }
 }
 
-[dir='rtl'] .nut-radio,
-.nut-rtl .nut-radio {
-  &:last-child {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-  }
-
-  &.nut-radio-reverse {
-    .nut-radio-label {
-      margin-left: $radio-label-margin-left;
-      margin-right: 0;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-radio,
+  .nut-rtl .nut-radio {
+    &:last-child {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
     }
-  }
 
-  &-label {
-    margin-left: 0;
-    margin-right: $radio-label-margin-left;
+    &.nut-radio-reverse {
+      .nut-radio-label {
+        margin-left: $radio-label-margin-left;
+        margin-right: 0;
+      }
+    }
+
+    &-label {
+      margin-left: 0;
+      margin-right: $radio-label-margin-left;
+    }
   }
 }
