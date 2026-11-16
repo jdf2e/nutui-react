@@ -14,6 +14,24 @@
   background-color: $inputnumber-input-background-color;
   border-radius: $inputnumber-input-border-radius;
   overflow: hidden;
+
+  // 分割线作为 flex 子项参与原有宽度计算，避免为纯装饰内容创建真实节点。
+  &::before,
+  &::after {
+    content: '';
+    width: $inputnumber-divider-width;
+    align-self: stretch;
+    background-color: $color-background-overlay;
+  }
+
+  &::before {
+    order: 1;
+  }
+
+  &::after {
+    order: 3;
+  }
+
   &-minus,
   &-add {
     display: flex;
@@ -34,6 +52,14 @@
     }
   }
 
+  &-minus {
+    order: 0;
+  }
+
+  &-add {
+    order: 4;
+  }
+
   &-icon {
     color: $color-text;
     cursor: pointer;
@@ -44,13 +70,8 @@
     }
   }
 
-  &-divider {
-    width: $inputnumber-divider-width;
-    align-self: stretch;
-    background-color: $color-background-overlay;
-  }
-
   &-input {
+    order: 2;
     display: flex;
     justify-content: center;
     align-items: center;
