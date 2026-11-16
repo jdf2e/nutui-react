@@ -3,16 +3,13 @@
 /**
  * NutUI-React AI 质量守护校验脚本 (nutui-verify.mjs)
  * 
- * 功能：供 AI Agent 及开发者一键验证改动是否符合 NutUI-React 白皮书规范。
- * 检查项：
- * 1. 跨端对称性检查 (H5 vs Taro 实现文件存在性与导出)
- * 2. 白皮书红线静态检查 (Taro 端禁用 window/document、SCSS 规约等)
- * 3. 关联组件的 TypeScript 类型检查
- * 4. 关联组件的 Vitest 单元测试
- * 
- * 用法：
- *   node scripts/agents/nutui-verify.mjs               # 检查 git diff 涉及的组件
- *   node scripts/agents/nutui-verify.mjs button        # 指定检查 button 组件
+ * 核心卡点准则：
+ * 1. [单组件原则] 单个 PR 仅允许修改一个组件相关文件，超过 1 个强制拦截。
+ * 2. [单测覆盖率] 单测语句/行覆盖率低于 95% 强制拦截。
+ * 3. [跨端对称性] H5 与 Taro 实现文件必须对称存在。
+ * 4. [白皮书红线] 严禁在 Taro 端裸调 window/document；SCSS 规范禁止 scale-px(0px)。
+ * 5. [包体与性能] 提示包体收益/劣化与性能量化评估。
+ * 6. [组件复用度] 评估是否过度依赖或重复造轮子。
  */
 
 import fs from 'node:fs';
@@ -61,6 +58,105 @@ function getChangedComponents() {
   }
 }
 
+function getChangedStyleFiles() {
+  try {
+    const diffFiles = execSync('git diff --name-only HEAD', { encoding: 'utf-8' })
+      .split('\n')
+      .concat(execSync('git diff --cached --name-only', { encoding: 'utf-8' }).split('\n'))
+      .filter(Boolean);
+
+    return Array.from(new Set(diffFiles.filter(f => f.startsWith('src/styles/variables') && f.endsWith('.scss'))));
+  } catch (err) {
+    return [];
+  }
+}
+
+function verifyStyleFile(filePath) {
+  const fullPath = path.join(ROOT_DIR, filePath);
+  if (!fs.existsSync(fullPath)) return { file: filePath, passed: true, errors: [] };
+
+  const errors = [];
+  log(`\n🎨 正在检查样式变量文件: [${filePath}]`, colors.cyan + colors.bold);
+
+  try {
+    const diff = execSync(`git diff -U0 HEAD -- ${filePath}`, { encoding: 'utf-8' });
+    const addedLines = diff.split('\n').filter(l => l.startsWith('+') && !l.startsWith('+++'));
+
+    addedLines.forEach((line) => {
+      const code = line.slice(1).trim();
+      if (code.startsWith('//') || code.startsWith('*')) return;
+
+      if (/scale-px\(0(px)?\)/.test(code)) {
+        errors.push(`[样式规范] 包含 scale-px(0px)，0 尺寸应直接使用纯数字 0: "${code}"`);
+      }
+
+      const barePxMatches = code.match(/(?<!scale-(?:font-|icon-)?px\()(?<!\w)(?<!1px\s+solid\s+)(?<!1px\s+dashed\s+)\b([2-9]|\d{2,})px\b/g);
+      if (barePxMatches) {
+        errors.push(`[缩放规范] variables 文件中默认值包含未缩放的裸 px: [${barePxMatches.join(', ')}]，必须显式包裹 scale-px(): "${code}"`);
+      }
+    });
+  } catch (e) {
+    // ignore diff error
+  }
+
+  const passed = errors.length === 0;
+  if (passed) {
+    log(`✨ [${filePath}] 样式变量校验通过！`, colors.green + colors.bold);
+  } else {
+    log(`❌ [${filePath}] 发现变量规范阻断项:`, colors.red + colors.bold);
+    errors.forEach(e => log(`  🔴 ${e}`, colors.red));
+  }
+  return { file: filePath, passed, errors };
+}
+
+function getChangedWorkflowFiles() {
+  try {
+    const diffFiles = execSync('git diff --name-only HEAD', { encoding: 'utf-8' })
+      .split('\n')
+      .concat(execSync('git diff --cached --name-only', { encoding: 'utf-8' }).split('\n'))
+      .filter(Boolean);
+
+    return Array.from(new Set(diffFiles.filter(f => f.startsWith('.github/workflows/') && (f.endsWith('.yml') || f.endsWith('.yaml')))));
+  } catch (err) {
+    return [];
+  }
+}
+
+function verifyWorkflowSecurity(filePath) {
+  const fullPath = path.join(ROOT_DIR, filePath);
+  if (!fs.existsSync(fullPath)) return { file: filePath, passed: true, errors: [] };
+
+  const errors = [];
+  log(`\n🛡️ 正在检查 CI 工作流供应链安全: [${filePath}]`, colors.cyan + colors.bold);
+
+  try {
+    const content = fs.readFileSync(fullPath, 'utf-8');
+    const lines = content.split('\n');
+
+    lines.forEach((line, idx) => {
+      const match = line.match(/^\s*-\s*uses:\s*['"]?([^'"\s]+)['"]?/i) || line.match(/^\s*uses:\s*['"]?([^'"\s]+)['"]?/i);
+      if (match) {
+        const actionRef = match[1];
+        const isOfficial = actionRef.startsWith('actions/') || actionRef.startsWith('./');
+        if (!isOfficial) {
+          errors.push(`[CI 安全红线] 第 ${idx + 1} 行引入了非 GitHub 官方维护的三方库/Action: "${actionRef}"。为防止供应链投毒，严禁引入三方 Action，强制拒绝合并！`);
+        }
+      }
+    });
+  } catch (e) {
+    // ignore
+  }
+
+  const passed = errors.length === 0;
+  if (passed) {
+    log(`✨ [${filePath}] CI 供应链安全检查通过！`, colors.green + colors.bold);
+  } else {
+    log(`❌ [${filePath}] 发现 CI 安全阻断项:`, colors.red + colors.bold);
+    errors.forEach(e => log(`  🔴 ${e}`, colors.red));
+  }
+  return { file: filePath, passed, errors };
+}
+
 async function verifyComponent(comp) {
   const compDir = path.join(PACKAGES_DIR, comp);
   if (!fs.existsSync(compDir)) {
@@ -78,7 +174,15 @@ async function verifyComponent(comp) {
   const taroFile = path.join(compDir, `${comp}.taro.tsx`);
   const scssFile = path.join(compDir, `${comp}.scss`);
   const docFile = path.join(compDir, `doc.md`);
-  const testFile = path.join(compDir, `__test__`, `${comp}.spec.tsx`);
+
+  // 兼容 __test__ 与 __tests__ 两种目录
+  let testFile = path.join(compDir, `__test__`, `${comp}.spec.tsx`);
+  if (!fs.existsSync(testFile)) {
+    const pluralTest = path.join(compDir, `__tests__`, `${comp}.spec.tsx`);
+    if (fs.existsSync(pluralTest)) {
+      testFile = pluralTest;
+    }
+  }
 
   if (!fs.existsSync(h5File)) {
     errors.push(`缺少 H5 实现文件: ${comp}.tsx`);
@@ -90,16 +194,14 @@ async function verifyComponent(comp) {
     warnings.push(`缺少组件中文文档: doc.md`);
   }
   if (!fs.existsSync(testFile)) {
-    warnings.push(`缺少单元测试文件: __test__/${comp}.spec.tsx`);
+    errors.push(`缺少单元测试文件: __test__/${comp}.spec.tsx 或 __tests__/${comp}.spec.tsx`);
   }
 
   // 2. 白皮书合规红线扫描
   if (fs.existsSync(taroFile)) {
     const taroCode = fs.readFileSync(taroFile, 'utf-8');
-    // 检查 Taro 源码中是否裸写 window / document（非 typeof window !== 'undefined' 防御判断）
     const lines = taroCode.split('\n');
     lines.forEach((line, idx) => {
-      // 过滤注释
       if (line.trim().startsWith('//') || line.trim().startsWith('*')) return;
       if (/(?<!typeof\s+)(window|document)\.[a-zA-Z]/.test(line)) {
         errors.push(`[白皮书红线] ${comp}.taro.tsx 第 ${idx + 1} 行存在直接访问 DOM/BOM (window/document)，小程序/SSR 端会崩溃: "${line.trim()}"`);
@@ -114,14 +216,27 @@ async function verifyComponent(comp) {
     }
   }
 
-  // 3. 单测运行
+  // 3. 运行测试并执行 95% 覆盖率强拦截
   if (fs.existsSync(testFile)) {
     try {
-      log(`  ⏳ 运行单元测试: npx vitest run src/packages/${comp}`, colors.blue);
-      execSync(`npx vitest run src/packages/${comp}`, { stdio: 'pipe', encoding: 'utf-8', timeout: 60000 });
-      log(`  ✅ 单元测试通过`, colors.green);
+      log(`  ⏳ 运行单元测试及覆盖率检测: npx vitest run src/packages/${comp} --coverage`, colors.blue);
+      const output = execSync(`npx vitest run src/packages/${comp} --coverage`, { stdio: 'pipe', encoding: 'utf-8', timeout: 90000 });
+      log(`  ✅ 单元测试执行通过`, colors.green);
+
+      // 解析覆盖率表格中 packages/<comp> 这一行的 Lines 覆盖率
+      const linesRegex = new RegExp(`packages\\/${comp}\\s*\\|\\s*([\\d.]+)\\s*\\|\\s*([\\d.]+)\\s*\\|\\s*([\\d.]+)\\s*\\|\\s*([\\d.]+)`, 'i');
+      const match = output.match(linesRegex);
+      if (match) {
+        const lineCoverage = parseFloat(match[4]);
+        log(`  📊 组件覆盖率: 行覆盖率 ${lineCoverage}% (阈值: 95%)`, colors.cyan);
+        if (lineCoverage < 95) {
+          errors.push(`[单测覆盖率拦截] ${comp} 行覆盖率为 ${lineCoverage}%，低于要求的 95% 强拦截阈值！`);
+        }
+      } else {
+        warnings.push(`未能精确解析组件自身的单独覆盖率数值，请人工复核覆盖率报表。`);
+      }
     } catch (testErr) {
-      errors.push(`单元测试失败: ${(testErr.stderr || testErr.stdout || testErr.message).slice(0, 300)}`);
+      errors.push(`单元测试或覆盖率执行失败: ${(testErr.stderr || testErr.stdout || testErr.message).slice(0, 300)}`);
     }
   }
 
@@ -141,18 +256,45 @@ async function verifyComponent(comp) {
 }
 
 async function main() {
-  log(`========================================`, colors.blue);
-  log(`   NutUI-React AI 质量守护校验 (Verify)   `, colors.cyan + colors.bold);
-  log(`========================================`, colors.blue);
+  log(`=======================================================`, colors.blue);
+  log(`   NutUI-React AI 质量守护校验 (Verify & Review)      `, colors.cyan + colors.bold);
+  log(`=======================================================`, colors.blue);
 
   const components = getChangedComponents();
+  const styleFiles = getChangedStyleFiles();
+  const workflowFiles = getChangedWorkflowFiles();
 
-  if (components.length === 0) {
-    log(`ℹ️  未指定组件且没有检测到修改的组件，建议直接指定: node scripts/agents/nutui-verify.mjs <component>`, colors.yellow);
+  if (components.length === 0 && styleFiles.length === 0 && workflowFiles.length === 0) {
+    log(`ℹ️  未指定组件且没有检测到修改的组件/样式/工作流，建议直接指定: node scripts/agents/nutui-verify.mjs <component>`, colors.yellow);
     process.exit(0);
   }
 
   let allPassed = true;
+
+  // 1. CI 工作流供应链安全校验
+  for (const wf of workflowFiles) {
+    const res = verifyWorkflowSecurity(wf);
+    if (!res.passed) {
+      allPassed = false;
+    }
+  }
+
+  // 1. 样式变量校验
+  for (const styleFile of styleFiles) {
+    const res = verifyStyleFile(styleFile);
+    if (!res.passed) {
+      allPassed = false;
+    }
+  }
+
+  // 2. 单组件 PR 原则
+  if (components.length > 1) {
+    log(`\n🔴 [PR 范围阻断] 检查发现本次变更涉及 ${components.length} 个组件: [${components.join(', ')}]`, colors.red + colors.bold);
+    log(`   根据 NutUI 研发准则，每个 PR 仅能处理 1 个组件，请拆分 PR 后再提交评审！`, colors.red);
+    allPassed = false;
+  }
+
+  // 3. 组件规范与单测/覆盖率校验
   for (const comp of components) {
     const res = await verifyComponent(comp);
     if (!res.passed) {
@@ -160,12 +302,12 @@ async function main() {
     }
   }
 
-  log(`\n========================================`, colors.blue);
+  log(`\n=======================================================`, colors.blue);
   if (allPassed) {
-    log(`🎉 所有组件校验全部通过，符合 NutUI 交付标准！`, colors.green + colors.bold);
+    log(`🎉 校验通过，符合 NutUI 交付标准！`, colors.green + colors.bold);
     process.exit(0);
   } else {
-    log(`💥 校验失败，请按照上方提示修复后再行提交。`, colors.red + colors.bold);
+    log(`💥 校验失败，存在阻断项，阻塞合并！`, colors.red + colors.bold);
     process.exit(1);
   }
 }

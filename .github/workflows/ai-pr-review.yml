@@ -1,0 +1,186 @@
+name: AI PR Automated Review
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    branches:
+      - feat_v4.x
+      - next
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  gate-single-component:
+    name: "AI 门禁 / 1. 单组件 PR 原则"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 检查单组件 PR 原则
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+        run: |
+          node scripts/agents/nutui-ci-review.mjs --gate=single-component "origin/${{ github.base_ref }}"
+
+  gate-ci-security:
+    name: "AI 门禁 / 2. CI 供应链安全"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 检查 CI 供应链安全
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+        run: |
+          node scripts/agents/nutui-ci-review.mjs --gate=security "origin/${{ github.base_ref }}"
+
+  gate-whitepaper:
+    name: "AI 门禁 / 3. 白皮书规范与多端隔离"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 检查白皮书多端对称与 DOM 隔离
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+        run: |
+          node scripts/agents/nutui-ci-review.mjs --gate=whitepaper "origin/${{ github.base_ref }}"
+
+  gate-coverage:
+    name: "AI 门禁 / 4. 单元测试与 95% 覆盖率门禁"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
+          fetch-depth: 0
+
+      - name: Install pnpm
+        run: npm i -g pnpm@10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: 运行单元测试与 95% 覆盖率门禁
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+        run: |
+          node scripts/agents/nutui-ci-review.mjs --gate=coverage "origin/${{ github.base_ref }}"
+
+  pr-architecture-review:
+    name: "AI 门禁 / 5. 深度架构评审与评论同步"
+    runs-on: ubuntu-latest
+    needs: [gate-single-component, gate-ci-security, gate-whitepaper, gate-coverage]
+    if: ${{ always() }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 生成深度架构评审报告
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+        run: |
+          node scripts/agents/nutui-ci-review.mjs --gate=summary \
+            --step1=${{ needs.gate-single-component.result }} \
+            --step2=${{ needs.gate-ci-security.result }} \
+            --step3=${{ needs.gate-whitepaper.result }} \
+            --step4=${{ needs.gate-coverage.result }} \
+            "origin/${{ github.base_ref }}"
+
+      - name: 同步评审报告至 PR 讨论区
+        if: ${{ always() }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const pr = context.payload.pull_request;
+            const { owner, repo } = context.repo;
+            const issue_number = pr?.number;
+
+            const reportPath = path.join(process.env.GITHUB_WORKSPACE, 'pr-review-report.md');
+            if (fs.existsSync(reportPath) && issue_number) {
+              try {
+                let body = fs.readFileSync(reportPath, 'utf-8');
+                const author = pr.user?.login;
+                if (author) {
+                  body = `> 🔔 **@${author}** 您好，NutUI AI 质量门禁已完成对本次 PR 的自动化审查与质量核验：\n\n` + body;
+                }
+
+                const comments = await github.rest.issues.listComments({
+                  owner,
+                  repo,
+                  issue_number,
+                });
+                const botComment = comments.data.find(comment => 
+                  comment.body && comment.body.includes('NutUI-React AI 自动化 PR')
+                );
+
+                if (botComment) {
+                  const res = await github.rest.issues.updateComment({
+                    owner,
+                    repo,
+                    comment_id: botComment.id,
+                    body,
+                  });
+                  console.log('✅ 已成功更新 PR 评论:', res.data.html_url);
+                } else {
+                  const res = await github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number,
+                    body,
+                  });
+                  console.log('✅ 已成功发布 PR 评论:', res.data.html_url);
+                }
+              } catch (err) {
+                console.error('❌ 发布/更新 PR 评论异常:', err);
+              }
+            }
