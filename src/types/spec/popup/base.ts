@@ -22,6 +22,8 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   destroyOnClose: boolean
   overlay: boolean
   round: boolean
+  /** 折叠屏居中弹层分区；auto 时 Hybrid 下跟随铰链（微弯居左，展平居中） */
+  segment?: 'left' | 'right' | 'center' | 'auto'
   resizable: boolean
   minHeight: string
   onOpen: () => void

@@ -200,6 +200,18 @@ test('dialog beforeCancel ', async () => {
   expect(onCancel).not.toBeCalled()
 })
 
+test('should render segment classes for posture adaptation', () => {
+  const { container, rerender } = render(
+    <Dialog visible segment="left" title="Left Dialog" />
+  )
+  expect(container.querySelector('.nut-dialog-outer-segment-left')).toBeTruthy()
+
+  rerender(<Dialog visible segment="right" title="Right Dialog" />)
+  expect(
+    container.querySelector('.nut-dialog-outer-segment-right')
+  ).toBeTruthy()
+})
+
 test('dialog functional call update and close ', async () => {
   let dialog: any
   await act(async () => {

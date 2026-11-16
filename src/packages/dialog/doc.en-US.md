@@ -107,6 +107,9 @@ import { Dialog } from '@nutui/nutui-react'
 | onClose | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` | `-` |
 | onClick | Click yourself to call back | `() => void` | `-` |
 | onOverlayClick | Click Overlay | `() => void` | `-` |
+| segment | Foldable display position: `left` / `right` / `center` lock position; `auto` adapts on iOS Hybrid (slight bend → left, flat → center) | `'left' \| 'right' \| 'center' \| 'auto'` | `auto` |
+
+> Auto fold adaptation requires `JDHybridScreenPlugin` (`listenFoldScreenChange` / `onFoldScreenChanged`). Explicit `segment` of `left` / `right` / `center` will not be overridden by posture changes.
 
 It should be noted that for the Dialog created by instructive, ** will not perceive the re-rendering of the parent component and the update of the state in it**, so the following writing is completely wrong:
 
