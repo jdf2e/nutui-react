@@ -93,20 +93,15 @@ export const Pagination: FunctionComponent<
         </div>
       )
     }
-    if (indicatorType === 'text') {
-      return (
-        <div className={`${classPrefix}-text`}>
-          <span className={`${classPrefix}-text-active`}>{current}</span>
-          <span className={`${classPrefix}-text-spliterator`}>/</span>
-          <span className={`${classPrefix}-text-default`}>{pageCount}</span>
-        </div>
-      )
-    }
+    // 数字指示器共用结构，保留原有样式类名及默认胶囊回退。
+    const indicatorClass = `${classPrefix}-${
+      indicatorType === 'text' ? 'text' : 'capsule'
+    }`
     return (
-      <div className={`${classPrefix}-capsule`}>
-        <span className={`${classPrefix}-capsule-active`}>{current}</span>
-        <span className={`${classPrefix}-capsule-spliterator`}>/</span>
-        <span className={`${classPrefix}-capsule-default`}>{pageCount}</span>
+      <div className={indicatorClass}>
+        <span className={`${indicatorClass}-active`}>{current}</span>
+        <span className={`${indicatorClass}-spliterator`}>/</span>
+        <span className={`${indicatorClass}-default`}>{pageCount}</span>
       </div>
     )
   }
