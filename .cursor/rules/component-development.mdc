@@ -1,19 +1,21 @@
 ---
-description: NutUI-React component development and upgrade rules (proportional scaling, backward compatibility, prop abstraction, bundle size, usability)
-globs: src/packages/**/*
+description: NutUI-React component development, styling, and upgrade rules (proportional scaling, multi-theme variables, backward compatibility, prop abstraction, bundle size, usability)
+globs: ["src/packages/**/*", "src/styles/**/*"]
 alwaysApply: false
 ---
 
 # NutUI-React Component Development & Upgrade Rules
 
-When developing new components or refactoring/upgrading existing components in NutUI-React, always follow these rules:
+When developing new components, modifying theme variables, or refactoring/upgrading existing components in NutUI-React, always follow these rules:
 
-## 1. Proportional Scaling Rules (等比缩放规范)
-- **Author SCSS with bare `px`**: Write normal design `px` in `src/packages/*/*.scss` (e.g. `padding: 12px;`).
+## 1. Proportional Scaling & Multi-Theme Rules (等比缩放与多主题规范)
+- **Author Component SCSS with bare `px`**: Write normal design `px` in `src/packages/*/*.scss` (e.g. `padding: 12px;`).
 - **Do NOT manually wrap `scale-px()`** in component private SCSS. Build tools (`build.mjs`) and dev server (`vite.config.mts`) automatically transform bare `px` to `scale-px(Npx)` in memory via PostCSS AST.
+- **Variable defaults in ALL theme files**: Defaults in all variable files (`src/styles/variables.scss`, `src/styles/variables-daojia.scss`, `src/styles/variables-jmapp.scss`, `src/styles/variables-jrkf.scss`, `src/styles/variables-core.scss`) MUST explicitly wrap non-zero lengths in `scale-px(Npx)`. Never leave bare `px` fallbacks (e.g. `8px` or `1px 7px`).
+- **Theme Parity Check**: When declaring or updating component variables (e.g., `$swipe-action-radius`), all 4 theme files (`variables.scss`, `variables-daojia.scss`, `variables-jmapp.scss`, `variables-jrkf.scss`) must be synchronized symmetrically with consistent scaling wrappers.
+- **Transitive Dependency Verification**: When referencing base variables (such as `$radius-base`), verify that the underlying variable itself has compliant `scale-px()` fallbacks in all themes.
 - **Physical pixel protection**: Borders and outlines with `≤ 1px` (e.g., `1px`, `0.5px`) must NOT be scaled to prevent sub-pixel blurring on Retina screens.
 - **Zero dimension rule**: Always write literal `0` (e.g., `margin: 0;`). Never write `scale-px(0px)`.
-- **Variable defaults**: Defaults in `src/styles/variables.scss` MUST explicitly use `scale-px(Npx)`.
 - **Scene-specific scaling**: Use `scale-font-px` / `--nutui-font-size-*` for text and `scale-icon-px` / `--nut-icon-*` for icons to support large text / elderly mode ratios.
 
 ## 2. Backward Compatibility (向前兼容性)
