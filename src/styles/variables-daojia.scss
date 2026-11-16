@@ -184,7 +184,7 @@ $radius-xxxs: var(--nutui-radius-xxxs,
 $radius-xxs: var(--nutui-radius-xxs, 2px) !default; // 标签
 $radius-xs: var(--nutui-radius-xs, 4px) !default; // 单行高度20、24、28的组件
 $radius-s: var(--nutui-radius-s, 6px) !default; // 单行高度32、36的组件
-$radius-base: var(--nutui-radius-base, 8px) !default; // 单行高度40及以上的组件
+$radius-base: var(--nutui-radius-base, scale-px(8px)) !default; // 单行高度40及以上的组件
 $radius-l: var(--nutui-radius-l, 8px) !default; // 入口型非通栏卡片
 $radius-xl: var(--nutui-radius-xl,
     12px) !default; // 结构分割、通栏卡片、临时操作层组件等场景
@@ -395,7 +395,7 @@ $cell-divider-border-bottom: var(--nutui-cell-divider-border-bottom,
 $cell-background-color: var(--nutui-cell-background-color,
     $color-background-overlay) !default;
 $cell-box-shadow: var(--nutui-cell-box-shadow,
-    0px 1px 7px 0px var(--nutui-black-2, rgba(237, 238, 241, 1))) !default;
+    0px scale-px(1px) scale-px(7px) 0px var(--nutui-black-2, rgba(237, 238, 241, 1))) !default;
 
 // cell-group（✅）
 $cell-group-title-padding: var(--nutui-cell-group-title-padding,

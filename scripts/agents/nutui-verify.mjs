@@ -61,6 +61,61 @@ function getChangedComponents() {
   }
 }
 
+function getChangedStyleFiles() {
+  try {
+    const diffFiles = execSync('git diff --name-only HEAD', { encoding: 'utf-8' })
+      .split('\n')
+      .concat(execSync('git diff --cached --name-only', { encoding: 'utf-8' }).split('\n'))
+      .filter(Boolean);
+
+    return Array.from(new Set(diffFiles.filter(f => f.startsWith('src/styles/variables') && f.endsWith('.scss'))));
+  } catch (err) {
+    return [];
+  }
+}
+
+function verifyStyleFile(filePath) {
+  const fullPath = path.join(ROOT_DIR, filePath);
+  if (!fs.existsSync(fullPath)) return { file: filePath, passed: true, errors: [] };
+
+  const errors = [];
+  log(`\n🎨 正在检查样式变量文件: [${filePath}]`, colors.cyan + colors.bold);
+
+  try {
+    // 检查当前变动行
+    const diff = execSync(`git diff -U0 HEAD -- ${filePath}`, { encoding: 'utf-8' });
+    const addedLines = diff.split('\n').filter(l => l.startsWith('+') && !l.startsWith('+++'));
+
+    addedLines.forEach((line) => {
+      const code = line.slice(1).trim();
+      if (code.startsWith('//') || code.startsWith('*')) return;
+
+      // 1. 检查 scale-px(0px) 违规
+      if (/scale-px\(0(px)?\)/.test(code)) {
+        errors.push(`[样式规范] 包含 scale-px(0px)，0 尺寸应直接使用纯数字 0: "${code}"`);
+      }
+
+      // 2. 检查未被 scale-px/scale-font-px/scale-icon-px 包裹的裸像素 (排除 0px 与 1px/0.5px 边框)
+      // 匹配非边框场景下的裸 px：如 " 8px)", " 1px 7px ", " 16px" 等
+      const barePxMatches = code.match(/(?<!scale-(?:font-|icon-)?px\()(?<!\w)(?<!1px\s+solid\s+)(?<!1px\s+dashed\s+)\b([2-9]|\d{2,})px\b/g);
+      if (barePxMatches) {
+        errors.push(`[缩放规范] variables 文件中默认值包含未缩放的裸 px: [${barePxMatches.join(', ')}]，必须显式包裹 scale-px(): "${code}"`);
+      }
+    });
+  } catch (e) {
+    // git diff 失败则跳过变动行检查
+  }
+
+  const passed = errors.length === 0;
+  if (passed) {
+    log(`✨ [${filePath}] 样式变量校验通过！`, colors.green + colors.bold);
+  } else {
+    log(`❌ [${filePath}] 发现变量规范阻断项:`, colors.red + colors.bold);
+    errors.forEach(e => log(`  🔴 ${e}`, colors.red));
+  }
+  return { file: filePath, passed, errors };
+}
+
 async function verifyComponent(comp) {
   const compDir = path.join(PACKAGES_DIR, comp);
   if (!fs.existsSync(compDir)) {
@@ -146,13 +201,24 @@ async function main() {
   log(`========================================`, colors.blue);
 
   const components = getChangedComponents();
+  const styleFiles = getChangedStyleFiles();
 
-  if (components.length === 0) {
-    log(`ℹ️  未指定组件且没有检测到修改的组件，建议直接指定: node scripts/agents/nutui-verify.mjs <component>`, colors.yellow);
+  if (components.length === 0 && styleFiles.length === 0) {
+    log(`ℹ️  未指定组件且没有检测到修改的组件/样式，建议直接指定: node scripts/agents/nutui-verify.mjs <component>`, colors.yellow);
     process.exit(0);
   }
 
   let allPassed = true;
+
+  // 1. 样式变量校验
+  for (const styleFile of styleFiles) {
+    const res = verifyStyleFile(styleFile);
+    if (!res.passed) {
+      allPassed = false;
+    }
+  }
+
+  // 2. 组件代码及单测校验
   for (const comp of components) {
     const res = await verifyComponent(comp);
     if (!res.passed) {
@@ -162,7 +228,7 @@ async function main() {
 
   log(`\n========================================`, colors.blue);
   if (allPassed) {
-    log(`🎉 所有组件校验全部通过，符合 NutUI 交付标准！`, colors.green + colors.bold);
+    log(`🎉 所有改动（样式/组件）校验全部通过，符合 NutUI 交付标准！`, colors.green + colors.bold);
     process.exit(0);
   } else {
     log(`💥 校验失败，请按照上方提示修复后再行提交。`, colors.red + colors.bold);

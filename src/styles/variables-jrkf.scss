@@ -605,7 +605,7 @@ $cell-divider-border-bottom: var(
 $cell-background-color: var(--nutui-cell-background-color, $white) !default;
 $cell-box-shadow: var(
   --nutui-cell-box-shadow,
-  0px 1px 7px 0px var(--nutui-black-2, rgba(237, 238, 241, 1))
+  0px scale-px(1px) scale-px(7px) 0px var(--nutui-black-2, rgba(237, 238, 241, 1))
 ) !default;
 
 // cell-group（✅）
