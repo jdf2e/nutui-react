@@ -372,6 +372,35 @@ ${semanticContent || '本次无组件级核心逻辑变更。'}
     fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, reportMarkdown, 'utf-8');
   }
 
+  // 3. 写入供 GitHub Commit Statuses 直接消费的原子状态列表 (在 PR Check 列表展示具体 List)
+  const coverageFailureDesc = step4.failures
+    .map(f => (f.type === 'low_coverage' ? `${f.comp} 覆盖率 ${f.coverage}% < 95%` : `${f.comp} 测试失败`))
+    .join(', ');
+
+  const statuses = [
+    {
+      context: 'AI 门禁 / 1. 单组件 PR 原则',
+      state: step1.passed ? 'success' : 'failure',
+      description: (step1.passed ? '通过: 单组件独立交付' : `阻断: 混合修改了 ${components.length} 个组件，需拆分`).slice(0, 140)
+    },
+    {
+      context: 'AI 门禁 / 2. CI 供应链安全',
+      state: step2.passed ? 'success' : 'failure',
+      description: (step2.passed ? '通过: 未引入第三方 GitHub Action' : `阻断: ${step2.summary}`).slice(0, 140)
+    },
+    {
+      context: 'AI 门禁 / 3. 白皮书环境隔离',
+      state: step3.passed ? 'success' : 'failure',
+      description: (step3.passed ? '通过: 双端对称且无 DOM 越界调用' : `阻断: ${step3.summary}`).slice(0, 140)
+    },
+    {
+      context: 'AI 门禁 / 4. 单测 95% 覆盖率',
+      state: step4.passed ? 'success' : 'failure',
+      description: (step4.passed ? '通过: 改动组件行覆盖率 >= 95%' : `阻断: ${coverageFailureDesc}`).slice(0, 140)
+    }
+  ];
+  fs.writeFileSync(path.join(ROOT_DIR, 'pr-review-status.json'), JSON.stringify(statuses, null, 2), 'utf-8');
+
   console.log('\n' + reportMarkdown);
 
   if (!allPassed) {
