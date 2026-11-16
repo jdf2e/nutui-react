@@ -205,15 +205,9 @@ export const Range: FunctionComponent<
   const marksStyle = useCallback(
     (mark: any) => {
       const dir = rtl ? 'right' : 'left'
-      let style: any = {
-        [dir]: `${((mark - min) / scope) * 100}%`,
+      return {
+        [vertical ? 'top' : dir]: `${((mark - min) / scope) * 100}%`,
       }
-      if (vertical) {
-        style = {
-          top: `${((mark - min) / scope) * 100}%`,
-        }
-      }
-      return style
     },
     [min, rtl, scope, vertical]
   )
@@ -538,17 +532,6 @@ export const Range: FunctionComponent<
     [onTouchEnd, onTouchMove, onTouchStart, renderButton, vertical]
   )
 
-  const renderButtonWrapper = useCallback(() => {
-    return (
-      <View
-        className={`${classPrefix}-bar ${isHm ? '' : `${classPrefix}-bar-animate`}}`}
-        style={barStyle}
-      >
-        {range ? renderRangeButton() : renderSingleButton()}
-      </View>
-    )
-  }, [renderRangeButton, renderSingleButton, range, barStyle])
-
   return (
     <View className={containerClasses} style={style}>
       {minDescription !== null && (
@@ -556,7 +539,12 @@ export const Range: FunctionComponent<
       )}
       <View ref={root} className={classes} onClick={handleClick}>
         {renderMarks()}
-        {renderButtonWrapper()}
+        <View
+          className={`${classPrefix}-bar ${isHm ? '' : `${classPrefix}-bar-animate`}}`}
+          style={barStyle}
+        >
+          {range ? renderRangeButton() : renderSingleButton()}
+        </View>
       </View>
       {maxDescription !== null && (
         <Text className={`${classPrefix}-max`}>{maxDescription || max}</Text>
