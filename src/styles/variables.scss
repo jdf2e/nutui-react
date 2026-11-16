@@ -3086,3 +3086,64 @@ $quickenter-box-shadow: var(
 //   --nutui-quickenter-backdrop-filter,
 //   blur(8px)
 // ) !default;
+
+// materialview
+$material-shadow-light: var(
+  --nut-material-shadow-light,
+  0 2PX 4PX rgba(0, 0, 0, 0.06),
+  inset -0.5PX -0.5PX 0.5PX rgba(255, 255, 255, 0.4),
+  inset 0.5PX 0.5PX 0.5PX #fff,
+  inset 1PX 1PX 5PX rgba(45, 45, 45, 0.04)
+) !default;
+$material-shadow-dark: var(
+  --nut-material-shadow-dark,
+  0 2PX 4PX rgba(0, 0, 0, 0.06),
+  inset -0.5PX -0.5PX 0.5PX rgba(255, 255, 255, 0.1),
+  inset 0.5PX 0.5PX 0.5PX rgba(255, 255, 255, 0.4),
+  inset 1PX 1PX 5PX rgba(45, 45, 45, 0.08)
+) !default;
+$material-shadow-immersive: var(
+  --nut-material-shadow-immersive,
+  var(--nut-material-shadow-dark, $material-shadow-dark)
+) !default;
+$material-tint-top-solid: var(
+  --nut-material-tint-top-solid,
+  rgba(255, 255, 255, 0.65)
+) !default;
+$material-tint-top-solid-dark: var(
+  --nut-material-tint-top-solid-dark,
+  rgba(20, 23, 26, 0.6)
+) !default;
+$material-tint-top-plain: var(
+  --nut-material-tint-top-plain,
+  rgba(255, 255, 255, 0.05)
+) !default;
+$material-tint-top-bar: var(
+  --nut-material-tint-top-bar,
+  rgba(255, 255, 255, 0.9)
+) !default;
+$material-tint-top-bar-dark: var(
+  --nut-material-tint-top-bar-dark,
+  rgba(20, 23, 26, 0.85)
+) !default;
+$material-tint-promotion-fair: var(
+  --nut-material-tint-promotion-fair,
+  rgba(255, 255, 255, 0.85)
+) !default;
+$material-tint-promotion-deep: var(
+  --nut-material-tint-promotion-deep,
+  rgba(255, 255, 255, 0.2)
+) !default;
+$material-tint-immersive: var(
+  --nut-material-tint-immersive,
+  rgba(20, 23, 26, 0.6)
+) !default;
+$material-tint-bottom-bar: var(
+  --nut-material-tint-bottom-bar,
+  rgba(255, 255, 255, 0.8)
+) !default;
+$material-tint-bottom-bar-dark: var(
+  --nut-material-tint-bottom-bar-dark,
+  rgba(20, 23, 26, 0.8)
+) !default;
+

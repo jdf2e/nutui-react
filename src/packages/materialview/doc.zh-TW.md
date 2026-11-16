@@ -58,3 +58,25 @@ import { MaterialView } from '@nutui/nutui-react'
 | `promotion-deep` | 深色換膚懸浮容器 | FG-Skin-D | 深色皮膚活動頁浮層 |
 | `immersive` | 沉浸式懸浮容器（強制暗色） | FG-Dark | 視頻 / 沉浸頁浮層 |
 | `bottom-bar` | 底部導航背板 | 漸變背景 | 底部 Tab 欄 |
+
+## 主題 CSS 變量
+
+| 變量名 | 默認值 | 說明 |
+| --- | --- | --- |
+| `--nut-material-shadow-light` | `0 2PX 4PX rgba(0, 0, 0, 0.06), ...` | 淺色場景內發光多層高光陰影 |
+| `--nut-material-shadow-dark` | `0 2PX 4PX rgba(0, 0, 0, 0.06), ...` | 暗色場景內發光多层高光陰影 |
+| `--nut-material-shadow-immersive` | `var(--nut-material-shadow-dark)` | 沉浸式場景陰影 |
+| `--nut-material-tint-top-solid` | `rgba(255, 255, 255, 0.65)` | `top-solid` 淺色底色 |
+| `--nut-material-tint-top-solid-dark` | `rgba(20, 23, 26, 0.6)` | `top-solid` 暗色底色 |
+| `--nut-material-tint-top-plain` | `rgba(255, 255, 255, 0.05)` | `top-plain` 底色 |
+| `--nut-material-tint-top-bar` | `rgba(255, 255, 255, 0.9)` | `top-bar` 淺色底色 |
+| `--nut-material-tint-top-bar-dark` | `rgba(20, 23, 26, 0.85)` | `top-bar` 暗色底色 |
+| `--nut-material-tint-promotion-fair` | `rgba(255, 255, 255, 0.85)` | `promotion-fair` 淺色換膚底色 |
+| `--nut-material-tint-promotion-deep` | `rgba(255, 255, 255, 0.2)` | `promotion-deep` 深色換膚底色 |
+| `--nut-material-tint-immersive` | `rgba(20, 23, 26, 0.6)` | `immersive` 沉浸式底色 |
+| `--nut-material-tint-bottom-bar` | `rgba(255, 255, 255, 0.8)` | `bottom-bar` 淺色底色 |
+| `--nut-material-tint-bottom-bar-dark` | `rgba(20, 23, 26, 0.8)` | `bottom-bar` 暗色底色 |
+| `--nut-material-blur-default` | `3PX` | 默認模糊半徑 |
+| `--nut-material-blur-top-bar` | `10PX` | 頂部通欄背板模糊半徑 |
+| `--nut-material-radius-floating` | `8px` | 懸浮容器圓角 |
+| `--nut-material-radius-bar` | `0px` | 通欄背板圓角 |

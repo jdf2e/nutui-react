@@ -84,3 +84,25 @@ import { MaterialView } from '@nutui/nutui-react-taro'
 | `getFrostedPreset(scene, dark)` | 获取场景的毛玻璃预设（blurRadius / borderRadius / tintColor / boxShadow） |
 | `getCornerRadius(scene)` | 获取场景默认圆角值 |
 | `getMaterialClassName(scene, dark)` | 获取场景对应的规范类名 |
+
+## 主题 CSS 变量
+
+| 变量名 | 默认值 | 说明 |
+| --- | --- | --- |
+| `--nut-material-shadow-light` | `0 2PX 4PX rgba(0, 0, 0, 0.06), ...` | 浅色场景内发光多层高光阴影 |
+| `--nut-material-shadow-dark` | `0 2PX 4PX rgba(0, 0, 0, 0.06), ...` | 暗色场景内发光多层高光阴影 |
+| `--nut-material-shadow-immersive` | `var(--nut-material-shadow-dark)` | 沉浸式场景阴影 |
+| `--nut-material-tint-top-solid` | `rgba(255, 255, 255, 0.65)` | `top-solid` 浅色底色 |
+| `--nut-material-tint-top-solid-dark` | `rgba(20, 23, 26, 0.6)` | `top-solid` 暗色底色 |
+| `--nut-material-tint-top-plain` | `rgba(255, 255, 255, 0.05)` | `top-plain` 底色 |
+| `--nut-material-tint-top-bar` | `rgba(255, 255, 255, 0.9)` | `top-bar` 浅色底色 |
+| `--nut-material-tint-top-bar-dark` | `rgba(20, 23, 26, 0.85)` | `top-bar` 暗色底色 |
+| `--nut-material-tint-promotion-fair` | `rgba(255, 255, 255, 0.85)` | `promotion-fair` 浅色换肤底色 |
+| `--nut-material-tint-promotion-deep` | `rgba(255, 255, 255, 0.2)` | `promotion-deep` 深色换肤底色 |
+| `--nut-material-tint-immersive` | `rgba(20, 23, 26, 0.6)` | `immersive` 沉浸式底色 |
+| `--nut-material-tint-bottom-bar` | `rgba(255, 255, 255, 0.8)` | `bottom-bar` 浅色底色 |
+| `--nut-material-tint-bottom-bar-dark` | `rgba(20, 23, 26, 0.8)` | `bottom-bar` 暗色底色 |
+| `--nut-material-blur-default` | `3PX` | 默认模糊半径 |
+| `--nut-material-blur-top-bar` | `10PX` | 顶部通栏背板模糊半径 |
+| `--nut-material-radius-floating` | `8px` | 悬浮容器圆角 |
+| `--nut-material-radius-bar` | `0px` | 通栏背板圆角 |

@@ -93,27 +93,16 @@ export const MaterialView: FunctionComponent<
   const dark = darkMode !== undefined ? darkMode : systemDark
 
   const classPrefix = 'nut-materialview'
+  const sceneCls = scene ? `${classPrefix}--${scene}` : null
+  const darkCls = dark ? `${classPrefix}--dark` : null
   const materialCls = scene ? getMaterialClassName(scene, dark) : null
-  const cls = classNames(classPrefix, materialCls, className)
+  const cls = classNames(classPrefix, sceneCls, darkCls, materialCls, className)
 
   const computedStyle = useMemo<CSSProperties>(() => {
     const s: CSSProperties = { ...style }
 
     if (scene) {
       const preset = getFrostedPreset(scene, dark)
-
-      if (!materialCls) {
-        if (preset.blurRadius > 0) {
-          s.backdropFilter = `blur(${preset.blurRadius}PX)`
-          s.WebkitBackdropFilter = `blur(${preset.blurRadius}PX)`
-        }
-        if (preset.tintColor !== undefined && s.backgroundColor === undefined) {
-          s.backgroundColor = preset.tintColor
-        }
-        if (preset.boxShadow !== undefined && s.boxShadow === undefined) {
-          s.boxShadow = preset.boxShadow
-        }
-      }
       if (s.borderRadius === undefined) {
         s.borderRadius = `${preset.borderRadius}px`
       }
@@ -139,15 +128,7 @@ export const MaterialView: FunctionComponent<
     }
 
     return s
-  }, [
-    style,
-    scene,
-    dark,
-    materialCls,
-    frostedGlass,
-    gradientBlur,
-    overlayColor,
-  ])
+  }, [style, scene, dark, frostedGlass, gradientBlur, overlayColor])
 
   return (
     <View

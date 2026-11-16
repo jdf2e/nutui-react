@@ -1,59 +1,246 @@
+// 材质内发光阴影与底色基础值（PX 大写防 postcss px→vw 转换）
+$material-shadow-light:
+  0 2px 4px rgba(0, 0, 0, 0.06),
+  inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.4),
+  inset 0.5px 0.5px 0.5px #fff,
+  inset 1px 1px 5px rgba(45, 45, 45, 0.04);
+$material-shadow-dark:
+  0 2px 4px rgba(0, 0, 0, 0.06),
+  inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.1),
+  inset 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.4),
+  inset 1px 1px 5px rgba(45, 45, 45, 0.08);
+$material-shadow-top-plain:
+  0 2px 4px rgba(0, 0, 0, 0.06),
+  inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.4),
+  inset 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.6),
+  inset 1px 1px 5px rgba(45, 45, 45, 0.08);
+
+$material-tint-top-solid: rgba(255, 255, 255, 0.65);
+$material-tint-top-solid-dark: rgba(20, 23, 26, 0.6);
+$material-tint-top-plain: rgba(255, 255, 255, 0.05);
+$material-tint-top-bar: rgba(255, 255, 255, 0.9);
+$material-tint-top-bar-dark: rgba(20, 23, 26, 0.85);
+$material-tint-promotion-fair: rgba(255, 255, 255, 0.85);
+$material-tint-promotion-deep: rgba(255, 255, 255, 0.2);
+$material-tint-immersive: rgba(20, 23, 26, 0.6);
+$material-tint-bottom-bar: rgba(255, 255, 255, 0.8);
+$material-tint-bottom-bar-dark: rgba(20, 23, 26, 0.8);
+
+:root,
+.nut-materialview {
+  // 基础内发光阴影变量
+  --nut-material-shadow-light: #{$material-shadow-light};
+  --nut-material-shadow-dark: #{$material-shadow-dark};
+
+  // 各场景专属阴影与底色 CSS 变量（支持动态主题替换）
+  --nut-material-shadow-top-solid: var(
+    --nut-material-shadow-light,
+    #{$material-shadow-light}
+  );
+  --nut-material-shadow-top-solid-dark: var(
+    --nut-material-shadow-dark,
+    #{$material-shadow-dark}
+  );
+  --nut-material-tint-top-solid: #{$material-tint-top-solid};
+  --nut-material-tint-top-solid-dark: #{$material-tint-top-solid-dark};
+
+  --nut-material-shadow-top-plain: #{$material-shadow-top-plain};
+  --nut-material-tint-top-plain: #{$material-tint-top-plain};
+
+  --nut-material-tint-top-bar: #{$material-tint-top-bar};
+  --nut-material-tint-top-bar-dark: #{$material-tint-top-bar-dark};
+
+  --nut-material-tint-promotion-fair: #{$material-tint-promotion-fair};
+  --nut-material-tint-promotion-deep: #{$material-tint-promotion-deep};
+
+  --nut-material-shadow-immersive: var(
+    --nut-material-shadow-dark,
+    #{$material-shadow-dark}
+  );
+  --nut-material-tint-immersive: #{$material-tint-immersive};
+
+  --nut-material-tint-bottom-bar: #{$material-tint-bottom-bar};
+  --nut-material-tint-bottom-bar-dark: #{$material-tint-bottom-bar-dark};
+
+  --nut-material-blur-default: 3px;
+  --nut-material-blur-top-bar: 10px;
+  --nut-material-radius-floating: 8px;
+  --nut-material-radius-bar: 0px;
+}
+
 .nut-materialview {
   position: relative;
   overflow: hidden;
 }
 
-// 基于 375px 基准，PX 大写防止 postcss px→vw 转换
-.FG-Light-PX {
-  border: none !important;
-  backdrop-filter: blur(3px) !important;
-  -webkit-backdrop-filter: blur(3px) !important;
+// 预定义场景类名
+.nut-materialview--top-solid {
+  border: none;
+  border-radius: var(--nut-material-radius-floating, 8px);
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  -webkit-backdrop-filter: blur(var(--nut-material-blur-default, 3px));
   background:
     linear-gradient(135deg, rgb(248, 248, 248) 0%, rgba(248, 248, 248, 0) 100%),
-    rgba(255, 255, 255, 0.65) !important;
-  box-shadow:
-    0px 2px 4px rgba(0, 0, 0, 0.06),
-    inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.4),
-    inset 0.5px 0.5px 0.5px #fff,
-    inset 1px 1px 5px rgba(45, 45, 45, 0.04) !important;
+    var(--nut-material-tint-top-solid, #{$material-tint-top-solid});
+  box-shadow: var(--nut-material-shadow-top-solid, #{$material-shadow-light});
+
+  &.nut-materialview--dark {
+    background: var(
+      --nut-material-tint-top-solid-dark,
+      #{$material-tint-top-solid-dark}
+    );
+    box-shadow: var(
+      --nut-material-shadow-top-solid-dark,
+      #{$material-shadow-dark}
+    );
+  }
+}
+
+.nut-materialview--top-plain {
+  border: none;
+  border-radius: var(--nut-material-radius-floating, 8px);
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  -webkit-backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  background: var(--nut-material-tint-top-plain, #{$material-tint-top-plain});
+  box-shadow: var(
+    --nut-material-shadow-top-plain,
+    #{$material-shadow-top-plain}
+  );
+}
+
+.nut-materialview--top-bar {
+  border: none;
+  border-radius: var(--nut-material-radius-bar, 0px);
+  backdrop-filter: blur(var(--nut-material-blur-top-bar, 10px));
+  -webkit-backdrop-filter: blur(var(--nut-material-blur-top-bar, 10px));
+  background: var(--nut-material-tint-top-bar, #{$material-tint-top-bar});
+
+  &.nut-materialview--dark {
+    background: var(
+      --nut-material-tint-top-bar-dark,
+      #{$material-tint-top-bar-dark}
+    );
+  }
+}
+
+.nut-materialview--promotion-fair {
+  border: none;
+  border-radius: var(--nut-material-radius-floating, 8px);
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  -webkit-backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  background: var(
+    --nut-material-tint-promotion-fair,
+    #{$material-tint-promotion-fair}
+  );
+  box-shadow: none;
+}
+
+.nut-materialview--promotion-deep {
+  border: none;
+  border-radius: var(--nut-material-radius-floating, 8px);
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  -webkit-backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  background: var(
+    --nut-material-tint-promotion-deep,
+    #{$material-tint-promotion-deep}
+  );
+  box-shadow: none;
+}
+
+.nut-materialview--immersive {
+  border: none;
+  border-radius: var(--nut-material-radius-floating, 8px);
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  -webkit-backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  background: var(--nut-material-tint-immersive, #{$material-tint-immersive});
+  box-shadow: var(--nut-material-shadow-immersive, #{$material-shadow-dark});
+}
+
+.nut-materialview--bottom-bar {
+  border: none;
+  border-radius: var(--nut-material-radius-bar, 0px);
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  -webkit-backdrop-filter: blur(var(--nut-material-blur-default, 3px));
+  background: var(--nut-material-tint-bottom-bar, #{$material-tint-bottom-bar});
+
+  &.nut-materialview--dark {
+    background: var(
+      --nut-material-tint-bottom-bar-dark,
+      #{$material-tint-bottom-bar-dark}
+    );
+  }
+}
+
+// 规范旧类名（内部全部改造为使用 CSS 变量，确保主题动态替换与兼容性）
+.FG-Light-PX {
+  border: none !important;
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px)) !important;
+  -webkit-backdrop-filter: blur(
+    var(--nut-material-blur-default, 3px)
+  ) !important;
+  background:
+    linear-gradient(135deg, rgb(248, 248, 248) 0%, rgba(248, 248, 248, 0) 100%),
+    var(--nut-material-tint-top-solid, #{$material-tint-top-solid}) !important;
+  box-shadow: var(
+    --nut-material-shadow-top-solid,
+    #{$material-shadow-light}
+  ) !important;
 }
 
 .FG-Clear-PX {
   border: none !important;
-  backdrop-filter: blur(3px) !important;
-  -webkit-backdrop-filter: blur(3px) !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  box-shadow:
-    0px 2px 4px rgba(0, 0, 0, 0.06),
-    inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.4),
-    inset 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.6),
-    inset 1px 1px 5px rgba(45, 45, 45, 0.08) !important;
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px)) !important;
+  -webkit-backdrop-filter: blur(
+    var(--nut-material-blur-default, 3px)
+  ) !important;
+  background: var(
+    --nut-material-tint-top-plain,
+    #{$material-tint-top-plain}
+  ) !important;
+  box-shadow: var(
+    --nut-material-shadow-top-plain,
+    #{$material-shadow-top-plain}
+  ) !important;
 }
 
 .FG-Dark-PX {
   border: none !important;
-  backdrop-filter: blur(3px) !important;
-  -webkit-backdrop-filter: blur(3px) !important;
-  background: rgba(20, 23, 26, 0.5) !important;
-  box-shadow:
-    0px 2px 4px rgba(0, 0, 0, 0.06),
-    inset -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.1),
-    inset 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.4),
-    inset 1px 1px 5px rgba(45, 45, 45, 0.08) !important;
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px)) !important;
+  -webkit-backdrop-filter: blur(
+    var(--nut-material-blur-default, 3px)
+  ) !important;
+  background: var(
+    --nut-material-tint-immersive,
+    rgba(20, 23, 26, 0.5)
+  ) !important;
+  box-shadow: var(
+    --nut-material-shadow-immersive,
+    #{$material-shadow-dark}
+  ) !important;
 }
 
 .FG-Skin-D-PX {
   box-shadow: none !important;
   border: none !important;
-  backdrop-filter: blur(3px) !important;
-  -webkit-backdrop-filter: blur(3px) !important;
-  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px)) !important;
+  -webkit-backdrop-filter: blur(
+    var(--nut-material-blur-default, 3px)
+  ) !important;
+  background: var(
+    --nut-material-tint-promotion-deep,
+    #{$material-tint-promotion-deep}
+  ) !important;
 }
 
 .FG-Skin-L-PX {
   box-shadow: none !important;
   border: none !important;
-  backdrop-filter: blur(3px) !important;
-  -webkit-backdrop-filter: blur(3px) !important;
-  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(var(--nut-material-blur-default, 3px)) !important;
+  -webkit-backdrop-filter: blur(
+    var(--nut-material-blur-default, 3px)
+  ) !important;
+  background: var(
+    --nut-material-tint-promotion-fair,
+    #{$material-tint-promotion-fair}
+  ) !important;
 }
