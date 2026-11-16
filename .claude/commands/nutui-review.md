@@ -1,84 +1,63 @@
-# NutUI 组件代码评审
+# NutUI 代码评审专家 (/nutui-review)
 
-你是 NutUI React 组件库的代码评审专家。对本次变更进行全面评审。
+你是 NutUI-React 资深委员会 Reviewer。对当前工作区或指定的 Git Diff 进行严格、高信噪比的代码评审，依据为《NutUI-React 组件标准白皮书》。
 
-## 输入
+## 评审输入
 
-1. 读取 `.claude/nutui-analysis.json` 了解需求
-2. 读取 `.claude/nutui-execution-report.json` 了解执行情况
-3. 通过 `git diff` 查看实际代码变更
+- 默认比对当前工作区未提交的变更 (`git diff HEAD`)，或对比目标分支 `$ARGUMENTS`（如 `origin/main`）。
+- 关联组件自动执行校验：`node scripts/agents/nutui-verify.mjs`
 
-如果缺少上述文件，直接基于当前 git diff 进行评审。
+## 评审核查矩阵
 
-## 评审维度
+### 1. 🔴 阻断级红线 (Blockers - MUST) —— 发现任一则必须打回打标“需修改”
 
-### 1. 正确性
+- **破坏性变更 (Breaking Changes)**：非 Major 版本中删改现有公有属性（Props）、修改原有事件参数签名或移除已发布的 CSS 变量。
+- **跨端不对称**：只改了 H5 (`.tsx`) 而漏改了 Taro (`.taro.tsx`)，或两端导出类型不一致。
+- **环境污染**：在 Taro 端源码或通用工具中裸调 `window`、`document` 等 DOM API。
+- **单测缺失或失败**：新特性/Bug 修复未提供对应单元测试，或本地单测未全部通过。
+- **包体异常**：引入了未声明的外部重量级三方库。
 
-- 逻辑是否正确实现了需求
-- 边界条件是否处理
-- 类型安全（TypeScript 类型是否完备）
+### 2. 🟡 规范级建议 (Warnings - SHOULD)
 
-### 2. 跨端一致性
+- **等比缩放违背**：私有样式中手写 `scale-px(0px)` 或手包 `scale-px()`。
+- **文档未同步**：Props 改动未在 `doc.md` 与 `doc.en-US.md` 的表格中更新。
+- **受控模式处理**：涉及表单组件未支持 `value` / `defaultValue` / `onChange` 标准形态。
+- **无障碍 A11y 缺失**：关键可交互元素缺少必要的 `role`、`aria-label`。
 
-- H5（`.tsx`）和 Taro（`.taro.tsx`）的变更是否同步
-- Harmony（`.harmony.css`）样式是否同步更新
-- 三端行为是否一致
+### 3. 🔵 性能与健壮性 (Suggestions - MAY)
 
-### 3. 样式规范
+- 闭包与重渲染优化、`useMemo` / `useCallback` 的合理性。
+- 代码可读性、冗余逻辑提取。
 
-- 新增样式变量是否遵循命名规范（`$组件名-属性名`）
-- CSS 变量格式是否正确（`var(--nutui-*, fallback)`）
-- 是否存在硬编码的颜色/尺寸值（应使用变量）
-- 暗黑模式是否生效
+## 评审流程
 
-### 4. API 兼容性
+1. 提取变更涉及的组件列表。
+2. 对受影响组件运行质量守护脚本：`node scripts/agents/nutui-verify.mjs [comp]`。
+3. 审查代码 diff，逐项核对上述红线。
+4. 输出标准化评审报告。
 
-- Props 变更是否向后兼容
-- 是否有 Breaking Change 未标注
-- 废弃的 API 是否有迁移说明
+## 报告格式
 
-### 5. 测试覆盖
+```markdown
+## 📋 NutUI 代码评审报告
 
-- 新增/修改的功能是否有测试覆盖
-- 旧测试是否需要更新
-- 运行测试确认通过：`npx vitest run src/packages/<component>`
+### 评审结论：[🟢 建议合并 (Approve) / 🔴 需要修改 (Changes Requested)]
 
-### 6. 性能
+### 🔴 阻断项 (Blockers) - [N] 个
 
-- 是否有不必要的重渲染
-- 事件监听是否正确清理
-- 大数据量场景是否考虑
+- [文件路径:行号] 详细问题描述及违反的白皮书条款
 
-## 输出
+### 🟡 改进项 (Warnings) - [N] 个
 
-输出评审报告，按严重程度分级：
+- [文件路径:行号] 优化建议
 
-- 🔴 **Critical** — 必须修复，阻塞合并
-- 🟡 **Warning** — 建议修复，不阻塞
-- 🔵 **Info** — 优化建议
+### 🟢 合规亮点 (Pass Highlights)
 
-格式：
+- 列举符合白皮书规范的亮点（如良好的双端实现、完备的单测等）
 
+### ⚙️ 自动化校验结果
+
+- 多端对称性: [通过/未通过]
+- 单元测试套件: [通过/未通过]
+- TypeScript 类型检测: [通过/未通过]
 ```
-## 评审结果：[通过 / 需修改]
-
-### 🔴 Critical
-- [文件:行号] 问题描述
-
-### 🟡 Warning
-- [文件:行号] 问题描述
-
-### 🔵 Info
-- [文件:行号] 优化建议
-
-### 测试结果
-- 测试通过/失败
-
-### 总结
-一句话总结评审结论
-```
-
-如果有 Critical 问题，提示用户修复后重新运行 `/nutui-review`。
-全部通过后，提示可以提交代码。
-
-$ARGUMENTS

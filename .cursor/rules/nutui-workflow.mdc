@@ -1,0 +1,24 @@
+---
+description: NutUI-React AI 工作流规约（功能开发、Bug修复与代码评审的统一规范与守护）
+globs: src/packages/**/*,scripts/**/*
+alwaysApply: true
+---
+
+# NutUI-React AI 研发工作流与质量规约
+
+在当前工作区进行任何代码生成、组件修改或评审时，必须严格执行本规约。
+
+## 核心准则
+1. **多端平权 (H5 & Taro)**：
+   - 任何组件改动必须保持 `src/packages/<comp>/<comp>.tsx` 和 `src/packages/<comp>/<comp>.taro.tsx` 对称。
+   - 严禁在 Taro 端裸用 `window` 或 `document`。
+2. **三位一体交付**：
+   - 代码变更必须同步更新或补充：
+     - `__test__/<comp>.spec.tsx`（单测用例）
+     - `doc.md` / `doc.en-US.md`（API 文档表格）
+     - `demo.tsx`（交互演示）
+3. **样式与缩放规范**：
+   - 组件私有样式写普通设计 `px`，由构建系统自动处理，禁止手写 `scale-px(0px)`，零值写 `0`。
+   - CSS 变量一律采用 `--nutui-<comp>-<prop>` 格式。
+4. **验证闭环**：
+   - 在完成编码后，务必调用执行：`node scripts/agents/nutui-verify.mjs <comp>` 确认多端对称与单测全部绿灯。

@@ -49,6 +49,7 @@
     "pnpm": ">=10.34.5"
   },
   "scripts": {
+    "verify:agent": "node ./scripts/agents/nutui-verify.mjs",
     "add": "node scripts/create-component-mode.js && npm run prepare",
     "checked": "npm run generate:file && tsc --project ./tsconfig.h5.json --noEmit",
     "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json --noEmit",
