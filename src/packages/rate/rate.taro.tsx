@@ -263,6 +263,8 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
       className={classNames(
         classPrefix,
         `${classPrefix}-${direction}`,
+        // 容器尺寸类统一驱动星标、标签和分数的样式变量。
+        `${classPrefix}-${size}`,
         {
           disabled,
           readonly: readOnly,
