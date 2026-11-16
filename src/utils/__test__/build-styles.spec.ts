@@ -29,6 +29,7 @@ const components = [
   'barrage',
   'noticebar',
   'skeleton',
+  'rate',
 ]
 let output: string
 

@@ -4,6 +4,40 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { HeartFill, Heart } from '@nutui/icons-react'
 import { Rate } from '../rate'
+import { Rate as TaroRate } from '../rate.taro'
+
+// 在 DOM 环境替换 Taro 宿主与测量接口，保留两端真实组件的尺寸类逻辑。
+vi.mock('@tarojs/components', async () => {
+  const React = await import('react')
+  return {
+    View: React.forwardRef(function MockView(
+      { catchMove, ...props }: any,
+      ref: any
+    ) {
+      return <div ref={ref} {...props} />
+    }),
+    Text: 'span',
+  }
+})
+vi.mock('@nutui/icons-react-taro', () => ({ StarFill: 'span' }))
+vi.mock('@/utils/taro/get-rect', () => ({
+  getRectInMultiPlatform: vi.fn(async () => ({ left: 0, width: 20 })),
+}))
+
+// 两端通过容器尺寸类共享样式变量，子节点类继续保留兼容现有样式。
+describe.each([
+  ['H5', Rate],
+  ['Taro', TaroRate],
+] as const)('%s size classes', (_, RateComponent) => {
+  test.each(['small', 'normal', 'large'] as const)('%s', (size) => {
+    const { container } = render(<RateComponent size={size} />)
+
+    expect(container.querySelector('.nut-rate')).toHaveClass(`nut-rate-${size}`)
+    expect(container.querySelector('.nut-rate-item')).toHaveClass(
+      `nut-rate-item-${size}`
+    )
+  })
+})
 
 test('props test', () => {
   const state = {
