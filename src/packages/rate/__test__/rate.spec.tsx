@@ -1,9 +1,89 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { act, render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { HeartFill, Heart } from '@nutui/icons-react'
 import { Rate } from '../rate'
+
+// 容器尺寸类驱动共享变量，子节点类继续兼容现有样式。
+describe('size classes', () => {
+  test.each(['small', 'normal', 'large'] as const)('%s', (size) => {
+    const { container } = render(<Rate size={size} />)
+
+    expect(container.querySelector('.nut-rate')).toHaveClass(`nut-rate-${size}`)
+    expect(container.querySelector('.nut-rate-item')).toHaveClass(
+      `nut-rate-item-${size}`
+    )
+  })
+})
+
+test('animates vertical changes and clears the animation class', () => {
+  vi.useFakeTimers()
+  const { container } = render(
+    <Rate direction="vertical" count={2} defaultValue={0} />
+  )
+  const items = container.querySelectorAll('.nut-rate-item')
+
+  fireEvent.click(items[1])
+  expect(items[1].firstChild).toHaveClass('nut-rate-item-icon-animate')
+
+  act(() => vi.advanceTimersByTime(300))
+  expect(items[1].firstChild).not.toHaveClass('nut-rate-item-icon-animate')
+  vi.useRealTimers()
+})
+
+test('renders a checked icon fallback and selects a half value', () => {
+  const onChange = vi.fn()
+  const { container } = render(
+    <Rate
+      direction="vertical"
+      count={2}
+      defaultValue={1}
+      allowHalf
+      checkedIcon={<HeartFill />}
+      onChange={onChange}
+    />
+  )
+
+  expect(container.querySelectorAll('.nut-icon-HeartFill')).toHaveLength(3)
+  fireEvent.click(container.querySelector('.nut-rate-item-half') as HTMLElement)
+  expect(onChange).toHaveBeenLastCalledWith(0.5)
+})
+
+test('reports touch end values and ignores touch input when disabled', () => {
+  const onTouchEnd = vi.fn()
+  const getBoundingClientRect = vi
+    .spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+    .mockImplementation(function mockRect() {
+      const parent = this.parentElement
+      const index = parent ? Array.from(parent.children).indexOf(this) : 0
+      return {
+        left: index * 20,
+        width: 20,
+      } as DOMRect
+    })
+  const { container, unmount } = render(
+    <Rate touchable allowHalf count={3} onTouchEnd={onTouchEnd} />
+  )
+  const root = container.querySelector('.nut-rate') as HTMLElement
+
+  fireEvent.touchStart(root, { touches: [{ clientX: 0 }] })
+  fireEvent.touchEnd(root, { changedTouches: [{ clientX: 31 }] })
+  expect(onTouchEnd).toHaveBeenCalledWith(expect.anything(), 5)
+
+  unmount()
+  const disabled = render(
+    <Rate touchable disabled count={3} onTouchEnd={onTouchEnd} />
+  )
+  const disabledRoot = disabled.container.querySelector(
+    '.nut-rate'
+  ) as HTMLElement
+  fireEvent.touchStart(disabledRoot, { touches: [{ clientX: 60 }] })
+  fireEvent.touchMove(disabledRoot, { touches: [{ clientX: 60 }] })
+  fireEvent.touchEnd(disabledRoot, { changedTouches: [{ clientX: 60 }] })
+  expect(onTouchEnd).toHaveBeenCalledTimes(1)
+  getBoundingClientRect.mockRestore()
+})
 
 test('props test', () => {
   const state = {
