@@ -120,6 +120,26 @@ import { NoticeBar } from '@nutui/nutui-react-taro'
 
 :::
 
+### 营销型
+
+通过自定义背景、边框、配图和行动按钮展示营销信息，支持单行和带副文案的双行布局。
+
+:::demo
+
+<CodeBlock src='taro/demo15.tsx'></CodeBlock>
+
+:::
+
+### 破出形态
+
+通过透明商品图和局部样式让图片从公告栏顶部破出，行动区使用券面背景展示金额和领取文案。
+
+:::demo
+
+<CodeBlock src='taro/demo16.tsx'></CodeBlock>
+
+:::
+
 ### 自动关闭
 
 :::demo
@@ -178,7 +198,9 @@ import { NoticeBar } from '@nutui/nutui-react-taro'
 | \--nutui-noticebar-font-size | 字号 | `$font-size-base` |
 | \--nutui-noticebar-line-height | 行高 | `20px` |
 | \--nutui-noticebar-box-padding | padding值 | `2px 8px` |
-| \--nutui-noticebar-border-radius | 圆角 | `0` |
+| \--nutui-noticebar-border-radius | 圆角 | `8px` |
+| \--nutui-noticebar-border-width | 描边宽度 | `0.67px` |
+| \--nutui-noticebar-border-color | 边框颜色 | `#11141A14` |
 | \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `9px 8px` |
 | \--nutui-noticebar-icon-gap | icon、text间距 | `6px` |
 | \--nutui-noticebar-left-icon-width | 左侧icon的宽度和高度的设定 | `24px` |
@@ -198,5 +220,17 @@ import { NoticeBar } from '@nutui/nutui-react-taro'
 | \--nutui-noticebar-close-icon-size | 关闭图标尺寸 | `10px` |
 | \--nutui-noticebar-close-ring-color | 倒计时圆环进度色 | `$color-text-help` |
 | \--nutui-noticebar-close-ring-shadow-color | 倒计时圆环底色 | `$color-border` |
+
+### SCSS 变量
+
+圆角、描边宽度和边框颜色也支持通过 SCSS 变量配置，需在引入主题样式前覆盖；将描边宽度设为 `0` 可隐藏边框。
+
+```scss
+$noticebar-border-radius: 8px;
+$noticebar-border-width: 0.67px;
+$noticebar-border-color: #11141a14;
+
+@import '@nutui/nutui-react-taro/dist/styles/themes/default.scss';
+```
 
 <Contribution name="NoticeBar" />

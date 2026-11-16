@@ -7,3 +7,129 @@
   background: 'rgba(251, 248, 220, 1)';
   color: '#d9500b';
 }
+
+// 营销型示例通过组件变量限定视觉样式，不影响其他 NoticeBar 示例。
+.marketing-noticebar {
+  --nutui-noticebar-background: var(--nutui-color-error-light, #ffedef);
+  --nutui-noticebar-color: var(--nutui-color-title, #11141a);
+  --nutui-noticebar-border-color: #ffffff;
+  --nutui-noticebar-font-size: 13px;
+  --nutui-noticebar-icon-gap: 4px;
+  --nutui-noticebar-tag-gap: 2px;
+  --nutui-noticebar-action-gap: 8px;
+  --nutui-button-primary-background-color: var(--nutui-color-primary, #ff0f23);
+  --nutui-button-primary-border-color: var(--nutui-color-primary, #ff0f23);
+
+  & + & {
+    margin-top: 12px;
+  }
+
+  &-benefit,
+  .nut-noticebar-box-description {
+    color: var(--nutui-color-primary, #ff0f23);
+  }
+
+  // 静态文案按内容占宽，让信息标紧随利益点，空间不足时仍可收缩省略。
+  .nut-noticebar-box-wrap {
+    flex: 0 1 auto;
+  }
+
+  // 覆盖组件滚动文案的绝对定位，使静态文案参与单行容器宽度计算。
+  .nut-noticebar-box .nut-noticebar-box-wrap > .nut-noticebar-box-wrap-content {
+    position: relative;
+    font-weight: 600;
+  }
+
+  .nut-noticebar-box-tag {
+    color: var(--nutui-color-text-help, #888b94);
+  }
+
+  // 参考营销样式使用圆形关闭控件，避免为了静态示例启动自动关闭计时器。
+  .nut-noticebar-box-right-icon {
+    border: 1px solid var(--nutui-noticebar-close-color, #888b94);
+    border-radius: 50%;
+  }
+}
+
+// 破出形态仅在示例内配置红底白字，用外间距预留破出空间，容器仍为 40px 高。
+.breakout-noticebar {
+  --nutui-noticebar-height: 40px;
+  --nutui-noticebar-background: #ff3443;
+  --nutui-noticebar-color: #ffffff;
+  --nutui-noticebar-border-color: #ffffff;
+  --nutui-noticebar-font-size: 13px;
+  --nutui-noticebar-box-padding: 0 8px 0 0;
+  --nutui-noticebar-left-icon-width: 64px;
+  --nutui-noticebar-icon-gap: 4px;
+  --nutui-noticebar-action-gap: 8px;
+  --nutui-noticebar-close-color: #ffffff;
+  margin-top: 6px;
+
+  .nut-noticebar-box {
+    overflow: visible;
+    box-shadow: 0 2px 8px rgba(17, 20, 26, 0.08);
+  }
+
+  .nut-noticebar-box-wrap-content {
+    font-weight: 600;
+  }
+
+  // 图片底部贴齐容器，顶部溢出；固定占位宽度避免挤压单行文案。
+  .nut-noticebar-box-left-icon {
+    position: relative;
+    align-self: stretch;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .breakout-noticebar-product {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    img {
+      border-radius: 0;
+    }
+  }
+
+  // 券面按素材的 273:72 比例展示，金额分隔线与上下缺口对齐。
+  .breakout-noticebar-coupon {
+    display: flex;
+    width: 91px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: url('https://img14.360buyimg.com/img/jfs/t1/587584/36/4740/762/6afa99f5F224a7d09/0276111048c8ba3e.png')
+      center / 100% 100% no-repeat;
+    color: var(--nutui-color-primary, #ff0f23);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  // 自己控制两栏排布，避免 Button 的内部文字容器影响金额宽度。
+  &-coupon-content {
+    display: flex;
+    align-items: center;
+    width: 91px;
+    height: 24px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  &-value {
+    box-sizing: border-box;
+    flex: 0 0 35px;
+    border-right: 1px dashed #ff9aa2;
+  }
+
+  &-label {
+    flex: 1;
+  }
+
+  .nut-noticebar-box-right-icon {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-left-color: rgba(17, 20, 26, 0.08);
+    border-radius: 50%;
+  }
+}

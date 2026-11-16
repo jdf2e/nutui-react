@@ -120,6 +120,26 @@ import { NoticeBar } from '@nutui/nutui-react'
 
 :::
 
+### 營銷型
+
+透過自訂背景、邊框、配圖與行動按鈕展示營銷資訊，支援單行及帶副文案的雙行佈局。
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
+### 破出形態
+
+透過透明商品圖與局部樣式讓圖片從公告欄頂部破出，行動區使用券面背景展示金額與領取文案。
+
+:::demo
+
+<CodeBlock src='h5/demo16.tsx'></CodeBlock>
+
+:::
+
 ### 自動關閉
 
 :::demo
@@ -178,7 +198,9 @@ import { NoticeBar } from '@nutui/nutui-react'
 | \--nutui-noticebar-font-size | 字號 | `$font-size-base` |
 | \--nutui-noticebar-line-height | 行高 | `20px` |
 | \--nutui-noticebar-box-padding | padding值 | `2px 8px` |
-| \--nutui-noticebar-border-radius | 圓角 | `0` |
+| \--nutui-noticebar-border-radius | 圓角 | `8px` |
+| \--nutui-noticebar-border-width | 描邊寬度 | `0.67px` |
+| \--nutui-noticebar-border-color | 邊框顏色 | `#11141A14` |
 | \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `9px 8px` |
 | \--nutui-noticebar-icon-gap | icon、text間距 | `6px` |
 | \--nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `24px` |
@@ -198,5 +220,17 @@ import { NoticeBar } from '@nutui/nutui-react'
 | \--nutui-noticebar-close-icon-size | 關閉圖標尺寸 | `10px` |
 | \--nutui-noticebar-close-ring-color | 倒計時圓環進度色 | `$color-text-help` |
 | \--nutui-noticebar-close-ring-shadow-color | 倒計時圓環底色 | `$color-border` |
+
+### SCSS 變量
+
+圓角、描邊寬度及邊框顏色也支援透過 SCSS 變量設定，需在引入主題樣式前覆蓋；將描邊寬度設為 `0` 可隱藏邊框。
+
+```scss
+$noticebar-border-radius: 8px;
+$noticebar-border-width: 0.67px;
+$noticebar-border-color: #11141a14;
+
+@import '@nutui/nutui-react/dist/styles/themes/default.scss';
+```
 
 <Contribution name="NoticeBar" />

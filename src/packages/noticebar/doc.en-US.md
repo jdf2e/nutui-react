@@ -120,6 +120,26 @@ Add Right mode to set more custom content.
 
 :::
 
+### Marketing
+
+Customize the background, border, image and action button to display marketing messages in a single line or with a second description line.
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
+### Breakout Image
+
+Use a transparent product image and local styles to extend the image above the notice bar, with a coupon background displaying the amount and claim action.
+
+:::demo
+
+<CodeBlock src='h5/demo16.tsx'></CodeBlock>
+
+:::
+
 ### Auto Close
 
 :::demo
@@ -178,7 +198,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-font-size | noticebar font size | `$font-size-base` |
 | \--nutui-noticebar-line-height | noticebar line height | `20px` |
 | \--nutui-noticebar-box-padding | noticebar box padding | `2px 8px` |
-| \--nutui-noticebar-border-radius | noticebar border radius | `0` |
+| \--nutui-noticebar-border-radius | noticebar border radius | `8px` |
+| \--nutui-noticebar-border-width | noticebar border width | `0.67px` |
+| \--nutui-noticebar-border-color | noticebar border color | `#11141A14` |
 | \--nutui-noticebar-wrap-padding | noticebar wrap padding | `9px 8px` |
 | \--nutui-noticebar-icon-gap | gap of icon and text | `6px` |
 | \--nutui-noticebar-left-icon-width | noticebar left icon width | `24px` |
@@ -198,5 +220,17 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-close-icon-size | close icon size | `10px` |
 | \--nutui-noticebar-close-ring-color | countdown ring progress color | `$color-text-help` |
 | \--nutui-noticebar-close-ring-shadow-color | countdown ring track color | `$color-border` |
+
+### SCSS Variables
+
+Override these SCSS variables before importing the theme styles to customize the radius, border width and color. Set the border width to `0` to hide the border.
+
+```scss
+$noticebar-border-radius: 8px;
+$noticebar-border-width: 0.67px;
+$noticebar-border-color: #11141a14;
+
+@import '@nutui/nutui-react/dist/styles/themes/default.scss';
+```
 
 <Contribution name="NoticeBar" />
