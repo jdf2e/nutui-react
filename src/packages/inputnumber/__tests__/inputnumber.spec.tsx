@@ -3,6 +3,21 @@ import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { InputNumber } from '../inputnumber'
+import { InputNumber as TaroInputNumber } from '../inputnumber.taro'
+
+// 仅替换 Taro 宿主节点和图标，保留 InputNumber 自身的结构与状态逻辑。
+vi.mock('@tarojs/components', async () => {
+  const React = await import('react')
+  return {
+    View: React.forwardRef(function MockView(
+      { hoverClass, hoverStartTime, hoverStayTime, ...props }: any,
+      ref: any
+    ) {
+      return <div ref={ref} {...props} />
+    }),
+  }
+})
+vi.mock('@nutui/icons-react-taro', () => ({ Minus: 'span', Plus: 'span' }))
 
 test('should render modelValue', () => {
   const { container } = render(<InputNumber defaultValue={12} />)
@@ -184,15 +199,21 @@ test('should overlimit when input', async () => {
   expect(overlimit).toBeCalled()
 })
 
-test('should render correct structure order: minus, divider, input, divider, add', () => {
-  const { container } = render(<InputNumber defaultValue={1} />)
-  const root = container.querySelector('.nut-inputnumber')!
-  const children = Array.from(root.children)
-  expect(children[0]).toHaveClass('nut-inputnumber-minus')
-  expect(children[1]).toHaveClass('nut-inputnumber-divider')
-  expect(children[2].tagName).toBe('INPUT')
-  expect(children[3]).toHaveClass('nut-inputnumber-divider')
-  expect(children[4]).toHaveClass('nut-inputnumber-add')
+describe.each([
+  ['H5', InputNumber],
+  ['Taro', TaroInputNumber],
+] as const)('%s structure', (_, Component) => {
+  test('renders only the interactive controls as real DOM nodes', () => {
+    const { container } = render(<Component defaultValue={1} />)
+    const root = container.querySelector('.nut-inputnumber')!
+    const children = Array.from(root.children)
+
+    expect(children).toHaveLength(3)
+    expect(children[0]).toHaveClass('nut-inputnumber-minus')
+    expect(children[1].tagName).toBe('INPUT')
+    expect(children[2]).toHaveClass('nut-inputnumber-add')
+    expect(container.querySelector('.nut-inputnumber-divider')).toBeNull()
+  })
 })
 
 test('should add disabled class when disabled', () => {

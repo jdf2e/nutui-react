@@ -30,6 +30,7 @@ const components = [
   'noticebar',
   'skeleton',
   'rate',
+  'inputnumber',
 ]
 let output: string
 
