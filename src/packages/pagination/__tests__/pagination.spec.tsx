@@ -2,6 +2,13 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Pagination } from '../pagination'
+import { Pagination as TaroPagination } from '../pagination.taro'
+
+// 仅替换 Taro 宿主节点与运行环境，复用两端真实的分页状态和指示器逻辑。
+vi.mock('@tarojs/components', () => ({ View: 'div', Text: 'span' }))
+vi.mock('@tarojs/taro', () => ({
+  default: { getEnv: () => 'WEB' },
+}))
 
 test('should match snapshot', () => {
   const { asFragment } = render(<Pagination total={25} pageSize={5} />)
@@ -160,6 +167,47 @@ test('should render lite text indicator', () => {
   expect(
     container.querySelector('.nut-pagination-text-default')
   ).toHaveTextContent('9')
+})
+
+describe.each([
+  ['H5', Pagination],
+  ['Taro', TaroPagination],
+] as const)('%s lite numeric indicators', (_, Component) => {
+  test.each(['capsule', 'text'] as const)(
+    'should preserve %s classes and sync page values',
+    (indicatorType) => {
+      // 保留三段数字结构和样式类名，并验证受控页码及向上取整的总页数。
+      const { container, rerender } = render(
+        <Component
+          total={25}
+          pageSize={5}
+          mode="lite"
+          indicatorType={indicatorType}
+          value={2}
+        />
+      )
+      const classPrefix = `nut-pagination-${indicatorType}`
+      const indicator = container.querySelector(`.${classPrefix}`)
+      expect(indicator?.children).toHaveLength(3)
+      expect(indicator?.children[0]).toHaveClass(`${classPrefix}-active`)
+      expect(indicator?.children[1]).toHaveClass(`${classPrefix}-spliterator`)
+      expect(indicator?.children[1]).toHaveTextContent('/')
+      expect(indicator?.children[2]).toHaveClass(`${classPrefix}-default`)
+      expect(indicator).toHaveTextContent('2/5')
+
+      rerender(
+        <Component
+          total={31}
+          pageSize={5}
+          mode="lite"
+          indicatorType={indicatorType}
+          value={4}
+        />
+      )
+      expect(indicator?.children[0]).toHaveTextContent('4')
+      expect(indicator?.children[2]).toHaveTextContent('7')
+    }
+  )
 })
 
 test('should render lite progress indicator with active segment', () => {
