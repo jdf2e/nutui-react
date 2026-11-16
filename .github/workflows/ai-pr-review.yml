@@ -52,10 +52,17 @@ jobs:
             const path = require('path');
             const reportPath = path.join(process.env.GITHUB_WORKSPACE, 'pr-review-report.md');
             if (fs.existsSync(reportPath)) {
-              const body = fs.readFileSync(reportPath, 'utf-8');
-              const issue_number = context.payload.pull_request?.number;
+              let body = fs.readFileSync(reportPath, 'utf-8');
+              const pr = context.payload.pull_request;
+              const issue_number = pr?.number;
               if (!issue_number) return;
               const { owner, repo } = context.repo;
+
+              // 自动 @ PR 作者，触发最高优先级站内通知与邮件提醒
+              const author = pr.user?.login;
+              if (author) {
+                body = `> 🔔 **@${author}** 您好，NutUI AI 质量门禁已完成对本次 PR 的自动化审查与质量核验：\n\n` + body;
+              }
 
               // 查找是否已存在 AI Review 评论，若有则更新，避免重复刷屏
               const comments = await github.rest.issues.listComments({
