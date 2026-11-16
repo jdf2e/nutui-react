@@ -11,6 +11,7 @@ import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { useUuid } from '@/hooks/use-uuid'
+import raf, { cancelRaf } from '@/utils/raf'
 import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
@@ -83,7 +84,6 @@ export const NoticeBar: FunctionComponent<
   const contentRefId = `content-ref-${uid}`
 
   const [showNoticeBar, setShowNoticeBar] = useState(true)
-  const [autoCloseProgress, setAutoCloseProgress] = useState(100)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
   const [firstRound, SetFirstRound] = useState(true)
@@ -91,7 +91,7 @@ export const NoticeBar: FunctionComponent<
   const [offsetWidth, SetOffsetW] = useState(0)
   const [animationClass, SetAnimationClass] = useState('')
   const [animate, SetAnimate] = useState(false)
-  const [timer, SetTimer] = useState(0)
+  const verticalTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const [isCanScroll, SetIsCanScroll] = useState<null | boolean>(null)
   const isVertical = direction === 'vertical'
   const [rect, setRect] = useState(null as any | null)
@@ -99,7 +99,10 @@ export const NoticeBar: FunctionComponent<
   const [ready, setReady] = useState(false)
   const container = useRef<any>(null)
   const [isContainerReady, setIsContainerReady] = useState(false)
-  const innerRef = useRef<any>(null)
+  const [innerStyle, setInnerStyle] = useState<React.CSSProperties>({})
+  // 分别记录双帧任务，确保中途停止时不会遗留第二层回调。
+  const firstFrameRef = useRef<ReturnType<typeof raf> | null>(null)
+  const secondFrameRef = useRef<ReturnType<typeof raf> | null>(null)
   const swiperRef = useRef<any>({
     moving: false,
     autoplayTimer: null,
@@ -137,28 +140,18 @@ export const NoticeBar: FunctionComponent<
   const onCloseRef = useRef(onClose)
   onCloseRef.current = onClose
   const autoCloseTimerRef = useRef(0)
-  const autoCloseIntervalRef = useRef(0)
 
-  // 自动关闭
+  // 自动关闭只维护最终触发器，圆环进度交由 CSS 动画处理，避免高频渲染。
   useEffect(() => {
     if (autoClose && autoClose > 0 && showNoticeBar) {
-      const startTime = Date.now()
-      autoCloseIntervalRef.current = setInterval(() => {
-        const elapsed = Date.now() - startTime
-        const remaining = Math.max(0, 100 - (elapsed / autoClose) * 100)
-        setAutoCloseProgress(remaining)
-        if (remaining <= 0) clearInterval(autoCloseIntervalRef.current)
-      }, 50) as unknown as number
       autoCloseTimerRef.current = setTimeout(() => {
         setShowNoticeBar(false)
         onCloseRef.current?.()
       }, autoClose) as unknown as number
       return () => {
-        clearInterval(autoCloseIntervalRef.current)
         clearTimeout(autoCloseTimerRef.current)
       }
     }
-    setAutoCloseProgress(100)
   }, [autoClose, showNoticeBar])
 
   useEffect(() => {
@@ -173,8 +166,11 @@ export const NoticeBar: FunctionComponent<
       initScrollWrap()
     }
     return () => {
-      // 销毁事件
-      clearInterval(timer)
+      // 纵向列表使用全局定时器，兼容无 window 的小程序与 SSR 环境。
+      if (verticalTimerRef.current !== null) {
+        clearInterval(verticalTimerRef.current)
+        verticalTimerRef.current = null
+      }
     }
   }, [childs])
 
@@ -226,7 +222,6 @@ export const NoticeBar: FunctionComponent<
     (event: ITouchEvent) => {
       event.stopPropagation()
       setShowNoticeBar(false)
-      clearInterval(autoCloseIntervalRef.current)
       clearTimeout(autoCloseTimerRef.current)
       close && close(event)
       onClose && onClose(event)
@@ -248,8 +243,13 @@ export const NoticeBar: FunctionComponent<
       height / speed / 4 < 1
         ? Number((height / speed / 4).toFixed(1)) * 1000
         : ~~(height / speed / 4) * 1000
-    const timerCurr = window.setInterval(showhorseLamp, time + Number(duration))
-    SetTimer(timerCurr)
+    if (verticalTimerRef.current !== null) {
+      clearInterval(verticalTimerRef.current)
+    }
+    verticalTimerRef.current = setInterval(
+      showhorseLamp,
+      time + Number(duration)
+    )
   }
   const showhorseLamp = () => {
     SetAnimate(true)
@@ -335,16 +335,35 @@ export const NoticeBar: FunctionComponent<
     }
   }, [children, isContainerReady])
 
+  // 双帧切换可能跨越卸载边界，统一保存并取消尚未执行的帧任务。
+  const clearPendingFrames = () => {
+    if (firstFrameRef.current !== null) {
+      cancelRaf(firstFrameRef.current)
+      firstFrameRef.current = null
+    }
+    if (secondFrameRef.current !== null) {
+      cancelRaf(secondFrameRef.current)
+      secondFrameRef.current = null
+    }
+  }
+
+  // 自动续订仅替换轮播定时器，避免误取消正在推进的帧任务。
+  const clearAutoPlayTimer = () => {
+    clearTimeout(swiperRef.current.autoplayTimer)
+    swiperRef.current.autoplayTimer = null
+  }
+
   // 清除定时器
   const stopAutoPlay = () => {
-    clearTimeout(swiperRef.current.autoplayTimer)
+    clearAutoPlayTimer()
+    clearPendingFrames()
     swiperRef.current.moving = false
-    swiperRef.current.autoplayTimer = null
   }
   // 定时轮播
   const autoplay = () => {
     if (childCount <= 1) return
-    stopAutoPlay()
+    // 自动续订只替换轮播定时器，不能取消 next 已安排的帧任务。
+    clearAutoPlayTimer()
     swiperRef.current.autoplayTimer = setTimeout(
       () => {
         next()
@@ -392,9 +411,12 @@ export const NoticeBar: FunctionComponent<
 
   // 下一页
   const next = () => {
+    clearPendingFrames()
     resetPosition()
-    requestFrame(() => {
-      requestFrame(() => {
+    firstFrameRef.current = raf(() => {
+      firstFrameRef.current = null
+      secondFrameRef.current = raf(() => {
+        secondFrameRef.current = null
         swiperRef.current.moving = false
         move({
           pace: 1,
@@ -407,10 +429,6 @@ export const NoticeBar: FunctionComponent<
   }
 
   const setStyle = (moveOffset = offset, currentRect = rect) => {
-    const target = innerRef.current
-    if (!target) {
-      return
-    }
     let _offset = 0
     const containerHeight = currentRect?.height || height
     const val = containerHeight - Number(height)
@@ -418,11 +436,12 @@ export const NoticeBar: FunctionComponent<
     _offset =
       moveOffset + Number(activeRef.current === childCount - 1 && val / 2)
 
-    target.style.transitionDuration = `${
-      swiperRef.current.moving ? 0 : duration
-    }ms`
-    target.style.height = `${Number(height) * (childCount + 1)}px`
-    target.style.transform = `translate3D(0,${_offset}px,0)`
+    // 小程序节点没有 DOM style 对象，使用声明式状态同步轨道样式。
+    setInnerStyle({
+      transitionDuration: `${swiperRef.current.moving ? 0 : duration}ms`,
+      height: `${Number(height) * (childCount + 1)}px`,
+      transform: `translate3D(0,${_offset}px,0)`,
+    })
   }
 
   // 无缝滚动第一个元素位移控制
@@ -452,10 +471,6 @@ export const NoticeBar: FunctionComponent<
     const currentPosition: any = active * Number(height)
     const targetOffset: any = offset - currentPosition
     return targetOffset
-  }
-  // 浏览器 帧 事件
-  const requestFrame = (fn: FrameRequestCallback) => {
-    window.requestAnimationFrame.call(window, fn)
   }
   // 取值 方法
   const range = (num: number, min: number, max: number) => {
@@ -515,11 +530,13 @@ export const NoticeBar: FunctionComponent<
 
   const renderAutoCloseIcon = () => {
     return (
+      // 时长变化时重建圆环，使 CSS 动画与关闭定时器同步重启。
       <View
+        key={`auto-close-${autoClose}`}
         className={`${classPrefix}-box-close-countdown`}
         style={
           {
-            '--progress': `${autoCloseProgress}%`,
+            '--noticebar-auto-close-duration': `${autoClose}ms`,
           } as React.CSSProperties
         }
       >
@@ -599,7 +616,7 @@ export const NoticeBar: FunctionComponent<
         >
           {renderLeftIcon()}
           {children ? (
-            <View className={`${classPrefix}-box-wrap`} ref={innerRef}>
+            <View className={`${classPrefix}-box-wrap`} style={innerStyle}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   <View

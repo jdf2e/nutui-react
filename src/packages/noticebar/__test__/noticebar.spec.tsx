@@ -253,7 +253,6 @@ test('vertical container height calculation with children', async () => {
         // 验证容器高度应该是 (childCount + 1) * height
         // childCount = 4, height = 50, 所以期望高度是 (4 + 1) * 50 = 250px
         const expectedHeight = `${(horseLamp1.length + 1) * height}px`
-        console.log(wrapElement, 'wrapElement')
         expect(wrapElement).toHaveStyle(`height: ${expectedHeight}`)
       }
     },
@@ -426,5 +425,158 @@ test('autoClose renders countdown ring and closes after delay', async () => {
   expect(container.querySelector('.nut-noticebar-box')).toBeFalsy()
   expect(handleClose).toHaveBeenCalled()
 
+  vi.useRealTimers()
+})
+
+test('autoClose countdown runs without progress state renders', () => {
+  vi.useFakeTimers()
+  const onRender = vi.fn()
+  const { container } = render(
+    <React.Profiler id="noticebar" onRender={onRender}>
+      <NoticeBar content="自动关闭" autoClose={1000} scrollable={false} />
+    </React.Profiler>
+  )
+
+  act(() => {
+    vi.advanceTimersByTime(0)
+  })
+  onRender.mockClear()
+  act(() => {
+    vi.advanceTimersByTime(500)
+  })
+
+  const countdown = container.querySelector(
+    '.nut-noticebar-box-close-countdown'
+  ) as HTMLElement
+  expect(onRender).not.toHaveBeenCalled()
+  expect(
+    countdown.style.getPropertyValue('--noticebar-auto-close-duration')
+  ).toBe('1000ms')
+
+  vi.useRealTimers()
+})
+
+test('autoClose restarts on delay changes and uses the latest callback', () => {
+  vi.useFakeTimers()
+  const firstClose = vi.fn()
+  const latestClose = vi.fn()
+  const { container, rerender } = render(
+    <NoticeBar content="自动关闭" autoClose={1000} onClose={firstClose} />
+  )
+  const initialCountdown = container.querySelector(
+    '.nut-noticebar-box-close-countdown'
+  )
+
+  act(() => {
+    vi.advanceTimersByTime(400)
+  })
+  rerender(
+    <NoticeBar content="自动关闭" autoClose={800} onClose={latestClose} />
+  )
+  const restartedCountdown = container.querySelector(
+    '.nut-noticebar-box-close-countdown'
+  ) as HTMLElement
+  expect(restartedCountdown).not.toBe(initialCountdown)
+  expect(
+    restartedCountdown.style.getPropertyValue('--noticebar-auto-close-duration')
+  ).toBe('800ms')
+  act(() => {
+    vi.advanceTimersByTime(799)
+  })
+  expect(container.querySelector('.nut-noticebar-box')).toBeTruthy()
+  act(() => {
+    vi.advanceTimersByTime(1)
+  })
+
+  expect(firstClose).not.toHaveBeenCalled()
+  expect(latestClose).toHaveBeenCalledTimes(1)
+  expect(container.querySelector('.nut-noticebar-box')).toBeFalsy()
+
+  vi.useRealTimers()
+})
+
+test('autoClose uses the latest callback without restarting the delay', () => {
+  vi.useFakeTimers()
+  const firstClose = vi.fn()
+  const latestClose = vi.fn()
+  const { container, rerender } = render(
+    <NoticeBar content="自动关闭" autoClose={1000} onClose={firstClose} />
+  )
+  const initialCountdown = container.querySelector(
+    '.nut-noticebar-box-close-countdown'
+  )
+
+  act(() => {
+    vi.advanceTimersByTime(400)
+  })
+  rerender(
+    <NoticeBar content="自动关闭" autoClose={1000} onClose={latestClose} />
+  )
+  expect(container.querySelector('.nut-noticebar-box-close-countdown')).toBe(
+    initialCountdown
+  )
+  act(() => {
+    vi.advanceTimersByTime(600)
+  })
+
+  expect(firstClose).not.toHaveBeenCalled()
+  expect(latestClose).toHaveBeenCalledTimes(1)
+  vi.useRealTimers()
+})
+
+test('unmounting cancels the pending autoClose callback', () => {
+  vi.useFakeTimers()
+  const handleClose = vi.fn()
+  const { unmount } = render(
+    <NoticeBar content="自动关闭" autoClose={1000} onClose={handleClose} />
+  )
+
+  unmount()
+  act(() => {
+    vi.advanceTimersByTime(1000)
+  })
+
+  expect(handleClose).not.toHaveBeenCalled()
+  vi.useRealTimers()
+})
+
+test('manual close cancels autoClose callback', () => {
+  vi.useFakeTimers()
+  const handleClose = vi.fn()
+  const { container } = render(
+    <NoticeBar content="自动关闭" autoClose={1000} onClose={handleClose} />
+  )
+
+  fireEvent.click(
+    container.querySelector('.nut-noticebar-box-right-icon') as Element
+  )
+  act(() => {
+    vi.advanceTimersByTime(1000)
+  })
+
+  expect(handleClose).toHaveBeenCalledTimes(1)
+  vi.useRealTimers()
+})
+
+test('disabling autoClose cancels the pending close', () => {
+  vi.useFakeTimers()
+  const handleClose = vi.fn()
+  const { container, rerender } = render(
+    <NoticeBar content="自动关闭" autoClose={1000} onClose={handleClose} />
+  )
+
+  act(() => {
+    vi.advanceTimersByTime(400)
+  })
+  rerender(<NoticeBar content="手动关闭" autoClose={0} onClose={handleClose} />)
+  act(() => {
+    vi.advanceTimersByTime(1000)
+  })
+
+  expect(handleClose).not.toHaveBeenCalled()
+  expect(container.querySelector('.nut-noticebar-box')).toBeTruthy()
+  expect(
+    container.querySelector('.nut-noticebar-box-close-countdown')
+  ).toBeFalsy()
   vi.useRealTimers()
 })
