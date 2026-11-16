@@ -83,7 +83,8 @@ export const NoticeBar: FunctionComponent<
   const [offsetWidth, SetOffsetW] = useState(0)
   const [animationClass, SetAnimationClass] = useState('')
   const [animate, SetAnimate] = useState(false)
-  const [timer, SetTimer] = useState(0)
+  // interval 不参与渲染，使用 ref 让生命周期清理始终读取当前任务。
+  const verticalTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const [isCanScroll, SetIsCanScroll] = useState<null | boolean>(null)
   const isVertical = direction === 'vertical'
   const [rect, setRect] = useState(null as any | null)
@@ -155,8 +156,10 @@ export const NoticeBar: FunctionComponent<
       initScrollWrap(content)
     }
     return () => {
-      // 销毁事件
-      clearInterval(timer)
+      if (verticalTimerRef.current !== null) {
+        clearInterval(verticalTimerRef.current)
+        verticalTimerRef.current = null
+      }
     }
   }, [childs])
 
@@ -223,8 +226,10 @@ export const NoticeBar: FunctionComponent<
    */
   const startRollEasy = () => {
     showhorseLamp()
-    const timerCurr = window.setInterval(showhorseLamp, time + Number(duration))
-    SetTimer(timerCurr)
+    verticalTimerRef.current = setInterval(
+      showhorseLamp,
+      time + Number(duration)
+    )
   }
 
   const showhorseLamp = () => {

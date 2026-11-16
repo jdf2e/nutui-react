@@ -580,3 +580,51 @@ test('disabling autoClose cancels the pending close', () => {
   ).toBeFalsy()
   vi.useRealTimers()
 })
+
+describe('vertical list timer cleanup', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+  })
+
+  test.each(['unmount', 'children change'])(
+    'vertical list releases its timer on %s',
+    (teardown) => {
+      const { container, rerender, unmount } = render(
+        <NoticeBar
+          direction="vertical"
+          list={['第一条', '第二条']}
+          height={40}
+          speed={10}
+          duration={100}
+        />
+      )
+
+      // 第一轮过渡完成后再清理，验证正常轮播及 interval 的生命周期。
+      act(() => vi.advanceTimersByTime(1000))
+      expect(
+        Array.from(
+          container.querySelectorAll('.nut-noticebar-box-horseLamp-list-item')
+        ).map((item) => item.textContent)
+      ).toEqual(['第二条', '第一条'])
+
+      if (teardown === 'unmount') {
+        unmount()
+      } else {
+        rerender(
+          <NoticeBar direction="vertical" height={40} speed={10} duration={100}>
+            <span>自定义内容</span>
+          </NoticeBar>
+        )
+        expect(container).toHaveTextContent('自定义内容')
+      }
+
+      act(() => vi.advanceTimersByTime(2200))
+      expect(vi.getTimerCount()).toBe(0)
+    }
+  )
+})
