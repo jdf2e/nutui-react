@@ -70,9 +70,12 @@ const startNative = () => {
   }
 
   const call = () => {
+    const invoke = win.jmfe?.callNative
+    if (!invoke) return false
     try {
-      win.jmfe?.callNative?.(PLUGIN, LISTEN, {}, '0')
-      return !!win.jmfe?.callNative
+      // 插件不存在时可能返回 reject 的 Promise，需吞掉避免 Uncaught (in promise)
+      Promise.resolve(invoke(PLUGIN, LISTEN, {}, '0')).catch(() => {})
+      return true
     } catch {
       return false
     }

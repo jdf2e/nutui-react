@@ -182,6 +182,22 @@ test('pop destroyOnClose', () => {
   expect(onClose).toBeCalled()
 })
 
+test('should render segment classes for iPhone Duo hinge avoidance', () => {
+  const { container, rerender } = render(
+    <Popup visible position="center" segment="left" />
+  )
+  expect(container.querySelector('.nut-popup-center-segment-left')).toBeTruthy()
+
+  rerender(<Popup visible position="center" segment="right" />)
+  expect(
+    container.querySelector('.nut-popup-center-segment-right')
+  ).toBeTruthy()
+
+  rerender(<Popup visible position="center" segment="center" />)
+  expect(container.querySelector('.nut-popup-center-segment-left')).toBeFalsy()
+  expect(container.querySelector('.nut-popup-center-segment-right')).toBeFalsy()
+})
+
 test('handles touch events correctly', () => {
   const handleTouchStart = vi.fn()
   const handleTouchMove = vi.fn()
