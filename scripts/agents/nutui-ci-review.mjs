@@ -52,6 +52,33 @@ function getBundleDiffStat() {
   }
 }
 
+function checkWorkflowSecurity(diffFiles) {
+  const workflowFiles = diffFiles.filter(f => f.startsWith('.github/workflows/') && (f.endsWith('.yml') || f.endsWith('.yaml')));
+  const errors = [];
+
+  for (const wf of workflowFiles) {
+    const fullPath = path.join(ROOT_DIR, wf);
+    if (!fs.existsSync(fullPath)) continue;
+
+    const content = fs.readFileSync(fullPath, 'utf-8');
+    const lines = content.split('\n');
+
+    lines.forEach((line, idx) => {
+      const match = line.match(/^\s*-\s*uses:\s*['"]?([^'"\s]+)['"]?/i) || line.match(/^\s*uses:\s*['"]?([^'"\s]+)['"]?/i);
+      if (match) {
+        const actionRef = match[1];
+        // 严格白名单：仅允许 GitHub 官方 actions/ 或 本地路径 ./
+        const isOfficial = actionRef.startsWith('actions/') || actionRef.startsWith('./');
+        if (!isOfficial) {
+          errors.push(`🔴 **[CI 供应链安全红线]** 在 \`${wf}\` 第 ${idx + 1} 行检测到引入了非 GitHub 官方维护的三方库/Action: \`${actionRef}\`。为保障仓库流水线安全，严禁引入任何第三方 Action，**强制拒绝合并**！`);
+        }
+      }
+    });
+  }
+
+  return errors;
+}
+
 function checkDualParityAndRules(comp) {
   const compDir = path.join(PACKAGES_DIR, comp);
   const errors = [];
@@ -145,6 +172,14 @@ async function main() {
     blockers.push(`🔴 **[架构红线] 单个 PR 仅限单组件原则**：本次 PR 共修改了 **${components.length}** 个组件 (\`${components.join(', ')}\`)。违反 NutUI 单组件独立 PR 准则，必须拆分后分别提交！`);
   } else if (components.length === 1) {
     highlights.push(`符合单组件 PR 原则 (仅修改组件: \`${components[0]}\`)`);
+  }
+
+  // 2. 供应链安全红线：CI 工作流三方库检测
+  const securityErrors = checkWorkflowSecurity(diffFiles);
+  if (securityErrors.length > 0) {
+    securityErrors.forEach(err => blockers.push(err));
+  } else if (diffFiles.some(f => f.startsWith('.github/workflows/'))) {
+    highlights.push(`CI 工作流安全检查通过：未引入任何未经认证的三方 Action。`);
   }
 
   // 2. 逐组件质量核查
