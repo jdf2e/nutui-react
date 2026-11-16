@@ -73,5 +73,6 @@ src/packages/**/*.harmony.css
 
 # AI Review report temporary file
 pr-review-report.md
+pr-review-status.json
 
 .playwright-cli/
