@@ -76,7 +76,6 @@ export const NoticeBar: FunctionComponent<
   const wrapRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const [showNoticeBar, setShowNoticeBar] = useState(true)
-  const [autoCloseProgress, setAutoCloseProgress] = useState(100)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
   const [firstRound, SetFirstRound] = useState(true)
@@ -130,28 +129,18 @@ export const NoticeBar: FunctionComponent<
   const onCloseRef = useRef(onClose)
   onCloseRef.current = onClose
   const autoCloseTimerRef = useRef(0)
-  const autoCloseIntervalRef = useRef(0)
 
-  // 自动关闭
+  // 自动关闭只维护最终触发器，圆环进度交由 CSS 动画处理，避免高频渲染。
   useEffect(() => {
     if (autoClose && autoClose > 0 && showNoticeBar) {
-      const startTime = Date.now()
-      autoCloseIntervalRef.current = window.setInterval(() => {
-        const elapsed = Date.now() - startTime
-        const remaining = Math.max(0, 100 - (elapsed / autoClose) * 100)
-        setAutoCloseProgress(remaining)
-        if (remaining <= 0) clearInterval(autoCloseIntervalRef.current)
-      }, 50)
       autoCloseTimerRef.current = window.setTimeout(() => {
         setShowNoticeBar(false)
         onCloseRef.current?.()
       }, autoClose)
       return () => {
-        clearInterval(autoCloseIntervalRef.current)
         clearTimeout(autoCloseTimerRef.current)
       }
     }
-    setAutoCloseProgress(100)
   }, [autoClose, showNoticeBar])
 
   useEffect(() => {
@@ -212,7 +201,6 @@ export const NoticeBar: FunctionComponent<
   const onClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
     setShowNoticeBar(false)
-    clearInterval(autoCloseIntervalRef.current)
     clearTimeout(autoCloseTimerRef.current)
     close && close(event)
     onClose && onClose(event)
@@ -497,11 +485,13 @@ export const NoticeBar: FunctionComponent<
 
   const renderAutoCloseIcon = () => {
     return (
+      // 时长变化时重建圆环，使 CSS 动画与关闭定时器同步重启。
       <div
+        key={`auto-close-${autoClose}`}
         className={`${classPrefix}-box-close-countdown`}
         style={
           {
-            '--progress': `${autoCloseProgress}%`,
+            '--noticebar-auto-close-duration': `${autoClose}ms`,
           } as React.CSSProperties
         }
       >
