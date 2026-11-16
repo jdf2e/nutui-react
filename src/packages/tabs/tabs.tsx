@@ -96,8 +96,9 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
 
   // 标题/内容变化后重新布局,再测一次;窗口尺寸变化时也重测
   useEffect(() => {
+    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
     raf(measureScrollable)
-  }, [children, measureScrollable])
+  }, [activeType, direction, align, children, measureScrollable])
   useEffect(() => {
     // 仅卡片模式需要按可用宽度重测;其余模式提前返回,避免挂无用的 resize 监听
     if (activeType !== 'card' || direction !== 'horizontal' || !align) return
