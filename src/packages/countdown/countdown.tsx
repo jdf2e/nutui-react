@@ -149,47 +149,46 @@ const InternalCountDown: ForwardRefRenderFunction<
   }) => {
     const { d } = time
     let { h, m, s, ms } = time
-    let formatCache = format
+    const tokenValues: Record<string, string> = {}
 
-    if (formatCache.includes('DD')) {
-      formatCache = formatCache.replace('DD', padZero(d))
+    if (format.includes('DD')) {
+      tokenValues.DD = padZero(d)
     } else {
       h += Number(d) * 24
     }
 
-    if (formatCache.includes('HH')) {
-      formatCache = formatCache.replace('HH', padZero(h))
+    if (format.includes('HH')) {
+      tokenValues.HH = padZero(h)
     } else {
       m += Number(h) * 60
     }
 
-    if (formatCache.includes('mm')) {
-      formatCache = formatCache.replace('mm', padZero(m))
+    if (format.includes('mm')) {
+      tokenValues.mm = padZero(m)
     } else {
       s += Number(m) * 60
     }
 
-    if (formatCache.includes('ss')) {
-      formatCache = formatCache.replace('ss', padZero(s))
+    if (format.includes('ss')) {
+      tokenValues.ss = padZero(s)
     } else {
       ms += Number(s) * 1000
     }
 
-    if (formatCache.includes('S')) {
+    if (format.includes('S')) {
       const msC = padZero(ms, 3).toString()
-
-      if (formatCache.includes('SSS')) {
-        formatCache = formatCache.replace('SSS', msC)
-      } else if (formatCache.includes('SS')) {
-        formatCache = formatCache.replace('SS', msC.slice(0, 2))
-      } else if (formatCache.includes('S')) {
-        formatCache = formatCache.replace('S', msC.slice(0, 1))
+      if (format.includes('SSS')) {
+        tokenValues.SSS = msC
+      } else if (format.includes('SS')) {
+        tokenValues.SS = msC.slice(0, 2)
+      } else {
+        tokenValues.S = msC.slice(0, 1)
       }
     }
 
-    // 百毫秒 1 位；须在 S/SS/SSS 之后替换
-    if (formatCache.includes('i')) {
-      formatCache = formatCache.replace('i', String(Math.floor(ms / 100) % 10))
+    // 百毫秒 1 位；须在 S/SS/SSS 之后计算
+    if (format.includes('i')) {
+      tokenValues.i = String(Math.floor(ms / 100) % 10)
     }
 
     let numberClass = 'nut-countdown-number'
@@ -198,13 +197,44 @@ const InternalCountDown: ForwardRefRenderFunction<
     } else if (type === 'text') {
       numberClass = 'nut-countdown-number-text'
     }
-    // ss.i（如 30.5）同块；带小数点的片段加 ssi 类
-    formatCache = formatCache.replace(/(\d+\.\d+|\d+)/g, (_, num: string) => {
-      const ssiClass = num.includes('.') ? ' nut-countdown-number-ssi' : ''
-      return `<span class="${numberClass}${ssiClass}">${num}</span>`
-    })
 
-    return formatCache
+    // 按 token 切分，直接映射为 JSX，避免拼 HTML 字符串
+    const parts = format.split(/(DD|HH|mm|ss|SSS|SS|S|i)/)
+    const nodes: React.ReactNode[] = []
+
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i]
+      if (part) {
+        // ss.i（如 30.5）合并为同一数字块，并加 ssi 类
+        if (
+          part === 'ss' &&
+          parts[i + 1] === '.' &&
+          parts[i + 2] === 'i' &&
+          tokenValues.ss !== undefined &&
+          tokenValues.i !== undefined
+        ) {
+          nodes.push(
+            <span
+              key={`ssi-${i}`}
+              className={`${numberClass} nut-countdown-number-ssi`}
+            >
+              {`${tokenValues.ss}.${tokenValues.i}`}
+            </span>
+          )
+          i += 2
+        } else if (tokenValues[part] !== undefined) {
+          nodes.push(
+            <span key={`${part}-${i}`} className={numberClass}>
+              {tokenValues[part]}
+            </span>
+          )
+        } else {
+          nodes.push(part)
+        }
+      }
+    }
+
+    return nodes
   }
 
   const pause = () => {
@@ -290,10 +320,6 @@ const InternalCountDown: ForwardRefRenderFunction<
     destroy && cancelAnimationFrame(stateRef.current.timer)
   }
 
-  const renderTime = (() => {
-    return formatRemainTime(stateRef.current.restTime)
-  })()
-
   return (
     <>
       {children || (
@@ -301,10 +327,9 @@ const InternalCountDown: ForwardRefRenderFunction<
           className={`${classPrefix} ${classPrefix}-${type} ${className}`}
           style={{ ...style }}
           {...rest}
-          dangerouslySetInnerHTML={{
-            __html: `${renderTime}`,
-          }}
-        />
+        >
+          {formatRemainTime(stateRef.current.restTime)}
+        </div>
       )}
     </>
   )
