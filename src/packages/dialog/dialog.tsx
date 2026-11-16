@@ -15,7 +15,7 @@ import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import { useConfig } from '@/packages/configprovider'
 import { WebDialogProps, DialogReturnProps, DialogComponent } from '@/types'
 import { mergeProps } from '@/utils/merge-props'
-import { useFoldSegment } from './use-fold-segment'
+import { useFoldSegment } from '@/hooks/use-fold-segment'
 
 const defaultProps = {
   ...defaultOverlayProps,
