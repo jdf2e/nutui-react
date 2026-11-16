@@ -1,7 +1,7 @@
 name: AI PR Automated Review
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
     branches:
       - feat_v4.x
@@ -21,6 +21,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -41,6 +42,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -61,6 +63,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -81,6 +84,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
 
       - name: Install pnpm
@@ -102,7 +106,7 @@ jobs:
           node scripts/agents/nutui-ci-review.mjs --gate=coverage "origin/${{ github.base_ref }}"
 
   pr-architecture-review:
-    name: "AI 门禁 / 5. 深度架构评审与通知"
+    name: "AI 门禁 / 5. 深度架构评审与评论同步"
     runs-on: ubuntu-latest
     needs: [gate-single-component, gate-ci-security, gate-whitepaper, gate-coverage]
     if: ${{ always() }}
@@ -110,6 +114,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -128,7 +133,7 @@ jobs:
             --step4=${{ needs.gate-coverage.result }} \
             "origin/${{ github.base_ref }}"
 
-      - name: 同步评审报告至 PR 评论区 (若具备写入权限)
+      - name: 同步评审报告至 PR 讨论区
         if: ${{ always() }}
         uses: actions/github-script@v7
         with:
@@ -159,21 +164,23 @@ jobs:
                 );
 
                 if (botComment) {
-                  await github.rest.issues.updateComment({
+                  const res = await github.rest.issues.updateComment({
                     owner,
                     repo,
                     comment_id: botComment.id,
                     body,
                   });
+                  console.log('✅ 已成功更新 PR 评论:', res.data.html_url);
                 } else {
-                  await github.rest.issues.createComment({
+                  const res = await github.rest.issues.createComment({
                     owner,
                     repo,
                     issue_number,
                     body,
                   });
+                  console.log('✅ 已成功发布 PR 评论:', res.data.html_url);
                 }
               } catch (err) {
-                console.log('[Notice] PR 评论发布被跳过 (Fork 权限限制或外部仓库):', err.message);
+                console.error('❌ 发布/更新 PR 评论异常:', err);
               }
             }

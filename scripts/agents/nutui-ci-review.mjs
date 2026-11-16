@@ -41,7 +41,8 @@ for (const arg of args) {
   }
 }
 
-const baseRef = process.env.GITHUB_BASE_REF || baseRefArg || 'origin/feat_v4.x';
+const rawBaseRef = baseRefArg || (process.env.GITHUB_BASE_REF ? `origin/${process.env.GITHUB_BASE_REF}` : 'origin/feat_v4.x');
+const baseRef = rawBaseRef.startsWith('origin/') ? rawBaseRef : `origin/${rawBaseRef}`;
 
 function appendStepSummary(markdown) {
   if (process.env.GITHUB_STEP_SUMMARY) {
@@ -55,7 +56,7 @@ function appendStepSummary(markdown) {
 
 function getDiffFiles() {
   try {
-    return execSync(`git diff --name-only ${baseRef}...HEAD 2>/dev/null || git diff --name-only HEAD~1...HEAD 2>/dev/null || git diff --name-only HEAD`, { encoding: 'utf-8' })
+    return execSync(`git diff --name-only ${baseRef}...HEAD 2>/dev/null || git diff --name-only origin/feat_v4.x...HEAD 2>/dev/null || git diff --name-only HEAD~1...HEAD 2>/dev/null || git diff --name-only HEAD`, { encoding: 'utf-8' })
       .split('\n')
       .map(s => s.trim())
       .filter(Boolean);
