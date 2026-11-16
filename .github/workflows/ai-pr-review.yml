@@ -1,0 +1,85 @@
+name: AI PR Automated Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - feat_v4.x
+      - next
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  ai-review:
+    name: NutUI AI Quality Gate & Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        run: npm i -g pnpm@10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Run AI PR Review & Quality Gates
+        id: review
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+        run: |
+          node scripts/agents/nutui-ci-review.mjs "origin/${{ github.base_ref }}"
+
+      - name: Comment PR with AI Review Report
+        if: ${{ always() }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const reportPath = path.join(process.env.GITHUB_WORKSPACE, 'pr-review-report.md');
+            if (fs.existsSync(reportPath)) {
+              const body = fs.readFileSync(reportPath, 'utf-8');
+              const issue_number = context.payload.pull_request?.number;
+              if (!issue_number) return;
+              const { owner, repo } = context.repo;
+
+              // 查找是否已存在 AI Review 评论，若有则更新，避免重复刷屏
+              const comments = await github.rest.issues.listComments({
+                owner,
+                repo,
+                issue_number,
+              });
+              const botComment = comments.data.find(comment => 
+                comment.body && comment.body.includes('NutUI-React AI 自动化 PR 评审报告')
+              );
+
+              if (botComment) {
+                await github.rest.issues.updateComment({
+                  owner,
+                  repo,
+                  comment_id: botComment.id,
+                  body,
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner,
+                  repo,
+                  issue_number,
+                  body,
+                });
+              }
+            }

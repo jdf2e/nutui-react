@@ -19,6 +19,8 @@ alwaysApply: true
    - 杜绝高频无谓 re-render，降低 DOM 节点数，动画尽量交给 CSS。
 5. **已有组件复用度深度评估**：
    - 评估改动中是否应当复用现有原子组件（如 Divider/Space/Tag 等），同时防止过度封装与深层依赖膨胀。
-6. **多端平权 (H5 & Taro) 与验证闭环**：
+6. **CI 供应链安全红线 (禁止三方 Action)**：
+   - 在任何 `.github/workflows/*.yml` 配置文件中，严禁在 `uses` 中引入非 GitHub 官方 (`actions/*`) 的三方 Action，一经检出强制拒绝合并。
+7. **多端平权 (H5 & Taro) 与验证闭环**：
    - 严禁在 Taro 端裸用 `window` 或 `document`。
    - 提交前必须执行并通过：`node scripts/agents/nutui-verify.mjs <comp>`。

@@ -109,6 +109,54 @@ function verifyStyleFile(filePath) {
   return { file: filePath, passed, errors };
 }
 
+function getChangedWorkflowFiles() {
+  try {
+    const diffFiles = execSync('git diff --name-only HEAD', { encoding: 'utf-8' })
+      .split('\n')
+      .concat(execSync('git diff --cached --name-only', { encoding: 'utf-8' }).split('\n'))
+      .filter(Boolean);
+
+    return Array.from(new Set(diffFiles.filter(f => f.startsWith('.github/workflows/') && (f.endsWith('.yml') || f.endsWith('.yaml')))));
+  } catch (err) {
+    return [];
+  }
+}
+
+function verifyWorkflowSecurity(filePath) {
+  const fullPath = path.join(ROOT_DIR, filePath);
+  if (!fs.existsSync(fullPath)) return { file: filePath, passed: true, errors: [] };
+
+  const errors = [];
+  log(`\n🛡️ 正在检查 CI 工作流供应链安全: [${filePath}]`, colors.cyan + colors.bold);
+
+  try {
+    const content = fs.readFileSync(fullPath, 'utf-8');
+    const lines = content.split('\n');
+
+    lines.forEach((line, idx) => {
+      const match = line.match(/^\s*-\s*uses:\s*['"]?([^'"\s]+)['"]?/i) || line.match(/^\s*uses:\s*['"]?([^'"\s]+)['"]?/i);
+      if (match) {
+        const actionRef = match[1];
+        const isOfficial = actionRef.startsWith('actions/') || actionRef.startsWith('./');
+        if (!isOfficial) {
+          errors.push(`[CI 安全红线] 第 ${idx + 1} 行引入了非 GitHub 官方维护的三方库/Action: "${actionRef}"。为防止供应链投毒，严禁引入三方 Action，强制拒绝合并！`);
+        }
+      }
+    });
+  } catch (e) {
+    // ignore
+  }
+
+  const passed = errors.length === 0;
+  if (passed) {
+    log(`✨ [${filePath}] CI 供应链安全检查通过！`, colors.green + colors.bold);
+  } else {
+    log(`❌ [${filePath}] 发现 CI 安全阻断项:`, colors.red + colors.bold);
+    errors.forEach(e => log(`  🔴 ${e}`, colors.red));
+  }
+  return { file: filePath, passed, errors };
+}
+
 async function verifyComponent(comp) {
   const compDir = path.join(PACKAGES_DIR, comp);
   if (!fs.existsSync(compDir)) {
@@ -214,13 +262,22 @@ async function main() {
 
   const components = getChangedComponents();
   const styleFiles = getChangedStyleFiles();
+  const workflowFiles = getChangedWorkflowFiles();
 
-  if (components.length === 0 && styleFiles.length === 0) {
-    log(`ℹ️  未指定组件且没有检测到修改的组件/样式，建议直接指定: node scripts/agents/nutui-verify.mjs <component>`, colors.yellow);
+  if (components.length === 0 && styleFiles.length === 0 && workflowFiles.length === 0) {
+    log(`ℹ️  未指定组件且没有检测到修改的组件/样式/工作流，建议直接指定: node scripts/agents/nutui-verify.mjs <component>`, colors.yellow);
     process.exit(0);
   }
 
   let allPassed = true;
+
+  // 1. CI 工作流供应链安全校验
+  for (const wf of workflowFiles) {
+    const res = verifyWorkflowSecurity(wf);
+    if (!res.passed) {
+      allPassed = false;
+    }
+  }
 
   // 1. 样式变量校验
   for (const styleFile of styleFiles) {
