@@ -416,13 +416,19 @@ export const Popup: FunctionComponent<
     setTransitionName(transition || `${classPrefix}-slide-${position}`)
   }, [position, transition])
 
-  const resolveContainer = (getContainer: any) =>
-    (typeof getContainer === 'function' ? getContainer() : getContainer) ||
-    document.body
+  const resolveContainer = (getContainer: any) => {
+    const custom =
+      typeof getContainer === 'function' ? getContainer() : getContainer
+    if (custom) return custom
+    // 小程序无 document；H5/Web 才回落到 body（避免 taro 文件裸调 document.body）
+    const doc = typeof document !== 'undefined' ? document : null
+    return doc?.body ?? null
+  }
 
   const renderToContainer = (getContainer: any, node: ReactElement) => {
     if (getContainer) {
       const container = resolveContainer(getContainer)
+      if (!container) return node
       return createPortal(node, container) as ReactPortal
     }
     return node
