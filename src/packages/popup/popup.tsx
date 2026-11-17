@@ -15,6 +15,7 @@ import { Close } from '@nutui/icons-react'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
+import { useFoldSegment } from '@/hooks/use-fold-segment'
 import { WebPopupProps } from '@/types'
 import { useConfig } from '@/packages/configprovider'
 
@@ -76,6 +77,7 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    segment,
     resizable,
     minHeight,
     onOpen,
@@ -97,6 +99,10 @@ export const Popup: FunctionComponent<
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
+  // 仅居中弹层跟随折叠屏；非 center 传锁定值避免订阅
+  const resolvedSegment = useFoldSegment(
+    position === 'center' ? (segment ?? 'auto') : 'center'
+  )
 
   const touchStartRef = useRef(0)
   const touchMoveDistanceRef = useRef(0)
@@ -123,6 +129,10 @@ export const Popup: FunctionComponent<
     {
       [`${classPrefix}-round`]: round || position === 'bottom',
       [`${classPrefix}-${position}`]: true,
+      [`${classPrefix}-center-segment-left`]:
+        position === 'center' && resolvedSegment === 'left',
+      [`${classPrefix}-center-segment-right`]:
+        position === 'center' && resolvedSegment === 'right',
     },
     className
   )
