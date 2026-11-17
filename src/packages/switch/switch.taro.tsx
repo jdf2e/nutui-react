@@ -120,6 +120,12 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
             [`${classPrefix}-button-stretch`]: stretching,
           },
         ])}
+        style={
+          {
+            '--nut-switch-stretch-origin':
+              value !== rtl ? 'left center' : 'right center',
+          } as React.CSSProperties
+        }
         onAnimationEnd={() => setStretching(false)}
       >
         {loading && loadingIcon ? (

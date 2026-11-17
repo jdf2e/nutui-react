@@ -1,20 +1,15 @@
-// 横向缩放峰值：45 / 32 ≈ 1.406，33ms / 200ms ≈ 16.5%
-$switch-button-stretch-peak: calc(45 / 32);
-$switch-motion-standard: cubic-bezier(0.38, 0, 0.24, 1);
-$switch-motion-ease-out: cubic-bezier(0, 0, 0, 1);
+// 横向缩放峰值约 45/32，关键帧对齐 200ms 内约 1/5
+$switch-button-stretch-peak: 1.4;
+$switch-motion-ease: cubic-bezier(0.38, 0, 0.24, 1);
 $switch-motion-duration: 200ms;
 
 @keyframes nut-switch-button-stretch {
-  0% {
-    transform: translateY(-50%) scaleX(1) scaleY(1);
-  }
-  16.5% {
-    // 横向拉长，纵向略压，更有弹性
-    transform: translateY(-50%) scaleX(#{$switch-button-stretch-peak})
-      scaleY(0.92);
-  }
+  0%,
   100% {
-    transform: translateY(-50%) scaleX(1) scaleY(1);
+    transform: translateY(-50%) scaleX(1);
+  }
+  20% {
+    transform: translateY(-50%) scaleX(#{$switch-button-stretch-peak});
   }
 }
 
@@ -39,8 +34,7 @@ $switch-motion-duration: 200ms;
   min-width: $switch-width;
   height: $switch-height;
   background-color: $switch-active-background-color;
-  // 颜色：ease out / 200ms
-  transition: background-color $switch-motion-duration $switch-motion-ease-out;
+  transition: background-color $switch-motion-duration $switch-motion-ease;
   border-radius: $switch-border-radius;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -61,25 +55,14 @@ $switch-motion-duration: 200ms;
     width: $switch-inside-width;
     border-radius: $switch-inside-border-radius;
     background: $color-primary-text;
-    // 位移：standard easing / 200ms — 0 → 20
-    transition: left $switch-motion-duration $switch-motion-standard;
+    transition: left $switch-motion-duration $switch-motion-ease;
     box-shadow: $switch-inside-box-shadow;
-    will-change: left, transform;
 
-    // 横向缩放：沿滑动方向拉伸（拖尾端为原点）
+    // 横向缩放：原点由 --nut-switch-stretch-origin 控制（滑动拖尾端）
     &-stretch {
+      transform-origin: var(--nut-switch-stretch-origin, left center);
       animation: nut-switch-button-stretch $switch-motion-duration
-        $switch-motion-standard;
-
-      &.nut-switch-button-open:not(.nut-switch-button-open-rtl),
-      &.nut-switch-button-close-rtl {
-        transform-origin: left center;
-      }
-
-      &.nut-switch-button-close:not(.nut-switch-button-close-rtl),
-      &.nut-switch-button-open-rtl {
-        transform-origin: right center;
-      }
+        $switch-motion-ease;
     }
 
     &-open {
@@ -110,8 +93,8 @@ $switch-motion-duration: 200ms;
       background: $switch-inactive-line-background-color;
       border-radius: 2px;
       transition:
-        opacity $switch-motion-duration $switch-motion-ease-out,
-        transform $switch-motion-duration $switch-motion-standard;
+        opacity $switch-motion-duration $switch-motion-ease,
+        transform $switch-motion-duration $switch-motion-ease;
     }
   }
 
@@ -177,7 +160,6 @@ $switch-motion-duration: 200ms;
     .nut-switch-button {
       transition: none;
       animation: none !important;
-      will-change: auto;
     }
 
     .nut-switch-close-line {
