@@ -12,6 +12,7 @@ export const defaultContentProps = {
   close: '',
   footerDirection: 'horizontal',
   onClick: () => {},
+  segment: 'auto',
 }
 
 export const Content: FunctionComponent<
@@ -31,6 +32,7 @@ export const Content: FunctionComponent<
     style,
     className,
     onClick,
+    segment,
   } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
@@ -74,7 +76,13 @@ export const Content: FunctionComponent<
 
   return (
     <div
-      className={classNames(`${classPrefix}-outer`, className)}
+      className={classNames(
+        `${classPrefix}-outer`,
+        segment &&
+          segment !== 'auto' &&
+          `${classPrefix}-outer-segment-${segment}`,
+        className
+      )}
       style={style}
       onClick={handleClick}
     >

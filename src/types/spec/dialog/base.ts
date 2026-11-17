@@ -19,6 +19,8 @@ export interface BaseContentProps extends BasicComponent {
   footer: ReactNode
   close: ReactNode
   footerDirection: DialogFooterDirection
+  /** 折叠屏展示位置；auto 时 Hybrid 下跟随铰链自动适配 */
+  segment?: 'left' | 'right' | 'center' | 'auto'
 }
 export interface DialogWrapProps
   extends WebOverlayProps, Omit<BaseContentProps, 'onClick'> {
@@ -48,6 +50,8 @@ export interface BaseDialog extends DialogWrapProps {
   beforeClose: () => boolean
   beforeCancel: () => boolean
   onConfirm: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
+  /** 折叠屏展示位置；auto 时 Hybrid 下跟随铰链自动适配 */
+  segment?: 'left' | 'right' | 'center' | 'auto'
 }
 
 export type DialogReturnProps = {
