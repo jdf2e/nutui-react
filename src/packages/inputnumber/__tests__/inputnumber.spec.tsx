@@ -3,6 +3,34 @@ import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { InputNumber } from '../inputnumber'
+import { InputNumber as TaroInputNumber } from '../inputnumber.taro'
+
+// 仅替换 Taro 宿主节点和图标，保留 InputNumber 自身的结构与状态逻辑。
+vi.mock('@tarojs/components', async () => {
+  const React = await import('react')
+  type MockViewProps = React.HTMLAttributes<HTMLDivElement> & {
+    hoverClass?: string
+    hoverStartTime?: number
+    hoverStayTime?: number
+  }
+  return {
+    View: React.forwardRef(function MockView(
+      { hoverClass, hoverStartTime, hoverStayTime, ...props }: MockViewProps,
+      ref: React.ForwardedRef<HTMLDivElement>
+    ) {
+      return (
+        <div
+          ref={ref}
+          data-hover-class={hoverClass}
+          data-hover-start-time={hoverStartTime}
+          data-hover-stay-time={hoverStayTime}
+          {...props}
+        />
+      )
+    }),
+  }
+})
+vi.mock('@nutui/icons-react-taro', () => ({ Minus: 'span', Plus: 'span' }))
 
 test('should render modelValue', () => {
   const { container } = render(<InputNumber defaultValue={12} />)
@@ -184,15 +212,139 @@ test('should overlimit when input', async () => {
   expect(overlimit).toBeCalled()
 })
 
-test('should render correct structure order: minus, divider, input, divider, add', () => {
-  const { container } = render(<InputNumber defaultValue={1} />)
-  const root = container.querySelector('.nut-inputnumber')!
-  const children = Array.from(root.children)
-  expect(children[0]).toHaveClass('nut-inputnumber-minus')
-  expect(children[1]).toHaveClass('nut-inputnumber-divider')
-  expect(children[2].tagName).toBe('INPUT')
-  expect(children[3]).toHaveClass('nut-inputnumber-divider')
-  expect(children[4]).toHaveClass('nut-inputnumber-add')
+describe.each([
+  ['H5', InputNumber],
+  ['Taro', TaroInputNumber],
+] as const)('%s structure', (_, Component) => {
+  test('renders only the interactive controls as real DOM nodes', () => {
+    const { container } = render(<Component defaultValue={1} />)
+    const root = container.querySelector('.nut-inputnumber')!
+    const children = Array.from(root.children)
+
+    expect(children).toHaveLength(3)
+    expect(children[0]).toHaveClass('nut-inputnumber-minus')
+    expect(children[1].tagName).toBe('INPUT')
+    expect(children[2]).toHaveClass('nut-inputnumber-add')
+    expect(container.querySelector('.nut-inputnumber-divider')).toBeNull()
+  })
+})
+
+describe('Taro interactions', () => {
+  test('updates values and reports plus, minus and boundary actions', async () => {
+    const plus = vi.fn()
+    const minus = vi.fn()
+    const overlimit = vi.fn()
+    const change = vi.fn()
+    const { container } = render(
+      <TaroInputNumber
+        defaultValue={2}
+        min={1}
+        max={3}
+        onPlus={plus}
+        onMinus={minus}
+        onOverlimit={overlimit}
+        onChange={change}
+      />
+    )
+    const plusButton = container.querySelector('.nut-inputnumber-add')!
+    const minusButton = container.querySelector('.nut-inputnumber-minus')!
+
+    await act(async () => fireEvent.click(plusButton))
+    expect(plus).toHaveBeenCalledOnce()
+    expect(change).toHaveBeenLastCalledWith(3, expect.anything())
+
+    await act(async () => fireEvent.click(plusButton))
+    expect(overlimit).toHaveBeenCalledOnce()
+
+    await act(async () => fireEvent.click(minusButton))
+    expect(minus).toHaveBeenCalledOnce()
+    expect(change).toHaveBeenLastCalledWith(2, expect.anything())
+  })
+
+  test('supports focus, input, formatting and blur callbacks', async () => {
+    const focus = vi.fn()
+    const blur = vi.fn()
+    const change = vi.fn()
+    const overlimit = vi.fn()
+    const { container } = render(
+      <TaroInputNumber
+        defaultValue="2"
+        min={1}
+        max={10}
+        digits={1}
+        select
+        onFocus={focus}
+        onBlur={blur}
+        onChange={change}
+        onOverlimit={overlimit}
+      />
+    )
+    const input = container.querySelector('input')!
+
+    fireEvent.focus(input)
+    expect(focus).toHaveBeenCalledOnce()
+    await act(async () => {
+      fireEvent.input(input, { target: { value: '20' } })
+    })
+    expect(overlimit).toHaveBeenCalledOnce()
+    fireEvent.blur(input)
+    expect(blur).toHaveBeenCalledOnce()
+    expect(change).toHaveBeenLastCalledWith('20.0', expect.anything())
+  })
+
+  test('supports empty values, formatter and cancelled changes', async () => {
+    const change = vi.fn()
+    const { container, rerender } = render(
+      <TaroInputNumber
+        defaultValue={2}
+        allowEmpty
+        formatter={(value) => `$${value}`}
+        onChange={change}
+      />
+    )
+    let input = container.querySelector('input')!
+    expect(input.value).toBe('$2')
+    fireEvent.focus(input)
+    await act(async () => {
+      fireEvent.input(input, { target: { value: '' } })
+    })
+    expect(change).toHaveBeenLastCalledWith('0', expect.anything())
+
+    change.mockClear()
+    rerender(
+      <TaroInputNumber
+        defaultValue={2}
+        beforeChange={() => Promise.resolve(false)}
+        onChange={change}
+      />
+    )
+    input = container.querySelector('input')!
+    await act(async () => {
+      fireEvent.input(input, { target: { value: '5' } })
+    })
+    expect(input.value).toBe('5')
+    expect(change).not.toHaveBeenCalled()
+  })
+
+  test('does not update when disabled or when step is undefined', async () => {
+    const change = vi.fn()
+    const { container, rerender } = render(
+      <TaroInputNumber defaultValue={2} disabled onChange={change} />
+    )
+    await act(async () => {
+      fireEvent.click(container.querySelector('.nut-inputnumber-add')!)
+      fireEvent.click(container.querySelector('.nut-inputnumber-minus')!)
+    })
+    expect(change).not.toHaveBeenCalled()
+
+    rerender(
+      <TaroInputNumber defaultValue={2} step={undefined} onChange={change} />
+    )
+    await act(async () => {
+      fireEvent.click(container.querySelector('.nut-inputnumber-add')!)
+    })
+    expect(change).not.toHaveBeenCalled()
+  })
 })
 
 test('should add disabled class when disabled', () => {

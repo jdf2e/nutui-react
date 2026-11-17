@@ -319,7 +319,8 @@ $cell-background-color: var(
 ) !default;
 $cell-box-shadow: var(
   --nutui-cell-box-shadow,
-  0px scale-px(1px) scale-px(7px) 0px rgba(237, 238, 241, 1)
+  0px scale-px(1px) scale-px(7px) 0px
+    var(--nutui-black-2, rgba(237, 238, 241, 1))
 ) !default;
 
 // cell-group（✅）
@@ -1240,6 +1241,16 @@ $range-button-border: var(
 ) !default;
 $range-tick-size: var(--nutui-range-tick-size, scale-px(8px)) !default;
 
+
+// swipe（✅）
+$swipe-background-color: var(
+  --nutui-swipe-background-color,
+  transparent
+) !default;
+$swipe-action-radius: var(
+  --nutui-swipe-action-radius,
+  $radius-base
+) !default;
 
 //swiper（✅）
 $swiper-indicator-bottom: var(--nutui-swiper-indicator-bottom, scale-px(12px));

@@ -3,7 +3,7 @@
 exports[`size test 1`] = `
 <div>
   <div
-    class="nut-rate nut-rate-horizontal"
+    class="nut-rate nut-rate-horizontal nut-rate-large"
   >
     <div
       class="nut-rate-list"

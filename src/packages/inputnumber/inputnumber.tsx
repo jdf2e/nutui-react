@@ -199,7 +199,6 @@ export const InputNumber: FunctionComponent<
           )}
         />
       </div>
-      <div className={`${classPrefix}-divider`} />
       <input
         className={classNames(`${classPrefix}-input`, {
           [`${classPrefix}-input-disabled`]: disabled,
@@ -213,7 +212,6 @@ export const InputNumber: FunctionComponent<
         onBlur={handleBlur}
         onFocus={handleFocus}
       />
-      <div className={`${classPrefix}-divider`} />
       <div
         className={classNames(`${classPrefix}-add`, {
           [`${classPrefix}-button-disabled`]: plusDisabled,
