@@ -23,40 +23,60 @@ const newCpt = {
 
 async function init() {
   const answers = {}
-  answers.name = await prompts.input({
-    message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
-    validate: (value) => {
-      const repeat = nav?.some((category) =>
-        category.packages.some((pkg) => pkg.name === value)
-      )
-      if (repeat) return '该组件名已存在！'
-      const pass = value && value.match(/^[A-Z]/)
-      return pass ? true : '不能为空，且每个单词的首字母都要大写，如TextBox'
-    },
-  })
-  answers.cName = await prompts.input({
-    message: '组件中文名(十个字以内)：',
-    validate: (value) =>
-      value && value.length <= 10 ? true : '不能为空，且不能超过十个字符',
-  })
-  answers.desc = await prompts.input({
-    message: '组件描述(五十个字以内)：',
-  })
-  answers.type = await prompts.rawlist({
-    message: '请选择组件类型(输入编号)：目前只支持组建模板',
-    choices: ['component'],
-    validate: (value) =>
-      /^[1-4]$/.test(value) ? true : '输入有误！请输入选项前编号',
-  })
-  answers.sort = await prompts.input({
-    message:
-      '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
-    validate: (value) =>
-      /^[1-7]$/.test(value) ? true : '输入有误！请输入选项前编号',
-  })
-  answers.author = await prompts.input({
-    message: '组件作者(可署化名):',
-  })
+  
+  // 支持 CLI 命令行非交互式参数 (供 AI Agent / 自动化脚本一键秒级生成)
+  const args = process.argv.slice(2)
+  const cliArgs = {}
+  for (const arg of args) {
+    const match = arg.match(/^--([^=]+)=(.*)$/)
+    if (match) {
+      cliArgs[match[1]] = match[2]
+    }
+  }
+
+  if (cliArgs.name) {
+    answers.name = cliArgs.name
+    answers.cName = cliArgs.cName || cliArgs.name
+    answers.desc = cliArgs.desc || `${cliArgs.name} 组件`
+    answers.type = cliArgs.type || 'component'
+    answers.sort = cliArgs.sort || '6' // 默认分类：6展示组件
+    answers.author = cliArgs.author || 'NutUI Agent'
+  } else {
+    answers.name = await prompts.input({
+      message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
+      validate: (value) => {
+        const repeat = nav?.some((category) =>
+          category.packages.some((pkg) => pkg.name === value)
+        )
+        if (repeat) return '该组件名已存在！'
+        const pass = value && value.match(/^[A-Z]/)
+        return pass ? true : '不能为空，且每个单词的首字母都要大写，如TextBox'
+      },
+    })
+    answers.cName = await prompts.input({
+      message: '组件中文名(十个字以内)：',
+      validate: (value) =>
+        value && value.length <= 10 ? true : '不能为空，且不能超过十个字符',
+    })
+    answers.desc = await prompts.input({
+      message: '组件描述(五十个字以内)：',
+    })
+    answers.type = await prompts.rawlist({
+      message: '请选择组件类型(输入编号)：目前只支持组建模板',
+      choices: ['component'],
+      validate: (value) =>
+        /^[1-4]$/.test(value) ? true : '输入有误！请输入选项前编号',
+    })
+    answers.sort = await prompts.input({
+      message:
+        '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
+      validate: (value) =>
+        /^[1-7]$/.test(value) ? true : '输入有误！请输入选项前编号',
+    })
+    answers.author = await prompts.input({
+      message: '组件作者(可署化名):',
+    })
+  }
 
   Object.assign(newCpt, answers)
   await createNew()
