@@ -140,6 +140,23 @@ async function buildES(p) {
     )
     await dest(file, result)
   }
+
+  // 校验 ES 产物中是否包含对 react 的 Component / PureComponent 具名导入（防止 Surface/Dynamic 端报 SyntaxError: Could not find export 'Component'）
+  const allEsFiles = await glob([`${dist}/es/**/*.js`])
+  const forbiddenImportRegex = /import\s*\{[^}]*\b(?:Pure)?Component\b[^}]*\}\s*from\s*['"]react['"]/
+  const leakedFiles = []
+  for (const file of allEsFiles) {
+    const content = readFileSync(join(__dirname, '../', file), 'utf8')
+    if (forbiddenImportRegex.test(content)) {
+      leakedFiles.push(file)
+    }
+  }
+  if (leakedFiles.length > 0) {
+    throw new Error(
+      `[Surface Guard] Found forbidden "Component/PureComponent" import from "react" in:\n  - ${leakedFiles.join('\n  - ')}\n` +
+      `Surface/Dynamic container runtime (taro:///react) DOES NOT export Component. Please refactor to FunctionComponent.`
+    )
+  }
 }
 
 // 构建 CMD

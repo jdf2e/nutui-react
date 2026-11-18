@@ -133,6 +133,9 @@ const config = {
       path.resolve(__dirname, '../../../', fileStr),
       path.resolve(__dirname, '../../../', themeStr),
     ],
+    sassOptions: {
+      silenceDeprecations: ['import', 'legacy-js-api'],
+    },
   },
   defineConstants: {},
   copy: {
@@ -212,6 +215,14 @@ const config = {
     publicPath: '/',
     staticDirectory: 'static',
     useHtmlComponents: useHtml === '1',
+    devServer: {
+      client: {
+        overlay: {
+          errors: true,
+          warnings: false,
+        },
+      },
+    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -238,8 +249,6 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]',
         },
       },
-      // 自定义 Webpack 配置
-      devServer: {},
     },
     output: {
       environment: {

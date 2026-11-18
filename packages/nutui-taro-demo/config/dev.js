@@ -39,5 +39,14 @@ module.exports = {
       })
     },
   },
-  h5: {},
+  h5: {
+    devServer: {
+      client: {
+        overlay: {
+          errors: true,
+          warnings: false,
+        },
+      },
+    },
+  },
 }
