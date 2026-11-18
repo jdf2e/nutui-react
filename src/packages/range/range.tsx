@@ -202,15 +202,9 @@ export const Range: FunctionComponent<
   const marksStyle = useCallback(
     (mark: any) => {
       const dir = rtl ? 'right' : 'left'
-      let style: any = {
-        [dir]: `${((mark - min) / scope) * 100}%`,
+      return {
+        [vertical ? 'top' : dir]: `${((mark - min) / scope) * 100}%`,
       }
-      if (vertical) {
-        style = {
-          top: `${((mark - min) / scope) * 100}%`,
-        }
-      }
-      return style
     },
     [min, rtl, scope, vertical]
   )
@@ -460,11 +454,6 @@ export const Range: FunctionComponent<
     vertical,
   ])
 
-  const getWrapperTransform = useCallback(() => {
-    const wrapperTransform = 'translate(-50%, -50%)'
-    return wrapperTransform
-  }, [])
-
   const renderRangeButton = useCallback(() => {
     return [0, 1].map((_, index) => {
       const isLeft = index === 0
@@ -512,8 +501,7 @@ export const Range: FunctionComponent<
           [`${verticalClassPrefix}-button-wrapper`]: vertical,
         })}
         style={{
-          // @ts-ignore
-          transform: getWrapperTransform(),
+          transform: 'translate(-50%, -50%)',
         }}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
@@ -524,21 +512,7 @@ export const Range: FunctionComponent<
         {renderButton()}
       </div>
     )
-  }, [
-    getWrapperTransform,
-    onTouchEnd,
-    onTouchMove,
-    onTouchStart,
-    renderButton,
-    vertical,
-  ])
-
-  const renderButtonWrapper = useCallback(() => {
-    if (range) {
-      return renderRangeButton()
-    }
-    return renderSingleButton()
-  }, [renderRangeButton, renderSingleButton, range])
+  }, [onTouchEnd, onTouchMove, onTouchStart, renderButton, vertical])
 
   return (
     <div className={containerClasses} style={style}>
@@ -552,7 +526,7 @@ export const Range: FunctionComponent<
           className={`${classPrefix}-bar ${classPrefix}-bar-animate`}
           style={barStyle()}
         >
-          {renderButtonWrapper()}
+          {range ? renderRangeButton() : renderSingleButton()}
         </div>
       </div>
       {maxDescription !== null && (
