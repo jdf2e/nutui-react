@@ -769,21 +769,10 @@ export function resolveDuoOverlayLayout(
           ? computePopupStyle(kind, layoutInfo, baseRect, options)
           : {}
       if (kind === 'center') {
-        if (options?.centerBase !== 'safeArea') {
-          // Dialog (centerBase === 'full' 或默认)：包含安全区域，按整块分屏物理全宽严格左右对称居中（对齐红框基准）
-          if (splitMetrics.splitSide === 'left') {
-            popupStyle.left =
-              splitMetrics.leftInset > 0
-                ? splitMetrics.splitScreenWidth / 2 - splitMetrics.leftInset
-                : '50%'
-          } else {
-            // 右侧分屏：单屏物理中心在 Webview 视口中的坐标为 splitScreenWidth / 2 (即 windowWidth / 2 + rightInset / 2)
-            popupStyle.left = splitMetrics.splitScreenWidth / 2
-          }
-        } else {
-          // Popup (centerBase === 'safeArea')：避让安全区，以业务窗口为基准水平居中
-          popupStyle.left = '50%'
-        }
+        // 分屏模式（应用仅占单侧屏幕）：
+        // 弹窗在当前分屏窗口内严格左右对称居中展示（left: '50%'），
+        // 保证两侧边距完全对称，不偏向物理中缝，也不偏向外侧边框。
+        popupStyle.left = '50%'
       }
       return {
         enabled: true,
