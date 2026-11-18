@@ -166,6 +166,20 @@
           "v16": false
         },
         {
+          "version": "4.0.0",
+          "name": "MaterialView",
+          "type": "component",
+          "cName": "材质视图",
+          "desc": "跨端毛玻璃 / 材质视图组件",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "v15": 1,
+          "author": "hanyuxinting",
+          "dd": false,
+          "v16": false
+        },
+        {
           "version": "3.0.0",
           "name": "Overlay",
           "type": "component",
@@ -1303,20 +1317,6 @@
           "taro": true,
           "v15": 1,
           "author": "swag~jun",
-          "dd": false,
-          "v16": false
-        },
-        {
-          "version": "4.0.0",
-          "name": "MaterialView",
-          "type": "component",
-          "cName": "材质视图",
-          "desc": "跨端毛玻璃 / 材质视图组件",
-          "sort": 28,
-          "show": true,
-          "taro": true,
-          "v15": 1,
-          "author": "hanyuxinting",
           "dd": false,
           "v16": false
         },
