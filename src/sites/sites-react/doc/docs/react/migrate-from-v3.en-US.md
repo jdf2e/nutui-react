@@ -219,3 +219,10 @@ npm install @nutui/nutui-react-taro
   - `.nut-cell-extra` changed from `flex: 1` to sizing to its content, keeping a `24px` minimum gap from the main area (tunable via `--nutui-cell-extra-margin`). Previously a long right area split the remaining space evenly with the main area; now the right area takes its space first and the main area shrinks accordingly, so you may see the title truncate while the right content stays complete.
 - **New leading area and full-width slot (new)**:
   - Added the `leading` prop for the leading area (an icon or an avatar). The component only handles the `12px` gap (`--nutui-cell-leading-margin`) and alignment; sizing is up to you. Added the `content` prop as a full-width slot below the row, aligned with the main area's left edge. Once `content` is passed, `description` moves from below the title to a full-width row. Both are purely additive; omitting them does not affect existing usage.
+
+### Tabs (Navigation)
+
+- **Removed the `direction` prop (breaking change)**:
+  - Starting with v4, Tabs supports horizontal layout only. The `direction` prop and all `vertical` styles and demos have been removed. You can delete `direction="horizontal"` from existing code. If you use `direction="vertical"`, migrate to the [SideBar](#/en-US/component/sidebar) component for vertical navigation.
+- **Removed vertical styles and theme variables (breaking change)**:
+  - The `.nut-tabs-vertical` and `.nut-tabs-ellipsis` class names are no longer rendered, and `--nutui-tabs-vertical-titles-width`, `--nutui-tabs-vertical-titles-item-height`, `--nutui-tabs-vertical-tab-line-color`, `--nutui-tabs-vertical-tab-line-width`, and `--nutui-tabs-vertical-tab-line-height` have been removed. If you customized vertical Tabs styles, migrate those overrides to the corresponding SideBar variables.

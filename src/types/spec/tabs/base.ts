@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react'
 import { BaseProps } from '../../base/props'
-import { Direction, PositionX, SimpleValue } from '../../base/atoms'
+import { PositionX, SimpleValue } from '../../base/atoms'
 
 export type TabsTitle = {
   title: string
@@ -14,7 +14,6 @@ export interface BaseTabs extends BaseProps {
   value: SimpleValue
   defaultValue: SimpleValue
   activeColor: string
-  direction: Direction
   activeType: 'line' | 'smile' | 'simple' | 'card' | 'button' | 'divider'
   duration: number | string
   align: PositionX

@@ -219,3 +219,10 @@ npm install @nutui/nutui-react-taro
   - `.nut-cell-extra` 由 `flex: 1` 改为按内容宽度自适应，并与主信息区保持 `24px` 最小间距（可通过 `--nutui-cell-extra-margin` 调整）。此前右侧内容较长时会与主信息区平分剩余空间，现在改为右侧优先占位、主信息区相应收窄，可能出现主标题被截断而右侧内容完整的观感变化。
 - **新增识别区与下挂插槽（新增）**：
   - 新增 `leading` 属性用于渲染左侧识别区（图标或头像），组件只负责 `12px` 间距（`--nutui-cell-leading-margin`）与对齐，尺寸由使用方决定；新增 `content` 属性作为下挂通栏业务插槽，宽度撑满内容区并与主信息左边界对齐。传入 `content` 后，`description` 会由标题下方改为通栏展示。两项均为纯新增能力，不传时不影响原有用法。
+
+### Tabs (导航类)
+
+- **移除 `direction` 属性（不兼容变更）**：
+  - v4 起 Tabs 仅支持水平布局，移除了 `direction` 属性及 `vertical` 相关样式与示例。业务代码中的 `direction="horizontal"` 可直接删除；若使用 `direction="vertical"`，请改用 [SideBar](#/zh-CN/component/sidebar) 组件实现纵向导航。
+- **移除纵向样式与主题变量（不兼容变更）**：
+  - 不再渲染 `.nut-tabs-vertical` 与 `.nut-tabs-ellipsis` 类名；`--nutui-tabs-vertical-titles-width`、`--nutui-tabs-vertical-titles-item-height`、`--nutui-tabs-vertical-tab-line-color`、`--nutui-tabs-vertical-tab-line-width`、`--nutui-tabs-vertical-tab-line-height` 已删除。若此前针对纵向 Tabs 做过样式覆盖，请迁移到 SideBar 对应变量。
