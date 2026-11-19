@@ -1,6 +1,13 @@
 .nut-noticebar {
   width: 100%;
 
+  // 横向与纵向容器共用外观，切换滚动方向时保持圆角和描边一致。
+  .nut-noticebar-box,
+  .nut-noticebar-vertical {
+    border: $noticebar-border-width solid $noticebar-border-color;
+    border-radius: $noticebar-border-radius;
+  }
+
   .nut-noticebar-box {
     position: relative;
     display: flex;
@@ -10,7 +17,6 @@
     font-size: $noticebar-font-size;
     background: $noticebar-background;
     color: $noticebar-color;
-    border-radius: $noticebar-border-radius;
 
     &-wrapable,
     &-center {

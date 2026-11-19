@@ -1250,7 +1250,10 @@ $noticebar-color: var(--nutui-noticebar-color, #d9500b) !default;
 $noticebar-font-size: var(--nutui-noticebar-font-size, $font-size-s) !default;
 $noticebar-line-height: var(--nutui-noticebar-line-height, 24px) !default;
 $noticebar-box-padding: var(--nutui-noticebar-box-padding, 0 16px) !default;
-$noticebar-border-radius: var(--nutui-noticebar-border-radius, 0) !default;
+// 公告栏容器圆角及描边，支持业务在引入主题前分别覆盖 SCSS 变量。
+$noticebar-border-radius: var(--nutui-noticebar-border-radius, 8px) !default;
+$noticebar-border-width: var(--nutui-noticebar-border-width, 0.67px) !default;
+$noticebar-border-color: var(--nutui-noticebar-border-color, #11141a14) !default;
 $noticebar-wrap-padding: var(--nutui-noticebar-wrapable-padding,
     8px 16px) !default;
 $noticebar-icon-gap: var(--nutui-noticebar-icon-gap, 4px) !default;

@@ -15,6 +15,8 @@ import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
 import Demo14 from './demos/h5/demo14'
+import Demo15 from './demos/h5/demo15'
+import Demo16 from './demos/h5/demo16'
 
 const NoticeBarDemo = () => {
   const [translated] = useTranslate({
@@ -33,6 +35,8 @@ const NoticeBarDemo = () => {
       tagAndAction: '信息标与操作按钮',
       autoClose: '自动关闭',
       imageIcon: '自定义配图',
+      marketing: '营销型',
+      breakout: '破出形态',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -49,6 +53,8 @@ const NoticeBarDemo = () => {
       tagAndAction: 'Tag & Action Button',
       autoClose: 'Auto Close',
       imageIcon: 'Custom Image',
+      marketing: 'Marketing',
+      breakout: 'Breakout Image',
     },
   })
 
@@ -85,6 +91,10 @@ const NoticeBarDemo = () => {
         <Demo12 />
         <h2>{translated.imageIcon}</h2>
         <Demo14 />
+        <h2>{translated.marketing}</h2>
+        <Demo15 />
+        <h2>{translated.breakout}</h2>
+        <Demo16 />
         <h2>{translated.autoClose}</h2>
         <Demo13 />
       </div>
