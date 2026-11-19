@@ -163,6 +163,48 @@ describe('Countdown', () => {
     expect(countdownDom?.innerHTML).toContain(':')
   })
 
+  test('pause before start keeps time when autoStart is false', async () => {
+    const onPaused = vi.fn()
+    const onEnd = vi.fn()
+    const ref = React.createRef<{
+      start: () => void
+      pause: () => void
+      reset: () => void
+    }>()
+
+    const { container } = render(
+      <CountDown
+        ref={ref}
+        autoStart={false}
+        time={10_000}
+        format="ss"
+        onPaused={onPaused}
+        onEnd={onEnd}
+      />
+    )
+
+    // 未 start 时 pause 不得用旧 handleEndTime 把 restTime 算成 0
+    await act(async () => {
+      ref.current?.pause()
+      ref.current?.pause()
+    })
+    expect(onPaused).not.toBeCalled()
+    expect(container.querySelector('.nut-countdown')?.textContent).toContain(
+      '10'
+    )
+
+    await act(async () => {
+      ref.current?.start()
+    })
+    await act(async () => {
+      await sleep(50)
+    })
+    expect(onEnd).not.toBeCalled()
+    expect(container.querySelector('.nut-countdown')?.textContent).not.toBe(
+      '00'
+    )
+  })
+
   test('pause then restart does not gain time', async () => {
     let now = 1_000_000
     vi.spyOn(Date, 'now').mockImplementation(() => now)

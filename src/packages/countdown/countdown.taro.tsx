@@ -131,7 +131,10 @@ const InternalCountDown: ForwardRefRenderFunction<
 
   const pause = () => {
     cancelAnimationFrame(stateRef.current.timer)
+    // 须在改 counting 前判断：未计时时不能用旧 handleEndTime 重算，否则会覆盖已保存的 restTime
+    const wasCounting = stateRef.current.counting
     stateRef.current.counting = false
+    if (!wasCounting) return
     // 暂停时按真实时钟冻结剩余时间，避免只停在上一展示档
     const remainTime = getRemainTime()
     stateRef.current.restTime = remainTime
