@@ -292,7 +292,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           style={{ ...style }}
           {...rest}
         >
-          {formatRemainTime(stateRef.current.restTime)}
+          {parseFormat(parseRemainTime(stateRef.current.restTime))}
         </div>
       )}
     </>
