@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import TabbarItem from '../tabbaritem/index.taro'
@@ -8,7 +9,6 @@ import TabbarContext from './context'
 import { TaroTabbarProps } from '@/types'
 import SafeArea from '@/packages/safearea/index.taro'
 import { normalizeTabbarItems } from './utils'
-import MaterialView from '../materialview/index.taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -21,6 +21,46 @@ const defaultProps = {
   material: 'standard',
   onSwitch: () => {},
 } as TaroTabbarProps
+
+function FrostedBackdrop() {
+  const [dark, setDark] = useState(() => {
+    try {
+      return Taro.getSystemInfoSync()?.theme?.toLowerCase() === 'dark'
+    } catch {
+      return false
+    }
+  })
+  useEffect(() => {
+    const updateTheme = (event: string | { theme?: string }) => {
+      const theme = typeof event === 'string' ? event : event?.theme
+      setDark(theme?.toLowerCase() === 'dark')
+    }
+    try {
+      Taro.onThemeChange?.(updateTheme)
+    } catch {
+      return
+    }
+    return () => {
+      try {
+        Taro.offThemeChange?.(updateTheme)
+      } catch {
+        // Some Taro targets expose the API but do not implement it.
+      }
+    }
+  }, [])
+
+  return (
+    <View
+      className="nut-tabbar-backdrop"
+      style={{
+        backgroundColor: dark
+          ? 'rgba(20, 23, 26, 0.8)'
+          : 'rgba(255, 255, 255, 0.8)',
+      }}
+      aria-hidden="true"
+    />
+  )
+}
 
 export function Tabbar(props: Partial<TaroTabbarProps>) {
   const {
@@ -105,13 +145,7 @@ export function Tabbar(props: Partial<TaroTabbarProps>) {
     }
 
     if (isFrostedMaterial) {
-      return (
-        <MaterialView
-          scene="bottom-bar"
-          className={`${classPrefix}-backdrop`}
-          aria-hidden="true"
-        />
-      )
+      return <FrostedBackdrop />
     }
 
     return null

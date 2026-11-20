@@ -104,7 +104,7 @@ The caller implements the image, appearance, and click behavior; `addonBefore` d
 
 ### Frosted Glass Material
 
-With `material="frosted"`, Tabbar uses the `MaterialView` `bottom-bar` scene for its navigation board, with 3px blur, a tint at 80% opacity, fully rounded corners, and transparent outer and safe-area backgrounds. Without this prop, the standard material keeps the full-width background, previous layout classes, and theme variables.
+With `material="frosted"`, the built-in navigation board has 3px blur, a tint at 80% opacity, fully rounded corners, and transparent outer and safe-area backgrounds. Without this prop, the standard material keeps the full-width background, previous layout classes, and theme variables.
 
 On H5, the `.nut-theme-dark` theme class controls the board tint, and the page background should extend beneath the safe area; the blur effect depends on browser support.
 
@@ -116,7 +116,7 @@ On H5, the `.nut-theme-dark` theme class controls the board tint, and the page b
 
 ### Custom Skin Background
 
-Providing `skinBackground` takes precedence over `material` and replaces the built-in board with custom content; Tabbar handles clipping, fully rounded corners, and item stacking, while the caller implements artwork and its positioning.
+Providing `skinBackground` takes precedence over `material` and replaces the built-in board with custom content; Tabbar handles clipping, fully rounded corners, and item stacking, while the caller implements artwork and its positioning. The two-item horizontal navigation in the custom colors example passes `<MaterialView scene="bottom-bar" />` through `skinBackground`. With a custom board, the caller draws the selected background.
 
 Use `icon(active)` to switch icon images based on the selected state.
 
