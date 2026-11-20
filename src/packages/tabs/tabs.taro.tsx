@@ -29,7 +29,6 @@ const defaultProps = {
   ...ComponentDefaults,
   tabStyle: {},
   activeColor: '',
-  direction: 'horizontal',
   activeType: 'line',
   duration: 300,
   autoHeight: false,
@@ -44,7 +43,6 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   const {
     activeColor,
     tabStyle,
-    direction,
     activeType,
     duration,
     align,
@@ -109,7 +107,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
 
   const classes = classNames(
     classPrefix,
-    `${classPrefix}-${direction}`,
+    `${classPrefix}-horizontal`,
     className
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
@@ -156,7 +154,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
     width: number
   }
   const measureScrollable = useCallback(() => {
-    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
+    if (activeType !== 'card' || !align) return
     raf(() => {
       Promise.all([
         getRect(`#nut-tabs-titles-${name || uuid}`),
@@ -178,21 +176,16 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
         )
       })
     })
-  }, [activeType, direction, name, uuid, getRect, getAllRect, align])
+  }, [activeType, name, uuid, getRect, getAllRect, align])
   // 标题/内容变化后重新布局再测;挂载后首帧由默认 false 呈现对称样式,测量完异步翻转
   useEffect(() => {
     measureScrollable()
   }, [measureScrollable, children])
   const scrollWithAnimation = useRef(false)
   const [scrollLeft, setScrollLeft] = useState(0)
-  const [scrollTop, setScrollTop] = useState(0)
-  const scrollDirection = (
-    to: number,
-    direction: 'horizontal' | 'vertical'
-  ) => {
+  const scrollDirection = (to: number) => {
     // 使用ScrollView组件此处不需要手动raf scrollLeft
-    if (direction === 'horizontal') setScrollLeft(to)
-    else setScrollTop(to)
+    setScrollLeft(to)
   }
   const scrollIntoView = (index: number) => {
     raf(() => {
@@ -203,40 +196,24 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
         const titleRect = titleRects[index]
         if (!titleRect) return
 
-        let to = 0
-        if (direction === 'vertical') {
-          const totalHeight = titleRects.reduce(
-            (sum: number, curr: RectItem) => sum + curr.height,
-            0
-          )
-          const top = titleRects
-            .slice(0, index)
-            .reduce((prev: number, curr: RectItem) => prev + curr.height, 0)
+        const totalWidth = titleRects.reduce(
+          (sum: number, curr: RectItem) => sum + curr.width,
+          0
+        )
+        const left = titleRects
+          .slice(0, index)
+          .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
+        // 卡片模式 active 卡片带 margin: 0 24px(贴边侧为 0),boundingClientRect 不含 margin,
+        // 矩形宽求和会少算,钳制点偏短导致滚动到末尾时末项卡片显示不全;
+        // 按 CARD_ACTIVE_MARGIN_TOTAL 预留,超设部分由 ScrollView 自动截断到真实最大滚动距离
+        const marginExtra =
+          activeType === 'card' ? getCardActiveMarginTotal() : 0
+        const to = Math.min(
+          Math.max(0, left - (navRect.width - titleRect.width) / 2),
+          totalWidth + marginExtra - navRect.width
+        )
 
-          to = Math.min(
-            Math.max(0, top - (navRect.height - titleRect.height) / 2),
-            totalHeight - navRect.height
-          )
-        } else {
-          const totalWidth = titleRects.reduce(
-            (sum: number, curr: RectItem) => sum + curr.width,
-            0
-          )
-          const left = titleRects
-            .slice(0, index)
-            .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
-          // 卡片模式 active 卡片带 margin: 0 24px(贴边侧为 0),boundingClientRect 不含 margin,
-          // 矩形宽求和会少算,钳制点偏短导致滚动到末尾时末项卡片显示不全;
-          // 按 CARD_ACTIVE_MARGIN_TOTAL 预留,超设部分由 ScrollView 自动截断到真实最大滚动距离
-          const marginExtra =
-            activeType === 'card' ? getCardActiveMarginTotal() : 0
-          to = Math.min(
-            Math.max(0, left - (navRect.width - titleRect.width) / 2),
-            totalWidth + marginExtra - navRect.width
-          )
-        }
-
-        scrollDirection(to, direction)
+        scrollDirection(to)
 
         nextTick(() => {
           scrollWithAnimation.current = true
@@ -254,18 +231,12 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
     // 适配 安卓 处理，临时方案，hack
     if (td()) {
       return {
-        transform:
-          direction === 'horizontal'
-            ? `translate3d(${rtl ? '' : '-'}${index * 50}%, 0, 0)`
-            : `translate3d( 0, -${index * 50}%, 0)`,
+        transform: `translate3d(${rtl ? '' : '-'}${index * 50}%, 0, 0)`,
         transitionDuration: `${duration}ms`,
       }
     }
     return {
-      transform:
-        direction === 'horizontal'
-          ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
-          : `translate3d( 0, -${index * 100}%, 0)`,
+      transform: `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`,
       transitionDuration: `${duration}ms`,
     }
   }
@@ -289,10 +260,8 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
     <View className={classes} ref={tabsRef} {...rest}>
       <ScrollView
         enableFlex
-        scrollX={direction === 'horizontal'}
-        scrollY={direction === 'vertical'}
+        scrollX
         scrollLeft={scrollLeft}
-        scrollTop={scrollTop}
         enhanced
         showScrollbar={false}
         scrollWithAnimation={
@@ -309,9 +278,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                 const isActive =
                   !item.disabled && String(item.value) === String(value)
                 const flush =
-                  isActive &&
-                  activeType === 'card' &&
-                  direction === 'horizontal'
+                  isActive && activeType === 'card'
                     ? getCardFlushSides(index, titles.current.length, {
                         scrollable: isScrollable,
                         rtl,
@@ -347,7 +314,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                       <View
                         className={classNames(
                           `${classPrefix}-titles-item-line`,
-                          `${classPrefix}-titles-item-line-${direction}`
+                          `${classPrefix}-titles-item-line-horizontal`
                         )}
                         style={{ background: activeColor }}
                       />
@@ -361,12 +328,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                       </View>
                     )}
                     <View
-                      className={classNames(
-                        {
-                          [`${classPrefix}-ellipsis`]: direction === 'vertical',
-                        },
-                        `${classPrefix}-titles-item-text`
-                      )}
+                      className={`${classPrefix}-titles-item-text`}
                       style={{ color: activeColor }}
                     >
                       {item.title}

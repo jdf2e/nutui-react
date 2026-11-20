@@ -1572,18 +1572,6 @@ $tabs-tab-button-active-background-color: var(--nutui-tabs-button-active-backgro
     $color-primary-light-pressed) !default;
 $tabs-tab-button-active-border: var(--nutui-tabs-button-active-border,
     inset 0 0 0 1px $color-primary) !default;
-$tabs-vertical-titles-width: var(--nutui-tabs-vertical-titles-width,
-    100px) !default;
-$tabs-vertical-titles-item-height: var(--nutui-tabs-vertical-titles-item-height,
-    40px) !default;
-$tabs-vertical-tab-line-color: var(--nutui-tabs-vertical-tab-line-color,
-    linear-gradient(180deg,
-      $color-primary-stop-1 0%,
-      $color-primary-light-pressed 100%)) !default;
-$tabs-vertical-tab-line-width: var(--nutui-tabs-vertical-tab-line-width,
-    3px) !default;
-$tabs-vertical-tab-line-height: var(--nutui-tabs-vertical-tab-line-height,
-    12px) !default;
 $tabs-titles-item-smile-bottom: var(--nutui-tabs-titles-item-smile-bottom,
     4%) !default;
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;

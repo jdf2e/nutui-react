@@ -142,46 +142,6 @@ import { Tabs } from '@nutui/nutui-react-taro'
 
 :::
 
-### 数量多,滚动操作 2
-
-:::demo
-
-<CodeBlock src='taro/demo17.tsx'></CodeBlock>
-
-:::
-
-### 左右布局
-
-:::demo
-
-<CodeBlock src='taro/demo18.tsx'></CodeBlock>
-
-:::
-
-### 左右布局-微笑曲线
-
-:::demo
-
-<CodeBlock src='taro/demo19.tsx'></CodeBlock>
-
-:::
-
-### 嵌套布局
-
-:::demo
-
-<CodeBlock src='taro/demo20.tsx'></CodeBlock>
-
-:::
-
-### 嵌套布局 2
-
-:::demo
-
-<CodeBlock src='taro/demo21.tsx'></CodeBlock>
-
-:::
-
 ### Title 字体尺寸: 20px 12px
 
 :::demo
@@ -223,7 +183,6 @@ import { Tabs } from '@nutui/nutui-react-taro'
 | value | 当前激活 tab 面板的值 | `number` \| `string` | `0` |
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 标签选中色 | `string` | `#1A1A1A` |
-| direction | 使用横纵方向 | `horizontal` \| `vertical` | `horizontal` |
 | activeType | 选中底部展示样式 可选值 `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple` \| `card` \| `button`\| `divider` | `line` |
 | duration | 切换动画时长,单位 ms 0 代表无动画 | `number` \| `string` | `300` |
 | title | 自定义导航区域 | `() => JSX.Element[]` | `-` |
@@ -232,6 +191,8 @@ import { Tabs } from '@nutui/nutui-react-taro'
 | tabStyle | 标签栏样式 | `CSSProperties` | `{}` |
 | onClick | 点击标签时触发 | `(index: string\| number) => void` | `-` |
 | onChange | 当前激活的标签改变时触发 | `(index: string \| number) => void` | `-` |
+
+> **说明：** v4 起 Tabs 移除了 `direction` 属性，仅支持水平布局。如需纵向导航，请使用 [SideBar](#/zh-CN/component/sidebar) 组件。
 
 ## Tabs.Tabpane
 
@@ -276,11 +237,6 @@ import { Tabs } from '@nutui/nutui-react-taro'
 | \--nutui-tabs-button-active-font-weight | 按钮模式选中标题的字重 | `$font-weight-bold` |
 | \--nutui-tabs-button-background-color | 按钮模式未选中标题的背景色 | `var(--nutui-color-background-component)` |
 | \--nutui-tabs-button-active-border | 按钮模式选中标题的内描边 | `inset 0 0 0 1px $color-primary` |
-| \--nutui-tabs-vertical-titles-width | 垂直方向标题的宽度 | `100px` |
-| \--nutui-tabs-vertical-titles-item-height | 垂直方向标题的高度 | `40px` |
-| \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $color-primary 0%, rgba(#FF0F23, 0.15) 100%)` |
-| \--nutui-tabs-vertical-tab-line-width | 垂直方向标题线条的宽度 | `3px` |
-| \--nutui-tabs-vertical-tab-line-height | 垂直方向标题线条的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的内边距 | `24px 20px` |
 | \--nutui-tabs-tabpane-background-color | Tabpane 的背景色 | `#fff` |
 

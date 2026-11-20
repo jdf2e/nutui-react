@@ -79,3 +79,8 @@
 - **内边距 `13px 16px` → `16px`**；需保留旧高度时显式设置 `--nutui-cell-padding: 13px 16px`。
 - **标题改为单行省略、右侧按内容宽度占位**：核对长标题 / 长右侧内容；需要多行时自定义标题节点并覆盖截断样式。
 - 新增 `leading`、`content` 为可选能力；传入 `content` 后 `description` 改为通栏展示，不能当作无布局影响的替换。
+
+## Tabs —— 移除 direction 纵向能力
+
+- **移除 `direction`**：v4 起 Tabs 仅支持水平布局，`direction="horizontal"` 可直接删除；`direction="vertical"` 请改用 SideBar 组件。
+- 删除 `.nut-tabs-vertical`、`.nut-tabs-ellipsis` 及 `--nutui-tabs-vertical-*` 主题变量；纵向样式覆盖需迁移到 SideBar。
