@@ -239,7 +239,14 @@ const config = {
         },
       },
       // 自定义 Webpack 配置
-      devServer: {},
+      devServer: {
+        client: {
+          overlay: {
+            errors: true,
+            warnings: false,
+          },
+        },
+      },
     },
     output: {
       environment: {
