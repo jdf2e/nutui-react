@@ -104,7 +104,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 ### 毛玻璃材质
 
-设置 `material="frosted"` 后，Tabbar 使用 `MaterialView` 的 `bottom-bar` 场景作为导航背板，设置 3px 模糊和透明度为 80% 的叠加色；背板为全圆角，组件外层和底部安全区保持透明。不传 `material` 时沿用普通材质的铺满宽度背景、旧版布局类和主题变量。
+设置 `material="frosted"` 后，内置导航背板使用 3px 模糊和 80% 不透明度的叠加色；背板为全圆角，组件外层和底部安全区保持透明。不传 `material` 时沿用普通材质的铺满宽度背景、旧版布局类和主题变量。
 
 H5 背板的明暗由 `.nut-theme-dark` 主题类控制，页面背景建议延伸到安全区；实际模糊效果取决于浏览器支持。
 
@@ -118,7 +118,7 @@ H5 背板的明暗由 `.nut-theme-dark` 主题类控制，页面背景建议延�
 
 传入 `skinBackground` 后，自定义内容优先于 `material`，替代内置背板；组件负责背板裁切、全圆角和导航项层级，图片及专属定位由调用方实现。
 
-可以通过 `icon(active)` 根据选中状态切换图标图片。
+自定义颜色示例中的双项横向导航通过 `skinBackground` 传入 `<MaterialView scene="bottom-bar" />`。使用自定义背板时，由调用方绘制选中背景。可以通过 `icon(active)` 根据选中状态切换图标图片。
 
 :::demo
 

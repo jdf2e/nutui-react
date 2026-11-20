@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tabbar, Space } from '@nutui/nutui-react-taro'
+import { Tabbar, Space, MaterialView } from '@nutui/nutui-react-taro'
 import {
   CartF,
   CartI,
@@ -46,7 +46,7 @@ const Demo7 = () => (
     </Tabbar>
 
     <Tabbar
-      material="frosted"
+      skinBackground={<MaterialView scene="bottom-bar" />}
       inactiveColor="#7d7e80"
       activeColor="var(--nutui-color-info, #0c82f7)"
       direction="horizontal"

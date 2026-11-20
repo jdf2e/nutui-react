@@ -69,7 +69,10 @@
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
-      border-radius: $tabbar-border-radius !important;
+      border-radius: $tabbar-border-radius;
+      background-color: var(--nut-tabbar-backdrop-tint);
+      -webkit-backdrop-filter: blur(3PX);
+      backdrop-filter: blur(3PX);
     }
 
     > .nut-tabbar-skin-background {
