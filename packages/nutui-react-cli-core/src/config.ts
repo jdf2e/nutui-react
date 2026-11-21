@@ -18,6 +18,8 @@ export interface CliConfig {
   version: string
   // 随包 data/ 快照的绝对路径，由各包薄入口用 import.meta.url 注入。
   dataDir: string
+  // 随包 skills/ 的绝对路径（可选）。
+  skillsDir?: string
   // 支持的文档语言。H5: ['zh','en']；Taro: ['zh']。驱动 --lang choices 与 MCP nutui_doc 的 enum。
   langs: readonly string[]
   defaultLang: string

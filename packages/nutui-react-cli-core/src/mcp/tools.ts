@@ -18,6 +18,10 @@ import { detectVersion, type VersionInfo } from '../version.js'
 import { createError, ErrorCodes } from '../error.js'
 import { parseMigrationDoc, filterSections } from '../commands/migrate-parse.js'
 import { diffMeta } from '../commands/diff-compute.js'
+import { renderDenseInfo } from '../commands/info.js'
+import { renderDenseList } from '../commands/list.js'
+import { renderDenseTokens } from '../commands/token.js'
+import { extractDemoDescriptions } from '../commands/demo.js'
 import { scanProject } from '../utils/scan.js'
 import type { CliConfig } from '../config.js'
 import type { Component, Lang, Meta } from '../types.js'
@@ -28,8 +32,9 @@ function toMcpResult(data: unknown) {
     typeof data === 'object' &&
     'error' in data &&
     (data as { error: unknown }).error === true
+  const text = typeof data === 'string' ? data : JSON.stringify(data)
   const payload = {
-    content: [{ type: 'text' as const, text: JSON.stringify(data) }],
+    content: [{ type: 'text' as const, text }],
   }
   return isError ? { ...payload, isError: true } : payload
 }
@@ -87,6 +92,15 @@ function nutuiVersionProp() {
   }
 }
 
+function denseProp() {
+  return {
+    dense: {
+      type: 'boolean',
+      description: '是否使用专为 AI Agent 优化的高密度格式（更少 Token 消耗）',
+    },
+  }
+}
+
 export function buildToolDefinitions(config: CliConfig) {
   const p = config.mcp.toolPrefix
   return [
@@ -102,6 +116,7 @@ export function buildToolDefinitions(config: CliConfig) {
               '按分类英文名筛选（如 base / feedback / form），省略则列出全部',
           },
           ...nutuiVersionProp(),
+          ...denseProp(),
         },
         required: [] as string[],
       },
@@ -119,6 +134,7 @@ export function buildToolDefinitions(config: CliConfig) {
             description: '组件名(大小写不敏感，如 Button)',
           },
           ...nutuiVersionProp(),
+          ...denseProp(),
         },
         required: ['component'],
       },
@@ -159,6 +175,11 @@ export function buildToolDefinitions(config: CliConfig) {
             type: 'string',
             description: '示例名（如 demo1）；省略则列出全部示例',
           },
+          intent: {
+            type: 'string',
+            description:
+              '按语义意图搜索示例（如“网络断开”、“禁用状态”）；命中直接返回最佳示例源码',
+          },
           ...nutuiVersionProp(),
         },
         required: ['component'],
@@ -177,6 +198,7 @@ export function buildToolDefinitions(config: CliConfig) {
             description: '组件名，返回组件级 token；省略则返回全局 token',
           },
           ...nutuiVersionProp(),
+          ...denseProp(),
         },
         required: [] as string[],
       },
@@ -190,7 +212,10 @@ export function buildToolDefinitions(config: CliConfig) {
         type: 'object' as const,
         properties: {
           from: { type: 'string', description: '起始大版本（如 3），默认 3' },
-          to: { type: 'string', description: '目标大版本（如 4），默认 from+1' },
+          to: {
+            type: 'string',
+            description: '目标大版本（如 4），默认 from+1',
+          },
           component: {
             type: 'string',
             description: '只返回该组件的迁移说明（大小写不敏感）',
@@ -260,6 +285,9 @@ export function createToolHandler(config: CliConfig) {
             (c) => c.enName.toLowerCase() === key || c.name === filter
           )
         }
+        if (params.dense) {
+          return toMcpResult(renderDenseList(categories, meta))
+        }
         const data = categories.map((cat) => ({
           name: cat.name,
           enName: cat.enName,
@@ -272,7 +300,11 @@ export function createToolHandler(config: CliConfig) {
               version: c.version,
             })),
         }))
-        return toMcpResult({ _meta, libVersion: meta.libVersion, categories: data })
+        return toMcpResult({
+          _meta,
+          libVersion: meta.libVersion,
+          categories: data,
+        })
       }
 
       case 'info': {
@@ -281,6 +313,9 @@ export function createToolHandler(config: CliConfig) {
         const propTables = (comp.api?.tables ?? []).filter(
           (t) => t.kind === 'props'
         )
+        if (params.dense) {
+          return toMcpResult(renderDenseInfo(comp, propTables))
+        }
         return toMcpResult({
           _meta,
           name: comp.name,
@@ -315,9 +350,37 @@ export function createToolHandler(config: CliConfig) {
         const comp = resolve(config, meta, params.component as string)
         if (isError(comp)) return toMcpResult(comp)
         const demos = listDemos(snapshotDir, comp)
+        const docContent = readDoc(snapshotDir, comp, config.defaultLang) || ''
+        const demoDescriptions = extractDemoDescriptions(docContent)
+
+        if (params.intent && !params.name) {
+          const query = String(params.intent).toLowerCase().trim()
+          for (const d of demos) {
+            const dMeta = demoDescriptions[d]
+            if (
+              (dMeta?.title && dMeta.title.toLowerCase().includes(query)) ||
+              (dMeta?.desc && dMeta.desc.toLowerCase().includes(query))
+            ) {
+              const code = readDemo(snapshotDir, comp, d)
+              return toMcpResult({
+                _meta,
+                component: comp.name,
+                demo: d,
+                title: dMeta?.title || '',
+                code,
+              })
+            }
+          }
+        }
+
         const demoName = params.name as string | undefined
         if (!demoName) {
-          return toMcpResult({ _meta, component: comp.name, demos })
+          const richDemos = demos.map((d) => ({
+            name: d,
+            title: demoDescriptions[d]?.title || '',
+            desc: demoDescriptions[d]?.desc || '',
+          }))
+          return toMcpResult({ _meta, component: comp.name, demos: richDemos })
         }
         const code = readDemo(snapshotDir, comp, demoName)
         if (code === null) {
@@ -331,16 +394,38 @@ export function createToolHandler(config: CliConfig) {
             )
           )
         }
-        return toMcpResult({ _meta, component: comp.name, demo: demoName, code })
+        return toMcpResult({
+          _meta,
+          component: comp.name,
+          demo: demoName,
+          code,
+        })
       }
 
       case 'token': {
         const query = params.component as string | undefined
         if (!query) {
-          return toMcpResult({ _meta, scope: 'global', tokens: meta.globalTokens })
+          if (params.dense) {
+            return toMcpResult(
+              renderDenseTokens(
+                `${config.libLabel}全局 Design Token`,
+                meta.globalTokens
+              )
+            )
+          }
+          return toMcpResult({
+            _meta,
+            scope: 'global',
+            tokens: meta.globalTokens,
+          })
         }
         const comp = resolve(config, meta, query)
         if (isError(comp)) return toMcpResult(comp)
+        if (params.dense) {
+          return toMcpResult(
+            renderDenseTokens(`${comp.name} Design Token`, comp.tokens ?? [])
+          )
+        }
         return toMcpResult({
           _meta,
           scope: comp.id,
@@ -353,7 +438,9 @@ export function createToolHandler(config: CliConfig) {
         // 迁移跨两个大版本，自己解析，不用预加载的单快照 meta。
         const toMajorNum = (v: unknown): number | null => {
           if (!v) return null
-          const m = String(v).replace(/^v/, '').match(/^(\d+)/)
+          const m = String(v)
+            .replace(/^v/, '')
+            .match(/^(\d+)/)
           return m ? Number(m[1]) : null
         }
         const fromMajor = toMajorNum(params.from) ?? 3
@@ -393,7 +480,9 @@ export function createToolHandler(config: CliConfig) {
         if (applyDir) {
           const scan = scanProject(applyDir)
           sections = filterSections(parsed.sections, scan.components)
-          const covered = new Set(sections.map((s) => s.component.toLowerCase()))
+          const covered = new Set(
+            sections.map((s) => s.component.toLowerCase())
+          )
           scanInfo = {
             appliedTo: applyDir,
             scannedFiles: scan.scannedFileCount,
@@ -416,7 +505,11 @@ export function createToolHandler(config: CliConfig) {
           }
         }
         return toMcpResult({
-          _meta: { from: `v${fromMajor}`, to: `v${toMajor}`, libVersion: versionsIndex.majors[toKey].latest },
+          _meta: {
+            from: `v${fromMajor}`,
+            to: `v${toMajor}`,
+            libVersion: versionsIndex.majors[toKey].latest,
+          },
           title: parsed.title,
           intro: applyDir || compName ? undefined : parsed.intro,
           coveredComponents: parsed.sections.map((s) => s.component),
@@ -434,7 +527,10 @@ export function createToolHandler(config: CliConfig) {
         const v2 = params.v2 as string
         if (!v1 || !v2) {
           return toMcpResult(
-            createError(ErrorCodes.INVALID_ARGUMENT, 'diff 需要 v1 与 v2 两个版本参数。')
+            createError(
+              ErrorCodes.INVALID_ARGUMENT,
+              'diff 需要 v1 与 v2 两个版本参数。'
+            )
           )
         }
         const metaA = loadMetaByDir(resolveSnapshotDir(config.dataDir, v1))
@@ -442,7 +538,9 @@ export function createToolHandler(config: CliConfig) {
         const compName = params.component as string | undefined
         let componentId: string | undefined
         if (compName) {
-          const comp = resolveComponent(metaB, compName) ?? resolveComponent(metaA, compName)
+          const comp =
+            resolveComponent(metaB, compName) ??
+            resolveComponent(metaA, compName)
           if (!comp) {
             const sug = suggestComponents(metaB, compName)
             return toMcpResult(

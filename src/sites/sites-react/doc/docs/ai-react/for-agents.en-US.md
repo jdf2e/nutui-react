@@ -1,26 +1,52 @@
 # For Agents
 
-This page provides a ready-to-use prompt that lets any AI coding agent work effectively with NutUI-React.
+This page provides out-of-the-box Agent integration setups and prompts to let any AI coding agent work effectively with NutUI-React.
 
-## Copy this prompt
+## Recommended: One-Click Project Initialization
 
-Paste the following into your agent conversation or automation flow, so it builds the right context before writing any NutUI-React code:
+Run the following command in your project root:
+
+```bash
+npx @nutui/nutui-react-cli init
+```
+
+The CLI automatically detects your project environment and creates:
+
+- **`AGENTS.md`**: Universal AI coding guidelines with component query, styling, and best practices;
+- **`.cursorrules`**: Tailored constraints for Cursor IDE;
+- **`.claude/CLAUDE.md`**: Specific instructions for Claude Code;
+- **Bundled Skills**: Automatically installs NutUI Skills into `.cursor/skills/`.
+
+---
+
+## Alternative: Copy the Prompt into Conversation
+
+If you are using an agent in ad-hoc chat or automation, paste the following prompt:
 
 ```text
-Before writing any NutUI-React (@nutui/nutui-react) code, first read https://nutui.jd.com/h5/react/4x/llms-full.txt to understand the components' real APIs, usage, and style structure. Do not guess props or enum values from memory. Always look up the docs before using a component, then write code.
-
-If your environment supports skills, run:
-npx skills add jdf2e/nutui-react --skill nutui-react
+Before writing any NutUI-React (@nutui/nutui-react) code, first verify the real component specifications using the local CLI:
+1. Query props in dense mode: npx @nutui/nutui-react-cli info <Component> --dense
+2. Query design tokens: npx @nutui/nutui-react-cli token <Component> --dense
+3. Search demos by intent: npx @nutui/nutui-react-cli demo <Component> --intent "<scenario keywords>"
+Always use var(--nutui-*) CSS variables for customization instead of hardcoded hex values.
 ```
 
 ## What the agent gets
 
-### CLI — offline knowledge query
+### CLI — offline knowledge query (with `--dense` mode)
 
 [@nutui/nutui-react-cli](https://www.npmjs.com/package/@nutui/nutui-react-cli) bundles component props, docs, demos, and Design Tokens with the package, so queries run locally in milliseconds — no network, no API key.
 
+Using `--dense` (alias `-d`), the CLI formats outputs into concise TypeScript interfaces, saving **up to 70% Token consumption**:
+
 ```bash
-npx @nutui/nutui-react-cli info Button
+npx @nutui/nutui-react-cli info Button --dense
+```
+
+Search demos by scenario intent:
+
+```bash
+npx @nutui/nutui-react-cli demo Empty --intent "network"
 ```
 
 Full reference: [CLI](/#/en-US/ai/cli)
