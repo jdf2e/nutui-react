@@ -37,7 +37,7 @@
     "webpack-chain": "^6.5.1"
   },
   "devDependencies": {
-    "@types/node": "^18.19.130",
+    "@types/node": "^26.6.6",
     "prettier": "^3.9.6",
     "rollup": "^2.80.0",
     "rollup-plugin-ts": "^3.4.5",
