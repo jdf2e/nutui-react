@@ -8,6 +8,7 @@ import { runToken } from './commands/token.js'
 import { runMigrate } from './commands/migrate.js'
 import { runDiff } from './commands/diff.js'
 import { runMcp } from './commands/mcp.js'
+import { runInit } from './commands/init.js'
 import type { CliConfig } from './config.js'
 import type { Lang, OutputFormat } from './types.js'
 
@@ -34,6 +35,14 @@ export function runCli(config: CliConfig, argv: string[]): void {
         '目标 NutUI 版本（如 3、3.1.0、4.0.0-beta.7）；省略则从 node_modules / package.json 自动检测',
       global: true,
     })
+    .option('dense', {
+      alias: 'd',
+      type: 'boolean',
+      default: false,
+      describe:
+        '以专为 AI Agent 优化的高密度格式输出（节省 Token，消除冗余排版）',
+      global: true,
+    })
     .command(
       ['list', 'ls'],
       '列出全部组件（按分类）',
@@ -49,6 +58,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           category: a.category,
           format: a.format as OutputFormat,
           nutuiVersion: a['nutui-version'] as string | undefined,
+          dense: Boolean(a.dense),
         })
     )
     .command(
@@ -66,6 +76,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           component: a.component as string,
           format: a.format as OutputFormat,
           nutuiVersion: a['nutui-version'] as string | undefined,
+          dense: Boolean(a.dense),
         })
     )
     .command(
@@ -109,12 +120,17 @@ export function runCli(config: CliConfig, argv: string[]): void {
           .positional('name', {
             type: 'string',
             describe: '示例名（如 demo1）；省略则列出全部',
+          })
+          .option('intent', {
+            type: 'string',
+            describe: '按语义意图搜索示例（如“网络断开”、“禁用状态”）',
           }),
       (a) =>
         runDemo({
           config,
           component: a.component as string,
           name: a.name as string | undefined,
+          intent: a.intent as string | undefined,
           format: a.format as OutputFormat,
           nutuiVersion: a['nutui-version'] as string | undefined,
         })
@@ -133,6 +149,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           component: a.component as string | undefined,
           format: a.format as OutputFormat,
           nutuiVersion: a['nutui-version'] as string | undefined,
+          dense: Boolean(a.dense),
         })
     )
     .command(
@@ -155,7 +172,8 @@ export function runCli(config: CliConfig, argv: string[]): void {
           })
           .option('apply', {
             type: 'string',
-            describe: '扫描该目录，只输出项目用到组件的迁移步骤并生成给 Agent 的提示',
+            describe:
+              '扫描该目录，只输出项目用到组件的迁移步骤并生成给 Agent 的提示',
           }),
       (a) =>
         runMigrate({
@@ -200,6 +218,27 @@ export function runCli(config: CliConfig, argv: string[]): void {
       '启动本地 MCP 服务（stdio），供 Claude Code / Cursor / VS Code / Codex 等调用',
       (y) => y,
       () => runMcp({ config })
+    )
+    .command(
+      'init [targetDir]',
+      '一键初始化目标工程的 Agent 规范文件 (AGENTS.md, .cursorrules, .claude/CLAUDE.md) 与 Skills',
+      (y) =>
+        y
+          .positional('targetDir', {
+            type: 'string',
+            describe: '目标工程目录（默认当前目录）',
+          })
+          .option('force', {
+            type: 'boolean',
+            default: false,
+            describe: '是否强制覆盖已有配置文件',
+          }),
+      (a) =>
+        runInit({
+          config,
+          targetDir: a.targetDir as string | undefined,
+          force: Boolean(a.force),
+        })
     )
     .demandCommand(
       1,

@@ -36,15 +36,15 @@ nutui-react info Button --format json
 ## 快速开始
 
 ```bash
+nutui-react init                     # 一键初始化当前项目 Agent 规范与 Skills
 nutui-react list                     # 列出全部组件（按分类）
-nutui-react list --category feedback # 按分类筛选
-nutui-react info Button              # 组件 Props 表（属性 / 说明 / 类型 / 默认值）
+nutui-react list --dense             # 极简模式列出组件
+nutui-react info Button --dense      # 高密度 TypeScript 接口格式（节省 70% Token）
 nutui-react doc Button               # 组件完整 Markdown 文档（默认中文）
 nutui-react doc Button --lang en     # 英文文档
-nutui-react demo Button              # 列出组件的全部 H5 示例名
-nutui-react demo Button demo1        # 查看某个示例的源码
-nutui-react token                    # 全局 Design Token
-nutui-react token Button             # 组件级 Design Token
+nutui-react demo Empty               # 列出带有业务标题的全部示例
+nutui-react demo Empty --intent "半屏" # 按场景意图直接匹配输出示例源码
+nutui-react token Button --dense     # 紧凑输出组件级 Design Token
 nutui-react --nv 3.1.0 info Button   # 查指定 NutUI 版本的 API（省略则自动检测）
 nutui-react migrate 3 4 --apply ./src # 扫描项目并生成 v3 → v4 迁移提示
 nutui-react diff 3 4 Empty           # 对比 Empty 在 v3 / v4 的 Props 差异
@@ -55,11 +55,12 @@ nutui-react mcp                      # 启动本地 MCP 服务，供 IDE 集成
 
 | 命令 | 说明 |
 | --- | --- |
+| `nutui-react init [targetDir]` | 一键初始化目标工程的 Agent 规范文件（`AGENTS.md`, `.cursorrules`, `.claude/CLAUDE.md`）与 Skills |
 | `nutui-react list [--category <enName>]` | 列出全部组件（英文名 / 中文名 / 分类 / 版本），可按分类英文名筛选（如 `base` / `feedback`） |
-| `nutui-react info <Component>` | 组件 Props 表，按表格分组（属性 / 说明 / 类型 / 默认值） |
+| `nutui-react info <Component>` | 组件 Props 表，按表格分组（属性 / 说明 / 类型 / 默认值）；配合 `--dense` 输出紧凑 TS 接口 |
 | `nutui-react doc <Component> [--lang zh\|en]` | 组件完整 Markdown 文档，默认中文 |
-| `nutui-react demo <Component> [name]` | 省略 `name` 列出全部示例；指定 `name`（如 `demo1`）输出源码 |
-| `nutui-react token [Component]` | Design Token；省略组件名则列出全局 token |
+| `nutui-react demo <Component> [name] [--intent <keyword>]` | 查看示例；省略 `name` 列出带标题示例；`--intent` 支持按场景语义直达源码 |
+| `nutui-react token [Component]` | Design Token；省略组件名则列出全局 token；配合 `--dense` 紧凑输出 |
 | `nutui-react migrate [from] [to]` | 输出大版本迁移指南（默认 `3 4`）；支持 `--component <Component>` 查看单组件，或 `--apply <dir>` 扫描项目并生成迁移提示 |
 | `nutui-react diff <v1> <v2> [Component]` | 对比两个版本快照的 Props 差异，包括新增、移除、类型和默认值变更 |
 | `nutui-react mcp` | 启动本地 MCP 服务（stdio），供 Claude Code / Cursor / VS Code / Codex 等 IDE 集成 |
@@ -70,6 +71,7 @@ nutui-react mcp                      # 启动本地 MCP 服务，供 IDE 集成
 
 | 参数 | 说明 | 默认值 |
 | --- | --- | --- |
+| `--dense, -d` | 以专为 AI Agent 优化的高密度格式输出（节省 Token，消除冗余排版） | `false` |
 | `--format, -f <text\|json>` | 输出格式；Agent 应优先用 `json` | `text` |
 | `--nutui-version, --nv <version>` | 目标 NutUI 版本（如 `3`、`3.1.0`、`4.0.0-beta.7`） | 自动检测 |
 | `--lang, -l <zh\|en>` | 文档语言（用于 `doc` / `mcp`） | `zh` |

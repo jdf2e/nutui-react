@@ -7,12 +7,29 @@ import {
   type OutputFormat,
 } from './_shared.js'
 import type { CliConfig } from '../config.js'
+import type { Meta, Category, Component } from '../types.js'
 
 export interface ListArgs {
   config: CliConfig
   category?: string
   format: OutputFormat
   nutuiVersion?: string
+  dense?: boolean
+}
+
+export function renderDenseList(categories: Category[], meta: Meta): string {
+  const lines: string[] = []
+  for (const cat of categories) {
+    const comps = cat.components
+      .map((id: string) => meta.components[id])
+      .filter((c: Component | undefined): c is Component => Boolean(c))
+    if (comps.length) {
+      lines.push(
+        `[${cat.name} (${cat.enName})]: ${comps.map((c: Component) => c.name).join(', ')}`
+      )
+    }
+  }
+  return lines.join('\n')
 }
 
 export function runList(args: ListArgs): void {
@@ -28,6 +45,25 @@ export function runList(args: ListArgs): void {
       process.stderr.write(`未找到分类「${args.category}」。可选：${all}\n`)
       process.exit(1)
     }
+  }
+
+  if (args.dense) {
+    const denseData = Object.fromEntries(
+      categories.map((cat) => [
+        cat.enName,
+        cat.components.map((id) => meta.components[id]?.name).filter(Boolean),
+      ])
+    )
+    output(
+      args.format,
+      { categories: denseData },
+      () => renderDenseList(categories, meta),
+      {
+        header: versionHeaderText(args.config, versionInfo),
+        meta: versionMeta(versionInfo),
+      }
+    )
+    return
   }
 
   const jsonData = categories.map((cat) => ({
@@ -63,6 +99,9 @@ export function runList(args: ListArgs): void {
       const header = `${args.config.libLabel}共 ${meta.componentCount} 个组件，版本 ${meta.libVersion}`
       return `${header}\n\n${blocks.join('\n\n')}\n\n合计：${total} 个`
     },
-    { header: versionHeaderText(args.config, versionInfo), meta: versionMeta(versionInfo) }
+    {
+      header: versionHeaderText(args.config, versionInfo),
+      meta: versionMeta(versionInfo),
+    }
   )
 }

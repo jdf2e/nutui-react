@@ -6,8 +6,9 @@ import { runCli, type CliConfig } from '@nutui/nutui-react-cli-core'
 // tsup define 注入的包版本号。
 declare const __CLI_VERSION__: string
 
-// dist/cli.js 运行时，data/ 与 dist/ 同级（见 package.json files: [dist, data]）。
+// dist/cli.js 运行时，data/ 与 skills/ 与 dist/ 同级（见 package.json files: [dist, data, skills]）。
 const dataDir = fileURLToPath(new URL('../data/', import.meta.url))
+const skillsDir = fileURLToPath(new URL('../skills/', import.meta.url))
 
 const config: CliConfig = {
   binName: 'nutui-react',
@@ -18,6 +19,7 @@ const config: CliConfig = {
   demoLabel: 'H5',
   version: __CLI_VERSION__,
   dataDir,
+  skillsDir,
   langs: ['zh', 'en'],
   defaultLang: 'zh',
   langLabel: { zh: '中文', en: '英文' },
