@@ -205,7 +205,7 @@ function sendMacNotification(title, subtitle, message) {
 }
 
 /**
- * 发送 Webhook 通知 (支持飞书 / 钉钉 / 企业微信 / 咚咚通用 JSON)
+ * 发送 Webhook 通知 (支持京东咚咚 / 飞书 / 钉钉 / 企业微信)
  */
 function sendWebhookNotification(webhookUrl, markdownText) {
   return new Promise((resolve) => {
@@ -213,7 +213,25 @@ function sendWebhookNotification(webhookUrl, markdownText) {
       const urlObj = new URL(webhookUrl);
       let payload;
 
-      if (webhookUrl.includes('feishu') || webhookUrl.includes('larksuite')) {
+      if (
+        webhookUrl.includes('chat.jd.com') ||
+        webhookUrl.includes('timline') ||
+        webhookUrl.includes('erp.jd.com') ||
+        webhookUrl.includes('jd.com')
+      ) {
+        // 京东咚咚群自定义机器人标准格式 (支持 markdown 与 text 双兼容)
+        payload = {
+          msgtype: 'markdown',
+          markdown: {
+            title: 'NutUI-React PR/Issue 巡检通知',
+            text: markdownText,
+            content: markdownText
+          },
+          text: {
+            content: markdownText
+          }
+        };
+      } else if (webhookUrl.includes('feishu') || webhookUrl.includes('larksuite')) {
         payload = {
           msg_type: 'text',
           content: { text: markdownText }
@@ -229,7 +247,7 @@ function sendWebhookNotification(webhookUrl, markdownText) {
           markdown: { title: 'NutUI PR 巡检通知', text: markdownText }
         };
       } else {
-        // 默认通用 / 咚咚机器人格式
+        // 默认通用格式
         payload = {
           msgtype: 'text',
           text: { content: markdownText },
@@ -783,6 +801,127 @@ async function cmdInspectIssue(issueNumber, options = {}) {
   }
 }
 
+/**
+ * 5. 针对因单测覆盖率 (<95%) 被拦截的 PR 执行本地自愈诊断 (heal-pr)
+ *    自动拉取远程 PR 改动文件，在隔离 worktree 中跑 vitest --coverage，输出精确的未覆盖行号与对应源码上下文
+ */
+async function cmdHealPr(prNumber) {
+  if (!prNumber) {
+    console.error(c(`❌ 请提供需要自愈诊断的 PR 编号，例如: pnpm gh:heal-pr 3577`, colors.red));
+    process.exit(1);
+  }
+
+  console.log(c(`\n==================================================================`, colors.blue));
+  console.log(c(`🩹 [NutUI-React] 正在对卡点 PR #${prNumber} 执行单测覆盖率自愈诊断...`, colors.cyan + colors.bold));
+  console.log(c(`==================================================================\n`, colors.blue));
+
+  const pr = runGhJson(
+    `pr view ${prNumber} --repo ${REPO} --json number,title,author,baseRefName,headRefName,files,statusCheckRollup,url`
+  );
+
+  const files = (pr.files || []).map((f) => f.path);
+  const components = Array.from(
+    new Set(
+      files
+        .map((f) => {
+          const m = f.match(/^src\/packages\/([^/]+)\//);
+          return m ? m[1] : null;
+        })
+        .filter(Boolean)
+    )
+  );
+
+  const status = analyzePrStatus(pr);
+  console.log(`📌 PR: ${c(`#${pr.number} ${pr.title}`, colors.bold)} (@${pr.author?.login})`);
+  console.log(`📦 涉及组件: ${components.length > 0 ? c(components.join(', '), colors.yellow + colors.bold) : '无组件源码变更'}`);
+  console.log(`🚦 失败门禁: ${status.failedChecks.length > 0 ? c(status.failedChecks.join(', '), colors.red) : c('无', colors.green)}\n`);
+
+  if (components.length === 0) {
+    console.log(c(`ℹ️ 该 PR 未涉及 src/packages/ 下的组件修改，无需补充组件单测。`, colors.yellow));
+    return;
+  }
+
+  const tmpWorktree = `/tmp/nutui-heal-pr-${prNumber}`;
+  try {
+    // 清理可能存在的旧临时目录
+    try {
+      execSync(`git worktree remove "${tmpWorktree}" --force`, { stdio: 'ignore' });
+    } catch {
+      // ignore
+    }
+
+    console.log(c(`⏳ 1. 正在拉取远程 PR #${prNumber} 分支至隔离环境 (${tmpWorktree})...`, colors.cyan));
+    execSync(`git fetch origin pull/${prNumber}/head:pr-${prNumber}-head --force`, { stdio: 'ignore' });
+    execSync(`git worktree add "${tmpWorktree}" pr-${prNumber}-head --detach`, { stdio: 'ignore' });
+    execSync(`ln -s "${path.join(ROOT_DIR, 'node_modules')}" "${path.join(tmpWorktree, 'node_modules')}"`, { stdio: 'ignore' });
+
+    for (const comp of components) {
+      console.log(c(`⏳ 2. 正在运行组件 [${comp}] 的单元测试与 v8 覆盖率分析...`, colors.cyan));
+      let output = '';
+      try {
+        output = execSync(`npx vitest run src/packages/${comp} --coverage`, {
+          cwd: tmpWorktree,
+          encoding: 'utf-8',
+          stdio: ['pipe', 'pipe', 'pipe'],
+          timeout: 120000
+        });
+      } catch (err) {
+        output = (err.stdout || '') + '\n' + (err.stderr || '');
+      }
+
+      // 提取 packages/<comp> 下的覆盖率明细行
+      const lines = output.split('\n');
+      const tableLines = lines.filter(
+        (l) => l.includes(`packages/${comp}`) || l.includes(`${comp}.tsx`) || l.includes(`File`) || l.includes(`---`)
+      );
+
+      console.log(c(`\n📊 组件 [${comp}] 覆盖率诊断报表:`, colors.yellow + colors.bold));
+      console.log(c(`------------------------------------------------------------------`, colors.gray));
+      tableLines.forEach((l) => console.log(`  ${l}`));
+      console.log(c(`------------------------------------------------------------------`, colors.gray));
+
+      // 解析具体哪个文件哪些行未覆盖，并打印对应源码上下文，方便 AI 或开发者秒补单测
+      const fileRowRegex = new RegExp(`^\\s*([a-zA-Z0-9_.-]+\\.tsx?)\\s*\\|[^|]+\\|[^|]+\\|[^|]+\\|\\s*([\\d.]+)\\s*\\|\\s*([^|\\n]+)`, 'gm');
+      let match;
+      while ((match = fileRowRegex.exec(output)) !== null) {
+        const fileName = match[1].trim();
+        const lineCov = parseFloat(match[2]);
+        const uncoveredStr = match[3].replace(/\.\.\./g, '').trim();
+        const targetFile = path.join(tmpWorktree, 'src', 'packages', comp, fileName);
+
+        if (fs.existsSync(targetFile) && uncoveredStr && lineCov < 95) {
+          console.log(
+            c(`\n🎯 待补测文件: src/packages/${comp}/${fileName} (当前行覆盖率: ${lineCov}%，目标: >= 95%)`, colors.red + colors.bold)
+          );
+          console.log(c(`📍 未覆盖行号区间: ${uncoveredStr}`, colors.yellow));
+
+          const srcLines = fs.readFileSync(targetFile, 'utf-8').split('\n');
+          const ranges = uncoveredStr.split(',').map((s) => s.trim()).filter(Boolean);
+          for (const r of ranges.slice(0, 5)) {
+            const [startStr, endStr] = r.split('-');
+            const start = Math.max(1, parseInt(startStr, 10) - 2);
+            const end = Math.min(srcLines.length, parseInt(endStr || startStr, 10) + 2);
+            if (isNaN(start) || isNaN(end)) continue;
+            console.log(c(`\n   --- 源码上下文 (L${start}~L${end}) ---`, colors.cyan));
+            for (let ln = start; ln <= end; ln++) {
+              const isUncovered = ln >= parseInt(startStr, 10) && ln <= parseInt(endStr || startStr, 10);
+              const prefix = isUncovered ? c(`>> L${ln}:`, colors.red + colors.bold) : c(`   L${ln}:`, colors.gray);
+              console.log(`   ${prefix} ${srcLines[ln - 1]}`);
+            }
+          }
+        }
+      }
+    }
+  } finally {
+    try {
+      execSync(`git worktree remove "${tmpWorktree}" --force`, { stdio: 'ignore' });
+      execSync(`git branch -D pr-${prNumber}-head`, { stdio: 'ignore' });
+    } catch {
+      // ignore
+    }
+  }
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const subCmd = args[0] || 'status';
@@ -806,12 +945,26 @@ async function main() {
     await cmdReviewPr(targetId, { post });
   } else if (subCmd === 'issue') {
     await cmdInspectIssue(targetId, { replyFile });
+  } else if (subCmd === 'heal-pr') {
+    await cmdHealPr(targetId);
+  } else if (subCmd === 'test-webhook') {
+    const testUrl = webhook || targetId || process.env.NUTUI_WEBHOOK_URL;
+    if (!testUrl) {
+      console.error(c(`❌ 请通过 --webhook=<URL> 或环境变量 NUTUI_WEBHOOK_URL 提供咚咚/飞书/企微机器人 Webhook 地址！`, colors.red));
+      process.exit(1);
+    }
+    await sendWebhookNotification(
+      testUrl,
+      `🟢 **【NutUI-React 自动化巡检连通性测试】**\n- 状态：咚咚/群机器人 Webhook 接入成功！\n- 仓库：\`${REPO}\``
+    );
   } else {
     console.log(`用法:
   node scripts/agents/github-copilot-hub.mjs status              # 全景巡检（可合并 PR + 待跟进 Issue）
   node scripts/agents/github-copilot-hub.mjs pr-ready [--notify] # 检查满足合并条件的 PR 并发送通知
   node scripts/agents/github-copilot-hub.mjs review <PR号>       # 对指定 PR 进行远程 Diff 规范与跨端评审
-  node scripts/agents/github-copilot-hub.mjs issue <Issue号>     # 诊断指定 Issue 并定位本地组件源码`);
+  node scripts/agents/github-copilot-hub.mjs heal-pr <PR号>      # 对卡在 95% 覆盖率门禁的 PR 进行隔离单测诊断并定位未覆盖源码
+  node scripts/agents/github-copilot-hub.mjs issue <Issue号>     # 诊断指定 Issue 并定位本地组件源码
+  node scripts/agents/github-copilot-hub.mjs test-webhook <URL>  # 测试咚咚 / 飞书 / 企微机器人 Webhook 连通性`);
   }
 }
 

@@ -40,6 +40,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
+          NUTUI_WEBHOOK_URL: ${{ secrets.NUTUI_WEBHOOK_URL }}
         run: |
           if [ "${{ github.event_name }}" = "issues" ]; then
             echo "🔍 检测到新创建的 Issue #${{ github.event.issue.number }}，正在执行组件源码定位与版本/包名核验..."

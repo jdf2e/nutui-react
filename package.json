@@ -53,6 +53,7 @@
     "gh:status": "node ./scripts/agents/github-copilot-hub.mjs status",
     "gh:pr-ready": "node ./scripts/agents/github-copilot-hub.mjs pr-ready --notify",
     "gh:review": "node ./scripts/agents/github-copilot-hub.mjs review",
+    "gh:heal-pr": "node ./scripts/agents/github-copilot-hub.mjs heal-pr",
     "gh:issue": "node ./scripts/agents/github-copilot-hub.mjs issue",
     "add": "node scripts/create-component-mode.js && npm run prepare",
     "checked": "npm run generate:file && tsc --project ./tsconfig.h5.json --noEmit",
