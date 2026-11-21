@@ -39,26 +39,56 @@ describe('init command', () => {
 
     const agentsMd = fs.readFileSync(path.join(tmpDir, 'AGENTS.md'), 'utf-8')
     expect(agentsMd).toContain('# NutUI AI Coding Guidelines')
-    expect(agentsMd).toContain('nutui-react info <ComponentName> --dense')
-    expect(agentsMd).toContain('nutui-react token <ComponentName> --dense')
+    expect(agentsMd).toContain(
+      'npx -y @nutui/nutui-react-cli info <ComponentName> --dense'
+    )
+    expect(agentsMd).toContain(
+      'npx -y @nutui/nutui-react-cli token <ComponentName> --dense'
+    )
 
     const cursorRules = fs.readFileSync(
       path.join(tmpDir, '.cursorrules'),
       'utf-8'
     )
-    expect(cursorRules).toContain('nutui-react info <Component> --dense')
+    expect(cursorRules).toContain(
+      'npx -y @nutui/nutui-react-cli info <Component> --dense'
+    )
 
     const claudeMd = fs.readFileSync(
       path.join(tmpDir, '.claude/CLAUDE.md'),
       'utf-8'
     )
-    expect(claudeMd).toContain('nutui-react info <Component> --dense')
+    expect(claudeMd).toContain(
+      'npx -y @nutui/nutui-react-cli info <Component> --dense'
+    )
 
-    const installedSkill = fs.readFileSync(
+    const installedCursorSkill = fs.readFileSync(
       path.join(tmpDir, '.cursor/skills/nutui-react/SKILL.md'),
       'utf-8'
     )
-    expect(installedSkill).toBe('# Mock Skill')
+    expect(installedCursorSkill).toBe('# Mock Skill')
+
+    const installedClaudeSkill = fs.readFileSync(
+      path.join(tmpDir, '.claude/skills/nutui-react/SKILL.md'),
+      'utf-8'
+    )
+    expect(installedClaudeSkill).toBe('# Mock Skill')
+
+    // Test that force=false does not overwrite existing files
+    fs.writeFileSync(
+      path.join(tmpDir, '.cursor/skills/nutui-react/SKILL.md'),
+      '# Modified Skill'
+    )
+    runInit({
+      config,
+      targetDir: tmpDir,
+      force: false,
+    })
+    const preservedSkill = fs.readFileSync(
+      path.join(tmpDir, '.cursor/skills/nutui-react/SKILL.md'),
+      'utf-8'
+    )
+    expect(preservedSkill).toBe('# Modified Skill')
 
     // Clean up
     fs.rmSync(tmpDir, { recursive: true, force: true })

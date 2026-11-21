@@ -15,7 +15,11 @@ CLI 会自动识别项目环境，完成以下配置：
 - **生成 `AGENTS.md`**：通用 AI 编码 Agent 规范指南，提供组件查询、样式变量与开发避坑规则；
 - **生成 `.cursorrules`**：为 Cursor 注入 NutUI 专属开发约束；
 - **生成 `.claude/CLAUDE.md`**：为 Claude Code 提供针对性指导；
-- **注入内置 Skills**：自动安装 NutUI Skills 到项目 `.cursor/skills/` 目录，开箱即用。
+- **注入内置 Skills**：自动安装 NutUI Skills 到项目 `.cursor/skills/` 与 `.claude/skills/` 目录，开箱即用。
+
+> **关于已有规则文件保护：**
+> 若项目根目录下已存在 `AGENTS.md`、`.cursorrules` 或 `.claude/CLAUDE.md`，`init` 默认会**安全跳过**以保护你的既有配置（若需强制重新生成可加 `--force`）。
+> 若希望在保留既有规则的前提下接入 NutUI，可将下文「方式二」中的提示词片段或 CLI 查询指令手动追加到对应文件末尾即可。
 
 ---
 

@@ -286,7 +286,8 @@ export function createToolHandler(config: CliConfig) {
           )
         }
         if (params.dense) {
-          return toMcpResult(renderDenseList(categories, meta))
+          const header = `// ${config.libLabel} v${_meta.version} (来源: ${_meta.source})\n`
+          return toMcpResult(header + renderDenseList(categories, meta))
         }
         const data = categories.map((cat) => ({
           name: cat.name,
@@ -314,7 +315,8 @@ export function createToolHandler(config: CliConfig) {
           (t) => t.kind === 'props'
         )
         if (params.dense) {
-          return toMcpResult(renderDenseInfo(comp, propTables))
+          const header = `// ${config.libLabel} v${_meta.version} (来源: ${_meta.source})\n`
+          return toMcpResult(header + renderDenseInfo(comp, propTables))
         }
         return toMcpResult({
           _meta,
@@ -406,11 +408,13 @@ export function createToolHandler(config: CliConfig) {
         const query = params.component as string | undefined
         if (!query) {
           if (params.dense) {
+            const header = `// ${config.libLabel} v${_meta.version} (来源: ${_meta.source})\n`
             return toMcpResult(
-              renderDenseTokens(
-                `${config.libLabel}全局 Design Token`,
-                meta.globalTokens
-              )
+              header +
+                renderDenseTokens(
+                  `${config.libLabel}全局 Design Token`,
+                  meta.globalTokens
+                )
             )
           }
           return toMcpResult({
@@ -422,8 +426,10 @@ export function createToolHandler(config: CliConfig) {
         const comp = resolve(config, meta, query)
         if (isError(comp)) return toMcpResult(comp)
         if (params.dense) {
+          const header = `// ${config.libLabel} v${_meta.version} (来源: ${_meta.source})\n`
           return toMcpResult(
-            renderDenseTokens(`${comp.name} Design Token`, comp.tokens ?? [])
+            header +
+              renderDenseTokens(`${comp.name} Design Token`, comp.tokens ?? [])
           )
         }
         return toMcpResult({

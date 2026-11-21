@@ -17,7 +17,7 @@ export function runInit(args: InitArgs): void {
   // 1. 检查目标项目 package.json
   const pkgPath = path.join(targetDir, 'package.json')
   let pkgName = 'project'
-  let isTaro = config.platform === 'taro'
+  let hasTaroDep = false
 
   if (fs.existsSync(pkgPath)) {
     try {
@@ -25,12 +25,24 @@ export function runInit(args: InitArgs): void {
       if (pkg.name) pkgName = pkg.name
       const deps = { ...pkg.dependencies, ...pkg.devDependencies }
       if (deps['@tarojs/taro'] || deps['@tarojs/react']) {
-        isTaro = true
+        hasTaroDep = true
       }
     } catch {
       // 保持默认
     }
   }
+
+  // 平台不匹配检查：在含有 Taro 依赖的项目中误用 H5 CLI 初始化
+  if (config.platform === 'h5' && hasTaroDep) {
+    process.stderr.write(
+      `❌ 检测到当前项目包含 @tarojs 依赖，属于 Taro 多端项目。\n` +
+        `   请使用 Taro 专用的 CLI 工具进行初始化：\n\n` +
+        `   npx -y @nutui/nutui-react-taro-cli init\n\n`
+    )
+    process.exit(1)
+  }
+
+  const isTaro = config.platform === 'taro'
 
   process.stdout.write(
     `🚀 正在初始化 ${config.libLabel} Agent-Ready 规范至: ${targetDir}\n\n`
@@ -70,11 +82,19 @@ export function runInit(args: InitArgs): void {
     results.push('ℹ️ 已存在 .claude/CLAUDE.md（使用 --force 可覆盖）')
   }
 
-  // 5. 复制随包发布的 Skills 到 .cursor/skills
+  // 5. 复制随包发布的 Skills 到 .cursor/skills 及 .claude/skills
   if (config.skillsDir && fs.existsSync(config.skillsDir)) {
     const cursorSkillsDir = path.join(targetDir, '.cursor/skills')
-    copySkills(config.skillsDir, cursorSkillsDir)
-    results.push('✅ 注入 NutUI Skills 到 .cursor/skills/ 目录')
+    const claudeSkillsDir = path.join(targetDir, '.claude/skills')
+    const resCursor = copySkills(config.skillsDir, cursorSkillsDir, force)
+    const resClaude = copySkills(config.skillsDir, claudeSkillsDir, force)
+    if (resCursor.copied > 0 || resClaude.copied > 0) {
+      results.push(
+        '✅ 注入 NutUI Skills 到 .cursor/skills/ 与 .claude/skills/ 目录'
+      )
+    } else {
+      results.push('ℹ️ 已存在 Skills 文件（使用 --force 可覆盖）')
+    }
   }
 
   for (const r of results) {
@@ -82,7 +102,7 @@ export function runInit(args: InitArgs): void {
   }
 
   process.stdout.write(
-    `\n✨ 初始化完成！AI Agent 现在可以通过 \`${config.binName} info <Comp> --dense\` 精准获取组件规格与 Token。\n`
+    `\n✨ 初始化完成！AI Agent 现在可以通过 \`npx -y ${config.cliPkgName} info <Comp> --dense\` 精准获取组件规格与 Token。\n`
   )
 }
 
@@ -113,13 +133,13 @@ function generateAgentsMd(
 在编写任何使用 NutUI 组件的代码前，必须使用本地 CLI 确认组件支持的属性和默认值：
 \`\`\`bash
 # 1. 查询组件支持的属性与类型（高密度模式，极低 Token 消耗）
-${config.binName} info <ComponentName> --dense
+npx -y ${config.cliPkgName} info <ComponentName> --dense
 
 # 2. 查询组件样式变量 Token
-${config.binName} token <ComponentName> --dense
+npx -y ${config.cliPkgName} token <ComponentName> --dense
 
 # 3. 查看官方成熟用法示例
-${config.binName} demo <ComponentName>
+npx -y ${config.cliPkgName} demo <ComponentName>
 \`\`\`
 
 ## 2. 样式与主题规范（Design Token 优先）
@@ -127,7 +147,7 @@ ${config.binName} demo <ComponentName>
 - **全局与局部覆盖**：全局主题在根节点覆盖变量，局部页面在容器 class 下覆盖变量。
 - 查询全局可用 Token：
 \`\`\`bash
-${config.binName} token --dense
+npx -y ${config.cliPkgName} token --dense
 \`\`\`
 
 ## 3. 端能力与运行环境约束
@@ -140,14 +160,14 @@ ${platformTips}
 ## 5. 版本升级与迁移 (v3 -> v4)
 如涉及跨版本迁移或升级，先使用 CLI 扫描当前目录或查询单组件迁移说明：
 \`\`\`bash
-${config.binName} migrate 3 4 --component <ComponentName>
+npx -y ${config.cliPkgName} migrate 3 4 --component <ComponentName>
 \`\`\`
 `
 }
 
 function generateCursorRules(config: CliConfig, isTaro: boolean): string {
   return `# NutUI React Rules for Cursor
-- When using NutUI components, always verify API via \`${config.binName} info <Component> --dense\` first.
+- When using NutUI components, always verify API via \`npx -y ${config.cliPkgName} info <Component> --dense\` first.
 - Always use CSS variables (\`--nutui-*\`) for component styling instead of hardcoded hex colors.
 - Component runtime package: \`${isTaro ? '@nutui/nutui-react-taro' : '@nutui/nutui-react'}\`.
 - Icon package: \`${isTaro ? '@nutui/icons-react-taro' : '@nutui/icons-react'}\`.
@@ -158,16 +178,22 @@ function generateClaudeMd(config: CliConfig, isTaro: boolean): string {
   return `# Claude Code Guidelines for NutUI
 
 ## Guidelines
-- Before implementing UI components, run \`${config.binName} info <Component> --dense\` to obtain exact TypeScript props.
-- Reference \`${config.binName} token <Component> --dense\` for styling customization.
+- Before implementing UI components, run \`npx -y ${config.cliPkgName} info <Component> --dense\` to obtain exact TypeScript props.
+- Reference \`npx -y ${config.cliPkgName} token <Component> --dense\` for styling customization.
 - Package: \`${isTaro ? '@nutui/nutui-react-taro' : '@nutui/nutui-react'}\`.
 `
 }
 
-function copySkills(srcDir: string, destDir: string): void {
-  if (!fs.existsSync(srcDir)) return
+function copySkills(
+  srcDir: string,
+  destDir: string,
+  force: boolean
+): { copied: number; skipped: number } {
+  if (!fs.existsSync(srcDir)) return { copied: 0, skipped: 0 }
   fs.mkdirSync(destDir, { recursive: true })
 
+  let copied = 0
+  let skipped = 0
   const entries = fs.readdirSync(srcDir, { withFileTypes: true })
   for (const entry of entries) {
     if (!entry.name.startsWith('.')) {
@@ -175,10 +201,18 @@ function copySkills(srcDir: string, destDir: string): void {
       const destPath = path.join(destDir, entry.name)
 
       if (entry.isDirectory()) {
-        copySkills(srcPath, destPath)
+        const sub = copySkills(srcPath, destPath, force)
+        copied += sub.copied
+        skipped += sub.skipped
       } else if (entry.isFile()) {
-        fs.copyFileSync(srcPath, destPath)
+        if (!fs.existsSync(destPath) || force) {
+          fs.copyFileSync(srcPath, destPath)
+          copied += 1
+        } else {
+          skipped += 1
+        }
       }
     }
   }
+  return { copied, skipped }
 }

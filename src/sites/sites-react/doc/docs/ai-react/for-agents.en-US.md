@@ -15,7 +15,11 @@ The CLI automatically detects your project environment and creates:
 - **`AGENTS.md`**: Universal AI coding guidelines with component query, styling, and best practices;
 - **`.cursorrules`**: Tailored constraints for Cursor IDE;
 - **`.claude/CLAUDE.md`**: Specific instructions for Claude Code;
-- **Bundled Skills**: Automatically installs NutUI Skills into `.cursor/skills/`.
+- **Bundled Skills**: Automatically installs NutUI Skills into `.cursor/skills/` and `.claude/skills/`.
+
+> **Safe handling of existing rule files:**
+> If `AGENTS.md`, `.cursorrules`, or `.claude/CLAUDE.md` already exist in your project, `init` safely **skips** them by default to protect your current project configuration (use `--force` to overwrite).
+> To incorporate NutUI instructions into your existing configuration files without overwriting them, simply append the guidelines snippet from "Alternative" below into your existing files.
 
 ---
 

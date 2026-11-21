@@ -18,6 +18,132 @@ export interface InfoArgs {
   dense?: boolean
 }
 
+const PRIMITIVE_TYPES = new Set([
+  'string',
+  'number',
+  'boolean',
+  'any',
+  'unknown',
+  'never',
+  'void',
+  'null',
+  'undefined',
+  'symbol',
+  'bigint',
+  'object',
+  'true',
+  'false',
+  'Function',
+  'function',
+  'Record',
+  'Array',
+  'Promise',
+  'Date',
+  'ReactNode',
+  'ReactElement',
+  'ReactChild',
+  'CSSProperties',
+  'HTMLElement',
+  'HTMLDivElement',
+  'Element',
+  'JSX.Element',
+])
+
+function cleanTypeSegment(s: string): string {
+  const trimmed = s.trim()
+  if (!trimmed) return trimmed
+  if (
+    (trimmed.startsWith("'") && trimmed.endsWith("'")) ||
+    (trimmed.startsWith('"') && trimmed.endsWith('"'))
+  ) {
+    return trimmed
+  }
+  if (/^-?\d+(\.\d+)?$/.test(trimmed)) {
+    return trimmed
+  }
+  if (PRIMITIVE_TYPES.has(trimmed)) {
+    return trimmed
+  }
+  if (
+    /[\][<>()=>:.]/.test(trimmed) ||
+    (trimmed[0] === trimmed[0].toUpperCase() &&
+      /^[A-Z][a-zA-Z0-9_]*$/.test(trimmed))
+  ) {
+    return trimmed
+  }
+  if (/^[a-zA-Z0-9_-]+$/.test(trimmed)) {
+    return `'${trimmed}'`
+  }
+  return trimmed
+}
+
+export function sanitizePropType(raw?: string): string {
+  if (!raw) return 'any'
+  let s = raw.trim().replace(/｜/g, '|')
+  s = s.replace(/`([^`]+)`/g, (_, inner: string) => {
+    const trimmedInner = inner.trim()
+    if (trimmedInner.includes('|')) {
+      return trimmedInner.split('|').map(cleanTypeSegment).join(' | ')
+    }
+    return cleanTypeSegment(trimmedInner)
+  })
+  if (s.includes('|')) {
+    s = s.split('|').map(cleanTypeSegment).join(' | ')
+  }
+  return s
+}
+
+export function getInterfaceName(
+  comp: Component,
+  table: ApiTable,
+  usedNames?: Set<string>
+): string {
+  let base: string
+  if (table.subComponent) {
+    const cleanSub = table.subComponent.replace(/[^a-zA-Z0-9]/g, '')
+    if (cleanSub.toLowerCase().startsWith(comp.name.toLowerCase())) {
+      base = `${cleanSub}Props`
+    } else {
+      base = `${comp.name}${cleanSub}Props`
+    }
+  } else if (table.sourceComponent && table.sourceComponent !== comp.name) {
+    const cleanSource = table.sourceComponent.replace(/[^a-zA-Z0-9]/g, '')
+    base = `${cleanSource}Props`
+  } else if (table.name && table.name !== 'Props') {
+    const match = table.name.match(/[(（](.*?)[)）]/)
+    if (match) {
+      let qualifier = match[1]
+      if (qualifier.includes('=')) {
+        qualifier = qualifier.split('=').pop() || qualifier
+      }
+      const cleanQualifier = qualifier.replace(/[^a-zA-Z0-9]/g, '')
+      if (cleanQualifier) {
+        const capitalized =
+          cleanQualifier.charAt(0).toUpperCase() + cleanQualifier.slice(1)
+        base = `${comp.name}${capitalized}Props`
+      } else {
+        base = `${comp.name}Props`
+      }
+    } else {
+      base = `${comp.name}Props`
+    }
+  } else {
+    base = `${comp.name}Props`
+  }
+
+  if (usedNames) {
+    let candidate = base
+    let counter = 2
+    while (usedNames.has(candidate)) {
+      candidate = `${base}${counter}`
+      counter += 1
+    }
+    usedNames.add(candidate)
+    return candidate
+  }
+  return base
+}
+
 export function renderDenseInfo(
   comp: Component,
   propTables: ApiTable[]
@@ -27,14 +153,13 @@ export function renderDenseInfo(
   if (!propTables.length) {
     lines.push(`// 纯布局/展示组件，无独立 Props 表。`)
   }
+  const usedNames = new Set<string>()
   for (const t of propTables) {
-    const ifaceName = t.subComponent
-      ? `${comp.name}${t.subComponent.replace(/\./g, '')}Props`
-      : `${comp.name}Props`
+    const ifaceName = getInterfaceName(comp, t, usedNames)
     lines.push(`interface ${ifaceName} {`)
     for (const r of t.rows) {
       const propName = r.prop.trim()
-      const typeStr = r.type ? r.type.replace(/`/g, '').trim() : 'any'
+      const typeStr = sanitizePropType(r.type)
       const desc = r.desc ? r.desc.trim() : ''
       const def =
         r.default && r.default !== '-' ? `default: ${r.default.trim()}` : ''
@@ -58,19 +183,22 @@ export function runInfo(args: InfoArgs): void {
   const propTables = tables.filter((t) => t.kind === 'props')
 
   if (args.dense) {
+    const usedNames = new Set<string>()
     const denseJson = {
       id: comp.id,
       name: comp.name,
       cName: comp.cName,
       version: comp.version,
       interfaces: propTables.map((t) => ({
-        name: t.subComponent
-          ? `${comp.name}${t.subComponent.replace(/\./g, '')}Props`
-          : `${comp.name}Props`,
+        name: getInterfaceName(comp, t, usedNames),
         props: Object.fromEntries(
           t.rows.map((r) => [
             r.prop,
-            { type: r.type, default: r.default, desc: r.desc },
+            {
+              type: sanitizePropType(r.type),
+              default: r.default,
+              desc: r.desc,
+            },
           ])
         ),
       })),

@@ -1,10 +1,79 @@
 import { describe, expect, it } from 'vitest'
-import { renderDenseInfo } from '../commands/info.js'
+import {
+  renderDenseInfo,
+  sanitizePropType,
+  getInterfaceName,
+} from '../commands/info.js'
 import { renderDenseTokens } from '../commands/token.js'
 import { renderDenseList } from '../commands/list.js'
 import type { Component, ApiTable, Token, Meta } from '../types.js'
 
 describe('dense mode formatting', () => {
+  it('sanitizePropType correctly converts string enums and preserves TS types', () => {
+    expect(
+      sanitizePropType(
+        '`default` | `primary` | `warning` | `danger` | `success` | `info`'
+      )
+    ).toBe("'default' | 'primary' | 'warning' | 'danger' | 'success' | 'info'")
+    expect(sanitizePropType('`normal` | `48` | `44`')).toBe(
+      "'normal' | 48 | 44"
+    )
+    expect(sanitizePropType('`string` | `object`')).toBe('string | object')
+    expect(sanitizePropType('`boolean` | `ReactNode`')).toBe(
+      'boolean | ReactNode'
+    )
+    expect(sanitizePropType('(value: string) => void')).toBe(
+      '(value: string) => void'
+    )
+  })
+
+  it('getInterfaceName disambiguates sourceComponent and qualifiers', () => {
+    const comp: Component = {
+      id: 'icon',
+      name: 'Icon',
+      cName: '图标',
+      version: '4.0.0',
+      category: { name: '通用', enName: 'common' },
+      taro: false,
+      v15: true,
+      v16: true,
+      docs: { h5: null, enUS: null, zhTW: null, taro: null },
+      demos: { h5: [], taro: [] },
+      api: { tables: [] },
+      tokens: [],
+    }
+    const tableIcon: ApiTable = {
+      name: 'Props',
+      kind: 'props',
+      sourceComponent: 'Icon',
+      subComponent: null,
+      rows: [],
+    }
+    const tableIconFont: ApiTable = {
+      name: 'Props',
+      kind: 'props',
+      sourceComponent: 'IconFont',
+      subComponent: null,
+      rows: [],
+    }
+    const used = new Set<string>()
+    expect(getInterfaceName(comp, tableIcon, used)).toBe('IconProps')
+    expect(getInterfaceName(comp, tableIconFont, used)).toBe('IconFontProps')
+
+    // Test qualifier in table name
+    const noticeBarComp = { ...comp, name: 'NoticeBar' }
+    const tableVertical: ApiTable = {
+      name: 'Props（direction=vertical）',
+      kind: 'props',
+      sourceComponent: 'NoticeBar',
+      subComponent: null,
+      rows: [],
+    }
+    expect(getInterfaceName(noticeBarComp, tableVertical)).toBe(
+      'NoticeBarVerticalProps'
+    )
+  })
+
   it('renderDenseInfo formats TypeScript interface cleanly', () => {
     const comp: Component = {
       id: 'button',
