@@ -59,7 +59,7 @@ import { Toast } from '@nutui/nutui-react'
 | content | Toast文本內容 | `React.ReactNode` | `-` |
 | duration | 展示時長（秒）<br>值為 0 時，toast 不會自動消失 | `number` | `2` |
 | position | toast展示位置 | `top` \| `center` \| `bottom` | `center` |
-| title | 標題 | `string` | `-` |
+| title | 標題 | `React.ReactNode` | `-` |
 | icon | 自定義圖標 | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
 | size | 文案尺寸，三選一 | `small` \| `base` \| `large` | `base` |
 | contentClassName | 自定義內容區類名 | `string` | `-` |

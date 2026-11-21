@@ -61,7 +61,7 @@ import { Toast } from '@nutui/nutui-react'
 | content | Toast content | `React.ReactNode` | `-` |
 | duration | Toast duration(s), won't disappear if value is 0 | `number` | `2` |
 | position | Vertical position of toast | `top` \| `center` \| `bottom` | `center` |
-| title | title | `string` | `-` |
+| title | title | `React.ReactNode` | `-` |
 | icon | Toast icon | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
 | size | Text Size | `small` \| `base` \| `large` | `base` |
 | contentClassName | Toast content class name | `string` | `-` |
