@@ -103,7 +103,7 @@
     "@sxzz/test-utils": "^0.5.18",
     "@types/node": "^22.20.1",
     "bumpp": "^9.11.1",
-    "eslint": "^9.39.5",
+    "eslint": "^10.15.0",
     "fast-glob": "^3.3.3",
     "prettier": "^3.9.6",
     "tsup": "^8.5.1",
