@@ -17,10 +17,13 @@ export const defaultContentProps = {
 
 export const Content: FunctionComponent<
   Partial<TaroContentProps> &
-    Omit<HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
+    Omit<HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'> & {
+      nodeRef?: React.Ref<HTMLDivElement>
+    }
 > = (props) => {
   const {
     visible,
+    nodeRef,
     title,
     subtitle,
     titleIcon,
@@ -75,6 +78,7 @@ export const Content: FunctionComponent<
 
   return (
     <View
+      ref={nodeRef}
       className={classNames(`${classPrefix}-outer`, className)}
       style={style}
       onClick={(e: ITouchEvent) => handleClick(e)}

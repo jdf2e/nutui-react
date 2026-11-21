@@ -105,6 +105,7 @@ import { Dialog } from '@nutui/nutui-react-taro'
 | onConfirm | 确定按钮回调 | `(e?: MouseEvent) => Promise \| void` | `-` |
 | onCancel | 取消按钮回调 | `() => void` | `-` |
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
+| afterClose | 退场动画结束后触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
 

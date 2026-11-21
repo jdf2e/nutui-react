@@ -97,6 +97,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       onCancel,
       onConfirm,
       onOverlayClick,
+      afterClose,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
@@ -105,6 +106,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const [loading, setLoading] = useState(false)
   const [countdown, setCountdown] = useState(0)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const onCloseRef = useRef(onClose)
   onCloseRef.current = onClose
 
@@ -330,15 +332,17 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         in={visible}
         timeout={300}
         classNames="fadeDialog"
+        nodeRef={contentRef}
+        onExited={afterClose}
         unmountOnExit
         appear
       >
         <Content
+          nodeRef={contentRef}
           className={className}
           style={{
             zIndex: contentZIndex,
             ...style,
-            // display: visible ? 'block' : 'none',
           }}
           title={title}
           subtitle={subtitle}
@@ -347,7 +351,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
           close={renderCloseIcon()}
           footer={renderFooter()}
           footerDirection={footerDirection}
-          visible={visible}
+          visible
         >
           {content || children}
         </Content>
@@ -356,11 +360,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   }
 
   return (
-    <View
-      style={{ display: visible ? 'block' : 'none' }}
-      ref={refObject}
-      catchMove={lockScroll}
-    >
+    <View ref={refObject} catchMove={lockScroll}>
       {overlay && (
         <Overlay
           zIndex={zIndex}

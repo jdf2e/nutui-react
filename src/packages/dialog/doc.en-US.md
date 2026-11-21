@@ -105,6 +105,7 @@ import { Dialog } from '@nutui/nutui-react'
 | onConfirm | Determine the button back | `(e?: MouseEvent) => Promise \| void` | `-` |
 | onCancel | Cancel button callback | `() => void` | `-` |
 | onClose | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` | `-` |
+| afterClose | Called after the exit transition finishes | `() => void` | `-` |
 | onClick | Click yourself to call back | `() => void` | `-` |
 | onOverlayClick | Click Overlay | `() => void` | `-` |
 
