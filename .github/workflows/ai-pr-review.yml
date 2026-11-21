@@ -12,19 +12,30 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
-  issues: write
 
 jobs:
   gate-single-component:
     name: "AI 门禁 / 1. 单组件 PR 原则"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout Code
+      - name: Checkout Base Branch Trusted Script
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref || github.ref_name }}
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/agents
+          path: .trusted-base
+
+      - name: Checkout PR Code
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
+          persist-credentials: false
+          clean: false
           allow-unsafe-pr-checkout: true
 
       - name: Setup Node.js
@@ -36,17 +47,30 @@ jobs:
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
         run: |
-          node scripts/agents/nutui-ci-review.mjs --gate=single-component "origin/${{ github.base_ref }}"
+          node .trusted-base/scripts/agents/nutui-ci-review.mjs --gate=single-component "origin/${{ github.base_ref }}"
 
   gate-ci-security:
     name: "AI 门禁 / 2. CI 供应链安全"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout Code
+      - name: Checkout Base Branch Trusted Script
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref || github.ref_name }}
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/agents
+          path: .trusted-base
+
+      - name: Checkout PR Code
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
+          persist-credentials: false
+          clean: false
           allow-unsafe-pr-checkout: true
 
       - name: Setup Node.js
@@ -58,17 +82,30 @@ jobs:
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
         run: |
-          node scripts/agents/nutui-ci-review.mjs --gate=security "origin/${{ github.base_ref }}"
+          node .trusted-base/scripts/agents/nutui-ci-review.mjs --gate=security "origin/${{ github.base_ref }}"
 
   gate-whitepaper:
     name: "AI 门禁 / 3. 白皮书规范与多端隔离"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout Code
+      - name: Checkout Base Branch Trusted Script
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref || github.ref_name }}
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/agents
+          path: .trusted-base
+
+      - name: Checkout PR Code
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
+          persist-credentials: false
+          clean: false
           allow-unsafe-pr-checkout: true
 
       - name: Setup Node.js
@@ -80,17 +117,20 @@ jobs:
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
         run: |
-          node scripts/agents/nutui-ci-review.mjs --gate=whitepaper "origin/${{ github.base_ref }}"
+          node .trusted-base/scripts/agents/nutui-ci-review.mjs --gate=whitepaper "origin/${{ github.base_ref }}"
 
   gate-coverage:
     name: "AI 门禁 / 4. 单元测试与 95% 覆盖率门禁"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout Code
+      - name: Checkout PR Code
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
+          persist-credentials: false
           allow-unsafe-pr-checkout: true
 
       - name: Install pnpm
@@ -103,7 +143,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
       - name: 运行单元测试与 95% 覆盖率门禁
         env:
@@ -116,12 +156,27 @@ jobs:
     runs-on: ubuntu-latest
     needs: [gate-single-component, gate-ci-security, gate-whitepaper, gate-coverage]
     if: ${{ always() }}
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
     steps:
-      - name: Checkout Code
+      - name: Checkout Base Branch Trusted Script
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref || github.ref_name }}
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/agents
+          path: .trusted-base
+
+      - name: Checkout PR Code (Read-only Metadata)
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
+          persist-credentials: false
+          clean: false
           allow-unsafe-pr-checkout: true
 
       - name: Setup Node.js
@@ -129,11 +184,11 @@ jobs:
         with:
           node-version: 20
 
-      - name: 生成深度架构评审报告
+      - name: 生成深度架构评审报告 (仅执行基线受信任脚本)
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
         run: |
-          node scripts/agents/nutui-ci-review.mjs --gate=summary \
+          node .trusted-base/scripts/agents/nutui-ci-review.mjs --gate=summary \
             --step1=${{ needs.gate-single-component.result }} \
             --step2=${{ needs.gate-ci-security.result }} \
             --step3=${{ needs.gate-whitepaper.result }} \

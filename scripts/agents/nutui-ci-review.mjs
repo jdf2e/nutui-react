@@ -14,7 +14,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execSync, execFileSync } from 'node:child_process';
 
 const ROOT_DIR = process.cwd();
 const PACKAGES_DIR = path.join(ROOT_DIR, 'src', 'packages');
@@ -54,13 +54,35 @@ function appendStepSummary(markdown) {
   }
 }
 
+function resolveDiffRange() {
+  const candidates = [`${baseRef}...HEAD`, 'origin/feat_v4.x...HEAD', 'HEAD~1...HEAD', 'HEAD'];
+  for (const range of candidates) {
+    try {
+      execFileSync('git', ['diff', '--name-only', range], {
+        encoding: 'utf-8',
+        stdio: ['ignore', 'pipe', 'ignore']
+      });
+      return range;
+    } catch {
+      // try next candidate
+    }
+  }
+  return null;
+}
+
+const RESOLVED_DIFF_RANGE = resolveDiffRange();
+
 function getDiffFiles() {
+  if (!RESOLVED_DIFF_RANGE) return [];
   try {
-    return execSync(`git diff --name-only ${baseRef}...HEAD 2>/dev/null || git diff --name-only origin/feat_v4.x...HEAD 2>/dev/null || git diff --name-only HEAD~1...HEAD 2>/dev/null || git diff --name-only HEAD`, { encoding: 'utf-8' })
+    return execFileSync('git', ['diff', '--name-only', RESOLVED_DIFF_RANGE], {
+      encoding: 'utf-8',
+      stdio: ['ignore', 'pipe', 'ignore']
+    })
       .split('\n')
       .map(s => s.trim())
       .filter(Boolean);
-  } catch (err) {
+  } catch {
     return [];
   }
 }
@@ -183,22 +205,38 @@ function checkWhitepaperRules(components, diffFiles = []) {
   // 检查本次 Diff 新增代码中是否存在调试残留或未经缩放的 variables 裸 px
   const styleVarFiles = diffFiles.filter(f => f.startsWith('src/styles/variables') && f.endsWith('.scss'));
   for (const styleFile of styleVarFiles) {
+    if (!RESOLVED_DIFF_RANGE) {
+      errors.push(`[样式变量规范] 无法解析 Git 差异基线以检查 \`${styleFile}\``);
+      continue;
+    }
     try {
-      const diff = execSync(`git diff -U0 ${baseRef}...HEAD -- ${styleFile}`, { encoding: 'utf-8' });
+      const diff = execFileSync('git', ['diff', '-U0', RESOLVED_DIFF_RANGE, '--', styleFile], {
+        encoding: 'utf-8',
+        stdio: ['ignore', 'pipe', 'pipe']
+      });
       const addedLines = diff.split('\n').filter(l => l.startsWith('+') && !l.startsWith('+++'));
       addedLines.forEach((line) => {
-        const code = line.slice(1).trim();
-        if (code.startsWith('//') || code.startsWith('*')) return;
+        // 剥离块注释 /* ... */ 与行尾注释 // ...
+        const code = line
+          .slice(1)
+          .replace(/\/\*[\s\S]*?\*\//g, '')
+          .replace(/\/\/.*$/, '')
+          .trim();
+        if (!code || code.startsWith('*')) return;
         if (/scale-px\(0(px)?\)/.test(code)) {
           errors.push(`[样式变量规范] \`${styleFile}\` 包含 \`scale-px(0px)\`，0 尺寸应直接使用纯数字 0: \`${code}\``);
         }
-        const barePxMatches = code.match(/(?<!scale-(?:font-|icon-)?px\()(?<!\w)(?<!1px\s+solid\s+)(?<!1px\s+dashed\s+)\b([2-9]|\d{2,})px\b/g);
+        // 先剔除合法包裹的 scale-px(...) / scale-font-px(...) / scale-icon-px(...) 以及 1px solid/dashed 边框，再匹配剩余的裸 px (含小数或 >=2px)
+        const strippedCode = code
+          .replace(/scale-(?:font-|icon-)?px\([^)]*\)/g, '')
+          .replace(/\b1px\s+(?:solid|dashed|dotted)\b/g, '');
+        const barePxMatches = strippedCode.match(/(?<![\w.])(?:\d+\.\d+|[2-9]|\d{2,})px\b/g);
         if (barePxMatches) {
           errors.push(`[缩放规范] \`${styleFile}\` 默认值包含未包裹 \`scale-px()\` 的裸 px (${barePxMatches.join(', ')}): \`${code}\``);
         }
       });
-    } catch {
-      // ignore
+    } catch (err) {
+      errors.push(`[样式变量规范] 读取 \`${styleFile}\` 的 Git Diff 失败: ${(err.stderr || err.message || '').trim()}`);
     }
   }
 

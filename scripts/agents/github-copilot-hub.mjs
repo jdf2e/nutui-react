@@ -11,8 +11,9 @@
  */
 
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execSync, execFileSync } from 'node:child_process';
 import https from 'node:https';
 
 const ROOT_DIR = process.cwd();
@@ -109,9 +110,19 @@ function resolveGitHubEnv() {
 
 const GH_ENV = resolveGitHubEnv();
 
-function runGhJson(argsStr) {
+function assertPositiveId(id, label = '编号') {
+  const str = String(id || '').trim();
+  if (!/^[1-9]\d*$/.test(str)) {
+    console.error(c(`❌ 无效的 ${label}: "${id}"（必须为正整数，如 3600）`, colors.red));
+    process.exit(1);
+  }
+  return str;
+}
+
+function runGhJson(argsInput) {
+  const args = Array.isArray(argsInput) ? argsInput : argsInput.trim().split(/\s+/);
   try {
-    const out = execSync(`gh ${argsStr}`, {
+    const out = execFileSync('gh', args, {
       encoding: 'utf-8',
       env: GH_ENV,
       stdio: ['pipe', 'pipe', 'pipe'],
@@ -119,22 +130,38 @@ function runGhJson(argsStr) {
     });
     return JSON.parse(out);
   } catch (err) {
-    console.error(c(`❌ 执行 gh ${argsStr} 失败: ${err.stderr || err.message}`, colors.red));
+    console.error(c(`❌ 执行 gh ${args.join(' ')} 失败: ${err.stderr || err.message}`, colors.red));
     process.exit(1);
   }
 }
 
-function runGhText(argsStr) {
+function runGhText(argsInput) {
+  const args = Array.isArray(argsInput) ? argsInput : argsInput.trim().split(/\s+/);
   try {
-    return execSync(`gh ${argsStr}`, {
+    return execFileSync('gh', args, {
       encoding: 'utf-8',
       env: GH_ENV,
       stdio: ['pipe', 'pipe', 'pipe'],
       maxBuffer: 20 * 1024 * 1024
     });
   } catch (err) {
-    console.error(c(`❌ 执行 gh ${argsStr} 失败: ${err.stderr || err.message}`, colors.red));
+    console.error(c(`❌ 执行 gh ${args.join(' ')} 失败: ${err.stderr || err.message}`, colors.red));
     process.exit(1);
+  }
+}
+
+function withTempMarkdownFile(prefix, content, fn) {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), `nutui-${prefix}-`));
+  const tmpFile = path.join(tmpDir, 'message.md');
+  fs.writeFileSync(tmpFile, content, 'utf-8');
+  try {
+    return fn(tmpFile);
+  } finally {
+    try {
+      fs.rmSync(tmpDir, { recursive: true, force: true });
+    } catch {
+      // ignore
+    }
   }
 }
 
@@ -155,21 +182,29 @@ function analyzePrStatus(pr) {
 
     if (state === 'SUCCESS' || state === 'NEUTRAL' || state === 'SKIPPED') {
       passedChecks.push(name);
-    } else if (['FAILURE', 'ERROR', 'TIMED_OUT', 'ACTION_REQUIRED', 'CANCELLED'].includes(state)) {
+    } else if (
+      ['FAILURE', 'ERROR', 'TIMED_OUT', 'ACTION_REQUIRED', 'CANCELLED', 'STARTUP_FAILURE', 'STALE'].includes(state)
+    ) {
       failedChecks.push(name);
     } else if (status === 'IN_PROGRESS' || status === 'QUEUED' || state === 'PENDING' || state === '') {
       pendingChecks.push(name);
+    } else {
+      failedChecks.push(`${name} (${state})`);
     }
   }
 
   const isBot = pr.author?.is_bot || (pr.author?.login || '').includes('renovate') || (pr.author?.login || '').includes('dependabot');
   const noConflict = pr.mergeable === 'MERGEABLE';
   const hasConflict = pr.mergeable === 'CONFLICTING';
-  const allChecksGreen = totalChecks > 0 && failedChecks.length === 0 && pendingChecks.length === 0;
+  const allChecksGreen =
+    totalChecks > 0 &&
+    passedChecks.length === totalChecks &&
+    failedChecks.length === 0 &&
+    pendingChecks.length === 0;
   const changesRequested = pr.reviewDecision === 'CHANGES_REQUESTED';
 
-  // 核心判定：非 Draft + 无冲突(或未冲突且全绿) + 至少有 1 项 CI 且全部通过 + 未被 Request Changes
-  const isMergeReady = !pr.isDraft && !hasConflict && allChecksGreen && !changesRequested;
+  // 核心判定：非 Draft + 明确无冲突 (MERGEABLE) + 至少有 1 项 CI 且全部明确通过 + 未被 Request Changes
+  const isMergeReady = !pr.isDraft && noConflict && allChecksGreen && !changesRequested;
 
   return {
     number: pr.number,
@@ -256,25 +291,44 @@ function sendWebhookNotification(webhookUrl, markdownText) {
       }
 
       const body = JSON.stringify(payload);
+      let settled = false;
+      const done = () => {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timer);
+          resolve();
+        }
+      };
+
       const req = https.request(
         {
           hostname: urlObj.hostname,
           port: urlObj.port || 443,
           path: urlObj.pathname + urlObj.search,
           method: 'POST',
+          timeout: 10000,
           headers: {
             'Content-Type': 'application/json',
             'Content-Length': Buffer.byteLength(body)
           }
         },
         (res) => {
+          res.resume();
           console.log(c(`📤 Webhook 推送完成 (HTTP ${res.statusCode})`, colors.green));
-          resolve();
+          done();
         }
       );
+
+      const timer = setTimeout(() => {
+        req.destroy(new Error('Webhook request timed out after 10s'));
+      }, 10000);
+
+      req.on('timeout', () => {
+        req.destroy(new Error('Socket timeout'));
+      });
       req.on('error', (e) => {
         console.error(c(`❌ Webhook 推送失败: ${e.message}`, colors.red));
-        resolve();
+        done();
       });
       req.write(body);
       req.end();
@@ -327,7 +381,9 @@ async function cmdPrReady(options = {}) {
   } else {
     for (const pr of blockedHumanPrs) {
       let reason = '';
-      if (pr.failedChecks.length > 0) {
+      if (pr.isDraft) {
+        reason = c(`📝 Draft 草稿状态`, colors.gray);
+      } else if (pr.failedChecks.length > 0) {
         reason = c(`❌ 失败门禁: [${pr.failedChecks.join(', ')}]`, colors.red);
       } else if (pr.pendingChecks.length > 0) {
         reason = c(`⏳ 运行中: [${pr.pendingChecks.join(', ')}]`, colors.yellow);
@@ -335,6 +391,10 @@ async function cmdPrReady(options = {}) {
         reason = c(`⚪ 未触发 CI 检查 (分支: -> ${pr.baseRefName})`, colors.gray);
       } else if (pr.mergeable === 'CONFLICTING') {
         reason = c(`💥 存在代码冲突 (CONFLICTING)`, colors.red);
+      } else if (pr.mergeable === 'UNKNOWN') {
+        reason = c(`🔄 合并性计算中 (mergeable=UNKNOWN，GitHub 正在后台重算)`, colors.yellow);
+      } else {
+        reason = c(`⏳ 待人工 Review 确认 (${pr.reviewDecision})`, colors.yellow);
       }
       console.log(
         `  🔸 ${c(`#${pr.number}`, colors.yellow + colors.bold)} [${c(pr.author, colors.cyan)}] ${pr.title}`
@@ -484,14 +544,10 @@ async function cmdIssuesTriage(options = {}) {
         `补充后我们的定时巡检工作流将自动跟进排查与修复！`
       ].join('\n');
 
-      const tmpFile = path.join(ROOT_DIR, `.auto-triage-${issue.number}.tmp.md`);
-      fs.writeFileSync(tmpFile, autoReplyBody, 'utf-8');
-      try {
-        runGhText(`issue comment ${issue.number} --repo ${REPO} --body-file "${tmpFile}"`);
+      withTempMarkdownFile(`auto-triage-${issue.number}`, autoReplyBody, (tmpFile) => {
+        runGhText(['issue', 'comment', String(issue.number), '--repo', REPO, '--body-file', tmpFile]);
         console.log(c(`     ✅ [Auto-Triage] 已为缺失版本/包名的 Issue #${issue.number} 自动发送信息补充引导回复！`, colors.green + colors.bold));
-      } finally {
-        if (fs.existsSync(tmpFile)) fs.unlinkSync(tmpFile);
-      }
+      });
     }
   }
 }
@@ -499,20 +555,39 @@ async function cmdIssuesTriage(options = {}) {
 /**
  * 3. 针对单个远程 PR 进行本地 AI 规范 + 代码深度评审
  */
-async function cmdReviewPr(prNumber, options = {}) {
-  if (!prNumber) {
-    console.error(c(`❌ 请提供要评审的 PR 编号，例如: pnpm gh:review 3600`, colors.red));
-    process.exit(1);
-  }
+async function cmdReviewPr(rawPrNumber, options = {}) {
+  const prNumber = assertPositiveId(rawPrNumber, 'PR 编号');
 
   console.log(c(`\n==================================================================`, colors.blue));
   console.log(c(`🧐 [NutUI-React] 正在对 PR #${prNumber} 执行远程 Diff 深度审查...`, colors.cyan + colors.bold));
   console.log(c(`==================================================================\n`, colors.blue));
 
-  const pr = runGhJson(
-    `pr view ${prNumber} --repo ${REPO} --json number,title,author,baseRefName,headRefName,files,additions,deletions,mergeable,statusCheckRollup,body,url`
-  );
-  const diffText = runGhText(`pr diff ${prNumber} --repo ${REPO}`);
+  let pr = runGhJson([
+    'pr',
+    'view',
+    prNumber,
+    '--repo',
+    REPO,
+    '--json',
+    'number,title,author,isDraft,baseRefName,headRefName,headRefOid,files,additions,deletions,mergeable,reviewDecision,statusCheckRollup,body,url'
+  ]);
+  let diffText = runGhText(['pr', 'diff', prNumber, '--repo', REPO]);
+
+  // 校验 headRefOid 一致性，避免在 pr view 与 pr diff 之间产生并发新提交导致快照错位
+  const verifyPr = runGhJson([
+    'pr',
+    'view',
+    prNumber,
+    '--repo',
+    REPO,
+    '--json',
+    'number,title,author,isDraft,baseRefName,headRefName,headRefOid,files,additions,deletions,mergeable,reviewDecision,statusCheckRollup,body,url'
+  ]);
+  if (verifyPr.headRefOid !== pr.headRefOid) {
+    pr = verifyPr;
+    diffText = runGhText(['pr', 'diff', prNumber, '--repo', REPO]);
+  }
+  const reviewedHeadOid = pr.headRefOid;
 
   const files = (pr.files || []).map((f) => f.path);
   const components = Array.from(
@@ -662,9 +737,16 @@ async function cmdReviewPr(prNumber, options = {}) {
 
   // 如果传入 --post，则可将评审结论作为评论发布到 GitHub PR
   if (options.post) {
+    const latestHead = runGhJson(['pr', 'view', prNumber, '--repo', REPO, '--json', 'headRefOid']);
+    const headChanged = latestHead.headRefOid && reviewedHeadOid && latestHead.headRefOid !== reviewedHeadOid;
+    const effectiveVerdict = headChanged
+      ? `🟡 **评审期间检测到新提交 (${reviewedHeadOid.slice(0, 7)} -> ${latestHead.headRefOid.slice(0, 7)})，请等待新提交 CI 完成**`
+      : verdict;
+
     const mdBody = [
       `### 🤖 NutUI 本地 AI 深度评审报告`,
-      `- **综合判定**：${verdict}`,
+      `- **评审提交**：\`${(reviewedHeadOid || '').slice(0, 7)}\``,
+      `- **综合判定**：${effectiveVerdict}`,
       `- **涉及组件**：${components.length ? components.map((x) => `\`${x}\``).join(', ') : '非组件源码'}`,
       `- **变更统计**：${files.length} 个文件 (+${pr.additions} / -${pr.deletions})`,
       '',
@@ -676,33 +758,32 @@ async function cmdReviewPr(prNumber, options = {}) {
       .filter(Boolean)
       .join('\n');
 
-    const tmpFile = path.join(ROOT_DIR, '.pr-review-tmp.md');
-    fs.writeFileSync(tmpFile, mdBody, 'utf-8');
-    try {
-      runGhText(`pr comment ${prNumber} --repo ${REPO} --body-file "${tmpFile}"`);
+    withTempMarkdownFile(`pr-review-${prNumber}`, mdBody, (tmpFile) => {
+      runGhText(['pr', 'comment', prNumber, '--repo', REPO, '--body-file', tmpFile]);
       console.log(c(`✅ 已将评审报告同步发布至 GitHub PR #${prNumber} 评论区！`, colors.green + colors.bold));
-    } finally {
-      if (fs.existsSync(tmpFile)) fs.unlinkSync(tmpFile);
-    }
+    });
   }
 }
 
 /**
  * 4. 针对单个 Issue 生成深度诊断上下文（自动定位组件源码与问题点）
  */
-async function cmdInspectIssue(issueNumber, options = {}) {
-  if (!issueNumber) {
-    console.error(c(`❌ 请提供 Issue 编号，例如: pnpm gh:issue 3580`, colors.red));
-    process.exit(1);
-  }
+async function cmdInspectIssue(rawIssueNumber, options = {}) {
+  const issueNumber = assertPositiveId(rawIssueNumber, 'Issue 编号');
 
   console.log(c(`\n==================================================================`, colors.blue));
   console.log(c(`🩺 [NutUI-React] 正在对 Issue #${issueNumber} 执行源码定位与诊断...`, colors.cyan + colors.bold));
   console.log(c(`==================================================================\n`, colors.blue));
 
-  const issue = runGhJson(
-    `issue view ${issueNumber} --repo ${REPO} --json number,title,author,createdAt,labels,body,comments,url`
-  );
+  const issue = runGhJson([
+    'issue',
+    'view',
+    issueNumber,
+    '--repo',
+    REPO,
+    '--json',
+    'number,title,author,createdAt,labels,body,comments,url'
+  ]);
 
   const bodyText = issue.body || '';
   // 提取或检验 Issue 中是否包含明确的包名与版本号
@@ -789,15 +870,11 @@ async function cmdInspectIssue(issueNumber, options = {}) {
       replyContent = `${AI_SIGNATURE}\n\n${replyContent}`;
     }
 
-    const finalTmpFile = path.join(ROOT_DIR, `.issue-reply-${issueNumber}.tmp.md`);
-    fs.writeFileSync(finalTmpFile, replyContent, 'utf-8');
-    try {
-      const out = runGhText(`issue comment ${issueNumber} --repo ${REPO} --body-file "${finalTmpFile}"`);
+    withTempMarkdownFile(`issue-reply-${issueNumber}`, replyContent, (finalTmpFile) => {
+      const out = runGhText(['issue', 'comment', issueNumber, '--repo', REPO, '--body-file', finalTmpFile]);
       console.log(c(`\n✅ 已将回复内容发布至 GitHub Issue #${issueNumber}！`, colors.green + colors.bold));
       if (out.trim()) console.log(`🔗 评论链接: ${c(out.trim(), colors.blue)}`);
-    } finally {
-      if (fs.existsSync(finalTmpFile)) fs.unlinkSync(finalTmpFile);
-    }
+    });
   }
 }
 
@@ -805,26 +882,29 @@ async function cmdInspectIssue(issueNumber, options = {}) {
  * 5. 针对因单测覆盖率 (<95%) 被拦截的 PR 执行本地自愈诊断 (heal-pr)
  *    自动拉取远程 PR 改动文件，在隔离 worktree 中跑 vitest --coverage，输出精确的未覆盖行号与对应源码上下文
  */
-async function cmdHealPr(prNumber) {
-  if (!prNumber) {
-    console.error(c(`❌ 请提供需要自愈诊断的 PR 编号，例如: pnpm gh:heal-pr 3577`, colors.red));
-    process.exit(1);
-  }
+async function cmdHealPr(rawPrNumber) {
+  const prNumber = assertPositiveId(rawPrNumber, 'PR 编号');
 
   console.log(c(`\n==================================================================`, colors.blue));
   console.log(c(`🩹 [NutUI-React] 正在对卡点 PR #${prNumber} 执行单测覆盖率自愈诊断...`, colors.cyan + colors.bold));
   console.log(c(`==================================================================\n`, colors.blue));
 
-  const pr = runGhJson(
-    `pr view ${prNumber} --repo ${REPO} --json number,title,author,baseRefName,headRefName,files,statusCheckRollup,url`
-  );
+  const pr = runGhJson([
+    'pr',
+    'view',
+    prNumber,
+    '--repo',
+    REPO,
+    '--json',
+    'number,title,author,isDraft,baseRefName,headRefName,headRefOid,files,statusCheckRollup,url'
+  ]);
 
   const files = (pr.files || []).map((f) => f.path);
   const components = Array.from(
     new Set(
       files
         .map((f) => {
-          const m = f.match(/^src\/packages\/([^/]+)\//);
+          const m = f.match(/^src\/packages\/([a-zA-Z0-9_-]+)\//);
           return m ? m[1] : null;
         })
         .filter(Boolean)
@@ -841,32 +921,34 @@ async function cmdHealPr(prNumber) {
     return;
   }
 
-  const tmpWorktree = `/tmp/nutui-heal-pr-${prNumber}`;
-  try {
-    // 清理可能存在的旧临时目录
-    try {
-      execSync(`git worktree remove "${tmpWorktree}" --force`, { stdio: 'ignore' });
-    } catch {
-      // ignore
-    }
+  const tmpWorktree = fs.mkdtempSync(path.join(os.tmpdir(), `nutui-heal-pr-${prNumber}-`));
+  const repoUrl = `https://github.com/${REPO}.git`;
+  let worktreeAdded = false;
 
-    console.log(c(`⏳ 1. 正在拉取远程 PR #${prNumber} 分支至隔离环境 (${tmpWorktree})...`, colors.cyan));
-    execSync(`git fetch origin pull/${prNumber}/head:pr-${prNumber}-head --force`, { stdio: 'ignore' });
-    execSync(`git worktree add "${tmpWorktree}" pr-${prNumber}-head --detach`, { stdio: 'ignore' });
-    execSync(`ln -s "${path.join(ROOT_DIR, 'node_modules')}" "${path.join(tmpWorktree, 'node_modules')}"`, { stdio: 'ignore' });
+  try {
+    console.log(c(`⏳ 1. 正在从 ${repoUrl} 拉取远程 PR #${prNumber} 至独立隔离环境 (${tmpWorktree})...`, colors.cyan));
+    execFileSync('git', ['fetch', repoUrl, `pull/${prNumber}/head`], { stdio: 'ignore' });
+    const fetchedSha = execFileSync('git', ['rev-parse', 'FETCH_HEAD'], { encoding: 'utf-8' }).trim();
+    execFileSync('git', ['worktree', 'add', '--detach', tmpWorktree, fetchedSha], { stdio: 'ignore' });
+    worktreeAdded = true;
+    fs.symlinkSync(path.join(ROOT_DIR, 'node_modules'), path.join(tmpWorktree, 'node_modules'), 'dir');
+
+    let hasTestFailure = false;
 
     for (const comp of components) {
       console.log(c(`⏳ 2. 正在运行组件 [${comp}] 的单元测试与 v8 覆盖率分析...`, colors.cyan));
       let output = '';
+      let cmdFailed = false;
       try {
-        output = execSync(`npx vitest run src/packages/${comp} --coverage`, {
+        output = execFileSync('npx', ['vitest', 'run', `src/packages/${comp}`, '--coverage'], {
           cwd: tmpWorktree,
           encoding: 'utf-8',
           stdio: ['pipe', 'pipe', 'pipe'],
           timeout: 120000
         });
       } catch (err) {
-        output = (err.stdout || '') + '\n' + (err.stderr || '');
+        cmdFailed = true;
+        output = (err.stdout || '') + '\n' + (err.stderr || '') + '\n' + (err.message || '');
       }
 
       // 提取 packages/<comp> 下的覆盖率明细行
@@ -874,6 +956,18 @@ async function cmdHealPr(prNumber) {
       const tableLines = lines.filter(
         (l) => l.includes(`packages/${comp}`) || l.includes(`${comp}.tsx`) || l.includes(`File`) || l.includes(`---`)
       );
+      const hasCoverageTable = tableLines.some((l) => l.includes('% Stmts') || l.includes(`packages/${comp}`));
+
+      if (!hasCoverageTable) {
+        hasTestFailure = true;
+        console.error(c(`\n❌ 组件 [${comp}] 未能生成覆盖率报告，测试执行或配置异常:`, colors.red + colors.bold));
+        console.error(output.trim().slice(-2000));
+        continue;
+      }
+
+      if (cmdFailed) {
+        hasTestFailure = true;
+      }
 
       console.log(c(`\n📊 组件 [${comp}] 覆盖率诊断报表:`, colors.yellow + colors.bold));
       console.log(c(`------------------------------------------------------------------`, colors.gray));
@@ -912,10 +1006,17 @@ async function cmdHealPr(prNumber) {
         }
       }
     }
+
+    if (hasTestFailure) {
+      process.exitCode = 1;
+    }
   } finally {
     try {
-      execSync(`git worktree remove "${tmpWorktree}" --force`, { stdio: 'ignore' });
-      execSync(`git branch -D pr-${prNumber}-head`, { stdio: 'ignore' });
+      if (worktreeAdded) {
+        execFileSync('git', ['worktree', 'remove', tmpWorktree, '--force'], { stdio: 'ignore' });
+      } else {
+        fs.rmSync(tmpWorktree, { recursive: true, force: true });
+      }
     } catch {
       // ignore
     }
