@@ -148,8 +148,9 @@ function checkWorkflowSecurity(diffFiles) {
 }
 
 // 门禁 3：多端对称性与白皮书环境隔离规范
-function checkWhitepaperRules(components) {
+function checkWhitepaperRules(components, diffFiles = []) {
   const errors = [];
+  const warnings = [];
 
   for (const comp of components) {
     const compDir = path.join(PACKAGES_DIR, comp);
@@ -179,11 +180,34 @@ function checkWhitepaperRules(components) {
     }
   }
 
+  // 检查本次 Diff 新增代码中是否存在调试残留或未经缩放的 variables 裸 px
+  const styleVarFiles = diffFiles.filter(f => f.startsWith('src/styles/variables') && f.endsWith('.scss'));
+  for (const styleFile of styleVarFiles) {
+    try {
+      const diff = execSync(`git diff -U0 ${baseRef}...HEAD -- ${styleFile}`, { encoding: 'utf-8' });
+      const addedLines = diff.split('\n').filter(l => l.startsWith('+') && !l.startsWith('+++'));
+      addedLines.forEach((line) => {
+        const code = line.slice(1).trim();
+        if (code.startsWith('//') || code.startsWith('*')) return;
+        if (/scale-px\(0(px)?\)/.test(code)) {
+          errors.push(`[样式变量规范] \`${styleFile}\` 包含 \`scale-px(0px)\`，0 尺寸应直接使用纯数字 0: \`${code}\``);
+        }
+        const barePxMatches = code.match(/(?<!scale-(?:font-|icon-)?px\()(?<!\w)(?<!1px\s+solid\s+)(?<!1px\s+dashed\s+)\b([2-9]|\d{2,})px\b/g);
+        if (barePxMatches) {
+          errors.push(`[缩放规范] \`${styleFile}\` 默认值包含未包裹 \`scale-px()\` 的裸 px (${barePxMatches.join(', ')}): \`${code}\``);
+        }
+      });
+    } catch {
+      // ignore
+    }
+  }
+
   const passed = errors.length === 0;
   return {
     passed,
-    summary: passed ? '双端实现文件结构对称，无 Taro 端 DOM/BOM 越界调用' : `发现 ${errors.length} 项白皮书规范违背`,
-    details: errors.map(e => `- ${e}`)
+    summary: passed ? '双端实现文件结构对称，无 Taro 端 DOM/BOM 越界或样式变量缩放违规' : `发现 ${errors.length} 项白皮书或样式变量规范违背`,
+    details: errors.map(e => `- ${e}`),
+    warnings
   };
 }
 
@@ -336,7 +360,7 @@ async function runSingleGate(gate) {
   }
 
   if (gate === 'whitepaper') {
-    const res = checkWhitepaperRules(components);
+    const res = checkWhitepaperRules(components, diffFiles);
     if (res.passed) {
       const summaryMd = `### ✅ AI 门禁通过：3. 白皮书规范与多端隔离\n\n- ${res.summary}`;
       appendStepSummary(summaryMd);
@@ -374,7 +398,7 @@ async function runSingleGate(gate) {
   if (gate === 'summary') {
     const step1 = checkSingleComponentPrinciple(components);
     const step2 = checkWorkflowSecurity(diffFiles);
-    const step3 = checkWhitepaperRules(components);
+    const step3 = checkWhitepaperRules(components, diffFiles);
 
     let step4;
     if (externalStepResults.step4) {

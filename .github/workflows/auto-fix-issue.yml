@@ -1,89 +1,55 @@
-name: Auto Fix Issue by AI Agent
+name: Auto Triage Issue & Weekday Noon PR/Issue Patrol
 
 on:
+  # 1. 工作日每天中午 12:30 (北京时间 UTC+8 -> UTC 04:30) 定时执行
+  schedule:
+    - cron: '30 4 * * 1-5'
+  # 2. 当有新 Issue 提交时自动预检版本与包名信息
   issues:
-    types: [labeled]
-  # 允许在 GitHub Actions UI 界面中手动输入参数并运行该工作流，方便测试任何分支
+    types: [opened]
+  # 3. 支持在 GitHub Actions 面板手动一键触发
   workflow_dispatch:
     inputs:
-      issue_id:
-        description: '需要修复的 Issue 编号 (例如: 3396)'
-        required: true
-        default: '3396'
-      issue_title:
-        description: 'Issue 标题'
+      auto_triage:
+        description: '是否对缺失包名/版本号的 0 回复 Issue 自动发送引导评论'
         required: false
-        default: 'DatePicker time range bug'
-      issue_body:
-        description: 'Issue 详情描述说明'
-        required: false
-        default: 'DatePicker fails to calculate minutes range under time mode.'
+        default: 'true'
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
 
 jobs:
-  auto-fix:
-    # 只有当打上的标签是 'auto-fix'，或者通过手动触发 (workflow_dispatch) 时，才执行任务
-    if: github.event.label.name == 'auto-fix' || github.event_name == 'workflow_dispatch'
+  patrol-and-triage:
+    name: "AI 巡检 / 可合并 PR 汇总与 Issue 分诊预检"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # 完整拉取历史，方便 git 操作
-
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          fetch-depth: 1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10.34.5
-
-      - name: Install Node Dependencies
-        run: pnpm install
-
-      - name: Setup Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.14.7'
-
-      - name: Install Python Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install google-antigravity
-
-      - name: Run Antigravity AI Agent
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          # 兼容处理：支持来自 GitHub Issue 事件的数据或手动输入的参数
-          ISSUE_ID: ${{ github.event.issue.number || inputs.issue_id }}
-          ISSUE_TITLE: ${{ github.event.issue.title || inputs.issue_title }}
-          ISSUE_BODY: ${{ github.event.issue.body || inputs.issue_body }}
-        run: python scripts/agents/issue_resolver.py
-
-      # 推送分支并使用 GitHub CLI (gh) 自动创建 Pull Request
-      - name: Push Branch and Create Pull Request
+      - name: 执行 GitHub PR 可合并巡检与 Issue 版本/包名自动分诊
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
         run: |
-          # 获取实际的 Issue ID
-          ACTUAL_ISSUE_ID="${{ github.event.issue.number || inputs.issue_id }}"
-          BRANCH_NAME="fix/issue-$ACTUAL_ISSUE_ID"
-          
-          if git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
-            echo "Branch $BRANCH_NAME found. Pushing to origin..."
-            git push origin "$BRANCH_NAME" --force
-            gh pr create \
-              --title "fix: automatically resolved issue #$ACTUAL_ISSUE_ID" \
-              --body "This PR was generated automatically by the Antigravity Issue Resolver Agent. Closes #$ACTUAL_ISSUE_ID" \
-              --head "$BRANCH_NAME" \
-              --base "${{ github.event.repository.default_branch }}" || echo "PR already exists."
+          if [ "${{ github.event_name }}" = "issues" ]; then
+            echo "🔍 检测到新创建的 Issue #${{ github.event.issue.number }}，正在执行组件源码定位与版本/包名核验..."
+            node scripts/agents/github-copilot-hub.mjs issue "${{ github.event.issue.number }}"
+            node scripts/agents/github-copilot-hub.mjs issues --auto-triage
           else
-            echo "No fix branch was created by the Agent."
+            echo "🚀 正在执行工作日午间 PR 可合并状态巡检与 Issue 自动分诊..."
+            if [ "${{ inputs.auto_triage }}" = "false" ]; then
+              node scripts/agents/github-copilot-hub.mjs status
+            else
+              node scripts/agents/github-copilot-hub.mjs status --auto-triage
+            fi
           fi
