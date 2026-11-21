@@ -1,7 +1,17 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CalendarDay } from '@/types'
+import { CalendarDay, CalendarRef } from '@/types'
+import { getPreMonthDates } from '@/utils/date'
+import {
+  splitDate,
+  isMultiple,
+  isCurrDay,
+  getCurrDate,
+  isStart,
+  isEnd,
+  isStartAndEnd,
+} from '../utils'
 
 import { Calendar } from '../calendar'
 
@@ -153,4 +163,129 @@ test('choose event when click item', async () => {
 
   fireEvent.click(calendarConfirmBtn)
   expect(onConfirm).toBeCalled()
+})
+
+test('December padding days of a January month should pass year - 1 (#3580)', () => {
+  // 1. 直接验证 getPreMonthDates 跨年与非跨年边界计算
+  const jan2025Prev = getPreMonthDates('prev', 2025, 1, 0)
+  expect(jan2025Prev).toEqual([
+    { day: 29, type: 'prev', year: 2024, month: 12 },
+    { day: 30, type: 'prev', year: 2024, month: 12 },
+    { day: 31, type: 'prev', year: 2024, month: 12 },
+  ])
+
+  const feb2025Prev = getPreMonthDates('prev', 2025, 2, 0)
+  expect(feb2025Prev).toEqual([
+    { day: 26, type: 'prev', year: 2025, month: 1 },
+    { day: 27, type: 'prev', year: 2025, month: 1 },
+    { day: 28, type: 'prev', year: 2025, month: 1 },
+    { day: 29, type: 'prev', year: 2025, month: 1 },
+    { day: 30, type: 'prev', year: 2025, month: 1 },
+    { day: 31, type: 'prev', year: 2025, month: 1 },
+  ])
+
+  // 2. 验证通过 Calendar 组件渲染时传给 renderDay / renderDayTop / renderDayBottom 的 CalendarDay 对象
+  const prevDaysFromDay: string[] = []
+  const prevDaysFromTop: string[] = []
+  const prevDaysFromBottom: string[] = []
+
+  render(
+    <Calendar
+      visible
+      popup={false}
+      defaultValue="2025-01-15"
+      startDate="2025-01-01"
+      endDate="2025-02-28"
+      renderDay={(d: CalendarDay) => {
+        if (d.type === 'prev') {
+          prevDaysFromDay.push(`${d.year}-${d.month}-${d.day}`)
+        }
+        return d.day
+      }}
+      renderDayTop={(d: CalendarDay) => {
+        if (d.type === 'prev') {
+          prevDaysFromTop.push(`${d.year}-${d.month}-${d.day}`)
+        }
+        return ''
+      }}
+      renderDayBottom={(d: CalendarDay) => {
+        if (d.type === 'prev') {
+          prevDaysFromBottom.push(`${d.year}-${d.month}-${d.day}`)
+        }
+        return (
+          <span>
+            {d.year}-{d.month}
+          </span>
+        )
+      }}
+    />
+  )
+
+  expect(prevDaysFromDay.slice(0, 3)).toEqual([
+    '2024-12-29',
+    '2024-12-30',
+    '2024-12-31',
+  ])
+  expect(prevDaysFromDay.slice(3)).toEqual([
+    '2025-1-26',
+    '2025-1-27',
+    '2025-1-28',
+    '2025-1-29',
+    '2025-1-30',
+    '2025-1-31',
+  ])
+  expect(prevDaysFromTop.slice(0, 3)).toEqual([
+    '2024-12-29',
+    '2024-12-30',
+    '2024-12-31',
+  ])
+  expect(prevDaysFromBottom.slice(0, 3)).toEqual([
+    '2024-12-29',
+    '2024-12-30',
+    '2024-12-31',
+  ])
+})
+
+test('calendar utils and ref methods coverage', () => {
+  expect(splitDate('2025-01-15')).toEqual(['2025', '01', '15'])
+  expect(splitDate('2025/01/15')).toEqual(['2025', '01', '15'])
+  expect(isMultiple('2025-01-15', ['2025-01-15', '2025-01-16'])).toBe(true)
+  expect(isMultiple('2025-01-18', ['2025-01-15'])).toBe(false)
+  expect(isMultiple('2025-01-18', [])).toBe(false)
+  expect(isStart('2025-01-15', ['2025-01-15', '2025-01-20'])).toBe(true)
+  expect(isEnd('2025-01-20', ['2025-01-15', '2025-01-20'])).toBe(true)
+  expect(isStartAndEnd(['2025-01-15', '2025-01-15'])).toBe(true)
+  expect(isStartAndEnd(['2025-01-15', '2025-01-20'])).toBe(false)
+
+  const monthInfo = {
+    curData: ['2025', '01', '15'],
+    title: '2025-01',
+    monthData: [],
+    cssHeight: 350,
+    scrollTop: 0,
+  }
+  expect(getCurrDate({ day: 5, type: 'active' }, monthInfo)).toBe('2025/01/05')
+  expect(isCurrDay(monthInfo, '01')).toBe(false)
+
+  const onClose = vi.fn()
+  const ref = React.createRef<CalendarRef>()
+  const { container } = render(
+    <Calendar
+      ref={ref}
+      visible
+      type="range"
+      defaultValue={['2025-01-10', '2025-01-20']}
+      startDate="2025-01-01"
+      endDate="2025-03-31"
+      onClose={onClose}
+    />
+  )
+
+  ref.current?.scrollToDate('2025-02-01')
+
+  const closeBtn = container.querySelector('.nut-popup-title-right')
+  if (closeBtn) {
+    fireEvent.click(closeBtn)
+    expect(onClose).toHaveBeenCalled()
+  }
 })
