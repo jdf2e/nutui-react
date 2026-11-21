@@ -118,6 +118,7 @@
     "async-validator": "^4.2.5",
     "classnames": "^2.5.1",
     "codesandbox": "^2.2.3",
+    "dom-helpers": "5.2.1",
     "lodash.kebabcase": "^4.1.1",
     "lottie-react": "^2.4.0",
     "react-fast-compare": "^3.2.2",
