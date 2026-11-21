@@ -133,13 +133,13 @@
 .nut-form-item-label-right {
   justify-content: flex-end;
   padding-right: 24px;
-  white-space: nowrap;
+  word-wrap: break-word;
 }
 
 .nut-form-item-label-left {
   position: relative;
   padding-left: 12px;
-  white-space: nowrap;
+  word-wrap: break-word;
 }
 
 .nut-form-item-top {
