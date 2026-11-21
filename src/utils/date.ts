@@ -244,7 +244,7 @@ export const getPreMonthDates = (
   let preYear = year
   if (preMonth <= 0) {
     preMonth = 12
-    preYear += 1
+    preYear -= 1
   }
   let days = Utils.getMonthPreDay(+year, +month)
   days -= firstDayOfWeek
