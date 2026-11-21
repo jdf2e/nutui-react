@@ -302,117 +302,6 @@
   }
 }
 
-.nut-tabs-vertical {
-  .nut-tabs-ellipsis {
-    white-space: break-spaces;
-    /* #ifdef harmony dynamic*/
-    padding-left: 12px;
-    /* #endif */
-    /* #ifndef harmony dynamic*/
-    padding-left: 6px;
-    /* #endif */
-    width: 90px;
-    line-height: $font-size-base;
-  }
-
-  .nut-tabs-titles {
-    flex-direction: column;
-    height: 100%;
-    width: $tabs-vertical-titles-width;
-    flex-shrink: 0;
-
-    .nut-tabs-list {
-      flex-direction: column;
-    }
-  }
-
-  .nut-tabs-titles-item {
-    height: $tabs-vertical-titles-item-height;
-    flex: none;
-
-    &-smile {
-      overflow: hidden;
-      transition: width 0.3s ease;
-    }
-
-    &-line {
-      transform: translate(0, -50%);
-      transition: height 0.3s ease;
-
-      &-vertical {
-        top: 50%;
-      }
-    }
-
-    &-active {
-      background-color: $tabs-titles-item-active-background-color;
-      .nut-tabs-titles-item-line {
-        left: 8px;
-        width: $tabs-vertical-tab-line-width;
-        height: $tabs-vertical-tab-line-height;
-        background: $tabs-vertical-tab-line-color;
-      }
-
-      .nut-tabs-titles-item-smile {
-        right: 3px;
-        bottom: 12%;
-        left: auto;
-        transform: rotate(320deg);
-      }
-    }
-  }
-
-  .nut-tabs-horizontal {
-    .nut-tabs-titles {
-      flex-direction: row;
-      height: $tabs-titles-height;
-      width: 100%;
-      padding: 0 !important;
-
-      .nut-tabs-list {
-        flex-direction: row;
-        height: auto;
-      }
-    }
-
-    .nut-tabs-content {
-      flex-direction: row;
-    }
-
-    .nut-tabs-titles-item-active {
-      background-color: initial;
-
-      .nut-tabs-titles-item-line {
-        left: 50%;
-        transform: translate(-50%, 0);
-        width: $tabs-tab-line-width;
-        height: $tabs-tab-line-height;
-        background: $tabs-tab-line-color;
-      }
-
-      .nut-tabs-titles-item-smile {
-        left: 50%;
-        right: auto;
-        bottom: 4%;
-        transform: translate(-50%, 0) rotate(0deg);
-      }
-    }
-  }
-
-  .nut-tabs-content {
-    flex-direction: column;
-    height: 100%;
-
-    &-wrap {
-      flex: 1;
-    }
-
-    .nut-tabpane {
-      height: 100%;
-    }
-  }
-}
-
 .nut-tabs-content {
   display: flex;
   box-sizing: border-box;
@@ -422,91 +311,51 @@
   }
 }
 
-[dir='rtl'] .nut-tabs-titles,
-.nut-rtl .nut-tabs-titles {
-  &-item {
-    &-smile,
-    &-line {
-      left: auto;
-      right: 50%;
-      transform: translate(50%, 0);
-    }
-  }
-  &-divider {
-    .nut-tabs-titles-item {
-      &::after {
-        right: auto;
-        left: 0;
-      }
-    }
-  }
-}
-
-// RTL 边缘留白镜像:视觉左端=物理右侧、视觉右端=物理左侧,翻转补端方向
-[dir='rtl'] .nut-tabs-horizontal,
-.nut-rtl .nut-tabs-horizontal {
-  .nut-tabs-titles:not(.nut-tabs-titles-right)
-    .nut-tabs-titles-item:first-child {
-    padding-left: $tabs-titles-gap;
-    padding-right: calc(#{$tabs-titles-gap} * 2);
-  }
-
-  .nut-tabs-titles:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
-    padding-right: $tabs-titles-gap;
-    padding-left: calc(#{$tabs-titles-gap} * 2);
-  }
-
-  .nut-tabs-titles-button {
-    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
-      padding-left: 4px;
-      padding-right: 8px;
-    }
-
-    &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
-      padding-right: 4px;
-      padding-left: 8px;
-    }
-  }
-}
-
-[dir='rtl'] .nut-tabs-vertical,
-.nut-rtl .nut-tabs-vertical {
-  .nut-tabs-titles {
-    &-line {
-      .nut-tabs-titles-item {
-        padding-left: 0;
-        padding-right: 14px;
-      }
-    }
-  }
-
-  .nut-tabs-titles-item {
-    &-active {
-      .nut-tabs-titles-item-line {
-        left: auto;
-        right: 10px;
-      }
-
-      .nut-tabs-titles-item-smile {
-        left: 3px;
-        right: auto;
-        transform: rotate(-320deg);
-      }
-    }
-  }
-
-  .nut-tabs-horizontal {
-    .nut-tabs-titles-item-active {
-      .nut-tabs-titles-item-line {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-tabs-titles,
+  .nut-rtl .nut-tabs-titles {
+    &-item {
+      &-smile,
+      &-line {
         left: auto;
         right: 50%;
         transform: translate(50%, 0);
       }
+    }
+    &-divider {
+      .nut-tabs-titles-item {
+        &::after {
+          right: auto;
+          left: 0;
+        }
+      }
+    }
+  }
 
-      .nut-tabs-titles-item-smile {
-        right: 50%;
-        left: auto;
-        transform: translate(50%, 0) rotate(0deg);
+  // RTL 边缘留白镜像:视觉左端=物理右侧、视觉右端=物理左侧,翻转补端方向
+  [dir='rtl'] .nut-tabs-horizontal,
+  .nut-rtl .nut-tabs-horizontal {
+    .nut-tabs-titles:not(.nut-tabs-titles-right)
+      .nut-tabs-titles-item:first-child {
+      padding-left: $tabs-titles-gap;
+      padding-right: calc(#{$tabs-titles-gap} * 2);
+    }
+
+    .nut-tabs-titles:not(.nut-tabs-titles-left)
+      .nut-tabs-titles-item:last-child {
+      padding-right: $tabs-titles-gap;
+      padding-left: calc(#{$tabs-titles-gap} * 2);
+    }
+
+    .nut-tabs-titles-button {
+      &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
+        padding-left: 4px;
+        padding-right: 8px;
+      }
+
+      &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+        padding-right: 4px;
+        padding-left: 8px;
       }
     }
   }

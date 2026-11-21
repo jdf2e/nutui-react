@@ -8,6 +8,22 @@ Buttons are used to trigger an action, such as submitting a form.
 import { Button } from '@nutui/nutui-react'
 ```
 
+### Style Import & Bundle Size Optimization
+
+The Button component supports layered styles (base vs color/extended variants) for optimized bundle size:
+
+- **Standard Mode (Complete Styles)**:
+  When using color variants (`danger`, `warning`, `info`, `success`, `service`) or extended sizes/shapes, import the complete style sheet (default behavior for on-demand style import plugins):
+  ```tsx
+  import '@nutui/nutui-react/dist/es/packages/button/style'
+  ```
+- **Minimal Mode (Lightweight Base Styles)**:
+  If your project only needs standard `default` or `primary` buttons without extra color variants, you can explicitly import the lightweight base style (reducing CSS size from ~31KB to ~11KB, saving ~19.7KB):
+  ```tsx
+  import '@nutui/nutui-react/dist/es/packages/button/style/base-css'
+  ```
+> Note: Composite components (`Dialog`, `Empty`, `ResultPage`, etc.) automatically import lightweight base styles by default without extra configuration.
+
 ## Demo
 
 ### Button type

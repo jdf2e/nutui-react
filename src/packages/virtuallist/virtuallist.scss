@@ -67,13 +67,15 @@
   }
 }
 
-[dir='rtl'] .nut-horizontal-items,
-.nut-rtl .nut-horizontal-items {
-  float: right;
-
-  li {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-horizontal-items,
+  .nut-rtl .nut-horizontal-items {
     float: right;
-    margin-right: 0;
-    margin-left: 20px;
+
+    li {
+      float: right;
+      margin-right: 0;
+      margin-left: 20px;
+    }
   }
 }

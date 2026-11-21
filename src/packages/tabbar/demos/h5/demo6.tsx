@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tabbar, Space } from '@nutui/nutui-react'
+import { Tabbar, Space, MaterialView } from '@nutui/nutui-react'
 import { CartF, CartI, HomeF, HomeI, UserF, UserI } from '@nutui/icons-react'
 
 const Demo = () => (
@@ -39,7 +39,12 @@ const Demo = () => (
     </Tabbar>
 
     <Tabbar
-      material="frosted"
+      skinBackground={
+        <MaterialView
+          scene="bottom-bar"
+          style={{ backgroundColor: 'var(--nut-tabbar-backdrop-tint)' }}
+        />
+      }
       inactiveColor="#7d7e80"
       activeColor="var(--nutui-color-info, #0c82f7)"
       direction="horizontal"

@@ -21,11 +21,6 @@ import Demo13 from './demos/taro/demo13'
 import Demo14 from './demos/taro/demo14'
 import Demo15 from './demos/taro/demo15'
 import Demo16 from './demos/taro/demo16'
-import Demo17 from './demos/taro/demo17'
-import Demo18 from './demos/taro/demo18'
-import Demo19 from './demos/taro/demo19'
-import Demo20 from './demos/taro/demo20'
-import Demo21 from './demos/taro/demo21'
 import Demo22 from './demos/taro/demo22'
 import Demo23 from './demos/taro/demo23'
 import Demo24 from './demos/taro/demo24'
@@ -43,11 +38,6 @@ const TabsDemo = () => {
       title2: '通过 value 匹配',
       title3: '数据异步渲染 3s',
       title4: '数量多,滚动操作',
-      title4_1: '数量多,滚动操作2',
-      title5: '左右布局',
-      title6: '左右布局-微笑曲线',
-      title12: '嵌套布局',
-      title13: '嵌套布局 2',
       title14: '滑动切换',
       title7: 'Title 字体尺寸：20px 12px',
       title8: '自定义标签栏',
@@ -70,11 +60,6 @@ const TabsDemo = () => {
       title2: 'Match By Value',
       title3: 'Data Is Rendered Asynchronously For 3s',
       title4: 'A Large Number Of Scrolling Operations',
-      title4_1: 'A Large Number Of Scrolling Operations',
-      title5: 'Left And Right Layout',
-      title6: 'Left And Right Layout - Smile Curve',
-      title12: 'Tabs In Tabs',
-      title13: 'Tabs In Tabs 2',
       title14: 'Slide To Switch',
       title7: 'Title FontSize: 20px 12px',
       title8: 'Custom Tab Bar',
@@ -132,16 +117,6 @@ const TabsDemo = () => {
         <Demo15 />
         <View className="h2">{translated.title4}</View>
         <Demo16 />
-        <View className="h2">{translated.title4_1}</View>
-        <Demo17 />
-        <View className="h2">{translated.title5}</View>
-        <Demo18 />
-        <View className="h2">{translated.title6}</View>
-        <Demo19 />
-        <View className="h2">{translated.title12}</View>
-        <Demo20 />
-        <View className="h2">{translated.title13}</View>
-        <Demo21 />
         <View className="h2">{translated.title7}</View>
         <Demo22 />
         <View className="h2">{translated.title8}</View>

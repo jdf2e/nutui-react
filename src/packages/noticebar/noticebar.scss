@@ -1,6 +1,13 @@
 .nut-noticebar {
   width: 100%;
 
+  // 横向与纵向容器共用外观，切换滚动方向时保持圆角和描边一致。
+  .nut-noticebar-box,
+  .nut-noticebar-vertical {
+    border: $noticebar-border-width solid $noticebar-border-color;
+    border-radius: $noticebar-border-radius;
+  }
+
   .nut-noticebar-box {
     position: relative;
     display: flex;
@@ -10,7 +17,6 @@
     font-size: $noticebar-font-size;
     background: $noticebar-background;
     color: $noticebar-color;
-    border-radius: $noticebar-border-radius;
 
     &-wrapable,
     &-center {
@@ -142,13 +148,28 @@
       justify-content: center;
       width: $noticebar-close-size;
       height: $noticebar-close-size;
-      background: conic-gradient(
-        $noticebar-close-ring-color 0% var(--progress),
-        $noticebar-close-ring-shadow-color var(--progress) 100%
+      overflow: hidden;
+      background-image: linear-gradient(
+        to right,
+        $noticebar-close-ring-shadow-color 0 50%,
+        $noticebar-close-ring-color 50% 100%
       );
       border-radius: 50%;
 
       &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background-color: $noticebar-close-ring-color;
+        border-radius: 100% 0 0 100% / 50%;
+        transform-origin: right center;
+        animation: nut-notice-bar-countdown var(--noticebar-auto-close-duration)
+          linear forwards;
+      }
+
+      &::after {
         content: '';
         position: absolute;
         inset: 1px;
@@ -162,6 +183,7 @@
       width: $noticebar-close-icon-size;
       height: $noticebar-close-icon-size;
       color: $noticebar-close-color;
+      z-index: 1;
     }
 
     &-left-icon--product {
@@ -284,66 +306,101 @@
       transform: translateY($noticebar-height);
     }
   }
-}
 
-[dir='rtl'] .nut-noticebar,
-.nut-rtl .nut-noticebar {
-  .nut-noticebar-box {
-    &-left-icon {
-      margin-right: 0;
-      margin-left: $noticebar-icon-gap;
+  // 半圆遮罩分段覆盖进度色；轨道色叠加背景后也兼容半透明 token。
+  @keyframes nut-notice-bar-countdown {
+    0% {
+      background-color: $noticebar-close-ring-color;
+      box-shadow: none;
+      transform: rotate(0);
     }
 
-    &-right-icon {
-      margin-left: 0;
-      margin-right: $noticebar-action-gap;
+    50% {
+      background-color: $noticebar-close-ring-color;
+      box-shadow: none;
+      transform: rotate(-180deg);
     }
 
-    &-tag {
-      margin-left: 0;
-      margin-right: $noticebar-tag-gap;
+    50.01% {
+      background-color: $noticebar-background;
+      box-shadow: inset 0 0 0 $noticebar-close-size
+        $noticebar-close-ring-shadow-color;
+      transform: rotate(0);
     }
 
-    &-action {
-      margin-left: 0;
-      margin-right: $noticebar-action-gap;
-    }
-
-    .play {
-      animation: nut-notice-bar-play-rtl linear both running;
-    }
-
-    .play-infinite {
-      animation: nut-notice-bar-play-infinite-rtl linear infinite both running;
-    }
-
-    @keyframes nut-notice-bar-play-rtl {
-      to {
-        transform: translate3d(100%, 0, 0);
-      }
-    }
-
-    @keyframes nut-notice-bar-play-infinite-rtl {
-      to {
-        transform: translate3d(100%, 0, 0);
-      }
+    100% {
+      background-color: $noticebar-background;
+      box-shadow: inset 0 0 0 $noticebar-close-size
+        $noticebar-close-ring-shadow-color;
+      transform: rotate(-180deg);
     }
   }
+}
 
-  .nut-noticebar-vertical {
-    .nut-noticebar-box-right-icon {
-      margin-left: 0;
-      margin-right: $noticebar-icon-gap;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-noticebar,
+  .nut-rtl .nut-noticebar {
+    .nut-noticebar-box {
+      &-left-icon {
+        margin-right: 0;
+        margin-left: $noticebar-icon-gap;
+      }
+
+      &-right-icon {
+        margin-left: 0;
+        margin-right: $noticebar-action-gap;
+      }
+
+      &-tag {
+        margin-left: 0;
+        margin-right: $noticebar-tag-gap;
+      }
+
+      &-action {
+        margin-left: 0;
+        margin-right: $noticebar-action-gap;
+      }
+
+      .play {
+        animation: nut-notice-bar-play-rtl linear both running;
+      }
+
+      .play-infinite {
+        animation: nut-notice-bar-play-infinite-rtl
+          linear
+          infinite
+          both
+          running;
+      }
+
+      @keyframes nut-notice-bar-play-rtl {
+        to {
+          transform: translate3d(100%, 0, 0);
+        }
+      }
+
+      @keyframes nut-notice-bar-play-infinite-rtl {
+        to {
+          transform: translate3d(100%, 0, 0);
+        }
+      }
     }
 
-    .nut-noticebar-box-tag {
-      margin-left: 0;
-      margin-right: $noticebar-tag-gap;
-    }
+    .nut-noticebar-vertical {
+      .nut-noticebar-box-right-icon {
+        margin-left: 0;
+        margin-right: $noticebar-icon-gap;
+      }
 
-    .nut-noticebar-box-action {
-      margin-left: 0;
-      margin-right: $noticebar-action-gap;
+      .nut-noticebar-box-tag {
+        margin-left: 0;
+        margin-right: $noticebar-tag-gap;
+      }
+
+      .nut-noticebar-box-action {
+        margin-left: 0;
+        margin-right: $noticebar-action-gap;
+      }
     }
   }
 }

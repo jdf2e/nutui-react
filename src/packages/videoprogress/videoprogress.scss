@@ -1,0 +1,118 @@
+.nut-videoprogress,
+.nut-progress--video {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  outline: none;
+  transition: opacity 0.2s ease;
+  height: $progress-video-container-height;
+
+  &.is-static {
+    opacity: $progress-video-opacity-static;
+  }
+
+  &.is-paused {
+    opacity: $progress-video-opacity-paused;
+  }
+
+  &.is-active {
+    opacity: 1;
+  }
+
+  .nut-videoprogress-track,
+  .nut-progress-track {
+    position: relative;
+    width: 100%;
+    height: $progress-video-height;
+    background: $progress-video-track-color;
+    border-radius: 999px;
+    overflow: visible;
+    transition: height 0.15s ease;
+  }
+
+  &.is-active .nut-videoprogress-track,
+  &.is-active .nut-progress-track {
+    height: $progress-video-active-height;
+  }
+
+  &.is-paused .nut-videoprogress-track,
+  &.is-paused .nut-progress-track {
+    height: $progress-video-paused-height;
+  }
+
+  .nut-videoprogress-fill,
+  .nut-progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: $progress-video-fill-color;
+    border-radius: 999px;
+    transition: width 0.1s linear;
+  }
+
+  .nut-videoprogress-thumb,
+  .nut-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: $progress-video-thumb-color;
+    pointer-events: none;
+    transition:
+      width 0.15s ease,
+      height 0.15s ease,
+      border-radius 0.15s ease,
+      left 0.1s linear;
+  }
+
+  &.is-static .nut-videoprogress-thumb,
+  &.is-static .nut-progress-thumb {
+    width: $progress-video-thumb-width;
+    height: $progress-video-thumb-height;
+    border-radius: $progress-video-thumb-radius;
+  }
+
+  &.is-paused .nut-videoprogress-thumb,
+  &.is-paused .nut-progress-thumb {
+    width: $progress-video-thumb-paused-width;
+    height: $progress-video-thumb-paused-height;
+    border-radius: $progress-video-thumb-paused-radius;
+  }
+
+  &.is-active .nut-videoprogress-thumb,
+  &.is-active .nut-progress-thumb {
+    width: $progress-video-thumb-active-width;
+    height: $progress-video-thumb-active-height;
+    border-radius: $progress-video-thumb-active-radius;
+  }
+
+  .nut-videoprogress-icon,
+  .nut-progress-icon {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-right: 8px;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  &.is-draggable {
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  &.is-dragging {
+    .nut-videoprogress-fill,
+    .nut-progress-fill,
+    .nut-videoprogress-thumb,
+    .nut-progress-thumb {
+      transition: none;
+    }
+  }
+}

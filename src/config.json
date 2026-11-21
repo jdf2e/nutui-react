@@ -166,6 +166,20 @@
           "v16": false
         },
         {
+          "version": "4.0.0",
+          "name": "MaterialView",
+          "type": "component",
+          "cName": "材质视图",
+          "desc": "跨端毛玻璃 / 材质视图组件",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "v15": 1,
+          "author": "hanyuxinting",
+          "dd": false,
+          "v16": false
+        },
+        {
           "version": "3.0.0",
           "name": "Overlay",
           "type": "component",
@@ -1307,20 +1321,6 @@
           "v16": false
         },
         {
-          "version": "4.0.0",
-          "name": "MaterialView",
-          "type": "component",
-          "cName": "材质视图",
-          "desc": "跨端毛玻璃 / 材质视图组件",
-          "sort": 28,
-          "show": true,
-          "taro": true,
-          "v15": 1,
-          "author": "hanyuxinting",
-          "dd": false,
-          "v16": false
-        },
-        {
           "version": "3.0.0",
           "name": "Pagination",
           "type": "component",
@@ -1361,6 +1361,20 @@
           "author": "ailululu",
           "dd": true,
           "v16": true
+        },
+        {
+          "version": "4.0.0",
+          "name": "VideoProgress",
+          "type": "component",
+          "cName": "视频进度条",
+          "desc": "用于视频播放器场景的进度条组件，支持手势拖拽与播放状态指示",
+          "sort": 21,
+          "show": true,
+          "taro": true,
+          "v15": 1,
+          "author": "Tommy Wang",
+          "dd": false,
+          "v16": false
         },
         {
           "version": "3.0.0",

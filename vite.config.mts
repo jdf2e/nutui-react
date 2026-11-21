@@ -156,7 +156,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
         all: false,
         provider: 'v8',
       },
-      include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
+      include: ['src/{packages,utils}/**/*.(test|spec).(ts|tsx)'],
       reporters: ['default', 'html'],
     },
   }

@@ -9,7 +9,6 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
-import Demo10 from './demos/h5/demo10'
 
 const ProgressDemo = () => {
   const [translated] = useTranslate({
@@ -23,7 +22,6 @@ const ProgressDemo = () => {
       dynamicChange: '动态改变',
       lazy: '延迟加载数据',
       activeMode: '设置动画时长与播放方式',
-      videoBasic: '视频进度条',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -35,7 +33,6 @@ const ProgressDemo = () => {
       dynamicChange: '動態改變',
       lazy: '延遲加載數據',
       activeMode: '設置動畫時長與播放方式',
-      videoBasic: '視頻進度條',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -47,7 +44,6 @@ const ProgressDemo = () => {
       dynamicChange: 'Dynamic Change',
       lazy: 'Delay Time',
       activeMode: 'Duration And Animation Mode',
-      videoBasic: 'Video Progress',
     },
   })
 
@@ -72,8 +68,6 @@ const ProgressDemo = () => {
         <Demo8 />
         <h2>{translated.activeMode}</h2>
         <Demo9 />
-        <h2>{translated.videoBasic}</h2>
-        <Demo10 />
       </div>
     </>
   )

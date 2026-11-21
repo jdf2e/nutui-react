@@ -111,42 +111,44 @@
   }
 }
 
-[dir='rtl'] .nut-form-item,
-.nut-rtl .nut-form-item {
-  &-label {
-    text-align: right;
-    margin-right: 0;
-    margin-left: $form-item-label-margin-right;
-
-    .required {
-      &::before {
-        margin-right: 0;
-        margin-left: $form-item-required-margin-right;
-      }
-    }
-  }
-
-  &-body {
-    &-slots {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-form-item,
+  .nut-rtl .nut-form-item {
+    &-label {
       text-align: right;
+      margin-right: 0;
+      margin-left: $form-item-label-margin-right;
 
-      .nut-icon-ArrowRight,
-      .nut-icon-ArrowLeft {
-        transform: rotateY(180deg);
-      }
-
-      .nut-input-text {
-        text-align: right;
-      }
-
-      .nut-textarea-textarea {
-        text-align: right;
+      .required {
+        &::before {
+          margin-right: 0;
+          margin-left: $form-item-required-margin-right;
+        }
       }
     }
-  }
 
-  &-tips {
-    text-align: right;
+    &-body {
+      &-slots {
+        text-align: right;
+
+        .nut-icon-ArrowRight,
+        .nut-icon-ArrowLeft {
+          transform: rotateY(180deg);
+        }
+
+        .nut-input-text {
+          text-align: right;
+        }
+
+        .nut-textarea-textarea {
+          text-align: right;
+        }
+      }
+    }
+
+    &-tips {
+      text-align: right;
+    }
   }
 }
 
@@ -181,33 +183,38 @@
   width: 100%;
 }
 
-[dir='rtl'] .form-layout-right .nut-form-item-label,
-.nut-rtl .form-layout-right .nut-form-item-label {
-  text-align: left;
-  padding-right: 0;
-  padding-left: 24px;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .form-layout-right .nut-form-item-label,
+  .nut-rtl .form-layout-right .nut-form-item-label {
+    text-align: left;
+    padding-right: 0;
+    padding-left: 24px;
+  }
 }
+@if $nutui-enable-rtl {
+  [dir='rtl'] .form-layout-left .nut-form-item-label,
+  .nut-rtl .form-layout-left .nut-form-item-label {
+    text-align: right;
+    padding-left: 0;
+    padding-right: 12px;
 
-[dir='rtl'] .form-layout-left .nut-form-item-label,
-.nut-rtl .form-layout-left .nut-form-item-label {
-  text-align: right;
-  padding-left: 0;
-  padding-right: 12px;
-
-  // .required {
-  //   left: auto;
-  //   right: 0.1em;
-  // }
+    // .required {
+    //   left: auto;
+    //   right: 0.1em;
+    // }
+  }
 }
-
-[dir='rtl'] .form-layout-top .nut-form-item-label,
-.nut-rtl .form-layout-top .nut-form-item-label {
-  padding-right: 0;
-  padding-left: 24px;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .form-layout-top .nut-form-item-label,
+  .nut-rtl .form-layout-top .nut-form-item-label {
+    padding-right: 0;
+    padding-left: 24px;
+  }
 }
-
-[dir='rtl'] .form-layout-top .nut-form-item-body,
-.nut-rtl .form-layout-top .nut-form-item-body {
-  margin-left: 0;
-  margin-right: 0;
+@if $nutui-enable-rtl {
+  [dir='rtl'] .form-layout-top .nut-form-item-body,
+  .nut-rtl .form-layout-top .nut-form-item-body {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

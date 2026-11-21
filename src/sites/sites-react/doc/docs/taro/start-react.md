@@ -110,8 +110,10 @@ config = {
 您可以选择全量引入样式文件：
 
 ```js
-// 默认主题
+// 默认主题（全量含 RTL 样式）
 import '@nutui/nutui-react-taro/dist/style.css'
+// 极简产物（推荐国内小程序使用：自动剔除 RTL 样式，节省 ~6.3 KB）
+// import '@nutui/nutui-react-taro/dist/style.mini.css'
 // 默认主题暗黑模式
 // import '@nutui/nutui-react-taro/dist/style.css'
 // JMAPP 主题
@@ -208,7 +210,9 @@ module.exports = {
         customStyleName: (name) =>
           `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style`,
         // 自动加载 css 样式文件
-        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/css`
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/css`,
+        // 自动加载无 RTL 的轻量 CSS 样式（推荐国内小程序使用，额外节省 ~6.3 KB）
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/mini`,
 
         // JMAPP 主题
         // 自动加载 scss 样式文件
@@ -233,7 +237,9 @@ module.exports = {
 ```js
 {
   sass: {
-    data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";'
+    data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";',
+    // 若无需 RTL 样式，可在 variables.scss 前声明开关（彻底跳过 RTL 生成，节省 ~6.3 KB）：
+    // data: '$nutui-enable-rtl: false; @import "@nutui/nutui-react-taro/dist/styles/variables.scss";',
     // JMAPP 主题
     // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss';`
     // JRKF 主题

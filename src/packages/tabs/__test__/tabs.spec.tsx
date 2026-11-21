@@ -16,7 +16,7 @@ test('base Tabs', () => {
 
 test('base tabs props', () => {
   const { container } = render(
-    <Tabs value="0" direction="horizontal" activeType="smile">
+    <Tabs value="0" activeType="smile">
       <TabPane title="Tab 1" value="0">
         Tab 1
       </TabPane>
@@ -29,6 +29,19 @@ test('base tabs props', () => {
   expect(el3).toHaveClass('nut-tabs-titles-smile')
   // 兼容旧版的恒定可滑动类名(已废弃)仍保留,确保业务侧既有样式覆盖不失效
   expect(el3).toHaveClass('nut-tabs-titles-scrollable')
+})
+
+test('tabs only supports horizontal layout', () => {
+  const { container } = render(
+    <Tabs value="0" {...({ direction: 'vertical' } as any)}>
+      <TabPane title="Tab 1" value="0">
+        Tab 1
+      </TabPane>
+    </Tabs>
+  )
+  const root = container.querySelector('.nut-tabs')
+  expect(root).toHaveClass('nut-tabs-horizontal')
+  expect(container.querySelector('.nut-tabs-vertical')).toBeNull()
 })
 
 test('isContentScrollable treats boundary width correctly', () => {
@@ -126,7 +139,7 @@ test('card tabs flush modifier honours align when not scrollable', () => {
 
 test('base tabs props', () => {
   const { container } = render(
-    <Tabs value="0" direction="horizontal" activeType="card">
+    <Tabs value="0" activeType="card">
       <TabPane title="Tab 1" value="0">
         Tab 1
       </TabPane>
@@ -270,7 +283,7 @@ test('base click', () => {
 test('click tab when have many tabs', async () => {
   const handleClick = vi.fn(() => {})
   const { container } = render(
-    <Tabs value="0" onClick={handleClick} direction="vertical">
+    <Tabs value="0" onClick={handleClick}>
       <TabPane title="Tab 1" value="0">
         Tab 1
       </TabPane>

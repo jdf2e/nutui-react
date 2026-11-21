@@ -1,5 +1,13 @@
 .nut-rate {
+  // 自定义属性不会经过发布时的 px 转换，尺寸和间距需显式保留缩放函数。
+  --nutui-rate-size: #{scale-font-px(16px)};
+  --nutui-rate-item-gap: #{$rate-item-margin};
+  --nutui-rate-text-gap: #{scale-px(12px)};
+  --nutui-rate-text-size: #{$font-size-s};
+  --nutui-rate-text-line-height: #{$line-height-s};
   display: flex;
+  align-items: center;
+  gap: var(--nutui-rate-text-gap);
   touch-action: pan-x;
 
   &.disabled {
@@ -14,19 +22,60 @@
     }
   }
 
+  // 尺寸由容器传递给星标、标签和分数，避免为每种布局重复子节点样式。
+  &-small {
+    --nutui-rate-size: #{scale-font-px(12px)};
+    --nutui-rate-item-gap: #{scale-px(2px)};
+    --nutui-rate-text-gap: #{scale-px(4px)};
+  }
+
+  &-large {
+    --nutui-rate-size: #{scale-font-px(20px)};
+    --nutui-rate-text-size: #{$font-size-base};
+    --nutui-rate-text-line-height: #{$line-height-base};
+  }
+
   &-horizontal {
     flex-direction: row;
-    align-items: center;
   }
 
   &-vertical {
+    --nutui-rate-size: #{scale-font-px(20px)};
+    --nutui-rate-item-gap: #{$rate-item-margin};
+    --nutui-rate-text-gap: #{scale-px(6px)};
+    --nutui-rate-text-size: #{$font-size-xs};
+    --nutui-rate-text-line-height: #{$line-height-xs};
     flex-direction: column;
-    align-items: center;
+
+    .nut-rate-list {
+      justify-content: center;
+      width: 100%;
+    }
+
+    // 纵向大尺寸保留 28px 星标和等分点击区域。
+    &.nut-rate-large {
+      --nutui-rate-size: #{scale-font-px(28px)};
+      --nutui-rate-text-gap: #{scale-px(8px)};
+      --nutui-rate-text-size: #{$font-size-s};
+      --nutui-rate-text-line-height: #{$line-height-s};
+
+      .nut-rate-item {
+        flex: 1;
+        justify-content: center;
+      }
+    }
   }
 
   &-list {
     display: flex;
     align-items: center;
+    column-gap: var(--nutui-rate-item-gap);
+  }
+
+  &-label,
+  &-labels-item,
+  &-score {
+    font-size: var(--nutui-rate-text-size);
   }
 
   &-label {
@@ -50,6 +99,11 @@
     align-items: center;
     flex-shrink: 0;
     position: relative;
+
+    .nut-icon {
+      height: var(--nutui-rate-size);
+      width: var(--nutui-rate-size);
+    }
 
     &-half {
       position: absolute;
@@ -109,156 +163,10 @@
     align-items: center;
     color: $rate-font-color;
     font-family: 'JDZH-Regular';
+    line-height: var(--nutui-rate-text-line-height);
 
     &-disabled {
       color: $rate-icon-inactive-color;
-    }
-  }
-
-  // horizontal layout
-  &-horizontal {
-    .nut-rate-item {
-      margin-left: $rate-item-margin;
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
-    // 12DP - star gap 2px
-    .nut-rate-item-small {
-      margin-left: 2px;
-      &:first-child {
-        margin-left: 0;
-      }
-      .nut-icon {
-        height: scale-font-px(12px);
-        width: scale-font-px(12px);
-      }
-    }
-
-    .nut-rate-item-normal {
-      .nut-icon {
-        height: scale-font-px(16px);
-        width: scale-font-px(16px);
-      }
-    }
-
-    .nut-rate-item-large {
-      .nut-icon {
-        height: scale-font-px(20px);
-        width: scale-font-px(20px);
-      }
-    }
-
-    .nut-rate-label-small {
-      font-size: $font-size-s;
-      margin-right: 4px;
-    }
-
-    .nut-rate-label-normal {
-      font-size: $font-size-s;
-      margin-right: 12px;
-    }
-
-    .nut-rate-label-large {
-      font-size: $font-size-base;
-      margin-right: 12px;
-    }
-
-    .nut-rate-score-small {
-      padding-left: 4px;
-      font-size: $font-size-s;
-      line-height: $line-height-s;
-    }
-
-    .nut-rate-score-normal {
-      padding-left: 12px;
-      font-size: $font-size-s;
-      line-height: $line-height-s;
-    }
-
-    .nut-rate-score-large {
-      padding-left: 12px;
-      font-size: $font-size-base;
-      line-height: $line-height-base;
-    }
-  }
-
-  // vertical layout
-  &-vertical {
-    .nut-rate-list {
-      justify-content: center;
-      width: 100%;
-    }
-
-    .nut-rate-item {
-      margin-left: $rate-item-margin;
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
-    .nut-rate-item-small,
-    .nut-rate-item-normal {
-      .nut-icon {
-        height: scale-font-px(20px);
-        width: scale-font-px(20px);
-      }
-    }
-
-    .nut-rate-item-large {
-      flex: 1;
-      justify-content: center;
-
-      .nut-icon {
-        height: scale-font-px(28px);
-        width: scale-font-px(28px);
-      }
-    }
-
-    .nut-rate-label-small,
-    .nut-rate-label-normal {
-      font-size: $font-size-xs;
-      margin-top: 6px;
-    }
-
-    .nut-rate-label-large {
-      font-size: $font-size-s;
-      margin-top: 8px;
-    }
-
-    .nut-rate-labels {
-      width: 100%;
-    }
-
-    .nut-rate-labels-small,
-    .nut-rate-labels-normal {
-      margin-top: 6px;
-
-      .nut-rate-labels-item {
-        font-size: $font-size-xs;
-      }
-    }
-
-    .nut-rate-labels-large {
-      margin-top: 8px;
-
-      .nut-rate-labels-item {
-        font-size: $font-size-s;
-      }
-    }
-
-    .nut-rate-score-small,
-    .nut-rate-score-normal {
-      font-size: $font-size-xs;
-      line-height: $line-height-xs;
-      margin-top: 6px;
-    }
-
-    .nut-rate-score-large {
-      font-size: $font-size-s;
-      line-height: $line-height-s;
-      margin-top: 8px;
     }
   }
 }
@@ -275,85 +183,24 @@
   }
 }
 
-[dir='rtl'] .nut-rate,
-.nut-rtl .nut-rate {
-  &-horizontal {
-    .nut-rate-item {
-      margin-left: 0;
-      margin-right: $rate-item-margin;
-
-      &:first-child {
-        margin-right: 0;
-      }
-    }
-
-    .nut-rate-item-small {
-      margin-left: 0;
-      margin-right: 2px;
-
-      &:first-child {
-        margin-right: 0;
-      }
-    }
-
-    .nut-rate-label {
-      margin-right: 0;
-    }
-
-    .nut-rate-label-small {
-      margin-left: 4px;
-    }
-
-    .nut-rate-label-normal {
-      margin-left: 12px;
-    }
-
-    .nut-rate-label-large {
-      margin-left: 12px;
-    }
-
-    .nut-rate-score {
-      padding-left: 0;
-    }
-
-    .nut-rate-score-small {
-      padding-right: 4px;
-    }
-
-    .nut-rate-score-normal {
-      padding-right: 12px;
-    }
-
-    .nut-rate-score-large {
-      padding-right: 12px;
-    }
-  }
-
-  &-vertical {
-    .nut-rate-item {
-      margin-left: 0;
-      margin-right: $rate-item-margin;
-
-      &:first-child {
-        margin-right: 0;
-      }
-    }
-  }
-
-  &-item-half {
-    left: auto;
-    right: 0;
-  }
-
-  &-item-icon {
-    &.nut-rate-item-icon.nut-rate-item-icon-half {
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-rate,
+  .nut-rtl .nut-rate {
+    &-item-half {
       left: auto;
       right: 0;
     }
 
-    &.nut-rate-item-icon::before {
-      left: auto;
-      right: auto;
+    &-item-icon {
+      &.nut-rate-item-icon.nut-rate-item-icon-half {
+        left: auto;
+        right: 0;
+      }
+
+      &.nut-rate-item-icon::before {
+        left: auto;
+        right: auto;
+      }
     }
   }
 }

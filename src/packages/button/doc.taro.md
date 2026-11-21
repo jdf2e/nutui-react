@@ -8,6 +8,22 @@
 import { Button } from '@nutui/nutui-react-taro'
 ```
 
+### 样式引入与包体优化
+
+Button 组件支持基础样式与变体样式的按需分层：
+
+- **常规使用（完整样式）**：
+  若使用了彩色变体（`danger`、`warning`、`info`、`success`、`service`）或丰富形态尺寸，直接引入完整样式（按需加载插件默认行为）：
+  ```tsx
+  import '@nutui/nutui-react-taro/dist/es/packages/button/style'
+  ```
+- **极简模式（轻量基础样式）**：
+  若业务仅使用最常用的 `default`（默认）或 `primary`（主色）按钮，无需加载其他彩色及扩展变体样式，可显式引入轻量基础样式（CSS 体积从 ~31KB 降至 ~11KB，直接减少约 19.7KB）：
+  ```tsx
+  import '@nutui/nutui-react-taro/dist/es/packages/button/style/base-css'
+  ```
+> 提示：复合组件（如 `Dialog`、`Empty`、`ResultPage` 等）已默认自动按需依赖轻量基础样式，无需额外配置即可享受体积优化收益。
+
 ## 示例代码
 
 ### 设置 open-type

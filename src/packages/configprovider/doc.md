@@ -91,13 +91,24 @@ NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。�
 
 :::
 
-### RTL
+### RTL 文本排版与体积优化
+
+NutUI 支持通过 `ConfigProvider` 设置 `direction="rtl"` 实现从右向左的文本与界面镜像排版。
 
 :::demo
 
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
+
+#### 国内业务包体积优化（关闭 RTL）
+
+国内应用通常不需要 RTL 支持。NutUI 默认包含的 RTL 样式约占 **6.3 KB**。若无需 RTL，可通过以下方式之一零成本去除 RTL 样式：
+
+1. **Sass 编译开关**：在 Sass 配置（`additionalData` / `sass.resource`）中配置 `$nutui-enable-rtl: false;`。
+2. **轻量无 RTL 样式产物**：引入 `style.mini.css` 或在 `babel-plugin-import` 中配置 `customStyleName` 指向 `style/mini`。
+
+> 详见完整文档：[NutUI RTL 使用与体积优化指南](../../../docs/rtl-guide.md)。
 
 ### 增加语言包
 
@@ -111,5 +122,6 @@ NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。�
 | --- | --- | --- | --- |
 | locale | 设置多语言包 | `BaseLang` | `zhCN` |
 | theme | 设置主题 | `Record<string, string>` | `-` |
+| direction | 排版方向，可选 `ltr`（从左到右）或 `rtl`（从右到左） | `ltr` \| `rtl` | `ltr` |
 
 <Contribution name="ConfigProvider" />

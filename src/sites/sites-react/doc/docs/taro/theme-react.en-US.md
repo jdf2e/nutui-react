@@ -69,6 +69,108 @@ export default defineConfig({
 }
 ```
 
+### Recommended: Use Lightweight Core Tokens (`variables-core.scss`)
+
+NutUI-React (Taro version) extracts core design system variables into `variables-core.scss` (~260 lines, **92% lighter** than the full 3300+ lines `variables.scss`).
+
+#### What Problem Does It Solve?
+
+The full `variables.scss` (3300+ lines) bundled **global design tokens (~8%)** together with **component-private implementation variables (~92%)**. When injected via `sass.resource` in `config/index.js` so that mini-program pages can use `scale-px()` or `$color-title`, the Sass compiler repeatedly prepends all 3300+ lines to every single mini-program SCSS file, resulting in hundreds of thousands of lines of redundant AST parsing, slow builds, and even timeout errors.
+`variables-core.scss` decouples the pure Design Tokens from component implementation details, cutting injection overhead by 90% and speeding up mini-program Sass builds without style bloat.
+
+#### Core Usage Boundaries & Criteria
+
+> [!WARNING] Boundary 1: Must be used with precompiled CSS products
+>
+> - **Precompiled CSS (Recommended, e.g. `style: 'css'` or full `import 'style.css'`)**: Component styles are precompiled by the official build. Injecting `variables-core.scss` into `sass.resource` / `additionalData` for your own styles is **completely safe and significantly faster**.
+> - **SCSS Source Compilation (e.g. `style: true`)**: NutUI component SCSS sources rely on component-private variables (e.g. `$button-default-height`, `$tabs-titles-height`). In this mode, **you MUST inject the full `variables.scss`**, not `variables-core.scss`, otherwise compilation fails with `Undefined variable`.
+
+> [!NOTE] Boundary 2: Sass variable override is not runtime theme color switching
+> When using precompiled CSS, components are already built to read CSS custom properties: `var(--nutui-color-primary, #ff0f23)`. Overriding `$color-primary` in application SCSS **only affects your own styles, not precompiled NutUI components**. To customize component brand colors, override `--nutui-color-primary` (see Method 1) or use `<ConfigProvider theme={...}>`.
+
+> [!CAUTION] Boundary 3: Multi-Theme Isolation Rule
+> `variables-core.scss` represents the **default theme** only. Specialized themes (`daojia`, `jmapp`, `jrkf`) have their own palettes and color ramps. **NEVER import `variables-core.scss` in custom theme projects**, as Sass `!default` rules will cause default red variables to take precedence and corrupt custom brand colors. Custom themes should import their respective `variables-${theme}.scss`.
+
+#### What's Included
+
+- Global scale functions (`scale-px`, `scale-font-px`, `scale-icon-px`)
+- Basic color system (primary color `$color-primary`, functional colors, text/bg/border/mask neutrals)
+- Font size hierarchy (`$font-size-...`), line-height, and font-weight
+- Common spacing (`$spacing-...`), radius (`$radius-...`), shadows, and z-index
+- Animation timing and easing functions (`$animation-...`)
+
+#### Use Cases
+
+1. **Mini-Program Global Injection (Recommended)**: For business applications or in-house UI components, only generic Design Tokens are needed, avoiding injecting thousands of lines of unused component-private variables and preventing mini-program WXSS bloat / compilation timeouts.
+2. **Minimal Theme Overrides**: Perfect when customizing common border radii, spacing, and design tokens for application styles. Note: when using precompiled component CSS, overriding `$color-primary` in business SCSS only affects your own styles; to customize precompiled component brand colors, override CSS variable `--nutui-color-primary` (see Method 1) or use ConfigProvider theme.
+
+#### Configuration Examples
+
+##### Taro `config/index.js` (Recommended)
+
+```javascript
+// config/index.js
+const path = require('path')
+
+module.exports = {
+  // ...
+  sass: {
+    resource: [
+      // Recommended: inject only core tokens (92% smaller, faster build)
+      path.resolve(
+        __dirname,
+        '..',
+        'node_modules/@nutui/nutui-react-taro/dist/styles/variables-core.scss'
+      ),
+      // Local custom theme variables
+      path.resolve(__dirname, '..', 'src/styles/custom_theme.scss'),
+    ],
+  },
+}
+```
+
+##### Vite (Taro H5 / Harmony Vite mode)
+
+```javascript
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@nutui/nutui-react-taro/dist/styles/variables-core.scss";@import "./your/custom_theme.scss";`,
+      },
+    },
+  },
+})
+```
+
+##### Direct Import in Business SCSS
+
+```scss
+// In your page or component SCSS
+@import '@nutui/nutui-react-taro/dist/styles/variables-core.scss';
+
+.my-business-card {
+  padding: $spacing-base;
+  border-radius: $radius-base;
+  color: $color-title;
+  background-color: $color-background;
+
+  .primary-action {
+    color: $color-primary;
+    font-size: $font-size-l;
+    font-weight: $font-weight-bold;
+  }
+}
+```
+
+#### Comparison
+
+| Scenario & Style Import Method | Recommended File | Advantage & Notes |
+| --- | --- | --- |
+| **Using Precompiled CSS + Authoring Mini-Program Styles / sass.resource** | `variables-core.scss` (⭐Recommended) | ~260 lines, 92% lighter, avoids WXSS bloat and timeouts |
+| **Customizing brand color, border-radius, spacing tokens** | `variables-core.scss` (⭐Recommended) | Complete core Design Tokens included |
+| **Compiling Component SCSS locally (`style: true`) or fine-tuning component-private styles** | `variables.scss` (⚠️Required) | Includes private variables for all 100+ components to ensure SCSS compilation |
+
 ## Dark Mode
 
 NutUI-React (Taro version) natively supports dark mode. The component library uses a set of independently tuned color variables in dark mode.

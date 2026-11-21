@@ -13,7 +13,7 @@ const Demo9 = () => {
           flexWrap: 'nowrap',
           alignItems: 'center',
           flexDirection: 'row',
-          backgroundColor: '#f0f2f7',
+          backgroundColor: 'var(--nutui-color-background-component, #f0f2f7)',
         }}
       >
         <Input type={inputType} placeholder="请输入密码" />

@@ -26,7 +26,6 @@ const defaultProps = {
   ...ComponentDefaults,
   tabStyle: {},
   activeColor: '',
-  direction: 'horizontal',
   activeType: 'line',
   duration: 300,
   autoHeight: false,
@@ -41,7 +40,6 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
   const {
     activeColor,
     tabStyle,
-    direction,
     activeType,
     duration,
     align,
@@ -68,7 +66,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
   // 贴边端直角、留白端恢复双肩,依赖该标记切换样式
   const [isScrollable, setIsScrollable] = useState(!align)
   const measureScrollable = useCallback(() => {
-    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
+    if (activeType !== 'card' || !align) return
     const nav = navRef.current
     if (!nav) return
     const items = nav.querySelectorAll<HTMLElement>(
@@ -87,7 +85,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
         nav.clientWidth
       )
     )
-  }, [activeType, direction, align])
+  }, [activeType, align])
 
   // 挂载后立即测量,避免首帧样式闪变
   useLayoutEffect(() => {
@@ -100,24 +98,23 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
   }, [children, measureScrollable])
   useEffect(() => {
     // 仅卡片模式需要按可用宽度重测;其余模式提前返回,避免挂无用的 resize 监听
-    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
+    if (activeType !== 'card' || !align) return
     const onResize = () => raf(measureScrollable)
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
-  }, [activeType, direction, align, measureScrollable])
+  }, [activeType, align, measureScrollable])
 
   const scrollDirection = (
     nav: HTMLDivElement,
     to: number,
     duration: number
   ) => {
-    const from = direction === 'horizontal' ? nav.scrollLeft : nav.scrollTop
+    const from = nav.scrollLeft
     const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16)
     let count = 0
 
     const animate = () => {
-      if (direction === 'horizontal') nav.scrollLeft += (to - from) / frames
-      else nav.scrollTop += (to - from) / frames
+      nav.scrollLeft += (to - from) / frames
       if (++count < frames) raf(animate)
     }
     animate()
@@ -135,13 +132,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     if (!title) {
       return
     }
-    let to = 0
-    if (direction === 'vertical') {
-      const runTop = title.offsetTop - nav.offsetTop + 10
-      to = runTop - (nav.offsetHeight - title.offsetHeight) / 2
-    } else {
-      to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
-    }
+    const to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
     scrollDirection(nav, to, immediate ? 0 : 0.3)
   }
 
@@ -180,7 +171,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
 
   const classes = classNames(
     classPrefix,
-    `${classPrefix}-${direction}`,
+    `${classPrefix}-horizontal`,
     className
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
@@ -194,10 +185,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     let index = titles.current.findIndex((t) => t.value === value)
     index = index < 0 ? 0 : index
     return {
-      transform:
-        direction === 'horizontal'
-          ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
-          : `translate3d( 0, -${index * 100}%, 0)`,
+      transform: `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`,
       transitionDuration: `${duration}ms`,
     }
   }
@@ -224,7 +212,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
               const isActive =
                 !item.disabled && String(item.value) === String(value)
               const flush =
-                isActive && activeType === 'card' && direction === 'horizontal'
+                isActive && activeType === 'card'
                   ? getCardFlushSides(index, titles.current.length, {
                       scrollable: isScrollable,
                       rtl,
@@ -259,7 +247,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                     <div
                       className={classNames(
                         `${classPrefix}-titles-item-line`,
-                        `${classPrefix}-titles-item-line-${direction}`
+                        `${classPrefix}-titles-item-line-horizontal`
                       )}
                       style={{ background: activeColor }}
                     />
@@ -273,12 +261,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                     </div>
                   )}
                   <div
-                    className={classNames(
-                      {
-                        [`${classPrefix}-ellipsis`]: direction === 'vertical',
-                      },
-                      `${classPrefix}-titles-item-text`
-                    )}
+                    className={`${classPrefix}-titles-item-text`}
                     style={{ color: activeColor }}
                   >
                     {item.title}

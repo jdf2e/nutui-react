@@ -4,7 +4,10 @@
   position: relative;
   overflow: hidden;
   cursor: grab;
-  background-color: $white;
+  background-color: $swipe-background-color;
+
+  // 组件层：滑动容器内嵌的 Cell 阴影默认置空，防止滑动切缝在亮暗模式下透出外发光
+  --nutui-cell-box-shadow: none;
 
   &-wrapper {
     display: flex;
@@ -20,10 +23,10 @@
   &-right {
     position: absolute;
     top: 0;
-    // 与内容区之间的间距，通过内边距实现：操作区随容器整体平移隐藏，
-    // padding 计入容器宽度后，滑动展开时内容与操作按钮之间自然留出间距
-    border-radius: $radius-base;
+    // 操作区容器保留圆角规范，内部首尾项（如左侧首项置顶按钮）自然呈现规范的圆角
+    border-radius: $swipe-action-radius;
     overflow: hidden;
+    background-color: transparent;
   }
 
   &-left {

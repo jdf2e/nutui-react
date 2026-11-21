@@ -55,38 +55,40 @@
   }
 }
 
-[dir='rtl'] .nut-barrage,
-.nut-rtl .nut-barrage {
-  left: auto;
-  right: 0;
-  .barrage-item {
-    transform: translateX(-100%);
-    background: linear-gradient(
-      to left,
-      var(--nutui-black-3),
-      var(--nutui-black-1)
-    );
+@if $nutui-enable-rtl {
+  [dir='rtl'] .nut-barrage,
+  .nut-rtl .nut-barrage {
+    left: auto;
+    right: 0;
+    .barrage-item {
+      transform: translateX(-100%);
+      background: linear-gradient(
+        to left,
+        var(--nutui-black-3),
+        var(--nutui-black-1)
+      );
 
-    &.move {
-      animation-name: moving-rtl;
+      &.move {
+        animation-name: moving-rtl;
+      }
     }
-  }
-  @keyframes moving-rtl {
-    from {
-      transform: translateX(var(--move-distance));
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
-
-  @-webkit-keyframes moving-rtl {
-    from {
-      transform: translateX(var(--move-distance));
+    @keyframes moving-rtl {
+      from {
+        transform: translateX(var(--move-distance));
+      }
+      to {
+        transform: translateX(100%);
+      }
     }
 
-    to {
-      transform: translateX(100%);
+    @-webkit-keyframes moving-rtl {
+      from {
+        transform: translateX(var(--move-distance));
+      }
+
+      to {
+        transform: translateX(100%);
+      }
     }
   }
 }
