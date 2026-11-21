@@ -23,6 +23,7 @@ import {
   destroyList,
 } from '@/types'
 import { mergeProps } from '@/utils/merge-props'
+import { useFoldSegment } from '@/hooks/use-fold-segment'
 
 const defaultProps = {
   ...defaultOverlayProps,
@@ -95,10 +96,12 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     onCancel,
     onConfirm,
     onOverlayClick,
+    segment,
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const resolvedSegment = useFoldSegment(segment)
   const [countdown, setCountdown] = useState(0)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const onCloseRef = useRef(onClose)
@@ -333,6 +336,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
+          segment={resolvedSegment}
         >
           {content || children}
         </Content>
