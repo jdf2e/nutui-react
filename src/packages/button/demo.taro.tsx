@@ -57,7 +57,10 @@ const ButtonDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         {!harmony() ? (
           <>
             <View className="h2">设置 open-type </View>

@@ -60,6 +60,7 @@ const AvatarDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} avatar-demo`}
       >
         <View className="h2">{translated['67f78db5']}</View>

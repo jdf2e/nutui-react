@@ -41,7 +41,10 @@ const EmptyDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
         <View className="h2">{translated.c38a08ee}</View>

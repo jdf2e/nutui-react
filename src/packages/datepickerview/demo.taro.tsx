@@ -25,7 +25,10 @@ const DatePickerViewDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <h2>{translated.mmdd}</h2>

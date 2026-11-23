@@ -37,6 +37,7 @@ const DragDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${isTaroWeb ? 'web' : 'drag-full demo-bg-full'}`}
       >
         <View className="h2">{translated.basic}</View>

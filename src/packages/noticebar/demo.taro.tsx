@@ -51,6 +51,7 @@ const NoticeBarDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         style={{ paddingBottom: '30px' }}
       >

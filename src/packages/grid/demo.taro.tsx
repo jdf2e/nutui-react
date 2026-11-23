@@ -59,6 +59,7 @@ const GridDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         style={{ paddingBottom: '100px' }}
       >

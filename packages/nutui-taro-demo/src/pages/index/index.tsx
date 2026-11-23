@@ -23,7 +23,6 @@ const navs = pkg.nav
 // hack taro load button xml
 console.log(Button, Input, Video, Image, Swiper, SwiperItem, Textarea)
 
-
 const Index = () => {
   const [search, setSearch] = useState()
   const gotoNext = (name: string, enName: string) => {
@@ -49,7 +48,7 @@ const Index = () => {
   }
 
   return (
-    <ScrollView className="index">
+    <ScrollView scrollY className="index">
       <View className="index-header">
         <Image
           className="index-header-img"
@@ -68,13 +67,20 @@ const Index = () => {
         </View>
       </View>
 
-      <View className='index-components'>
-        {process.env.NODE_ENV === 'development' ? <>
-          <SearchBar style={{ background: '#fff',borderRadius:'8px' }} placeholder='' value={search} onChange={(e) => {
-            setSearch(e)
-          }} />
-          <View style={{ height: 25 }}></View>
-          </> : null}
+      <View className="index-components">
+        {process.env.NODE_ENV === 'development' ? (
+          <>
+            <SearchBar
+              style={{ background: '#fff', borderRadius: '8px' }}
+              placeholder=""
+              value={search}
+              onChange={(e) => {
+                setSearch(e)
+              }}
+            />
+            <View style={{ height: 25 }}></View>
+          </>
+        ) : null}
         {navs.map((nav) => (
           <View key={nav.enName} className="index-components-item">
             {nav.enName === 'dataentry' ? null : (
@@ -82,7 +88,10 @@ const Index = () => {
             )}
             <View className="index-components-sublist">
               {nav.packages.map((com) =>
-                com.show && com.taro && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
+                com.show &&
+                com.taro &&
+                (!search ||
+                  new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
                   <View
                     key={com.name}
                     className="index-components-sublist-item"

@@ -24,6 +24,7 @@ const BarrageDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-barrage`}
       >
         <View className="h2">{translated['84aa6bce']}</View>

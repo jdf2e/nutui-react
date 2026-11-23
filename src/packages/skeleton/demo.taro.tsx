@@ -37,7 +37,10 @@ const SkeletonDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <View className="h2">{translated['84aa6bce']}</View>
         <Demo1 />
         <View className="h2">{translated.ea3bc18a}</View>

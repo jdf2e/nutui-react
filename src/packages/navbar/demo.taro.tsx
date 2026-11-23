@@ -30,6 +30,7 @@ const NavBarDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo navbar-demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
       >
         <View className="h2">{translated.basic}</View>
