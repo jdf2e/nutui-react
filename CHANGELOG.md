@@ -1,3 +1,24 @@
+# v4.0.0
+
+`2026-11-20`
+
+- :sparkles: feat(tabs): 移除 Tabs 组件的 direction 属性，支持水平布局 (#3602)
+- :sparkles: feat(noticebar): 补齐圆角描边并新增营销与破出示例 (#3586)
+- :sparkles: feat: 新增多版本知识查询与 v3→v4 迁移能力 (#3524)
+- :bug: fix(countdown): 用 token 映射 JSX 替代 HTML 字符串渲染 (#3597)
+- :bug: fix(Switch): 去掉叠层 transform-origin 伪类 (#3598)
+- :bug: fix(swipe): 修复暗黑模式下容器白色裁切与阴影透白问题 (#3585)
+- :bug: fix: 暗黑主题修复 (#3581)
+- :zap: perf(tabbar): 解耦 MaterialView 并保留毛玻璃背板 (#3603)
+- :zap: perf(noticebar): 精简倒计时渲染并修复多端兼容 (#3593)
+- :zap: perf(progress): 组件包体优化 (#3582)
+- :zap: perf: bundle size (#3576)
+- 🪵 refactor(range): 简化标记样式计算和按钮包装逻辑并补齐单测 (#3601)
+- 🪵 refactor(inputnumber): 使用伪元素精简分割线并补齐双端测试 (#3592)
+- 🪵 refactor(pagination): 合并指示器结构并补齐双端测试 (#3594)
+- 🪵 refactor(rate): 精简尺寸布局样式并补齐双端测试 (#3595)
+- 🏡 chore(materialview): 将 MaterialView 组件分类调整至基础组件
+
 # v4.0.0-beta.14
 
 `2026-11-03`

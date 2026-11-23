@@ -7,7 +7,6 @@ import TabbarContext from './context'
 import { WebTabbarProps } from '@/types'
 import SafeArea from '@/packages/safearea/index'
 import { normalizeTabbarItems } from './utils'
-import MaterialView from '../materialview'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -106,17 +105,7 @@ export function Tabbar(props: Partial<WebTabbarProps>) {
     }
 
     if (isFrostedMaterial) {
-      return (
-        <MaterialView
-          scene="bottom-bar"
-          className={`${classPrefix}-backdrop`}
-          style={{
-            backgroundColor:
-              'var(--nut-tabbar-backdrop-tint, rgba(255, 255, 255, 0.8))',
-          }}
-          aria-hidden="true"
-        />
-      )
+      return <div className={`${classPrefix}-backdrop`} aria-hidden="true" />
     }
 
     return null

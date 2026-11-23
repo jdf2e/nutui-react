@@ -11,14 +11,15 @@ import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 import { web } from '@/utils/taro/platform'
 import { TaroCountDownProps, CountDownTime } from '@/types'
-import { getDisplayBucket } from './utils'
+import { applyFormatCarry, getDisplayBucket, parseRemainTime } from './utils'
 
 const defaultProps = {
   ...ComponentDefaults,
   type: 'default',
   paused: false,
-  startTime: Date.now(),
-  endTime: Date.now(),
+  // 0 表示未传；避免模块加载时 Date.now() 写死导致 diffTime 虚高
+  startTime: 0,
+  endTime: 0,
   remainingTime: 0,
   format: 'HH:mm:ss',
   autoStart: true,
@@ -53,9 +54,6 @@ const InternalCountDown: ForwardRefRenderFunction<
   const classPrefix = 'nut-countdown'
   const [restTimeStamp, setRestTime] = useState(0)
   const stateRef = useRef({
-    pauseTime: 0,
-    curr: 0,
-    isPaused: paused,
     isIninted: false,
     timer: 0,
     restTime: 0,
@@ -73,15 +71,30 @@ const InternalCountDown: ForwardRefRenderFunction<
     return new Date(t).getTime()
   }
 
+  const getRemainTime = () => {
+    const currentTime = Date.now() - stateRef.current.diffTime
+    return Math.max(stateRef.current.handleEndTime - currentTime, 0)
+  }
+
+  // 从剩余时间恢复倒计时；扣回 diffTime，避免暂停后再开把校准偏移叠进去
+  const resumeFromRest = () => {
+    stateRef.current.counting = true
+    stateRef.current.handleEndTime =
+      Date.now() - stateRef.current.diffTime + Number(stateRef.current.restTime)
+    stateRef.current.lastBucket = -1
+    tick()
+  }
+
   // 倒计时 interval
   const initTime = () => {
     if (remainingTime) {
       stateRef.current.handleEndTime = Date.now() + Number(remainingTime)
+      stateRef.current.diffTime = 0
     } else {
       stateRef.current.handleEndTime = endTime
-      if (web()) {
-        stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
-      }
+      // 仅 H5 且显式传入 startTime 时做服务器时间校准
+      stateRef.current.diffTime =
+        web() && startTime ? Date.now() - getTimeStamp(startTime) : 0
     }
     if (!stateRef.current.counting) stateRef.current.counting = true
     stateRef.current.lastBucket = -1
@@ -91,11 +104,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   const tick = () => {
     stateRef.current.timer = requestAnimationFrame(() => {
       if (stateRef.current.counting) {
-        const currentTime = Date.now() - stateRef.current.diffTime
-        const remainTime = Math.max(
-          stateRef.current.handleEndTime - currentTime,
-          0
-        )
+        const remainTime = getRemainTime()
 
         stateRef.current.restTime = remainTime
         const bucket =
@@ -120,99 +129,27 @@ const InternalCountDown: ForwardRefRenderFunction<
     })
   }
 
-  // 将倒计时剩余时间格式化   参数：t时间戳 type custom 自定义类型
-  const formatRemainTime = (t: number, type?: string) => {
-    const ts = t
-    const rest = {
-      d: 0,
-      h: 0,
-      m: 0,
-      s: 0,
-      ms: 0,
-    }
-
-    const SECOND = 1000
-    const MINUTE = 60 * SECOND
-    const HOUR = 60 * MINUTE
-    const DAY = 24 * HOUR
-    if (ts > 0) {
-      rest.d = ts >= SECOND ? Math.floor(ts / DAY) : 0
-      rest.h = Math.floor((ts % DAY) / HOUR)
-      rest.m = Math.floor((ts % HOUR) / MINUTE)
-      rest.s = Math.floor((ts % MINUTE) / SECOND)
-      rest.ms = Math.floor(ts % SECOND)
-    }
-    return type === 'custom' ? rest : parseFormat({ ...rest })
-  }
-
-  const parseFormat = (time: CountDownTime) => {
-    const { d } = time
-    let { h, m, s, ms } = time
-    let formatCache = format
-
-    if (formatCache.includes('DD')) {
-      formatCache = formatCache.replace('DD', padZero(d))
-    } else {
-      h += Number(d) * 24
-    }
-
-    if (formatCache.includes('HH')) {
-      formatCache = formatCache.replace('HH', padZero(h))
-    } else {
-      m += Number(h) * 60
-    }
-
-    if (formatCache.includes('mm')) {
-      formatCache = formatCache.replace('mm', padZero(m))
-    } else {
-      s += Number(m) * 60
-    }
-
-    if (formatCache.includes('ss')) {
-      formatCache = formatCache.replace('ss', padZero(s))
-    } else {
-      ms += Number(s) * 1000
-    }
-
-    if (formatCache.includes('S')) {
-      const msC = padZero(ms, 3).toString()
-
-      if (formatCache.includes('SSS')) {
-        formatCache = formatCache.replace('SSS', msC)
-      } else if (formatCache.includes('SS')) {
-        formatCache = formatCache.replace('SS', msC.slice(0, 2))
-      } else if (formatCache.includes('S')) {
-        formatCache = formatCache.replace('S', msC.slice(0, 1))
-      }
-    }
-
-    if (formatCache.includes('i')) {
-      formatCache = formatCache.replace('i', String(Math.floor(ms / 100) % 10))
-    }
-
-    return formatCache
-  }
   const pause = () => {
     cancelAnimationFrame(stateRef.current.timer)
+    // 须在改 counting 前判断：未计时时不能用旧 handleEndTime 重算，否则会覆盖已保存的 restTime
+    const wasCounting = stateRef.current.counting
     stateRef.current.counting = false
-    onPaused && onPaused(stateRef.current.restTime)
+    if (!wasCounting) return
+    // 暂停时按真实时钟冻结剩余时间，避免只停在上一展示档
+    const remainTime = getRemainTime()
+    stateRef.current.restTime = remainTime
+    onPaused && onPaused(remainTime)
   }
 
   useImperativeHandle(ref, () => ({
     start: () => {
       if (!stateRef.current.counting && !autoStart) {
-        stateRef.current.counting = true
-        stateRef.current.handleEndTime =
-          Date.now() + Number(stateRef.current.restTime)
-        stateRef.current.lastBucket = -1
-        tick()
+        resumeFromRest()
         onRestart && onRestart(stateRef.current.restTime)
       }
     },
     pause: () => {
-      cancelAnimationFrame(stateRef.current.timer)
-      stateRef.current.counting = false
-      onPaused && onPaused(stateRef.current.restTime)
+      pause()
     },
     reset: () => {
       if (!autoStart) {
@@ -225,7 +162,7 @@ const InternalCountDown: ForwardRefRenderFunction<
 
   // 监听值变更
   useEffect(() => {
-    const tranTime = formatRemainTime(stateRef.current.restTime, 'custom')
+    const tranTime = parseRemainTime(stateRef.current.restTime)
     onUpdate && onUpdate(tranTime as CountDownTime)
   }, [restTimeStamp])
 
@@ -238,11 +175,7 @@ const InternalCountDown: ForwardRefRenderFunction<
         }
       } else {
         if (!stateRef.current.counting) {
-          stateRef.current.counting = true
-          stateRef.current.handleEndTime =
-            Date.now() + Number(stateRef.current.restTime)
-          stateRef.current.lastBucket = -1
-          tick()
+          resumeFromRest()
         }
         onRestart && onRestart(stateRef.current.restTime)
       }
@@ -288,30 +221,29 @@ const InternalCountDown: ForwardRefRenderFunction<
 
   const renderTimeItem = (
     formatUnit: string,
-    time: number | string,
+    timeValue: number | string,
     unit = ''
   ) => {
+    if (!format.includes(formatUnit)) return null
+    // 天数、毫秒片段不补零；时分秒补两位
+    const display =
+      formatUnit === 'DD' || formatUnit === 'S' ? timeValue : padZero(timeValue)
     return (
       <>
-        {format.includes(formatUnit) ? (
-          <>
-            <View className={numberClassName}>
-              {(unit && unit !== 'DD') || (!unit && formatUnit === 'ss')
-                ? padZero(time)
-                : time}
-            </View>
-            {unit ? (
-              <View className={`${classPrefix}-unit`}>{getUnit(unit)}</View>
-            ) : null}
-          </>
+        <View className={numberClassName}>{display}</View>
+        {unit ? (
+          <View className={`${classPrefix}-unit`}>{getUnit(unit)}</View>
         ) : null}
       </>
     )
   }
 
   const renderTaroTime = () => {
-    const formatCache = formatRemainTime(stateRef.current.restTime, 'custom')
-    const { d, h, m, s, ms } = formatCache as CountDownTime
+    const carried = applyFormatCarry(
+      parseRemainTime(stateRef.current.restTime),
+      format
+    )
+    const { d, h, m, s, ms } = carried
     const digit = format.match(/S/g)?.length
     const withHundredMs = format.includes('i')
     const hundredMs = Math.floor(ms / 100) % 10

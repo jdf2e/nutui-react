@@ -144,46 +144,6 @@ When autoHeight is set to true, nut-tabs and nut-tabs\_\_content will change wit
 
 :::
 
-### A Large Number Of Scrolling Operations 2
-
-:::demo
-
-<CodeBlock src='h5/demo17.tsx'></CodeBlock>
-
-:::
-
-### Left And Right Layout
-
-:::demo
-
-<CodeBlock src='h5/demo18.tsx'></CodeBlock>
-
-:::
-
-### Left And Right Layout-Smile Curve
-
-:::demo
-
-<CodeBlock src='h5/demo19.tsx'></CodeBlock>
-
-:::
-
-### Tabs In Tabs
-
-:::demo
-
-<CodeBlock src='h5/demo20.tsx'></CodeBlock>
-
-:::
-
-### Tabs In Tabs 2
-
-:::demo
-
-<CodeBlock src='h5/demo21.tsx'></CodeBlock>
-
-:::
-
 ### Title FontSize: 20px 12px
 
 :::demo
@@ -225,7 +185,6 @@ When autoHeight is set to true, nut-tabs and nut-tabs\_\_content will change wit
 | value | The value of the currently active tab panel | `number` \| `string` | `0` |
 | defaultValue | Initialize the value of the active tab | `number` \| `string` | `0` |
 | activeColor | Label selected color | `string` | `#1A1A1A` |
-| direction | Use horizontal and vertical directions | `horizontal` \| `vertical` | `horizontal` |
 | activeType | Select the bottom display style Optional values `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple` \| `card` \| `button`\| `divider` | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | `number` \| `string` | `300` |
 | title | custom navigation area | `() => JSX.Element[]` | `-` |
@@ -234,6 +193,8 @@ When autoHeight is set to true, nut-tabs and nut-tabs\_\_content will change wit
 | tabStyle | tab bar style | `CSSProperties` | `{}` |
 | onClick | Triggered when the label is clicked | `(index: string \| number) => void` | `-` |
 | onChange | Triggered when the currently active tab changes | `(index: string \| number) => void` | `-` |
+
+> **Note:** Since v4, the `direction` prop has been removed from Tabs, which now supports horizontal layout only. For vertical navigation, use [SideBar](#/en-US/component/sidebar) instead.
 
 ## Tabs.Tabpane
 
@@ -278,11 +239,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-button-active-font-weight | Font weight of selected button-type title | `$font-weight-bold` |
 | \--nutui-tabs-button-background-color | Background color of unselected button-type title | `var(--nutui-color-background-component)` |
 | \--nutui-tabs-button-active-border | Inner border of the selected button-type title | `inset 0 0 0 1px $color-primary` |
-| \--nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
-| \--nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` |
-| \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
-| \--nutui-tabs-vertical-tab-line-width | Vertical title line width | `3px` |
-| \--nutui-tabs-vertical-tab-line-height | The height of the vertical title line | `12px` |
 | \--nutui-tabs-tabpane-padding | Padding of the Tabpane content | `24px 20px` |
 | \--nutui-tabs-tabpane-background-color | BackgroundColor of the Tabpane content | `#fff` |
 

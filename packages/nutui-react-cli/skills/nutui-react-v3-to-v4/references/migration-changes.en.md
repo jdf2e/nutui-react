@@ -79,3 +79,8 @@ For sources and version checks, see [Supporting tools in the main guide](../SKIL
 - **Padding `13px 16px` → `16px`**: set `--nutui-cell-padding: 13px 16px` to preserve the old height if required.
 - **Titles become single-line ellipses; the right side takes content-based width**: check long titles and right-side content. Use a custom title node and override truncation styles if multiline text is required.
 - New `leading` and `content` are optional. Passing `content` makes `description` span the full width; this is not a layout-neutral replacement.
+
+## Tabs — removed vertical direction support
+
+- **`direction` removed**: v4 Tabs supports horizontal layout only. Delete `direction="horizontal"`; migrate `direction="vertical"` to SideBar.
+- Removed `.nut-tabs-vertical`, `.nut-tabs-ellipsis`, and `--nutui-tabs-vertical-*` theme variables; move vertical style overrides to SideBar.
