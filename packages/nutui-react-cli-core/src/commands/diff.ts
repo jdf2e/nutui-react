@@ -1,7 +1,12 @@
 // diff <v1> <v2> [component] —— 跨版本 Props 差异比对。
 // 与其它命令不同：需要同时加载两个版本的快照，故绕过只解析单版本的 resolveContext，
 // 直接用 resolveSnapshotDir + loadMetaByDir 各加载一份，再交给 diff-compute 纯函数比对。
-import { loadMetaByDir, resolveComponent, resolveSnapshotDir, suggestComponents } from '../data.js'
+import {
+  loadMetaByDir,
+  resolveComponent,
+  resolveSnapshotDir,
+  suggestComponents,
+} from '../data.js'
 import { output, renderTable } from '../format.js'
 import { diffMeta, type ComponentDiff } from './diff-compute.js'
 import type { OutputFormat } from './_shared.js'
@@ -29,7 +34,9 @@ export function runDiff(args: DiffArgs): void {
   // 组件名 → id：以 v2（较新版本）为准解析；未命中给 did-you-mean。
   let componentId: string | undefined
   if (args.component) {
-    const comp = resolveComponent(metaB, args.component) ?? resolveComponent(metaA, args.component)
+    const comp =
+      resolveComponent(metaB, args.component) ??
+      resolveComponent(metaA, args.component)
     if (!comp) {
       const sug = suggestComponents(metaB, args.component)
       fail(
@@ -79,13 +86,23 @@ function renderText(
     if (d.added.length) {
       lines.push('  新增：')
       lines.push(
-        indent(renderTable(['属性', '类型', '默认值'], d.added.map((r) => [r.prop, r.type, r.default])))
+        indent(
+          renderTable(
+            ['属性', '类型', '默认值'],
+            d.added.map((r) => [r.prop, r.type, r.default])
+          )
+        )
       )
     }
     if (d.removed.length) {
       lines.push('  移除：')
       lines.push(
-        indent(renderTable(['属性', '类型', '默认值'], d.removed.map((r) => [r.prop, r.type, r.default])))
+        indent(
+          renderTable(
+            ['属性', '类型', '默认值'],
+            d.removed.map((r) => [r.prop, r.type, r.default])
+          )
+        )
       )
     }
     if (d.changed.length) {

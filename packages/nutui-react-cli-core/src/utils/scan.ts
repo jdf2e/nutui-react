@@ -41,19 +41,26 @@ const IMPORT_RE =
 
 // 从具名列表字符串（可能含换行、注释、as 别名）解析出组件名集合。
 function parseNamedImports(inner: string): string[] {
-  return inner
-    .split(',')
-    .map((s) =>
-      s
-        // 去掉行内 / 块注释残片
-        .replace(/\/\/.*$/gm, '')
-        .replace(/\/\*[\s\S]*?\*\//g, '')
-        .trim()
-    )
-    .filter(Boolean)
-    // `Button as Btn` → 取原名 Button；`type Foo` → 去掉 type 前缀
-    .map((s) => s.replace(/^type\s+/, '').split(/\s+as\s+/)[0].trim())
-    .filter((s) => /^[A-Za-z][A-Za-z0-9_]*$/.test(s))
+  return (
+    inner
+      .split(',')
+      .map((s) =>
+        s
+          // 去掉行内 / 块注释残片
+          .replace(/\/\/.*$/gm, '')
+          .replace(/\/\*[\s\S]*?\*\//g, '')
+          .trim()
+      )
+      .filter(Boolean)
+      // `Button as Btn` → 取原名 Button；`type Foo` → 去掉 type 前缀
+      .map((s) =>
+        s
+          .replace(/^type\s+/, '')
+          .split(/\s+as\s+/)[0]
+          .trim()
+      )
+      .filter((s) => /^[A-Za-z][A-Za-z0-9_]*$/.test(s))
+  )
 }
 
 // 从单个文件内容里抽取 NutUI 组件名。无命中返回空数组。
@@ -88,17 +95,17 @@ function walk(
   }
   for (const entry of entries) {
     if (shouldStop()) return
-    if (entry.name.startsWith('.') && entry.name !== '.') {
-      // 跳过隐藏目录/文件（.git 等），但允许显式传入的 '.' 起点
-      if (entry.isDirectory() && SKIP_DIRS.has(entry.name)) continue
-      if (entry.isDirectory()) continue
-    }
-    const full = path.join(dir, entry.name)
-    if (entry.isDirectory()) {
-      if (SKIP_DIRS.has(entry.name)) continue
-      walk(full, depth + 1, onFile, shouldStop, markTruncated)
-    } else if (entry.isFile() && SOURCE_EXT.has(path.extname(entry.name))) {
-      onFile(full)
+    const isHiddenDir =
+      entry.name.startsWith('.') && entry.name !== '.' && entry.isDirectory()
+    if (!isHiddenDir) {
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) {
+        if (!SKIP_DIRS.has(entry.name)) {
+          walk(full, depth + 1, onFile, shouldStop, markTruncated)
+        }
+      } else if (entry.isFile() && SOURCE_EXT.has(path.extname(entry.name))) {
+        onFile(full)
+      }
     }
   }
 }

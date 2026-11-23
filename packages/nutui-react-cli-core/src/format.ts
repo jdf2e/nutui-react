@@ -56,7 +56,9 @@ export function output(
     }
   } else {
     printText(
-      versionCtx && versionCtx.header ? `${versionCtx.header}\n\n${toText()}` : toText()
+      versionCtx && versionCtx.header
+        ? `${versionCtx.header}\n\n${toText()}`
+        : toText()
     )
   }
 }

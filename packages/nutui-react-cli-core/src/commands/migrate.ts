@@ -2,7 +2,11 @@
 // 按组件切段后原文输出；--component 只看某组件，--apply <dir> 扫描项目、只输出用到组件的迁移步骤并生成给 Agent 的提示。
 //
 // 与其它命令不同：迁移跨两个版本，故不走 resolveContext（它只解析单版本），而是用 to 版本定位快照、读其内迁移文档。
-import { loadVersionsIndex, readMigrationDoc, resolveSnapshotDir } from '../data.js'
+import {
+  loadVersionsIndex,
+  readMigrationDoc,
+  resolveSnapshotDir,
+} from '../data.js'
 import { output } from '../format.js'
 import { parseMigrationDoc, filterSections } from './migrate-parse.js'
 import { scanProject } from '../utils/scan.js'
@@ -21,7 +25,9 @@ export interface MigrateArgs {
 // 把版本参数（'3' / '3.1.0' / 'v4'）归一为大版本号整数。无法解析返回 null。
 function toMajorNum(v: string | undefined): number | null {
   if (!v) return null
-  const m = String(v).replace(/^v/, '').match(/^(\d+)/)
+  const m = String(v)
+    .replace(/^v/, '')
+    .match(/^(\d+)/)
   return m ? Number(m[1]) : null
 }
 
@@ -71,7 +77,9 @@ export function runMigrate(args: MigrateArgs): void {
     matchedComponents = sections.map((s) => s.component)
     // 项目用到、但迁移文档未覆盖的组件（v3→v4 大多无破坏性变更，属正常）。
     const covered = new Set(sections.map((s) => s.component.toLowerCase()))
-    missingFromDoc = scan.components.filter((c) => !covered.has(c.toLowerCase()))
+    missingFromDoc = scan.components.filter(
+      (c) => !covered.has(c.toLowerCase())
+    )
   } else if (args.component) {
     sections = filterSections(parsed.sections, [args.component])
     if (!sections.length) {
@@ -105,9 +113,24 @@ export function runMigrate(args: MigrateArgs): void {
   output(
     args.format,
     jsonData,
-    () => renderText(parsed, sections, args, scan, matchedComponents, missingFromDoc),
+    () =>
+      renderText(
+        parsed,
+        sections,
+        args,
+        scan,
+        matchedComponents,
+        missingFromDoc
+      ),
     // 迁移指南本身是可直接粘贴的 markdown，text 不加版本头（同 doc.ts）。
-    { header: '', meta: { from: `v${fromMajor}`, to: `v${toMajor}`, libVersion: idx.majors[toMajorKey].latest } }
+    {
+      header: '',
+      meta: {
+        from: `v${fromMajor}`,
+        to: `v${toMajor}`,
+        libVersion: idx.majors[toMajorKey].latest,
+      },
+    }
   )
 }
 
@@ -132,7 +155,9 @@ function renderText(
         `> 其中 **${matchedComponents.length}** 个有破坏性变更需处理：${matchedComponents.join('、')}。`
       )
     } else {
-      parts.push('> 未命中任何有破坏性变更的组件——按当前迁移文档，项目所用组件无需改代码（仍建议构建后人工核对样式）。')
+      parts.push(
+        '> 未命中任何有破坏性变更的组件——按当前迁移文档，项目所用组件无需改代码（仍建议构建后人工核对样式）。'
+      )
     }
     if (missingFromDoc.length) {
       parts.push(
@@ -150,9 +175,9 @@ function renderText(
         '5. 迁移后运行构建验证；编译通过 ≠ 视觉/行为正确。',
       ].join('\n')
     )
-  } else {
+  } else if (!args.component && parsed.intro) {
     // 全量 / --component：先给引言（升级步骤），再给组件段。
-    if (!args.component && parsed.intro) parts.push(parsed.intro)
+    parts.push(parsed.intro)
   }
 
   if (sections.length) {

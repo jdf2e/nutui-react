@@ -39,7 +39,8 @@ export function runDoc(args: DocArgs): void {
     output(
       args.format,
       jsonData,
-      () => `${comp.name} ${comp.cName} 暂无${langName}文档（可能是隐藏子组件）。`,
+      () =>
+        `${comp.name} ${comp.cName} 暂无${langName}文档（可能是隐藏子组件）。`,
       { header: '', meta: versionMeta(versionInfo) }
     )
     return

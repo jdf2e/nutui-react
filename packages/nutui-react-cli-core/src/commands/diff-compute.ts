@@ -27,11 +27,12 @@ function flattenProps(comp: Component | undefined): Map<string, ApiRow> {
   if (!comp) return map
   const tables: ApiTable[] = comp.api?.tables ?? []
   for (const t of tables) {
-    if (t.kind !== 'props') continue
-    for (const r of t.rows) {
-      // 子组件表用 "Sub.prop" 作 key，避免与主表同名 prop 混淆
-      const key = t.subComponent ? `${t.subComponent}.${r.prop}` : r.prop
-      if (!map.has(key)) map.set(key, r)
+    if (t.kind === 'props') {
+      for (const r of t.rows) {
+        // 子组件表用 "Sub.prop" 作 key，避免与主表同名 prop 混淆
+        const key = t.subComponent ? `${t.subComponent}.${r.prop}` : r.prop
+        if (!map.has(key)) map.set(key, r)
+      }
     }
   }
   return map
@@ -58,20 +59,21 @@ export function diffComponent(
   }
   for (const [key, ra] of a) {
     const rb = b.get(key)
-    if (!rb) continue
-    const c: RowChange = { prop: key }
-    let dirty = false
-    if ((ra.type ?? '') !== (rb.type ?? '')) {
-      c.typeFrom = ra.type
-      c.typeTo = rb.type
-      dirty = true
+    if (rb) {
+      const c: RowChange = { prop: key }
+      let dirty = false
+      if ((ra.type ?? '') !== (rb.type ?? '')) {
+        c.typeFrom = ra.type
+        c.typeTo = rb.type
+        dirty = true
+      }
+      if ((ra.default ?? '') !== (rb.default ?? '')) {
+        c.defaultFrom = ra.default
+        c.defaultTo = rb.default
+        dirty = true
+      }
+      if (dirty) changed.push(c)
     }
-    if ((ra.default ?? '') !== (rb.default ?? '')) {
-      c.defaultFrom = ra.default
-      c.defaultTo = rb.default
-      dirty = true
-    }
-    if (dirty) changed.push(c)
   }
 
   return { name, added, removed, changed }

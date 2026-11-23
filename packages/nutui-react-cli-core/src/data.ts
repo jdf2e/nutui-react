@@ -79,7 +79,9 @@ export function resolveSnapshotDir(dataDir: string, version: string): string {
 
   // 不是可识别的 major.minor.patch → 直接用该 major latest
   if (parts[1] === undefined || parts[1] === '') {
-    return tryDir(majorIndex.latest) ?? snapshotDirFor(dataDir, majorIndex.latest)
+    return (
+      tryDir(majorIndex.latest) ?? snapshotDirFor(dataDir, majorIndex.latest)
+    )
   }
 
   const minorKey = `${parts[0]}.${parts[1]}`
@@ -94,7 +96,9 @@ export function resolveSnapshotDir(dataDir: string, version: string): string {
   const requestedMinor = parseInt(parts[1], 10)
   const availableMinors = Object.keys(majorIndex.minors)
     .filter((k) => k.startsWith(`${parts[0]}.`))
-    .sort((a, b) => parseInt(a.split('.')[1], 10) - parseInt(b.split('.')[1], 10))
+    .sort(
+      (a, b) => parseInt(a.split('.')[1], 10) - parseInt(b.split('.')[1], 10)
+    )
   let bestMinorKey: string | undefined
   for (const m of availableMinors) {
     if (parseInt(m.split('.')[1], 10) <= requestedMinor) bestMinorKey = m
