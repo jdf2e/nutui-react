@@ -13,6 +13,16 @@
     {
       "matchPackagePatterns": ["^@tarojs", "^@react-spring", "^@use-gesture"],
       "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major devDependencies",
+      "groupSlug": "dev-dependencies-non-major"
     }
   ],
   "ignoreDeps": [
