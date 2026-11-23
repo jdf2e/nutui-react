@@ -137,7 +137,9 @@
       min-width: auto;
     }
 
-    .nut-navbar-title {
+    .nut-navbar-title,
+    .nut-navbar-title-center {
+      max-width: none;
       justify-content: flex-start;
       padding-left: scale-px(8px);
     }
@@ -148,11 +150,13 @@
     align-items: center;
     gap: scale-px(8px);
     max-width: 100%;
+    min-width: 0;
 
     &-text {
       font-weight: bold;
       font-size: scale-font-px(18px);
       white-space: nowrap;
+      flex-shrink: 0;
     }
   }
 
@@ -167,6 +171,7 @@
     font-weight: normal;
     white-space: nowrap;
     cursor: pointer;
+    flex-shrink: 0;
 
     .nut-icon {
       font-size: scale-font-px(10px);
