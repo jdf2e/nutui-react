@@ -15,6 +15,17 @@ export interface TokenArgs {
   component?: string
   format: OutputFormat
   nutuiVersion?: string
+  dense?: boolean
+}
+
+export function renderDenseTokens(title: string, tokens: Token[]): string {
+  if (!tokens.length) return `// ${title}: 无 token`
+  const lines = [`// ${title}`]
+  for (const t of tokens) {
+    const def = t.default ? ` /* default: ${t.default} */` : ''
+    lines.push(`${t.cssVar};${def}`)
+  }
+  return lines.join('\n')
 }
 
 export function runToken(args: TokenArgs): void {
@@ -27,6 +38,26 @@ export function runToken(args: TokenArgs): void {
 
   // 无参：全局 token。
   if (!args.component) {
+    if (args.dense) {
+      output(
+        args.format,
+        {
+          scope: 'global',
+          tokens: meta.globalTokens.map((t) => ({
+            var: t.cssVar,
+            default: t.default,
+          })),
+        },
+        () =>
+          renderDenseTokens(
+            `${config.libLabel}全局 Design Token（${meta.globalTokens.length} 个）`,
+            meta.globalTokens
+          ),
+        vc
+      )
+      return
+    }
+
     output(
       args.format,
       { scope: 'global', tokens: meta.globalTokens },
@@ -43,6 +74,25 @@ export function runToken(args: TokenArgs): void {
   // 有参：组件 token。
   const comp = resolveOrExit(config, meta, args.component)
   const tokens = comp.tokens ?? []
+
+  if (args.dense) {
+    output(
+      args.format,
+      {
+        scope: comp.id,
+        name: comp.name,
+        tokens: tokens.map((t) => ({ var: t.cssVar, default: t.default })),
+      },
+      () =>
+        renderDenseTokens(
+          `${comp.name} Design Token（${tokens.length} 个）`,
+          tokens
+        ),
+      vc
+    )
+    return
+  }
+
   output(
     args.format,
     { scope: comp.id, name: comp.name, tokens },
