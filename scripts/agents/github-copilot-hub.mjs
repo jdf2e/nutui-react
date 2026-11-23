@@ -924,14 +924,23 @@ async function cmdHealPr(rawPrNumber) {
   const tmpWorktree = fs.mkdtempSync(path.join(os.tmpdir(), `nutui-heal-pr-${prNumber}-`));
   const repoUrl = `https://github.com/${REPO}.git`;
   let worktreeAdded = false;
+  // 每次调用使用唯一临时引用，避免并行 heal-pr 互相覆盖共享的 FETCH_HEAD
+  const tmpRef = `refs/heal-pr/${prNumber}-${process.pid}-${Date.now()}`;
+  let refCreated = false;
 
   try {
     console.log(c(`⏳ 1. 正在从 ${repoUrl} 拉取远程 PR #${prNumber} 至独立隔离环境 (${tmpWorktree})...`, colors.cyan));
-    execFileSync('git', ['fetch', repoUrl, `pull/${prNumber}/head`], { stdio: 'ignore' });
-    const fetchedSha = execFileSync('git', ['rev-parse', 'FETCH_HEAD'], { encoding: 'utf-8' }).trim();
+    execFileSync('git', ['fetch', repoUrl, `+pull/${prNumber}/head:${tmpRef}`], { stdio: 'ignore' });
+    refCreated = true;
+    const fetchedSha = execFileSync('git', ['rev-parse', '--verify', tmpRef], { encoding: 'utf-8' }).trim();
     execFileSync('git', ['worktree', 'add', '--detach', tmpWorktree, fetchedSha], { stdio: 'ignore' });
     worktreeAdded = true;
     fs.symlinkSync(path.join(ROOT_DIR, 'node_modules'), path.join(tmpWorktree, 'node_modules'), 'dir');
+
+    // src/packages/nutui.react.ts 被 .gitignore 排除，worktree 中不存在，需先生成，
+    // 否则以 @nutui/nutui-react 导入的测试（form/segmented/cascader 等）无法解析模块
+    console.log(c(`⏳ 1.5 正在 worktree 中生成公共入口文件 (generate:file)...`, colors.cyan));
+    execFileSync('node', ['scripts/generate-nutui.js'], { cwd: tmpWorktree, stdio: 'ignore', timeout: 60000 });
 
     let hasTestFailure = false;
 
@@ -1016,6 +1025,13 @@ async function cmdHealPr(rawPrNumber) {
         execFileSync('git', ['worktree', 'remove', tmpWorktree, '--force'], { stdio: 'ignore' });
       } else {
         fs.rmSync(tmpWorktree, { recursive: true, force: true });
+      }
+    } catch {
+      // ignore
+    }
+    try {
+      if (refCreated) {
+        execFileSync('git', ['update-ref', '-d', tmpRef], { stdio: 'ignore' });
       }
     } catch {
       // ignore

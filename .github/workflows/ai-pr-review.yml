@@ -35,7 +35,7 @@ jobs:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
           persist-credentials: false
-          clean: false
+          path: pr
           allow-unsafe-pr-checkout: true
 
       - name: Setup Node.js
@@ -46,8 +46,9 @@ jobs:
       - name: 检查单组件 PR 原则
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
+        working-directory: pr
         run: |
-          node .trusted-base/scripts/agents/nutui-ci-review.mjs --gate=single-component "origin/${{ github.base_ref }}"
+          node "$GITHUB_WORKSPACE/.trusted-base/scripts/agents/nutui-ci-review.mjs" --gate=single-component "origin/${{ github.base_ref }}"
 
   gate-ci-security:
     name: "AI 门禁 / 2. CI 供应链安全"
@@ -70,7 +71,7 @@ jobs:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
           persist-credentials: false
-          clean: false
+          path: pr
           allow-unsafe-pr-checkout: true
 
       - name: Setup Node.js
@@ -81,8 +82,9 @@ jobs:
       - name: 检查 CI 供应链安全
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
+        working-directory: pr
         run: |
-          node .trusted-base/scripts/agents/nutui-ci-review.mjs --gate=security "origin/${{ github.base_ref }}"
+          node "$GITHUB_WORKSPACE/.trusted-base/scripts/agents/nutui-ci-review.mjs" --gate=security "origin/${{ github.base_ref }}"
 
   gate-whitepaper:
     name: "AI 门禁 / 3. 白皮书规范与多端隔离"
@@ -105,7 +107,7 @@ jobs:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
           persist-credentials: false
-          clean: false
+          path: pr
           allow-unsafe-pr-checkout: true
 
       - name: Setup Node.js
@@ -116,8 +118,9 @@ jobs:
       - name: 检查白皮书多端对称与 DOM 隔离
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
+        working-directory: pr
         run: |
-          node .trusted-base/scripts/agents/nutui-ci-review.mjs --gate=whitepaper "origin/${{ github.base_ref }}"
+          node "$GITHUB_WORKSPACE/.trusted-base/scripts/agents/nutui-ci-review.mjs" --gate=whitepaper "origin/${{ github.base_ref }}"
 
   gate-coverage:
     name: "AI 门禁 / 4. 单元测试与 95% 覆盖率门禁"
@@ -144,6 +147,9 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install --ignore-scripts
+
+      - name: 生成公共入口文件 (prepare 被 --ignore-scripts 跳过)
+        run: npm run generate:file
 
       - name: 运行单元测试与 95% 覆盖率门禁
         env:
@@ -176,7 +182,7 @@ jobs:
           ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
           fetch-depth: 0
           persist-credentials: false
-          clean: false
+          path: pr
           allow-unsafe-pr-checkout: true
 
       - name: Setup Node.js
@@ -187,8 +193,9 @@ jobs:
       - name: 生成深度架构评审报告 (仅执行基线受信任脚本)
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
+        working-directory: pr
         run: |
-          node .trusted-base/scripts/agents/nutui-ci-review.mjs --gate=summary \
+          node "$GITHUB_WORKSPACE/.trusted-base/scripts/agents/nutui-ci-review.mjs" --gate=summary \
             --step1=${{ needs.gate-single-component.result }} \
             --step2=${{ needs.gate-ci-security.result }} \
             --step3=${{ needs.gate-whitepaper.result }} \
@@ -207,7 +214,7 @@ jobs:
             const { owner, repo } = context.repo;
             const issue_number = pr?.number;
 
-            const reportPath = path.join(process.env.GITHUB_WORKSPACE, 'pr-review-report.md');
+            const reportPath = path.join(process.env.GITHUB_WORKSPACE, 'pr', 'pr-review-report.md');
             if (fs.existsSync(reportPath) && issue_number) {
               try {
                 let body = fs.readFileSync(reportPath, 'utf-8');
