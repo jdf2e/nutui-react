@@ -39,7 +39,10 @@ const ImageDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <View className="h2">{translated.circle}</View>

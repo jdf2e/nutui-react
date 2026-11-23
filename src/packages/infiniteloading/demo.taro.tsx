@@ -41,6 +41,7 @@ const InfiniteLoadingDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         showScrollbar={false}
       >

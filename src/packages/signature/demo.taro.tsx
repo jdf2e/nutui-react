@@ -27,6 +27,7 @@ const SignatureDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo demo-signature demo-taro-signature ${
           Taro.getEnv() === 'WEB' ? 'web' : ''
         }`}

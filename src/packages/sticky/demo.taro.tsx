@@ -35,7 +35,7 @@ const StickyDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView scrollY className={`demo ${getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{basic}</View>
         <Cell>
           <Demo1 />

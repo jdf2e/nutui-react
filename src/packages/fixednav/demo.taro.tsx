@@ -13,7 +13,10 @@ const FixedNavDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <Demo1 />
         <Demo2 />
         <Demo3 />

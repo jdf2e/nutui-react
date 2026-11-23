@@ -48,7 +48,7 @@ const LoadingDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className="demo">
+      <ScrollView scrollY className="demo">
         <View className="h2">{translated.title1}</View>
         <Demo1 />
         <View className="h2">{translated.customColor}</View>

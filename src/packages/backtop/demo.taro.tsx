@@ -31,6 +31,7 @@ const BackTopDemo = () => {
         <Demo5 />
       ) : (
         <ScrollView
+          scrollY
           className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
           style={demoStyle}
         >

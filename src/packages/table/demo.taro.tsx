@@ -63,7 +63,10 @@ const TableDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <Toast
           visible={show}
           content={toastMsg}

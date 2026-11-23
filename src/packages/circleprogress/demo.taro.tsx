@@ -44,6 +44,7 @@ const CircleProgressDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${
           Taro.getEnv() === 'WEB' ? 'web' : ''
         } demo-circleprogress`}

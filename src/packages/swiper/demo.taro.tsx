@@ -45,6 +45,7 @@ const SwiperDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}
       >
         <View className="h2">{translated.basic}</View>

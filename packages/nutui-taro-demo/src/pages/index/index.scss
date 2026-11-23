@@ -61,6 +61,9 @@ body {
   background-color: #fff;
   height: 100%;
   width: 100%;
+  flex: 1;
+  min-height: 0;
+  box-sizing: border-box;
   padding-top: 30px;
   &-header {
     display: flex;

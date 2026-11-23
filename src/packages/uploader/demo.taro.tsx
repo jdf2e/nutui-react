@@ -59,6 +59,7 @@ const UploaderDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}
       >
         {' '}

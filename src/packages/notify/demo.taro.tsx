@@ -34,6 +34,7 @@ const NotifyDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : 'demo-bg-full'}`}
       >
         <View className="h2">{translated.basic}</View>

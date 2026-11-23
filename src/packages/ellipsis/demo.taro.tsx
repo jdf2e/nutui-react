@@ -41,7 +41,10 @@ const EllipsisDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <View className="h2">{translated.header}</View>
         <Demo1 />
         <View className="h2">{translated.end}</View>

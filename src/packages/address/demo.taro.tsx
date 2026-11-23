@@ -45,7 +45,10 @@ const AddressDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        scrollY
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <View className="h2">{translated.elevator}</View>
         <Demo11 />
         <View className="h2">{translated.customAddress}</View>

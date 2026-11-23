@@ -36,7 +36,7 @@ const ResultPageDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${web() ? 'web' : ''}`}>
+      <ScrollView scrollY className={`demo ${web() ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <View className="h2">{translated.modifyStatus}</View>

@@ -54,6 +54,7 @@ const CountDownDemo = () => {
     <>
       <Header />
       <ScrollView
+        scrollY
         className={`demo demo-countdown ${
           Taro.getEnv() === 'WEB' ? 'web' : ''
         }`}

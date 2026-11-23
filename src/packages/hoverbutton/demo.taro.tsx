@@ -47,6 +47,7 @@ const HoverDemo = () => {
     <View>
       <Header />
       <ScrollView
+        scrollY
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         style={harmony() ? { minHeight: 420 } : {}}
       >
