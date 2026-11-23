@@ -66,7 +66,12 @@ export function detectVersion(opts: DetectVersionOptions): VersionInfo {
   }
 
   // 2. node_modules/<pkg>/package.json
-  const nmPath = path.join(cwd, 'node_modules', opts.npmPackageName, 'package.json')
+  const nmPath = path.join(
+    cwd,
+    'node_modules',
+    opts.npmPackageName,
+    'package.json'
+  )
   if (fs.existsSync(nmPath)) {
     const pkg = readJson<{ version?: string }>(nmPath)
     if (pkg?.version) {

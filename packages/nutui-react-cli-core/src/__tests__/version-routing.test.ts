@@ -10,8 +10,16 @@ import type { VersionsIndex } from '../types.js'
 const VERSIONS: VersionsIndex = {
   defaultMajor: 'v4',
   majors: {
-    v3: { latest: '3.1.0', stable: true, minors: { '3.0': '3.0.20', '3.1': '3.1.0' } },
-    v4: { latest: '4.0.0-beta.7', stable: false, minors: { '4.0': '4.0.0-beta.7' } },
+    v3: {
+      latest: '3.1.0',
+      stable: true,
+      minors: { '3.0': '3.0.20', '3.1': '3.1.0' },
+    },
+    v4: {
+      latest: '4.0.0-beta.7',
+      stable: false,
+      minors: { '4.0': '4.0.0-beta.7' },
+    },
   },
 }
 
@@ -39,15 +47,21 @@ afterAll(() => {
 
 describe('resolveSnapshotDir', () => {
   it('精确 minor 命中：3.1.0 → v3.1.0', () => {
-    expect(resolveSnapshotDir(dataDir, '3.1.0')).toBe(path.join(dataDir, 'v3.1.0'))
+    expect(resolveSnapshotDir(dataDir, '3.1.0')).toBe(
+      path.join(dataDir, 'v3.1.0')
+    )
   })
 
   it('最近不超过的旧 minor：3.0.5 → v3.0.20（minor 3.0）', () => {
-    expect(resolveSnapshotDir(dataDir, '3.0.5')).toBe(path.join(dataDir, 'v3.0.20'))
+    expect(resolveSnapshotDir(dataDir, '3.0.5')).toBe(
+      path.join(dataDir, 'v3.0.20')
+    )
   })
 
   it('请求的 minor 高于已有：3.5.0 → 回退最近的 3.1 → v3.1.0', () => {
-    expect(resolveSnapshotDir(dataDir, '3.5.0')).toBe(path.join(dataDir, 'v3.1.0'))
+    expect(resolveSnapshotDir(dataDir, '3.5.0')).toBe(
+      path.join(dataDir, 'v3.1.0')
+    )
   })
 
   it('v4 预发布精确命中：4.0.0-beta.7 → v4.0.0-beta.7', () => {
@@ -75,7 +89,11 @@ describe('detectVersion', () => {
 
   it('flag 优先，保留预发布：4.0.0-beta.7', () => {
     const r = detectVersion({ ...base, flag: '4.0.0-beta.7' })
-    expect(r).toMatchObject({ version: '4.0.0-beta.7', major: 'v4', source: 'flag' })
+    expect(r).toMatchObject({
+      version: '4.0.0-beta.7',
+      major: 'v4',
+      source: 'flag',
+    })
   })
 
   it('flag 只给 major：3 → coerce 3.0.0', () => {
@@ -117,10 +135,16 @@ describe('detectVersion', () => {
     )
     fs.writeFileSync(
       path.join(tmp, 'package.json'),
-      JSON.stringify({ dependencies: { '@nutui/nutui-react': '^4.0.0-beta.7' } })
+      JSON.stringify({
+        dependencies: { '@nutui/nutui-react': '^4.0.0-beta.7' },
+      })
     )
     const r = detectVersion({ ...base, cwd: tmp })
-    expect(r).toMatchObject({ version: '3.0.9', major: 'v3', source: 'node_modules' })
+    expect(r).toMatchObject({
+      version: '3.0.9',
+      major: 'v3',
+      source: 'node_modules',
+    })
     fs.rmSync(tmp, { recursive: true, force: true })
   })
 
@@ -131,7 +155,11 @@ describe('detectVersion', () => {
       JSON.stringify({ devDependencies: { '@nutui/nutui-react': '~3.1.0' } })
     )
     const r = detectVersion({ ...base, cwd: tmp })
-    expect(r).toMatchObject({ version: '3.1.0', major: 'v3', source: 'package.json' })
+    expect(r).toMatchObject({
+      version: '3.1.0',
+      major: 'v3',
+      source: 'package.json',
+    })
     fs.rmSync(tmp, { recursive: true, force: true })
   })
 

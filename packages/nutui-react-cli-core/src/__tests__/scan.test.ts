@@ -6,7 +6,9 @@ import { extractComponents, scanProject } from '../utils/scan.js'
 
 describe('extractComponents', () => {
   it('解析单行具名 import', () => {
-    const c = extractComponents(`import { Button, Cell } from '@nutui/nutui-react'`)
+    const c = extractComponents(
+      `import { Button, Cell } from '@nutui/nutui-react'`
+    )
     expect(c.sort()).toEqual(['Button', 'Cell'])
   })
 
