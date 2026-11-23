@@ -12,6 +12,8 @@ import { NavBar } from '@nutui/nutui-react-taro'
 
 ### 场景材质
 
+结合 `MaterialView` 展现不同场景下的导航栏材质效果，包括灰色背景毛玻璃、白色背景高透、深浅换肤（支持高透材质及常规材质）、通栏吸顶以及沉浸式等。
+
 :::demo
 
 <CodeBlock src='taro/demo1.tsx'></CodeBlock>

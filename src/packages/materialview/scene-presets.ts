@@ -22,6 +22,8 @@ const SHADOW_LIGHT =
   '0 2PX 4PX rgba(0, 0, 0, 0.06), inset -0.5PX -0.5PX 0.5PX rgba(255, 255, 255, 0.4), inset 0.5PX 0.5PX 0.5PX #fff, inset 1PX 1PX 5PX rgba(45, 45, 45, 0.04)'
 const SHADOW_DARK =
   '0 2PX 4PX rgba(0,0,0,0.06), inset -0.5PX -0.5PX 0.5PX rgba(255,255,255,0.1), inset 0.5PX 0.5PX 0.5PX rgba(255,255,255,0.4), inset 1PX 1PX 5PX rgba(45,45,45,0.08)'
+const SHADOW_PLAIN =
+  '0 2PX 4PX rgba(0, 0, 0, 0.06), inset -0.5PX -0.5PX 0.5PX rgba(255, 255, 255, 0.4), inset 0.5PX 0.5PX 0.5PX rgba(255, 255, 255, 0.6), inset 1PX 1PX 5PX rgba(45, 45, 45, 0.08)'
 
 /**
  * 解析场景毛玻璃预设：
@@ -43,7 +45,12 @@ export function getFrostedPreset(
       }
 
     case 'top-plain':
-      return { blurRadius: 0, borderRadius }
+      return {
+        blurRadius: 3,
+        borderRadius,
+        tintColor: 'rgba(255, 255, 255, 0.05)',
+        boxShadow: SHADOW_PLAIN,
+      }
 
     case 'top-bar':
       return {

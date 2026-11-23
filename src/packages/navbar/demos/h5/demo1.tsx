@@ -1,6 +1,13 @@
 import React from 'react'
 import { NavBar, Space, Toast } from '@nutui/nutui-react'
-import { ArrowLeftI, CloseI, ShareI } from '@nutui/icons-react'
+import {
+  ArrowLeftI,
+  ArrowRightI,
+  CloseI,
+  HeartI,
+  MoreI,
+  ShareI,
+} from '@nutui/icons-react'
 import { MaterialView } from '../../../materialview/materialview'
 import { useAppTheme } from '@/sites/mobile/theme-context'
 
@@ -68,7 +75,71 @@ const Demo1 = () => {
           zIndex={0}
         />
         <NavBar
-          title="浅色换肤"
+          title={
+            <div className="navbar-skin-title">
+              <span className="navbar-skin-title-text">京东超市</span>
+              <MaterialView
+                className="navbar-iOS26-capsule"
+                scene="top-plain"
+                onClick={() => Toast.show('操作功能入口')}
+              >
+                <span>操作功能入口</span>
+                <ArrowRightI />
+              </MaterialView>
+            </div>
+          }
+          back={
+            <MaterialView className="navbar-iOS26-button" scene="top-plain">
+              <ArrowLeftI />
+            </MaterialView>
+          }
+          right={
+            <MaterialView
+              className="navbar-iOS26-button navbar-iOS26-button-double"
+              scene="top-plain"
+            >
+              <HeartI onClick={() => Toast.show('收藏')} />
+              <MoreI onClick={() => Toast.show('更多')} />
+            </MaterialView>
+          }
+          onBackClick={() => Toast.show('返回')}
+          className="navbar-iOS26 navbar-iOS26-skin-deep navbar-iOS26-skin-left-align"
+          zIndex={0}
+        />
+        <NavBar
+          title={
+            <div className="navbar-skin-title">
+              <span className="navbar-skin-title-text">京东生鲜</span>
+              <MaterialView
+                className="navbar-iOS26-capsule"
+                scene="top-plain"
+                onClick={() => Toast.show('操作功能入口')}
+              >
+                <span>操作功能入口</span>
+                <ArrowRightI />
+              </MaterialView>
+            </div>
+          }
+          back={
+            <MaterialView className="navbar-iOS26-button" scene="top-plain">
+              <ArrowLeftI />
+            </MaterialView>
+          }
+          right={
+            <MaterialView
+              className="navbar-iOS26-button navbar-iOS26-button-double"
+              scene="top-plain"
+            >
+              <HeartI onClick={() => Toast.show('收藏')} />
+              <MoreI onClick={() => Toast.show('更多')} />
+            </MaterialView>
+          }
+          onBackClick={() => Toast.show('返回')}
+          className="navbar-iOS26 navbar-iOS26-skin-light navbar-iOS26-skin-left-align"
+          zIndex={0}
+        />
+        <NavBar
+          title="浅色换肤（常规材质）"
           back={
             <MaterialView
               className="navbar-iOS26-button"
@@ -90,7 +161,7 @@ const Demo1 = () => {
           zIndex={0}
         />
         <NavBar
-          title="深色换肤"
+          title="深色换肤（常规材质）"
           back={
             <MaterialView
               className="navbar-iOS26-button"

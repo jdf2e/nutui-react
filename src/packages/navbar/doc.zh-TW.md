@@ -12,6 +12,8 @@ import { NavBar } from '@nutui/nutui-react'
 
 ### 場景材質
 
+結合 `MaterialView` 展現不同場景下的導航欄材質效果，包括灰色背景毛玻璃、白色背景高透、深淺換膚（支援高透材質及常規材質）、通欄吸頂以及沉浸式等。
+
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
