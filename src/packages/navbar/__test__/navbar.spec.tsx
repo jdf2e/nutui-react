@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { NavBar } from '../navbar'
+import { MaterialView } from '../../materialview/materialview'
 
 test('should render left slot correctly', () => {
   const { container } = render(<NavBar left={<span>left</span>} />)
@@ -137,4 +138,74 @@ test('should forward id and other native attributes to root node', () => {
   expect(root).toHaveAttribute('id', 'nav-bar')
   expect(root).toHaveAttribute('aria-label', '导航栏')
   expect(root).toHaveAttribute('data-testid', 'navbar')
+})
+
+test('should render high-transparency liquid glass materials in themed navbar', () => {
+  const onBack = vi.fn()
+  const onCapsuleClick = vi.fn()
+  const { container } = render(
+    <NavBar
+      className="navbar-iOS26 navbar-iOS26-skin-deep navbar-iOS26-skin-left-align"
+      back={
+        <MaterialView
+          className="navbar-iOS26-button"
+          scene="top-plain"
+          data-testid="nav-back-material"
+        >
+          <span>&lt;</span>
+        </MaterialView>
+      }
+      title={
+        <div className="navbar-skin-title">
+          <span className="navbar-skin-title-text">京东超市</span>
+          <MaterialView
+            className="navbar-iOS26-capsule"
+            scene="top-plain"
+            data-testid="nav-capsule-material"
+            onClick={onCapsuleClick}
+          >
+            <span>操作功能入口</span>
+          </MaterialView>
+        </div>
+      }
+      right={
+        <MaterialView
+          className="navbar-iOS26-button navbar-iOS26-button-double"
+          scene="top-plain"
+          data-testid="nav-right-material"
+        >
+          <span>icon1</span>
+          <span>icon2</span>
+        </MaterialView>
+      }
+      onBackClick={onBack}
+    />
+  )
+
+  const root = container.firstChild as HTMLDivElement
+  expect(root).toHaveClass('navbar-iOS26-skin-deep')
+
+  const backMaterial = container.querySelector(
+    '[data-testid="nav-back-material"]'
+  )
+  expect(backMaterial).toBeInTheDocument()
+  expect(backMaterial).toHaveClass('FG-Clear-PX')
+
+  const capsuleMaterial = container.querySelector(
+    '[data-testid="nav-capsule-material"]'
+  )
+  expect(capsuleMaterial).toBeInTheDocument()
+  expect(capsuleMaterial).toHaveClass('FG-Clear-PX')
+  fireEvent.click(capsuleMaterial!)
+  expect(onCapsuleClick).toHaveBeenCalled()
+
+  const rightMaterial = container.querySelector(
+    '[data-testid="nav-right-material"]'
+  )
+  expect(rightMaterial).toBeInTheDocument()
+  expect(rightMaterial).toHaveClass('FG-Clear-PX')
+
+  const backBtn = container.querySelector('.nut-navbar-left-back')
+  fireEvent.click(backBtn!)
+  expect(onBack).toHaveBeenCalled()
 })

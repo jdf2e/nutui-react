@@ -12,6 +12,8 @@ import { NavBar } from '@nutui/nutui-react'
 
 ### Scene Materials
 
+Combines with `MaterialView` to display navbar material effects in different scenarios, including frosted glass on gray background, high-transparency on white background, light/dark skinning (supporting high-transparency Liquid Glass and regular materials), sticky top bar, and immersive mode.
+
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>

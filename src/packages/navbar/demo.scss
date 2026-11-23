@@ -105,12 +105,72 @@
 
   .navbar-iOS26-skin-light {
     --nutui-navbar-background: #fff9e0;
+    --nutui-navbar-color: #11141a;
+    --nutui-navbar-title-font-color: #11141a;
+
+    .navbar-iOS26-capsule {
+      color: #11141a;
+
+      .nut-icon {
+        color: #11141a;
+      }
+    }
   }
 
   .navbar-iOS26-skin-deep {
     --nutui-navbar-background: #00ac6b;
     --nutui-navbar-color: #fff;
     --nutui-navbar-title-font-color: #fff;
+
+    .navbar-iOS26-capsule {
+      color: #fff;
+
+      .nut-icon {
+        color: #fff;
+      }
+    }
+  }
+
+  .navbar-iOS26-skin-left-align {
+    .nut-navbar-left-maxwidth,
+    .nut-navbar-right-maxwidth {
+      min-width: auto;
+    }
+
+    .nut-navbar-title {
+      justify-content: flex-start;
+      padding-left: scale-px(8px);
+    }
+  }
+
+  .navbar-skin-title {
+    display: flex;
+    align-items: center;
+    gap: scale-px(8px);
+    max-width: 100%;
+
+    &-text {
+      font-weight: bold;
+      font-size: scale-font-px(18px);
+      white-space: nowrap;
+    }
+  }
+
+  .navbar-iOS26-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: scale-px(4px);
+    height: scale-px(28px);
+    padding: 0 scale-px(8px);
+    border-radius: scale-px(14px) !important;
+    font-size: scale-font-px(12px);
+    font-weight: normal;
+    white-space: nowrap;
+    cursor: pointer;
+
+    .nut-icon {
+      font-size: scale-font-px(10px);
+    }
   }
 
   .navbar-topbar-wrapper {
@@ -125,10 +185,16 @@
   .navbar-iOS26-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 0 scale-px(10px);
     gap: scale-px(20px);
     height: scale-px(40px);
     border-radius: $radius-xl !important;
+
+    &-double {
+      gap: scale-px(16px);
+      cursor: pointer;
+    }
   }
 }
 
