@@ -1,7 +1,11 @@
 // ----------------------------------------------------
 // 缩放系数
 :root,
-page {
+page,
+view,
+text,
+.nut-icon,
+.demo {
   --nut-scale-f: 1;
   --nut-scale-font: var(--nut-scale-f, 1);
   --nut-scale-icon: var(--nut-scale-f, 1);

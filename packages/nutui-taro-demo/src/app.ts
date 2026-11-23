@@ -1,10 +1,15 @@
 import { Component } from 'react'
+import { configure } from '@nutui/icons-react-taro'
 import { initScaleF } from '@/utils/scale-f'
 import('@/sites/assets/styles/reset.scss')
 import('@/packages/nutui.react.scss.taro')
 import('@nutui/touch-emulator')
 
 import './app.scss'
+
+configure({
+  tag: 'view',
+})
 
 // console.log(NutUI)
 class App extends Component {

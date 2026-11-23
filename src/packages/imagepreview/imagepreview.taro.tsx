@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { ITouchEvent, Video as TaroVideo, View } from '@tarojs/components'
+import { ITouchEvent, Video as TaroVideo, View, Text } from '@tarojs/components'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 
@@ -276,7 +276,9 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
       </View>
       {pagination && (
         <View className={`${classPrefix}-index`}>
-          {active}/{maxNo}
+          <Text className={`${classPrefix}-index-text`}>
+            {active}/{maxNo}
+          </Text>
         </View>
       )}
       {closeIcon !== false && (

@@ -1,4 +1,5 @@
 @import '../../../src/styles/jd-font.scss';
+@import '@nutui/icons-react-taro/dist/style_icon.css';
 
 page {
   height: 100%;
@@ -15,8 +16,29 @@ body {
   display: inline;
 }
 
+.nut-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #333333;
+  background-color: #333333;
+  width: var(--nut-icon-width, 16px);
+  height: var(--nut-icon-height, 16px);
+  min-width: var(--nut-icon-width, 16px);
+  min-height: var(--nut-icon-height, 16px);
+  mask-size: 100% 100% !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-position: center !important;
+  -webkit-mask-position: center !important;
+  vertical-align: middle;
+}
+
 .demo {
   box-sizing: border-box;
+  position: static;
   flex: 1;
   min-height: 0;
   width: 100%;

@@ -20,6 +20,7 @@ const createIndexConfig = (enName, package) => {
       const nameLc = package.name.toLowerCase()
       const content = `export default {
   navigationBarTitleText: '${name}',
+  navigationStyle: 'custom',
 }`
       const dirPath = path.join(
         __dirname,
