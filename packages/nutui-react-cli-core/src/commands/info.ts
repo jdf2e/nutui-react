@@ -77,6 +77,19 @@ function cleanTypeSegment(s: string): string {
   return trimmed
 }
 
+// 文档中枚举值统一用反引号书写，无法区分 `48` 是字符串还是数字。
+// 约定：联合类型里若已含字符串字面量成员（如 'normal'），则纯数字成员同属字符串枚举
+// （如 Button size 的 UISize），保持引号；纯数字联合（如 `4` | `5`）保留数字枚举。
+function normalizeUnion(s: string): string {
+  const parts = s.split(' | ')
+  if (parts.length < 2) return s
+  const hasStringLiteral = parts.some((p) => /^'.*'$|^".*"$/.test(p))
+  if (!hasStringLiteral) return s
+  return parts
+    .map((p) => (/^-?\d+(\.\d+)?$/.test(p) ? `'${p}'` : p))
+    .join(' | ')
+}
+
 export function sanitizePropType(raw?: string): string {
   if (!raw) return 'any'
   let s = raw.trim().replace(/｜/g, '|')
@@ -90,7 +103,7 @@ export function sanitizePropType(raw?: string): string {
   if (s.includes('|')) {
     s = s.split('|').map(cleanTypeSegment).join(' | ')
   }
-  return s
+  return normalizeUnion(s)
 }
 
 export function getInterfaceName(

@@ -9,6 +9,12 @@ export interface InitArgs {
   force?: boolean
 }
 
+function shellQuote(v: string): string {
+  return /^[A-Za-z0-9_/.:@%+=,-]+$/.test(v)
+    ? v
+    : `'${v.replace(/'/g, `'\\''`)}'`
+}
+
 export function runInit(args: InitArgs): void {
   const { config } = args
   const targetDir = path.resolve(args.targetDir || process.cwd())
@@ -34,10 +40,13 @@ export function runInit(args: InitArgs): void {
 
   // 平台不匹配检查：在含有 Taro 依赖的项目中误用 H5 CLI 初始化
   if (config.platform === 'h5' && hasTaroDep) {
+    // 保留显式目标目录，避免用户按提示执行后初始化到当前目录
+    const targetArg = args.targetDir ? ` ${shellQuote(args.targetDir)}` : ''
+    const forceArg = force ? ' --force' : ''
     process.stderr.write(
       `❌ 检测到当前项目包含 @tarojs 依赖，属于 Taro 多端项目。\n` +
         `   请使用 Taro 专用的 CLI 工具进行初始化：\n\n` +
-        `   npx -y @nutui/nutui-react-taro-cli init\n\n`
+        `   npx -y @nutui/nutui-react-taro-cli init${targetArg}${forceArg}\n\n`
     )
     process.exit(1)
   }

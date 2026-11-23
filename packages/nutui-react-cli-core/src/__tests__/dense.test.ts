@@ -16,8 +16,10 @@ describe('dense mode formatting', () => {
       )
     ).toBe("'default' | 'primary' | 'warning' | 'danger' | 'success' | 'info'")
     expect(sanitizePropType('`normal` | `48` | `44`')).toBe(
-      "'normal' | 48 | 44"
+      "'normal' | '48' | '44'"
     )
+    // 纯数字联合保持数字枚举
+    expect(sanitizePropType('`4` | `5`')).toBe('4 | 5')
     expect(sanitizePropType('`string` | `object`')).toBe('string | object')
     expect(sanitizePropType('`boolean` | `ReactNode`')).toBe(
       'boolean | ReactNode'
