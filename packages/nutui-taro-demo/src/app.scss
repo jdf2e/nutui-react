@@ -23,17 +23,18 @@ body {
   position: relative;
   color: #333333;
   background-color: #333333;
-  width: var(--nut-icon-width, 16px);
-  height: var(--nut-icon-height, 16px);
-  min-width: var(--nut-icon-width, 16px);
-  min-height: var(--nut-icon-height, 16px);
-  mask-size: 100% 100% !important;
-  -webkit-mask-size: 100% 100% !important;
-  mask-repeat: no-repeat !important;
-  -webkit-mask-repeat: no-repeat !important;
-  mask-position: center !important;
-  -webkit-mask-position: center !important;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
   vertical-align: middle;
+  box-sizing: border-box;
 }
 
 .demo {

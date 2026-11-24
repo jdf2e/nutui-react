@@ -11,9 +11,9 @@ text,
   --nut-scale-icon: var(--nut-scale-f, 1);
 
   // ---- icon size ----
-  --nut-icon-height: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
-  --nut-icon-width: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
-  --nut-icon-line-height: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
+  --nut-icon-height: calc(16px * var(--nut-scale-icon, 1));
+  --nut-icon-width: calc(16px * var(--nut-scale-icon, 1));
+  --nut-icon-line-height: calc(16px * var(--nut-scale-icon, 1));
 }
 @function scale-px($size) {
   @return calc(#{$size} * var(--nut-scale-f, 1));

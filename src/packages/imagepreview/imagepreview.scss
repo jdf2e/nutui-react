@@ -53,15 +53,16 @@
 
     .nut-icon {
       color: $white;
+      background-color: $white !important;
     }
 
     &.top-right {
-      top: 50px;
+      top: calc(env(safe-area-inset-top, 44px) + 50px);
       right: 20px;
     }
 
     &.top-left {
-      top: 50px;
+      top: calc(env(safe-area-inset-top, 44px) + 50px);
       left: 20px;
     }
 
