@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  white-space: nowrap;
 
   &-symbol,
   &-integer,
@@ -107,5 +108,7 @@
 
   &-line {
     text-decoration: line-through $price-line-color;
+    text-decoration-line: line-through;
+    text-decoration-color: $price-line-color;
   }
 }

@@ -546,11 +546,18 @@ $countdown-number-primary-border-color: var(--nutui-countdown-number-primary-bor
 
 //price（✅）
 $price-primary-color: var(--nutui-price-color, $color-primary) !default;
-$price-color: var(--nutui-price-color, var(--nutui-color-text-help)) !default;
-$price-darkgray-color: var(--nutui-price-darkgray-color,
-    var(--nutui-gray-7)) !default;
-$price-line-color: var(--nutui-price-line-color,
-    var(--nutui-color-text-help)) !default;
+$price-color: var(
+  --nutui-price-color,
+  var(--nutui-color-text-help, #808080)
+) !default;
+$price-darkgray-color: var(
+  --nutui-price-darkgray-color,
+  var(--nutui-gray-7, #808080)
+) !default;
+$price-line-color: var(
+  --nutui-price-line-color,
+  var(--nutui-color-text-help, #808080)
+) !default;
 $price-symbol-padding-right: var(--nutui-price-symbol-padding-right,
     0px) !default;
 
@@ -685,12 +692,12 @@ $hoverbutton-spacing: var(--nutui-hoverbutton-spacing, $spacing-base) !default;
 $hoverbutton-position-bottom: var(--nutui-hoverbutton-position-bottom,
     60px) !default;
 $hoverbutton-position-right: var(--nutui-hoverbutton-position-right,
-    $spacing-base) !default;
+    16px) !default;
 $hoverbutton-item-size: var(--nutui-hoverbutton-item-size, 40px) !default;
 $hoverbutton-item-border-color: var(--nutui-hoverbutton-item-border-color,
     rgba(0, 0, 0, 0.12)) !default;
 $hoverbutton-item-background: var(--nutui-hoverbutton-item-background,
-    var(--nutui-white-12)) !default;
+    var(--nutui-white-12, #ffffff)) !default;
 $hoverbutton-item-background-active: var(--nutui-hoverbutton-item-background-active,
     rgba(247, 248, 252, 0.9)) !default;
 $hoverbutton-item-icon-color: var(--nutui-hoverbutton-item-icon-color,
@@ -1406,7 +1413,10 @@ $card-border-radius: var(--nutui-card-border-radius, 4px) !default;
 
 // grid（✅）
 $grid-border-width: var(--nutui-grid-border-width, 1px) !default;
-$grid-border-color: var(--nutui-grid-border-color, $color-border) !default;
+$grid-border-color: var(
+  --nutui-grid-border-color,
+  var(--nutui-color-border, #e5e5e5)
+) !default;
 $grid-item-border-radius: var(--nutui-grid-item-border-radius,
     $radius-l) !default;
 $grid-item-content-padding: var(--nutui-grid-item-content-padding,

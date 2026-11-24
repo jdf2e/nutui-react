@@ -8,7 +8,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: auto;
+    left: auto;
+    right: 16px;
+    right: $hoverbutton-position-right;
+    bottom: 60px;
+    bottom: $hoverbutton-position-bottom;
+    z-index: 900;
+    width: 40px;
     width: $hoverbutton-item-size;
+    height: 40px;
     height: $hoverbutton-item-size;
     transition: all 0.2s ease-in-out;
     .nut-hoverbutton-item-container {

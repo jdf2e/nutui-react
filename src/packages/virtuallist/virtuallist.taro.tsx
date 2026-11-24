@@ -128,9 +128,11 @@ export const VirtualList: FunctionComponent<Partial<TaroVirtualListProps>> = (
 
   // 滚动监听
   const listScroll = (e: any) => {
-    const scrollTop = e.target.scrollTop
+    const scrollTop = e.detail?.scrollTop ?? e.target?.scrollTop ?? 0
     if (scrollTop <= 0) {
-      e.target.scrollTop = 0
+      if (e.target && 'scrollTop' in e.target) {
+        e.target.scrollTop = 0
+      }
       return setStartOffset(0)
     }
     if (!itemEqual) {
@@ -171,7 +173,7 @@ export const VirtualList: FunctionComponent<Partial<TaroVirtualListProps>> = (
         <View
           className="nut-virtuallist-container"
           ref={itemsRef}
-          style={{ transform: `translate3d(0, ${startOffset}px, 0)` }}
+          style={{ transform: `translateY(${startOffset}px)` }}
         >
           {visibleData().map((data: any, index: number) => {
             const dataIndex = start.current + index

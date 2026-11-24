@@ -79,16 +79,19 @@
   &-content {
     flex: 1;
     width: 100%;
-    display: block;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   &-pannel {
     position: relative;
     width: 100%;
     height: auto;
-    display: block;
     box-sizing: border-box;
+
+    .viewArea {
+      width: 100%;
+    }
 
     .calendar-loading-tip {
       height: 50px;
@@ -104,6 +107,7 @@
   }
 
   &-month {
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -116,9 +120,11 @@
   }
 
   &-days {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     overflow: hidden;
   }
 
@@ -128,7 +134,11 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+    width: 14.28%;
     width: $calendar-day-width;
+    flex: 0 0 14.28%;
+    flex: 0 0 $calendar-day-width;
+    height: 60px;
     height: $calendar-day-height;
     font-weight: $calendar-day-font-weight;
     margin-bottom: 4px;

@@ -113,7 +113,12 @@ export const BackTop: FunctionComponent<
   return (
     <HoverButton
       className={cls}
-      style={{ zIndex, ...style }}
+      style={{
+        zIndex,
+        right: '16px',
+        bottom: '60px',
+        ...style,
+      }}
       icon={!children && (icon || <Top size={19} />)}
       onClick={(e) => {
         goTop(e)

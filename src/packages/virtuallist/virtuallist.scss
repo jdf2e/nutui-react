@@ -1,20 +1,15 @@
 .nut-horizontal-items {
-  float: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   li {
-    display: block;
-    float: left;
+    display: flex;
+    flex-shrink: 0;
     color: $color-title;
     background: $color-background-overlay;
     padding: 10px;
     margin-right: 20px;
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    visibility: hidden;
-    clear: both;
   }
 }
 
@@ -69,10 +64,7 @@
 
 [dir='rtl'] .nut-horizontal-items,
 .nut-rtl .nut-horizontal-items {
-  float: right;
-
   li {
-    float: right;
     margin-right: 0;
     margin-left: 20px;
   }

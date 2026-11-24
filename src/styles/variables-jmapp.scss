@@ -893,14 +893,17 @@ $countdown-number-primary-background-color: var(
 
 //price（✅）
 $price-primary-color: var(--nutui-price-color, $color-primary) !default;
-$price-color: var(--nutui-price-color, var(--nutui-color-text-help)) !default;
+$price-color: var(
+  --nutui-price-color,
+  var(--nutui-color-text-help, #808080)
+) !default;
 $price-darkgray-color: var(
   --nutui-price-darkgray-color,
-  var(--nutui-gray-7)
+  var(--nutui-gray-7, #808080)
 ) !default;
 $price-line-color: var(
   --nutui-price-line-color,
-  var(--nutui-color-text-help)
+  var(--nutui-color-text-help, #808080)
 ) !default;
 $price-symbol-padding-right: var(
   --nutui-price-symbol-padding-right,
@@ -2386,7 +2389,10 @@ $color-background-overlay: var(
 
 // grid（✅）
 $grid-border-width: var(--nutui-grid-border-width, 1px) !default;
-$grid-border-color: var(--nutui-grid-border-color, $color-border) !default;
+$grid-border-color: var(
+  --nutui-grid-border-color,
+  var(--nutui-color-border, #e5e5e5)
+) !default;
 $grid-item-border-radius: var(
   --nutui-grid-item-border-radius,
   $radius-l
