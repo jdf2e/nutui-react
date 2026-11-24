@@ -30,7 +30,7 @@ const Demo1 = () => {
         title="页面标题"
         back={
           <>
-            <ArrowLeft style={harmony() ? { marginRight: 16 } : {}} />
+            <ArrowLeft style={{ marginRight: 8 }} />
             返回
           </>
         }

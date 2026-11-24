@@ -2466,7 +2466,7 @@ $color-background-overlay: var(
 ) !default;
 
 // grid（✅）
-$grid-border-width: var(--nutui-grid-border-width, 0px) !default;
+$grid-border-width: var(--nutui-grid-border-width, 1px) !default;
 $grid-border-color: var(--nutui-grid-border-color, $color-border) !default;
 $grid-item-border-radius: var(
   --nutui-grid-item-border-radius,

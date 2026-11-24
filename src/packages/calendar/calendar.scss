@@ -57,6 +57,7 @@
 
   &-weeks {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     height: 36px;
@@ -65,6 +66,9 @@
   }
 
   &-week-item {
+    width: $calendar-day-width;
+    text-align: center;
+
     &:first-of-type,
     &:last-of-type {
       color: $color-primary;
@@ -112,6 +116,9 @@
   }
 
   &-days {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     overflow: hidden;
   }
 
@@ -121,11 +128,11 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    float: left;
     width: $calendar-day-width;
     height: $calendar-day-height;
     font-weight: $calendar-day-font-weight;
     margin-bottom: 4px;
+    box-sizing: border-box;
 
     // 部分 Taro 机型下子节点不会稳定继承父级 color，颜色直接落到最内层文案。
     &-day,
@@ -256,8 +263,6 @@
 [dir='rtl'] .nut-calendar,
 .nut-rtl .nut-calendar {
   &-day {
-    float: right;
-
     &-active {
       &.active-start {
         border-top-left-radius: 0;

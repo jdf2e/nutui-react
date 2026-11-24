@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { harmony } from '@nutui/nutui-react-taro'
@@ -19,10 +19,7 @@ const BackTopDemo = () => {
       title: '基礎用法',
     },
   })
-  const demoStyle = {
-    height: 'auto',
-    minHeight: 'auto',
-  }
+  const [scrollRes, setScrollRes] = useState<any>(null)
 
   return (
     <>
@@ -31,12 +28,17 @@ const BackTopDemo = () => {
         <Demo5 />
       ) : (
         <ScrollView
+          id="backtop-scroll"
+          enhanced
           scrollY
           className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-          style={demoStyle}
+          style={{ height: '100%' }}
+          onScroll={(res) => {
+            setScrollRes(res.detail)
+          }}
         >
           <View className="h2">{translated.title}</View>
-          <Demo1 />
+          <Demo1 scrollRes={scrollRes} target="backtop-scroll" />
         </ScrollView>
       )}
     </>

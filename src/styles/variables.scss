@@ -2293,7 +2293,7 @@ $skeleton-line-border-radius: var(
 $card-border-radius: var(--nutui-card-border-radius, scale-px(4px)) !default;
 
 // grid（✅）
-$grid-border-width: var(--nutui-grid-border-width, 0px) !default;
+$grid-border-width: var(--nutui-grid-border-width, 1px) !default;
 $grid-border-color: var(--nutui-grid-border-color, $color-border) !default;
 $grid-item-border-radius: var(
   --nutui-grid-item-border-radius,
@@ -2305,7 +2305,7 @@ $grid-item-content-padding: var(
 ) !default;
 $grid-item-content-bg-color: var(
   --nutui-grid-item-content-bg-color,
-  var(--nutui-gray-1)
+  var(--nutui-gray-1, #ffffff)
 ) !default;
 $grid-item-text-margin: var(--nutui-grid-item-text-margin, scale-px(8px)) !default;
 $grid-item-text-color: var(--nutui-grid-item-text-color, $color-title) !default;

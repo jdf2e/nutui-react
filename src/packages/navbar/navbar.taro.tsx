@@ -58,6 +58,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
           [`${classPrefix}-left-hidden`]: !left && !back,
           [`${classPrefix}-left-rtl`]: rtl,
         })}
+        style={{ whiteSpace: 'nowrap' }}
       >
         {back ? (
           <View
@@ -66,6 +67,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
               [`${classPrefix}-left-back-children`]: left,
               [`${classPrefix}-left-back-children-rtl`]: left && rtl,
             })}
+            style={{ whiteSpace: 'nowrap' }}
             onClick={(e) => onBackClick(e)}
           >
             {back}
@@ -97,6 +99,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
           [`${classPrefix}-right-maxwidth`]: title,
           [`${classPrefix}-right-rtl`]: rtl,
         })}
+        style={{ whiteSpace: 'nowrap' }}
       >
         {right}
       </View>
