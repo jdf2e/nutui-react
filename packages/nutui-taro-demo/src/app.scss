@@ -21,18 +21,10 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  color: #333333;
-  background-color: #333333;
   width: 16px;
   height: 16px;
   min-width: 16px;
   min-height: 16px;
-  mask-size: 100% 100%;
-  -webkit-mask-size: 100% 100%;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-position: center;
   vertical-align: middle;
   box-sizing: border-box;
 }
