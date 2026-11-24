@@ -393,7 +393,18 @@ export const Popup: FunctionComponent<
             onClick={handleOverlayClick}
           />
         ) : null}
-        {renderPop()}
+        <View
+          className={classNames(
+            `${classPrefix}-wrapper`,
+            `${classPrefix}-wrapper-${position}`
+          )}
+          style={{
+            zIndex: contentZIndex,
+            display: innerVisible ? 'flex' : 'none',
+          }}
+        >
+          {renderPop()}
+        </View>
       </>
     )
   }
