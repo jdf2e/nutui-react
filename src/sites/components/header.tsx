@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
 import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import { ArrowLeft } from '@nutui/icons-react-taro'
+import { isSkyline } from '@/utils/taro/is-skyline'
 import './header.scss'
 import config from '../../config.json'
 
@@ -98,6 +99,8 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
     }
   }, [isWeb])
 
+  const skylineMode = useMemo(() => isSkyline(), [])
+
   if (isWeb) {
     return (
       <div className="applets-demo-header">
@@ -124,7 +127,16 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         <View className="mp-demo-header-back" onClick={navigateTo}>
           <ArrowLeft size={18} color="#333333" />
         </View>
-        <View className="mp-demo-header-title">{compTitle}</View>
+        <View className="mp-demo-header-title">
+          <Text className="mp-demo-header-title-text">{compTitle}</Text>
+          <Text
+            className={`mp-demo-header-tag ${
+              skylineMode ? 'is-skyline' : 'is-webview'
+            }`}
+          >
+            {skylineMode ? 'Skyline' : 'WebView'}
+          </Text>
+        </View>
       </View>
     </View>
   )

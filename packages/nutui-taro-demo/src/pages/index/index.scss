@@ -81,11 +81,38 @@ body {
       display: flex;
       flex-direction: column;
       &-h1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         height: 48px;
         line-height: 48px;
         font-weight: 500;
         font-size: 24px;
         color: rgba(51, 51, 51, 1);
+      }
+      &-mode-tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        line-height: 16px;
+        font-weight: 500;
+        padding: 2px 8px;
+        margin-left: 10px;
+        border-radius: 4px;
+        flex-shrink: 0;
+
+        &.is-skyline {
+          background-color: #e8f3ff;
+          color: #1677ff;
+          border: 1px solid #91caff;
+        }
+
+        &.is-webview {
+          background-color: #f6f6f6;
+          color: #8c8c8c;
+          border: 1px solid #d9d9d9;
+        }
       }
       &-p,
       &-text {
