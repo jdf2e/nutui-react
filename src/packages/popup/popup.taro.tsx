@@ -117,6 +117,7 @@ export const Popup: FunctionComponent<
   }
   const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
   const popStyles = { zIndex: contentZIndex, minHeight, ...style }
+  const wrapperZIndex = style?.zIndex ?? contentZIndex
   const popClassName = classNames(
     classPrefix,
     {
@@ -399,7 +400,7 @@ export const Popup: FunctionComponent<
             `${classPrefix}-wrapper-${position}`
           )}
           style={{
-            zIndex: contentZIndex,
+            zIndex: wrapperZIndex,
             display: innerVisible ? 'flex' : 'none',
           }}
         >
