@@ -99,7 +99,6 @@
     right: auto;
     top: auto;
     width: 100%;
-    width: 100vw;
 
     &.nut-popup-round {
       border-radius: $popup-border-radius $popup-border-radius 0 0;
@@ -142,7 +141,6 @@
     right: auto;
     bottom: auto;
     width: 100%;
-    width: 100vw;
 
     &.nut-popup-round {
       border-radius: 0 0 $popup-border-radius $popup-border-radius;
@@ -390,6 +388,7 @@
       left: auto;
       right: auto;
       width: 100%;
+      width: 100vw;
       box-sizing: border-box;
       pointer-events: auto;
     }
@@ -407,6 +406,7 @@
       left: auto;
       right: auto;
       width: 100%;
+      width: 100vw;
       box-sizing: border-box;
       pointer-events: auto;
     }

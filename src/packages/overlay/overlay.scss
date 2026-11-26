@@ -6,9 +6,12 @@
   right: 0;
   width: 100%;
   height: 100%;
+  background-color: $overlay-bg-color;
+}
+
+.nut-overlay-skyline {
   width: 100vw;
   height: 100vh;
-  background-color: $overlay-bg-color;
 }
 
 .nut-overflow-hidden {
