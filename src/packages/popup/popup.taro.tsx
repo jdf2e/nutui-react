@@ -17,6 +17,7 @@ import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
+import { useFoldSegment } from '@/hooks/use-fold-segment'
 import { TaroPopupProps } from '@/types'
 import { harmony } from '@/utils/taro/platform'
 import { pxTransform } from '@/utils/taro/px-transform'
@@ -80,6 +81,7 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    segment,
     resizable,
     minHeight,
     onOpen,
@@ -99,6 +101,10 @@ export const Popup: FunctionComponent<
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
+  // 仅居中弹层跟随折叠屏；非 center 传锁定值避免订阅
+  const resolvedSegment = useFoldSegment(
+    position === 'center' ? (segment ?? 'auto') : 'center'
+  )
   const nodeRef = useLockScrollTaro(
     innerVisible && lockScroll
   ) as React.MutableRefObject<any>
@@ -122,6 +128,10 @@ export const Popup: FunctionComponent<
     {
       [`${classPrefix}-round`]: round || position === 'bottom',
       [`${classPrefix}-${position}`]: true,
+      [`${classPrefix}-center-segment-left`]:
+        position === 'center' && resolvedSegment === 'left',
+      [`${classPrefix}-center-segment-right`]:
+        position === 'center' && resolvedSegment === 'right',
     },
     className
   )
@@ -406,13 +416,19 @@ export const Popup: FunctionComponent<
     setTransitionName(transition || `${classPrefix}-slide-${position}`)
   }, [position, transition])
 
-  const resolveContainer = (getContainer: any) =>
-    (typeof getContainer === 'function' ? getContainer() : getContainer) ||
-    document.body
+  const resolveContainer = (getContainer: any) => {
+    const custom =
+      typeof getContainer === 'function' ? getContainer() : getContainer
+    if (custom) return custom
+    // 小程序无 document；H5/Web 才回落到 body（避免 taro 文件裸调 document.body）
+    const doc = typeof document !== 'undefined' ? document : null
+    return doc?.body ?? null
+  }
 
   const renderToContainer = (getContainer: any, node: ReactElement) => {
     if (getContainer) {
       const container = resolveContainer(getContainer)
+      if (!container) return node
       return createPortal(node, container) as ReactPortal
     }
     return node

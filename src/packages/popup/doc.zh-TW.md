@@ -83,6 +83,7 @@ import { Popup } from '@nutui/nutui-react'
 | overlay | 是否顯示遮罩 | `boolean` | `true` |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
 | position | 彈出位置（top,bottom,left,right,center） | `string` | `center` |
+| segment | 折疊屏置中彈層分區：`left` / `right` / `center` 鎖定；`auto` 在 iOS Hybrid 下跟隨鉸鏈（微彎居左，展平置中）。僅 `position=center` 生效 | `'left' \| 'right' \| 'center' \| 'auto'` | `auto` |
 | transition | 動畫名 | `string` | `-` |
 | closeable | 是否顯示關閉按鈕 | `boolean` | `false` |
 | closeIconPosition | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | `string` | `top-right` |

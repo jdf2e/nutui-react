@@ -1,4 +1,5 @@
 export * from './use-click-away'
+export * from './use-fold-segment'
 export * from './use-force-update'
 export * from './use-isomprphic-layout-effect'
 export * from './use-lock-scroll'
