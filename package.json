@@ -64,7 +64,7 @@
     "dev:taro:h5": "pnpm dev:taro h5",
     "dev:taro:h5:html": "USE_HTML=1 pnpm dev:taro h5",
     "dev:taro:weapp:skyline": "SKYLINE=1 pnpm dev:taro weapp",
-    "build:taro:weapp:skyline": "SKYLINE=1 pnpm --dir ./packages/nutui-taro-demo build:weapp",
+    "build:taro:weapp:skyline": "SKYLINE=1 pnpm run update:taro:entry && SKYLINE=1 pnpm --dir ./packages/nutui-taro-demo build:weapp",
     "predev:jdtaro": "pnpm run update:taro:entry",
     "dev:jdtaro": "JD=1 pnpm --dir ./packages/nutui-taro-demo dev",
     "dev:jdtaro:jdharmonycpp": "pnpm run clone:jdharmony cpp && pnpm run update:taro:entry && JD=1 pnpm --dir ./packages/nutui-taro-demo dev:jdharmonycpp",
