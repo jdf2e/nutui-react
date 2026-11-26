@@ -19,6 +19,7 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
+    "skylineRenderEnable": true,
     "useStaticServer": true,
     "showES6CompileOption": false,
     "checkInvalidKey": true,
@@ -33,7 +34,7 @@
     "useMultiFrameRuntime": true
   },
   "compileType": "miniprogram",
-  "libVersion": "widelyUsed",
+  "libVersion": "3.3.0",
   "srcMiniprogramRoot": "dist/weapp/",
   "packOptions": {
     "ignore": [],

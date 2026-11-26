@@ -59,14 +59,31 @@ const createConfig = async () => {
 
 const create = async () => {
   const subpackages = await createConfig()
+  const isSkyline =
+    process.env.SKYLINE === '1' || process.env.SKYLINE === 'true'
+  const skylineConfig = isSkyline
+    ? `  lazyCodeLoading: 'requiredComponents',
+  renderer: 'skyline',
+  componentFramework: 'glass-easel',
+  rendererOptions: {
+    skyline: {
+      defaultDisplayBlock: true,
+      defaultContentBox: true,
+      tagNameStyleIsolation: 'legacy',
+    },
+  },`
+    : ''
+  const navigationStyle = isSkyline ? `\n    navigationStyle: 'custom',` : ''
+
   fse.writeFileSync(
     `${process.cwd()}/packages/nutui-taro-demo/src/app.config.ts`,
     `
 const subPackages = ${JSON.stringify(subpackages, null, 2)};\n
 export default defineAppConfig({
+${skylineConfig}
   pages: ['pages/index/index'],
   subPackages,
-  window: {
+  window: {${navigationStyle}
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
     navigationBarTitleText: 'NutUI-React',
