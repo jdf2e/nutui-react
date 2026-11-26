@@ -134,7 +134,9 @@ const config = {
       path.resolve(__dirname, '../../../', themeStr),
     ],
   },
-  defineConstants: {},
+  defineConstants: {
+    'process.env.SKYLINE': JSON.stringify(process.env.SKYLINE || ''),
+  },
   copy: {
     patterns: [],
     options: {},
