@@ -21,42 +21,57 @@ const isSkylineBuild = (): boolean => {
 }
 
 /**
- * 判断当前环境是否处于 Skyline 渲染模式
+ * 从微信小程序运行时获取当前页面/应用的实际渲染引擎。
+ * 返回 'skyline' / 'webview'，在未挂载或不支持的环境中返回 undefined。
+ */
+const getRuntimeRenderer = (): string | undefined => {
+  if (typeof Taro === 'undefined') {
+    return undefined
+  }
+  try {
+    const currentInstance = Taro.getCurrentInstance
+      ? Taro.getCurrentInstance()
+      : null
+    const instanceRenderer = (currentInstance?.page as any)?.renderer
+    if (typeof instanceRenderer === 'string' && instanceRenderer) {
+      return instanceRenderer
+    }
+
+    const pages = Taro.getCurrentPages ? Taro.getCurrentPages() : []
+    if (pages.length > 0) {
+      const topPage = pages[pages.length - 1] as any
+      if (typeof topPage?.renderer === 'string' && topPage.renderer) {
+        return topPage.renderer
+      }
+    }
+
+    const app = Taro.getApp ? Taro.getApp() : null
+    if (typeof (app as any)?.renderer === 'string' && (app as any).renderer) {
+      return (app as any).renderer
+    }
+  } catch (e) {
+    // ignore
+  }
+  return undefined
+}
+
+/**
+ * 判断当前环境是否处于 Skyline 渲染模式。
+ * 优先采信运行时真实 renderer（避免在开发者工具关闭 Skyline 或客户端降级到 WebView 时误判），
+ * 仅在运行时无法获取 renderer 时回退到编译期 SKYLINE 开关。
  */
 export const isSkyline = (): boolean => {
-  // 1. 编译期注入的环境变量
-  if (isSkylineBuild()) {
+  // 1. 微信小程序运行时真实渲染引擎检测
+  const runtimeRenderer = getRuntimeRenderer()
+  if (runtimeRenderer === 'skyline') {
     return true
   }
-
-  // 2. 微信小程序运行时检测
-  if (typeof Taro !== 'undefined') {
-    try {
-      const currentInstance = Taro.getCurrentInstance
-        ? Taro.getCurrentInstance()
-        : null
-      if ((currentInstance?.page as any)?.renderer === 'skyline') {
-        return true
-      }
-
-      const pages = Taro.getCurrentPages ? Taro.getCurrentPages() : []
-      if (pages.length > 0) {
-        const topPage = pages[pages.length - 1] as any
-        if (topPage?.renderer === 'skyline') {
-          return true
-        }
-      }
-
-      const app = Taro.getApp ? Taro.getApp() : null
-      if ((app as any)?.renderer === 'skyline') {
-        return true
-      }
-    } catch (e) {
-      // ignore
-    }
+  if (runtimeRenderer === 'webview') {
+    return false
   }
 
-  return false
+  // 2. 运行时无 renderer 信息时，回退到编译期注入的环境变量
+  return isSkylineBuild()
 }
 
 export default isSkyline
