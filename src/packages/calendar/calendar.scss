@@ -57,6 +57,7 @@
 
   &-weeks {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     height: 36px;
@@ -65,6 +66,9 @@
   }
 
   &-week-item {
+    width: $calendar-day-width;
+    text-align: center;
+
     &:first-of-type,
     &:last-of-type {
       color: $color-primary;
@@ -75,16 +79,19 @@
   &-content {
     flex: 1;
     width: 100%;
-    display: block;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   &-pannel {
     position: relative;
     width: 100%;
     height: auto;
-    display: block;
     box-sizing: border-box;
+
+    .viewArea {
+      width: 100%;
+    }
 
     .calendar-loading-tip {
       height: 50px;
@@ -100,6 +107,7 @@
   }
 
   &-month {
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -112,6 +120,11 @@
   }
 
   &-days {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
     overflow: hidden;
   }
 
@@ -121,11 +134,15 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    float: left;
+    width: 14.28%;
     width: $calendar-day-width;
+    flex: 0 0 14.28%;
+    flex: 0 0 $calendar-day-width;
+    height: 60px;
     height: $calendar-day-height;
     font-weight: $calendar-day-font-weight;
     margin-bottom: 4px;
+    box-sizing: border-box;
 
     // 部分 Taro 机型下子节点不会稳定继承父级 color，颜色直接落到最内层文案。
     &-day,
@@ -256,8 +273,6 @@
 [dir='rtl'] .nut-calendar,
 .nut-rtl .nut-calendar {
   &-day {
-    float: right;
-
     &-active {
       &.active-start {
         border-top-left-radius: 0;
