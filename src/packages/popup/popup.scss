@@ -383,13 +383,14 @@
     justify-content: flex-end;
     align-items: center;
 
-    .nut-popup {
+    > .nut-popup {
       position: relative;
       top: auto;
       bottom: auto;
       left: auto;
       right: auto;
       width: 100%;
+      width: 100vw;
       box-sizing: border-box;
       pointer-events: auto;
     }
@@ -400,13 +401,14 @@
     justify-content: flex-start;
     align-items: center;
 
-    .nut-popup {
+    > .nut-popup {
       position: relative;
       top: auto;
       bottom: auto;
       left: auto;
       right: auto;
       width: 100%;
+      width: 100vw;
       box-sizing: border-box;
       pointer-events: auto;
     }
@@ -417,7 +419,7 @@
     justify-content: center;
     align-items: center;
 
-    .nut-popup {
+    > .nut-popup {
       position: relative;
       top: auto;
       bottom: auto;
@@ -434,7 +436,7 @@
     justify-content: flex-start;
     align-items: stretch;
 
-    .nut-popup {
+    > .nut-popup {
       position: relative;
       top: auto;
       bottom: auto;
@@ -451,7 +453,7 @@
     justify-content: flex-end;
     align-items: stretch;
 
-    .nut-popup {
+    > .nut-popup {
       position: relative;
       top: auto;
       bottom: auto;
@@ -511,5 +513,28 @@
   &-top {
     left: auto;
     right: 0;
+  }
+}
+
+[dir='rtl'] .nut-popup-wrapper,
+.nut-rtl .nut-popup-wrapper {
+  &-center > .nut-popup {
+    left: auto;
+    right: auto;
+    transform: none;
+  }
+
+  &-bottom > .nut-popup,
+  &-top > .nut-popup {
+    left: auto;
+    right: auto;
+  }
+
+  &-left {
+    justify-content: flex-end;
+  }
+
+  &-right {
+    justify-content: flex-start;
   }
 }

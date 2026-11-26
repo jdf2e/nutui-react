@@ -4,6 +4,7 @@ import { ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroOverlayProps } from '@/types'
+import { isSkyline } from '@/utils/taro/is-skyline'
 import ConfigurableCSSTransition from '@/utils/taro/ConfigurableCSSTransition'
 
 export const defaultOverlayProps: TaroOverlayProps = {
@@ -44,7 +45,13 @@ export const Overlay: FunctionComponent<
     setInnerVisible(visible)
   }, [visible])
 
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-skyline`]: isSkyline() && !style?.position,
+    },
+    className
+  )
   const styles = {
     zIndex,
     ...style,

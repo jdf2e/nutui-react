@@ -19,6 +19,7 @@ import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroPopupProps } from '@/types'
 import { harmony } from '@/utils/taro/platform'
+import { isSkyline } from '@/utils/taro/is-skyline'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
@@ -117,6 +118,8 @@ export const Popup: FunctionComponent<
   }
   const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
   const popStyles = { zIndex: contentZIndex, minHeight, ...style }
+  const wrapperZIndex = style?.zIndex ?? contentZIndex
+  const useSkylineWrapper = isSkyline() && !style?.position
   const popClassName = classNames(
     classPrefix,
     {
@@ -393,18 +396,22 @@ export const Popup: FunctionComponent<
             onClick={handleOverlayClick}
           />
         ) : null}
-        <View
-          className={classNames(
-            `${classPrefix}-wrapper`,
-            `${classPrefix}-wrapper-${position}`
-          )}
-          style={{
-            zIndex: contentZIndex,
-            display: innerVisible ? 'flex' : 'none',
-          }}
-        >
-          {renderPop()}
-        </View>
+        {useSkylineWrapper ? (
+          <View
+            className={classNames(
+              `${classPrefix}-wrapper`,
+              `${classPrefix}-wrapper-${position}`
+            )}
+            style={{
+              zIndex: wrapperZIndex,
+              display: innerVisible ? 'flex' : 'none',
+            }}
+          >
+            {renderPop()}
+          </View>
+        ) : (
+          renderPop()
+        )}
       </>
     )
   }
