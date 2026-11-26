@@ -16,12 +16,24 @@
   &-index {
     position: fixed;
     z-index: 2002;
-    top: 50px;
+    top: calc(env(safe-area-inset-top, 44px) + 50px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     left: 0;
     right: 0;
     background: transparent;
     color: $white;
+    font-size: 14px;
+    pointer-events: none;
+
+    &-text {
+      color: $white;
+      font-size: 14px;
+      line-height: 20px;
+    }
 
     .arrow {
       position: absolute;
@@ -41,15 +53,16 @@
 
     .nut-icon {
       color: $white;
+      background-color: $white !important;
     }
 
     &.top-right {
-      top: 50px;
+      top: calc(env(safe-area-inset-top, 44px) + 50px);
       right: 20px;
     }
 
     &.top-left {
-      top: 50px;
+      top: calc(env(safe-area-inset-top, 44px) + 50px);
       left: 20px;
     }
 

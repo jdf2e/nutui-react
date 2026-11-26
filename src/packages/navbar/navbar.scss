@@ -68,15 +68,16 @@
     max-width: 124px;
     height: 100%;
     cursor: pointer;
-    /* #ifndef harmony jd h5 weapp*/
+    white-space: nowrap;
+
     .nut-icon,
     .nutui-iconfont {
       width: 20px;
       height: 20px;
       font-size: $font-size-2xl;
+      flex-shrink: 0;
     }
 
-    /* #endif */
     &-maxwidth {
       box-sizing: border-box;
       width: calc(124px - 16px);
@@ -86,6 +87,7 @@
   &-left {
     padding-right: 16px;
     gap: 16px;
+    white-space: nowrap;
 
     &-rtl {
       padding-right: 0;
@@ -97,7 +99,14 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
       gap: 16px;
+
+      .nut-icon,
+      .nutui-iconfont {
+        margin-right: 8px;
+        flex-shrink: 0;
+      }
     }
 
     &-hidden {
@@ -109,6 +118,7 @@
   &-right {
     padding-left: 16px;
     justify-content: flex-end;
+    white-space: nowrap;
     gap: 16px;
 
     &-rtl {

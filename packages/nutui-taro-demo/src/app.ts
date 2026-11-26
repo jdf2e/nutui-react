@@ -1,10 +1,16 @@
 import { Component } from 'react'
+import { configure } from '@nutui/icons-react-taro'
+import { SkylineIcon } from '@/utils/taro/skyline-icon'
 import { initScaleF } from '@/utils/scale-f'
 import('@/sites/assets/styles/reset.scss')
 import('@/packages/nutui.react.scss.taro')
 import('@nutui/touch-emulator')
 
 import './app.scss'
+
+configure({
+  tag: SkylineIcon as any,
+})
 
 // console.log(NutUI)
 class App extends Component {

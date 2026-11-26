@@ -1,15 +1,19 @@
 // ----------------------------------------------------
 // 缩放系数
 :root,
-page {
+page,
+view,
+text,
+.nut-icon,
+.demo {
   --nut-scale-f: 1;
   --nut-scale-font: var(--nut-scale-f, 1);
   --nut-scale-icon: var(--nut-scale-f, 1);
 
   // ---- icon size ----
-  --nut-icon-height: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
-  --nut-icon-width: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
-  --nut-icon-line-height: calc(16px * var(--nut-scale-icon, var(--nut-scale-f, 1))) !important;
+  --nut-icon-height: calc(16px * var(--nut-scale-icon, 1));
+  --nut-icon-width: calc(16px * var(--nut-scale-icon, 1));
+  --nut-icon-line-height: calc(16px * var(--nut-scale-icon, 1));
 }
 @function scale-px($size) {
   @return calc(#{$size} * var(--nut-scale-f, 1));
@@ -866,14 +870,17 @@ $countdown-number-primary-border-color: var(
 
 //price（✅）
 $price-primary-color: var(--nutui-price-color, $color-primary) !default;
-$price-color: var(--nutui-price-color, var(--nutui-color-text-help)) !default;
+$price-color: var(
+  --nutui-price-color,
+  var(--nutui-color-text-help, #808080)
+) !default;
 $price-darkgray-color: var(
   --nutui-price-darkgray-color,
-  var(--nutui-gray-7)
+  var(--nutui-gray-7, #808080)
 ) !default;
 $price-line-color: var(
   --nutui-price-line-color,
-  var(--nutui-color-text-help)
+  var(--nutui-color-text-help, #808080)
 ) !default;
 $price-symbol-padding-right: var(
   --nutui-price-symbol-padding-right,
@@ -1064,36 +1071,36 @@ $calendar-sub-title-font-size: var(
   --nutui-calendar-sub-title-font-size,
   $font-size-base
 ) !default;
-$calendar-header-height: var(--nutui-calendar-header-height, scale-px(24px)) !default;
+$calendar-header-height: var(--nutui-calendar-header-height, 24px) !default;
 $calendar-day-width: var(--nutui-calendar-day-width, 14.28%) !default;
-$calendar-day-height: var(--nutui-calendar-day-height, scale-px(60px)) !default;
+$calendar-day-height: var(--nutui-calendar-day-height, 60px) !default;
 $calendar-day-font-weight: var(
   --nutui-calendar-day-font-weight,
   $font-weight-bold
 ) !default;
 $calendar-day-active-border-radius: var(
   --nutui-calendar-day-active-border-radius,
-  scale-px(4px)
+  4px
 ) !default;
 
 //hoverbutton
-$hoverbutton-spacing: var(--nutui-hoverbutton-spacing, $spacing-base) !default;
+$hoverbutton-spacing: var(--nutui-hoverbutton-spacing, 8px) !default;
 $hoverbutton-position-bottom: var(
   --nutui-hoverbutton-position-bottom,
-  scale-px(60px)
+  60px
 ) !default;
 $hoverbutton-position-right: var(
   --nutui-hoverbutton-position-right,
-  $spacing-base
+  16px
 ) !default;
-$hoverbutton-item-size: var(--nutui-hoverbutton-item-size, scale-px(40px)) !default;
+$hoverbutton-item-size: var(--nutui-hoverbutton-item-size, 40px) !default;
 $hoverbutton-item-border-color: var(
   --nutui-hoverbutton-item-border-color,
   rgba(0, 0, 0, 0.12)
 ) !default;
 $hoverbutton-item-background: var(
   --nutui-hoverbutton-item-background,
-  var(--nutui-white-12)
+  var(--nutui-white-12, #ffffff)
 ) !default;
 $hoverbutton-item-background-active: var(
   --nutui-hoverbutton-item-background-active,
@@ -2289,21 +2296,24 @@ $skeleton-line-border-radius: var(
 $card-border-radius: var(--nutui-card-border-radius, scale-px(4px)) !default;
 
 // grid（✅）
-$grid-border-width: var(--nutui-grid-border-width, 0px) !default;
-$grid-border-color: var(--nutui-grid-border-color, $color-border) !default;
+$grid-border-width: var(--nutui-grid-border-width, 1px) !default;
+$grid-border-color: var(
+  --nutui-grid-border-color,
+  var(--nutui-color-border, #e5e5e5)
+) !default;
 $grid-item-border-radius: var(
   --nutui-grid-item-border-radius,
-  $radius-l
+  var(--nutui-radius-l, 12px)
 ) !default;
 $grid-item-content-padding: var(
   --nutui-grid-item-content-padding,
-  scale-px(16px) scale-px(8px)
+  16px 8px
 ) !default;
 $grid-item-content-bg-color: var(
   --nutui-grid-item-content-bg-color,
-  var(--nutui-gray-1)
+  var(--nutui-gray-1, #ffffff)
 ) !default;
-$grid-item-text-margin: var(--nutui-grid-item-text-margin, scale-px(8px)) !default;
+$grid-item-text-margin: var(--nutui-grid-item-text-margin, 8px) !default;
 $grid-item-text-color: var(--nutui-grid-item-text-color, $color-title) !default;
 $grid-item-text-font-size: var(
   --nutui-grid-item-text-font-size,

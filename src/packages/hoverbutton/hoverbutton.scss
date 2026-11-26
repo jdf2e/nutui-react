@@ -7,7 +7,11 @@
 
   &-container {
     position: fixed;
+    top: auto;
+    left: auto;
+    right: 16px;
     right: $hoverbutton-position-right;
+    bottom: 60px;
     bottom: $hoverbutton-position-bottom;
     z-index: 10;
   }

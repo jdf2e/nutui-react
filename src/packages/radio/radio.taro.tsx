@@ -79,8 +79,15 @@ export const Radio: FC<
   const renderIcon = () => {
     const { icon, activeIcon } = props
     if (disabled && !checkedStatement) {
-      // @ts-ignore
-      return <CheckDisabled className={classNames(color())} ariaHidden />
+      return (
+        // @ts-ignore
+        <CheckDisabled
+          className={classNames(color())}
+          color="#cccccc"
+          // @ts-ignore
+          ariaHidden
+        />
+      )
     }
     if (checkedStatement) {
       return React.isValidElement(activeIcon) ? (
@@ -90,7 +97,16 @@ export const Radio: FC<
         })
       ) : (
         // @ts-ignore
-        <CheckChecked className={classNames(color())} ariaHidden />
+        <CheckChecked
+          className={classNames(color())}
+          color={
+            disabled
+              ? '#fa2c1980'
+              : 'var(--nutui-radio-icon-color, var(--nutui-brand-color, #fa2c19))'
+          }
+          // @ts-ignore
+          ariaHidden
+        />
       )
     }
     return React.isValidElement(icon) ? (
@@ -100,7 +116,7 @@ export const Radio: FC<
       })
     ) : (
       // @ts-ignore
-      <CheckNormal className={classNames(color())} ariaHidden />
+      <CheckNormal className={classNames(color())} color="#d6d6d6" ariaHidden />
     )
   }
   const renderLabel = () => {

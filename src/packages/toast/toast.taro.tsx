@@ -129,11 +129,15 @@ export const Toast: FunctionComponent<
     let iconNode = icon
     if (typeof icon === 'string') {
       iconNode = {
-        success: <Success />,
-        fail: <Failure />,
-        warn: <Tips />,
-        loading: <Loading className="nut-icon-loading" />,
+        success: <Success color="#ffffff" />,
+        fail: <Failure color="#ffffff" />,
+        warn: <Tips color="#ffffff" />,
+        loading: <Loading className="nut-icon-loading" color="#ffffff" />,
       }[icon]
+    } else if (React.isValidElement<any>(iconNode)) {
+      iconNode = React.cloneElement(iconNode, {
+        color: iconNode.props.color || '#ffffff',
+      })
     }
     return (
       iconNode && (

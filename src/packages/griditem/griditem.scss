@@ -35,6 +35,13 @@
     background: $grid-item-content-bg-color;
     border: 0 solid $grid-border-color;
 
+    .nut-icon,
+    .nutui-iconfont {
+      width: 28px;
+      height: 28px;
+      font-size: 28px;
+    }
+
     &-border {
       border-right-width: $grid-border-width;
       border-bottom-width: $grid-border-width;

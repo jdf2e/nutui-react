@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import {
+import Taro, {
   getSystemInfo,
   PageScrollObject,
   pageScrollTo,
@@ -20,6 +20,7 @@ import { TaroBackTopProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
+  target: '',
   threshold: 200,
   zIndex: 900,
   duration: 1000,
@@ -31,6 +32,7 @@ export const BackTop: FunctionComponent<
 > = (props) => {
   const {
     children,
+    target,
     threshold,
     zIndex,
     className,
@@ -79,19 +81,45 @@ export const BackTop: FunctionComponent<
   const goTop = useCallback(
     (e: ITouchEvent) => {
       onClick?.(e)
-      pageScrollTo({
-        scrollTop: 0,
-        duration: duration > 0 ? duration : 0,
-      })
+      if (target) {
+        const selector = target.startsWith('#') ? target : `#${target}`
+        Taro.createSelectorQuery()
+          .select(selector)
+          .node()
+          .exec((res) => {
+            const scrollViewCtx = res?.[0]?.node
+            if (scrollViewCtx?.scrollTo) {
+              scrollViewCtx.scrollTo({
+                top: 0,
+                animated: duration > 0,
+              })
+            } else {
+              pageScrollTo({
+                scrollTop: 0,
+                duration: duration > 0 ? duration : 0,
+              })
+            }
+          })
+      } else {
+        pageScrollTo({
+          scrollTop: 0,
+          duration: duration > 0 ? duration : 0,
+        })
+      }
     },
-    [duration, onClick]
+    [duration, onClick, target]
   )
 
   return (
     <HoverButton
       className={cls}
-      style={{ zIndex, ...style }}
-      icon={!children && (icon || <Top />)}
+      style={{
+        zIndex,
+        right: '16px',
+        bottom: '60px',
+        ...style,
+      }}
+      icon={!children && (icon || <Top size={19} />)}
       onClick={(e) => {
         goTop(e)
       }}

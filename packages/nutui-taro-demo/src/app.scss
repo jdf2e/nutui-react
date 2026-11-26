@@ -1,4 +1,5 @@
 @import '../../../src/styles/jd-font.scss';
+@import '@nutui/icons-react-taro/dist/style_icon.css';
 
 page {
   height: 100%;
@@ -13,6 +14,19 @@ body {
 
 .h5-span {
   display: inline;
+}
+
+.nut-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  vertical-align: middle;
+  box-sizing: border-box;
 }
 
 .demo {

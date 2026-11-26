@@ -19,13 +19,6 @@
     position: fixed;
     max-height: 100%;
     background-color: $dialog-background;
-    /* #ifndef dynamic*/
-    transition:
-      left 0.3s ease,
-      transform 0.3s ease,
-      -webkit-transform 0.3s ease,
-      max-width 0.3s ease;
-    /* #endif */
     -webkit-overflow-scrolling: touch;
     top: 50%;
     left: 50%;
@@ -47,12 +40,18 @@
           (50vw - env(safe-area-inset-left, 0px)) / 2
       );
       max-width: calc(50vw - env(safe-area-inset-left, 0px) - 32px);
+      transition:
+        left 0.3s ease,
+        max-width 0.3s ease;
     }
 
     &-segment-right {
       left: 75vw;
       left: calc(50vw + (50vw - env(safe-area-inset-right, 0px)) / 2);
       max-width: calc(50vw - env(safe-area-inset-right, 0px) - 32px);
+      transition:
+        left 0.3s ease,
+        max-width 0.3s ease;
     }
 
     &-segment-center {
@@ -64,6 +63,9 @@
           ) -
           32px
       );
+      transition:
+        left 0.3s ease,
+        max-width 0.3s ease;
     }
   }
 
@@ -287,5 +289,41 @@
 
   &-content {
     text-align: var(--nutui-dialog-content-text-align, right);
+  }
+}
+
+.fadeDialog {
+  &-enter,
+  &-appear {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    -webkit-transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  &-enter-active,
+  &-appear-active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    transition:
+      opacity 0.25s ease-out,
+      transform 0.25s ease-out,
+      -webkit-transform 0.25s ease-out;
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    -webkit-transform: translate(-50%, -50%) scale(0.8);
+    transition:
+      opacity 0.2s ease-in,
+      transform 0.2s ease-in,
+      -webkit-transform 0.2s ease-in;
   }
 }
