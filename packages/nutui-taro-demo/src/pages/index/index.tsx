@@ -17,7 +17,6 @@ import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
 import { harmony } from '../../../../../src/utils/taro/platform'
-import { isSkyline } from '@/utils/taro/is-skyline'
 
 const navs = pkg.nav
 
@@ -26,7 +25,6 @@ console.log(Button, Input, Video, Image, Swiper, SwiperItem, Textarea)
 
 const Index = () => {
   const [search, setSearch] = useState()
-  const skylineMode = isSkyline()
   const gotoNext = (name: string, enName: string) => {
     // 跳转到目的页面，打开新页面
     Taro.navigateTo({
@@ -57,16 +55,7 @@ const Index = () => {
           src="https://img14.360buyimg.com/imagetools/jfs/t1/117879/25/28831/6279/6329723bE66715a2f/5f099b8feca9e8cc.png"
         />
         <View className="index-header-info">
-          <View className="index-header-info-h1">
-            <Text>NutUI React</Text>
-            <Text
-              className={`index-header-mode-tag ${
-                skylineMode ? 'is-skyline' : 'is-webview'
-              }`}
-            >
-              {skylineMode ? 'Skyline' : 'WebView'}
-            </Text>
-          </View>
+          <View className="index-header-info-h1">NutUI React</View>
           <View className="index-header-info-p">
             京东风格的轻量级小程序组件库 React 版
           </View>
