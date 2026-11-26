@@ -37,7 +37,7 @@ const ImagePreviewDemo = () => {
       <Header />
       <ScrollView
         scrollY
-        className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
       >
         <View className="h2">{translated.basic}</View>
         <Demo1 />
