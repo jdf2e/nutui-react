@@ -13,6 +13,7 @@ import {
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
+import { isSkyline } from '@/utils/taro/is-skyline'
 import {
   splitDate,
   isMultiple,
@@ -731,6 +732,8 @@ export const CalendarItem = React.forwardRef<
     {
       [`${classPrefix}-title`]: !popup,
       [`${classPrefix}-nofooter`]: !!autoBackfill,
+      // Skyline 不支持 float / overflow 滚动布局，追加修饰类启用 calendar.scss 中的 flex 覆盖样式
+      [`${classPrefix}-skyline`]: isSkyline(),
     },
     classPrefix,
     className

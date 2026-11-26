@@ -57,7 +57,6 @@
 
   &-weeks {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     height: 36px;
@@ -66,9 +65,6 @@
   }
 
   &-week-item {
-    width: $calendar-day-width;
-    text-align: center;
-
     &:first-of-type,
     &:last-of-type {
       color: $color-primary;
@@ -79,19 +75,16 @@
   &-content {
     flex: 1;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: block;
+    overflow-y: auto;
   }
 
   &-pannel {
     position: relative;
     width: 100%;
     height: auto;
+    display: block;
     box-sizing: border-box;
-
-    .viewArea {
-      width: 100%;
-    }
 
     .calendar-loading-tip {
       height: 50px;
@@ -107,7 +100,6 @@
   }
 
   &-month {
-    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -120,11 +112,6 @@
   }
 
   &-days {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
     overflow: hidden;
   }
 
@@ -134,15 +121,14 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+    float: left;
+    // 先写字面量再写 var()：Skyline 不支持 CSS 变量时回退到字面量
     width: 14.28%;
     width: $calendar-day-width;
-    flex: 0 0 14.28%;
-    flex: 0 0 $calendar-day-width;
     height: 60px;
     height: $calendar-day-height;
     font-weight: $calendar-day-font-weight;
     margin-bottom: 4px;
-    box-sizing: border-box;
 
     // 部分 Taro 机型下子节点不会稳定继承父级 color，颜色直接落到最内层文案。
     &-day,
@@ -266,6 +252,51 @@
   }
 }
 
+// Skyline 对 float / overflow 滚动支持不足：仅在 Skyline 环境下（Taro 端由 calendaritem.taro.tsx
+// 判定环境后给根节点追加 .nut-calendar-skyline）切换为 flex 布局，
+// H5 / WebView 保持上面原有的块级滚动布局。
+.nut-calendar.nut-calendar-skyline {
+  .nut-calendar-weeks {
+    flex-direction: row;
+  }
+
+  .nut-calendar-week-item {
+    width: $calendar-day-width;
+    text-align: center;
+  }
+
+  .nut-calendar-content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: visible;
+  }
+
+  .nut-calendar-pannel {
+    .viewArea {
+      width: 100%;
+    }
+  }
+
+  .nut-calendar-month {
+    width: 100%;
+  }
+
+  .nut-calendar-days {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nut-calendar-day {
+    flex: 0 0 14.28%;
+    flex: 0 0 $calendar-day-width;
+    float: none;
+    box-sizing: border-box;
+  }
+}
+
 .nut-calendar-popup .nut-popup-title-right {
   top: 7px !important;
 }
@@ -273,6 +304,8 @@
 [dir='rtl'] .nut-calendar,
 .nut-rtl .nut-calendar {
   &-day {
+    float: right;
+
     &-active {
       &.active-start {
         border-top-left-radius: 0;
