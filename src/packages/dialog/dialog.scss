@@ -2,6 +2,20 @@
 @import '../overlay/overlay.scss';
 @import '../../styles/mixins/index';
 
+@keyframes nut-dialog-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeDialog-exit-active {
+  animation: nut-dialog-fade-out 0.3s ease-out both;
+  pointer-events: none;
+}
+
 .nut-dialog {
   display: flex;
   flex-direction: column;
