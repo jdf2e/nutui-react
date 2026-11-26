@@ -222,7 +222,7 @@ export const Range: FunctionComponent<
   const format = useCallback(
     (value: number) => {
       value = Math.max(+min, Math.min(value, +max))
-      return Math.round(value / +step) * +step
+      return Math.max(+min, Math.min(Math.round(value / +step) * +step, +max))
     },
     [max, min, step]
   )

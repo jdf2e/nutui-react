@@ -275,3 +275,20 @@ test('renders marks in rtl mode with reversed boundary transforms', () => {
     'rtl-nut-range-tick'
   )
 })
+
+test('bounds the release value after max changes with a coarse step', () => {
+  const onEnd = vi.fn()
+  const { container, rerender } = render(
+    <Range defaultValue={40} min={0} max={100} step={40} onEnd={onEnd} />
+  )
+  const button = container.querySelector('.nut-range-button') as HTMLElement
+  fireEvent.touchStart(button, {
+    touches: [{ clientX: 40, clientY: 10 }],
+  })
+  fireEvent.touchMove(button, {
+    touches: [{ clientX: 80, clientY: 10 }],
+  })
+  rerender(<Range defaultValue={40} min={0} max={60} step={40} onEnd={onEnd} />)
+  fireEvent.touchEnd(button)
+  expect(onEnd).toHaveBeenLastCalledWith(60)
+})
