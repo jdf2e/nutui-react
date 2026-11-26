@@ -45,3 +45,83 @@
     }
   }
 }
+
+.mp-demo-header {
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+  background: #ffffff;
+  z-index: 100;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
+
+  &-bar {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-back {
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    cursor: pointer;
+
+    .nut-icon {
+      color: #333333;
+    }
+  }
+
+  &-title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 52px;
+    box-sizing: border-box;
+
+    &-text {
+      font-size: 17px;
+      font-weight: 600;
+      color: #333333;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 500;
+    padding: 1px 6px;
+    margin-left: 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+
+    &.is-skyline {
+      background-color: #e8f3ff;
+      color: #0958d9;
+      border: 1px solid #91caff;
+    }
+
+    &.is-webview {
+      background-color: #f6f6f6;
+      color: #595959;
+      border: 1px solid #d9d9d9;
+    }
+  }
+}
