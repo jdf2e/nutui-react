@@ -118,7 +118,7 @@ exports[`pull base 01 1`] = `
   >
     <div
       class="nut-infinite-top"
-      style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+      style="height: 20px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
         class="nut-infinite-top-tips"
@@ -205,7 +205,7 @@ exports[`pull base 1`] = `
   >
     <div
       class="nut-infinite-top"
-      style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+      style="height: 20px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
         class="nut-infinite-top-tips"
@@ -234,7 +234,7 @@ exports[`pull base 2`] = `
   >
     <div
       class="nut-infinite-top"
-      style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+      style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
         class="nut-infinite-top-tips"

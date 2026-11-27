@@ -65,6 +65,7 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 | pullRefresh | 是否開啟下拉刷新 | `boolean` | `false` |
 | pullingText | 下拉刷新提示文案 | `ReactNode` | `鬆手刷新` |
 | loadingText | 上拉加載提示文案 | `ReactNode` | `加載中...` |
+| refreshDistance | 下拉刷新觸發距離 | `number` | `100` |
 | onRefresh | 下拉刷新事件回調 | `() => Promise<void>` | `-` |
 | onLoadMore | 繼續加載的回調函數 | `() => Promise<void>` | `-` |
 | onScroll | 實時監聽滾動高度 | `(param: number) => void` | `-` |

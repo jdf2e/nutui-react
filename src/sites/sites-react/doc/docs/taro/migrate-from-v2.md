@@ -244,6 +244,7 @@ plugins: [
 #### InfiniteLoading
 
 - `target` 属性获取监听的目标元素
+- `refreshDistance` 下拉刷新触发距离
 
 #### Notify
 

@@ -6,14 +6,16 @@ import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { TaroInfiniteLoadingProps } from '@/types'
 import { pxTransform } from '@/utils/taro/px-transform'
+import { mergeProps } from '@/utils'
 
 const defaultProps = {
   ...ComponentDefaults,
   type: 'default',
   hasMore: true,
-  threshold: 40,
+  threshold: 200,
   target: '',
   pullRefresh: false,
+  refreshDistance: 100,
 } as TaroInfiniteLoadingProps
 
 const classPrefix = `nut-infiniteloading`
@@ -36,11 +38,9 @@ export const InfiniteLoading: FunctionComponent<
     onRefresh,
     onLoadMore,
     onScroll,
+    refreshDistance,
     ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = mergeProps(defaultProps, props)
   const [isInfiniting, setIsInfiniting] = useState(false)
   const [topDisScoll, setTopDisScoll] = useState(0)
   const refreshTop = useRef<HTMLDivElement>(null)
@@ -48,18 +48,16 @@ export const InfiniteLoading: FunctionComponent<
   const scrollTop = useRef(0)
   const isTouching = useRef(false)
   const y = useRef(0)
-  const refreshMaxH = useRef(0)
   const distance = useRef(0)
 
   const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
   useEffect(() => {
-    refreshMaxH.current = threshold
-    const timer = setTimeout(() => {
+    const timer = setTimeout(async () => {
       getScrollHeight()
     }, 200)
     return () => clearTimeout(timer)
-  }, [hasMore, isInfiniting, threshold])
+  }, [hasMore, isInfiniting])
 
   /** 获取需要滚动的距离 */
   const getScrollHeight = () => {
@@ -111,21 +109,25 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const touchStart = (event: any) => {
-    if (scrollTop.current === 0 && !isTouching.current && pullRefresh) {
+    if (!isTouching.current && pullRefresh) {
       y.current = event.touches[0].pageY
+      distance.current = 0
+      setTopDisScoll(0)
       isTouching.current = true
     }
   }
 
   const touchMove = (event: any) => {
-    distance.current = event.touches[0].pageY - y.current
-    if (distance.current > 0 && isTouching.current) {
+    if (!isTouching.current) return
+    const currentY = event.touches[0].pageY
+    const newDistance = Math.max(0, currentY - y.current)
+    distance.current = newDistance
+
+    if (newDistance > 0) {
       event.preventDefault()
-      setTopDisScoll(distance.current)
-      if (distance.current >= refreshMaxH.current) {
-        distance.current = refreshMaxH.current
-        setTopDisScoll(refreshMaxH.current)
-      }
+      const finalDistance = Math.min(newDistance, refreshDistance)
+      distance.current = finalDistance
+      setTopDisScoll(finalDistance)
     } else {
       distance.current = 0
       setTopDisScoll(0)
@@ -134,14 +136,17 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const touchEnd = async () => {
-    if (distance.current < refreshMaxH.current) {
+    if (!isTouching.current) return
+
+    if (distance.current < refreshDistance) {
       distance.current = 0
       setTopDisScoll(0)
-      isTouching.current = false
-    } else {
-      await onRefresh?.()
-      refreshDone()
+    } else if (onRefresh) {
+      await onRefresh()
     }
+
+    isTouching.current = false
+    refreshDone()
   }
 
   function getBottomTipsText() {
@@ -161,6 +166,7 @@ export const InfiniteLoading: FunctionComponent<
       scrollY
       id="scroller"
       type="list"
+      lowerThreshold={threshold}
       style={{ height: '100%' }}
       onScroll={scrollAction}
       onScrollToLower={lower}

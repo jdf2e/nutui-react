@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { WebInfiniteLoadingProps } from '@/types'
+import { mergeProps } from '@/utils/merge-props'
 
 declare let window: Window & { webkitRequestAnimationFrame: any } & {
   mozRequestAnimationFrame: any
@@ -16,6 +17,7 @@ const defaultProps = {
   target: '',
   capture: false,
   pullRefresh: false,
+  refreshDistance: 100,
 } as WebInfiniteLoadingProps
 
 const classPrefix = `nut-infiniteloading`
@@ -35,22 +37,19 @@ export const InfiniteLoading: FunctionComponent<
     pullingText,
     loadingText,
     loadMoreText,
+    refreshDistance,
     className,
     onRefresh,
     onLoadMore,
     onScroll,
     ...restProps
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = mergeProps(defaultProps, props)
   const [isInfiniting, setIsInfiniting] = useState(false)
   const scroller = useRef<HTMLDivElement>(null)
   const refreshTop = useRef<HTMLDivElement>(null)
   const scrollEl = useRef<Window | HTMLElement | null>(null)
   const isTouching = useRef(false)
   const beforeScrollTop = useRef(0)
-  const refreshMaxH = useRef(0)
   const y = useRef(0)
   const distance = useRef(0)
 
@@ -118,7 +117,6 @@ export const InfiniteLoading: FunctionComponent<
       isTouching.current = true
       const childHeight = (getRefreshTop().firstElementChild as HTMLElement)
         .offsetHeight
-      refreshMaxH.current = Math.floor(childHeight * 1 + 10)
     }
   }
 
@@ -126,8 +124,8 @@ export const InfiniteLoading: FunctionComponent<
     distance.current = event.touches[0].pageY - y.current
     if (distance.current > 0 && isTouching.current) {
       event.preventDefault()
-      if (distance.current >= refreshMaxH.current) {
-        distance.current = refreshMaxH.current
+      if (distance.current >= refreshDistance) {
+        distance.current = refreshDistance
         getRefreshTop().style.height = `${distance.current}px`
       } else {
         getRefreshTop().style.height = `${distance.current}px`
@@ -140,7 +138,7 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const touchEnd = async () => {
-    if (distance.current < refreshMaxH.current) {
+    if (distance.current < refreshDistance) {
       distance.current = 0
       getRefreshTop().style.height = `${distance.current}px`
       isTouching.current = false
