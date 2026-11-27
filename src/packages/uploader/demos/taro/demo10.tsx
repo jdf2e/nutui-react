@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Loading, Star } from '@nutui/icons-react'
+import { Loading, Star } from '@nutui/icons-react-taro'
 import { Uploader, Button, UploaderFileItem } from '@nutui/nutui-react-taro'
 
 const Demo10 = () => {

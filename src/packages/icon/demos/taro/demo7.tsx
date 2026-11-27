@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import * as iconfonts from '@nutui/icons-react-taro'
+import '@nutui/icons-react-taro/dist/style_icon_animate.css'
 import { Cell, Toast } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import { camelCase } from '../camel-case'
