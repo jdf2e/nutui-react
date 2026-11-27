@@ -16,7 +16,7 @@ const Demo10 = () => {
         direction="vertical"
         list={horseLamp1}
         speed={10}
-        duration={1000}
+        duration={3000}
         onItemClick={(e, v) => {
           console.log('onclick-custom', v)
         }}
