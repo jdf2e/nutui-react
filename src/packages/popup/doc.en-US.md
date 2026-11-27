@@ -83,6 +83,7 @@ import { Popup } from '@nutui/nutui-react'
 | overlay | Whether to show the mask | `boolean` | `true` |
 | closeOnOverlayClick | Whether to click the mask to close | `boolean` | `true` |
 | position | popup location | `top` \| `bottom` \| `left` \| `right` \| `center` | `center` |
+| segment | Foldable center popup segment: `left` / `right` / `center` lock; `auto` follows hinge on iOS Hybrid (slight bend → left, flat → center). Only for `position=center` | `'left' \| 'right' \| 'center' \| 'auto'` | `auto` |
 | transition | animation name | `string` | `-` |
 | closeable | whether to show the close button | `boolean` | `false` |
 | closeIconPosition | close button position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |

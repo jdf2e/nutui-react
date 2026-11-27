@@ -18,7 +18,7 @@ import {
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { mergeProps } from '@/utils/merge-props'
 import { harmony } from '@/utils/taro/platform'
-import { useFoldSegment } from './use-fold-segment'
+import { useFoldSegment } from '@/hooks/use-fold-segment'
 
 const defaultProps = {
   ...defaultOverlayProps,

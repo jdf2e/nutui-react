@@ -1,5 +1,6 @@
 export * from './use-click-away'
 export * from './taro/use-custom-event'
+export * from './use-fold-segment'
 export * from './use-force-update'
 export * from './use-isomprphic-layout-effect'
 export * from './taro/use-lock-scoll'

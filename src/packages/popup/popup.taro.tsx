@@ -17,6 +17,7 @@ import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
+import { useFoldSegment } from '@/hooks/use-fold-segment'
 import { TaroPopupProps } from '@/types'
 import { harmony } from '@/utils/taro/platform'
 import { isSkyline } from '@/utils/taro/is-skyline'
@@ -81,6 +82,7 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    segment,
     resizable,
     minHeight,
     onOpen,
@@ -100,6 +102,10 @@ export const Popup: FunctionComponent<
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
+  // 仅居中弹层跟随折叠屏；非 center 传锁定值避免订阅
+  const resolvedSegment = useFoldSegment(
+    position === 'center' ? (segment ?? 'auto') : 'center'
+  )
   const nodeRef = useLockScrollTaro(
     innerVisible && lockScroll
   ) as React.MutableRefObject<any>
@@ -125,6 +131,10 @@ export const Popup: FunctionComponent<
     {
       [`${classPrefix}-round`]: round || position === 'bottom',
       [`${classPrefix}-${position}`]: true,
+      [`${classPrefix}-center-segment-left`]:
+        position === 'center' && resolvedSegment === 'left',
+      [`${classPrefix}-center-segment-right`]:
+        position === 'center' && resolvedSegment === 'right',
     },
     className
   )
