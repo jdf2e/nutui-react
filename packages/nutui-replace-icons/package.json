@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.19.130",
-    "prettier": "^3.9.6",
+    "prettier": "^3.10.1",
     "rollup": "^2.80.0",
     "rollup-plugin-ts": "^3.4.5",
     "typescript": "^5.4.5"
