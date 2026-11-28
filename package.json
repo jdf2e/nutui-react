@@ -46,7 +46,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "engines": {
-    "pnpm": ">=10.34.5"
+    "pnpm": ">=10.34.9"
   },
   "scripts": {
     "verify:agent": "node ./scripts/agents/nutui-verify.mjs",
@@ -120,17 +120,17 @@
     "verify-scale:mirror": "node .cursor/skills/nutui-build-local-verify/scripts/verify-scale-generation.mjs --mirror"
   },
   "dependencies": {
-    "@babel/runtime": "^7.29.7",
-    "@nutui/icons-react": "4.1.0",
-    "@nutui/icons-react-taro": "4.1.0",
+    "@babel/runtime": "^7.29.16",
+    "@nutui/icons-react": "4.1.1",
+    "@nutui/icons-react-taro": "4.1.1",
     "@nutui/lottie-miniprogram": "^1.0.2",
     "@react-spring/web": "~9.6.1",
-    "@swc/helpers": "^0.5.23",
+    "@swc/helpers": "^0.5.24",
     "@use-gesture/react": "10.2.20",
     "async-validator": "^4.2.5",
     "classnames": "^2.5.1",
     "lottie-react": "^2.4.2",
-    "react-fast-compare": "^3.2.2",
+    "react-fast-compare": "^3.2.4",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
@@ -249,9 +249,9 @@
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "resolutions": {
-    "@types/react": "^18.3.31",
+    "@types/react": "^18.3.32",
     "@types/react-dom": "^18.3.7",
-    "sass": "^1.103.1",
+    "sass": "^1.108.2",
     "@tarojs/api": "4.2.0",
     "@tarojs/components": "4.2.0"
   }
