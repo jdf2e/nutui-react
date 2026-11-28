@@ -91,16 +91,16 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
+    "@babel/core": "^7.29.16",
     "@tarojs/cli": "4.1.3",
     "@tarojs/plugin-platform-harmony-ets": "4.1.3",
     "@tarojs/vite-runner": "4.1.3",
     "@tarojs/webpack5-runner": "4.1.3",
-    "@types/react": "^18.3.31",
+    "@types/react": "^18.3.32",
     "@types/react-dom": "^18.3.7",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "@types/react-test-renderer": "^19.1.0",
+    "@types/react-test-renderer": "^19.3.1",
     "@types/react-transition-group": "^4.4.12",
     "@types/webpack-env": "^1.18.8",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
@@ -111,7 +111,7 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "postcss": "^8.5.26",
+    "postcss": "^8.5.34",
     "stylelint": "^16.26.1",
     "typescript": "^5.3.3",
     "vconsole": "^3.15.1"
